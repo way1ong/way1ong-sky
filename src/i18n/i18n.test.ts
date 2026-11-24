@@ -62,3 +62,8 @@ it('names every speed of the clock and every kind of eclipse', () => {
 it('has words for everything a planet can lead in', () => {
   expect(Object.keys(en.card.most).sort()).toEqual([...SUPERLATIVES].sort());
 });
+
+it('every language of the app has a flag beside its name', async () => {
+  const flags = await import('../ui/flags.ts');
+  expect([...flags.FLAG_LANGS].sort()).toEqual(Object.keys(dictionaries).sort());
+});

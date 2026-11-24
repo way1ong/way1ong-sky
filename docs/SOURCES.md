@@ -17,6 +17,15 @@
 
 Що зроблено з мапами: перезбережено як JPEG меншої ваги; з кілець узято одну смугу 1024 × 2 точки. Де на текстурі кілець зовнішній край кільця A — виміряно на самій текстурі (`ringTextureAOuterAt` у `src/config.ts`), щоб кільця стояли на своїх справжніх радіусах.
 
+## Ще не використано — для фото, точок на Місяці й описів
+
+| Що | Джерело | Умови | Стан |
+|---|---|---|---|
+| Фото планет і знімки з поверхні Місяця | NASA Image and Video Library, images.nasa.gov (пошук — images-api.nasa.gov) | Правила NASA, https://www.nasa.gov/nasa-brand-center/images-and-media/ (прочитано 24.11.2026): «NASA content … generally are not subject to copyright in the United States. You may use this material for educational or informational purposes, including … computer graphical simulations and Internet Web pages»; «NASA should be acknowledged as the source of the material»; комерційне використання «must not explicitly or implicitly convey NASA’s endorsement»; матеріали третіх сторін позначено окремо — їх не брати; знімки з упізнаваними людьми — не брати | вибрати знімки, перевірити кожен: без позначки стороннього власника й без упізнаваних людей |
+| Місця посадок «Аполлонів» (широта й довгота місячних модулів) | NASA NSSDC, https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html (координати за знімками Lunar Reconnaissance Orbiter) | матеріал NASA | прочитано 24.11.2026 |
+| Описи тіл | сторінки NASA Science (science.nasa.gov/<планета>/) — факти для власних коротких текстів трьома мовами | матеріал NASA; тексти пишемо самі, кожне твердження — з їхньої сторінки | на погодження |
+| Описи тіл — запасний варіант | Вікіпедія українською, угорською, англійською | CC BY-SA 4.0 (рядок ліцензії внизу сторінки, прочитано 24.11.2026): потрібні підпис, посилання й та сама ліцензія для переробленого тексту | не беремо, поки є NASA |
+
 ## Ще не використано — для карти неба
 
 | Що | Джерело | Ліцензія | Стан |

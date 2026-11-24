@@ -2,6 +2,7 @@
 import { SKY } from '../config.ts';
 import { SOURCES } from '../core/bodies.ts';
 import { h } from './dom.ts';
+import { flagOf } from './flags.ts';
 import { LANGS, langName, type Dict } from './i18n.ts';
 
 const TEXTURES_URL = 'https://www.solarsystemscope.com/textures/';
@@ -14,9 +15,15 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
   return {
     el,
     open(d, lang, setLang) {
-      const select = h('select', { id: 'lang' });
-      for (const code of LANGS) select.append(h('option', { value: code, selected: code === lang }, langName(code)));
-      select.addEventListener('change', () => setLang(select.value));
+      // The languages as buttons, each with its flag and its own name: a list of options cannot show pictures.
+      const langs = h('ul', { class: 'langs', 'aria-labelledby': 'lang-label' });
+      let current: HTMLButtonElement | null = null;
+      for (const code of LANGS) {
+        const button = h('button', { class: 'chip lang', type: 'button', lang: code, 'aria-pressed': String(code === lang) }, flagOf(code), langName(code));
+        button.addEventListener('click', () => setLang(code));
+        if (code === lang) current = button;
+        langs.append(h('li', {}, button));
+      }
       const close = h('button', { class: 'btn', type: 'button' }, d.actions.close);
       close.addEventListener('click', () => el.close());
       const made = SKY.links.site ? link(SKY.links.site, d.about.madeBy) : d.about.madeBy;
@@ -25,7 +32,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
           'div',
           { class: 'dialog__body' },
           h('h2', { id: 'menu-title' }, d.settings.title),
-          h('div', { class: 'field' }, h('label', { for: 'lang' }, d.settings.language), select),
+          h('div', { class: 'field' }, h('p', { id: 'lang-label' }, d.settings.language), langs),
           h('h2', {}, d.about.title),
           h('p', {}, d.about.text),
           h('p', {}, d.keys),
@@ -43,7 +50,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
         ),
       );
       if (!el.open) el.showModal();
-      select.focus();
+      (current ?? close).focus();
     },
   };
 }

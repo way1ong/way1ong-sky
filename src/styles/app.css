@@ -493,6 +493,27 @@ button {
   cursor: pointer;
 }
 
+.dialog .langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.lang {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* A thin edge keeps a flag's white stripe apart from a light button. */
+.flag {
+  flex: none;
+  border-radius: 2px;
+  outline: 1px solid var(--line);
+}
+
 .field {
   display: grid;
   gap: 0.25rem;
