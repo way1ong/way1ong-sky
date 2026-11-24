@@ -37,6 +37,11 @@ export interface SceneView {
   setOrbits(orbits: Partial<Record<BodyId, Orbit>>): void;
   /** The place of a body on the screen, CSS pixels from the canvas corner; null — behind the camera. */
   onScreen(id: BodyId): { x: number; y: number } | null;
+  /**
+   * A place on a body's surface, given as a unit vector from the body's centre: where it is on the screen and
+   * how squarely it faces the camera (1 — straight at it, 0 — on the edge of the disc, below 0 — on the far side).
+   */
+  surfaceOnScreen(id: BodyId, direction: Vec3): { x: number; y: number; facing: number } | null;
   resize(): void;
   /** How much of the picture the bars cover at the top and at the bottom, CSS px: the view centres between them. */
   setCovered(top: number, bottom: number): void;
@@ -84,7 +89,7 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(SKY.fovDeg, 1, 1e-6, 1e7);
   const loader = new THREE.TextureLoader();
-  const view: SceneView = { draw, setOrbits, onScreen, resize, setCovered, onLoad: () => undefined, destroy };
+  const view: SceneView = { draw, setOrbits, onScreen, surfaceOnScreen, resize, setCovered, onLoad: () => undefined, destroy };
   let covered = { top: 0, bottom: 0 };
 
   const picture = (url: string): THREE.Texture => {
@@ -203,6 +208,18 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
     projected.copy(meshes[id].position).project(camera);
     if (projected.z > 1 || projected.z < -1) return null;
     return { x: ((projected.x + 1) / 2) * canvas.clientWidth, y: ((1 - projected.y) / 2) * canvas.clientHeight };
+  }
+
+  const toCamera = new THREE.Vector3();
+  function surfaceOnScreen(id: BodyId, direction: Vec3): { x: number; y: number; facing: number } | null {
+    if (!last) return null;
+    const mesh = meshes[id];
+    projected.set(...direction).multiplyScalar(mesh.scale.x).add(mesh.position);
+    toCamera.copy(camera.position).sub(projected).normalize();
+    const facing = toCamera.x * direction[0] + toCamera.y * direction[1] + toCamera.z * direction[2];
+    projected.project(camera);
+    if (projected.z > 1 || projected.z < -1) return null;
+    return { x: ((projected.x + 1) / 2) * canvas.clientWidth, y: ((1 - projected.y) / 2) * canvas.clientHeight, facing };
   }
 
   function resize(): void {

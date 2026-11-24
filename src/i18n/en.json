@@ -185,5 +185,78 @@
   },
   "actions": {
     "close": "Close"
+  },
+  "sites": {
+    "title": "Apollo landing places",
+    "intro": "Six Apollo missions landed people on the Moon between 1969 and 1972. Their landing places are also marked on the Moon itself when you look at it from near.",
+    "mission": "Apollo {n}",
+    "open": "{name}: the landing place",
+    "place": {
+      "apollo11": "Sea of Tranquility (Mare Tranquillitatis)",
+      "apollo12": "Ocean of Storms (Oceanus Procellarum)",
+      "apollo14": "Fra Mauro",
+      "apollo15": "Hadley Rille, by the Apennines",
+      "apollo16": "Descartes",
+      "apollo17": "Taurus-Littrow"
+    },
+    "north": "{n}° N",
+    "south": "{n}° S",
+    "east": "{n}° E",
+    "west": "{n}° W",
+    "rows": {
+      "place": "Landing place",
+      "launched": "Launched",
+      "landed": "Landed on the Moon",
+      "returned": "Returned to the Earth",
+      "surface": "Went down to the surface",
+      "orbit": "Stayed in orbit around the Moon",
+      "eva": "Time outside on the surface, in all",
+      "traverse": "Distance covered on the surface",
+      "samples": "Samples brought back",
+      "rover": "Lunar rover"
+    },
+    "roles": {
+      "commander": "commander",
+      "commandModulePilot": "command module pilot",
+      "lunarModulePilot": "lunar module pilot"
+    },
+    "person": "{name}, {role}",
+    "hours": "{n} hours",
+    "km": "{n} km",
+    "kg": "{n} kg",
+    "roverYes": "yes — the Lunar Roving Vehicle",
+    "note": "Dates are in universal time (UT).",
+    "source": "From NASA (NSSDCA):",
+    "missionLink": "the mission",
+    "landingsLink": "table of the landings",
+    "coordinatesLink": "coordinates",
+    "photo": {
+      "apollo11": "An astronaut’s bootprint in the lunar soil, photographed during the Apollo 11 moonwalk on 20 July 1969.",
+      "apollo12": "Two NASA spacecraft on the Moon. In front is the uncrewed Surveyor 3, which landed on 19 April 1967; behind it, 600 feet (about 180 m) away, the Apollo 12 Lunar Module. Photographed on 20 November 1969.",
+      "apollo14": "The Apollo 14 Lunar Module with a circular flare from the brilliant Sun, photographed during the first moonwalk on 5 February 1971. At the far left is the lower slope of Cone Crater.",
+      "apollo15": "Hadley Rille, looking northwest, photographed during the first Apollo 15 moonwalk on 31 July 1971. Layers show in the wall of the rille, and blocks lie on its floor.",
+      "apollo16": "The Lunar Module “Orion” on the lunar surface, photographed by Charles M. Duke, Jr. during the first Apollo 16 moonwalk on 21 April 1972.",
+      "apollo17": "The Lunar Roving Vehicle that Eugene A. Cernan and Harrison H. Schmitt used extensively at the Taurus-Littrow landing place."
+    },
+    "people": {
+      "armstrong": "Neil A. Armstrong",
+      "collins": "Michael Collins",
+      "aldrin": "Edwin E. Aldrin, Jr.",
+      "conrad": "Charles Conrad, Jr.",
+      "gordon": "Richard F. Gordon",
+      "bean": "Alan L. Bean",
+      "shepard": "Alan B. Shepard, Jr.",
+      "roosa": "Stuart A. Roosa",
+      "mitchell": "Edgar D. Mitchell",
+      "scott": "David R. Scott",
+      "worden": "Alfred M. Worden",
+      "irwin": "James B. Irwin",
+      "young": "John W. Young",
+      "mattingly": "Thomas K. Mattingly II",
+      "duke": "Charles M. Duke, Jr.",
+      "cernan": "Eugene A. Cernan",
+      "evans": "Ronald E. Evans",
+      "schmitt": "Harrison H. Schmitt"
+    }
   }
 }

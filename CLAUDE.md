@@ -37,12 +37,13 @@
 src/config.ts          усі числа самої програми (масштаби, камера)
 src/data/bodies.json, facts.json  числа про Сонячну систему з довідників NASA — з адресою й датою
 src/data/descriptions.json  сторінки NASA Science, за якими написано описи тіл; речення NASA під кожним описом — docs/DESCRIPTIONS.md
-src/core/              логіка без DOM: тіла, положення (astronomy-engine), масштаби, політ камери, годинник програми, тіні й затемнення; поруч тести
+src/core/              логіка без DOM: тіла, положення (astronomy-engine), масштаби, політ камери, годинник програми, тіні й затемнення, місця посадок на Місяці; поруч тести
 src/ui/                екран: сцена three.js, керування, список тіл, підписи, меню
 src/i18n/              словники en/hu/uk.json; i18n.test.ts їх звіряє
 src/styles/            tokens.css (кольори), app.css; claude-page.css — лише для тестової сторінки
 src/textures/          мапи тіл і тло (Solar System Scope, CC BY 4.0) — docs/SOURCES.md
 src/photos/            фото тіл для карток (NASA); запис і автор кожного — src/data/photos.json, підписи й джерела — docs/PHOTOS.md
+src/photos/sites/      фото з місць посадок «Аполлонів»; src/data/sites.json — координати, дати, екіпажі, числа місій зі сторінок NASA
 scripts/claude-page.mjs  програма одним файлом для тестової сторінки claude.ai
 docs/                  опис, рішення, стан, джерела й ліцензії
 ```

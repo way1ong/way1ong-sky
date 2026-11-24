@@ -185,5 +185,78 @@
   },
   "actions": {
     "close": "Bezárás"
+  },
+  "sites": {
+    "title": "Az Apollo leszállóhelyei",
+    "intro": "1969 és 1972 között hat Apollo-küldetés juttatott embert a Holdra. A leszállóhelyek magán a Holdon is jelölve vannak, ha közelről nézi.",
+    "mission": "Apollo–{n}",
+    "open": "{name}: a leszállóhely",
+    "place": {
+      "apollo11": "Nyugalom tengere (Mare Tranquillitatis)",
+      "apollo12": "Viharok óceánja (Oceanus Procellarum)",
+      "apollo14": "Fra Mauro",
+      "apollo15": "Hadley-rianás az Appenninek mellett (Hadley Rille)",
+      "apollo16": "Descartes",
+      "apollo17": "Taurus–Littrow"
+    },
+    "north": "é. sz. {n}°",
+    "south": "d. sz. {n}°",
+    "east": "k. h. {n}°",
+    "west": "ny. h. {n}°",
+    "rows": {
+      "place": "Leszállóhely",
+      "launched": "Indulás",
+      "landed": "Leszállás a Holdra",
+      "returned": "Visszatérés a Földre",
+      "surface": "A felszínre leszállt",
+      "orbit": "Hold körüli pályán maradt",
+      "eva": "A felszínen, az űrhajón kívül töltött idő összesen",
+      "traverse": "A felszínen megtett út",
+      "samples": "Hazahozott minták",
+      "rover": "Holdjáró"
+    },
+    "roles": {
+      "commander": "parancsnok",
+      "commandModulePilot": "a parancsnoki modul pilótája",
+      "lunarModulePilot": "a holdkomp pilótája"
+    },
+    "person": "{name}, {role}",
+    "hours": "{n} óra",
+    "km": "{n} km",
+    "kg": "{n} kg",
+    "roverYes": "igen — a Lunar Roving Vehicle",
+    "note": "A dátumok világidő (UT) szerint értendők.",
+    "source": "A NASA (NSSDCA) adatai:",
+    "missionLink": "a küldetés",
+    "landingsLink": "a leszállások táblázata",
+    "coordinatesLink": "koordináták",
+    "photo": {
+      "apollo11": "Egy űrhajós bakancsának lenyomata a holdtalajban, az Apollo–11 holdsétája közben, 1969. július 20-án készült felvételen.",
+      "apollo12": "Két NASA-űreszköz a Holdon. Elöl a személyzet nélküli Surveyor–3, amely 1967. április 19-én szállt le; mögötte, 600 lábnyira (mintegy 180 m-re) az Apollo–12 holdkompja. A kép 1969. november 20-án készült.",
+      "apollo14": "Az Apollo–14 holdkompja a ragyogó Nap kör alakú becsillanásával, az első holdséta közben, 1971. február 5-én. A kép bal szélén a Cone-kráter lejtőjének alsó része látszik.",
+      "apollo15": "A Hadley-rianás északnyugat felé nézve, az Apollo–15 első holdsétáján, 1971. július 31-én. A rianás falában rétegek, az alján sziklatömbök látszanak.",
+      "apollo16": "Az „Orion” holdkomp a Hold felszínén; Charles M. Duke, Jr. fényképezte az Apollo–16 első holdsétáján, 1972. április 21-én.",
+      "apollo17": "A holdjáró (Lunar Roving Vehicle), amelyet Eugene A. Cernan és Harrison H. Schmitt sokat használt a Taurus–Littrow leszállóhelyen."
+    },
+    "people": {
+      "armstrong": "Neil A. Armstrong",
+      "collins": "Michael Collins",
+      "aldrin": "Edwin E. Aldrin, Jr.",
+      "conrad": "Charles Conrad, Jr.",
+      "gordon": "Richard F. Gordon",
+      "bean": "Alan L. Bean",
+      "shepard": "Alan B. Shepard, Jr.",
+      "roosa": "Stuart A. Roosa",
+      "mitchell": "Edgar D. Mitchell",
+      "scott": "David R. Scott",
+      "worden": "Alfred M. Worden",
+      "irwin": "James B. Irwin",
+      "young": "John W. Young",
+      "mattingly": "Thomas K. Mattingly II",
+      "duke": "Charles M. Duke, Jr.",
+      "cernan": "Eugene A. Cernan",
+      "evans": "Ronald E. Evans",
+      "schmitt": "Harrison H. Schmitt"
+    }
   }
 }

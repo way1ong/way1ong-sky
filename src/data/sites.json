@@ -1,0 +1,171 @@
+{
+  "read": "2026-11-24",
+  "source": {
+    "coordinates": {
+      "title": "NASA NSSDCA: Apollo Landing Site Coordinates",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "updated": "2017-03-06",
+      "note": "Lunar Module positions, degrees north and east, Mean Earth/Polar Axis frame (DE421), from Lunar Reconnaissance Orbiter images"
+    },
+    "landings": {
+      "title": "NASA NSSDCA: Apollo Lunar Landings (1969 - 1972)",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apolloland.html",
+      "updated": "2017-03-06",
+      "note": "EVA time (hours), traverse (km), sample return (kg)"
+    },
+    "program": {
+      "title": "NASA NSSDCA: The Apollo Program (1963 - 1972)",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo.html",
+      "note": "who lands and who stays in orbit; Lunar Roving Vehicles on Apollo 15, 16 and 17"
+    },
+    "missions": {
+      "note": "launch, landing and return times (UT) and the crew: the page of each mission, updated 2022-08-15"
+    }
+  },
+  "sites": {
+    "apollo11": {
+      "mission": 11,
+      "lat": 0.67416,
+      "lon": 23.47314,
+      "launched": "1969-07-16T13:32:00Z",
+      "landed": "1969-07-20T20:17:40Z",
+      "returned": "1969-07-24T16:50:35Z",
+      "crew": {
+        "commander": "armstrong",
+        "commandModulePilot": "collins",
+        "lunarModulePilot": "aldrin"
+      },
+      "evaHours": 2.53,
+      "traverseKm": 0.25,
+      "sampleKg": 21.55,
+      "rover": false,
+      "page": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo11info.html",
+      "photo": {
+        "nasaId": "as11-40-5878",
+        "title": "Close-up view of astronauts footprint in lunar soil",
+        "credit": "NASA",
+        "page": "https://images.nasa.gov/details/as11-40-5878"
+      }
+    },
+    "apollo12": {
+      "mission": 12,
+      "lat": -3.0128,
+      "lon": -23.4219,
+      "launched": "1969-11-14T16:22:00Z",
+      "landed": "1969-11-19T06:54:35Z",
+      "returned": "1969-11-24T20:58:24Z",
+      "crew": {
+        "commander": "conrad",
+        "commandModulePilot": "gordon",
+        "lunarModulePilot": "bean"
+      },
+      "evaHours": 7.75,
+      "traverseKm": 1.35,
+      "sampleKg": 34.35,
+      "rover": false,
+      "page": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo12info.html",
+      "photo": {
+        "nasaId": "as12-48-7099",
+        "title": "Apollo 12 Mission image - View of the Surveyor III craft,which landed April 19,1967",
+        "credit": "NASA",
+        "page": "https://images.nasa.gov/details/as12-48-7099"
+      }
+    },
+    "apollo14": {
+      "mission": 14,
+      "lat": -3.64589,
+      "lon": -17.47194,
+      "launched": "1971-01-31T21:03:02Z",
+      "landed": "1971-02-05T09:18:11Z",
+      "returned": "1971-02-09T21:05:00Z",
+      "crew": {
+        "commander": "shepard",
+        "commandModulePilot": "roosa",
+        "lunarModulePilot": "mitchell"
+      },
+      "evaHours": 9.38,
+      "traverseKm": 3.45,
+      "sampleKg": 42.28,
+      "rover": false,
+      "page": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo14info.html",
+      "photo": {
+        "nasaId": "as14-66-9306",
+        "title": "View of Apollo 14 Lunar Module on the Moon",
+        "credit": "NASA",
+        "page": "https://images.nasa.gov/details/as14-66-9306"
+      }
+    },
+    "apollo15": {
+      "mission": 15,
+      "lat": 26.13239,
+      "lon": 3.6333,
+      "launched": "1971-07-26T13:34:00Z",
+      "landed": "1971-07-30T22:16:29Z",
+      "returned": "1971-08-07T20:45:53Z",
+      "crew": {
+        "commander": "scott",
+        "commandModulePilot": "worden",
+        "lunarModulePilot": "irwin"
+      },
+      "evaHours": 19.13,
+      "traverseKm": 27.9,
+      "sampleKg": 77.31,
+      "rover": true,
+      "page": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo15info.html",
+      "photo": {
+        "nasaId": "as15-85-11425",
+        "title": "Apollo 15 Mission image - Panoramic view north of Station 1, northwest of Hadley Rille",
+        "credit": "NASA",
+        "page": "https://images.nasa.gov/details/as15-85-11425"
+      }
+    },
+    "apollo16": {
+      "mission": 16,
+      "lat": -8.9734,
+      "lon": 15.5011,
+      "launched": "1972-04-16T17:54:00Z",
+      "landed": "1972-04-21T02:23:35Z",
+      "returned": "1972-04-27T19:45:05Z",
+      "crew": {
+        "commander": "young",
+        "commandModulePilot": "mattingly",
+        "lunarModulePilot": "duke"
+      },
+      "evaHours": 20.23,
+      "traverseKm": 27,
+      "sampleKg": 95.71,
+      "rover": true,
+      "page": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo16info.html",
+      "photo": {
+        "nasaId": "as16-113-18334",
+        "title": "View of the Apollo 16 Lunar Module on the lunar surface",
+        "credit": "NASA",
+        "page": "https://images.nasa.gov/details/as16-113-18334"
+      }
+    },
+    "apollo17": {
+      "mission": 17,
+      "lat": 20.1911,
+      "lon": 30.7723,
+      "launched": "1972-12-07T05:33:00Z",
+      "landed": "1972-12-11T19:54:57Z",
+      "returned": "1972-12-19T19:24:59Z",
+      "crew": {
+        "commander": "cernan",
+        "commandModulePilot": "evans",
+        "lunarModulePilot": "schmitt"
+      },
+      "evaHours": 22.07,
+      "traverseKm": 35,
+      "sampleKg": 110.52,
+      "rover": true,
+      "page": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo17info.html",
+      "photo": {
+        "nasaId": "as17-146-22367",
+        "title": "View of the Lunar Roving Vehicle in its final parking space",
+        "credit": "NASA",
+        "page": "https://images.nasa.gov/details/as17-146-22367"
+      }
+    }
+  }
+}

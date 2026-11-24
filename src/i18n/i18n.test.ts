@@ -4,6 +4,7 @@ import { SKY } from '../config.ts';
 import { BODY_IDS } from '../core/bodies.ts';
 import { SUPERLATIVES } from '../core/facts.ts';
 import { SCALES } from '../core/scale.ts';
+import { CREW_ROLES, SITE_IDS, SITES } from '../core/sites.ts';
 import en from './en.json';
 import hu from './hu.json';
 import uk from './uk.json';
@@ -74,4 +75,14 @@ it('describes every body, in every language', () => {
 
 it('captions every body\'s photo, in every language', () => {
   for (const dict of Object.values(dictionaries)) expect(Object.keys(((dict.card as Tree).photo as Tree)).sort()).toEqual([...BODY_IDS].sort());
+});
+
+it('names every landing place, its photo, its crew and their roles, in every language', () => {
+  for (const dict of Object.values(dictionaries)) {
+    const sites = dict.sites as Tree;
+    expect(Object.keys(sites.place as Tree).sort()).toEqual([...SITE_IDS].sort());
+    expect(Object.keys(sites.photo as Tree).sort()).toEqual([...SITE_IDS].sort());
+    expect(Object.keys(sites.roles as Tree).sort()).toEqual([...CREW_ROLES].sort());
+    for (const id of SITE_IDS) for (const role of CREW_ROLES) expect((sites.people as Tree)[SITES[id].crew[role]], `${id} ${role}`).toBeTypeOf('string');
+  }
 });

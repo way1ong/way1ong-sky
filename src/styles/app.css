@@ -373,6 +373,44 @@ button {
   border-color: var(--accent);
 }
 
+/* A landing place on the Moon: a ring on the spot and the number of the mission beside it. */
+.site {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.site::before {
+  width: 0.625rem;
+  height: 0.625rem;
+  margin: 0 0.0625rem;
+  border-color: var(--accent);
+  background: var(--bg);
+}
+
+.site--left {
+  flex-direction: row-reverse;
+  padding: 0 0 0 0.5rem;
+  translate: calc(-100% + 0.75rem) 0;
+}
+
+.site-section {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.site-section h3 {
+  margin: 0;
+  font-size: 1.0625rem;
+}
+
+.dialog .site-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .dialog {
   width: min(28rem, calc(100% - 2rem));
   max-height: calc(100dvh - 2rem);

@@ -8,6 +8,7 @@ import { attitude, orbitKm, positionsKm, type Attitude } from '../core/ephemeris
 import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, facing, flightAt, progress, type Flight, type View } from '../core/flight.ts';
 import { SCALES, sceneFromPlanet, sceneFromSun, scenePositions, sceneRadius, sceneRing, type ScaleMode } from '../core/scale.ts';
 import { shadeOf, type Shade } from '../core/shadow.ts';
+import { SITE_IDS, SITES, surfaceDirection, type SiteId } from '../core/sites.ts';
 import { length, sub, type Vec3 } from '../core/vec.ts';
 import { attachControls } from './controls.ts';
 import { h } from './dom.ts';
@@ -15,6 +16,8 @@ import { createFactsDialog } from './facts-dialog.ts';
 import { dict, fmt, pickLang, type Dict } from './i18n.ts';
 import { createMenuDialog } from './menu-dialog.ts';
 import { createSceneView, type Orbit, type SceneView } from './scene.ts';
+import { createSiteDialog } from './site-dialog.ts';
+import { missionName } from './site-text.ts';
 import { createTimeDialog } from './time-dialog.ts';
 
 const STORE = 'way1ong-sky:v1:settings';
@@ -94,6 +97,8 @@ export function startApp(root: HTMLElement): void {
   // ---------- elements ----------
   const canvas = h('canvas', { tabindex: 0, role: 'img' });
   const labels = h('div', { class: 'labels', 'aria-hidden': 'true' });
+  /** Marks of the landing places on the Moon: shown while the camera looks at the Moon from near enough. */
+  const siteMarks = h('div', { class: 'labels' });
   const title = h('h1', { class: 'top__name' });
   const line = h('p', { class: 'top__line' });
   /** The speed of the clock on a line of its own: the date beside it changes its width all the time. */
@@ -115,7 +120,8 @@ export function startApp(root: HTMLElement): void {
   const menu = createMenuDialog();
   const timeDialog = createTimeDialog();
   const factsDialog = createFactsDialog();
-  const stage = h('div', { class: 'stage' }, canvas, labels);
+  const siteDialog = createSiteDialog();
+  const stage = h('div', { class: 'stage' }, canvas, labels, siteMarks);
   const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine), factsBtn, menuBtn);
   const bottom = h('div', { class: 'bottom' }, h('div', { class: 'bar' }, timeBox), h('div', { class: 'bar' }, scaleBox), dock);
   const main = h(
@@ -128,6 +134,7 @@ export function startApp(root: HTMLElement): void {
     menu.el,
     timeDialog.el,
     factsDialog.el,
+    siteDialog.el,
   );
   root.replaceChildren(main);
 
@@ -147,6 +154,7 @@ export function startApp(root: HTMLElement): void {
   /** How wide every name is on the screen, CSS px — measured when the names are written. */
   const labelWidth = new Map<BodyId, number>();
   const chipOf = new Map<BodyId | 'whole', HTMLButtonElement>();
+  const markOf = new Map<SiteId, HTMLButtonElement>();
 
   /** Everything that is words: built again when the language changes. */
   function build(): void {
@@ -182,6 +190,15 @@ export function startApp(root: HTMLElement): void {
       label.addEventListener('click', () => flyTo(id));
       labelOf.set(id, label);
       labels.append(label);
+    }
+
+    siteMarks.replaceChildren();
+    markOf.clear();
+    for (const id of SITE_IDS) {
+      const mark = h('button', { class: 'label site', type: 'button', hidden: true, 'aria-label': fmt(d.sites.open, { name: missionName(d, id) }) }, String(SITES[id].mission));
+      mark.addEventListener('click', () => siteDialog.open(d, lang, id));
+      markOf.set(id, mark);
+      siteMarks.append(mark);
     }
 
     for (const [id, label] of labelOf) {
@@ -349,7 +366,16 @@ export function startApp(root: HTMLElement): void {
     },
   });
 
-  factsBtn.addEventListener('click', () => factsDialog.open(d, lang, focus, date));
+  /** From the Moon's card to a landing place: the Moon turns that place to the camera, and its window opens. */
+  function showSite(id: SiteId): void {
+    if (focus === 'moon' && !flight) {
+      view = { ...view, ...facing(surfaceDirection(turned.moon, SITES[id].lat, SITES[id].lon)) };
+      dirty = true;
+    }
+    siteDialog.open(d, lang, id);
+  }
+
+  factsBtn.addEventListener('click', () => factsDialog.open(d, lang, focus, date, showSite));
 
   menuBtn.addEventListener('click', () =>
     menu.open(d, lang, (code) => {
@@ -394,6 +420,30 @@ export function startApp(root: HTMLElement): void {
     }
   }
 
+  // ---------- the landing places on the Moon ----------
+  function placeSites(): void {
+    const shown = focus === 'moon' && !flight && focusOnScreenPx() >= SKY.sites.showFromPx;
+    const at = new Map<SiteId, { x: number; y: number }>();
+    if (shown) {
+      for (const id of SITE_IDS) {
+        const point = scene.surfaceOnScreen('moon', surfaceDirection(turned.moon, SITES[id].lat, SITES[id].lon));
+        if (point && point.facing > SKY.sites.facing && point.x > 0 && point.y > 0 && point.x < canvas.clientWidth && point.y < canvas.clientHeight) at.set(id, point);
+      }
+    }
+    for (const [id, mark] of markOf) {
+      const point = at.get(id);
+      mark.hidden = !point;
+      if (!point) continue;
+      // The number stands on the side away from the nearest other mark, so two close places stay readable.
+      let nearest: { x: number; y: number } | null = null;
+      for (const [other, p] of at) {
+        if (other !== id && (!nearest || Math.hypot(p.x - point.x, p.y - point.y) < Math.hypot(nearest.x - point.x, nearest.y - point.y))) nearest = p;
+      }
+      mark.classList.toggle('site--left', nearest !== null && nearest.x > point.x);
+      mark.style.transform = `translate(${point.x.toFixed(1)}px, ${point.y.toFixed(1)}px)`;
+    }
+  }
+
   // ---------- the loop: a frame is drawn only when something has changed ----------
   function frame(now: number): void {
     if (isRunningFast(clock)) {
@@ -427,6 +477,7 @@ export function startApp(root: HTMLElement): void {
       dirty = false;
       scene.draw({ where, radius, turned, ring: sceneRing(mode), shade, target, eye: eye(target, view) });
       placeLabels();
+      placeSites();
     }
     window.requestAnimationFrame(frame);
   }

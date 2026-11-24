@@ -15,6 +15,10 @@
 | Положення й обертання тіл | astronomy-engine 2.1.19 (npm) | MIT | у пакеті |
 | 3D | three.js 0.187.0 (npm) | MIT | у пакеті |
 | Фото тіл у картках (`src/photos/`, десять знімків) | NASA Image and Video Library, https://images.nasa.gov/ — запис і автор кожного знімка: `src/data/photos.json`, `docs/PHOTOS.md` | Правила NASA, https://www.nasa.gov/nasa-brand-center/images-and-media/: «NASA content … generally are not subject to copyright in the United States. You may use this material for educational or informational purposes, including … Internet Web pages»; «NASA should be acknowledged as the source of the material»; комерційне використання «must not explicitly or implicitly convey NASA’s endorsement». Під кожним фото — автор із запису й посилання на запис; у «Про програму» — що програму зроблено незалежно від NASA | 24.11.2026 |
+| Місця посадок «Аполлонів» (`src/data/sites.json`): координати місячних модулів | NASA NSSDCA, Apollo Landing Site Coordinates, https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html (оновлено 6.03.2017; координати — за знімками Lunar Reconnaissance Orbiter) | матеріал NASA | 24.11.2026 |
+| Місії: дати старту, посадки й повернення (UT), екіпаж | сторінка кожної місії, …/planetary/lunar/apollo11info.html … apollo17info.html (оновлено 15.08.2022); хто сідає, а хто лишається на орбіті, і місяцеходи «Аполлонів» 15–17 — …/lunar/apollo.html | матеріал NASA | 24.11.2026 |
+| Місії: час поза кораблем, шлях поверхнею, маса зразків | NASA NSSDCA, Apollo Lunar Landings, …/planetary/lunar/apolloland.html (оновлено 6.03.2017) | матеріал NASA | 24.11.2026 |
+| Фото з місць посадок (`src/photos/sites/`, шість знімків) | NASA Image and Video Library — `docs/PHOTOS.md` | правила NASA, як для фото тіл; без людей у кадрі | 24.11.2026 |
 | Описи тіл у картках (`card.about.*` у словниках) — власні тексти трьома мовами за фактами зі сторінок NASA Science, science.nasa.gov; адреси сторінок — `src/data/descriptions.json`, речення NASA під кожним описом — `docs/DESCRIPTIONS.md` | NASA Science | матеріал NASA (ті самі правила); тексти — наші, не переклад і не копія; під описом — посилання на сторінку NASA | 24.11.2026 |
 
 Що зроблено з мапами: перезбережено як JPEG меншої ваги; з кілець узято одну смугу 1024 × 2 точки. Де на текстурі кілець зовнішній край кільця A — виміряно на самій текстурі (`ringTextureAOuterAt` у `src/config.ts`), щоб кільця стояли на своїх справжніх радіусах.
@@ -23,8 +27,6 @@
 
 | Що | Джерело | Умови | Стан |
 |---|---|---|---|
-| Знімки з поверхні Місяця (для місць посадок) | NASA Image and Video Library, images.nasa.gov (пошук — images-api.nasa.gov) | Правила NASA, https://www.nasa.gov/nasa-brand-center/images-and-media/ (прочитано 24.11.2026): «NASA content … generally are not subject to copyright in the United States. You may use this material for educational or informational purposes, including … computer graphical simulations and Internet Web pages»; «NASA should be acknowledged as the source of the material»; комерційне використання «must not explicitly or implicitly convey NASA’s endorsement»; матеріали третіх сторін позначено окремо — їх не брати; знімки з упізнаваними людьми — не брати | вибрати знімки, перевірити кожен: без позначки стороннього власника й без упізнаваних людей |
-| Місця посадок «Аполлонів» (широта й довгота місячних модулів) | NASA NSSDC, https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html (координати за знімками Lunar Reconnaissance Orbiter) | матеріал NASA | прочитано 24.11.2026 |
 | Описи тіл — запасний варіант | Вікіпедія українською, угорською, англійською | CC BY-SA 4.0 (рядок ліцензії внизу сторінки, прочитано 24.11.2026): потрібні підпис, посилання й та сама ліцензія для переробленого тексту | не беремо, поки є NASA |
 
 ## Ще не використано — для карти неба

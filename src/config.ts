@@ -60,6 +60,12 @@ export const SKY = {
   eclipseViewOffsetDeg: { moon: 50, earth: 35 },
   /** Two names over the picture share a row, and must not overlap, when their dots are closer in height than this, CSS px (C). */
   labelRowPx: 24,
+  /**
+   * Landing places on the Moon (C): their marks are drawn once the Moon is at least this wide on the screen
+   * (its radius, CSS px), and only for places turned towards the camera by more than `facing` — the cosine of
+   * the angle between the place and the line to the camera — so no mark sits on the very edge of the disc.
+   */
+  sites: { showFromPx: 60, facing: 0.15 },
   /** Points of an orbit's line (C). */
   orbitPoints: 256,
   /** Where the outer edge of ring A lies across the ring texture, 0…1 — measured on the texture itself. */

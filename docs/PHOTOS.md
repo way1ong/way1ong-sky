@@ -21,4 +21,19 @@
 | Уран | PIA18182 «Uranus as seen by NASA Voyager 2» | NASA/JPL-Caltech | «This is an image of the planet Uranus taken by the spacecraft Voyager 2 in 1986.» |
 | Нептун | PIA01492 | NASA/JPL | «This picture of Neptune was produced from the last whole planet images taken through the green and orange filters on NASA's Voyager 2 narrow angle camera. The images were taken at a range of 4.4 million miles from the planet, 4 days and 20 hours before closest approach. The picture shows the Great Dark Spot…» |
 
+## Знімки з місць посадок «Аполлонів»
+
+Ті самі правила й той самий добір; додатково — без людей у кадрі (правила NASA застерігають щодо знімків з упізнаваними людьми в комерційному використанні). Файли: середину кадру обрізано до квадрата, 640 × 640 точок, WebP (разом близько 260 КБ), `src/photos/sites/`. Номери записів — `src/data/sites.json`; у записах автора не вказано, тож підписано «NASA».
+
+| Місія | Запис | З запису NASA |
+|---|---|---|
+| «Аполлон-11» | as11-40-5878 | «AS11-40-5878 (20 July 1969) --- A close-up view of an astronaut's bootprint in the lunar soil, photographed with a 70mm lunar surface camera during the Apollo 11 extravehicular activity (EVA) on the moon.» |
+| «Аполлон-12» | as12-48-7099 | «AS12-48-7099 (20 Nov. 1969) --- This unusual view shows two National Aeronautics and Space Administration (NASA) spacecraft on the surface of the moon. In the center foreground is the unmanned Surveyor 3 spacecraft, which soft landed on the lunar surface on April 19, 1967. Just 600 feet away from the Surveyor 3 spacecraft, pictured here in the background, is the Apollo 12 Lunar Module (LM)…» (600 футів переведено в метри нами) |
+| «Аполлон-14» | as14-66-9306 | «AS14-66-9306 (5 Feb. 1971) --- A front view of the Apollo 14 Lunar Module (LM), which reflects a circular flare caused by the brilliant sun, as seen by the two moon-exploring crew men… during their first extravehicular activity (EVA)… At the extreme left the lower slope of Cone Crater can be seen.» |
+| «Аполлон-15» | as15-85-11425 | «AS15-85-11425 (31 July 1971) --- A view of Hadley Rille, looking northwest, as photographed from near Station No. 2 (St. George Crater) during the first Apollo 15 lunar surface extravehicular activity (EVA). This picture shows layering in the rille wall and blocks on the floor of the rille.» |
+| «Аполлон-16» | as16-113-18334 | «AS16-113-18334 (21 April 1972) --- View of the Lunar Module (LM) "Orion" parked on the lunar surface… photographed by astronaut Charles M. Duke Jr., the lunar module pilot, during the mission's first extravehicular activity (EVA).» |
+| «Аполлон-17» | as17-146-22367 | «AS17-146-22367 (7-19 Dec. 1972) --- This is an excellent view of the Lunar Roving Vehicle (LRV) which was used extensively by astronauts Eugene A. Cernan and Harrison H. Schmitt at the Taurus-Littrow landing site.» |
+
+Не взято для місць посадок: кадри, де в записі названо астронавта в кадрі (серед них гарний знімок модуля «Оріон» з місяцеходом — as16-107-17436: за місяцеходом видно командира).
+
 Не взято: знімки «Габбла» (у записах серед авторів STScI й окремі дослідники — умови не читано), перероблені аматорами кадри Juno з ліцензіями CC BY-NC, малюнки й комп'ютерні моделі (серед них «Full Moon» Центру Ґоддарда — це модель за даними LRO, а не знімок).
