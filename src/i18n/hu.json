@@ -55,7 +55,7 @@
       "week": "egy hét másodpercenként",
       "month": "egy hónap másodpercenként"
     },
-    "noSpin": "Ilyen sebességnél az égitestek forgását nem mutatjuk: csak villódzna.",
+    "noSpin": "Ilyen sebességnél az égitestek tengely körüli forgását nem mutatjuk: csak villódzna. A pályájukon való mozgásuk valódi.",
     "limit": "Az alkalmazás naptára itt véget ér: {from} és {to} között működik.",
     "dialog": {
       "title": "Dátum és fogyatkozások",

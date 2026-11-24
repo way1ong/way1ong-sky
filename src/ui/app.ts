@@ -138,6 +138,8 @@ export function startApp(root: HTMLElement): void {
   };
 
   const labelOf = new Map<BodyId, HTMLButtonElement>();
+  /** How wide every name is on the screen, CSS px — measured when the names are written. */
+  const labelWidth = new Map<BodyId, number>();
   const chipOf = new Map<BodyId | 'whole', HTMLButtonElement>();
 
   /** Everything that is words: built again when the language changes. */
@@ -174,6 +176,11 @@ export function startApp(root: HTMLElement): void {
       label.addEventListener('click', () => flyTo(id));
       labelOf.set(id, label);
       labels.append(label);
+    }
+
+    for (const [id, label] of labelOf) {
+      label.hidden = false;
+      labelWidth.set(id, label.getBoundingClientRect().width);
     }
 
     scaleBox.replaceChildren(h('legend', {}, d.scale.label));
@@ -349,7 +356,7 @@ export function startApp(root: HTMLElement): void {
 
   // ---------- the names over the picture ----------
   function placeLabels(): void {
-    const taken: { x: number; y: number }[] = [];
+    const taken: { left: number; right: number; y: number }[] = [];
     // The body looked at first, then the Sun and the planets, the Moon last: a name too close to one already
     // placed is left out, or the Moon's would lie on the Earth's.
     const order = [flight?.to ?? focus, ...BODY_IDS.filter((id) => id !== (flight?.to ?? focus) && parentOf(id) !== 'earth'), 'moon' as const];
@@ -360,13 +367,15 @@ export function startApp(root: HTMLElement): void {
       const label = labelOf.get(id);
       if (!label) continue;
       const at = scene.onScreen(id);
-      const inside = at && at.x > -20 && at.y > -20 && at.x < canvas.clientWidth + 20 && at.y < canvas.clientHeight + 20;
-      const free = at && taken.every((t) => Math.hypot(t.x - at.x, t.y - at.y) > 26);
+      // A name is drawn only with its dot on the screen, and only where it does not run into a name already placed.
+      const inside = at && at.x > 6 && at.y > 0 && at.x < canvas.clientWidth && at.y < canvas.clientHeight;
+      const box = at ? { left: at.x - 10, right: at.x + (labelWidth.get(id) ?? 0) + 4, y: at.y } : null;
+      const free = box && taken.every((t) => Math.abs(t.y - box.y) > SKY.labelRowPx || box.left > t.right || box.right < t.left);
       // A body that fills the view needs no name on its face: the title says what it is.
       const large = id === focus && !flight && focusOnScreenPx() > SKY.labelHiddenFromPx;
       label.hidden = !(at && inside && free) || large;
-      if (!at || label.hidden) continue;
-      taken.push(at);
+      if (!at || !box || label.hidden) continue;
+      taken.push(box);
       label.style.transform = `translate(${at.x.toFixed(1)}px, ${at.y.toFixed(1)}px)`;
       label.classList.toggle('is-here', id === focus && !flight);
     }

@@ -55,7 +55,7 @@
       "week": "a week a second",
       "month": "a month a second"
     },
-    "noSpin": "At this speed the bodies are not turned: a spin so fast would only flicker.",
+    "noSpin": "At this speed the bodies’ spin about their own axes is not shown: it would only flicker. Their motion along the orbits is real.",
     "limit": "The app’s calendar ends here: it runs from {from} to {to}.",
     "dialog": {
       "title": "Date and eclipses",

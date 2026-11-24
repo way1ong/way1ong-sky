@@ -56,6 +56,8 @@ export const SKY = {
    * the handy scale, does not hide the view.
    */
   eclipseViewOffsetDeg: { moon: 50, earth: 35 },
+  /** Two names over the picture share a row, and must not overlap, when their dots are closer in height than this, CSS px (C). */
+  labelRowPx: 24,
   /** Points of an orbit's line (C). */
   orbitPoints: 256,
   /** Where the outer edge of ring A lies across the ring texture, 0…1 — measured on the texture itself. */

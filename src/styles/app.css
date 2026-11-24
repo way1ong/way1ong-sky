@@ -233,6 +233,8 @@ button {
 }
 
 .icon-skip--back {
+  margin-right: 0;
+  margin-left: 0.6875rem;
   transform: scaleX(-1);
 }
 
