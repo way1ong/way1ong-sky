@@ -36,6 +36,7 @@
 ```
 src/config.ts          усі числа самої програми (масштаби, камера)
 src/data/bodies.json, facts.json  числа про Сонячну систему з довідників NASA — з адресою й датою
+src/data/descriptions.json  сторінки NASA Science, за якими написано описи тіл; речення NASA під кожним описом — docs/DESCRIPTIONS.md
 src/core/              логіка без DOM: тіла, положення (astronomy-engine), масштаби, політ камери, годинник програми, тіні й затемнення; поруч тести
 src/ui/                екран: сцена three.js, керування, список тіл, підписи, меню
 src/i18n/              словники en/hu/uk.json; i18n.test.ts їх звіряє

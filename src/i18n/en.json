@@ -138,7 +138,20 @@
     "source": "The numbers are NASA’s (fact sheet updated {updated}). “Now” is computed by the app for the moment shown: {date}.",
     "sourceLink": "NASA Planetary Fact Sheet",
     "notesLink": "what the rows mean",
-    "sunLink": "NASA Sun Fact Sheet"
+    "sunLink": "NASA Sun Fact Sheet",
+    "about": {
+      "sun": "The Sun is the star at the heart of our solar system, and the only star in it. It is a huge ball of hydrogen and helium held together by its own gravity, and it holds 99.8% of the solar system’s mass. Its gravity keeps everything in orbit, from the biggest planets to the smallest bits of debris.",
+      "mercury": "Mercury is the planet closest to the Sun and the smallest one, only slightly larger than the Earth’s Moon. Days there reach 430 °C; with no atmosphere to keep the heat, nights drop to −180 °C. It is the fastest planet: it goes around the Sun in 88 Earth days.",
+      "venus": "Venus is the second planet from the Sun and the Earth’s closest planetary neighbor; in our sky it is the third brightest object after the Sun and the Moon. It is similar to the Earth in structure and size, but its thick atmosphere traps heat and makes it the hottest planet, with a surface hot enough to melt lead. Venus spins slowly, and in the opposite direction from most planets.",
+      "earth": "The Earth is the third planet from the Sun and the biggest of the four planets closest to it, all made of rock and metal. It is the only place we know of inhabited by living things, and the only planet in the solar system with liquid water on its surface. Its atmosphere is 78% nitrogen, 21% oxygen and 1% other gases, and it shields us from much of the Sun’s harmful radiation.",
+      "moon": "The Moon is the Earth’s only natural satellite. It spins at the same rate as it goes around the Earth, so the same side always faces us; people first saw the far side in 1959, when a Soviet spacecraft flew past. Its surface is solid and rocky, cratered and pitted by impacts of asteroids, meteorites and comets.",
+      "mars": "Mars is the fourth planet from the Sun. It is called the Red Planet: iron minerals in its dirt oxidize, or rust, and make the surface look red. It is one of the most explored bodies in the solar system and the only planet where rovers have been sent; NASA missions have found lots of evidence that billions of years ago Mars was much wetter and warmer, with a thicker atmosphere.",
+      "jupiter": "Jupiter is the fifth planet from the Sun and the largest in the solar system — more than twice as massive as all the other planets combined. Its stripes and swirls are cold, windy clouds of ammonia and water in an atmosphere of hydrogen and helium. The Great Red Spot is a giant storm bigger than the Earth that has raged for hundreds of years.",
+      "saturn": "Saturn is the sixth planet from the Sun and the second largest. Like Jupiter, it is a massive ball made mostly of hydrogen and helium. It is not the only planet with rings, but none are as spectacular or as complex as Saturn’s. It is the farthest planet from the Earth discovered by the unaided eye, known since ancient times.",
+      "uranus": "Uranus is the seventh planet from the Sun and the third largest — a very cold and windy world. It rotates at a nearly 90-degree angle from the plane of its orbit, so it appears to spin sideways, rolling around the Sun like a ball. It was the first planet found with the aid of a telescope: the astronomer William Herschel discovered it in 1781.",
+      "neptune": "Neptune is the eighth and most distant planet from the Sun, more than 30 times as far from it as the Earth. It is a dark, cold ice giant whipped by supersonic winds, and the only planet in our solar system not visible to the naked eye. It was discovered in 1846 and completed its first orbit around the Sun since then in 2011."
+    },
+    "aboutSource": "Description: after NASA Science"
   },
   "keys": "Arrow keys turn the view, plus and minus change the distance.",
   "settings": {

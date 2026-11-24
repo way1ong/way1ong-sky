@@ -67,3 +67,7 @@ it('every language of the app has a flag beside its name', async () => {
   const flags = await import('../ui/flags.ts');
   expect([...flags.FLAG_LANGS].sort()).toEqual(Object.keys(dictionaries).sort());
 });
+
+it('describes every body, in every language', () => {
+  for (const dict of Object.values(dictionaries)) expect(Object.keys(((dict.card as Tree).about as Tree)).sort()).toEqual([...BODY_IDS].sort());
+});

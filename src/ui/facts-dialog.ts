@@ -1,7 +1,7 @@
 // A body's card: what it leads the planets in, its numbers with the Earth for comparison, where it is now —
 // and where the numbers come from.
 import type { BodyId } from '../core/bodies.ts';
-import { FACT_SOURCES } from '../core/facts.ts';
+import { DESCRIPTION_PAGES, FACT_SOURCES } from '../core/facts.ts';
 import { h } from './dom.ts';
 import { cardBadges, cardRows } from './facts-text.ts';
 import { fmt, type Dict } from './i18n.ts';
@@ -30,9 +30,10 @@ export function createFactsDialog(): { el: HTMLDialogElement; open(d: Dict, lang
           { class: 'dialog__body' },
           h('h2', { id: 'facts-title' }, d.bodies[id]),
           badges.length > 0 ? most : null,
+          h('p', { class: 'fact__about' }, d.card.about[id]),
           list,
           h('p', { class: 'fact__source' }, fmt(d.card.source, { updated: id === 'sun' ? FACT_SOURCES.sun.updated : FACT_SOURCES.planets.updated, date: shown })),
-          h('p', { class: 'fact__source' }, source, ' · ', link(FACT_SOURCES.notes.url, d.card.notesLink)),
+          h('p', { class: 'fact__source' }, source, ' · ', link(FACT_SOURCES.notes.url, d.card.notesLink), ' · ', link(DESCRIPTION_PAGES[id][0] as string, d.card.aboutSource)),
           h('div', { class: 'dialog__actions' }, close),
         ),
       );

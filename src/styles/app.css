@@ -466,6 +466,11 @@ button {
   font-variant-numeric: tabular-nums;
 }
 
+.fact__about {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 .fact__value {
   font-size: 1.0625rem;
   font-weight: 700;

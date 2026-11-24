@@ -3,11 +3,15 @@
 // Earth, "the largest", "the hottest" and the like are worked out from those numbers here, never written by
 // hand; distances "now" are computed for the moment the picture shows.
 import { PLANET_IDS, radiusKm, type BodyId, type PlanetId } from './bodies.ts';
+import descriptions from '../data/descriptions.json';
 import data from '../data/facts.json';
 import { lightMinutes, moonLitFraction, positionKm } from './ephemeris.ts';
 import { length, sub } from './vec.ts';
 
 export const FACT_SOURCES = data.source;
+
+/** The NASA Science pages a body's description rests on (docs/DESCRIPTIONS.md); the first is linked from the card. */
+export const DESCRIPTION_PAGES: Record<BodyId, string[]> = descriptions.pages;
 
 const EARTH = data.planets.earth;
 

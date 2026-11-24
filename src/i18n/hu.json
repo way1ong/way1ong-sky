@@ -138,7 +138,20 @@
     "source": "A számok a NASA adatai (az adatlap frissítve: {updated}). A „most” értékeket az alkalmazás számítja a mutatott pillanatra: {date}.",
     "sourceLink": "A NASA bolygóadatlapja",
     "notesLink": "mit jelentenek a sorok",
-    "sunLink": "A NASA Nap-adatlapja"
+    "sunLink": "A NASA Nap-adatlapja",
+    "about": {
+      "sun": "A Nap a Naprendszer szívében álló csillag, és az egyetlen csillag benne. Hatalmas hidrogén- és héliumgömb, amelyet saját gravitációja tart egyben; a Naprendszer tömegének 99,8%-a benne van. Gravitációja mindent pályán tart, a legnagyobb bolygóktól a legapróbb törmelékig.",
+      "mercury": "A Merkúr a Naphoz legközelebbi és a legkisebb bolygó, alig nagyobb a Holdnál. Nappal akár 430 °C is lehet rajta; mivel nincs légköre, amely megtartaná a hőt, éjjel −180 °C-ig is lehűl. Ez a leggyorsabb bolygó: 88 földi nap alatt kerüli meg a Napot.",
+      "venus": "A Vénusz a Naptól számított második bolygó, és a Föld legközelebbi bolygószomszédja; égboltunkon a Nap és a Hold után a harmadik legfényesebb égitest. Felépítése és mérete a Földéhez hasonló, de sűrű légköre csapdába ejti a hőt, ezért ez a legforróbb bolygó: felszínén az ólom is megolvadna. A Vénusz lassan forog, és ellenkező irányban, mint a legtöbb bolygó.",
+      "earth": "A Föld a Naptól számított harmadik bolygó, és a Naphoz legközelebbi négy, kőzetből és fémből álló bolygó közül a legnagyobb. Ez az egyetlen ismert hely, ahol élet van, és a Naprendszer egyetlen bolygója, amelynek felszínén folyékony víz található. Légköre 78% nitrogénből, 21% oxigénből és 1% egyéb gázból áll, és megvéd bennünket a Nap káros sugárzásának nagy részétől.",
+      "moon": "A Hold a Föld egyetlen természetes kísérője. Ugyanolyan ütemben forog a tengelye körül, mint ahogy a Föld körül kering, ezért mindig ugyanazt az oldalát látjuk; a túlsó oldalát az emberek 1959-ben látták először, amikor egy szovjet űrszonda elrepült mellette. Felszíne szilárd, sziklás, aszteroidák, meteoritok és üstökösök becsapódásai nyomán kráterekkel borított.",
+      "mars": "A Mars a Naptól számított negyedik bolygó. Vörös bolygónak hívják: a talajában lévő vasásványok oxidálódnak, vagyis rozsdásodnak, ettől a felszín vörösesnek látszik. A Naprendszer egyik legalaposabban kutatott égiteste, és az egyetlen bolygó, ahová marsjárókat küldtek; a NASA küldetései sok bizonyítékot találtak arra, hogy évmilliárdokkal ezelőtt a Mars sokkal nedvesebb és melegebb volt, sűrűbb légkörrel.",
+      "jupiter": "A Jupiter a Naptól számított ötödik bolygó, és a legnagyobb a Naprendszerben: tömege több mint kétszerese az összes többi bolygóénak együttvéve. Csíkjai és örvényei hideg, szeles ammónia- és vízfelhők a hidrogénből és héliumból álló légkörben. A Nagy Vörös Folt egy Földnél is nagyobb óriási vihar, amely évszázadok óta tombol.",
+      "saturn": "A Szaturnusz a Naptól számított hatodik bolygó, és a második legnagyobb. A Jupiterhez hasonlóan hatalmas, főként hidrogénből és héliumból álló gömb. Nem az egyetlen gyűrűs bolygó, de egyiké sem olyan látványos és összetett, mint a Szaturnuszé. Ez a Földtől legtávolabbi bolygó, amelyet szabad szemmel fedeztek fel: ősidők óta ismerik.",
+      "uranus": "Az Uránusz a Naptól számított hetedik bolygó, és a harmadik legnagyobb; nagyon hideg és szeles világ. Tengelye csaknem 90 fokos szöget zár be a pályasíkjával, ezért úgy tűnik, mintha labdaként, az oldalán gurulva keringene a Nap körül. Ez volt az első távcsővel felfedezett bolygó: William Herschel csillagász fedezte fel 1781-ben.",
+      "neptune": "A Neptunusz a nyolcadik, a Naptól legtávolabbi bolygó: több mint harmincszor messzebb van tőle, mint a Föld. Sötét, hideg jégóriás, amelyen szuperszonikus szelek fújnak, és a Naprendszer egyetlen bolygója, amely szabad szemmel nem látható. 1846-ban fedezték fel, és azóta 2011-ben tette meg első teljes keringését a Nap körül."
+    },
+    "aboutSource": "Leírás: a NASA Science oldala alapján"
   },
   "keys": "A nyílbillentyűk forgatják a nézetet, a plusz és a mínusz a távolságot változtatja.",
   "settings": {
