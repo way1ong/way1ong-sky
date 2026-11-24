@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "title": "way1ong Sky — a flight through the Solar System",
+    "description": "Fly between the Sun, the planets and the Moon — where they really are today. Free, no ads, no tracking."
+  },
+  "app": {
+    "name": "Sky",
+    "menu": "Menu",
+    "scene": "The Solar System in 3D. Drag to look around, pinch or scroll to come closer; pick a body from the list to fly to it."
+  },
+  "bodies": {
+    "sun": "Sun",
+    "mercury": "Mercury",
+    "venus": "Venus",
+    "earth": "Earth",
+    "moon": "Moon",
+    "mars": "Mars",
+    "jupiter": "Jupiter",
+    "saturn": "Saturn",
+    "uranus": "Uranus",
+    "neptune": "Neptune"
+  },
+  "dock": {
+    "label": "Fly to",
+    "whole": "Whole system"
+  },
+  "scale": {
+    "label": "Scale",
+    "handy": "Handy",
+    "true": "True",
+    "handyNote": "Handy scale: distances squeezed, bodies enlarged — everything fits one look. Directions are real.",
+    "trueNote": "True scale: sizes and distances as they are. The planets are specks in an emptiness — fly to one to see it."
+  },
+  "status": {
+    "flying": "Flying to: {name}",
+    "at": "{name}",
+    "today": "Positions for today, {date}",
+    "noGraphics": "This browser could not start 3D graphics, so the flight cannot be shown here."
+  },
+  "keys": "Arrow keys turn the view, plus and minus change the distance.",
+  "settings": {
+    "title": "Settings",
+    "language": "Language"
+  },
+  "about": {
+    "title": "About",
+    "text": "The bodies stand where they really are today; the positions are computed on your device. Nothing is sent anywhere: no ads, no tracking, no account.",
+    "sources": "Sources",
+    "textures": "Maps of the Sun, the planets and the Moon, and the starry background: Solar System Scope, CC BY 4.0. The background is decoration: its stars are not placed by a catalogue.",
+    "facts": "Sizes of the bodies and of Saturn’s rings: NASA fact sheets.",
+    "engine": "Positions and rotation: astronomy-engine (MIT). 3D: three.js (MIT).",
+    "madeBy": "Made by way1ong"
+  },
+  "actions": {
+    "close": "Close"
+  }
+}

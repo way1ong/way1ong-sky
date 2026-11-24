@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "title": "way1ong Sky — repülés a Naprendszerben",
+    "description": "Repüljön a Nap, a bolygók és a Hold között — ott, ahol ma valóban vannak. Ingyenes, reklám és követés nélkül."
+  },
+  "app": {
+    "name": "Sky",
+    "menu": "Menü",
+    "scene": "A Naprendszer 3D-ben. Húzással körülnézhet, csippentéssel vagy görgetéssel közelíthet; a listából válasszon égitestet, és odarepül."
+  },
+  "bodies": {
+    "sun": "Nap",
+    "mercury": "Merkúr",
+    "venus": "Vénusz",
+    "earth": "Föld",
+    "moon": "Hold",
+    "mars": "Mars",
+    "jupiter": "Jupiter",
+    "saturn": "Szaturnusz",
+    "uranus": "Uránusz",
+    "neptune": "Neptunusz"
+  },
+  "dock": {
+    "label": "Repülés ide",
+    "whole": "Az egész rendszer"
+  },
+  "scale": {
+    "label": "Lépték",
+    "handy": "Kényelmes",
+    "true": "Valódi",
+    "handyNote": "Kényelmes lépték: a távolságok összenyomva, az égitestek felnagyítva — minden egyszerre látszik. Az irányok valódiak.",
+    "trueNote": "Valódi lépték: a méretek és a távolságok olyanok, amilyenek. A bolygók pöttyök az ürességben — repüljön oda bármelyikhez, hogy lássa."
+  },
+  "status": {
+    "flying": "Repülünk ide: {name}",
+    "at": "{name}",
+    "today": "Mai helyzet, {date}",
+    "noGraphics": "Ez a böngésző nem tudta elindítani a 3D-grafikát, ezért a repülés itt nem jeleníthető meg."
+  },
+  "keys": "A nyílbillentyűk forgatják a nézetet, a plusz és a mínusz a távolságot változtatja.",
+  "settings": {
+    "title": "Beállítások",
+    "language": "Nyelv"
+  },
+  "about": {
+    "title": "Névjegy",
+    "text": "Az égitestek ott állnak, ahol ma valóban vannak; a helyzetüket az Ön eszköze számítja ki. Semmit sem küldünk sehová: nincs reklám, követés vagy fiók.",
+    "sources": "Források",
+    "textures": "A Nap, a bolygók és a Hold térképei, valamint a csillagos háttér: Solar System Scope, CC BY 4.0. A háttér díszítés: csillagai nem katalógus szerint állnak.",
+    "facts": "Az égitestek és a Szaturnusz gyűrűinek méretei: a NASA adatlapjai.",
+    "engine": "Helyzet és forgás: astronomy-engine (MIT). 3D: three.js (MIT).",
+    "madeBy": "Készítette: way1ong"
+  },
+  "actions": {
+    "close": "Bezárás"
+  }
+}

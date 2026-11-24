@@ -1,0 +1,17 @@
+/* Every colour of the screen lives here. Space is dark by day and by night: one theme. */
+:root {
+  color-scheme: dark;
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --bg: #05070d;
+  --panel: rgb(14 19 31 / 0.86);
+  --surface: #131a2a;
+  --text: #eef2fb;
+  --muted: #aab4cc;
+  --line: #5d6b8c;
+  --accent: #ffcf6b;
+  --on-accent: #1b1405;
+  --focus: #ffcf6b;
+  --backdrop: rgb(0 0 0 / 0.6);
+  --shadow: 0 6px 18px rgb(0 0 0 / 0.55);
+}
