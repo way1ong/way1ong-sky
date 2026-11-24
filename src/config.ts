@@ -7,6 +7,8 @@ export const SKY = {
   name: 'way1ong Sky',
   /** The studio's site for the "Made by way1ong" line; null — no link yet. */
   links: { site: 'https://way1ong.eu' as string | null },
+  /** Where the app lives (decision of 24.11); wrangler.jsonc names the same domain — a test keeps them equal. */
+  address: 'https://sky.way1ong.eu',
 
   /** True scale: scene units per kilometre (one unit is a million kilometres) (C). */
   trueUnitsPerKm: 1e-6,
@@ -64,8 +66,10 @@ export const SKY = {
    * Landing places on the Moon (C): their marks are drawn once the Moon is at least this wide on the screen
    * (its radius, CSS px), and only for places turned towards the camera by more than `facing` — the cosine of
    * the angle between the place and the line to the camera — so no mark sits on the very edge of the disc.
+   * Of two places nearer on the screen than `apartPx` only the earlier landing keeps its mark: two marks on
+   * one spot cannot be told apart by a finger (the other is in the Moon's card, and appears on coming nearer).
    */
-  sites: { showFromPx: 60, facing: 0.15 },
+  sites: { showFromPx: 60, facing: 0.15, apartPx: 26 },
   /**
    * Free flight (C): while "forward" or "back" is held, the camera covers this share of the gap to the nearest
    * body's surface every second. One press of a key or one notch of the wheel is a step of `zoomStep`.

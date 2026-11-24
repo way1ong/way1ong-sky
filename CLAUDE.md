@@ -30,7 +30,8 @@
 ## Стек (змінювати лише за погодженням)
 - TypeScript (strict) без UI-фреймворку, збірка Vite; тести — Vitest; перевірка в браузері — Playwright (у хмарній сесії вже є; для WebGL запускати Chromium з `--use-angle=swiftshader --enable-unsafe-swiftshader`).
 - 3D — three.js; астрономія — astronomy-engine. Версії закріплено в `package.json`.
-- Хостинг (далі) — Cloudflare Workers зі статичними файлами, адреса `sky.way1ong.eu` (рішення 24.11); деплой — злиття в `main`; вручну `wrangler deploy` не запускати.
+- Хостинг — Cloudflare Workers зі статичними файлами, адреса `sky.way1ong.eu` (рішення 24.11); деплой — злиття в `main`, збирає Workers Builds; вручну `wrangler deploy` не запускати. Як підключити воркер — `docs/cloudflare.md`.
+- Програма встановлюється як застосунок і працює без інтернету: маніфест, іконки й службовий скрипт робить збірка (`scripts/pwa.ts`), як в іграх way1ong.
 
 ## Структура
 ```
@@ -47,15 +48,24 @@ src/textures/          мапи тіл і тло (Solar System Scope, CC BY 4.0)
 src/photos/            фото тіл для карток (NASA); запис і автор кожного — src/data/photos.json, підписи й джерела — docs/PHOTOS.md
 src/photos/sites/      фото з місць посадок «Аполлонів»; src/data/sites.json — координати, дати, екіпажі, числа місій зі сторінок NASA
 scripts/claude-page.mjs  програма одним файлом для тестової сторінки claude.ai
+scripts/pwa.ts, sw-template.js  збірка: маніфест, іконки й службовий скрипт (встановлення, без інтернету)
+scripts/make-icons.mjs, icon-art.mjs  іконки з кольорів tokens.css (Playwright); файли в src/icons/ руками не правити
+scripts/audit.mjs      розкладка й доступність збірки в браузері (Playwright; axe-core — за ключем)
+scripts/check-live.mjs  звіряє сторінку на справжній адресі зі збіркою (після викладки)
+public/_headers        заголовки для всіх файлів: `no-transform` — Cloudflare не змінює наші сторінки дорогою
+wrangler.jsonc         Cloudflare Workers: віддає dist/ (ім'я воркера = ім'я в панелі)
 scripts/stars/         збирання файлів зір і міст із сирих відповідей Вікіданих: build.mjs, cities.mjs, exclude.json (відкинуті записи з причинами), proper-names.json (затверджені назви зір, Вікіпедія, CC BY-SA 4.0), лінії d3-celestial з його ліцензією
 docs/                  опис, рішення, стан, джерела й ліцензії; docs/research/ — розвідка джерел для карти неба (звіт і сирі відповіді Вікіданих)
 ```
 
 ## Команди
 - `npm run dev` — локальний перегляд.
-- `npm run verify` — типи, тести, збірка в `dist/`.
+- `npm run verify` — типи, тести, збірка в `dist/`. Зміни екрана — ще й `npm run audit`.
 - `npm run preview` — переглянути зібране.
 - `npm run build:claude` — програма одним файлом `dist/claude/sky.html` для тестової сторінки.
+- `npm run audit` — після збірки: обидва режими в браузері на п'яти розмірах екрана трьома мовами (розкладка, цілі дотику, назви кнопок, клавіатура, великий текст, «зменшити рух», без інтернету, без 3D). `--axe <axe.min.js>` — ще й правила WCAG 2.2 (axe-core завантажити `npm pack axe-core` у тимчасову теку; у проєкт не додавати). `--shots <тека>` — знімки.
+- `npm run check:live` — після збірки й викладки: сторінка на справжній адресі байт у байт така, як у `dist/`.
+- `node scripts/make-icons.mjs` — намалювати іконки знову (після зміни кольорів).
 
 ## Тестова сторінка (claude.ai)
 Адреса — у `docs/STATUS.md`. Після кожної зміни програми: `npm run build:claude`, перевірити, опублікувати файл на ту саму адресу (інструмент `Artifact`, з іншої розмови — з `url`).

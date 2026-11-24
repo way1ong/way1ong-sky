@@ -34,7 +34,7 @@
   "status": {
     "flying": "Repülünk ide: {name}",
     "at": "{name}",
-    "noGraphics": "Ez a böngésző nem tudta elindítani a 3D-grafikát, ezért a repülés itt nem jeleníthető meg."
+    "noGraphics": "Ez a böngésző nem tudta elindítani a 3D-grafikát, ezért a Naprendszerben tett repülés itt nem jeleníthető meg; az égbolt térképe működik."
   },
   "time": {
     "label": "Idő",
@@ -431,5 +431,11 @@
       "Vol": "Repülőhal",
       "Vul": "Kis Róka"
     }
+  },
+  "install": {
+    "title": "Telefonra vagy számítógépre",
+    "text": "A program alkalmazásként telepíthető: saját ikont kap, és internet nélkül is megnyílik.",
+    "button": "A program telepítése",
+    "ios": "iPhone-on és iPaden: koppintson a „Megosztás”, majd a „Főképernyőhöz adás” lehetőségre. A program saját ikont kap, és internet nélkül is megnyílik."
   }
 }

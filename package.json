@@ -3,18 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "A free, ad-free flight through the Solar System by way1ong — no tracking, works offline.",
+  "description": "A free, ad-free flight through the Solar System and a map of the sky by way1ong \u2014 no tracking, works offline.",
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
     "dev": "vite",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
     "build": "vite build",
     "verify": "npm run typecheck && npm run test && npm run build",
     "preview": "vite preview",
-    "build:claude": "node scripts/claude-page.mjs"
+    "build:claude": "node scripts/claude-page.mjs",
+    "audit": "node scripts/audit.mjs",
+    "check:live": "node scripts/check-live.mjs"
   },
   "dependencies": {
     "astronomy-engine": "2.1.19",
@@ -25,6 +27,7 @@
     "@types/three": "0.187.0",
     "typescript": "6.0.3",
     "vite": "8.3.8",
-    "vitest": "5.1.1"
+    "vitest": "5.1.1",
+    "wrangler": "4.166.0"
   }
 }

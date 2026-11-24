@@ -31,7 +31,8 @@ export function createTonightDialog(): { el: HTMLDialogElement; open(d: Dict, la
         const best = seen && planet.forTheEye ? fmt(t.best, { time: time(seen.best), altitude: num(lang, seen.altitude), direction: t.directions[compassPoint(seen.azimuth)] }) : '';
         const text = [h('span', { class: 'planet__name' }, name), h('span', { class: 'place__country' }, line), best ? h('span', { class: 'place__country' }, best) : null];
         if (seen) {
-          const button = h('button', { class: 'chip chip--wide', type: 'button', 'aria-label': `${fmt(t.show, { name })}. ${line}. ${best}` }, ...text);
+          // The button's own words name it: the planet, when it is in view and where to look.
+          const button = h('button', { class: 'chip chip--wide', type: 'button', title: fmt(t.show, { name }) }, ...text);
           button.addEventListener('click', () => {
             el.close();
             show(planet);

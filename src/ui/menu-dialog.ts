@@ -6,6 +6,7 @@ import { CITY_SOURCE } from '../core/places.ts';
 import { PHOTO_LIBRARY, PHOTO_RULES } from '../core/photos.ts';
 import { h } from './dom.ts';
 import { flagOf } from './flags.ts';
+import { install, installWay } from './install.ts';
 import { LANGS, langName, type Dict } from './i18n.ts';
 
 const TEXTURES_URL = 'https://www.solarsystemscope.com/textures/';
@@ -46,6 +47,14 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
         });
         choices.append(h('li', {}, button));
       }
+      // Installing: the browser's own window where it has one, a short instruction on iPhone and iPad.
+      const way = installWay();
+      const installButton = h('button', { class: 'chip chip--wide', type: 'button' }, d.install.button);
+      installButton.addEventListener('click', () => {
+        installButton.hidden = true;
+        void install();
+      });
+      const installing = way === null ? null : h('section', { class: 'site-section', 'aria-labelledby': 'install-title' }, h('h3', { id: 'install-title' }, d.install.title), h('p', { class: 'fact__source' }, way === 'ios' ? d.install.ios : d.install.text), way === 'prompt' ? installButton : null);
       const close = h('button', { class: 'btn', type: 'button' }, d.actions.close);
       close.addEventListener('click', () => el.close());
       const made = SKY.links.site ? link(SKY.links.site, d.about.madeBy) : d.about.madeBy;
@@ -56,6 +65,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
           h('h2', { id: 'menu-title' }, d.settings.title),
           h('div', { class: 'field' }, h('p', { id: 'lang-label' }, d.settings.language), langs),
           h('section', { class: 'site-section', 'aria-labelledby': 'sky-choices' }, h('h3', { id: 'sky-choices' }, d.sky.menu.title), choices),
+          installing,
           h('h2', {}, d.about.title),
           h('p', {}, d.about.text),
           h('p', {}, d.keys),

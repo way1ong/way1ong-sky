@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vitest/config';
+import { skyAppPlugin } from './scripts/pwa.ts';
 
 const here = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
@@ -9,7 +10,10 @@ const oneFile = process.env.ONE_FILE === '1';
 
 export default defineConfig({
   root: here('src'),
-  publicDir: false,
+  // public/ holds what the host needs beside the app: _headers for Cloudflare. The one-file page takes none of it.
+  publicDir: oneFile ? false : here('public'),
+  // The built app can be installed and works without internet; the one-file test page is neither.
+  plugins: oneFile ? [] : [skyAppPlugin(here('.'), { name: 'way1ong Sky', shortName: 'Sky', description: 'A flight through the Solar System and a map of the sky. No ads, no tracking; works without internet.', lang: 'en' })],
   base: './',
   build: {
     outDir: oneFile ? here('node_modules/.cache/way1ong-claude') : here('dist'),

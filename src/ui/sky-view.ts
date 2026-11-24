@@ -3,6 +3,7 @@
 // paints what it is told: where the view looks, how the sky is turned, which layers are on.
 import { SKY } from '../config.ts';
 import { horizonOnScreen, project, skyDirection, type Frame, type Look } from '../core/dome.ts';
+import { moonLitFraction } from '../core/ephemeris.ts';
 import { SKY_BODY_IDS, altAz, bodyInSky, toSky, type SkyBodyId, type SkyTurn } from '../core/sky.ts';
 import { FIGURES, NAMED_STARS, STARS, STARS_LIMIT, starName } from '../core/stars.ts';
 import type { Vec3 } from '../core/vec.ts';
@@ -161,10 +162,34 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
       const p = project(look, f, sky);
       if (!p) continue;
       const r = id === 'sun' ? paint.discPx.sun : id === 'moon' ? paint.discPx.moon : paint.discPx.planet;
-      ctx.fillStyle = id === 'sun' ? c.sun : id === 'moon' ? c.moon : c.planet;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-      ctx.fill();
+      if (id === 'moon') {
+        // The Moon shows its phase: the lit part is turned to the Sun, as wide as the engine says it is lit.
+        const sun = (bodies.find((b) => b.id === 'sun') as { sky: Vec3 }).sky;
+        const along = sun[0] * sky[0] + sun[1] * sky[1] + sun[2] * sky[2];
+        // A short step from the Moon towards the Sun across the sky: its direction on the screen.
+        const step: Vec3 = [sky[0] + 0.02 * (sun[0] - along * sky[0]), sky[1] + 0.02 * (sun[1] - along * sky[1]), sky[2] + 0.02 * (sun[2] - along * sky[2])];
+        const l = Math.hypot(...step);
+        const q = project(look, f, [step[0] / l, step[1] / l, step[2] / l]);
+        const lit = moonLitFraction(turn.date);
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(q ? Math.atan2(q.y - p.y, q.x - p.x) : 0);
+        ctx.fillStyle = mix(c.night, c.moon, 0.22);
+        ctx.beginPath();
+        ctx.arc(0, 0, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = c.moon;
+        ctx.beginPath();
+        ctx.arc(0, 0, r, -Math.PI / 2, Math.PI / 2);
+        ctx.ellipse(0, 0, r * Math.abs(1 - 2 * lit), r, 0, Math.PI / 2, -Math.PI / 2, lit < 0.5);
+        ctx.fill();
+        ctx.restore();
+      } else {
+        ctx.fillStyle = id === 'sun' ? c.sun : c.planet;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
       marks.push({ x: p.x, y: p.y, r, name: d.bodies[id as SkyBodyId], rank: 0 });
     }
 

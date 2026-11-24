@@ -197,13 +197,14 @@ export function startApp(root: HTMLElement): void {
   );
   root.replaceChildren(main);
 
+  // Without 3D graphics there is no flight, but the sky needs none: the app opens on the sky and stays there.
   let scene: SceneView;
+  let graphics = true;
   try {
     scene = createSceneView(canvas);
   } catch {
-    stage.replaceChildren(h('p', { class: 'fail' }, d.status.noGraphics));
-    title.textContent = SKY.name;
-    return;
+    graphics = false;
+    scene = { draw: () => undefined, setOrbits: () => undefined, onScreen: () => null, surfaceOnScreen: () => null, resize: () => undefined, setCovered: () => undefined, onLoad: () => undefined, destroy: () => undefined };
   }
   scene.onLoad = () => {
     dirty = true;
@@ -235,6 +236,7 @@ export function startApp(root: HTMLElement): void {
     skyCanvas.setAttribute('aria-label', d.sky.scene);
     skyBox.setAttribute('aria-label', d.sky.open);
     toFlightBtn.textContent = d.sky.toFlight;
+    toFlightBtn.hidden = !graphics;
     tonightBtn.textContent = d.sky.tonight.button;
     forwardBtn.textContent = d.free.forward;
 
@@ -528,7 +530,7 @@ export function startApp(root: HTMLElement): void {
   });
 
   function setScreen(next: 'flight' | 'sky'): void {
-    if (next === screen) return;
+    if (next === screen || (next === 'flight' && !graphics)) return;
     screen = next;
     const sky = screen === 'sky';
     thrust = 0;
@@ -541,7 +543,7 @@ export function startApp(root: HTMLElement): void {
     skyBox.hidden = !sky;
     if (sky) {
       const sunUp = altAz(bodyInSky('sun', skyTurn(place, date))).altitude > 0;
-      say(`${fmt(d.sky.note, { place: cityName(place, lang) })}${sunUp ? ` ${d.sky.dayNote}` : ''}`);
+      say(`${graphics ? '' : `${d.status.noGraphics} `}${fmt(d.sky.note, { place: cityName(place, lang) })}${sunUp ? ` ${d.sky.dayNote}` : ''}`);
     } else {
       say('');
     }
@@ -629,14 +631,14 @@ export function startApp(root: HTMLElement): void {
       // A name is drawn only with its dot on the screen, and only where it does not run into a name already placed.
       const inside = at && at.x > 6 && at.y > 0 && at.x < canvas.clientWidth && at.y < canvas.clientHeight;
       const box = at ? { left: at.x - 10, right: at.x + (labelWidth.get(id) ?? 0) + 4, y: at.y } : null;
-      const free = box && taken.every((t) => Math.abs(t.y - box.y) > SKY.labelRowPx || box.left > t.right || box.right < t.left);
+      const room = box && taken.every((t) => Math.abs(t.y - box.y) > SKY.labelRowPx || box.left > t.right || box.right < t.left);
       // A body that fills the view needs no name on its face: the title says what it is.
       // In free flight that is the nearest body, named under the title.
       const shortSide = Math.min(canvas.clientWidth, canvas.clientHeight);
       const large = free
         ? id === nearNow && radiusOnScreenPx(radius[id], length(sub(cameraAt, where[id])), shortSide) > SKY.labelHiddenFromPx
         : id === focus && !flight && focusOnScreenPx() > SKY.labelHiddenFromPx;
-      label.hidden = !(at && inside && free) || large;
+      label.hidden = !(at && inside && room) || large;
       if (!at || !box || label.hidden) continue;
       taken.push(box);
       label.style.transform = `translate(${at.x.toFixed(1)}px, ${at.y.toFixed(1)}px)`;
@@ -653,7 +655,8 @@ export function startApp(root: HTMLElement): void {
     if (shown) {
       for (const id of SITE_IDS) {
         const point = scene.surfaceOnScreen('moon', surfaceDirection(turned.moon, SITES[id].lat, SITES[id].lon));
-        if (point && point.facing > SKY.sites.facing && point.x > 0 && point.y > 0 && point.x < canvas.clientWidth && point.y < canvas.clientHeight) at.set(id, point);
+        const apart = [...at.values()].every((other) => Math.hypot(other.x - (point?.x ?? 0), other.y - (point?.y ?? 0)) >= SKY.sites.apartPx);
+        if (point && apart && point.facing > SKY.sites.facing && point.x > 0 && point.y > 0 && point.x < canvas.clientWidth && point.y < canvas.clientHeight) at.set(id, point);
       }
     }
     for (const [id, mark] of markOf) {
@@ -755,5 +758,6 @@ export function startApp(root: HTMLElement): void {
   measure();
   view = { ...view, distance: fit(SKY.overview.first) };
   describe();
+  if (!graphics) setScreen('sky');
   window.requestAnimationFrame(frame);
 }

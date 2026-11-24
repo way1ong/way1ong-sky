@@ -34,7 +34,7 @@
   "status": {
     "flying": "Flying to: {name}",
     "at": "{name}",
-    "noGraphics": "This browser could not start 3D graphics, so the flight cannot be shown here."
+    "noGraphics": "This browser could not start 3D graphics, so the flight through the Solar System cannot be shown here; the map of the sky works."
   },
   "time": {
     "label": "Time",
@@ -431,5 +431,11 @@
       "Vol": "Volans",
       "Vul": "Vulpecula"
     }
+  },
+  "install": {
+    "title": "On your phone or computer",
+    "text": "The program can be installed like an app: it gets its own icon and opens without internet.",
+    "button": "Install the program",
+    "ios": "On iPhone and iPad: tap “Share”, then “Add to Home Screen”. The program gets its own icon and opens without internet."
   }
 }
