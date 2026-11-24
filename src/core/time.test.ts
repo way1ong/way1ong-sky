@@ -3,7 +3,7 @@
 import { describe, expect, it } from 'vitest';
 import { SKY } from '../config.ts';
 import { radiusKm } from './bodies.ts';
-import { LIMITS, RATES, REAL_RATE, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, shownAt, stepRate, togglePause } from './clock.ts';
+import { LIMITS, RATES, REAL_RATE, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, stepRate, togglePause } from './clock.ts';
 import { nextLunarEclipse, nextSolarEclipse } from './eclipses.ts';
 import { positionKm } from './ephemeris.ts';
 import { lightAt, overlap, shadeOf, type Shade } from './shadow.ts';
@@ -62,6 +62,10 @@ describe('the clock', () => {
       turning.push(showsSpin(clock));
     }
     expect(turning).toEqual([true, true, true, false, false]);
+    // the hour and minute are written in real time and at an hour a second, not faster
+    const hour = stepRate(liveClock(start), start, 1);
+    expect([liveClock(start), hour, stepRate(hour, start, 1)].map(showsTimeOfDay)).toEqual([true, true, false]);
+    expect(showsTimeOfDay(togglePause(clock, start))).toBe(true);
     expect(showsSpin(togglePause(clock, start))).toBe(true);
     expect(SKY.time.names.length).toBe(RATES.length);
   });

@@ -86,6 +86,7 @@ button {
 }
 
 .top__text {
+  flex: 1;
   min-width: 0;
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
@@ -103,6 +104,12 @@ button {
   margin: 0.125rem 0 0;
   color: var(--muted);
   font-size: 0.9375rem;
+  /* digits of one width: the date does not shake while time runs */
+  font-variant-numeric: tabular-nums;
+}
+
+.top__speed {
+  color: var(--text);
 }
 
 .icon-btn {

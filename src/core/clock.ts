@@ -65,6 +65,11 @@ export function atLimit(clock: Clock, real: number): boolean {
   return !clock.paused && ((at <= LIMITS.from && (RATES[clock.rate] as number) < 0) || (at >= LIMITS.to && (RATES[clock.rate] as number) > 1));
 }
 
+/** Whether the hour and minute are still worth writing at this speed (config.ts). */
+export function showsTimeOfDay(clock: Clock): boolean {
+  return clock.paused || Math.abs(RATES[clock.rate] as number) <= SKY.time.clockUpToRate;
+}
+
 /** Whether the bodies are still turned at this speed (config.ts). */
 export function showsSpin(clock: Clock): boolean {
   return clock.paused || Math.abs(RATES[clock.rate] as number) <= SKY.time.spinUpToRate;

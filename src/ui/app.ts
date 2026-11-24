@@ -2,7 +2,7 @@
 // names over the picture, the menu. The astronomy is in ../core, the drawing in ./scene.ts.
 import { SKY } from '../config.ts';
 import { BODY_IDS, PLANET_IDS, parentOf, radiusKm, type BodyId } from '../core/bodies.ts';
-import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, shownAt, stepRate, togglePause, type Clock } from '../core/clock.ts';
+import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, stepRate, togglePause, type Clock } from '../core/clock.ts';
 import { nextLunarEclipse, nextSolarEclipse } from '../core/eclipses.ts';
 import { attitude, orbitKm, positionsKm, type Attitude } from '../core/ephemeris.ts';
 import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, facing, flightAt, progress, type Flight, type View } from '../core/flight.ts';
@@ -95,6 +95,8 @@ export function startApp(root: HTMLElement): void {
   const labels = h('div', { class: 'labels', 'aria-hidden': 'true' });
   const title = h('h1', { class: 'top__name' });
   const line = h('p', { class: 'top__line' });
+  /** The speed of the clock on a line of its own: the date beside it changes its width all the time. */
+  const speedLine = h('p', { class: 'top__line top__speed' });
   const menuBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-menu', 'aria-hidden': 'true' }));
   const note = h('p', { class: 'note__text', role: 'status' });
   const noteClose = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-close', 'aria-hidden': 'true' }));
@@ -111,7 +113,7 @@ export function startApp(root: HTMLElement): void {
   const menu = createMenuDialog();
   const timeDialog = createTimeDialog();
   const stage = h('div', { class: 'stage' }, canvas, labels);
-  const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line), menuBtn);
+  const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine), menuBtn);
   const bottom = h('div', { class: 'bottom' }, h('div', { class: 'bar' }, timeBox), h('div', { class: 'bar' }, scaleBox), dock);
   const main = h(
     'main',
@@ -199,10 +201,12 @@ export function startApp(root: HTMLElement): void {
     title.textContent = flight ? fmt(d.status.flying, { name: d.bodies[flight.to] }) : whole ? d.dock.whole : fmt(d.status.at, { name: d.bodies[focus] });
     const real = Date.now();
     const live = isLive(clock, real);
-    const moment = fmt(d.time.at, { date: dayText(date), time: new Intl.DateTimeFormat(lang, { hour: 'numeric', minute: '2-digit' }).format(date) });
+    const moment = showsTimeOfDay(clock) ? fmt(d.time.at, { date: dayText(date), time: new Intl.DateTimeFormat(lang, { hour: 'numeric', minute: '2-digit' }).format(date) }) : dayText(date);
     const name = d.time.rates[SKY.time.names[clock.rate] as keyof Dict['time']['rates']];
     const speed = (RATES[clock.rate] as number) < 0 ? fmt(d.time.back, { rate: name }) : name;
-    line.textContent = clock.paused ? `${moment} · ${d.time.paused}` : live ? moment : `${moment} · ${speed}`;
+    line.textContent = moment;
+    speedLine.textContent = clock.paused ? d.time.paused : live ? '' : speed;
+    speedLine.hidden = speedLine.textContent === '';
     nowBtn.hidden = live;
     pauseBtn.setAttribute('aria-label', clock.paused ? d.time.play : d.time.pause);
     pauseBtn.replaceChildren(h('span', { class: clock.paused ? 'icon-play' : 'icon-pause', 'aria-hidden': 'true' }));
