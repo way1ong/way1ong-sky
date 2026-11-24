@@ -45,7 +45,7 @@ src/textures/          мапи тіл і тло (Solar System Scope, CC BY 4.0)
 src/photos/            фото тіл для карток (NASA); запис і автор кожного — src/data/photos.json, підписи й джерела — docs/PHOTOS.md
 src/photos/sites/      фото з місць посадок «Аполлонів»; src/data/sites.json — координати, дати, екіпажі, числа місій зі сторінок NASA
 scripts/claude-page.mjs  програма одним файлом для тестової сторінки claude.ai
-docs/                  опис, рішення, стан, джерела й ліцензії
+docs/                  опис, рішення, стан, джерела й ліцензії; docs/research/ — розвідка джерел для карти неба (звіт і сирі відповіді Вікіданих)
 ```
 
 ## Команди
