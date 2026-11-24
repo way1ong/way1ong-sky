@@ -112,7 +112,7 @@ for (const [id, mag] of magnitudes) {
 const known = new Set(stars.map((s) => s.id));
 let fromGaia = 0;
 for (const g of gaia) {
-  if (known.has(g.id) || magnitudes.has(g.id) || g.m > LIMIT_MAG) continue;
+  if (known.has(g.id) || magnitudes.has(g.id) || g.m > LIMIT_MAG || excluded.has(g.id)) continue;
   known.add(g.id);
   stars.push({ ...g, ra: g.ra[0], dec: g.dec[0], band: 'G' });
   fromGaia++;

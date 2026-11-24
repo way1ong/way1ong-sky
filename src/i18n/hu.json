@@ -182,7 +182,7 @@
     "engine": "Helyzet és forgás: astronomy-engine (MIT). 3D: three.js (MIT).",
     "madeBy": "Készítette: way1ong",
     "photos": "A kártyák fotói: a NASA és partnerei, a nevük minden fotó alatt szerepel; néhány kép meg van vágva. A program a NASA-tól függetlenül készült.",
-    "sky": "Az égbolt egy helyről: csillagok — Wikidata (CC0); a csillagképek vonalai — d3-celestial, szerző: Olaf Frohn (BSD-3-Clause), az IAU és a Sky & Telescope térképei nyomán; városok — Wikidata. A csillagok nappal is láthatók a képen, a fény légköri törése a horizont közelében nincs ábrázolva. Az „elég sötét”, a „látható” és a „szabad szemmel túl halvány” a program saját mércéi, nem csillagászati meghatározások."
+    "sky": "Az égbolt egy helyről: csillagok — Wikidata (CC0); a csillagképek vonalai — d3-celestial, szerző: Olaf Frohn (BSD-3-Clause), az IAU és a Sky & Telescope térképei nyomán; városok — Wikidata. A csillagok nappal is láthatók a képen, a fény légköri törése a horizont közelében nincs ábrázolva. Az „elég sötét”, a „látható” és a „szabad szemmel túl halvány” a program saját mércéi, nem csillagászati meghatározások. Néhány csillagnak a Wikidatában nincs vizuális fényessége: ott a hozzá közeli Gaia G fényesség szerepel."
   },
   "actions": {
     "close": "Bezárás"

@@ -480,6 +480,30 @@
    "name": "",
    "magnitude": 6.5,
    "reason": "the check catalogue has a star here of magnitude 7.61: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q80122289",
+   "name": "",
+   "magnitude": 5.08,
+   "reason": "has no visual magnitude in Wikidata; its Gaia G magnitude stands far from the visual one of the check catalogue (6.89), which is fainter than the limit of the file"
+  },
+  {
+   "id": "Q91003849",
+   "name": "IV Aquarii",
+   "magnitude": 5.3,
+   "reason": "has no visual magnitude in Wikidata; its Gaia G magnitude stands far from the visual one of the check catalogue (6.61), which is fainter than the limit of the file"
+  },
+  {
+   "id": "Q66492100",
+   "name": "",
+   "magnitude": 5.76,
+   "reason": "has no visual magnitude in Wikidata; its Gaia G magnitude stands far from the visual one of the check catalogue (6.84), which is fainter than the limit of the file"
+  },
+  {
+   "id": "Q87973734",
+   "name": "",
+   "magnitude": 5.93,
+   "reason": "has no visual magnitude in Wikidata; its Gaia G magnitude stands far from the visual one of the check catalogue (7.0), which is fainter than the limit of the file"
   }
  ]
 }
