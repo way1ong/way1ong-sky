@@ -252,6 +252,58 @@ button {
   gap: 0.5rem;
 }
 
+/* The sky from a place: its canvas lies over the flight's, its buttons take the dock's row. */
+.stage canvas.sky {
+  position: absolute;
+  inset: 0;
+}
+
+.sky-bar {
+  padding-bottom: 0.375rem;
+}
+
+.chip--mode {
+  border-color: var(--accent);
+}
+
+.planet__name {
+  display: block;
+}
+
+.planet--away {
+  padding: 0.375rem 0.875rem;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.chip[role='switch'][aria-checked='true'] {
+  border-color: var(--accent);
+}
+
+.chip[role='switch']::after {
+  float: right;
+  margin-left: 0.75rem;
+  content: '○';
+}
+
+.chip[role='switch'][aria-checked='true']::after {
+  content: '●';
+  color: var(--accent);
+}
+
+.place__country {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.dialog .place-list {
+  max-height: 50dvh;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
 /* Free flight: two wide buttons for the thumb; a hold must not select text or scroll the page. */
 .fly {
   flex-wrap: nowrap;

@@ -172,11 +172,18 @@ for (const feature of lineFile.features) {
   }
 }
 
+// ---------- names: a name, not a catalogue's designation ----------
+const GREEK = 'alpha|alfa|beta|béta|gamma|delta|epsilon|zeta|dzéta|eta|éta|theta|théta|iota|ióta|kappa|lambda|mu|nu|xi|omicron|omikron|pi|rho|sigma|szigma|tau|upsilon|üpszilon|phi|chi|khi|psi|pszi|omega|ómega|альфа|бета|гамма|дельта|епсилон|дзета|ета|тета|йота|каппа|лямбда|мю|ню|ксі|омікрон|пі|ро|сигма|тау|іпсилон|фі|хі|псі|омега';
+const DESIGNATION = new RegExp(`^(${GREEK})[\\d¹²³⁴-⁹]*\\s|\\d|^[a-zа-яіїє]{1,3}\\s`, 'iu');
+// A Greek letter itself ("δ Cygni") marks a designation too; "Fomalhaut A" is Fomalhaut to the eye.
+const proper = (name) => (name && !DESIGNATION.test(name) && !/^[\u0370-\u03FF]/u.test(name) ? name.replace(/\s+A$/u, '') : undefined);
+
 // ---------- writing ----------
 const round = (x, digits) => Number(x.toFixed(digits));
 const names = {};
 merged.forEach((s, i) => {
-  if (s.m <= NAMES_TO_MAG && (s.en || s.uk || s.hu)) names[i] = { en: s.en || undefined, uk: s.uk || undefined, hu: s.hu || undefined };
+  const own = { en: proper(s.en), uk: proper(s.uk), hu: proper(s.hu) };
+  if (s.m <= NAMES_TO_MAG && (own.en || own.uk || own.hu)) names[i] = own;
 });
 const out = {
   source: { title: 'Wikidata', url: 'https://www.wikidata.org/', licence: 'CC0', read: '2026-11-24' },

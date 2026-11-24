@@ -5,6 +5,8 @@ import { BODY_IDS } from '../core/bodies.ts';
 import { SUPERLATIVES } from '../core/facts.ts';
 import { SCALES } from '../core/scale.ts';
 import { CREW_ROLES, SITE_IDS, SITES } from '../core/sites.ts';
+import { FIGURES } from '../core/stars.ts';
+import { COMPASS_POINTS, MOON_PHASES } from '../core/tonight.ts';
 import en from './en.json';
 import hu from './hu.json';
 import uk from './uk.json';
@@ -84,5 +86,21 @@ it('names every landing place, its photo, its crew and their roles, in every lan
     expect(Object.keys(sites.photo as Tree).sort()).toEqual([...SITE_IDS].sort());
     expect(Object.keys(sites.roles as Tree).sort()).toEqual([...CREW_ROLES].sort());
     for (const id of SITE_IDS) for (const role of CREW_ROLES) expect((sites.people as Tree)[SITES[id].crew[role]], `${id} ${role}`).toBeTypeOf('string');
+  }
+});
+
+it('names every constellation that has a figure, and the eight points of the compass, in every language', () => {
+  for (const dict of Object.values(dictionaries)) {
+    const sky = dict.sky as Tree;
+    expect(Object.keys(sky.constellations as Tree).sort()).toEqual(Object.keys(FIGURES).sort());
+    expect(Object.keys(sky.compass as Tree).sort()).toEqual(['e', 'n', 'ne', 'nw', 's', 'se', 'sw', 'w']);
+  }
+});
+
+it('names the eight looks of the Moon and the eight directions of "tonight", in every language', () => {
+  for (const dict of Object.values(dictionaries)) {
+    const t = (dict.sky as Tree).tonight as Tree;
+    expect(Object.keys(t.phases as Tree).sort()).toEqual([...MOON_PHASES].sort());
+    expect(Object.keys(t.directions as Tree).sort()).toEqual([...COMPASS_POINTS].sort());
   }
 });

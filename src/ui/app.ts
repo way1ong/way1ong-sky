@@ -3,45 +3,68 @@
 import { SKY } from '../config.ts';
 import { BODY_IDS, PLANET_IDS, parentOf, radiusKm, type BodyId } from '../core/bodies.ts';
 import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, stepRate, togglePause, type Clock } from '../core/clock.ts';
+import { firstLook, turnLook, zoomLook, type Look } from '../core/dome.ts';
 import { nextLunarEclipse, nextSolarEclipse } from '../core/eclipses.ts';
 import { attitude, orbitKm, positionsKm, type Attitude } from '../core/ephemeris.ts';
 import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, facing, flightAt, progress, type Flight, type View } from '../core/flight.ts';
 import { advance, freeFrom, keepOutside, lookPoint, nearest, radiusOnScreenPx, turnFree, type FreeView } from '../core/free.ts';
+import { cityById, cityName, firstCity, type City } from '../core/places.ts';
+import type { PlanetTonight } from '../core/tonight.ts';
 import { SCALES, sceneFromPlanet, sceneFromSun, scenePositions, sceneRadius, sceneRing, type ScaleMode } from '../core/scale.ts';
 import { shadeOf, type Shade } from '../core/shadow.ts';
 import { SITE_IDS, SITES, surfaceDirection, type SiteId } from '../core/sites.ts';
+import { altAz, bodyInSky, skyTurn, type SkyTurn } from '../core/sky.ts';
 import { add, length, scale, sub, type Vec3 } from '../core/vec.ts';
 import { attachControls } from './controls.ts';
 import { h } from './dom.ts';
 import { createFactsDialog } from './facts-dialog.ts';
 import { dict, fmt, pickLang, type Dict } from './i18n.ts';
 import { createMenuDialog } from './menu-dialog.ts';
+import { createPlaceDialog } from './place-dialog.ts';
 import { createSceneView, type Orbit, type SceneView } from './scene.ts';
 import { createSiteDialog } from './site-dialog.ts';
 import { missionName } from './site-text.ts';
+import { createSkyView, type SkyLayers } from './sky-view.ts';
 import { createTimeDialog } from './time-dialog.ts';
+import { createTonightDialog } from './tonight-dialog.ts';
 
 const STORE = 'way1ong-sky:v1:settings';
 
-function loadLang(): string | null {
+/** What is kept on the device: the language, the place of the sky and its layers. Nothing else, nowhere else. */
+interface Saved {
+  lang?: string;
+  place?: string;
+  figures?: boolean;
+  names?: boolean;
+  night?: boolean;
+}
+
+function load(): Saved {
   try {
-    const saved = JSON.parse(window.localStorage.getItem(STORE) ?? '{}') as { lang?: unknown };
-    return typeof saved.lang === 'string' ? saved.lang : null;
+    const saved = JSON.parse(window.localStorage.getItem(STORE) ?? '{}') as Record<string, unknown>;
+    return {
+      lang: typeof saved.lang === 'string' ? saved.lang : undefined,
+      place: typeof saved.place === 'string' ? saved.place : undefined,
+      figures: typeof saved.figures === 'boolean' ? saved.figures : undefined,
+      names: typeof saved.names === 'boolean' ? saved.names : undefined,
+      night: typeof saved.night === 'boolean' ? saved.night : undefined,
+    };
   } catch {
-    return null;
+    return {};
   }
 }
 
-function saveLang(lang: string): void {
+function save(saved: Saved): void {
   try {
-    window.localStorage.setItem(STORE, JSON.stringify({ lang }));
+    window.localStorage.setItem(STORE, JSON.stringify(saved));
   } catch {
-    // Storage blocked: the choice lasts until the page is closed.
+    // Storage blocked: the choices last until the page is closed.
   }
 }
 
 export function startApp(root: HTMLElement): void {
-  let lang = pickLang(loadLang(), navigator.languages ?? [navigator.language]);
+  const saved = load();
+  let lang = pickLang(saved.lang ?? null, navigator.languages ?? [navigator.language]);
   let d: Dict = dict(lang);
   let mode: ScaleMode = 'handy';
   /** The app's clock and the moment it shows right now. */
@@ -52,6 +75,17 @@ export function startApp(root: HTMLElement): void {
   /** The moment the lines of the orbits were drawn for. */
   let orbitsDate = date;
   let focus: BodyId = 'sun';
+  /** Which of the two modes is on the screen: the flight through the Solar System or the sky from a place. */
+  let screen: 'flight' | 'sky' = 'flight';
+  let look: Look = firstLook();
+  /** The place the sky is shown for: the saved one, else the city of the device's time zone, else a capital by language. */
+  let place: City = cityById(saved.place) ?? firstCity(new Intl.DateTimeFormat().resolvedOptions().timeZone, lang);
+  let layers: SkyLayers = { figures: saved.figures ?? true, names: saved.names ?? true };
+  /** How the sky is turned over the place at the moment shown; null — to be worked out again. */
+  let turnNow: SkyTurn | null = null;
+  /** The red screen for the dark: on while the sky is on the screen. */
+  let night = saved.night ?? false;
+  const keep = () => save({ lang, place: place.id, figures: layers.figures, names: layers.names, night });
   let flight: Flight | null = null;
   /** Free flight: the camera stands where the player has flown it, tied to no body. */
   let free: FreeView | null = null;
@@ -79,6 +113,7 @@ export function startApp(root: HTMLElement): void {
     // Shadows come from the real places and sizes, whichever the scale of the picture.
     const shadow = (body: BodyId, by: BodyId) => shadeOf(km[body], radiusKm(body), km.sun, radiusKm('sun'), km[by], radiusKm(by));
     shade = { moon: shadow('moon', 'earth'), earth: shadow('earth', 'moon') };
+    turnNow = null;
   }
 
   /** The lines of the orbits follow the clock: drawn again when it has moved on by two days. */
@@ -103,6 +138,7 @@ export function startApp(root: HTMLElement): void {
 
   // ---------- elements ----------
   const canvas = h('canvas', { tabindex: 0, role: 'img' });
+  const skyCanvas = h('canvas', { class: 'sky', tabindex: 0, role: 'img', hidden: true });
   const labels = h('div', { class: 'labels', 'aria-hidden': 'true' });
   /** Marks of the landing places on the Moon: shown while the camera looks at the Moon from near enough. */
   const siteMarks = h('div', { class: 'labels' });
@@ -123,6 +159,11 @@ export function startApp(root: HTMLElement): void {
   const backBtn = h('button', { class: 'chip chip--fly', type: 'button' });
   const forwardBtn = h('button', { class: 'chip chip--fly', type: 'button' });
   const flyBox = h('div', { class: 'bar fly', role: 'group', hidden: true }, backBtn, forwardBtn);
+  const toFlightBtn = h('button', { class: 'chip', type: 'button' });
+  const placeBtn = h('button', { class: 'chip', type: 'button' });
+  const tonightBtn = h('button', { class: 'chip', type: 'button' });
+  const skyBox = h('div', { class: 'bar sky-bar', role: 'group', hidden: true }, toFlightBtn, placeBtn, tonightBtn);
+  const scaleBar = h('div', { class: 'bar' });
   const slowerBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-skip icon-skip--back', 'aria-hidden': 'true' }));
   const pauseBtn = h('button', { class: 'icon-btn', type: 'button' });
   const fasterBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-skip', 'aria-hidden': 'true' }));
@@ -134,9 +175,12 @@ export function startApp(root: HTMLElement): void {
   const timeDialog = createTimeDialog();
   const factsDialog = createFactsDialog();
   const siteDialog = createSiteDialog();
-  const stage = h('div', { class: 'stage' }, canvas, labels, siteMarks);
+  const placeDialog = createPlaceDialog();
+  const tonightDialog = createTonightDialog();
+  const stage = h('div', { class: 'stage' }, canvas, skyCanvas, labels, siteMarks);
   const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine, nearLine), factsBtn, menuBtn);
-  const bottom = h('div', { class: 'bottom' }, flyBox, h('div', { class: 'bar' }, timeBox), h('div', { class: 'bar' }, scaleBox), dock);
+  scaleBar.append(scaleBox);
+  const bottom = h('div', { class: 'bottom' }, flyBox, h('div', { class: 'bar' }, timeBox), scaleBar, dock, skyBox);
   const main = h(
     'main',
     { class: 'app' },
@@ -148,6 +192,8 @@ export function startApp(root: HTMLElement): void {
     timeDialog.el,
     factsDialog.el,
     siteDialog.el,
+    placeDialog.el,
+    tonightDialog.el,
   );
   root.replaceChildren(main);
 
@@ -186,12 +232,19 @@ export function startApp(root: HTMLElement): void {
     noteClose.setAttribute('aria-label', d.actions.close);
     flyBox.setAttribute('aria-label', d.free.title);
     backBtn.textContent = d.free.back;
+    skyCanvas.setAttribute('aria-label', d.sky.scene);
+    skyBox.setAttribute('aria-label', d.sky.open);
+    toFlightBtn.textContent = d.sky.toFlight;
+    tonightBtn.textContent = d.sky.tonight.button;
     forwardBtn.textContent = d.free.forward;
 
     labels.replaceChildren();
     dock.replaceChildren();
     labelOf.clear();
     chipOf.clear();
+    const toSky = h('button', { class: 'chip chip--mode', type: 'button' }, d.sky.open);
+    toSky.addEventListener('click', () => setScreen('sky'));
+    dock.append(h('li', {}, toSky));
     const whole = h('button', { class: 'chip', type: 'button' }, d.dock.whole);
     whole.addEventListener('click', showWhole);
     chipOf.set('whole', whole);
@@ -239,11 +292,14 @@ export function startApp(root: HTMLElement): void {
   /** The title, the line under it and the marks in the list. */
   function describe(): void {
     const whole = !free && focus === 'sun' && !flight && view.distance > arrivalDistance('sun', radius.sun) * 1.5;
-    title.textContent = flight ? fmt(d.status.flying, { name: d.bodies[flight.to] }) : free ? d.free.title : whole ? d.dock.whole : fmt(d.status.at, { name: d.bodies[focus] });
-    nearNow = free ? nearest(free.at, where, radius).id : null;
+    const sky = screen === 'sky';
+    title.textContent = sky ? fmt(d.sky.title, { place: cityName(place, lang) }) : flight ? fmt(d.status.flying, { name: d.bodies[flight.to] }) : free ? d.free.title : whole ? d.dock.whole : fmt(d.status.at, { name: d.bodies[focus] });
+    placeBtn.textContent = fmt(d.sky.placeButton, { place: cityName(place, lang) });
+    document.documentElement.toggleAttribute('data-night', sky && night);
+    nearNow = free && !sky ? nearest(free.at, where, radius).id : null;
     nearLine.textContent = nearNow ? fmt(d.free.near, { name: d.bodies[nearNow] }) : '';
     nearLine.hidden = !nearNow;
-    flyBox.hidden = !free;
+    flyBox.hidden = !free || sky;
     const real = Date.now();
     const live = isLive(clock, real);
     const moment = showsTimeOfDay(clock) ? fmt(d.time.at, { date: dayText(date), time: new Intl.DateTimeFormat(lang, { hour: 'numeric', minute: '2-digit' }).format(date) }) : dayText(date);
@@ -256,7 +312,7 @@ export function startApp(root: HTMLElement): void {
     pauseBtn.setAttribute('aria-label', clock.paused ? d.time.play : d.time.pause);
     pauseBtn.replaceChildren(h('span', { class: clock.paused ? 'icon-play' : 'icon-pause', 'aria-hidden': 'true' }));
     // The card is of the body looked at: no body in front of the camera — no button.
-    factsBtn.hidden = whole || flight !== null || free !== null;
+    factsBtn.hidden = sky || whole || flight !== null || free !== null;
     factsBtn.setAttribute('aria-label', fmt(d.card.open, { name: d.bodies[focus] }));
     for (const [id, chip] of chipOf) {
       const here = id === 'free' ? free !== null : id === 'whole' ? whole : !whole && !free && id === (flight?.to ?? focus);
@@ -278,10 +334,12 @@ export function startApp(root: HTMLElement): void {
   /** The bars cover the top and the bottom of the picture: the view centres on what is left free. */
   function measure(): void {
     const top = header.getBoundingClientRect().bottom;
-    const low = canvas.clientHeight - bottom.getBoundingClientRect().top;
+    // The stage, not a canvas: of the two canvases one is always hidden and has no size.
+    const low = stage.clientHeight - bottom.getBoundingClientRect().top;
     scene.setCovered(top, low);
-    const free = Math.max(1, Math.min(canvas.clientWidth, canvas.clientHeight - top - low));
-    squeeze = Math.min(canvas.clientWidth, canvas.clientHeight) / free;
+    skyView.setCovered(top, low);
+    const free = Math.max(1, Math.min(stage.clientWidth, stage.clientHeight - top - low));
+    squeeze = Math.min(stage.clientWidth, stage.clientHeight) / free;
     dirty = true;
   }
 
@@ -454,6 +512,63 @@ export function startApp(root: HTMLElement): void {
     },
   });
 
+  // ---------- the sky from a place ----------
+  const skyView = createSkyView(skyCanvas);
+  attachControls(skyCanvas, {
+    turn(yaw, pitch) {
+      // The controls speak in angles of the flight view; here the sky follows the finger pixel for pixel.
+      const perPixel = (SKY.turnDegPerScreen * Math.PI) / 180 / Math.max(1, Math.min(skyCanvas.clientWidth, skyCanvas.clientHeight));
+      look = turnLook(look, -yaw / perPixel, pitch / perPixel, skyView.frame());
+      dirty = true;
+    },
+    zoom(factor) {
+      look = zoomLook(look, factor);
+      dirty = true;
+    },
+  });
+
+  function setScreen(next: 'flight' | 'sky'): void {
+    if (next === screen) return;
+    screen = next;
+    const sky = screen === 'sky';
+    thrust = 0;
+    canvas.hidden = sky;
+    labels.hidden = sky;
+    siteMarks.hidden = sky;
+    skyCanvas.hidden = !sky;
+    dock.hidden = sky;
+    scaleBar.hidden = sky;
+    skyBox.hidden = !sky;
+    if (sky) {
+      const sunUp = altAz(bodyInSky('sun', skyTurn(place, date))).altitude > 0;
+      say(`${fmt(d.sky.note, { place: cityName(place, lang) })}${sunUp ? ` ${d.sky.dayNote}` : ''}`);
+    } else {
+      say('');
+    }
+    describe();
+    measure();
+    (sky ? skyCanvas : canvas).focus({ preventScroll: true });
+  }
+  toFlightBtn.addEventListener('click', () => setScreen('flight'));
+  placeBtn.addEventListener('click', () =>
+    placeDialog.open(d, lang, place, (city) => {
+      place = city;
+      turnNow = null;
+      keep();
+      describe();
+      dirty = true;
+    }),
+  );
+  /** A planet from "Tonight": the clock goes to its best moment and stops, the view turns to it. */
+  function showPlanet(planet: PlanetTonight): void {
+    if (!planet.seen) return;
+    clock = jumpTo(clock, Date.now(), planet.seen.best.getTime());
+    look = { ...look, azimuth: planet.seen.azimuth, altitude: Math.max(planet.seen.altitude, SKY.dome.firstLook.altitude) };
+    const moment = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(planet.seen.best);
+    retime(fmt(d.sky.tonight.shown, { name: d.bodies[planet.id], date: moment }));
+  }
+  tonightBtn.addEventListener('click', () => tonightDialog.open(d, lang, place, date, showPlanet));
+
   /** From the Moon's card to a landing place: the Moon turns that place to the camera, and its window opens. */
   function showSite(id: SiteId): void {
     if (focus === 'moon' && !flight && !free) {
@@ -466,13 +581,30 @@ export function startApp(root: HTMLElement): void {
   factsBtn.addEventListener('click', () => factsDialog.open(d, lang, focus, date, showSite));
 
   menuBtn.addEventListener('click', () =>
-    menu.open(d, lang, (code) => {
-      lang = code;
-      d = dict(lang);
-      saveLang(lang);
-      menu.el.close();
-      build();
-    }),
+    menu.open(
+      d,
+      lang,
+      (code) => {
+        lang = code;
+        d = dict(lang);
+        keep();
+        menu.el.close();
+        build();
+      },
+      {
+        figures: layers.figures,
+        names: layers.names,
+        night,
+        toggle(choice) {
+          if (choice === 'night') night = !night;
+          else layers = { ...layers, [choice]: !layers[choice] };
+          keep();
+          describe();
+          skyView.restyle();
+          dirty = true;
+        },
+      },
+    ),
   );
 
   /** The radius of the body looked at as it is seen on the screen, CSS pixels. */
@@ -556,6 +688,15 @@ export function startApp(root: HTMLElement): void {
     }
     const elapsed = Math.min(0.1, Math.max(0, (now - lastFrame) / 1000));
     lastFrame = now;
+    if (screen === 'sky') {
+      if (dirty) {
+        dirty = false;
+        turnNow ??= skyTurn(place, date);
+        skyView.draw({ look, turn: turnNow, layers, lang, d });
+      }
+      window.requestAnimationFrame(frame);
+      return;
+    }
     if (free && thrust !== 0) {
       moveFree(thrust * SKY.free.holdSharePerSecond * elapsed);
     }
@@ -591,6 +732,7 @@ export function startApp(root: HTMLElement): void {
 
   window.addEventListener('resize', () => {
     scene.resize();
+    skyView.resize();
     measure();
   });
   // The bars change their height with the language and the width of the screen.

@@ -3,20 +3,13 @@
 Зібрано скриптом `scripts/stars/build.mjs` із сирих відповідей Вікіданих (`wikidata-stars-2026-11-24.tgz`). Цей файл скрипт пише сам — руками не правити.
 
 - Записів з видимою величиною до 6.5: 9460.
-- Зір у файлі після відсіву й злиття: **8695** (з них 0 — з величиною Gaia G замість видимої; записів Gaia взято 0).
+- Зір у файлі після відсіву й злиття: **8730** (з них 35 — з величиною Gaia G замість видимої; записів Gaia взято 40).
 - Записи ближче ніж 60″ один до одного вважаються однією зорею: місце й величина — найяскравішого, назва — того запису, що має назви більшою кількістю мов.
-- Назви збережено для зір до 3.5 величини: 285.
-- Ліній сузір'їв: 727 відрізків у 88 фігурах; кінців ліній без зорі: 9.
+- Назви збережено для зір до 3.5 величини: 77.
+- Ліній сузір'їв: 740 відрізків у 88 фігурах; кінців ліній без зорі: 2.
 
 ## Кінці ліній, для яких зорі не знайшлось
 - Car: 131.176°, -54.709°
-- Cep: 333.759°, 57.044°
-- Dra: 263.067°, 55.173°
-- Hya: 138.591°, 2.314°
-- Per: 47.267°, 49.613°
-- Per: 47.267°, 49.613°
-- Psc: 359.828°, 6.863°
-- UMi: 244.376°, 75.755°
 - Vel: 131.176°, -54.709°
 
 ## Відкинуто: не має місця серед зір (планети, супутники тощо)
@@ -65,12 +58,12 @@
 
 ## Відкинуто: спалах, планета чи супутник
 - Jupiter (-1.6): gas giant, outer planet
-- Q9331379 (1.07): supernova
+- SN 2009jb (1.07): supernova
 - Mercury (1.9): inferior planet, inner planet of the Solar System
 - Blaze Star (2): symbiotic binary, recurrent nova, spectroscopic binary
 - SN 1604 (2.5): supernova
 - HR Delphini (3.7): infrared source, spectroscopic binary, nova, star
-- Q1334571 (4.1): emission-line star, spectroscopic binary, cataclysmic variable star, nova
+- T Aurigae (4.1): emission-line star, spectroscopic binary, cataclysmic variable star, nova
 - SN 1987A (4.81): supernova
 - Uranus (5.32): ice giant, outer planet
 - Q9330302 (5.8): supernova
@@ -91,42 +84,42 @@
 - Pleiades (1.6): open cluster
 - Coma Star Cluster (1.8): open cluster
 - Small Magellanic Cloud (2.2): dwarf galaxy, irregular galaxy
-- Q50050 (1.9): open cluster
+- IC 2602 (1.9): open cluster
 - NGC 1980 (2.5): star cluster
 - IC 2391 (2.5): open cluster
-- Q825941 (2.6): open cluster
+- NGC 6231 (2.6): open cluster
 - Collinder 121 (2.6): open cluster, asterism
 - Collinder 69 (2.8): open cluster
 - Melotte 186 (3): open cluster
-- Q372496 (3): open cluster
+- NGC 3532 (3): open cluster
 - Carina Nebula (3): H II region
 - Cr 65 (3): star cluster, open cluster
 - Beehive Cluster (3.1): open cluster
 - Messier 7 (3.3): open cluster
 - Andromeda Galaxy (3.44): spiral galaxy
-- Q66477176 (3.4): open cluster
+- C 1652-407 (3.4): open cluster
 - Brocchi's Cluster (3.6): star cluster
-- Q90528785 (3.5): open cluster, globular cluster
-- Q482454 (3.7): open cluster
+- Cl Collinder 140 (3.5): open cluster, globular cluster
+- NGC 869 (3.7): open cluster
 - Sagittarius Dwarf Elliptical Galaxy (3.6): dwarf galaxy
-- Q84277475 (3.6): open cluster
+- [KPS2012] MWSC 1147 (3.6): open cluster
 - Delta Lyrae cluster (3.8): open cluster
-- Q33571 (3.8): open cluster
-- Q745008 (3.8): open cluster
-- Q226134 (3.9): open cluster
-- Q66477178 (3.9): open cluster
+- NGC 884 (3.8): open cluster
+- NGC 2516 (3.8): open cluster
+- NGC 2264 (3.9): open cluster
+- Cl Collinder 240 (3.9): open cluster
 - Orion Nebula (4): astrophysical X-ray source, astronomical radio source, diffuse nebula, reflection nebula, H II region
 - North America Nebula (4): H II region
 - 47 Tucanae (4.09): globular cluster
 - NGC 2362 (4.1): open cluster
-- Q1046317 (4.2): open cluster
+- NGC 1981 (4.2): open cluster
 - Butterfly Cluster (4.2): open cluster
 - IC 4665 (4.2): open cluster
 - NGC 3114 (4.2): open cluster
-- Q66477166 (4.2): open cluster
-- Q66477167 (4.2): open cluster
+- C 0516+732 (4.2): open cluster
+- C 0519+409 (4.2): open cluster
 - Jewel Box (4.2): open cluster
-- Q3146560 (4.3): open cluster
+- IC 2581 (4.3): open cluster
 - Stock 2 (4.4): open cluster
 - Q66477177 (4.4): open cluster
 - Blanco 1 (4.5): open cluster
@@ -255,9 +248,9 @@
 - 19 Leonis (6.445): declination equals right ascension
 
 ## Відкинуто: не підтверджено звіркою (`scripts/stars/exclude.json`)
-- Q66477379 (0.128) — Q66477379
+- 2MASS J22472789+5807236 (0.128) — Q66477379
 - Collinder 135 (2.1) — Q2023845
-- Q88445025 (3.4) — Q88445025
+- [SC96] Mis 190 (3.4) — Q88445025
 - R Horologii (3.92) — Q3271890
 - Chi Cygni (4.24) — Q1071564
 - R Cassiopeiae (4.8) — Q257904
@@ -343,7 +336,7 @@
 - Gamma Centauri (2.17): Gamma Centauri A 2.82 + Gamma Centauri 2.17 + Gamma Centauri B 2.88
 - Gamma Velorum (1.83): gam01 Vel 4.173 + Gamma Velorum 1.83
 - Theta Scorpii (1.85): Theta Scorpii 1.862 + tet Sco A 1.85 + tet Sco B 6.22
-- Антарес (0.91): Q12166 0.91 + Q66530984 5.2
+- Antares (0.91): Antares 0.91 + Q66530984 5.2
 - Beta Scorpii (2.5): Acrab 2.62 + Beta Scorpii 2.5 + Q66477351 4.89
 - Sirius (-1.46): Sirius A -1.46 + Sirius -1.46
 - Eta Ophiuchi (2.42): Eta Ophiuchi B 3.26 + Eta Ophiuchi A 2.463 + Eta Ophiuchi 2.42
@@ -370,14 +363,14 @@
 - 11. Alpha Crucis / — / Alfa Crucis: 0.76, 186.650°, -63.099° — Q13102
 - 12. Altair / Альтаїр / Altair: 0.76, 297.696°, 8.868° — Q12975
 - 13. Aldebaran / Альдебаран / Aldebaran: 0.86, 68.980°, 16.509° — Q12170
-- 14. — / Антарес / Antares: 0.91, 247.352°, -26.432° — Q12166
+- 14. Antares / Антарес / Antares: 0.91, 247.352°, -26.432° — Q12166
 - 15. Spica / Спіка / —: 0.97, 201.298°, -11.161° — Q13008
 - 16. Pollux / Поллукс / Pollux: 1.14, 116.329°, 28.026° — Q13028
 - 17. Fomalhaut A / — / —: 1.16, 344.413°, -29.622° — Q76446963
 - 18. Mimosa / Бекрукс / Béta Crucis: 1.25, 191.930°, -59.689° — Q13105
 - 19. Deneb / Денеб / Deneb: 1.25, 310.358°, 45.280° — Q12179
 - 20. Alpha Leonis A / Регул / Regulus: 1.4, 152.093°, 11.967° — Q13013
-- 21. — / Адара / Adara: 1.5, 104.656°, -28.972° — Q13414
+- 21. Adhara / Адара / Adara: 1.5, 104.656°, -28.972° — Q13414
 - 22. Castor / Кастор / Castor: 1.58, 113.649°, 31.888° — Q13029
 - 23. Lambda Scorpii / Лямбда Скорпіона / Lambda Scorpii: 1.63, 263.402°, -37.104° — Q13023
 - 24. Bellatrix / Беллатрікс / —: 1.64, 81.283°, 6.350° — Q13066
@@ -385,7 +378,7 @@
 - 26. Beta Tauri / Натх / —: 1.65, 81.573°, 28.607° — Q13508
 - 27. Alnilam / Альнілам / —: 1.69, 84.053°, -1.202° — Q13070
 - 28. Beta Carinae / Міаплацидус / —: 1.69, 138.300°, -69.717° — Q13174
-- 29. — / Альфа Журавля / —: 1.71, 332.059°, -46.962° — Q854042
+- 29. Alnair / Альфа Журавля / —: 1.71, 332.059°, -46.962° — Q854042
 - 30. Alnitak / Альнітак / Alnitak: 1.77, 85.190°, -1.943° — Q13076
 - 31. Alioth / Аліот / —: 1.77, 193.507°, 55.960° — Q13091
 - 32. Alpha Persei / Мірфак / —: 1.79, 51.081°, 49.861° — Q13790

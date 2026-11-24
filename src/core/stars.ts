@@ -25,10 +25,13 @@ export const STARS_LIMIT: number = starsFile.limit;
 export type StarName = Partial<Record<'en' | 'uk' | 'hu', string>>;
 const NAMES = starsFile.names as Record<string, StarName>;
 
-/** The name of a star in a language, else its name as the world writes it; undefined — it has none in the file. */
+/**
+ * The proper name of a star in a language, else in Latin letters as the world writes it; undefined — the
+ * file has no name a reader of that language could read.
+ */
 export function starName(index: number, lang: string): string | undefined {
   const names = NAMES[String(index)];
-  return names?.[lang as keyof StarName] ?? names?.en ?? names?.uk ?? names?.hu;
+  return names?.[lang as keyof StarName] ?? names?.en;
 }
 export const NAMED_STARS: readonly number[] = Object.keys(NAMES).map(Number);
 

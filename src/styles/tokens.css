@@ -14,4 +14,40 @@
   --focus: #ffcf6b;
   --backdrop: rgb(0 0 0 / 0.6);
   --shadow: 0 6px 18px rgb(0 0 0 / 0.55);
+
+  /* The sky from a place. */
+  --sky-night: #060a16;
+  --sky-day: #2c5d94;
+  --ground: #0d1410;
+  --horizon: #6f8a6a;
+  --star: #f4f7ff;
+  --figure: #5f7fb8;
+  --figure-name: #8fa9d8;
+  --sun: #ffd76a;
+  --moon: #e8e6dc;
+  --planet: #ffb58a;
+}
+
+/* Night mode of the sky map: everything in dim red, which does not spoil eyes used to the dark. */
+:root[data-night] {
+  --bg: #0a0303;
+  --panel: rgb(24 7 5 / 0.88);
+  --surface: #1c0806;
+  --text: #ff7a6b;
+  --muted: #d9675a;
+  --line: #7a2f28;
+  --accent: #ff9a85;
+  --on-accent: #1a0503;
+  --focus: #ff9a85;
+
+  --sky-night: #0a0303;
+  --sky-day: #2a0d0a;
+  --ground: #140504;
+  --horizon: #8a3d33;
+  --star: #ff8f80;
+  --figure: #7a2f28;
+  --figure-name: #c8584b;
+  --sun: #ff9a85;
+  --moon: #f08576;
+  --planet: #e86a5a;
 }

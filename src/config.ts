@@ -71,6 +71,39 @@ export const SKY = {
    * body's surface every second. One press of a key or one notch of the wheel is a step of `zoomStep`.
    */
   free: { holdSharePerSecond: 1.2 },
+  /**
+   * The sky from a place (C). `fov` — how wide the view is across the shorter side of the screen, degrees: at
+   * first, the narrowest and the widest. `firstLook` — where the view looks at first: the bearing (south) and
+   * the height over the horizon. `behind` — how far behind the view's edge things are still worked out, as
+   * the cosine of the angle from the middle of the view.
+   */
+  dome: { fov: { first: 100, least: 25, most: 130 }, firstLook: { azimuth: 180, altitude: 35 }, behind: -0.25 },
+  /**
+   * How the sky is painted (C) — choices of the picture, not measurements:
+   * `star` — the radius of a star's dot, CSS px, from the brightest (`brightMag`) to the faintest in the file;
+   * `faintest` — the wider the view, the fewer faint stars are drawn: the limit at the widest and the narrowest view;
+   * `named` — stars this bright get their names, at the widest and the narrowest view;
+   * `daylight` — the sky turns from night to day colour while the Sun climbs from `from` to `to` degrees over
+   *   the horizon, and at full day the stars are drawn `starsLeft` as strong;
+   * `discPx` — the radii of the Sun's, the Moon's and a planet's marks; `labelGapPx` — room kept between names.
+   */
+  paint: {
+    star: { brightMag: -1.5, brightPx: 3.4, faintPx: 0.55 },
+    faintest: { wide: 5.2, narrow: 6.5 },
+    named: { wide: 1.6, narrow: 3.5 },
+    daylight: { from: -12, to: 2, starsLeft: 0.12 },
+    discPx: { sun: 9, moon: 8, planet: 3.5 },
+    labelGapPx: 4,
+  },
+  /**
+   * "Tonight" (C) — the program's own measures of what can be seen, not definitions of astronomy:
+   * `darkSunAltitude` — it counts as dark once the Sun is this far under the horizon, degrees;
+   * `leastAltitude` — a planet counts as seen when it is at least this high, clear of roofs and haze;
+   * `stepMinutes` — how finely the night is looked through;
+   * `eyeMagnitude` — a planet fainter than this is told to be too faint for the eye: the map does draw
+   *   fainter stars, but a planet that faint cannot be told from them without a chart and a dark sky.
+   */
+  tonight: { darkSunAltitude: -6, leastAltitude: 5, stepMinutes: 10, eyeMagnitude: 5 },
   /** Points of an orbit's line (C). */
   orbitPoints: 256,
   /** Where the outer edge of ring A lies across the ring texture, 0…1 — measured on the texture itself. */

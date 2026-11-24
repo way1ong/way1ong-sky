@@ -1,6 +1,8 @@
-// The menu: the language, and what the app is made of — with the credits its sources ask for.
+// The menu: the language, the choices of the sky map, and what the app is made of — with the credits its
+// sources ask for.
 import { SKY } from '../config.ts';
 import { SOURCES } from '../core/bodies.ts';
+import { CITY_SOURCE } from '../core/places.ts';
 import { PHOTO_LIBRARY, PHOTO_RULES } from '../core/photos.ts';
 import { h } from './dom.ts';
 import { flagOf } from './flags.ts';
@@ -11,11 +13,19 @@ const LICENSE_URL = 'https://creativecommons.org/licenses/by/4.0/';
 
 const link = (url: string, text: string) => h('a', { href: url, rel: 'noopener' }, text);
 
-export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang: string, setLang: (code: string) => void): void } {
+/** The choices of the sky map: which are on, and how one is switched. */
+export interface SkyChoices {
+  figures: boolean;
+  names: boolean;
+  night: boolean;
+  toggle(choice: 'figures' | 'names' | 'night'): void;
+}
+
+export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang: string, setLang: (code: string) => void, sky: SkyChoices): void } {
   const el = h('dialog', { class: 'dialog', 'aria-labelledby': 'menu-title' });
   return {
     el,
-    open(d, lang, setLang) {
+    open(d, lang, setLang, sky) {
       // The languages as buttons, each with its flag and its own name: a list of options cannot show pictures.
       const langs = h('ul', { class: 'langs', 'aria-labelledby': 'lang-label' });
       let current: HTMLButtonElement | null = null;
@@ -24,6 +34,15 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
         button.addEventListener('click', () => setLang(code));
         if (code === lang) current = button;
         langs.append(h('li', {}, button));
+      }
+      const choices = h('ul', { class: 'site-list' });
+      for (const choice of ['figures', 'names', 'night'] as const) {
+        const button = h('button', { class: 'chip chip--wide', type: 'button', role: 'switch', 'aria-checked': String(sky[choice]) }, d.sky.menu[choice]);
+        button.addEventListener('click', () => {
+          sky.toggle(choice);
+          button.setAttribute('aria-checked', String(button.getAttribute('aria-checked') !== 'true'));
+        });
+        choices.append(h('li', {}, button));
       }
       const close = h('button', { class: 'btn', type: 'button' }, d.actions.close);
       close.addEventListener('click', () => el.close());
@@ -34,6 +53,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
           { class: 'dialog__body' },
           h('h2', { id: 'menu-title' }, d.settings.title),
           h('div', { class: 'field' }, h('p', { id: 'lang-label' }, d.settings.language), langs),
+          h('section', { class: 'site-section', 'aria-labelledby': 'sky-choices' }, h('h3', { id: 'sky-choices' }, d.sky.menu.title), choices),
           h('h2', {}, d.about.title),
           h('p', {}, d.about.text),
           h('p', {}, d.keys),
@@ -44,6 +64,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
             h('li', {}, d.about.textures, ' ', link(TEXTURES_URL, 'Solar System Scope'), ' · ', link(LICENSE_URL, 'CC BY 4.0')),
             h('li', {}, d.about.facts, ' ', link(SOURCES.planets.url, SOURCES.planets.title), ' · ', link(SOURCES.sun.url, SOURCES.sun.title), ' · ', link(SOURCES.rings.url, SOURCES.rings.title)),
             h('li', {}, d.about.photos, ' ', link(PHOTO_LIBRARY, 'NASA Image and Video Library'), ' · ', link(PHOTO_RULES, 'NASA media guidelines')),
+            h('li', {}, d.about.sky, ' ', link(CITY_SOURCE.url, 'Wikidata')),
             h('li', {}, d.about.shadows),
             h('li', {}, d.about.engine),
           ),

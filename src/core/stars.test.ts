@@ -54,12 +54,15 @@ describe('the stars and the figures', () => {
     }
   });
 
-  it('names stars that are in the file, in a language or as the world writes them', () => {
-    expect(NAMED_STARS.length).toBeGreaterThan(100);
+  it('names stars that are in the file: in the language asked, else in Latin letters, never in a foreign script', () => {
+    expect(NAMED_STARS.length).toBeGreaterThan(50);
     for (const i of NAMED_STARS) {
       expect(STARS[i]).toBeDefined();
-      for (const lang of ['en', 'uk', 'hu']) expect(starName(i, lang), String(i)).toBeTruthy();
+      expect(['en', 'uk', 'hu'].some((lang) => starName(i, lang)), String(i)).toBe(true);
+      for (const lang of ['en', 'hu']) expect(starName(i, lang) ?? '', String(i)).not.toMatch(/[а-яіїєґ]/i);
     }
+    // The brightest star has its name in all three.
+    for (const lang of ['en', 'uk', 'hu']) expect(starName(0, lang)).toBeTruthy();
     expect(starName(STARS.length + 5, 'en')).toBeUndefined();
   });
 });

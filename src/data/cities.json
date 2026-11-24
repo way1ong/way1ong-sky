@@ -1,0 +1,754 @@
+{
+ "source": {
+  "title": "Wikidata",
+  "url": "https://www.wikidata.org/",
+  "licence": "CC0",
+  "read": "2026-11-24"
+ },
+ "note": "Capitals of the sovereign states of Europe and its other large cities, as Wikidata has them; degrees north and east. Built by scripts/stars/cities.mjs.",
+ "byLanguage": {
+  "uk": "Q1899",
+  "hu": "Q1781",
+  "en": "Q84"
+ },
+ "cities": [
+  {
+   "id": "Q727",
+   "lat": 52.37,
+   "lon": 4.88,
+   "names": {
+    "en": "Amsterdam",
+    "uk": "Амстердам",
+    "hu": "Amszterdam"
+   },
+   "country": {
+    "en": "Kingdom of the Netherlands",
+    "uk": "Королівство Нідерланди",
+    "hu": "Holland Királyság"
+   }
+  },
+  {
+   "id": "Q1863",
+   "lat": 42.51,
+   "lon": 1.52,
+   "names": {
+    "en": "Andorra la Vella",
+    "uk": "Андорра-ла-Велья",
+    "hu": "Andorra la Vella"
+   },
+   "country": {
+    "en": "Andorra",
+    "uk": "Андорра",
+    "hu": "Andorra"
+   }
+  },
+  {
+   "id": "Q3640",
+   "lat": 39.94,
+   "lon": 32.84,
+   "names": {
+    "en": "Ankara",
+    "uk": "Анкара",
+    "hu": "Ankara"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q1520",
+   "lat": 51.13,
+   "lon": 71.43,
+   "names": {
+    "en": "Astana",
+    "uk": "Астана",
+    "hu": "Asztana"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q1524",
+   "lat": 37.98,
+   "lon": 23.73,
+   "names": {
+    "en": "Athens",
+    "uk": "Афіни",
+    "hu": "Athén"
+   },
+   "country": {
+    "en": "Greece",
+    "uk": "Греція",
+    "hu": "Görögország"
+   }
+  },
+  {
+   "id": "Q3711",
+   "lat": 44.82,
+   "lon": 20.46,
+   "names": {
+    "en": "Belgrade",
+    "uk": "Белград",
+    "hu": "Belgrád"
+   },
+   "country": {
+    "en": "Serbia",
+    "uk": "Сербія",
+    "hu": "Szerbia"
+   }
+  },
+  {
+   "id": "Q64",
+   "lat": 52.52,
+   "lon": 13.38,
+   "names": {
+    "en": "Berlin",
+    "uk": "Берлін",
+    "hu": "Berlin"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q70",
+   "lat": 46.95,
+   "lon": 7.45,
+   "names": {
+    "en": "Bern",
+    "uk": "Берн",
+    "hu": "Bern"
+   },
+   "country": {
+    "en": "Switzerland",
+    "uk": "Швейцарія",
+    "hu": "Svájc"
+   }
+  },
+  {
+   "id": "Q1780",
+   "lat": 48.15,
+   "lon": 17.11,
+   "names": {
+    "en": "Bratislava",
+    "uk": "Братислава",
+    "hu": "Pozsony"
+   },
+   "country": {
+    "en": "Slovakia",
+    "uk": "Словаччина",
+    "hu": "Szlovákia"
+   }
+  },
+  {
+   "id": "Q239",
+   "lat": 50.85,
+   "lon": 4.35,
+   "names": {
+    "en": "Brussels",
+    "uk": "Брюссель",
+    "hu": "Brüsszel"
+   },
+   "country": {
+    "en": "Belgium",
+    "uk": "Бельгія",
+    "hu": "Belgium"
+   }
+  },
+  {
+   "id": "Q19660",
+   "lat": 44.41,
+   "lon": 26.1,
+   "names": {
+    "en": "Bucharest",
+    "uk": "Бухарест",
+    "hu": "Bukarest"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q1781",
+   "lat": 47.5,
+   "lon": 19.04,
+   "names": {
+    "en": "Budapest",
+    "uk": "Будапешт",
+    "hu": "Budapest"
+   },
+   "country": {
+    "en": "Hungary",
+    "uk": "Угорщина",
+    "hu": "Magyarország"
+   }
+  },
+  {
+   "id": "Q21197",
+   "lat": 47.02,
+   "lon": 28.84,
+   "names": {
+    "en": "Chișinău",
+    "uk": "Кишинів",
+    "hu": "Chișinău"
+   },
+   "country": {
+    "en": "Moldova",
+    "uk": "Молдова",
+    "hu": "Moldova"
+   }
+  },
+  {
+   "id": "Q1748",
+   "lat": 55.68,
+   "lon": 12.57,
+   "names": {
+    "en": "Copenhagen",
+    "uk": "Копенгаген",
+    "hu": "Koppenhága"
+   },
+   "country": {
+    "en": "Kingdom of Denmark",
+    "uk": "Королівство Данія",
+    "hu": "Dán Királyság"
+   }
+  },
+  {
+   "id": "Q1761",
+   "lat": 53.35,
+   "lon": -6.26,
+   "names": {
+    "en": "Dublin",
+    "uk": "Дублін",
+    "hu": "Dublin"
+   },
+   "country": {
+    "en": "Ireland",
+    "uk": "Ірландія",
+    "hu": "Írország"
+   }
+  },
+  {
+   "id": "Q1757",
+   "lat": 60.17,
+   "lon": 24.94,
+   "names": {
+    "en": "Helsinki",
+    "uk": "Гельсінкі",
+    "hu": "Helsinki"
+   },
+   "country": {
+    "en": "Finland",
+    "uk": "Фінляндія",
+    "hu": "Finnország"
+   }
+  },
+  {
+   "id": "Q1899",
+   "lat": 50.45,
+   "lon": 30.52,
+   "names": {
+    "en": "Kyiv",
+    "uk": "Київ",
+    "hu": "Kijev"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   },
+   "zoneNames": [
+    "kiev"
+   ]
+  },
+  {
+   "id": "Q597",
+   "lat": 38.71,
+   "lon": -9.14,
+   "names": {
+    "en": "Lisbon",
+    "uk": "Лісабон",
+    "hu": "Lisszabon"
+   },
+   "country": {
+    "en": "Portugal",
+    "uk": "Португалія",
+    "hu": "Portugália"
+   }
+  },
+  {
+   "id": "Q437",
+   "lat": 46.05,
+   "lon": 14.51,
+   "names": {
+    "en": "Ljubljana",
+    "uk": "Любляна",
+    "hu": "Ljubljana"
+   },
+   "country": {
+    "en": "Slovenia",
+    "uk": "Словенія",
+    "hu": "Szlovénia"
+   }
+  },
+  {
+   "id": "Q84",
+   "lat": 51.51,
+   "lon": -0.13,
+   "names": {
+    "en": "London",
+    "uk": "Лондон",
+    "hu": "London"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q1842",
+   "lat": 49.61,
+   "lon": 6.13,
+   "names": {
+    "en": "Luxembourg",
+    "uk": "Люксембург",
+    "hu": "Luxembourg"
+   },
+   "country": {
+    "en": "Luxembourg",
+    "uk": "Люксембург",
+    "hu": "Luxemburg"
+   }
+  },
+  {
+   "id": "Q2807",
+   "lat": 40.42,
+   "lon": -3.7,
+   "names": {
+    "en": "Madrid",
+    "uk": "Мадрид",
+    "hu": "Madrid"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q2280",
+   "lat": 53.9,
+   "lon": 27.56,
+   "names": {
+    "en": "Minsk",
+    "uk": "Мінськ",
+    "hu": "Minszk"
+   },
+   "country": {
+    "en": "Belarus",
+    "uk": "Білорусь",
+    "hu": "Fehéroroszország"
+   }
+  },
+  {
+   "id": "Q235",
+   "lat": 43.73,
+   "lon": 7.42,
+   "names": {
+    "en": "Monaco",
+    "uk": "Монако",
+    "hu": "Monaco"
+   },
+   "country": {
+    "en": "Monaco",
+    "uk": "Монако",
+    "hu": "Monaco"
+   }
+  },
+  {
+   "id": "Q649",
+   "lat": 55.75,
+   "lon": 37.62,
+   "names": {
+    "en": "Moscow",
+    "uk": "Москва",
+    "hu": "Moszkva"
+   },
+   "country": {
+    "en": "Russia",
+    "uk": "Росія",
+    "hu": "Oroszország"
+   }
+  },
+  {
+   "id": "Q3856",
+   "lat": 35.17,
+   "lon": 33.37,
+   "names": {
+    "en": "Nicosia",
+    "uk": "Нікосія",
+    "hu": "Nicosia"
+   },
+   "country": {
+    "en": "Cyprus",
+    "uk": "Кіпр",
+    "hu": "Ciprus"
+   }
+  },
+  {
+   "id": "Q585",
+   "lat": 59.91,
+   "lon": 10.74,
+   "names": {
+    "en": "Oslo",
+    "uk": "Осло",
+    "hu": "Oslo"
+   },
+   "country": {
+    "en": "Norway",
+    "uk": "Норвегія",
+    "hu": "Norvégia"
+   }
+  },
+  {
+   "id": "Q90",
+   "lat": 48.86,
+   "lon": 2.35,
+   "names": {
+    "en": "Paris",
+    "uk": "Париж",
+    "hu": "Párizs"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q23564",
+   "lat": 42.44,
+   "lon": 19.26,
+   "names": {
+    "en": "Podgorica",
+    "uk": "Подгориця",
+    "hu": "Podgorica"
+   },
+   "country": {
+    "en": "Montenegro",
+    "uk": "Чорногорія",
+    "hu": "Montenegró"
+   }
+  },
+  {
+   "id": "Q1085",
+   "lat": 50.09,
+   "lon": 14.42,
+   "names": {
+    "en": "Prague",
+    "uk": "Прага",
+    "hu": "Prága"
+   },
+   "country": {
+    "en": "Czech Republic",
+    "uk": "Чехія",
+    "hu": "Csehország"
+   }
+  },
+  {
+   "id": "Q25270",
+   "lat": 42.67,
+   "lon": 21.17,
+   "names": {
+    "en": "Pristina",
+    "uk": "Приштина",
+    "hu": "Pristina"
+   },
+   "country": {
+    "en": "Kosovo",
+    "uk": "Косово",
+    "hu": "Koszovó"
+   }
+  },
+  {
+   "id": "Q1764",
+   "lat": 64.15,
+   "lon": -21.93,
+   "names": {
+    "en": "Reykjavík",
+    "uk": "Рейк'явік",
+    "hu": "Reykjavík"
+   },
+   "country": {
+    "en": "Iceland",
+    "uk": "Ісландія",
+    "hu": "Izland"
+   }
+  },
+  {
+   "id": "Q1773",
+   "lat": 56.95,
+   "lon": 24.11,
+   "names": {
+    "en": "Riga",
+    "uk": "Рига",
+    "hu": "Riga"
+   },
+   "country": {
+    "en": "Latvia",
+    "uk": "Латвія",
+    "hu": "Lettország"
+   }
+  },
+  {
+   "id": "Q220",
+   "lat": 41.89,
+   "lon": 12.48,
+   "names": {
+    "en": "Rome",
+    "uk": "Рим",
+    "hu": "Róma"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q1848",
+   "lat": 43.93,
+   "lon": 12.45,
+   "names": {
+    "en": "San Marino",
+    "uk": "Сан-Марино",
+    "hu": "San Marino"
+   },
+   "country": {
+    "en": "San Marino",
+    "uk": "Сан-Марино",
+    "hu": "San Marino"
+   }
+  },
+  {
+   "id": "Q11194",
+   "lat": 43.86,
+   "lon": 18.41,
+   "names": {
+    "en": "Sarajevo",
+    "uk": "Сараєво",
+    "hu": "Szarajevó"
+   },
+   "country": {
+    "en": "Bosnia and Herzegovina",
+    "uk": "Боснія і Герцеговина",
+    "hu": "Bosznia-Hercegovina"
+   }
+  },
+  {
+   "id": "Q384",
+   "lat": 42,
+   "lon": 21.43,
+   "names": {
+    "en": "Skopje",
+    "uk": "Скоп'є",
+    "hu": "Szkopje"
+   },
+   "country": {
+    "en": "North Macedonia",
+    "uk": "Північна Македонія",
+    "hu": "Észak-Macedónia"
+   }
+  },
+  {
+   "id": "Q472",
+   "lat": 42.7,
+   "lon": 23.32,
+   "names": {
+    "en": "Sofia",
+    "uk": "Софія",
+    "hu": "Szófia"
+   },
+   "country": {
+    "en": "Bulgaria",
+    "uk": "Болгарія",
+    "hu": "Bulgária"
+   }
+  },
+  {
+   "id": "Q1754",
+   "lat": 59.33,
+   "lon": 18.07,
+   "names": {
+    "en": "Stockholm",
+    "uk": "Стокгольм",
+    "hu": "Stockholm"
+   },
+   "country": {
+    "en": "Sweden",
+    "uk": "Швеція",
+    "hu": "Svédország"
+   }
+  },
+  {
+   "id": "Q1770",
+   "lat": 59.44,
+   "lon": 24.75,
+   "names": {
+    "en": "Tallinn",
+    "uk": "Таллінн",
+    "hu": "Tallinn"
+   },
+   "country": {
+    "en": "Estonia",
+    "uk": "Естонія",
+    "hu": "Észtország"
+   }
+  },
+  {
+   "id": "Q994",
+   "lat": 41.72,
+   "lon": 44.79,
+   "names": {
+    "en": "Tbilisi",
+    "uk": "Тбілісі",
+    "hu": "Tbiliszi"
+   },
+   "country": {
+    "en": "Georgia",
+    "uk": "Грузія",
+    "hu": "Grúzia"
+   }
+  },
+  {
+   "id": "Q19689",
+   "lat": 41.33,
+   "lon": 19.82,
+   "names": {
+    "en": "Tirana",
+    "uk": "Тирана",
+    "hu": "Tirana"
+   },
+   "country": {
+    "en": "Albania",
+    "uk": "Албанія",
+    "hu": "Albánia"
+   }
+  },
+  {
+   "id": "Q1844",
+   "lat": 47.14,
+   "lon": 9.52,
+   "names": {
+    "en": "Vaduz",
+    "uk": "Вадуц",
+    "hu": "Vaduz"
+   },
+   "country": {
+    "en": "Liechtenstein",
+    "uk": "Ліхтенштейн",
+    "hu": "Liechtenstein"
+   }
+  },
+  {
+   "id": "Q23800",
+   "lat": 35.9,
+   "lon": 14.51,
+   "names": {
+    "en": "Valletta",
+    "uk": "Валлетта",
+    "hu": "Valletta"
+   },
+   "country": {
+    "en": "Malta",
+    "uk": "Мальта",
+    "hu": "Málta"
+   }
+  },
+  {
+   "id": "Q237",
+   "lat": 41.9,
+   "lon": 12.45,
+   "names": {
+    "en": "Vatican City",
+    "uk": "Ватикан",
+    "hu": "Vatikán"
+   },
+   "country": {
+    "en": "Vatican City",
+    "uk": "Ватикан",
+    "hu": "Vatikán"
+   }
+  },
+  {
+   "id": "Q1741",
+   "lat": 48.21,
+   "lon": 16.37,
+   "names": {
+    "en": "Vienna",
+    "uk": "Відень",
+    "hu": "Bécs"
+   },
+   "country": {
+    "en": "Austria",
+    "uk": "Австрія",
+    "hu": "Ausztria"
+   }
+  },
+  {
+   "id": "Q216",
+   "lat": 54.69,
+   "lon": 25.28,
+   "names": {
+    "en": "Vilnius",
+    "uk": "Вільнюс",
+    "hu": "Vilnius"
+   },
+   "country": {
+    "en": "Lithuania",
+    "uk": "Литва",
+    "hu": "Litvánia"
+   }
+  },
+  {
+   "id": "Q270",
+   "lat": 52.23,
+   "lon": 21.01,
+   "names": {
+    "en": "Warsaw",
+    "uk": "Варшава",
+    "hu": "Varsó"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q1435",
+   "lat": 45.81,
+   "lon": 15.98,
+   "names": {
+    "en": "Zagreb",
+    "uk": "Загреб",
+    "hu": "Zágráb"
+   },
+   "country": {
+    "en": "Croatia",
+    "uk": "Хорватія",
+    "hu": "Horvátország"
+   }
+  }
+ ]
+}
