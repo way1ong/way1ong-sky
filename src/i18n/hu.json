@@ -258,5 +258,12 @@
       "evans": "Ronald E. Evans",
       "schmitt": "Harrison H. Schmitt"
     }
+  },
+  "free": {
+    "title": "Szabad repülés",
+    "forward": "Előre",
+    "back": "Hátra",
+    "near": "Legközelebb: {name}",
+    "note": "Szabad repülés: húzással nézhet körül; az „Előre” és a „Hátra” arra visz, amerre néz — tartsa lenyomva a folyamatos repüléshez. Minél közelebb van egy égitest, annál lassabban halad. A visszatéréshez válasszon egy égitestet a listából."
   }
 }

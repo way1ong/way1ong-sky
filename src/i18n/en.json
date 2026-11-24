@@ -258,5 +258,12 @@
       "evans": "Ronald E. Evans",
       "schmitt": "Harrison H. Schmitt"
     }
+  },
+  "free": {
+    "title": "Free flight",
+    "forward": "Forward",
+    "back": "Back",
+    "near": "Nearest: {name}",
+    "note": "Free flight: drag to look around; “Forward” and “Back” fly where you look — hold to keep flying. The nearer a body, the slower. To return, choose a body from the list."
   }
 }

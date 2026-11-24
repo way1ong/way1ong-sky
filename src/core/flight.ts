@@ -58,6 +58,8 @@ export function ease(t: number): number {
 
 export interface Flight {
   from: BodyId;
+  /** A flight out of free flight starts from this point instead of a body. */
+  fromPoint?: Vec3;
   to: BodyId;
   startDistance: number;
   endDistance: number;
@@ -73,5 +75,5 @@ export function progress(flight: Flight, now: number): number {
 /** The point looked at and the distance during a flight; `where` gives every body's place right now. */
 export function flightAt(flight: Flight, now: number, where: Record<BodyId, Vec3>): { target: Vec3; distance: number } {
   const t = ease(progress(flight, now));
-  return { target: lerp(where[flight.from], where[flight.to], t), distance: flight.startDistance * (flight.endDistance / flight.startDistance) ** t };
+  return { target: lerp(flight.fromPoint ?? where[flight.from], where[flight.to], t), distance: flight.startDistance * (flight.endDistance / flight.startDistance) ** t };
 }

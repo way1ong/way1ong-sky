@@ -6,10 +6,11 @@ import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, sh
 import { nextLunarEclipse, nextSolarEclipse } from '../core/eclipses.ts';
 import { attitude, orbitKm, positionsKm, type Attitude } from '../core/ephemeris.ts';
 import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, facing, flightAt, progress, type Flight, type View } from '../core/flight.ts';
+import { advance, freeFrom, keepOutside, lookPoint, nearest, radiusOnScreenPx, turnFree, type FreeView } from '../core/free.ts';
 import { SCALES, sceneFromPlanet, sceneFromSun, scenePositions, sceneRadius, sceneRing, type ScaleMode } from '../core/scale.ts';
 import { shadeOf, type Shade } from '../core/shadow.ts';
 import { SITE_IDS, SITES, surfaceDirection, type SiteId } from '../core/sites.ts';
-import { length, sub, type Vec3 } from '../core/vec.ts';
+import { add, length, scale, sub, type Vec3 } from '../core/vec.ts';
 import { attachControls } from './controls.ts';
 import { h } from './dom.ts';
 import { createFactsDialog } from './facts-dialog.ts';
@@ -52,6 +53,12 @@ export function startApp(root: HTMLElement): void {
   let orbitsDate = date;
   let focus: BodyId = 'sun';
   let flight: Flight | null = null;
+  /** Free flight: the camera stands where the player has flown it, tied to no body. */
+  let free: FreeView | null = null;
+  /** "Forward" (1) or "back" (-1) is held down. */
+  let thrust = 0;
+  /** Where the camera stood in the last frame drawn. */
+  let cameraAt: Vec3 = [0, 0, 0];
   let view: View = { yaw: 0.6, pitch: (SKY.overview.pitchDeg * Math.PI) / 180, distance: 1 };
   let dirty = true;
 
@@ -103,6 +110,9 @@ export function startApp(root: HTMLElement): void {
   const line = h('p', { class: 'top__line' });
   /** The speed of the clock on a line of its own: the date beside it changes its width all the time. */
   const speedLine = h('p', { class: 'top__line top__speed' });
+  /** In free flight: the body the camera is nearest to. */
+  const nearLine = h('p', { class: 'top__line', hidden: true });
+  let nearNow: BodyId | null = null;
   const menuBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-menu', 'aria-hidden': 'true' }));
   const note = h('p', { class: 'note__text', role: 'status' });
   const noteClose = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-close', 'aria-hidden': 'true' }));
@@ -110,6 +120,9 @@ export function startApp(root: HTMLElement): void {
   const dock = h('ul', { class: 'dock' });
   const scaleBox = h('fieldset', { class: 'scale' });
   const timeBox = h('div', { class: 'time', role: 'group' });
+  const backBtn = h('button', { class: 'chip chip--fly', type: 'button' });
+  const forwardBtn = h('button', { class: 'chip chip--fly', type: 'button' });
+  const flyBox = h('div', { class: 'bar fly', role: 'group', hidden: true }, backBtn, forwardBtn);
   const slowerBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-skip icon-skip--back', 'aria-hidden': 'true' }));
   const pauseBtn = h('button', { class: 'icon-btn', type: 'button' });
   const fasterBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-skip', 'aria-hidden': 'true' }));
@@ -122,8 +135,8 @@ export function startApp(root: HTMLElement): void {
   const factsDialog = createFactsDialog();
   const siteDialog = createSiteDialog();
   const stage = h('div', { class: 'stage' }, canvas, labels, siteMarks);
-  const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine), factsBtn, menuBtn);
-  const bottom = h('div', { class: 'bottom' }, h('div', { class: 'bar' }, timeBox), h('div', { class: 'bar' }, scaleBox), dock);
+  const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine, nearLine), factsBtn, menuBtn);
+  const bottom = h('div', { class: 'bottom' }, flyBox, h('div', { class: 'bar' }, timeBox), h('div', { class: 'bar' }, scaleBox), dock);
   const main = h(
     'main',
     { class: 'app' },
@@ -153,7 +166,7 @@ export function startApp(root: HTMLElement): void {
   const labelOf = new Map<BodyId, HTMLButtonElement>();
   /** How wide every name is on the screen, CSS px — measured when the names are written. */
   const labelWidth = new Map<BodyId, number>();
-  const chipOf = new Map<BodyId | 'whole', HTMLButtonElement>();
+  const chipOf = new Map<BodyId | 'whole' | 'free', HTMLButtonElement>();
   const markOf = new Map<SiteId, HTMLButtonElement>();
 
   /** Everything that is words: built again when the language changes. */
@@ -171,6 +184,9 @@ export function startApp(root: HTMLElement): void {
     moreBtn.textContent = d.time.moreShort;
     moreBtn.setAttribute('aria-label', d.time.more);
     noteClose.setAttribute('aria-label', d.actions.close);
+    flyBox.setAttribute('aria-label', d.free.title);
+    backBtn.textContent = d.free.back;
+    forwardBtn.textContent = d.free.forward;
 
     labels.replaceChildren();
     dock.replaceChildren();
@@ -180,6 +196,10 @@ export function startApp(root: HTMLElement): void {
     whole.addEventListener('click', showWhole);
     chipOf.set('whole', whole);
     dock.append(h('li', {}, whole));
+    const freeChip = h('button', { class: 'chip', type: 'button' }, d.free.title);
+    freeChip.addEventListener('click', enterFree);
+    chipOf.set('free', freeChip);
+    dock.append(h('li', {}, freeChip));
     for (const id of BODY_IDS) {
       const chip = h('button', { class: 'chip', type: 'button' }, d.bodies[id]);
       chip.addEventListener('click', () => flyTo(id));
@@ -218,8 +238,12 @@ export function startApp(root: HTMLElement): void {
 
   /** The title, the line under it and the marks in the list. */
   function describe(): void {
-    const whole = focus === 'sun' && !flight && view.distance > arrivalDistance('sun', radius.sun) * 1.5;
-    title.textContent = flight ? fmt(d.status.flying, { name: d.bodies[flight.to] }) : whole ? d.dock.whole : fmt(d.status.at, { name: d.bodies[focus] });
+    const whole = !free && focus === 'sun' && !flight && view.distance > arrivalDistance('sun', radius.sun) * 1.5;
+    title.textContent = flight ? fmt(d.status.flying, { name: d.bodies[flight.to] }) : free ? d.free.title : whole ? d.dock.whole : fmt(d.status.at, { name: d.bodies[focus] });
+    nearNow = free ? nearest(free.at, where, radius).id : null;
+    nearLine.textContent = nearNow ? fmt(d.free.near, { name: d.bodies[nearNow] }) : '';
+    nearLine.hidden = !nearNow;
+    flyBox.hidden = !free;
     const real = Date.now();
     const live = isLive(clock, real);
     const moment = showsTimeOfDay(clock) ? fmt(d.time.at, { date: dayText(date), time: new Intl.DateTimeFormat(lang, { hour: 'numeric', minute: '2-digit' }).format(date) }) : dayText(date);
@@ -232,10 +256,10 @@ export function startApp(root: HTMLElement): void {
     pauseBtn.setAttribute('aria-label', clock.paused ? d.time.play : d.time.pause);
     pauseBtn.replaceChildren(h('span', { class: clock.paused ? 'icon-play' : 'icon-pause', 'aria-hidden': 'true' }));
     // The card is of the body looked at: no body in front of the camera — no button.
-    factsBtn.hidden = whole || flight !== null;
+    factsBtn.hidden = whole || flight !== null || free !== null;
     factsBtn.setAttribute('aria-label', fmt(d.card.open, { name: d.bodies[focus] }));
     for (const [id, chip] of chipOf) {
-      const here = id === 'whole' ? whole : !whole && id === (flight?.to ?? focus);
+      const here = id === 'free' ? free !== null : id === 'whole' ? whole : !whole && !free && id === (flight?.to ?? focus);
       if (here) chip.setAttribute('aria-current', 'true');
       else chip.removeAttribute('aria-current');
     }
@@ -322,10 +346,63 @@ export function startApp(root: HTMLElement): void {
   const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function fly(to: BodyId, endDistance: number, text = ''): void {
-    flight = { from: focus, to, startDistance: view.distance, endDistance, startedAt: performance.now(), durationMs: reducedMotion() ? 0 : SKY.flightMs };
+    if (free) {
+      // Out of free flight: the flight starts on the very spot, looking the same way.
+      const look = lookPoint(free, where, radius);
+      view = { yaw: free.yaw, pitch: free.pitch, distance: look.distance };
+      flight = { from: focus, fromPoint: look.target, to, startDistance: look.distance, endDistance, startedAt: performance.now(), durationMs: reducedMotion() ? 0 : SKY.flightMs };
+      free = null;
+      thrust = 0;
+    } else {
+      flight = { from: focus, to, startDistance: view.distance, endDistance, startedAt: performance.now(), durationMs: reducedMotion() ? 0 : SKY.flightMs };
+    }
     say(text);
     describe();
     dirty = true;
+  }
+
+  /** Into free flight from wherever the camera is: it stays on the spot and looks the same way. */
+  function enterFree(): void {
+    if (free) return;
+    let target = where[focus];
+    if (flight) {
+      const at = flightAt(flight, performance.now(), where);
+      target = at.target;
+      view = { ...view, distance: at.distance };
+      flight = null;
+    }
+    free = freeFrom(target, view);
+    say(d.free.note);
+    describe();
+    dirty = true;
+  }
+
+  /** Along the line of sight by a share of the gap to the nearest surface; below zero — backwards. */
+  function moveFree(share: number): void {
+    if (!free) return;
+    free = advance(free, share, where, radius, farthest());
+    dirty = true;
+  }
+
+  // "Forward" and "back": a press is one step, a hold flies on until it is let go.
+  for (const [button, way] of [[forwardBtn, 1], [backBtn, -1]] as const) {
+    let held = false;
+    button.addEventListener('pointerdown', (event) => {
+      held = true;
+      thrust = way;
+      button.setPointerCapture(event.pointerId);
+    });
+    const release = () => {
+      thrust = 0;
+    };
+    button.addEventListener('pointerup', release);
+    button.addEventListener('pointercancel', release);
+    button.addEventListener('lostpointercapture', release);
+    button.addEventListener('click', () => {
+      // A finger or the mouse has already flown while it was down; the keyboard takes one step.
+      if (!held) moveFree(way * (1 - 1 / SKY.zoomStep));
+      held = false;
+    });
   }
 
   function flyTo(id: BodyId): void {
@@ -341,9 +418,13 @@ export function startApp(root: HTMLElement): void {
     // The view keeps what it shows: a body stays as large on the screen, the whole system stays whole.
     const whole = focus === 'sun' && view.distance > arrivalDistance('sun', radius.sun) * 1.5;
     const before = whole ? length(where[SKY.overview.whole]) : radius[focus];
+    // In free flight the camera keeps its place by the nearest body: as many of its radii away, on the same side.
+    const by = free ? nearest(free.at, where, radius).id : null;
+    const aside = free && by ? scale(sub(free.at, where[by]), 1 / radius[by]) : null;
     mode = next;
     compute();
     refreshOrbits(true);
+    if (free && by && aside) free = { ...free, at: add(where[by], scale(aside, radius[by])) };
     const after = whole ? length(where[SKY.overview.whole]) : radius[focus];
     flight = null;
     view = { ...view, distance: clampDistance((view.distance * after) / before, radius[focus], farthest()) };
@@ -355,11 +436,18 @@ export function startApp(root: HTMLElement): void {
 
   attachControls(canvas, {
     turn(yaw, pitch) {
-      view = { ...view, yaw: view.yaw + yaw, pitch: clampPitch(view.pitch + pitch) };
+      // In free flight the sky is held by the finger: a drag across the screen turns by what the screen shows.
+      if (free) free = turnFree(free, (yaw * SKY.fovDeg) / SKY.turnDegPerScreen, (pitch * SKY.fovDeg) / SKY.turnDegPerScreen);
+      else view = { ...view, yaw: view.yaw + yaw, pitch: clampPitch(view.pitch + pitch) };
       dirty = true;
     },
     zoom(factor) {
       if (flight) return;
+      if (free) {
+        // Nearer on the wheel, the keys or two fingers is forward; farther is back.
+        moveFree(1 - factor);
+        return;
+      }
       view = { ...view, distance: clampDistance(view.distance * factor, radius[focus], farthest()) };
       describe();
       dirty = true;
@@ -368,7 +456,7 @@ export function startApp(root: HTMLElement): void {
 
   /** From the Moon's card to a landing place: the Moon turns that place to the camera, and its window opens. */
   function showSite(id: SiteId): void {
-    if (focus === 'moon' && !flight) {
+    if (focus === 'moon' && !flight && !free) {
       view = { ...view, ...facing(surfaceDirection(turned.moon, SITES[id].lat, SITES[id].lon)) };
       dirty = true;
     }
@@ -411,18 +499,24 @@ export function startApp(root: HTMLElement): void {
       const box = at ? { left: at.x - 10, right: at.x + (labelWidth.get(id) ?? 0) + 4, y: at.y } : null;
       const free = box && taken.every((t) => Math.abs(t.y - box.y) > SKY.labelRowPx || box.left > t.right || box.right < t.left);
       // A body that fills the view needs no name on its face: the title says what it is.
-      const large = id === focus && !flight && focusOnScreenPx() > SKY.labelHiddenFromPx;
+      // In free flight that is the nearest body, named under the title.
+      const shortSide = Math.min(canvas.clientWidth, canvas.clientHeight);
+      const large = free
+        ? id === nearNow && radiusOnScreenPx(radius[id], length(sub(cameraAt, where[id])), shortSide) > SKY.labelHiddenFromPx
+        : id === focus && !flight && focusOnScreenPx() > SKY.labelHiddenFromPx;
       label.hidden = !(at && inside && free) || large;
       if (!at || !box || label.hidden) continue;
       taken.push(box);
       label.style.transform = `translate(${at.x.toFixed(1)}px, ${at.y.toFixed(1)}px)`;
-      label.classList.toggle('is-here', id === focus && !flight);
+      label.classList.toggle('is-here', id === focus && !flight && !free);
     }
   }
 
   // ---------- the landing places on the Moon ----------
   function placeSites(): void {
-    const shown = focus === 'moon' && !flight && focusOnScreenPx() >= SKY.sites.showFromPx;
+    // Wherever the camera is tied or free: the marks are there once the Moon is seen large enough.
+    const moonPx = radiusOnScreenPx(radius.moon, length(sub(cameraAt, where.moon)), Math.min(canvas.clientWidth, canvas.clientHeight));
+    const shown = !flight && (free !== null || focus === 'moon') && moonPx >= SKY.sites.showFromPx;
     const at = new Map<SiteId, { x: number; y: number }>();
     if (shown) {
       for (const id of SITE_IDS) {
@@ -445,6 +539,7 @@ export function startApp(root: HTMLElement): void {
   }
 
   // ---------- the loop: a frame is drawn only when something has changed ----------
+  let lastFrame = performance.now();
   function frame(now: number): void {
     if (isRunningFast(clock)) {
       const real = Date.now();
@@ -458,6 +553,11 @@ export function startApp(root: HTMLElement): void {
         describe();
         dirty = true;
       }
+    }
+    const elapsed = Math.min(0.1, Math.max(0, (now - lastFrame) / 1000));
+    lastFrame = now;
+    if (free && thrust !== 0) {
+      moveFree(thrust * SKY.free.holdSharePerSecond * elapsed);
     }
     let target = where[focus];
     if (flight) {
@@ -475,7 +575,14 @@ export function startApp(root: HTMLElement): void {
     }
     if (dirty) {
       dirty = false;
-      scene.draw({ where, radius, turned, ring: sceneRing(mode), shade, target, eye: eye(target, view) });
+      if (free) {
+        // A body that the clock has carried over the camera pushes it out of the way.
+        free = { ...free, at: keepOutside(free.at, where, radius) };
+        target = lookPoint(free, where, radius).target;
+        if (nearest(free.at, where, radius).id !== nearNow) describe();
+      }
+      cameraAt = free ? free.at : eye(target, view);
+      scene.draw({ where, radius, turned, ring: sceneRing(mode), shade, target, eye: cameraAt });
       placeLabels();
       placeSites();
     }

@@ -66,6 +66,11 @@ export const SKY = {
    * the angle between the place and the line to the camera — so no mark sits on the very edge of the disc.
    */
   sites: { showFromPx: 60, facing: 0.15 },
+  /**
+   * Free flight (C): while "forward" or "back" is held, the camera covers this share of the gap to the nearest
+   * body's surface every second. One press of a key or one notch of the wheel is a step of `zoomStep`.
+   */
+  free: { holdSharePerSecond: 1.2 },
   /** Points of an orbit's line (C). */
   orbitPoints: 256,
   /** Where the outer edge of ring A lies across the ring texture, 0…1 — measured on the texture itself. */
