@@ -1,6 +1,7 @@
 // The menu: the language, and what the app is made of — with the credits its sources ask for.
 import { SKY } from '../config.ts';
 import { SOURCES } from '../core/bodies.ts';
+import { PHOTO_LIBRARY, PHOTO_RULES } from '../core/photos.ts';
 import { h } from './dom.ts';
 import { flagOf } from './flags.ts';
 import { LANGS, langName, type Dict } from './i18n.ts';
@@ -42,6 +43,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
             {},
             h('li', {}, d.about.textures, ' ', link(TEXTURES_URL, 'Solar System Scope'), ' · ', link(LICENSE_URL, 'CC BY 4.0')),
             h('li', {}, d.about.facts, ' ', link(SOURCES.planets.url, SOURCES.planets.title), ' · ', link(SOURCES.sun.url, SOURCES.sun.title), ' · ', link(SOURCES.rings.url, SOURCES.rings.title)),
+            h('li', {}, d.about.photos, ' ', link(PHOTO_LIBRARY, 'NASA Image and Video Library'), ' · ', link(PHOTO_RULES, 'NASA media guidelines')),
             h('li', {}, d.about.shadows),
             h('li', {}, d.about.engine),
           ),

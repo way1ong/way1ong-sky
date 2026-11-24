@@ -151,7 +151,21 @@
       "uranus": "Uranus is the seventh planet from the Sun and the third largest — a very cold and windy world. It rotates at a nearly 90-degree angle from the plane of its orbit, so it appears to spin sideways, rolling around the Sun like a ball. It was the first planet found with the aid of a telescope: the astronomer William Herschel discovered it in 1781.",
       "neptune": "Neptune is the eighth and most distant planet from the Sun, more than 30 times as far from it as the Earth. It is a dark, cold ice giant whipped by supersonic winds, and the only planet in our solar system not visible to the naked eye. It was discovered in 1846 and completed its first orbit around the Sun since then in 2011."
     },
-    "aboutSource": "Description: after NASA Science"
+    "aboutSource": "Description: after NASA Science",
+    "photo": {
+      "sun": "The Sun on 10 September 2025, taken by NASA’s Solar Dynamics Observatory in extreme ultraviolet light. Our eyes cannot see this light; the gold colour is added.",
+      "mercury": "Mercury, seen by NASA’s MESSENGER spacecraft.",
+      "venus": "Venus, taken by NASA’s Mariner 10 spacecraft as it sped away from the planet; the picture was processed anew from the original data. The clouds in view are about 60 km above the surface.",
+      "earth": "The Earth, photographed by the Apollo 17 crew on 7 December 1972 on their way to the Moon. Almost the whole coastline of Africa is in view, with the Arabian Peninsula above and the south polar ice cap of Antarctica below.",
+      "moon": "The Moon, photographed on 6 April 2026 during NASA’s Artemis II mission. The near side, with its dark ancient lava flows, is the top half; the large crater below them is the Orientale basin, and everything below it is the far side.",
+      "mars": "Mars: a global colour view from Viking images.",
+      "jupiter": "Jupiter in true colour: four images taken by NASA’s Cassini spacecraft on 7 December 2000, projected onto a globe. The dark spot is the shadow of Jupiter’s moon Europa.",
+      "saturn": "Saturn and its rings in natural colour, taken by the Cassini spacecraft on 27 March 2004, on approach to the planet.",
+      "uranus": "Uranus, taken by the Voyager 2 spacecraft in 1986.",
+      "neptune": "Neptune, from the last whole-planet images of NASA’s Voyager 2, taken 4 days and 20 hours before its closest approach. The Great Dark Spot is in view."
+    },
+    "photoBy": "Photo: {credit}",
+    "photoAlt": "Photo: {name}"
   },
   "keys": "Arrow keys turn the view, plus and minus change the distance.",
   "settings": {
@@ -166,7 +180,8 @@
     "facts": "Sizes of the bodies and of Saturn’s rings: NASA fact sheets.",
     "shadows": "The Earth’s shadow on the Moon and the Moon’s on the Earth are computed from the real positions. The copper glow of the eclipsed Moon is a picture, not a measurement.",
     "engine": "Positions and rotation: astronomy-engine (MIT). 3D: three.js (MIT).",
-    "madeBy": "Made by way1ong"
+    "madeBy": "Made by way1ong",
+    "photos": "Photos in the cards: NASA and its partners, named under each photo; some are cropped. This program is made independently of NASA."
   },
   "actions": {
     "close": "Close"

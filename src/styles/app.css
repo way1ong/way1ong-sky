@@ -466,6 +466,29 @@ button {
   font-variant-numeric: tabular-nums;
 }
 
+.photo {
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.photo img {
+  display: block;
+  width: min(100%, 22rem);
+  height: auto;
+  aspect-ratio: 1;
+  margin-inline: auto;
+  border-radius: 0.75rem;
+  background: var(--bg);
+}
+
+.photo figcaption {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
 .fact__about {
   font-size: 1rem;
   line-height: 1.5;

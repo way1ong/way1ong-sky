@@ -151,7 +151,21 @@
       "uranus": "Az Uránusz a Naptól számított hetedik bolygó, és a harmadik legnagyobb; nagyon hideg és szeles világ. Tengelye csaknem 90 fokos szöget zár be a pályasíkjával, ezért úgy tűnik, mintha labdaként, az oldalán gurulva keringene a Nap körül. Ez volt az első távcsővel felfedezett bolygó: William Herschel csillagász fedezte fel 1781-ben.",
       "neptune": "A Neptunusz a nyolcadik, a Naptól legtávolabbi bolygó: több mint harmincszor messzebb van tőle, mint a Föld. Sötét, hideg jégóriás, amelyen szuperszonikus szelek fújnak, és a Naprendszer egyetlen bolygója, amely szabad szemmel nem látható. 1846-ban fedezték fel, és azóta 2011-ben tette meg első teljes keringését a Nap körül."
     },
-    "aboutSource": "Leírás: a NASA Science oldala alapján"
+    "aboutSource": "Leírás: a NASA Science oldala alapján",
+    "photo": {
+      "sun": "A Nap 2025. szeptember 10-én, a NASA Solar Dynamics Observatory felvételén, extrém ultraibolya fényben. Ezt a fényt a szemünk nem látja; az aranyszín utólag került a képre.",
+      "mercury": "A Merkúr a NASA MESSENGER űrszondájának felvételén.",
+      "venus": "A Vénusz a NASA Mariner–10 űrszondájának felvételén, amely a bolygótól távolodva készült; a képet az eredeti adatokból újra feldolgozták. A látható felhők mintegy 60 km-rel vannak a felszín felett.",
+      "earth": "A Föld, ahogyan az Apollo–17 legénysége 1972. december 7-én, a Hold felé tartva lefényképezte. Afrika szinte teljes partvonala látszik, felette az Arab-félsziget, lent az Antarktisz déli-sarki jégsapkája.",
+      "moon": "A Hold 2026. április 6-án, a NASA Artemis II küldetése során készült felvételen. A felső fele az innenső oldal a sötét, ősi lávamezőkkel; alattuk a nagy kráter az Orientale-medence, és ami az alatt van, az már a túlsó oldal.",
+      "mars": "A Mars: globális színes kép a Viking űrszondák felvételeiből.",
+      "jupiter": "A Jupiter valódi színekben: a NASA Cassini űrszondájának 2000. december 7-én készült négy felvétele, gömbre vetítve. A sötét folt a Jupiter Europa nevű holdjának árnyéka.",
+      "saturn": "A Szaturnusz és gyűrűi természetes színekben, a Cassini űrszonda 2004. március 27-i felvételén, a bolygó felé közeledve.",
+      "uranus": "Az Uránusz a Voyager–2 űrszonda 1986-os felvételén.",
+      "neptune": "A Neptunusz a NASA Voyager–2 űrszondájának utolsó, az egész bolygót mutató felvételeiből, 4 nappal és 20 órával a legnagyobb megközelítés előtt. Látszik a Nagy Sötét Folt."
+    },
+    "photoBy": "Fotó: {credit}",
+    "photoAlt": "Fotó: {name}"
   },
   "keys": "A nyílbillentyűk forgatják a nézetet, a plusz és a mínusz a távolságot változtatja.",
   "settings": {
@@ -166,7 +180,8 @@
     "facts": "Az égitestek és a Szaturnusz gyűrűinek méretei: a NASA adatlapjai.",
     "shadows": "A Föld árnyéka a Holdon és a Hold árnyéka a Földön a valódi helyzetekből van kiszámítva. A fogyatkozó Hold rézszínű derengése kép, nem mérés.",
     "engine": "Helyzet és forgás: astronomy-engine (MIT). 3D: three.js (MIT).",
-    "madeBy": "Készítette: way1ong"
+    "madeBy": "Készítette: way1ong",
+    "photos": "A kártyák fotói: a NASA és partnerei, a nevük minden fotó alatt szerepel; néhány kép meg van vágva. A program a NASA-tól függetlenül készült."
   },
   "actions": {
     "close": "Bezárás"

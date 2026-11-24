@@ -42,6 +42,7 @@ src/ui/                екран: сцена three.js, керування, сп
 src/i18n/              словники en/hu/uk.json; i18n.test.ts їх звіряє
 src/styles/            tokens.css (кольори), app.css; claude-page.css — лише для тестової сторінки
 src/textures/          мапи тіл і тло (Solar System Scope, CC BY 4.0) — docs/SOURCES.md
+src/photos/            фото тіл для карток (NASA); запис і автор кожного — src/data/photos.json, підписи й джерела — docs/PHOTOS.md
 scripts/claude-page.mjs  програма одним файлом для тестової сторінки claude.ai
 docs/                  опис, рішення, стан, джерела й ліцензії
 ```

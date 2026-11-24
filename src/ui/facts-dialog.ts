@@ -1,10 +1,12 @@
-// A body's card: what it leads the planets in, its numbers with the Earth for comparison, where it is now —
-// and where the numbers come from.
+// A body's card: its photo, a few sentences about it, what it leads the planets in, its numbers with the Earth
+// for comparison, where it is now — and where all of that comes from.
 import type { BodyId } from '../core/bodies.ts';
 import { DESCRIPTION_PAGES, FACT_SOURCES } from '../core/facts.ts';
+import { PHOTOS } from '../core/photos.ts';
 import { h } from './dom.ts';
 import { cardBadges, cardRows } from './facts-text.ts';
 import { fmt, type Dict } from './i18n.ts';
+import { photoUrl } from './photos.ts';
 
 const link = (url: string, text: string) => h('a', { href: url, rel: 'noopener' }, text);
 
@@ -20,6 +22,13 @@ export function createFactsDialog(): { el: HTMLDialogElement; open(d: Dict, lang
       for (const row of cardRows(d, lang, id, date)) {
         list.append(h('div', { class: 'fact' }, h('dt', {}, row.label), h('dd', {}, h('span', { class: 'fact__value' }, row.value), row.more ? h('span', { class: 'fact__more' }, row.more) : null)));
       }
+      const photo = PHOTOS[id];
+      const picture = h(
+        'figure',
+        { class: 'photo' },
+        h('img', { src: photoUrl(id), alt: fmt(d.card.photoAlt, { name: d.bodies[id] }), width: '720', height: '720', decoding: 'async' }),
+        h('figcaption', {}, d.card.photo[id], ' ', link(photo.page, fmt(d.card.photoBy, { credit: photo.credit }))),
+      );
       const close = h('button', { class: 'btn', type: 'button' }, d.card.close);
       close.addEventListener('click', () => el.close());
       const shown = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: '2-digit' }).format(date);
@@ -30,6 +39,7 @@ export function createFactsDialog(): { el: HTMLDialogElement; open(d: Dict, lang
           { class: 'dialog__body' },
           h('h2', { id: 'facts-title' }, d.bodies[id]),
           badges.length > 0 ? most : null,
+          picture,
           h('p', { class: 'fact__about' }, d.card.about[id]),
           list,
           h('p', { class: 'fact__source' }, fmt(d.card.source, { updated: id === 'sun' ? FACT_SOURCES.sun.updated : FACT_SOURCES.planets.updated, date: shown })),

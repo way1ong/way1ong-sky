@@ -71,3 +71,7 @@ it('every language of the app has a flag beside its name', async () => {
 it('describes every body, in every language', () => {
   for (const dict of Object.values(dictionaries)) expect(Object.keys(((dict.card as Tree).about as Tree)).sort()).toEqual([...BODY_IDS].sort());
 });
+
+it('captions every body\'s photo, in every language', () => {
+  for (const dict of Object.values(dictionaries)) expect(Object.keys(((dict.card as Tree).photo as Tree)).sort()).toEqual([...BODY_IDS].sort());
+});
