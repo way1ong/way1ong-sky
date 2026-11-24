@@ -32,6 +32,30 @@ export const SKY = {
   zoomStep: 1.15,
   /** The name of the body looked at is not drawn over it once the body is wider than this on the screen, CSS px (C). */
   labelHiddenFromPx: 18,
+  /**
+   * Time (C): the speeds the player steps through, seconds of the Solar System per second of the clock —
+   * backwards, real time, forwards; the years the calendar may be set to; and the speed above which the
+   * bodies are no longer turned (a globe spinning many times a second only flickers).
+   */
+  time: {
+    rates: [-2_592_000, -604_800, -86_400, -3_600, 1, 3_600, 86_400, 604_800, 2_592_000],
+    names: ['month', 'week', 'day', 'hour', 'real', 'hour', 'day', 'week', 'month'],
+    fromYear: 1900,
+    toYear: 2100,
+    spinUpToRate: 86_400,
+  },
+  /**
+   * In a shadow (C): what is left of a body's light where another body hides the whole Sun. The Moon in the
+   * Earth's shadow keeps a dim copper glow (in life it varies from eclipse to eclipse — this is a picture,
+   * not a measurement); the Earth under the Moon's shadow goes dark.
+   */
+  shade: { moon: [0.2, 0.065, 0.035], earth: [0.03, 0.03, 0.04] },
+  /**
+   * To watch an eclipse the camera stands on the sunlit side of the body in shadow, this far to the side of
+   * the line to the Sun, degrees (C) — far enough that the body casting the shadow, drawn large and near in
+   * the handy scale, does not hide the view.
+   */
+  eclipseViewOffsetDeg: { moon: 50, earth: 35 },
   /** Points of an orbit's line (C). */
   orbitPoints: 256,
   /** Where the outer edge of ring A lies across the ring texture, 0…1 — measured on the texture itself. */

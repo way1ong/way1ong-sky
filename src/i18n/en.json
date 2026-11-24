@@ -34,8 +34,45 @@
   "status": {
     "flying": "Flying to: {name}",
     "at": "{name}",
-    "today": "Positions for today, {date}",
     "noGraphics": "This browser could not start 3D graphics, so the flight cannot be shown here."
+  },
+  "time": {
+    "label": "Time",
+    "slower": "Slower, then backwards",
+    "faster": "Faster",
+    "pause": "Stop time",
+    "play": "Let time run",
+    "now": "Now",
+    "more": "Date and eclipses",
+    "at": "{date}, {time}",
+    "paused": "time stopped",
+    "back": "{rate}, backwards",
+    "rates": {
+      "real": "real time",
+      "hour": "an hour a second",
+      "day": "a day a second",
+      "week": "a week a second",
+      "month": "a month a second"
+    },
+    "noSpin": "At this speed the bodies are not turned: a spin so fast would only flicker.",
+    "limit": "The app’s calendar ends here: it runs from {from} to {to}.",
+    "dialog": {
+      "title": "Date and eclipses",
+      "date": "Date",
+      "go": "Go to the date",
+      "eclipses": "Eclipses",
+      "lunar": "Next lunar eclipse",
+      "solar": "Next solar eclipse"
+    },
+    "lunarAt": {
+      "total": "{date}: a total lunar eclipse. The whole Moon is in the Earth’s shadow. Time is stopped — let it run to watch the shadow leave.",
+      "partial": "{date}: a partial lunar eclipse. Part of the Moon is in the Earth’s shadow. Time is stopped — let it run to watch the shadow move."
+    },
+    "solarAt": {
+      "total": "{date}: a total solar eclipse. The dark spot on the Earth is the Moon’s shadow. Time is stopped — let it run to watch the spot cross the Earth.",
+      "annular": "{date}: an annular solar eclipse. The dim spot on the Earth is the Moon’s shadow; a ring of the Sun stays visible there. Time is stopped — let it run to watch the spot cross the Earth.",
+      "partial": "{date}: a partial solar eclipse. The dim patch on the Earth is the edge of the Moon’s shadow. Time is stopped — let it run to watch it move."
+    }
   },
   "keys": "Arrow keys turn the view, plus and minus change the distance.",
   "settings": {
@@ -48,6 +85,7 @@
     "sources": "Sources",
     "textures": "Maps of the Sun, the planets and the Moon, and the starry background: Solar System Scope, CC BY 4.0. The background is decoration: its stars are not placed by a catalogue.",
     "facts": "Sizes of the bodies and of Saturn’s rings: NASA fact sheets.",
+    "shadows": "The Earth’s shadow on the Moon and the Moon’s on the Earth are computed from the real positions. The copper glow of the eclipsed Moon is a picture, not a measurement.",
     "engine": "Positions and rotation: astronomy-engine (MIT). 3D: three.js (MIT).",
     "madeBy": "Made by way1ong"
   },

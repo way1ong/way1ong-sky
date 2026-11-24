@@ -31,6 +31,12 @@ export function eye(target: Vec3, view: View): Vec3 {
   return [target[0] + flat * Math.sin(view.yaw), target[1] + Math.sin(view.pitch) * view.distance, target[2] + flat * Math.cos(view.yaw)];
 }
 
+/** The turn and the tilt from which the camera looks along a direction: it stands on that side of its target. */
+export function facing(dir: Vec3, turnBy = 0): { yaw: number; pitch: number } {
+  const l = Math.hypot(dir[0], dir[1], dir[2]) || 1;
+  return { yaw: Math.atan2(dir[0], dir[2]) + turnBy, pitch: clampPitch(Math.asin(dir[1] / l)) };
+}
+
 /** How far the camera stops from a body it has flown to. */
 export function arrivalDistance(id: BodyId, bodyRadius: number): number {
   return bodyRadius * (id === 'sun' ? SKY.camera.arriveSun : SKY.camera.arrive);

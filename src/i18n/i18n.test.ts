@@ -1,5 +1,6 @@
 // Dictionaries: the same keys and parameters in every language, a name for every body and every scale.
 import { describe, expect, it } from 'vitest';
+import { SKY } from '../config.ts';
 import { BODY_IDS } from '../core/bodies.ts';
 import { SCALES } from '../core/scale.ts';
 import en from './en.json';
@@ -42,4 +43,10 @@ it('names every body and every scale — and nothing else', () => {
     expect(mode in en.scale, mode).toBe(true);
     expect(`${mode}Note` in en.scale, mode).toBe(true);
   }
+});
+
+it('names every speed of the clock and every kind of eclipse', () => {
+  for (const name of SKY.time.names) expect(name in en.time.rates, name).toBe(true);
+  expect(Object.keys(en.time.lunarAt).sort()).toEqual(['partial', 'total']);
+  expect(Object.keys(en.time.solarAt).sort()).toEqual(['annular', 'partial', 'total']);
 });

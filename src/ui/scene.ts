@@ -7,7 +7,9 @@ import * as THREE from 'three';
 import { SKY } from '../config.ts';
 import { BODY_IDS, type BodyId } from '../core/bodies.ts';
 import type { Attitude } from '../core/ephemeris.ts';
+import type { Shade } from '../core/shadow.ts';
 import { cross, sub, type Vec3 } from '../core/vec.ts';
+import { shadeMaterial, type ShadeMaterial } from './shade-material.ts';
 import { BODY_TEXTURES, RING_TEXTURE, STARS_TEXTURE } from './textures.ts';
 
 export interface Frame {
@@ -15,6 +17,8 @@ export interface Frame {
   radius: Record<BodyId, number>;
   turned: Record<BodyId, Attitude>;
   ring: { inner: number; outer: number };
+  /** Bodies another body may hide the Sun from: the shadow on each; null — none now. */
+  shade: Partial<Record<BodyId, Shade | null>>;
   /** The point looked at and the place of the camera, scene units. */
   target: Vec3;
   eye: Vec3;
@@ -94,9 +98,12 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
   // ---------- bodies ----------
   const ball = new THREE.SphereGeometry(1, 96, 48);
   const meshes = {} as Record<BodyId, THREE.Mesh>;
+  const shaded: Partial<Record<BodyId, ShadeMaterial>> = {};
   for (const id of BODY_IDS) {
     const map = picture(BODY_TEXTURES[id]);
-    const material = id === 'sun' ? new THREE.MeshBasicMaterial({ map }) : new THREE.MeshStandardMaterial({ map, roughness: 1, metalness: 0 });
+    const tint = id === 'moon' ? SKY.shade.moon : id === 'earth' ? SKY.shade.earth : null;
+    if (tint) shaded[id] = shadeMaterial(map, tint);
+    const material = id === 'sun' ? new THREE.MeshBasicMaterial({ map }) : (shaded[id]?.material ?? new THREE.MeshStandardMaterial({ map, roughness: 1, metalness: 0 }));
     meshes[id] = new THREE.Mesh(ball, material);
     scene.add(meshes[id]);
   }
@@ -155,6 +162,7 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
       basis.makeBasis(new THREE.Vector3(...meridian), new THREE.Vector3(...north), new THREE.Vector3(...z));
       mesh.quaternion.setFromRotationMatrix(basis);
     }
+    for (const [id, material] of Object.entries(shaded) as [BodyId, ShadeMaterial][]) material.set(frame.shade[id] ?? null);
     sunlight.position.copy(meshes.sun.position);
     glow.position.copy(meshes.sun.position);
     glow.scale.setScalar(frame.radius.sun * 7);

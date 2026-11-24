@@ -34,8 +34,45 @@
   "status": {
     "flying": "Repülünk ide: {name}",
     "at": "{name}",
-    "today": "Mai helyzet, {date}",
     "noGraphics": "Ez a böngésző nem tudta elindítani a 3D-grafikát, ezért a repülés itt nem jeleníthető meg."
+  },
+  "time": {
+    "label": "Idő",
+    "slower": "Lassabban, aztán visszafelé",
+    "faster": "Gyorsabban",
+    "pause": "Idő megállítása",
+    "play": "Idő elindítása",
+    "now": "Most",
+    "more": "Dátum és fogyatkozások",
+    "at": "{date}, {time}",
+    "paused": "az idő áll",
+    "back": "{rate}, visszafelé",
+    "rates": {
+      "real": "valós idő",
+      "hour": "egy óra másodpercenként",
+      "day": "egy nap másodpercenként",
+      "week": "egy hét másodpercenként",
+      "month": "egy hónap másodpercenként"
+    },
+    "noSpin": "Ilyen sebességnél az égitestek forgását nem mutatjuk: csak villódzna.",
+    "limit": "Az alkalmazás naptára itt véget ér: {from} és {to} között működik.",
+    "dialog": {
+      "title": "Dátum és fogyatkozások",
+      "date": "Dátum",
+      "go": "Ugrás a dátumra",
+      "eclipses": "Fogyatkozások",
+      "lunar": "A következő holdfogyatkozás",
+      "solar": "A következő napfogyatkozás"
+    },
+    "lunarAt": {
+      "total": "{date} — teljes holdfogyatkozás. Az egész Hold a Föld árnyékában van. Az idő áll: indítsa el, és láthatja, ahogy az árnyék levonul.",
+      "partial": "{date} — részleges holdfogyatkozás. A Hold egy része a Föld árnyékában van. Az idő áll: indítsa el, és láthatja, ahogy az árnyék mozog."
+    },
+    "solarAt": {
+      "total": "{date} — teljes napfogyatkozás. A sötét folt a Földön a Hold árnyéka. Az idő áll: indítsa el, és láthatja, ahogy a folt végigfut a Földön.",
+      "annular": "{date} — gyűrűs napfogyatkozás. A halvány folt a Földön a Hold árnyéka; ott a Napból egy gyűrű látszik. Az idő áll: indítsa el, és láthatja, ahogy a folt végigfut a Földön.",
+      "partial": "{date} — részleges napfogyatkozás. A halvány terület a Földön a Hold árnyékának széle. Az idő áll: indítsa el, és láthatja, ahogy mozog."
+    }
   },
   "keys": "A nyílbillentyűk forgatják a nézetet, a plusz és a mínusz a távolságot változtatja.",
   "settings": {
@@ -48,6 +85,7 @@
     "sources": "Források",
     "textures": "A Nap, a bolygók és a Hold térképei, valamint a csillagos háttér: Solar System Scope, CC BY 4.0. A háttér díszítés: csillagai nem katalógus szerint állnak.",
     "facts": "Az égitestek és a Szaturnusz gyűrűinek méretei: a NASA adatlapjai.",
+    "shadows": "A Föld árnyéka a Holdon és a Hold árnyéka a Földön a valódi helyzetekből van kiszámítva. A fogyatkozó Hold rézszínű derengése kép, nem mérés.",
     "engine": "Helyzet és forgás: astronomy-engine (MIT). 3D: three.js (MIT).",
     "madeBy": "Készítette: way1ong"
   },

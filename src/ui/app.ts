@@ -1,16 +1,20 @@
 // The screen: which body the camera looks at, from where, in which scale; the list of bodies to fly to, the
 // names over the picture, the menu. The astronomy is in ../core, the drawing in ./scene.ts.
 import { SKY } from '../config.ts';
-import { BODY_IDS, PLANET_IDS, parentOf, type BodyId } from '../core/bodies.ts';
+import { BODY_IDS, PLANET_IDS, parentOf, radiusKm, type BodyId } from '../core/bodies.ts';
+import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, shownAt, stepRate, togglePause, type Clock } from '../core/clock.ts';
+import { nextLunarEclipse, nextSolarEclipse } from '../core/eclipses.ts';
 import { attitude, orbitKm, positionsKm, type Attitude } from '../core/ephemeris.ts';
-import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, flightAt, progress, type Flight, type View } from '../core/flight.ts';
+import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, facing, flightAt, progress, type Flight, type View } from '../core/flight.ts';
 import { SCALES, sceneFromPlanet, sceneFromSun, scenePositions, sceneRadius, sceneRing, type ScaleMode } from '../core/scale.ts';
-import { length, type Vec3 } from '../core/vec.ts';
+import { shadeOf, type Shade } from '../core/shadow.ts';
+import { length, sub, type Vec3 } from '../core/vec.ts';
 import { attachControls } from './controls.ts';
 import { h } from './dom.ts';
 import { dict, fmt, pickLang, type Dict } from './i18n.ts';
 import { createMenuDialog } from './menu-dialog.ts';
 import { createSceneView, type Orbit, type SceneView } from './scene.ts';
+import { createTimeDialog } from './time-dialog.ts';
 
 const STORE = 'way1ong-sky:v1:settings';
 
@@ -35,8 +39,13 @@ export function startApp(root: HTMLElement): void {
   let lang = pickLang(loadLang(), navigator.languages ?? [navigator.language]);
   let d: Dict = dict(lang);
   let mode: ScaleMode = 'handy';
-  /** The moment the picture shows: now, refreshed every minute. */
-  let date = new Date();
+  /** The app's clock and the moment it shows right now. */
+  let clock: Clock = liveClock(Date.now());
+  let date = new Date(shownAt(clock, Date.now()));
+  /** The moment the bodies are turned for: it stops following the clock when the clock runs too fast. */
+  let spinDate = date;
+  /** The moment the lines of the orbits were drawn for. */
+  let orbitsDate = date;
   let focus: BodyId = 'sun';
   let flight: Flight | null = null;
   let view: View = { yaw: 0.6, pitch: (SKY.overview.pitchDeg * Math.PI) / 180, distance: 1 };
@@ -46,13 +55,26 @@ export function startApp(root: HTMLElement): void {
   let where = {} as Record<BodyId, Vec3>;
   let radius = {} as Record<BodyId, number>;
   let turned = {} as Record<BodyId, Attitude>;
+  let shade: Partial<Record<BodyId, Shade | null>> = {};
 
   function compute(): void {
-    where = scenePositions(positionsKm(date), mode);
+    const km = positionsKm(date);
+    where = scenePositions(km, mode);
+    if (showsSpin(clock)) spinDate = date;
     for (const id of BODY_IDS) {
       radius[id] = sceneRadius(id, mode);
-      turned[id] = attitude(id, date);
+      turned[id] = attitude(id, spinDate);
     }
+    // Shadows come from the real places and sizes, whichever the scale of the picture.
+    const shadow = (body: BodyId, by: BodyId) => shadeOf(km[body], radiusKm(body), km.sun, radiusKm('sun'), km[by], radiusKm(by));
+    shade = { moon: shadow('moon', 'earth'), earth: shadow('earth', 'moon') };
+  }
+
+  /** The lines of the orbits follow the clock: drawn again when it has moved on by two days. */
+  function refreshOrbits(force = false): void {
+    if (!force && Math.abs(date.getTime() - orbitsDate.getTime()) < 2 * 86_400_000) return;
+    orbitsDate = date;
+    scene.setOrbits(orbits());
   }
 
   function orbits(): Partial<Record<BodyId, Orbit>> {
@@ -75,15 +97,24 @@ export function startApp(root: HTMLElement): void {
   const note = h('p', { class: 'note', role: 'status' });
   const dock = h('ul', { class: 'dock' });
   const scaleBox = h('fieldset', { class: 'scale' });
+  const timeBox = h('div', { class: 'time', role: 'group' });
+  const slowerBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { 'aria-hidden': 'true' }, '◀◀'));
+  const pauseBtn = h('button', { class: 'icon-btn', type: 'button' });
+  const fasterBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { 'aria-hidden': 'true' }, '▶▶'));
+  const nowBtn = h('button', { class: 'chip', type: 'button' });
+  const moreBtn = h('button', { class: 'chip', type: 'button' });
+  timeBox.append(slowerBtn, pauseBtn, fasterBtn, nowBtn, moreBtn);
   const menu = createMenuDialog();
+  const timeDialog = createTimeDialog();
   const stage = h('div', { class: 'stage' }, canvas, labels);
   const main = h(
     'main',
     { class: 'app' },
     stage,
     h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line), menuBtn),
-    h('div', { class: 'bottom' }, note, h('div', { class: 'bar' }, scaleBox), dock),
+    h('div', { class: 'bottom' }, note, h('div', { class: 'bar' }, timeBox), h('div', { class: 'bar' }, scaleBox), dock),
     menu.el,
+    timeDialog.el,
   );
   root.replaceChildren(main);
 
@@ -110,6 +141,11 @@ export function startApp(root: HTMLElement): void {
     canvas.setAttribute('aria-label', d.app.scene);
     menuBtn.setAttribute('aria-label', d.app.menu);
     dock.setAttribute('aria-label', d.dock.label);
+    timeBox.setAttribute('aria-label', d.time.label);
+    slowerBtn.setAttribute('aria-label', d.time.slower);
+    fasterBtn.setAttribute('aria-label', d.time.faster);
+    nowBtn.textContent = d.time.now;
+    moreBtn.textContent = d.time.more;
 
     labels.replaceChildren();
     dock.replaceChildren();
@@ -145,7 +181,15 @@ export function startApp(root: HTMLElement): void {
   function describe(): void {
     const whole = focus === 'sun' && !flight && view.distance > arrivalDistance('sun', radius.sun) * 1.5;
     title.textContent = flight ? fmt(d.status.flying, { name: d.bodies[flight.to] }) : whole ? d.dock.whole : fmt(d.status.at, { name: d.bodies[focus] });
-    line.textContent = fmt(d.status.today, { date: new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric' }).format(date) });
+    const real = Date.now();
+    const live = isLive(clock, real);
+    const moment = fmt(d.time.at, { date: dayText(date), time: new Intl.DateTimeFormat(lang, { hour: 'numeric', minute: '2-digit' }).format(date) });
+    const name = d.time.rates[SKY.time.names[clock.rate] as keyof Dict['time']['rates']];
+    const speed = (RATES[clock.rate] as number) < 0 ? fmt(d.time.back, { rate: name }) : name;
+    line.textContent = clock.paused ? `${moment} · ${d.time.paused}` : live ? moment : `${moment} · ${speed}`;
+    nowBtn.hidden = live;
+    pauseBtn.setAttribute('aria-label', clock.paused ? d.time.play : d.time.pause);
+    pauseBtn.replaceChildren(h('span', { 'aria-hidden': 'true' }, clock.paused ? '▶' : '❚❚'));
     for (const [id, chip] of chipOf) {
       const here = id === 'whole' ? whole : !whole && id === (flight?.to ?? focus);
       if (here) chip.setAttribute('aria-current', 'true');
@@ -153,12 +197,69 @@ export function startApp(root: HTMLElement): void {
     }
   }
 
+  const dayText = (moment: Date) => new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric' }).format(moment);
+
+  // ---------- time ----------
+  /** After the clock was changed: the picture for the new moment. */
+  function retime(say = ''): void {
+    date = new Date(shownAt(clock, Date.now()));
+    compute();
+    refreshOrbits();
+    note.textContent = say;
+    describe();
+    dirty = true;
+  }
+
+  slowerBtn.addEventListener('click', () => {
+    clock = stepRate(clock, Date.now(), -1);
+    retime(showsSpin(clock) ? '' : d.time.noSpin);
+  });
+  fasterBtn.addEventListener('click', () => {
+    clock = stepRate(clock, Date.now(), 1);
+    retime(showsSpin(clock) ? '' : d.time.noSpin);
+  });
+  pauseBtn.addEventListener('click', () => {
+    clock = togglePause(clock, Date.now());
+    retime();
+  });
+  nowBtn.addEventListener('click', () => {
+    clock = liveClock(Date.now());
+    retime();
+    pauseBtn.focus();
+  });
+
+  /** To the middle of an eclipse: time stands, the camera flies to the body in shadow and looks at its lit side. */
+  function showEclipse(body: 'moon' | 'earth', peak: Date, say: string): void {
+    clock = jumpTo(clock, Date.now(), peak.getTime());
+    retime(say);
+    const side = facing(sub(where.sun, where[body]), (SKY.eclipseViewOffsetDeg[body] * Math.PI) / 180);
+    view = { ...view, ...side };
+    fly(body, arrivalDistance(body, radius[body]), say);
+  }
+
+  moreBtn.addEventListener('click', () =>
+    timeDialog.open(d, date, {
+      goTo(day) {
+        clock = jumpTo(clock, Date.now(), day.getTime());
+        retime();
+      },
+      nextLunar() {
+        const eclipse = nextLunarEclipse(date);
+        showEclipse('moon', eclipse.peak, fmt(d.time.lunarAt[eclipse.kind], { date: dayText(eclipse.peak) }));
+      },
+      nextSolar() {
+        const eclipse = nextSolarEclipse(date);
+        showEclipse('earth', eclipse.peak, fmt(d.time.solarAt[eclipse.kind], { date: dayText(eclipse.peak) }));
+      },
+    }),
+  );
+
   // ---------- moves ----------
   const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function fly(to: BodyId, endDistance: number): void {
+  function fly(to: BodyId, endDistance: number, say = ''): void {
     flight = { from: focus, to, startDistance: view.distance, endDistance, startedAt: performance.now(), durationMs: reducedMotion() ? 0 : SKY.flightMs };
-    note.textContent = '';
+    note.textContent = say;
     describe();
     dirty = true;
   }
@@ -178,7 +279,7 @@ export function startApp(root: HTMLElement): void {
     const before = whole ? length(where[SKY.overview.whole]) : radius[focus];
     mode = next;
     compute();
-    scene.setOrbits(orbits());
+    refreshOrbits(true);
     const after = whole ? length(where[SKY.overview.whole]) : radius[focus];
     flight = null;
     view = { ...view, distance: clampDistance((view.distance * after) / before, radius[focus], farthest()) };
@@ -244,6 +345,19 @@ export function startApp(root: HTMLElement): void {
 
   // ---------- the loop: a frame is drawn only when something has changed ----------
   function frame(now: number): void {
+    if (isRunningFast(clock)) {
+      const real = Date.now();
+      if (atLimit(clock, real)) {
+        clock = togglePause(clock, real);
+        retime(fmt(d.time.limit, { from: SKY.time.fromYear, to: SKY.time.toYear }));
+      } else {
+        date = new Date(shownAt(clock, real));
+        compute();
+        refreshOrbits();
+        describe();
+        dirty = true;
+      }
+    }
     let target = where[focus];
     if (flight) {
       const at = flightAt(flight, now, where);
@@ -260,7 +374,7 @@ export function startApp(root: HTMLElement): void {
     }
     if (dirty) {
       dirty = false;
-      scene.draw({ where, radius, turned, ring: sceneRing(mode), target, eye: eye(target, view) });
+      scene.draw({ where, radius, turned, ring: sceneRing(mode), shade, target, eye: eye(target, view) });
       placeLabels();
     }
     window.requestAnimationFrame(frame);
@@ -272,14 +386,16 @@ export function startApp(root: HTMLElement): void {
   });
   // The planets move slowly, the Earth turns a quarter of a degree a minute: once a minute is often enough.
   window.setInterval(() => {
-    date = new Date();
+    if (clock.paused || isRunningFast(clock)) return;
+    date = new Date(shownAt(clock, Date.now()));
     compute();
+    refreshOrbits();
     describe();
     dirty = true;
   }, 60_000);
 
   compute();
-  scene.setOrbits(orbits());
+  refreshOrbits(true);
   view = { ...view, distance: fit(SKY.overview.first) };
   build();
   window.requestAnimationFrame(frame);

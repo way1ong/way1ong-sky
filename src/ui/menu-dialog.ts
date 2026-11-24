@@ -35,6 +35,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
             {},
             h('li', {}, d.about.textures, ' ', link(TEXTURES_URL, 'Solar System Scope'), ' · ', link(LICENSE_URL, 'CC BY 4.0')),
             h('li', {}, d.about.facts, ' ', link(SOURCES.planets.url, SOURCES.planets.title), ' · ', link(SOURCES.sun.url, SOURCES.sun.title), ' · ', link(SOURCES.rings.url, SOURCES.rings.title)),
+            h('li', {}, d.about.shadows),
             h('li', {}, d.about.engine),
           ),
           h('p', {}, made),
