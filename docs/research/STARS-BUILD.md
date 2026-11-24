@@ -1,0 +1,398 @@
+# Файл зір — що зібрано й що відкинуто
+
+Зібрано скриптом `scripts/stars/build.mjs` із сирих відповідей Вікіданих (`wikidata-stars-2026-11-24.tgz`). Цей файл скрипт пише сам — руками не правити.
+
+- Записів з видимою величиною до 6.5: 9460.
+- Зір у файлі після відсіву й злиття: **8695** (з них 0 — з величиною Gaia G замість видимої; записів Gaia взято 0).
+- Записи ближче ніж 60″ один до одного вважаються однією зорею: місце й величина — найяскравішого, назва — того запису, що має назви більшою кількістю мов.
+- Назви збережено для зір до 3.5 величини: 285.
+- Ліній сузір'їв: 727 відрізків у 88 фігурах; кінців ліній без зорі: 9.
+
+## Кінці ліній, для яких зорі не знайшлось
+- Car: 131.176°, -54.709°
+- Cep: 333.759°, 57.044°
+- Dra: 263.067°, 55.173°
+- Hya: 138.591°, 2.314°
+- Per: 47.267°, 49.613°
+- Per: 47.267°, 49.613°
+- Psc: 359.828°, 6.863°
+- UMi: 244.376°, 75.755°
+- Vel: 131.176°, -54.709°
+
+## Відкинуто: не має місця серед зір (планети, супутники тощо)
+- Saturn (-0.24)
+- 2015 KH163 (0.09)
+- Q4009109 (0.13)
+- Despina (1.1)
+- Mars (1.86)
+- Sh2-9 (2.89)
+- Q4009096 (2.87)
+- Q4009079 (3.22)
+- Hiʻiaka (3.3)
+- Beta Tucanae (3.42)
+- Q4009095 (3.7)
+- Q16620513 (3.62)
+- Sigma Orionis A (3.79)
+- Q4009080 (4.22)
+- Q4009105 (4.29)
+- Q4009084 (4.54)
+- Namaka (4.6)
+- Ganymede (4.61)
+- Q4009120 (4.59)
+- Q16620483 (4.936)
+- 24 Comae Berenices (4.91)
+- Zeta Piscium (4.96)
+- Veil Nebula (5)
+- Io (5.02)
+- Vesta (5.1)
+- Europa (5.29)
+- Callisto (5.65)
+- Q4009077 (5.65)
+- Q4009068 (5.79)
+- Q4009146 (5.8)
+- Q66497494 (5.901)
+- IC 4703 (6)
+- Q3779747 (6)
+- Q16620499 (6.15)
+- Q16620481 (6.18)
+- Q4009099 (6.249)
+- Q1114315 (6.26)
+- Q4009067 (6.298)
+- Q66481683 (6.3)
+- Q66497496 (6.336)
+- Q4009081 (6.425)
+- Q66497495 (6.457)
+
+## Відкинуто: спалах, планета чи супутник
+- Jupiter (-1.6): gas giant, outer planet
+- Q9331379 (1.07): supernova
+- Mercury (1.9): inferior planet, inner planet of the Solar System
+- Blaze Star (2): symbiotic binary, recurrent nova, spectroscopic binary
+- SN 1604 (2.5): supernova
+- HR Delphini (3.7): infrared source, spectroscopic binary, nova, star
+- Q1334571 (4.1): emission-line star, spectroscopic binary, cataclysmic variable star, nova
+- SN 1987A (4.81): supernova
+- Uranus (5.32): ice giant, outer planet
+- Q9330302 (5.8): supernova
+- GRB 080319B (5.8): gamma-ray burst
+- S Andromedae (5.8): near-infrared source, cataclysmic variable star, type Ia supernova, supernova remnant, variable star, supernova
+- HIP 79797 Bb (5.9): exoplanet
+- HIP 79797 Ba (5.9): exoplanet
+- XX Tauri (6): nova
+- NOVA Ori 1667 (6): nova
+- mu2 Oct b (6.02): exoplanet
+
+## Відкинуто: не зоря (скупчення, туманність, галактика)
+- Canis Major Dwarf Galaxy (-0.1): dwarf galaxy, irregular galaxy
+- Ursa Major Moving Group (0.4): moving group, stellar association, open cluster, stellar kinematics
+- Hyades (0.5): open cluster
+- Large Magellanic Cloud (0.4): gamma-ray source, infrared source, dwarf galaxy, irregular galaxy
+- Alpha Persei Cluster (1.2): open cluster
+- Pleiades (1.6): open cluster
+- Coma Star Cluster (1.8): open cluster
+- Small Magellanic Cloud (2.2): dwarf galaxy, irregular galaxy
+- Q50050 (1.9): open cluster
+- NGC 1980 (2.5): star cluster
+- IC 2391 (2.5): open cluster
+- Q825941 (2.6): open cluster
+- Collinder 121 (2.6): open cluster, asterism
+- Collinder 69 (2.8): open cluster
+- Melotte 186 (3): open cluster
+- Q372496 (3): open cluster
+- Carina Nebula (3): H II region
+- Cr 65 (3): star cluster, open cluster
+- Beehive Cluster (3.1): open cluster
+- Messier 7 (3.3): open cluster
+- Andromeda Galaxy (3.44): spiral galaxy
+- Q66477176 (3.4): open cluster
+- Brocchi's Cluster (3.6): star cluster
+- Q90528785 (3.5): open cluster, globular cluster
+- Q482454 (3.7): open cluster
+- Sagittarius Dwarf Elliptical Galaxy (3.6): dwarf galaxy
+- Q84277475 (3.6): open cluster
+- Delta Lyrae cluster (3.8): open cluster
+- Q33571 (3.8): open cluster
+- Q745008 (3.8): open cluster
+- Q226134 (3.9): open cluster
+- Q66477178 (3.9): open cluster
+- Orion Nebula (4): astrophysical X-ray source, astronomical radio source, diffuse nebula, reflection nebula, H II region
+- North America Nebula (4): H II region
+- 47 Tucanae (4.09): globular cluster
+- NGC 2362 (4.1): open cluster
+- Q1046317 (4.2): open cluster
+- Butterfly Cluster (4.2): open cluster
+- IC 4665 (4.2): open cluster
+- NGC 3114 (4.2): open cluster
+- Q66477166 (4.2): open cluster
+- Q66477167 (4.2): open cluster
+- Jewel Box (4.2): open cluster
+- Q3146560 (4.3): open cluster
+- Stock 2 (4.4): open cluster
+- Q66477177 (4.4): open cluster
+- Blanco 1 (4.5): open cluster
+- Messier 41 (4.5): open cluster
+- IC 2944 (4.5): open cluster, H II region
+- Q1146799 (4.6): open cluster
+- Sagittarius Star Cloud (4.6): Q3237390, stellar association, asterism
+- Messier 25 (4.6): open cluster
+- Messier 39 (4.6): open cluster
+- NGC 6530 (4.6): star cluster
+- Q2637964 (4.6): open cluster
+- IC 4756 (4.6): open cluster
+- Q5178823 (4.6): star cluster, open cluster, asterism
+- Q66477171 (4.6): open cluster
+- NGC 2547 (4.7): star cluster
+- Q1104098 (4.7): open cluster
+- NGC 5171 Group (4.7): astrophysical X-ray source, galaxy group, galaxy cluster
+- Q66477179 (4.7): open cluster
+- Q217045 (4.8): open cluster
+- Messier 10 (4.98): globular cluster
+- Q9361909 (5): open cluster
+- Q841193 (5.1): open cluster
+- Messier 35 (5.1): open cluster
+- Q66477172 (5.1): open cluster
+- Q647261 (5.2): open cluster
+- NGC 6193 (5.2): open cluster
+- Messier 34 (5.2): open cluster
+- NGC 6397 (5.17): globular cluster
+- Q1117737 (5.3): open cluster
+- NGC 3766 (5.3): stellar association
+- Omega Centauri (5.33): globular cluster
+- Q1995668 (5.4): star cluster
+- Q223671 (5.4): star cluster
+- R136 (5.4): super star cluster
+- Q66477170 (5.4): open cluster
+- Q921254 (5.4): open cluster
+- Q1121822 (5.5): star cluster
+- Messier 23 (5.5): open cluster
+- Q1145361 (5.5): star cluster
+- Q1960538 (5.5): star cluster
+- Trumpler 14 (5.5): open cluster
+- Messier 19 (5.57): globular cluster
+- Q1119931 (5.6): open cluster
+- Messier 4 (5.6): star cluster, globular cluster
+- Q119138 (5.6): open cluster
+- Messier 37 (5.6): open cluster
+- Q740431 (5.6): open cluster
+- Q939452 (5.69): globular cluster
+- Q1145649 (5.7): star cluster
+- Q66477165 (5.7): open cluster
+- Q66477168 (5.7): open cluster
+- Q725479 (5.7): open cluster
+- Triangulum Galaxy (5.72): flocculent spiral galaxy
+- Messier 14 (5.73): globular cluster
+- Q840003 (5.8): open cluster
+- NGC 6124 (5.8): globular cluster
+- Wild Duck Cluster (5.8): open cluster
+- Messier 13 (5.8): globular cluster
+- Messier 48 (5.8): open cluster
+- Messier 21 (5.9): open cluster
+- Messier 50 (5.9): open cluster
+- Trumpler 2 (5.9): open cluster
+- NGC 6250 (5.9): open cluster
+- Q572407 (5.9): open cluster
+- Q66477162 (5.9): star cluster
+- Q66477175 (5.9): open cluster
+- Q1047283 (5.9): open cluster
+- Messier 5 (5.95): globular cluster
+- NGC 2301 (6): open cluster
+- NGC 3228 (6): star cluster
+- Q1118713 (6): star cluster
+- Lagoon Nebula (6): H II region
+- Eagle Nebula (6): astronomical radio source, open cluster, H II region
+- Omega Nebula (6): H II region
+- Q1146657 (6): galaxy
+- Messier 36 (6): open cluster
+- Q1432278 (6): galaxy
+- Messier 12 (6.07): globular cluster
+- Q1045078 (6.1): asterism
+- NGC 2669 (6.1): star cluster
+- Q1149918 (6.1): open cluster
+- Messier 46 (6.1): open cluster
+- Messier 71 (6.1): globular cluster
+- Q66491550 (6.1): open cluster
+- Messier 22 (6.17): astrophysical X-ray source, globular cluster
+- Q66491553 (6.2): open cluster
+- Messier 15 (6.2): globular cluster
+- Messier 93 (6.2): open cluster
+- Q1043959 (6.2): open cluster
+- Messier 2 (6.25): globular cluster
+- Q267072 (6.28): globular cluster
+- Q1121467 (6.3): star cluster
+- Trifid Nebula (6.3): H II region
+- Q1148670 (6.3): open cluster
+- Q66491546 (6.3): open cluster
+- Stock 14 (6.3): open cluster
+- Q66491549 (6.3): open cluster
+- Q66491552 (6.3): open cluster
+- Q66491554 (6.3): open cluster
+- Q949979 (6.3): star cluster
+- Messier 3 (6.39): globular cluster
+- Q66491556 (6.4): open cluster
+- Q730450 (6.4): open cluster
+- NGC 7243 (6.4): open cluster
+- Q1043891 (6.4): star cluster
+- Q1044507 (6.4): open cluster
+- NGC 1662 (6.4): star cluster
+- Messier 38 (6.4): open cluster
+- Q3696408 (6.4): open cluster
+- Q383452 (6.4): open cluster
+- Q66491551 (6.4): open cluster
+- Messier 55 (6.49): globular cluster
+- Q756425 (6.5): open cluster
+- Q1048420 (6.5): open cluster
+- Q1123230 (6.5): open cluster
+- Soul Nebula (6.5): H II region
+- Q1278305 (6.5): star cluster
+- Q303126 (6.5): astronomical radio source, open cluster
+- Heart Nebula (6.5): open cluster
+- Q665027 (6.5): open cluster
+- NGC 654 (6.5): open cluster
+
+## Відкинуто: зіпсований запис
+- 132 Tauri (4.873): declination equals right ascension
+- q Herculis (6.082): declination equals right ascension
+- 19 Leonis (6.445): declination equals right ascension
+
+## Відкинуто: не підтверджено звіркою (`scripts/stars/exclude.json`)
+- Q66477379 (0.128) — Q66477379
+- Collinder 135 (2.1) — Q2023845
+- Q88445025 (3.4) — Q88445025
+- R Horologii (3.92) — Q3271890
+- Chi Cygni (4.24) — Q1071564
+- R Cassiopeiae (4.8) — Q257904
+- Q66476616 (4.89) — Q66476616
+- Q66531079 (4.89) — Q66531079
+- R Hydrae (4.97) — Q2124823
+- Q66497491 (4.989) — Q66497491
+- Q66476713 (5.1) — Q66476713
+- Q66476612 (5.3) — Q66476612
+- U Orionis (5.4) — Q2608961
+- Q66476624 (5.38) — Q66476624
+- Q78939486 (5.4) — Q78939486
+- Q66476847 (5.43) — Q66476847
+- T Ursae Majoris (5.5) — Q7246419
+- 50 Librae (5.526) — Q3599266
+- Q66476613 (5.65) — Q66476613
+- S Carinae (5.71) — Q3781855
+- S Coronae Borealis (5.8) — Q4176328
+- Q66476610 (5.832) — Q66476610
+- U Cygni (5.9) — Q12777961
+- Q66476622 (5.94) — Q66476622
+- Q10850139 (5.951) — Q10850139
+- Q66476736 (5.96) — Q66476736
+- CN Boötis (5.957) — Q6831076
+- Q66476615 (5.97) — Q66476615
+- Q66476623 (5.98) — Q66476623
+- S Gruis (6) — Q12775725
+- AG Pegasi (6) — Q16002025
+- Q66481510 (6.06) — Q66481510
+- Q66485945 (6.06) — Q66485945
+- Q10908326 (6.07) — Q10908326
+- R Cygni (6.1) — Q16931344
+- R Carinae (6.1) — Q3781801
+- Q66481682 (6.1) — Q66481682
+- R Aquilae (6.09) — Q1699068
+- Q66491195 (6.13) — Q66491195
+- Q66531035 (6.15) — Q66531035
+- Q66481485 (6.176) — Q66481485
+- Q66531036 (6.2) — Q66531036
+- Z Ursae Majoris (6.2) — Q136635
+- T Normae (6.2) — Q22086950
+- R Boötis (6.2) — Q5097295
+- S Sculptoris (6.2) — Q56303823
+- Q66481526 (6.22) — Q66481526
+- Q66481563 (6.22) — Q66481563
+- Q66481519 (6.29) — Q66481519
+- Q66481492 (6.28) — Q66481492
+- [SC93] 139 (6.28) — Q66481501
+- Q66491176 (6.3) — Q66491176
+- Q66481515 (6.32) — Q66481515
+- Q66481508 (6.35) — Q66481508
+- R Pictoris (6.35) — Q13400705
+- Q66483896 (6.36) — Q66483896
+- HD 105383 (6.362) — Q10847496
+- Q66481539 (6.36) — Q66481539
+- Q85820687 (6.36) — Q85820687
+- Q10849940 (6.372) — Q10849940
+- Q10848461 (6.38) — Q10848461
+- Q66481499 (6.38) — Q66481499
+- R Octantis (6.4) — Q12775009
+- S Herculis (6.4) — Q12775730
+- X Ophiuchi (6.4) — Q12779229
+- Q66491255 (6.408) — Q66491255
+- Q66481498 (6.42) — Q66481498
+- Q66481504 (6.43) — Q66481504
+- Q66481527 (6.45) — Q66481527
+- Q66481564 (6.45) — Q66481564
+- Q66483588 (6.45) — Q66483588
+- Eta Carinae (6.48) — Q12185
+- Q66481561 (6.48) — Q66481561
+- S Pictoris (6.5) — Q17042248
+- R Aurigae (6.5) — Q5097124
+- R Reticuli (6.5) — Q5177564
+- Q66483760 (6.5) — Q66483760
+- Q66485142 (6.5) — Q66485142
+- Q66530895 (6.5) — Q66530895
+- Q87272169 (6.5) — Q87272169
+
+## Злито в одну зорю (серед найяскравіших, до 2,5)
+- Alpha Crucis (0.76): Alpha2 Crucis 1.58 + Alpha Crucis 0.76 + Acrux 1.28
+- Alpha Centauri (-0.1): Alpha Centauri B 1.33 + Alpha Centauri A 0.01 + Alpha Centauri -0.1
+- Avior (1.86): eps Car B 3.85 + Avior 1.86 + eps Car A 2.01
+- Gamma Centauri (2.17): Gamma Centauri A 2.82 + Gamma Centauri 2.17 + Gamma Centauri B 2.88
+- Gamma Velorum (1.83): gam01 Vel 4.173 + Gamma Velorum 1.83
+- Theta Scorpii (1.85): Theta Scorpii 1.862 + tet Sco A 1.85 + tet Sco B 6.22
+- Антарес (0.91): Q12166 0.91 + Q66530984 5.2
+- Beta Scorpii (2.5): Acrab 2.62 + Beta Scorpii 2.5 + Q66477351 4.89
+- Sirius (-1.46): Sirius A -1.46 + Sirius -1.46
+- Eta Ophiuchi (2.42): Eta Ophiuchi B 3.26 + Eta Ophiuchi A 2.463 + Eta Ophiuchi 2.42
+- Alnitak (1.77): Zeta Orionis B 3.7 + Alnitak 1.77 + Zeta Orionis A 1.88
+- Gamma Leonis (1.98): Gamma Leonis 2.37 + Gamma Leonis A 1.98
+- Epsilon Boötis (2.39): Epsilon Boötis 2.39 + Epsilon Boötis B 4.801
+- Castor (1.58): Castor A 1.9 + Castor 1.58 + Castor B 3
+- Gamma¹ Andromedae (2.1): Gamma¹ Andromedae 2.1 + Gamma Andromedae 2.1 + Gamma2 Andromedae 5.82
+- Zeta2 Ursae Majoris (2.22): Zeta2 Ursae Majoris 3.88 + Zeta Ursae Majoris A 2.22
+- Dubhe (1.79): Alpha UMa B 4.91 + Alpha UMa A 2 + Dubhe 1.79
+
+## Сорок найяскравіших у файлі
+- 0. Sirius / Сіріус / Szíriusz: -1.46, 101.287°, -16.716° — Q3409
+- 1. Canopus / Канопус / —: -0.74, 95.988°, -52.696° — Q12189
+- 2. Alpha Centauri / Альфа Центавра / Alfa Centauri: -0.1, 219.874°, -60.832° — Q12176
+- 3. Arcturus / Арктур / Arcturus: -0.05, 213.915°, 19.182° — Q12985
+- 4. Vega / Вега / Vega: 0.03, 279.235°, 38.784° — Q3427
+- 5. Capella / Капелла / Capella: 0.08, 79.172°, 45.998° — Q12970
+- 6. Rigel / Рігель / Rigel: 0.13, 78.634°, -8.202° — Q12126
+- 7. Procyon / Проціон / Procyon: 0.37, 114.825°, 5.225° — Q13034
+- 8. Betelgeuse / Бетельгейзе / Betelgeuze: 0.42, 88.793°, 7.407° — Q12124
+- 9. Achernar / Ахернар / Achernar: 0.46, 24.429°, -57.237° — Q12183
+- 10. Beta Centauri / Ходор / Béta Centauri: 0.6, 210.956°, -60.373° — Q13175
+- 11. Alpha Crucis / — / Alfa Crucis: 0.76, 186.650°, -63.099° — Q13102
+- 12. Altair / Альтаїр / Altair: 0.76, 297.696°, 8.868° — Q12975
+- 13. Aldebaran / Альдебаран / Aldebaran: 0.86, 68.980°, 16.509° — Q12170
+- 14. — / Антарес / Antares: 0.91, 247.352°, -26.432° — Q12166
+- 15. Spica / Спіка / —: 0.97, 201.298°, -11.161° — Q13008
+- 16. Pollux / Поллукс / Pollux: 1.14, 116.329°, 28.026° — Q13028
+- 17. Fomalhaut A / — / —: 1.16, 344.413°, -29.622° — Q76446963
+- 18. Mimosa / Бекрукс / Béta Crucis: 1.25, 191.930°, -59.689° — Q13105
+- 19. Deneb / Денеб / Deneb: 1.25, 310.358°, 45.280° — Q12179
+- 20. Alpha Leonis A / Регул / Regulus: 1.4, 152.093°, 11.967° — Q13013
+- 21. — / Адара / Adara: 1.5, 104.656°, -28.972° — Q13414
+- 22. Castor / Кастор / Castor: 1.58, 113.649°, 31.888° — Q13029
+- 23. Lambda Scorpii / Лямбда Скорпіона / Lambda Scorpii: 1.63, 263.402°, -37.104° — Q13023
+- 24. Bellatrix / Беллатрікс / —: 1.64, 81.283°, 6.350° — Q13066
+- 25. Gacrux / Гамма Південного Хреста / Gamma Crucis: 1.64, 187.791°, -57.113° — Q14233
+- 26. Beta Tauri / Натх / —: 1.65, 81.573°, 28.607° — Q13508
+- 27. Alnilam / Альнілам / —: 1.69, 84.053°, -1.202° — Q13070
+- 28. Beta Carinae / Міаплацидус / —: 1.69, 138.300°, -69.717° — Q13174
+- 29. — / Альфа Журавля / —: 1.71, 332.059°, -46.962° — Q854042
+- 30. Alnitak / Альнітак / Alnitak: 1.77, 85.190°, -1.943° — Q13076
+- 31. Alioth / Аліот / —: 1.77, 193.507°, 55.960° — Q13091
+- 32. Alpha Persei / Мірфак / —: 1.79, 51.081°, 49.861° — Q13790
+- 33. Dubhe / Дубхе / —: 1.79, 165.932°, 61.751° — Q13084
+- 34. Epsilon Sagittarii / Каус Австраліс / —: 1.81, 276.043°, -34.385° — Q14034
+- 35. Gamma Velorum / Гамма Вітрил / —: 1.83, 122.383°, -47.337° — Q14235
+- 36. Delta Canis Majoris / Везен / —: 1.84, 107.098°, -26.393° — Q13411
+- 37. Theta Scorpii / Тета Скорпіона / —: 1.85, 264.330°, -42.998° — Q14236
+- 38. Avior / — / —: 1.86, 125.628°, -59.509° — Q14256
+- 39. Alkaid / Бенетнаш / —: 1.86, 206.885°, 49.313° — Q13093

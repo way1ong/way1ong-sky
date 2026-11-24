@@ -1,0 +1,485 @@
+{
+ "note": "Records of Wikidata left out of the star file after a check against an independent catalogue (XHIP, used for checking only; none of its data is in the program). Made on 2026-11-24; see docs/research/STARS.md. Kept on purpose although the check differs: Mira (Q15879429), a variable that ends a line of Cetus, and five faint companions of bright stars.",
+ "records": [
+  {
+   "id": "Q66477379",
+   "name": "",
+   "magnitude": 0.13,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q2023845",
+   "name": "Collinder 135",
+   "magnitude": 2.1,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q88445025",
+   "name": "",
+   "magnitude": 3.4,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q257904",
+   "name": "R Cassiopeiae",
+   "magnitude": 4.8,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q66531079",
+   "name": "",
+   "magnitude": 4.89,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66476616",
+   "name": "",
+   "magnitude": 4.89,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66497491",
+   "name": "",
+   "magnitude": 4.99,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66476713",
+   "name": "",
+   "magnitude": 5.1,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66476612",
+   "name": "",
+   "magnitude": 5.3,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q2608961",
+   "name": "U Orionis",
+   "magnitude": 5.4,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q78939486",
+   "name": "",
+   "magnitude": 5.4,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66476847",
+   "name": "",
+   "magnitude": 5.43,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q7246419",
+   "name": "T Ursae Majoris",
+   "magnitude": 5.5,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q3599266",
+   "name": "50 Librae",
+   "magnitude": 5.53,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66476613",
+   "name": "",
+   "magnitude": 5.65,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q4176328",
+   "name": "S Coronae Borealis",
+   "magnitude": 5.8,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q66476610",
+   "name": "",
+   "magnitude": 5.83,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66476622",
+   "name": "",
+   "magnitude": 5.94,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q10850139",
+   "name": "",
+   "magnitude": 5.95,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q6831076",
+   "name": "CN Boötis",
+   "magnitude": 5.96,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66476736",
+   "name": "",
+   "magnitude": 5.96,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66476615",
+   "name": "",
+   "magnitude": 5.97,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66476623",
+   "name": "",
+   "magnitude": 5.98,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q16002025",
+   "name": "AG Pegasi",
+   "magnitude": 6,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q12775725",
+   "name": "S Gruis",
+   "magnitude": 6,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481510",
+   "name": "",
+   "magnitude": 6.06,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66485945",
+   "name": "",
+   "magnitude": 6.06,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q10908326",
+   "name": "",
+   "magnitude": 6.07,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481682",
+   "name": "",
+   "magnitude": 6.1,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q16931344",
+   "name": "R Cygni",
+   "magnitude": 6.1,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q66491195",
+   "name": "",
+   "magnitude": 6.13,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66531035",
+   "name": "",
+   "magnitude": 6.15,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481485",
+   "name": "",
+   "magnitude": 6.18,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q5097295",
+   "name": "R Boötis",
+   "magnitude": 6.2,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q22086950",
+   "name": "T Normae",
+   "magnitude": 6.2,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q66531036",
+   "name": "",
+   "magnitude": 6.2,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481526",
+   "name": "",
+   "magnitude": 6.22,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481563",
+   "name": "",
+   "magnitude": 6.22,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481492",
+   "name": "",
+   "magnitude": 6.28,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481519",
+   "name": "",
+   "magnitude": 6.29,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66491176",
+   "name": "",
+   "magnitude": 6.3,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481515",
+   "name": "",
+   "magnitude": 6.32,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481508",
+   "name": "",
+   "magnitude": 6.35,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66483896",
+   "name": "",
+   "magnitude": 6.36,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481539",
+   "name": "",
+   "magnitude": 6.36,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q85820687",
+   "name": "",
+   "magnitude": 6.36,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q10847496",
+   "name": "HD 105383",
+   "magnitude": 6.36,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q10849940",
+   "name": "",
+   "magnitude": 6.37,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481499",
+   "name": "",
+   "magnitude": 6.38,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q10848461",
+   "name": "",
+   "magnitude": 6.38,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q12775009",
+   "name": "R Octantis",
+   "magnitude": 6.4,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q12775730",
+   "name": "S Herculis",
+   "magnitude": 6.4,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q66491255",
+   "name": "",
+   "magnitude": 6.41,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481498",
+   "name": "",
+   "magnitude": 6.42,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481504",
+   "name": "",
+   "magnitude": 6.43,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66483588",
+   "name": "",
+   "magnitude": 6.45,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481564",
+   "name": "",
+   "magnitude": 6.45,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481527",
+   "name": "",
+   "magnitude": 6.45,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q12185",
+   "name": "Eta Carinae",
+   "magnitude": 6.48,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66481561",
+   "name": "",
+   "magnitude": 6.48,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q5177564",
+   "name": "R Reticuli",
+   "magnitude": 6.5,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q17042248",
+   "name": "S Pictoris",
+   "magnitude": 6.5,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q5097124",
+   "name": "R Aurigae",
+   "magnitude": 6.5,
+   "reason": "a variable of the Mira type given at its rare maximum; no star this bright at this place in the check catalogue"
+  },
+  {
+   "id": "Q66483760",
+   "name": "",
+   "magnitude": 6.5,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q87272169",
+   "name": "",
+   "magnitude": 6.5,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q66485142",
+   "name": "",
+   "magnitude": 6.5,
+   "reason": "no star at this place in the check catalogue"
+  },
+  {
+   "id": "Q3271890",
+   "name": "R Horologii",
+   "magnitude": 3.92,
+   "reason": "the check catalogue has a star here of magnitude 7.22: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q1071564",
+   "name": "Chi Cygni",
+   "magnitude": 4.24,
+   "reason": "the check catalogue has a star here of magnitude 7.91: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q2124823",
+   "name": "R Hydrae",
+   "magnitude": 4.97,
+   "reason": "the check catalogue has a star here of magnitude 6.4: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q66476624",
+   "name": "",
+   "magnitude": 5.38,
+   "reason": "the check catalogue has a star here of magnitude 7.51: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q3781855",
+   "name": "S Carinae",
+   "magnitude": 5.71,
+   "reason": "the check catalogue has a star here of magnitude 6.94: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q12777961",
+   "name": "U Cygni",
+   "magnitude": 5.9,
+   "reason": "the check catalogue has a star here of magnitude 7.87: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q1699068",
+   "name": "R Aquilae",
+   "magnitude": 6.09,
+   "reason": "the check catalogue has a star here of magnitude 7.61: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q3781801",
+   "name": "R Carinae",
+   "magnitude": 6.1,
+   "reason": "the check catalogue has a star here of magnitude 7.43: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q56303823",
+   "name": "S Sculptoris",
+   "magnitude": 6.2,
+   "reason": "the check catalogue has a star here of magnitude 7.89: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q136635",
+   "name": "Z Ursae Majoris",
+   "magnitude": 6.2,
+   "reason": "the check catalogue has a star here of magnitude 7.47: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q66481501",
+   "name": "[SC93] 139",
+   "magnitude": 6.28,
+   "reason": "the check catalogue has a star here of magnitude 7.41: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q13400705",
+   "name": "R Pictoris",
+   "magnitude": 6.35,
+   "reason": "the check catalogue has a star here of magnitude 7.48: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q12779229",
+   "name": "X Ophiuchi",
+   "magnitude": 6.4,
+   "reason": "the check catalogue has a star here of magnitude 7.41: Wikidata gives the brightest moment of a variable, or a wrong value"
+  },
+  {
+   "id": "Q66530895",
+   "name": "",
+   "magnitude": 6.5,
+   "reason": "the check catalogue has a star here of magnitude 7.61: Wikidata gives the brightest moment of a variable, or a wrong value"
+  }
+ ]
+}
