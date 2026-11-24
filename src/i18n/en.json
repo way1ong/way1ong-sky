@@ -44,6 +44,7 @@
     "play": "Let time run",
     "now": "Now",
     "more": "Date and eclipses",
+    "moreShort": "Date",
     "at": "{date}, {time}",
     "paused": "time stopped",
     "back": "{rate}, backwards",

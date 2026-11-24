@@ -38,6 +38,8 @@ export interface SceneView {
   /** The place of a body on the screen, CSS pixels from the canvas corner; null — behind the camera. */
   onScreen(id: BodyId): { x: number; y: number } | null;
   resize(): void;
+  /** How much of the picture the bars cover at the top and at the bottom, CSS px: the view centres between them. */
+  setCovered(top: number, bottom: number): void;
   /** Called when a picture has arrived: the frame should be drawn again. */
   onLoad: () => void;
   destroy(): void;
@@ -82,7 +84,8 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(SKY.fovDeg, 1, 1e-6, 1e7);
   const loader = new THREE.TextureLoader();
-  const view: SceneView = { draw, setOrbits, onScreen, resize, onLoad: () => undefined, destroy };
+  const view: SceneView = { draw, setOrbits, onScreen, resize, setCovered, onLoad: () => undefined, destroy };
+  let covered = { top: 0, bottom: 0 };
 
   const picture = (url: string): THREE.Texture => {
     const texture = loader.load(url, () => view.onLoad());
@@ -211,7 +214,15 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
     // The field of view is measured across the shorter side: a phone held upright sees as much as a wide screen.
     const half = Math.tan((SKY.fovDeg * Math.PI) / 360);
     camera.fov = camera.aspect >= 1 ? SKY.fovDeg : (Math.atan(half / camera.aspect) * 360) / Math.PI;
+    // The point looked at stands in the middle of what the bars leave free, not of the whole screen.
+    camera.setViewOffset(width, height, 0, (covered.bottom - covered.top) / 2, width, height);
     camera.updateProjectionMatrix();
+  }
+
+  function setCovered(top: number, bottom: number): void {
+    if (covered.top === top && covered.bottom === bottom) return;
+    covered = { top, bottom };
+    resize();
   }
 
   function destroy(): void {

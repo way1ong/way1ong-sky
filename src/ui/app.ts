@@ -85,7 +85,9 @@ export function startApp(root: HTMLElement): void {
   }
 
   /** From how far the orbit of this planet fits the screen, with the Sun in the middle. */
-  const fit = (planet: BodyId) => distanceToFit(length(where[planet]));
+  /** How much smaller the free part of the screen is than the screen: a view that must fit stands that much farther. */
+  let squeeze = 1;
+  const fit = (planet: BodyId) => distanceToFit(length(where[planet])) * squeeze;
   const farthest = () => fit(SKY.overview.whole) * 1.5;
 
   // ---------- elements ----------
@@ -94,25 +96,30 @@ export function startApp(root: HTMLElement): void {
   const title = h('h1', { class: 'top__name' });
   const line = h('p', { class: 'top__line' });
   const menuBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-menu', 'aria-hidden': 'true' }));
-  const note = h('p', { class: 'note', role: 'status' });
+  const note = h('p', { class: 'note__text', role: 'status' });
+  const noteClose = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-close', 'aria-hidden': 'true' }));
+  const noteBox = h('div', { class: 'note', hidden: true }, note, noteClose);
   const dock = h('ul', { class: 'dock' });
   const scaleBox = h('fieldset', { class: 'scale' });
   const timeBox = h('div', { class: 'time', role: 'group' });
-  const slowerBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { 'aria-hidden': 'true' }, '◀◀'));
+  const slowerBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-skip icon-skip--back', 'aria-hidden': 'true' }));
   const pauseBtn = h('button', { class: 'icon-btn', type: 'button' });
-  const fasterBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { 'aria-hidden': 'true' }, '▶▶'));
+  const fasterBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-skip', 'aria-hidden': 'true' }));
   const nowBtn = h('button', { class: 'chip', type: 'button' });
   const moreBtn = h('button', { class: 'chip', type: 'button' });
   timeBox.append(slowerBtn, pauseBtn, fasterBtn, nowBtn, moreBtn);
   const menu = createMenuDialog();
   const timeDialog = createTimeDialog();
   const stage = h('div', { class: 'stage' }, canvas, labels);
+  const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line), menuBtn);
+  const bottom = h('div', { class: 'bottom' }, h('div', { class: 'bar' }, timeBox), h('div', { class: 'bar' }, scaleBox), dock);
   const main = h(
     'main',
     { class: 'app' },
     stage,
-    h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line), menuBtn),
-    h('div', { class: 'bottom' }, note, h('div', { class: 'bar' }, timeBox), h('div', { class: 'bar' }, scaleBox), dock),
+    header,
+    noteBox,
+    bottom,
     menu.el,
     timeDialog.el,
   );
@@ -145,7 +152,9 @@ export function startApp(root: HTMLElement): void {
     slowerBtn.setAttribute('aria-label', d.time.slower);
     fasterBtn.setAttribute('aria-label', d.time.faster);
     nowBtn.textContent = d.time.now;
-    moreBtn.textContent = d.time.more;
+    moreBtn.textContent = d.time.moreShort;
+    moreBtn.setAttribute('aria-label', d.time.more);
+    noteClose.setAttribute('aria-label', d.actions.close);
 
     labels.replaceChildren();
     dock.replaceChildren();
@@ -189,7 +198,7 @@ export function startApp(root: HTMLElement): void {
     line.textContent = clock.paused ? `${moment} · ${d.time.paused}` : live ? moment : `${moment} · ${speed}`;
     nowBtn.hidden = live;
     pauseBtn.setAttribute('aria-label', clock.paused ? d.time.play : d.time.pause);
-    pauseBtn.replaceChildren(h('span', { 'aria-hidden': 'true' }, clock.paused ? '▶' : '❚❚'));
+    pauseBtn.replaceChildren(h('span', { class: clock.paused ? 'icon-play' : 'icon-pause', 'aria-hidden': 'true' }));
     for (const [id, chip] of chipOf) {
       const here = id === 'whole' ? whole : !whole && id === (flight?.to ?? focus);
       if (here) chip.setAttribute('aria-current', 'true');
@@ -197,15 +206,35 @@ export function startApp(root: HTMLElement): void {
     }
   }
 
+  /** Says something over the picture, or takes the words away. */
+  function say(text: string): void {
+    note.textContent = text;
+    noteBox.hidden = text === '';
+  }
+  noteClose.addEventListener('click', () => {
+    say('');
+    canvas.focus();
+  });
+
+  /** The bars cover the top and the bottom of the picture: the view centres on what is left free. */
+  function measure(): void {
+    const top = header.getBoundingClientRect().bottom;
+    const low = canvas.clientHeight - bottom.getBoundingClientRect().top;
+    scene.setCovered(top, low);
+    const free = Math.max(1, Math.min(canvas.clientWidth, canvas.clientHeight - top - low));
+    squeeze = Math.min(canvas.clientWidth, canvas.clientHeight) / free;
+    dirty = true;
+  }
+
   const dayText = (moment: Date) => new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric' }).format(moment);
 
   // ---------- time ----------
   /** After the clock was changed: the picture for the new moment. */
-  function retime(say = ''): void {
+  function retime(text = ''): void {
     date = new Date(shownAt(clock, Date.now()));
     compute();
     refreshOrbits();
-    note.textContent = say;
+    say(text);
     describe();
     dirty = true;
   }
@@ -229,12 +258,12 @@ export function startApp(root: HTMLElement): void {
   });
 
   /** To the middle of an eclipse: time stands, the camera flies to the body in shadow and looks at its lit side. */
-  function showEclipse(body: 'moon' | 'earth', peak: Date, say: string): void {
+  function showEclipse(body: 'moon' | 'earth', peak: Date, text: string): void {
     clock = jumpTo(clock, Date.now(), peak.getTime());
-    retime(say);
+    retime(text);
     const side = facing(sub(where.sun, where[body]), (SKY.eclipseViewOffsetDeg[body] * Math.PI) / 180);
     view = { ...view, ...side };
-    fly(body, arrivalDistance(body, radius[body]), say);
+    fly(body, arrivalDistance(body, radius[body]), text);
   }
 
   moreBtn.addEventListener('click', () =>
@@ -257,9 +286,9 @@ export function startApp(root: HTMLElement): void {
   // ---------- moves ----------
   const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function fly(to: BodyId, endDistance: number, say = ''): void {
+  function fly(to: BodyId, endDistance: number, text = ''): void {
     flight = { from: focus, to, startDistance: view.distance, endDistance, startedAt: performance.now(), durationMs: reducedMotion() ? 0 : SKY.flightMs };
-    note.textContent = say;
+    say(text);
     describe();
     dirty = true;
   }
@@ -284,7 +313,7 @@ export function startApp(root: HTMLElement): void {
     flight = null;
     view = { ...view, distance: clampDistance((view.distance * after) / before, radius[focus], farthest()) };
     for (const button of scaleBox.querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.textContent === d.scale[mode]));
-    note.textContent = mode === 'true' ? d.scale.trueNote : d.scale.handyNote;
+    say(mode === 'true' ? d.scale.trueNote : d.scale.handyNote);
     describe();
     dirty = true;
   }
@@ -382,8 +411,12 @@ export function startApp(root: HTMLElement): void {
 
   window.addEventListener('resize', () => {
     scene.resize();
-    dirty = true;
+    measure();
   });
+  // The bars change their height with the language and the width of the screen.
+  const bars = new ResizeObserver(measure);
+  bars.observe(header);
+  bars.observe(bottom);
   // The planets move slowly, the Earth turns a quarter of a degree a minute: once a minute is often enough.
   window.setInterval(() => {
     if (clock.paused || isRunningFast(clock)) return;
@@ -396,7 +429,9 @@ export function startApp(root: HTMLElement): void {
 
   compute();
   refreshOrbits(true);
-  view = { ...view, distance: fit(SKY.overview.first) };
   build();
+  measure();
+  view = { ...view, distance: fit(SKY.overview.first) };
+  describe();
   window.requestAnimationFrame(frame);
 }
