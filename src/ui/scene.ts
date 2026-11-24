@@ -68,18 +68,26 @@ function ringGeometry(segments: number): THREE.BufferGeometry {
   return geometry;
 }
 
-/** A soft glow around the Sun, painted once. */
-function glowTexture(): THREE.Texture {
+/** A soft glow around the Sun, painted once in the colour given, fading outwards. */
+function glowTexture(colour: string): THREE.Texture {
   const size = 128;
   const canvas = document.createElement('canvas');
   canvas.width = canvas.height = size;
   const g = canvas.getContext('2d') as CanvasRenderingContext2D;
   const gradient = g.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
-  gradient.addColorStop(0, 'rgba(255,236,190,0.9)');
-  gradient.addColorStop(0.25, 'rgba(255,200,110,0.35)');
-  gradient.addColorStop(1, 'rgba(255,170,60,0)');
+  gradient.addColorStop(0, colour);
+  gradient.addColorStop(1, colour);
   g.fillStyle = gradient;
   g.fillRect(0, 0, size, size);
+  // The same colour all over; how strong it is falls from the middle to nothing at the edge.
+  const pixels = g.getImageData(0, 0, size, size);
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      const far = Math.min(1, Math.hypot(x - size / 2, y - size / 2) / (size / 2));
+      pixels.data[(y * size + x) * 4 + 3] = Math.round(255 * 0.9 * (1 - far) ** 2.4);
+    }
+  }
+  g.putImageData(pixels, 0, 0);
   return new THREE.CanvasTexture(canvas);
 }
 
@@ -89,6 +97,13 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(SKY.fovDeg, 1, 1e-6, 1e7);
   const loader = new THREE.TextureLoader();
+  // The colours of the picture come from the tokens, like every colour of the screen.
+  const css = getComputedStyle(canvas);
+  const tint = (name: string): string => css.getPropertyValue(name).trim();
+  // A phone may take the graphics away while the app is in the background and give them back later: the
+  // picture is drawn only when something has changed, so its return must count as a change.
+  canvas.addEventListener('webglcontextlost', (event) => event.preventDefault());
+  canvas.addEventListener('webglcontextrestored', () => view.onLoad());
   const view: SceneView = { draw, setOrbits, onScreen, surfaceOnScreen, resize, setCovered, onLoad: () => undefined, destroy };
   let covered = { top: 0, bottom: 0 };
 
@@ -115,19 +130,19 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
     meshes[id] = new THREE.Mesh(ball, material);
     scene.add(meshes[id]);
   }
-  const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTexture(), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true }));
+  const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTexture(tint('--glow')), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true }));
   scene.add(glow);
 
   // Saturn's rings lie in its equator: a child of the planet, which is turned as a whole.
   const ringMap = picture(RING_TEXTURE);
-  const ring = new THREE.Mesh(ringGeometry(128), new THREE.MeshBasicMaterial({ map: ringMap, transparent: true, side: THREE.DoubleSide, depthWrite: false, color: 0xd8d0c0 }));
+  const ring = new THREE.Mesh(ringGeometry(128), new THREE.MeshBasicMaterial({ map: ringMap, transparent: true, side: THREE.DoubleSide, depthWrite: false, color: new THREE.Color(tint('--ring-tint')) }));
   const ringShape = ring.geometry.getAttribute('position') as THREE.BufferAttribute;
   scene.add(ring);
 
   // ---------- the starry background: a decoration that stays around the camera ----------
   const sky = new THREE.Mesh(
     new THREE.SphereGeometry(1, 48, 24),
-    new THREE.MeshBasicMaterial({ map: picture(STARS_TEXTURE), side: THREE.BackSide, depthWrite: false, depthTest: false, color: 0x9a9a9a }),
+    new THREE.MeshBasicMaterial({ map: picture(STARS_TEXTURE), side: THREE.BackSide, depthWrite: false, depthTest: false, color: new THREE.Color(tint('--backdrop-dim')) }),
   );
   sky.renderOrder = -1;
   sky.frustumCulled = false;
@@ -135,7 +150,7 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
 
   // ---------- the lines of the orbits ----------
   const lines = new Map<BodyId, { line: THREE.LineLoop; around: BodyId }>();
-  const lineMaterial = new THREE.LineBasicMaterial({ color: 0x8fa3c8, transparent: true, opacity: 0.45, depthWrite: false });
+  const lineMaterial = new THREE.LineBasicMaterial({ color: new THREE.Color(tint('--orbit')), transparent: true, opacity: 0.45, depthWrite: false });
 
   function setOrbits(orbits: Partial<Record<BodyId, Orbit>>): void {
     for (const { line } of lines.values()) {

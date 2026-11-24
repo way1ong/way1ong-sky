@@ -29,6 +29,15 @@ describe('tonight', () => {
     expect(Math.abs((asked.sunset as Date).getTime() - (night.sunset as Date).getTime())).toBeLessThan(2000);
   });
 
+  it('tells of the coming night in the last minutes before sunset too', () => {
+    const noon = new Date('2026-11-24T11:00:00Z');
+    const sunset = tonight(middle, noon).sunset as Date;
+    for (const minutes of [-10, -3, -1, 1, 10]) {
+      const asked = tonight(middle, new Date(sunset.getTime() + minutes * 60_000));
+      expect(Math.abs((asked.sunset as Date).getTime() - sunset.getTime()), String(minutes)).toBeLessThan(2000);
+    }
+  });
+
   it('shows a planet only in the dark and only when it is high enough, with its best moment inside that time', () => {
     for (const day of ['2026-11-24', '2027-02-10', '2027-05-20', '2027-08-30']) {
       const night = tonight(middle, new Date(`${day}T12:00:00Z`));

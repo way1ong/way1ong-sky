@@ -42,10 +42,11 @@ function rgb(hex: string): [number, number, number] {
   const h = hex.trim().replace('#', '');
   return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
 }
-function mix(a: string, b: string, t: number): string {
-  const [x, y] = [rgb(a), rgb(b)];
-  return `rgb(${x.map((v, i) => Math.round(v + ((y[i] as number) - v) * t)).join(' ')})`;
-}
+type Rgb = [number, number, number];
+/** A colour between two, as numbers — and as the canvas wants it written. */
+const blend = (a: Rgb, b: Rgb, t: number): Rgb => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+const written = (colour: Rgb): string => `rgb(${colour.map(Math.round).join(' ')})`;
+const mix = (a: string, b: string, t: number): string => written(blend(rgb(a), rgb(b), t));
 const between = (t: number) => Math.max(0, Math.min(1, t));
 
 export function createSkyView(canvas: HTMLCanvasElement): SkyView {
@@ -174,7 +175,8 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(q ? Math.atan2(q.y - p.y, q.x - p.x) : 0);
-        ctx.fillStyle = mix(c.night, c.moon, 0.22);
+        // The unlit part is a little lighter than the sky of the moment, by day as by night.
+        ctx.fillStyle = written(blend(blend(rgb(c.night), rgb(c.day), day), rgb(c.moon), 0.22));
         ctx.beginPath();
         ctx.arc(0, 0, r, 0, Math.PI * 2);
         ctx.fill();

@@ -413,6 +413,11 @@ export function startApp(root: HTMLElement): void {
       flight = { from: focus, fromPoint: look.target, to, startDistance: look.distance, endDistance, startedAt: performance.now(), durationMs: reducedMotion() ? 0 : SKY.flightMs };
       free = null;
       thrust = 0;
+    } else if (flight) {
+      // Another body chosen on the way: the new flight starts where the camera is now, not back at the start.
+      const at = flightAt(flight, performance.now(), where);
+      view = { ...view, distance: at.distance };
+      flight = { from: focus, fromPoint: at.target, to, startDistance: at.distance, endDistance, startedAt: performance.now(), durationMs: reducedMotion() ? 0 : SKY.flightMs };
     } else {
       flight = { from: focus, to, startDistance: view.distance, endDistance, startedAt: performance.now(), durationMs: reducedMotion() ? 0 : SKY.flightMs };
     }
@@ -529,6 +534,12 @@ export function startApp(root: HTMLElement): void {
     },
   });
 
+  /** What is said on coming to the sky: whose sky it is, how to look around, and what is not as in life. */
+  function skyNote(): string {
+    const sunUp = altAz(bodyInSky('sun', skyTurn(place, date))).altitude > 0;
+    return `${graphics ? '' : `${d.status.noGraphics} `}${fmt(d.sky.note, { place: cityName(place, lang) })}${sunUp ? ` ${d.sky.dayNote}` : ''}`;
+  }
+
   function setScreen(next: 'flight' | 'sky'): void {
     if (next === screen || (next === 'flight' && !graphics)) return;
     screen = next;
@@ -541,14 +552,12 @@ export function startApp(root: HTMLElement): void {
     dock.hidden = sky;
     scaleBar.hidden = sky;
     skyBox.hidden = !sky;
-    if (sky) {
-      const sunUp = altAz(bodyInSky('sun', skyTurn(place, date))).altitude > 0;
-      say(`${graphics ? '' : `${d.status.noGraphics} `}${fmt(d.sky.note, { place: cityName(place, lang) })}${sunUp ? ` ${d.sky.dayNote}` : ''}`);
-    } else {
-      say('');
-    }
+    say(sky ? skyNote() : '');
     describe();
     measure();
+    // The hidden canvas had no size: the window may have changed while the other mode was on.
+    if (sky) skyView.resize();
+    else scene.resize();
     (sky ? skyCanvas : canvas).focus({ preventScroll: true });
   }
   toFlightBtn.addEventListener('click', () => setScreen('flight'));
@@ -591,6 +600,8 @@ export function startApp(root: HTMLElement): void {
         d = dict(lang);
         keep();
         menu.el.close();
+        // A note written in the old language is not left on the screen: the sky's is said again, others go.
+        if (!noteBox.hidden) say(screen === 'sky' ? skyNote() : '');
         build();
       },
       {

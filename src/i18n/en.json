@@ -182,7 +182,12 @@
     "engine": "Positions and rotation: astronomy-engine (MIT). 3D: three.js (MIT).",
     "madeBy": "Made by way1ong",
     "photos": "Photos in the cards: NASA and its partners, named under each photo; some are cropped. This program is made independently of NASA.",
-    "sky": "The sky from a place: stars — Wikidata (CC0); which stars are joined into constellations — d3-celestial by Olaf Frohn (BSD-3-Clause), after the charts of the IAU and Sky & Telescope; cities — Wikidata. Stars are drawn by day too, and the bending of light by the air near the horizon is not drawn. “Dark enough”, “in view” and “too faint for the eye” are the program’s own measures, not definitions of astronomy. For some stars Wikidata has no visual brightness: there the close Gaia G brightness is used. Proper names of stars: the names approved by the International Astronomical Union, from the list in Wikipedia (CC BY-SA 4.0), and the titles of the stars’ articles in Wikipedia."
+    "sky": "The sky from a place: stars — Wikidata (CC0); which stars are joined into constellations — d3-celestial by Olaf Frohn (BSD-3-Clause), after the charts of the IAU and Sky & Telescope; cities — Wikidata. Stars are drawn by day too, and the bending of light by the air near the horizon is not drawn. “Dark enough”, “in view” and “too faint for the eye” are the program’s own measures, not definitions of astronomy. For some stars Wikidata has no visual brightness: there the close Gaia G brightness is used. Proper names of stars: the names approved by the International Astronomical Union, from the list in Wikipedia (CC BY-SA 4.0), and the titles of the stars’ articles in Wikipedia.",
+    "links": {
+      "photoLibrary": "NASA’s image and video library",
+      "photoRules": "NASA’s rules for its pictures",
+      "starNames": "Wikipedia: list of proper names of stars (in English)"
+    }
   },
   "actions": {
     "close": "Close"

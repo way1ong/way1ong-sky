@@ -15,6 +15,12 @@
   --backdrop: rgb(0 0 0 / 0.6);
   --shadow: 0 6px 18px rgb(0 0 0 / 0.55);
 
+  /* The flight: the lines of the orbits, the Sun's glow, the tint of Saturn's rings, how dim the starry backdrop is. */
+  --orbit: #8fa3c8;
+  --glow: #ffd28a;
+  --ring-tint: #d8d0c0;
+  --backdrop-dim: #9a9a9a;
+
   /* The sky from a place. */
   --sky-night: #060a16;
   --sky-day: #2c5d94;

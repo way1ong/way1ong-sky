@@ -185,3 +185,14 @@ describe('the Moon’s shadow on the Earth', () => {
     }
   });
 });
+
+it('steps from eclipse to eclipse: asked at the middle of one, it finds the next, never the same again', () => {
+  for (const next of [nextLunarEclipse, nextSolarEclipse]) {
+    let at = new Date('2026-11-24T12:00:00Z');
+    for (let i = 0; i < 12; i++) {
+      const found = next(at).peak;
+      expect(found.getTime(), `${next.name} step ${i}`).toBeGreaterThan(at.getTime() + 20 * 86_400_000);
+      at = found;
+    }
+  }
+});

@@ -24,8 +24,9 @@ self.addEventListener('install', (event) => {
           await cache.put(url, plain);
         }),
       );
-      // The running page already has its code; the new files serve from the next opening on.
-      await self.skipWaiting();
+      // No skipWaiting: a page that is open keeps the worker and the files of its own version — it fetches
+      // photos only when a card is opened, and a new worker would have thrown the old ones away. The new
+      // version takes over once every page of the app is closed, and serves from the next opening on.
     })(),
   );
 });

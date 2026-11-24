@@ -46,9 +46,13 @@ const DAY = 86_400_000;
 
 export function tonight(place: Place, now: Date): Tonight {
   const observer = new Observer(place.lat, place.lon, 0);
-  const sunIsUp = altAz(bodyInSky('sun', skyTurn(place, now))).altitude > 0;
+  // Day or night is told by the engine's own settings and risings (it counts the upper edge and the bending
+  // of light), not by the height of the Sun's middle: in the minutes between the two the answers differ.
+  const nextSet = SearchRiseSet(Body.Sun, observer, -1, now, 1)?.date ?? null;
+  const nextRise = SearchRiseSet(Body.Sun, observer, 1, now, 1)?.date ?? null;
+  const sunIsUp = nextSet && nextRise ? nextSet < nextRise : nextSet ? true : nextRise ? false : altAz(bodyInSky('sun', skyTurn(place, now))).altitude > 0;
   // By day the night ahead; by night the night that is on — it began at the last setting.
-  const sunset = SearchRiseSet(Body.Sun, observer, -1, now, sunIsUp ? 1 : -1)?.date ?? null;
+  const sunset = sunIsUp ? nextSet : (SearchRiseSet(Body.Sun, observer, -1, now, -1)?.date ?? null);
   const sunrise = SearchRiseSet(Body.Sun, observer, 1, sunset ?? now, 1)?.date ?? null;
   const limit = SKY.tonight.darkSunAltitude;
   let dark: Tonight['dark'] = null;
