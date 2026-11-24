@@ -76,9 +76,32 @@ for (const file of files('data', /^det_.*\.csv$/)) {
 const optional = (name) => (files('queue', new RegExp(`^${name}\\.csv$`)).length ? read('queue', `${name}.csv`) : []);
 const typeName = new Map(optional('01-types').map((r) => [qid(r.x), r.l]));
 if (typeName.size === 0) throw new Error('queue/01-types.csv is needed: the names of the types decide what is a star.');
+// The titles of the articles about a star in the three Wikipedias: there a star goes by its proper name
+// more often than in the labels of Wikidata.
+const titles = new Map();
+for (const r of optional('20-sitelinks')) {
+  const lang = /\/\/(\w+)\.wikipedia/.exec(r.site)?.[1];
+  if (lang) titles.set(qid(r.s), { ...(titles.get(qid(r.s)) ?? {}), [lang]: r.title.replace(/\s*\([^)]*\)$/u, '') });
+}
+// A star's article is often tied to the record of its system, of which the star is a part: the system's
+// titles go to its members — when the "whole" is a system of stars, not an asterism or a constellation.
+const parentsMap = existsSync(join(raw, 'queue', '25-parents-map.json')) ? JSON.parse(readFileSync(join(raw, 'queue', '25-parents-map.json'), 'utf8')) : {};
+const parentRows = optional('25-parents');
+const SYSTEM = /^(binary star|multiple star|double star|triple star system|star|pair of stars|spectroscopic binary|variable star)$/i;
+const NOT_A_SYSTEM = /asterism|constellation|group|galaxy|association|region|arm|cloud|zone|Solar System|triad|tetrad/i;
+for (const parent of new Set(parentRows.map((r) => qid(r.p)))) {
+  const rows = parentRows.filter((r) => qid(r.p) === parent);
+  if (!rows.some((r) => SYSTEM.test(r.typeLabel)) || rows.some((r) => NOT_A_SYSTEM.test(r.typeLabel))) continue;
+  for (const r of rows) {
+    const lang = /\/\/(\w+)\.wikipedia/.exec(r.site ?? '')?.[1];
+    if (!lang) continue;
+    for (const child of parentsMap[parent] ?? []) if (!titles.get(child)?.[lang]) titles.set(child, { ...(titles.get(child) ?? {}), [lang]: r.title.replace(/\s*\([^)]*\)$/u, '') });
+  }
+}
 // A name written once for all languages.
 for (const r of optional('03-mul')) {
   const rec = records.get(qid(r.s));
+  if (rec) rec.world = r.l;
   if (rec && !rec.en) rec.en = r.l;
 }
 // Stars with no visual magnitude in Wikidata: the G band of Gaia stands in for it.
@@ -141,7 +164,9 @@ for (const members of groups.values()) {
   const brightest = measured.reduce((a, b) => (b.m < a.m ? b : a));
   const langs = (s) => (s.uk ? 1 : 0) + (s.hu ? 1 : 0) + (s.en ? 1 : 0);
   const named = [...members].sort((a, b) => langs(b) - langs(a) || a.m - b.m || Number(a.id.slice(1)) - Number(b.id.slice(1)))[0];
-  merged.push({ id: named.id, ra: brightest.ra, dec: brightest.dec, at: brightest.at, m: brightest.m, band: brightest.band, en: named.en, uk: named.uk, hu: named.hu });
+  // Every name any record of the star goes by, an article's title before a label.
+  const called = (lang) => [...members.map((s) => titles.get(s.id)?.[lang]), named[lang], ...members.map((s) => s[lang]), ...members.map((s) => s.world)].filter(Boolean);
+  merged.push({ id: named.id, ra: brightest.ra, dec: brightest.dec, at: brightest.at, m: brightest.m, band: brightest.band, en: named.en, uk: named.uk, hu: named.hu, called: { en: called('en'), uk: called('uk'), hu: called('hu') } });
   if (members.length > 1 && brightest.m <= 2.5) mergedNotes.push(`${named.en || named.uk || named.id} (${brightest.m}): ${members.map((s) => `${s.en || s.id} ${s.m}`).join(' + ')}`);
 }
 merged.sort((a, b) => a.m - b.m || a.ra - b.ra);
@@ -175,14 +200,45 @@ for (const feature of lineFile.features) {
 // ---------- names: a name, not a catalogue's designation ----------
 const GREEK = 'alpha|alfa|beta|béta|gamma|delta|epsilon|zeta|dzéta|eta|éta|theta|théta|iota|ióta|kappa|lambda|mu|nu|xi|omicron|omikron|pi|rho|sigma|szigma|tau|upsilon|üpszilon|phi|chi|khi|psi|pszi|omega|ómega|альфа|бета|гамма|дельта|епсилон|дзета|ета|тета|йота|каппа|лямбда|мю|ню|ксі|омікрон|пі|ро|сигма|тау|іпсилон|фі|хі|псі|омега';
 const DESIGNATION = new RegExp(`^(${GREEK})[\\d¹²³⁴-⁹]*\\s|\\d|^[a-zа-яіїє]{1,3}\\s`, 'iu');
-// A Greek letter itself ("δ Cygni") marks a designation too; "Fomalhaut A" is Fomalhaut to the eye.
-const proper = (name) => (name && !DESIGNATION.test(name) && !/^[\u0370-\u03FF]/u.test(name) ? name.replace(/\s+A$/u, '') : undefined);
+// A Greek letter itself ("δ Cygni") marks a designation too; "Fomalhaut A" and "Mizar B" are Fomalhaut
+// and Mizar to the eye.
+// So do an asterisk and an abbreviation with a full stop ("* gam Lup", "mu. Vel"); a name begins with a capital.
+const proper = (name) => (name && !DESIGNATION.test(name) && !/^[\u0370-\u03FF]|^\*|^\p{Ll}|\.\s/u.test(name) ? name.replace(/\s+[A-E][a-e]?$/u, '') : undefined);
+
+// The proper names the astronomers' union has approved, by the star's designation ("β Tauri Aa" — Elnath):
+// scripts/stars/proper-names.json, from Wikipedia's list. A star of ours is known by the designations in the
+// English names of its records ("Beta Tauri", "Alpha Leonis A").
+const LETTERS = { α: 'alpha', β: 'beta', γ: 'gamma', δ: 'delta', ε: 'epsilon', ζ: 'zeta', η: 'eta', θ: 'theta', ι: 'iota', κ: 'kappa', λ: 'lambda', μ: 'mu', ν: 'nu', ξ: 'xi', ο: 'omicron', π: 'pi', ρ: 'rho', σ: 'sigma', τ: 'tau', υ: 'upsilon', φ: 'phi', χ: 'chi', ψ: 'psi', ω: 'omega' };
+const SUPERSCRIPT = { '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9' };
+/** "γ1 Leonis A", "Gamma¹ Leonis", "gam01 Leo" → what they share: "gamma1 leonis"; and the member's letter. */
+function designation(text) {
+  let t = text.trim().replace(/[¹²³⁴-⁹]/gu, (c) => SUPERSCRIPT[c]);
+  const member = /\s([A-E][a-e]?)$/u.exec(t)?.[1] ?? '';
+  if (member) t = t.slice(0, -member.length).trim();
+  t = t.replace(/^[α-ω]/u, (c) => LETTERS[c] ?? c).toLowerCase();
+  return { key: t.replace(/\s+/g, ' '), whole: t.replace(/(?<=[a-z])\d+(?=\s)/u, '').replace(/\s+/g, ' '), member };
+}
+const properNames = JSON.parse(readFileSync(join(here, 'proper-names.json'), 'utf8')).names;
+const byDesignation = new Map();
+for (const { name, designation: text } of properNames) {
+  const d = designation(text);
+  for (const key of new Set([d.key, d.whole])) byDesignation.set(key, [...(byDesignation.get(key) ?? []), { name, member: d.member, exact: key === d.key }]);
+}
+function approvedName(star) {
+  const found = [];
+  for (const text of star.called.en) {
+    const d = designation(text);
+    for (const hit of byDesignation.get(d.key) ?? []) found.push({ ...hit, rank: (hit.exact ? 0 : 10) + (hit.member === '' ? 0 : hit.member.charCodeAt(0) - 64) });
+  }
+  return found.sort((a, b) => a.rank - b.rank)[0]?.name;
+}
 
 // ---------- writing ----------
 const round = (x, digits) => Number(x.toFixed(digits));
 const names = {};
 merged.forEach((s, i) => {
-  const own = { en: proper(s.en), uk: proper(s.uk), hu: proper(s.hu) };
+  const first = (names) => names.map(proper).find(Boolean);
+  const own = { en: approvedName(s) ?? first(s.called.en), uk: first(s.called.uk), hu: first(s.called.hu) };
   if (s.m <= NAMES_TO_MAG && (own.en || own.uk || own.hu)) names[i] = own;
 });
 const out = {

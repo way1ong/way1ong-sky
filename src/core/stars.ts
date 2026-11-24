@@ -31,7 +31,8 @@ const NAMES = starsFile.names as Record<string, StarName>;
  */
 export function starName(index: number, lang: string): string | undefined {
   const names = NAMES[String(index)];
-  return names?.[lang as keyof StarName] ?? names?.en;
+  // English and Hungarian share their letters, and a star's proper name is mostly the same in both.
+  return names?.[lang as keyof StarName] ?? names?.en ?? names?.hu;
 }
 export const NAMED_STARS: readonly number[] = Object.keys(NAMES).map(Number);
 

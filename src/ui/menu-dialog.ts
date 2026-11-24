@@ -10,6 +10,8 @@ import { LANGS, langName, type Dict } from './i18n.ts';
 
 const TEXTURES_URL = 'https://www.solarsystemscope.com/textures/';
 const LICENSE_URL = 'https://creativecommons.org/licenses/by/4.0/';
+const STAR_NAMES_URL = 'https://en.wikipedia.org/wiki/List_of_proper_names_of_stars';
+const BY_SA_URL = 'https://creativecommons.org/licenses/by-sa/4.0/';
 
 const link = (url: string, text: string) => h('a', { href: url, rel: 'noopener' }, text);
 
@@ -64,7 +66,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
             h('li', {}, d.about.textures, ' ', link(TEXTURES_URL, 'Solar System Scope'), ' · ', link(LICENSE_URL, 'CC BY 4.0')),
             h('li', {}, d.about.facts, ' ', link(SOURCES.planets.url, SOURCES.planets.title), ' · ', link(SOURCES.sun.url, SOURCES.sun.title), ' · ', link(SOURCES.rings.url, SOURCES.rings.title)),
             h('li', {}, d.about.photos, ' ', link(PHOTO_LIBRARY, 'NASA Image and Video Library'), ' · ', link(PHOTO_RULES, 'NASA media guidelines')),
-            h('li', {}, d.about.sky, ' ', link(CITY_SOURCE.url, 'Wikidata')),
+            h('li', {}, d.about.sky, ' ', link(CITY_SOURCE.url, 'Wikidata'), ' · ', link(STAR_NAMES_URL, 'Wikipedia: List of proper names of stars'), ' · ', link(BY_SA_URL, 'CC BY-SA 4.0')),
             h('li', {}, d.about.shadows),
             h('li', {}, d.about.engine),
           ),

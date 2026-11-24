@@ -1,0 +1,2683 @@
+{
+ "source": {
+  "title": "Wikipedia, \"List of proper names of stars\"",
+  "url": "https://en.wikipedia.org/wiki/List_of_proper_names_of_stars",
+  "licence": "CC BY-SA 4.0",
+  "read": "2026-11-24"
+ },
+ "note": "Proper names of stars with their designations, taken from the table of that article: only the names it marks as approved by the International Astronomical Union (668 names; the twelve marked \"†\" as not approved are left out).",
+ "names": [
+  {
+   "name": "Absolutno",
+   "designation": "XO-5"
+  },
+  {
+   "name": "Acamar",
+   "designation": "θ1 Eridani A"
+  },
+  {
+   "name": "Achernar",
+   "designation": "α Eridani A"
+  },
+  {
+   "name": "Achird",
+   "designation": "η Cassiopeiae A"
+  },
+  {
+   "name": "Acrab",
+   "designation": "β1 Scorpii Aa"
+  },
+  {
+   "name": "Acrux",
+   "designation": "α Crucis Aa"
+  },
+  {
+   "name": "Acubens",
+   "designation": "α Cancri A"
+  },
+  {
+   "name": "Adhafera",
+   "designation": "ζ Leonis"
+  },
+  {
+   "name": "Adhara",
+   "designation": "ε Canis Majoris A"
+  },
+  {
+   "name": "Adhil",
+   "designation": "ξ Andromedae"
+  },
+  {
+   "name": "Aerostaticus",
+   "designation": "ε Microscopii"
+  },
+  {
+   "name": "Agaanim",
+   "designation": "63 Tauri"
+  },
+  {
+   "name": "Ain",
+   "designation": "ε Tauri"
+  },
+  {
+   "name": "Ainalrami",
+   "designation": "ν1 Sagittarii A"
+  },
+  {
+   "name": "Aiolos",
+   "designation": "HD 95086"
+  },
+  {
+   "name": "Aladfar",
+   "designation": "η Lyrae Aa"
+  },
+  {
+   "name": "Alasia",
+   "designation": "HD 168746"
+  },
+  {
+   "name": "Alawaidh",
+   "designation": "ν2 Draconis"
+  },
+  {
+   "name": "Alaybasan",
+   "designation": "β Trianguli A"
+  },
+  {
+   "name": "Albaldah",
+   "designation": "π Sagittarii A"
+  },
+  {
+   "name": "Albali",
+   "designation": "ε Aquarii"
+  },
+  {
+   "name": "Albireo",
+   "designation": "β1 Cygni Aa"
+  },
+  {
+   "name": "Alchiba",
+   "designation": "α Corvi A"
+  },
+  {
+   "name": "Alcor",
+   "designation": "80 Ursae Majoris Ca"
+  },
+  {
+   "name": "Alcyone",
+   "designation": "η Tauri A"
+  },
+  {
+   "name": "Aldebaran",
+   "designation": "α Tauri A"
+  },
+  {
+   "name": "Alderamin",
+   "designation": "α Cephei"
+  },
+  {
+   "name": "Aldhanab",
+   "designation": "γ Gruis"
+  },
+  {
+   "name": "Aldhibah",
+   "designation": "ζ Draconis A"
+  },
+  {
+   "name": "Áldu",
+   "designation": "ε Persei A"
+  },
+  {
+   "name": "Aldulfin",
+   "designation": "ε Delphini"
+  },
+  {
+   "name": "Alfarasalkamil",
+   "designation": "ο Andromedae Aa"
+  },
+  {
+   "name": "Alfirk",
+   "designation": "β Cephei Aa"
+  },
+  {
+   "name": "Algedi",
+   "designation": "α2 Capricorni"
+  },
+  {
+   "name": "Algenib",
+   "designation": "γ Pegasi A"
+  },
+  {
+   "name": "Algieba",
+   "designation": "γ1 Leonis A"
+  },
+  {
+   "name": "Algol",
+   "designation": "β Persei Aa1"
+  },
+  {
+   "name": "Algorab",
+   "designation": "δ Corvi A"
+  },
+  {
+   "name": "Alhena",
+   "designation": "γ Geminorum A"
+  },
+  {
+   "name": "Alioth",
+   "designation": "ε Ursae Majoris"
+  },
+  {
+   "name": "Aljanah",
+   "designation": "ε Cygni Aa"
+  },
+  {
+   "name": "Alkaid",
+   "designation": "η Ursae Majoris"
+  },
+  {
+   "name": "Alkalurops",
+   "designation": "μ1 Boötis Aa"
+  },
+  {
+   "name": "Alkaphrah",
+   "designation": "κ Ursae Majoris A"
+  },
+  {
+   "name": "Alkarab",
+   "designation": "υ Pegasi"
+  },
+  {
+   "name": "Alkes",
+   "designation": "α Crateris"
+  },
+  {
+   "name": "Almaaz",
+   "designation": "ε Aurigae Aa"
+  },
+  {
+   "name": "Almach",
+   "designation": "γ Andromedae A"
+  },
+  {
+   "name": "Almighzal",
+   "designation": "η Cygni A"
+  },
+  {
+   "name": "Alnaamaat",
+   "designation": "υ Ceti"
+  },
+  {
+   "name": "Alnair",
+   "designation": "α Gruis"
+  },
+  {
+   "name": "Alnasl",
+   "designation": "γ2 Sagittarii"
+  },
+  {
+   "name": "Alnilam",
+   "designation": "ε Orionis"
+  },
+  {
+   "name": "Alnitak",
+   "designation": "ζ Orionis Aa"
+  },
+  {
+   "name": "Alniyat",
+   "designation": "σ Scorpii Aa1"
+  },
+  {
+   "name": "Alphard",
+   "designation": "α Hydrae"
+  },
+  {
+   "name": "Alphecca",
+   "designation": "α Coronae Borealis A"
+  },
+  {
+   "name": "Alpheratz",
+   "designation": "α Andromedae Aa"
+  },
+  {
+   "name": "Alpherg",
+   "designation": "η Piscium A"
+  },
+  {
+   "name": "Alqiladah",
+   "designation": "ο Sagittarii"
+  },
+  {
+   "name": "Alqubba",
+   "designation": "β Coronae Australis"
+  },
+  {
+   "name": "Alrakis",
+   "designation": "μ Draconis A"
+  },
+  {
+   "name": "Alrescha",
+   "designation": "α Piscium A"
+  },
+  {
+   "name": "Alruba",
+   "designation": "HD 161693"
+  },
+  {
+   "name": "Alrumh",
+   "designation": "34 Boötis"
+  },
+  {
+   "name": "Alsafi",
+   "designation": "σ Draconis"
+  },
+  {
+   "name": "Alsamaka",
+   "designation": "β Lacertae"
+  },
+  {
+   "name": "Alsciaukat",
+   "designation": "31 Lyncis"
+  },
+  {
+   "name": "Alsephina",
+   "designation": "δ Velorum Aa"
+  },
+  {
+   "name": "Alshain",
+   "designation": "β Aquilae A"
+  },
+  {
+   "name": "Alshat",
+   "designation": "ν Capricorni A"
+  },
+  {
+   "name": "Altair",
+   "designation": "α Aquilae"
+  },
+  {
+   "name": "Altais",
+   "designation": "δ Draconis"
+  },
+  {
+   "name": "Alterf",
+   "designation": "λ Leonis"
+  },
+  {
+   "name": "Aludra",
+   "designation": "η Canis Majoris"
+  },
+  {
+   "name": "Alula Australis",
+   "designation": "ξ Ursae Majoris Aa"
+  },
+  {
+   "name": "Alula Borealis",
+   "designation": "ν Ursae Majoris A"
+  },
+  {
+   "name": "Alwasl",
+   "designation": "HD 171034"
+  },
+  {
+   "name": "Alya",
+   "designation": "θ1 Serpentis A"
+  },
+  {
+   "name": "Alzirr",
+   "designation": "ξ Geminorum"
+  },
+  {
+   "name": "Amadioha",
+   "designation": "HD 43197"
+  },
+  {
+   "name": "Amansinaya",
+   "designation": "WASP-34"
+  },
+  {
+   "name": "Anadolu",
+   "designation": "WASP-52"
+  },
+  {
+   "name": "Añañuca",
+   "designation": "GJ 367"
+  },
+  {
+   "name": "Ancha",
+   "designation": "θ Aquarii"
+  },
+  {
+   "name": "Angetenar",
+   "designation": "τ2 Eridani"
+  },
+  {
+   "name": "Aniara",
+   "designation": "HD 102956"
+  },
+  {
+   "name": "Ankaa",
+   "designation": "α Phoenicis"
+  },
+  {
+   "name": "Anser",
+   "designation": "α Vulpeculae"
+  },
+  {
+   "name": "Antares",
+   "designation": "α Scorpii A"
+  },
+  {
+   "name": "Antinous",
+   "designation": "θ Aquilae A"
+  },
+  {
+   "name": "Anunitu",
+   "designation": "ε Andromedae"
+  },
+  {
+   "name": "Apamvatsa",
+   "designation": "74 Virginis"
+  },
+  {
+   "name": "Apdu",
+   "designation": "γ Trianguli"
+  },
+  {
+   "name": "Arcalís",
+   "designation": "HD 131496"
+  },
+  {
+   "name": "Arcturus",
+   "designation": "α Boötis"
+  },
+  {
+   "name": "Aret",
+   "designation": "80 Tauri A"
+  },
+  {
+   "name": "Arin-majlep",
+   "designation": "ε Aquilae Aa"
+  },
+  {
+   "name": "Arkab Posterior",
+   "designation": "β2 Sagittarii"
+  },
+  {
+   "name": "Arkab Prior",
+   "designation": "β1 Sagittarii"
+  },
+  {
+   "name": "Arneb",
+   "designation": "α Leporis"
+  },
+  {
+   "name": "Arshaljawza",
+   "designation": "γ Leporis"
+  },
+  {
+   "name": "Ascella",
+   "designation": "ζ Sagittarii A"
+  },
+  {
+   "name": "Asellus Australis",
+   "designation": "δ Cancri"
+  },
+  {
+   "name": "Asellus Borealis",
+   "designation": "γ Cancri"
+  },
+  {
+   "name": "Ashlesha",
+   "designation": "ε Hydrae A"
+  },
+  {
+   "name": "Aspidiske",
+   "designation": "ι Carinae"
+  },
+  {
+   "name": "Asterope",
+   "designation": "21 Tauri A"
+  },
+  {
+   "name": "Asuusiha",
+   "designation": "τ Herculis"
+  },
+  {
+   "name": "Atakoraka",
+   "designation": "WASP-64"
+  },
+  {
+   "name": "Athebyne",
+   "designation": "η Draconis A"
+  },
+  {
+   "name": "Atik",
+   "designation": "ο Persei A"
+  },
+  {
+   "name": "Atlas",
+   "designation": "27 Tauri Aa1"
+  },
+  {
+   "name": "Atria",
+   "designation": "α Trianguli Australis"
+  },
+  {
+   "name": "Aurwandilsta",
+   "designation": "ι Coronae Borealis A"
+  },
+  {
+   "name": "Avior",
+   "designation": "ε Carinae A"
+  },
+  {
+   "name": "Axólotl",
+   "designation": "HD 224693"
+  },
+  {
+   "name": "Ayeyarwady",
+   "designation": "HD 18742"
+  },
+  {
+   "name": "Azelfafage",
+   "designation": "π1 Cygni"
+  },
+  {
+   "name": "Azha",
+   "designation": "η Eridani"
+  },
+  {
+   "name": "Azmidi",
+   "designation": "ξ Puppis"
+  },
+  {
+   "name": "Bade",
+   "designation": "μ Leporis"
+  },
+  {
+   "name": "Baekdu",
+   "designation": "8 Ursae Minoris"
+  },
+  {
+   "name": "Bagu",
+   "designation": "δ Aurigae A"
+  },
+  {
+   "name": "Baijiu",
+   "designation": "ι Piscis Austrini"
+  },
+  {
+   "name": "Bajamar Star",
+   "designation": "2MASS J20555125+4352246"
+  },
+  {
+   "name": "Bake-eo",
+   "designation": "γ Ophiuchi"
+  },
+  {
+   "name": "Baltesha",
+   "designation": "γ Coronae Borealis A"
+  },
+  {
+   "name": "Barnard's Star",
+   "designation": "V2500 Ophiuchi"
+  },
+  {
+   "name": "Baten Kaitos",
+   "designation": "ζ Ceti Aa"
+  },
+  {
+   "name": "Batsũ̀",
+   "designation": "LHS 3844"
+  },
+  {
+   "name": "Bawy",
+   "designation": "ξ1 Ceti"
+  },
+  {
+   "name": "Beehive Proplyd",
+   "designation": "HH 540"
+  },
+  {
+   "name": "Beemim",
+   "designation": "υ3 Eridani"
+  },
+  {
+   "name": "Beid",
+   "designation": "ο1 Eridani"
+  },
+  {
+   "name": "Belel",
+   "designation": "HD 181342"
+  },
+  {
+   "name": "Bélénos",
+   "designation": "HD 8574"
+  },
+  {
+   "name": "Bellatrix",
+   "designation": "γ Orionis"
+  },
+  {
+   "name": "Berehynia",
+   "designation": "HAT-P-15"
+  },
+  {
+   "name": "Betelgeuse",
+   "designation": "α Orionis A"
+  },
+  {
+   "name": "Bharani",
+   "designation": "41 Arietis Aa"
+  },
+  {
+   "name": "Bibhā",
+   "designation": "HD 86081"
+  },
+  {
+   "name": "Bibing",
+   "designation": "λ Tauri Aa"
+  },
+  {
+   "name": "Bie",
+   "designation": "θ Coronae Australis"
+  },
+  {
+   "name": "Biham",
+   "designation": "θ Pegasi A"
+  },
+  {
+   "name": "Blaze Star",
+   "designation": "T Coronae Borealis"
+  },
+  {
+   "name": "Bodu",
+   "designation": "95 Herculis A"
+  },
+  {
+   "name": "Bosona",
+   "designation": "HD 206610"
+  },
+  {
+   "name": "Botein",
+   "designation": "δ Arietis"
+  },
+  {
+   "name": "Brachium",
+   "designation": "σ Librae A"
+  },
+  {
+   "name": "Bubup",
+   "designation": "HD 38283"
+  },
+  {
+   "name": "Buna",
+   "designation": "HD 16175"
+  },
+  {
+   "name": "Bunda",
+   "designation": "ξ Aquarii A"
+  },
+  {
+   "name": "Buranun",
+   "designation": "88 Piscium"
+  },
+  {
+   "name": "Butterfly Star",
+   "designation": "IRAS 04302+2247"
+  },
+  {
+   "name": "Calvera",
+   "designation": "PSR J1412+7922"
+  },
+  {
+   "name": "Canopus",
+   "designation": "α Carinae A"
+  },
+  {
+   "name": "Capella",
+   "designation": "α Aurigae Aa"
+  },
+  {
+   "name": "Caph",
+   "designation": "β Cassiopeiae"
+  },
+  {
+   "name": "Castor",
+   "designation": "α Geminorum Aa"
+  },
+  {
+   "name": "Castula",
+   "designation": "υ2 Cassiopeiae"
+  },
+  {
+   "name": "Cebalrai",
+   "designation": "β Ophiuchi"
+  },
+  {
+   "name": "Ceibo",
+   "designation": "HD 63454"
+  },
+  {
+   "name": "Celaeno",
+   "designation": "16 Tauri"
+  },
+  {
+   "name": "Cervantes",
+   "designation": "μ Arae"
+  },
+  {
+   "name": "Cexing",
+   "designation": "κ Cassiopeiae"
+  },
+  {
+   "name": "Chalawan",
+   "designation": "47 Ursae Majoris"
+  },
+  {
+   "name": "Chamukuy",
+   "designation": "θ2 Tauri Aa"
+  },
+  {
+   "name": "Chaophraya",
+   "designation": "WASP-50"
+  },
+  {
+   "name": "Chara",
+   "designation": "β Canum Venaticorum"
+  },
+  {
+   "name": "Chasoň",
+   "designation": "HAT-P-5"
+  },
+  {
+   "name": "Chechia",
+   "designation": "HD 192699"
+  },
+  {
+   "name": "Chertan",
+   "designation": "θ Leonis"
+  },
+  {
+   "name": "Chugao",
+   "designation": "ρ Ceti"
+  },
+  {
+   "name": "Citadelle",
+   "designation": "HD 1502"
+  },
+  {
+   "name": "Citalá",
+   "designation": "HD 52265"
+  },
+  {
+   "name": "Cocibolca",
+   "designation": "HD 4208"
+  },
+  {
+   "name": "Copernicus",
+   "designation": "55 Cancri A"
+  },
+  {
+   "name": "Cor Caroli",
+   "designation": "α2 Canum Venaticorum Aa"
+  },
+  {
+   "name": "Cujam",
+   "designation": "ω Herculis A"
+  },
+  {
+   "name": "Cursa",
+   "designation": "β Eridani"
+  },
+  {
+   "name": "Custos",
+   "designation": "BE Camelopardalis"
+  },
+  {
+   "name": "Dabih",
+   "designation": "β1 Capricorni Aa"
+  },
+  {
+   "name": "Dajiangjunbei",
+   "designation": "φ Persei A"
+  },
+  {
+   "name": "Dalim",
+   "designation": "α Fornacis A"
+  },
+  {
+   "name": "Danfeng",
+   "designation": "L 168-9"
+  },
+  {
+   "name": "Darlugal",
+   "designation": "ζ Leporis"
+  },
+  {
+   "name": "Deltoton",
+   "designation": "δ Trianguli A"
+  },
+  {
+   "name": "Deneb",
+   "designation": "α Cygni"
+  },
+  {
+   "name": "Deneb Algedi",
+   "designation": "δ Capricorni Aa"
+  },
+  {
+   "name": "Denebola",
+   "designation": "β Leonis"
+  },
+  {
+   "name": "Dhanishta",
+   "designation": "γ1 Delphini"
+  },
+  {
+   "name": "Dhanuśarāgra",
+   "designation": "W Sagittarii Aa1"
+  },
+  {
+   "name": "Diadem",
+   "designation": "α Comae Berenices A"
+  },
+  {
+   "name": "Dilmun",
+   "designation": "WASP-121"
+  },
+  {
+   "name": "Dingolay",
+   "designation": "HD 96063"
+  },
+  {
+   "name": "Diphda",
+   "designation": "β Ceti"
+  },
+  {
+   "name": "Dìwö",
+   "designation": "WASP-17"
+  },
+  {
+   "name": "Diya",
+   "designation": "WASP-72"
+  },
+  {
+   "name": "Dofida",
+   "designation": "HD 117618"
+  },
+  {
+   "name": "Dombay",
+   "designation": "HAT-P-3"
+  },
+  {
+   "name": "Dschubba",
+   "designation": "δ Scorpii A"
+  },
+  {
+   "name": "Dubhe",
+   "designation": "α Ursae Majoris A"
+  },
+  {
+   "name": "Dust-Ball",
+   "designation": "V927 Persei"
+  },
+  {
+   "name": "Dziban",
+   "designation": "ψ1 Draconis A"
+  },
+  {
+   "name": "Ebla",
+   "designation": "HD 218566"
+  },
+  {
+   "name": "Edasich",
+   "designation": "ι Draconis"
+  },
+  {
+   "name": "Electra",
+   "designation": "17 Tauri"
+  },
+  {
+   "name": "Elgafar",
+   "designation": "φ Virginis A"
+  },
+  {
+   "name": "Elkurud",
+   "designation": "θ Columbae"
+  },
+  {
+   "name": "Elnath",
+   "designation": "β Tauri Aa"
+  },
+  {
+   "name": "Eltanin",
+   "designation": "γ Draconis"
+  },
+  {
+   "name": "Emiw",
+   "designation": "HD 7199"
+  },
+  {
+   "name": "Enduri Senggu",
+   "designation": "τ Cygni A"
+  },
+  {
+   "name": "Enif",
+   "designation": "ε Pegasi"
+  },
+  {
+   "name": "Errai",
+   "designation": "γ Cephei A"
+  },
+  {
+   "name": "Fafnir",
+   "designation": "42 Draconis"
+  },
+  {
+   "name": "Fang",
+   "designation": "π Scorpii Aa"
+  },
+  {
+   "name": "Fawaris",
+   "designation": "δ Cygni A"
+  },
+  {
+   "name": "Felis",
+   "designation": "HD 85951"
+  },
+  {
+   "name": "Felixvarela",
+   "designation": "BD−17 63"
+  },
+  {
+   "name": "Fenmu",
+   "designation": "η Aquarii"
+  },
+  {
+   "name": "Filetdor",
+   "designation": "WASP-166"
+  },
+  {
+   "name": "Flegetonte",
+   "designation": "HD 102195"
+  },
+  {
+   "name": "Flying Saucer",
+   "designation": "2MASS J16281370-2431391"
+  },
+  {
+   "name": "Fomalhaut",
+   "designation": "α Piscis Austrini A"
+  },
+  {
+   "name": "Formosa",
+   "designation": "HD 100655"
+  },
+  {
+   "name": "Franz",
+   "designation": "HAT-P-14"
+  },
+  {
+   "name": "Frosty Leo",
+   "designation": "IRAS 09371+1212"
+  },
+  {
+   "name": "Fuer",
+   "designation": "σ2 Tauri"
+  },
+  {
+   "name": "Fulu",
+   "designation": "ζ Cassiopeiae"
+  },
+  {
+   "name": "Fumalsamakah",
+   "designation": "β Piscium"
+  },
+  {
+   "name": "Funi",
+   "designation": "HD 109246"
+  },
+  {
+   "name": "Furud",
+   "designation": "ζ Canis Majoris A"
+  },
+  {
+   "name": "Fuyue",
+   "designation": "G Scorpii"
+  },
+  {
+   "name": "Gacrux",
+   "designation": "γ Crucis"
+  },
+  {
+   "name": "Gaja",
+   "designation": "τ Tauri Aa"
+  },
+  {
+   "name": "Gajahmina",
+   "designation": "η Ceti"
+  },
+  {
+   "name": "Gakyid",
+   "designation": "HD 73534"
+  },
+  {
+   "name": "Gang",
+   "designation": "50 Cassiopeiae"
+  },
+  {
+   "name": "Gar",
+   "designation": "GJ 486"
+  },
+  {
+   "name": "Garnet Star",
+   "designation": "μ Cephei"
+  },
+  {
+   "name": "Gasha",
+   "designation": "π Aurigae"
+  },
+  {
+   "name": "Geminga",
+   "designation": "PSR B0633+17"
+  },
+  {
+   "name": "Genghe",
+   "designation": "σ Boötis"
+  },
+  {
+   "name": "Giausar",
+   "designation": "λ Draconis"
+  },
+  {
+   "name": "Gienah",
+   "designation": "γ Corvi A"
+  },
+  {
+   "name": "Gigir",
+   "designation": "109 Tauri"
+  },
+  {
+   "name": "Ginan",
+   "designation": "ε Crucis"
+  },
+  {
+   "name": "Gloas",
+   "designation": "WASP-13"
+  },
+  {
+   "name": "Gnomon",
+   "designation": "WASP-43"
+  },
+  {
+   "name": "Gomeisa",
+   "designation": "β Canis Minoris A"
+  },
+  {
+   "name": "Gouguo",
+   "designation": "62 Sagittarii"
+  },
+  {
+   "name": "Grumium",
+   "designation": "ξ Draconis A"
+  },
+  {
+   "name": "Guahayona",
+   "designation": "HAT-P-26"
+  },
+  {
+   "name": "Guansuo",
+   "designation": "θ Coronae Borealis A"
+  },
+  {
+   "name": "Gudja",
+   "designation": "κ Serpentis"
+  },
+  {
+   "name": "Gumala",
+   "designation": "HD 179949"
+  },
+  {
+   "name": "Guniibuu",
+   "designation": "36 Ophiuchi A"
+  },
+  {
+   "name": "Guqi",
+   "designation": "δ Aquilae A"
+  },
+  {
+   "name": "Hadar",
+   "designation": "β Centauri Aa"
+  },
+  {
+   "name": "Haedus",
+   "designation": "η Aurigae"
+  },
+  {
+   "name": "Hamal",
+   "designation": "α Arietis"
+  },
+  {
+   "name": "Hassaleh",
+   "designation": "ι Aurigae"
+  },
+  {
+   "name": "Hatysa",
+   "designation": "ι Orionis Aa"
+  },
+  {
+   "name": "Helvetios",
+   "designation": "51 Pegasi"
+  },
+  {
+   "name": "Heng",
+   "designation": "ν Centauri A"
+  },
+  {
+   "name": "Heryibwia",
+   "designation": "η Sagittarii A"
+  },
+  {
+   "name": "Heze",
+   "designation": "ζ Virginis A"
+  },
+  {
+   "name": "Hoerikwaggo",
+   "designation": "α Mensae A"
+  },
+  {
+   "name": "Hoggar",
+   "designation": "HD 28678"
+  },
+  {
+   "name": "Holoea",
+   "designation": "IRAS 05327+3404"
+  },
+  {
+   "name": "Homam",
+   "designation": "ζ Pegasi"
+  },
+  {
+   "name": "Honores",
+   "designation": "7 Andromedae"
+  },
+  {
+   "name": "Horna",
+   "designation": "HAT-P-38"
+  },
+  {
+   "name": "Hru",
+   "designation": "σ Aquilae A"
+  },
+  {
+   "name": "Huagai",
+   "designation": "ι Cassiopeiae Aa"
+  },
+  {
+   "name": "Hunahpú",
+   "designation": "HD 98219"
+  },
+  {
+   "name": "Hunor",
+   "designation": "HAT-P-2"
+  },
+  {
+   "name": "Hydor",
+   "designation": "2 Ceti"
+  },
+  {
+   "name": "Idigna",
+   "designation": "π Piscium A"
+  },
+  {
+   "name": "Iklil",
+   "designation": "ρ Scorpii Aa"
+  },
+  {
+   "name": "Illyrian",
+   "designation": "HD 82886"
+  },
+  {
+   "name": "Imai",
+   "designation": "δ Crucis"
+  },
+  {
+   "name": "Inquill",
+   "designation": "HD 156411"
+  },
+  {
+   "name": "Intan",
+   "designation": "HD 20868"
+  },
+  {
+   "name": "Intercrus",
+   "designation": "41 Lyncis"
+  },
+  {
+   "name": "Irena",
+   "designation": "WASP-38"
+  },
+  {
+   "name": "Islee",
+   "designation": "81 Tauri"
+  },
+  {
+   "name": "Itonda",
+   "designation": "HD 208487"
+  },
+  {
+   "name": "Izar",
+   "designation": "ε Boötis A"
+  },
+  {
+   "name": "Jabbah",
+   "designation": "ν Scorpii Aa"
+  },
+  {
+   "name": "Jian",
+   "designation": "ξ2 Sagittarii"
+  },
+  {
+   "name": "Jiantai",
+   "designation": "δ2 Lyrae"
+  },
+  {
+   "name": "Jishui",
+   "designation": "ο Geminorum"
+  },
+  {
+   "name": "Jiu",
+   "designation": "ι Pegasi Aa"
+  },
+  {
+   "name": "Jordanus",
+   "designation": "25 Canum Venaticorum A"
+  },
+  {
+   "name": "Juanshe",
+   "designation": "ζ Persei"
+  },
+  {
+   "name": "Junnanmen",
+   "designation": "φ Andromedae A"
+  },
+  {
+   "name": "Kaewkosin",
+   "designation": "GJ 3470"
+  },
+  {
+   "name": "Kaffaljidhma",
+   "designation": "γ Ceti A"
+  },
+  {
+   "name": "Kaffalmusalsala",
+   "designation": "κ Andromedae"
+  },
+  {
+   "name": "Kalasungsang",
+   "designation": "ρ Boötis"
+  },
+  {
+   "name": "Kalausi",
+   "designation": "HD 83443"
+  },
+  {
+   "name": "Kamelos",
+   "designation": "HD 45866"
+  },
+  {
+   "name": "Kamuy",
+   "designation": "HD 145457"
+  },
+  {
+   "name": "Kang",
+   "designation": "κ Virginis"
+  },
+  {
+   "name": "Karaka",
+   "designation": "HD 137388"
+  },
+  {
+   "name": "Kaus Australis",
+   "designation": "ε Sagittarii A"
+  },
+  {
+   "name": "Kaus Borealis",
+   "designation": "λ Sagittarii"
+  },
+  {
+   "name": "Kaus Media",
+   "designation": "δ Sagittarii A"
+  },
+  {
+   "name": "Kautoki",
+   "designation": "ζ1 Lyrae A"
+  },
+  {
+   "name": "Kaveh",
+   "designation": "HD 175541"
+  },
+  {
+   "name": "Keid",
+   "designation": "ο2 Eridani A"
+  },
+  {
+   "name": "Kenemu",
+   "designation": "ρ1 Sagittarii"
+  },
+  {
+   "name": "Khambalia",
+   "designation": "λ Virginis A"
+  },
+  {
+   "name": "Khepdenreret",
+   "designation": "ε Herculis Aa"
+  },
+  {
+   "name": "Kitalpha",
+   "designation": "α Equulei A"
+  },
+  {
+   "name": "Kleeia",
+   "designation": "δ3 Tauri A"
+  },
+  {
+   "name": "Kochab",
+   "designation": "β Ursae Minoris"
+  },
+  {
+   "name": "Koeia",
+   "designation": "HIP 12961"
+  },
+  {
+   "name": "Koit",
+   "designation": "XO-4"
+  },
+  {
+   "name": "Komondor",
+   "designation": "HAT-P-12"
+  },
+  {
+   "name": "Kornephoros",
+   "designation": "β Herculis Aa"
+  },
+  {
+   "name": "Kosjenka",
+   "designation": "WASP-63"
+  },
+  {
+   "name": "Kraz",
+   "designation": "β Corvi"
+  },
+  {
+   "name": "Krios",
+   "designation": "HD 240429"
+  },
+  {
+   "name": "Kronos",
+   "designation": "HD 240430"
+  },
+  {
+   "name": "Kuda",
+   "designation": "δ Andromedae"
+  },
+  {
+   "name": "Kui",
+   "designation": "η Andromedae A"
+  },
+  {
+   "name": "Kulou",
+   "designation": "ι Centauri"
+  },
+  {
+   "name": "Kurhah",
+   "designation": "ξ Cephei Aa"
+  },
+  {
+   "name": "La Superba",
+   "designation": "Y Canum Venaticorum"
+  },
+  {
+   "name": "Lang-Exster",
+   "designation": "α Tucanae"
+  },
+  {
+   "name": "Larawag",
+   "designation": "ε Scorpii"
+  },
+  {
+   "name": "Leepwal",
+   "designation": "ζ Centauri A"
+  },
+  {
+   "name": "Leidian",
+   "designation": "ρ Pegasi A"
+  },
+  {
+   "name": "Lembu",
+   "designation": "97 Tauri"
+  },
+  {
+   "name": "Lerna",
+   "designation": "HAT-P-42"
+  },
+  {
+   "name": "Lesath",
+   "designation": "υ Scorpii"
+  },
+  {
+   "name": "Libertas",
+   "designation": "ξ Aquilae"
+  },
+  {
+   "name": "Lich",
+   "designation": "PSR B1257+12"
+  },
+  {
+   "name": "Liesma",
+   "designation": "HD 118203"
+  },
+  {
+   "name": "Ligong",
+   "designation": "λ Pegasi"
+  },
+  {
+   "name": "Lilii Borea",
+   "designation": "39 Arietis"
+  },
+  {
+   "name": "Lintangkumba",
+   "designation": "τ2 Aquarii"
+  },
+  {
+   "name": "Lionrock",
+   "designation": "HD 212771"
+  },
+  {
+   "name": "Lucilinburhuc",
+   "designation": "HD 45350"
+  },
+  {
+   "name": "Lumbung",
+   "designation": "CH Crucis"
+  },
+  {
+   "name": "Lusitânia",
+   "designation": "HD 45652"
+  },
+  {
+   "name": "Maasym",
+   "designation": "λ Herculis"
+  },
+  {
+   "name": "Macondo",
+   "designation": "HD 93083"
+  },
+  {
+   "name": "Maenalus",
+   "designation": "109 Virginis"
+  },
+  {
+   "name": "Mago",
+   "designation": "HD 32518"
+  },
+  {
+   "name": "Magur",
+   "designation": "HD 168592"
+  },
+  {
+   "name": "Mahasim",
+   "designation": "θ Aurigae A"
+  },
+  {
+   "name": "Mahsati",
+   "designation": "HD 152581"
+  },
+  {
+   "name": "Maia",
+   "designation": "20 Tauri"
+  },
+  {
+   "name": "Malmok",
+   "designation": "WASP-39"
+  },
+  {
+   "name": "Marfik",
+   "designation": "λ Ophiuchi Aa"
+  },
+  {
+   "name": "Markab",
+   "designation": "α Pegasi"
+  },
+  {
+   "name": "Markeb",
+   "designation": "κ Velorum A"
+  },
+  {
+   "name": "Márohu",
+   "designation": "WASP-6"
+  },
+  {
+   "name": "Marsic",
+   "designation": "κ Herculis A"
+  },
+  {
+   "name": "Maru",
+   "designation": "WD 0806−661"
+  },
+  {
+   "name": "Matar",
+   "designation": "η Pegasi Aa"
+  },
+  {
+   "name": "Matrichakra",
+   "designation": "δ Coronae Borealis"
+  },
+  {
+   "name": "Matza",
+   "designation": "HIP 65426"
+  },
+  {
+   "name": "Mazaalai",
+   "designation": "HAT-P-21"
+  },
+  {
+   "name": "Mebsuta",
+   "designation": "ε Geminorum"
+  },
+  {
+   "name": "Megrez",
+   "designation": "δ Ursae Majoris"
+  },
+  {
+   "name": "Meissa",
+   "designation": "λ Orionis A"
+  },
+  {
+   "name": "Mekbuda",
+   "designation": "ζ Geminorum Aa"
+  },
+  {
+   "name": "Meleph",
+   "designation": "ε Cancri Aa"
+  },
+  {
+   "name": "Menkalinan",
+   "designation": "β Aurigae Aa"
+  },
+  {
+   "name": "Menkar",
+   "designation": "α Ceti"
+  },
+  {
+   "name": "Menkent",
+   "designation": "θ Centauri"
+  },
+  {
+   "name": "Menkib",
+   "designation": "ξ Persei"
+  },
+  {
+   "name": "Merak",
+   "designation": "β Ursae Majoris"
+  },
+  {
+   "name": "Merga",
+   "designation": "38 Boötis"
+  },
+  {
+   "name": "Meridiana",
+   "designation": "α Coronae Australis"
+  },
+  {
+   "name": "Merope",
+   "designation": "23 Tauri Aa"
+  },
+  {
+   "name": "Mesarthim",
+   "designation": "γ1 Arietis A"
+  },
+  {
+   "name": "Miaplacidus",
+   "designation": "β Carinae"
+  },
+  {
+   "name": "Mimosa",
+   "designation": "β Crucis"
+  },
+  {
+   "name": "Minchir",
+   "designation": "σ Hydrae"
+  },
+  {
+   "name": "Minelauva",
+   "designation": "δ Virginis"
+  },
+  {
+   "name": "Mintaka",
+   "designation": "δ Orionis Aa"
+  },
+  {
+   "name": "Mira",
+   "designation": "ο Ceti A"
+  },
+  {
+   "name": "Mirach",
+   "designation": "β Andromedae"
+  },
+  {
+   "name": "Miram",
+   "designation": "η Persei A"
+  },
+  {
+   "name": "Mirfak",
+   "designation": "α Persei"
+  },
+  {
+   "name": "Mirzam",
+   "designation": "β Canis Majoris"
+  },
+  {
+   "name": "Misam",
+   "designation": "κ Persei Aa"
+  },
+  {
+   "name": "Mizar",
+   "designation": "ζ Ursae Majoris Aa"
+  },
+  {
+   "name": "Moldoveanu",
+   "designation": "XO-1"
+  },
+  {
+   "name": "Mönch",
+   "designation": "HD 130322"
+  },
+  {
+   "name": "Montuno",
+   "designation": "WASP-79"
+  },
+  {
+   "name": "Morava",
+   "designation": "WASP-60"
+  },
+  {
+   "name": "Moriah",
+   "designation": "HAT-P-23"
+  },
+  {
+   "name": "Moth",
+   "designation": "HD 61005"
+  },
+  {
+   "name": "Mothallah",
+   "designation": "α Trianguli A"
+  },
+  {
+   "name": "Mouhoun",
+   "designation": "HD 30856"
+  },
+  {
+   "name": "Mpingo",
+   "designation": "WASP-71"
+  },
+  {
+   "name": "Muliphein",
+   "designation": "γ Canis Majoris"
+  },
+  {
+   "name": "Muning",
+   "designation": "γ Serpentis Aa"
+  },
+  {
+   "name": "Muphrid",
+   "designation": "η Boötis Aa"
+  },
+  {
+   "name": "Muscida",
+   "designation": "ο Ursae Majoris A"
+  },
+  {
+   "name": "Musica",
+   "designation": "18 Delphini"
+  },
+  {
+   "name": "Muspelheim",
+   "designation": "HAT-P-29"
+  },
+  {
+   "name": "Naga",
+   "designation": "γ Hydrae A"
+  },
+  {
+   "name": "Nahn",
+   "designation": "ξ Cancri A"
+  },
+  {
+   "name": "Naledi",
+   "designation": "WASP-62"
+  },
+  {
+   "name": "Nandou",
+   "designation": "φ Sagittarii A"
+  },
+  {
+   "name": "Naos",
+   "designation": "ζ Puppis"
+  },
+  {
+   "name": "Nashira",
+   "designation": "γ Capricorni A"
+  },
+  {
+   "name": "Násti",
+   "designation": "HD 68988"
+  },
+  {
+   "name": "Natasha",
+   "designation": "HD 85390"
+  },
+  {
+   "name": "Necklace",
+   "designation": "IRAS 19417+1701"
+  },
+  {
+   "name": "Neichu",
+   "designation": "π2 Pegasi"
+  },
+  {
+   "name": "Nekkar",
+   "designation": "β Boötis"
+  },
+  {
+   "name": "Nembus",
+   "designation": "51 Andromedae"
+  },
+  {
+   "name": "Nenque",
+   "designation": "HD 6434"
+  },
+  {
+   "name": "Nervia",
+   "designation": "HD 49674"
+  },
+  {
+   "name": "Nganurganity",
+   "designation": "σ Canis Majoris"
+  },
+  {
+   "name": "Niandao",
+   "designation": "R Lyrae"
+  },
+  {
+   "name": "Nihal",
+   "designation": "β Leporis A"
+  },
+  {
+   "name": "Nikawiy",
+   "designation": "HD 136418"
+  },
+  {
+   "name": "Ninnisig",
+   "designation": "θ Lyrae"
+  },
+  {
+   "name": "Noquisi",
+   "designation": "GJ 436"
+  },
+  {
+   "name": "Nosaxa",
+   "designation": "HD 48265"
+  },
+  {
+   "name": "Nüchuang",
+   "designation": "π Herculis"
+  },
+  {
+   "name": "Nunki",
+   "designation": "σ Sagittarii Aa"
+  },
+  {
+   "name": "Nusakan",
+   "designation": "β Coronae Borealis A"
+  },
+  {
+   "name": "Nushagak",
+   "designation": "HD 17156"
+  },
+  {
+   "name": "Nyamien",
+   "designation": "WASP-15"
+  },
+  {
+   "name": "Ogma",
+   "designation": "HD 149026"
+  },
+  {
+   "name": "Okab",
+   "designation": "ζ Aquilae A"
+  },
+  {
+   "name": "Orkaria",
+   "designation": "GJ 1214"
+  },
+  {
+   "name": "Pabilsang",
+   "designation": "ν2 Sagittarii A"
+  },
+  {
+   "name": "Pagru",
+   "designation": "η Aquilae Aa"
+  },
+  {
+   "name": "Paikauhale",
+   "designation": "τ Scorpii"
+  },
+  {
+   "name": "Paloma",
+   "designation": "2MASS J05243042+4244506"
+  },
+  {
+   "name": "Paradys",
+   "designation": "α Apodis"
+  },
+  {
+   "name": "Parumleo",
+   "designation": "WASP-32"
+  },
+  {
+   "name": "Paushna",
+   "designation": "ζ Piscium Ba"
+  },
+  {
+   "name": "Peacock",
+   "designation": "α Pavonis A"
+  },
+  {
+   "name": "Peony Star",
+   "designation": "WR 102ka"
+  },
+  {
+   "name": "Petra",
+   "designation": "WASP-80"
+  },
+  {
+   "name": "Phact",
+   "designation": "α Columbae"
+  },
+  {
+   "name": "Phecda",
+   "designation": "γ Ursae Majoris"
+  },
+  {
+   "name": "Pherkad",
+   "designation": "γ Ursae Minoris"
+  },
+  {
+   "name": "Pherkad Minor",
+   "designation": "11 Ursae Minoris"
+  },
+  {
+   "name": "Phoenicia",
+   "designation": "HD 192263"
+  },
+  {
+   "name": "Phyllon Kissinou",
+   "designation": "23 Comae Berenices"
+  },
+  {
+   "name": "Piautos",
+   "designation": "λ Cancri A"
+  },
+  {
+   "name": "Pili",
+   "designation": "ω Piscium"
+  },
+  {
+   "name": "Pincoya",
+   "designation": "HD 164604"
+  },
+  {
+   "name": "Ping",
+   "designation": "ε Leporis"
+  },
+  {
+   "name": "Pipirima",
+   "designation": "μ2 Scorpii A"
+  },
+  {
+   "name": "Pipit",
+   "designation": "ν Puppis"
+  },
+  {
+   "name": "Pipoltr",
+   "designation": "TrES-3"
+  },
+  {
+   "name": "Pistol Star",
+   "designation": "V4647 Sagittarii"
+  },
+  {
+   "name": "Pleione",
+   "designation": "28 Tauri Aa"
+  },
+  {
+   "name": "Poerava",
+   "designation": "HD 221287"
+  },
+  {
+   "name": "Polaris",
+   "designation": "α Ursae Minoris Aa"
+  },
+  {
+   "name": "Polaris Australis",
+   "designation": "σ Octantis"
+  },
+  {
+   "name": "Polis",
+   "designation": "μ Sagittarii Aa"
+  },
+  {
+   "name": "Pollux",
+   "designation": "β Geminorum"
+  },
+  {
+   "name": "Pongaponga",
+   "designation": "ε1 Lyrae A"
+  },
+  {
+   "name": "Porrima",
+   "designation": "γ Virginis A"
+  },
+  {
+   "name": "Praecipua",
+   "designation": "46 Leonis Minoris"
+  },
+  {
+   "name": "Prima Hyadum",
+   "designation": "γ Tauri A"
+  },
+  {
+   "name": "Procyon",
+   "designation": "α Canis Minoris A"
+  },
+  {
+   "name": "Propus",
+   "designation": "η Geminorum A"
+  },
+  {
+   "name": "Protome",
+   "designation": "6 Equulei"
+  },
+  {
+   "name": "Proxima Centauri",
+   "designation": "α Centauri C"
+  },
+  {
+   "name": "Psalterium",
+   "designation": "10 Tauri"
+  },
+  {
+   "name": "Pulcherrima",
+   "designation": "ε Boötis B"
+  },
+  {
+   "name": "Puwuh Atarung",
+   "designation": "ι Piscium"
+  },
+  {
+   "name": "Qedty",
+   "designation": "δ Coronae Australis"
+  },
+  {
+   "name": "Qigong",
+   "designation": "δ Boötis A"
+  },
+  {
+   "name": "Quadrans",
+   "designation": "44 Boötis A"
+  },
+  {
+   "name": "Ramus",
+   "designation": "102 Herculis"
+  },
+  {
+   "name": "Ran",
+   "designation": "ε Eridani"
+  },
+  {
+   "name": "Rana",
+   "designation": "δ Eridani"
+  },
+  {
+   "name": "Rangifer",
+   "designation": "49 Cassiopeiae A"
+  },
+  {
+   "name": "Rapeto",
+   "designation": "HD 153950"
+  },
+  {
+   "name": "Rasalas",
+   "designation": "μ Leonis"
+  },
+  {
+   "name": "Rasalgethi",
+   "designation": "α1 Herculis Aa"
+  },
+  {
+   "name": "Rasalhague",
+   "designation": "α Ophiuchi A"
+  },
+  {
+   "name": "Rasalnaqa",
+   "designation": "ι Andromedae"
+  },
+  {
+   "name": "Rastaban",
+   "designation": "β Draconis A"
+  },
+  {
+   "name": "Red Rectangle",
+   "designation": "HD 44179"
+  },
+  {
+   "name": "Regulus",
+   "designation": "α Leonis A"
+  },
+  {
+   "name": "Revati",
+   "designation": "ζ Piscium Aa"
+  },
+  {
+   "name": "Rhombus",
+   "designation": "α Reticuli A"
+  },
+  {
+   "name": "Rigel",
+   "designation": "β Orionis A"
+  },
+  {
+   "name": "Rigil Kentaurus",
+   "designation": "α Centauri A"
+  },
+  {
+   "name": "Rosalíadecastro",
+   "designation": "HD 149143"
+  },
+  {
+   "name": "Rosette Eye",
+   "designation": "RAFGL 961"
+  },
+  {
+   "name": "Rotanev",
+   "designation": "β Delphini A"
+  },
+  {
+   "name": "Ruchbah",
+   "designation": "δ Cassiopeiae Aa"
+  },
+  {
+   "name": "Rukbat",
+   "designation": "α Sagittarii"
+  },
+  {
+   "name": "Sabik",
+   "designation": "η Ophiuchi A"
+  },
+  {
+   "name": "Saclateni",
+   "designation": "ζ Aurigae A"
+  },
+  {
+   "name": "Sadachbia",
+   "designation": "γ Aquarii Aa"
+  },
+  {
+   "name": "Sadalbari",
+   "designation": "μ Pegasi"
+  },
+  {
+   "name": "Sadalmelik",
+   "designation": "α Aquarii"
+  },
+  {
+   "name": "Sadalsuud",
+   "designation": "β Aquarii A"
+  },
+  {
+   "name": "Sadr",
+   "designation": "γ Cygni"
+  },
+  {
+   "name": "Safina",
+   "designation": "88 Aquarii"
+  },
+  {
+   "name": "Sagarmatha",
+   "designation": "HD 100777"
+  },
+  {
+   "name": "Saiph",
+   "designation": "κ Orionis"
+  },
+  {
+   "name": "Salm",
+   "designation": "τ Pegasi"
+  },
+  {
+   "name": "Sāmaya",
+   "designation": "HD 205739"
+  },
+  {
+   "name": "Sansuna",
+   "designation": "HAT-P-34"
+  },
+  {
+   "name": "Sapaki",
+   "designation": "WR 67a"
+  },
+  {
+   "name": "Sargas",
+   "designation": "θ Scorpii A"
+  },
+  {
+   "name": "Sarin",
+   "designation": "δ Herculis Aa"
+  },
+  {
+   "name": "Sarvvis",
+   "designation": "δ Persei A"
+  },
+  {
+   "name": "Sawyqed",
+   "designation": "δ Ceti"
+  },
+  {
+   "name": "Sceptrum",
+   "designation": "53 Eridani A"
+  },
+  {
+   "name": "Scheat",
+   "designation": "β Pegasi"
+  },
+  {
+   "name": "Schedar",
+   "designation": "α Cassiopeiae"
+  },
+  {
+   "name": "Secunda Hyadum",
+   "designation": "δ1 Tauri Aa"
+  },
+  {
+   "name": "Segin",
+   "designation": "ε Cassiopeiae"
+  },
+  {
+   "name": "Seginus",
+   "designation": "γ Boötis Aa"
+  },
+  {
+   "name": "Shakata",
+   "designation": "75 Tauri"
+  },
+  {
+   "name": "Shakh",
+   "designation": "β Sagittae"
+  },
+  {
+   "name": "Sham",
+   "designation": "α Sagittae"
+  },
+  {
+   "name": "Shama",
+   "designation": "HD 99109"
+  },
+  {
+   "name": "Shangcheng",
+   "designation": "HD 19275"
+  },
+  {
+   "name": "Shangwei",
+   "designation": "HD 42818 A"
+  },
+  {
+   "name": "Shaomin",
+   "designation": "ρ Leonis"
+  },
+  {
+   "name": "Shaowei",
+   "designation": "γ Camelopardalis A"
+  },
+  {
+   "name": "Sharjah",
+   "designation": "HIP 79431"
+  },
+  {
+   "name": "Shatabhisha",
+   "designation": "λ Aquarii"
+  },
+  {
+   "name": "Shaula",
+   "designation": "λ Scorpii Aa"
+  },
+  {
+   "name": "Sheliak",
+   "designation": "β Lyrae Aa1"
+  },
+  {
+   "name": "Shengong",
+   "designation": "HD 153072 A"
+  },
+  {
+   "name": "Sheratan",
+   "designation": "β Arietis A"
+  },
+  {
+   "name": "Shimu",
+   "designation": "ζ Andromedae A"
+  },
+  {
+   "name": "Shugi-Enmesharra",
+   "designation": "γ Persei"
+  },
+  {
+   "name": "Sika",
+   "designation": "HD 181720"
+  },
+  {
+   "name": "Simmakh",
+   "designation": "41 Piscium"
+  },
+  {
+   "name": "Sirius",
+   "designation": "α Canis Majoris A"
+  },
+  {
+   "name": "Situla",
+   "designation": "κ Aquarii A"
+  },
+  {
+   "name": "Siwarha",
+   "designation": "α Orionis B"
+  },
+  {
+   "name": "Skat",
+   "designation": "δ Aquarii A"
+  },
+  {
+   "name": "Solaris",
+   "designation": "BD+14 4559"
+  },
+  {
+   "name": "Solitaire",
+   "designation": "58 Hydrae"
+  },
+  {
+   "name": "Southern Crab",
+   "designation": "WRAY 16-147"
+  },
+  {
+   "name": "Speedy Mic",
+   "designation": "BO Microscopii"
+  },
+  {
+   "name": "Spica",
+   "designation": "α Virginis Aa"
+  },
+  {
+   "name": "Stella Ludoviciana",
+   "designation": "HD 116798"
+  },
+  {
+   "name": "Stellio",
+   "designation": "α Lacertae"
+  },
+  {
+   "name": "Stephanos",
+   "designation": "π Coronae Borealis"
+  },
+  {
+   "name": "Sterrennacht",
+   "designation": "HAT-P-6"
+  },
+  {
+   "name": "Stribor",
+   "designation": "HD 75898"
+  },
+  {
+   "name": "Sualocin",
+   "designation": "α Delphini Aa"
+  },
+  {
+   "name": "Subra",
+   "designation": "ο Leonis Aa"
+  },
+  {
+   "name": "Suhail",
+   "designation": "λ Velorum"
+  },
+  {
+   "name": "Sukhurmashu",
+   "designation": "α1 Capricorni A"
+  },
+  {
+   "name": "Sulafat",
+   "designation": "γ Lyrae"
+  },
+  {
+   "name": "Syrma",
+   "designation": "ι Virginis"
+  },
+  {
+   "name": "Tabit",
+   "designation": "π3 Orionis"
+  },
+  {
+   "name": "Taika",
+   "designation": "HAT-P-40"
+  },
+  {
+   "name": "Taiyangshou",
+   "designation": "χ Ursae Majoris"
+  },
+  {
+   "name": "Taiyi",
+   "designation": "8 Draconis"
+  },
+  {
+   "name": "Talitha",
+   "designation": "ι Ursae Majoris Aa"
+  },
+  {
+   "name": "Tangra",
+   "designation": "WASP-21"
+  },
+  {
+   "name": "Tania Australis",
+   "designation": "μ Ursae Majoris A"
+  },
+  {
+   "name": "Tania Borealis",
+   "designation": "λ Ursae Majoris"
+  },
+  {
+   "name": "Tapecue",
+   "designation": "HD 63765"
+  },
+  {
+   "name": "Tarandus",
+   "designation": "2 Ursae Minoris"
+  },
+  {
+   "name": "Tarazed",
+   "designation": "γ Aquilae"
+  },
+  {
+   "name": "Tarf",
+   "designation": "β Cancri A"
+  },
+  {
+   "name": "Taygeta",
+   "designation": "19 Tauri Aa"
+  },
+  {
+   "name": "Tegmine",
+   "designation": "ζ1 Cancri A"
+  },
+  {
+   "name": "Tejat",
+   "designation": "μ Geminorum"
+  },
+  {
+   "name": "Telum",
+   "designation": "γ Sagittae"
+  },
+  {
+   "name": "Tengshe",
+   "designation": "V424 Lacertae"
+  },
+  {
+   "name": "Tepennekhet",
+   "designation": "δ Equulei A"
+  },
+  {
+   "name": "Tepiamenit",
+   "designation": "τ Boötis A"
+  },
+  {
+   "name": "Terebellum",
+   "designation": "ω Sagittarii A"
+  },
+  {
+   "name": "Tevel",
+   "designation": "HAT-P-9"
+  },
+  {
+   "name": "Theemin",
+   "designation": "υ2 Eridani"
+  },
+  {
+   "name": "Thuban",
+   "designation": "α Draconis A"
+  },
+  {
+   "name": "Tiaki",
+   "designation": "β Gruis"
+  },
+  {
+   "name": "Tianbang",
+   "designation": "ι Herculis A"
+  },
+  {
+   "name": "Tianbian",
+   "designation": "α Scuti"
+  },
+  {
+   "name": "Tiancang",
+   "designation": "θ Ceti"
+  },
+  {
+   "name": "Tianchan",
+   "designation": "42 Persei"
+  },
+  {
+   "name": "Tianfu",
+   "designation": "τ Aquilae"
+  },
+  {
+   "name": "Tiangang",
+   "designation": "β Piscis Austrini"
+  },
+  {
+   "name": "Tianguan",
+   "designation": "ζ Tauri A"
+  },
+  {
+   "name": "Tianhun",
+   "designation": "20 Ceti"
+  },
+  {
+   "name": "Tianji",
+   "designation": "ζ Herculis A"
+  },
+  {
+   "name": "Tianjinnan",
+   "designation": "ζ Cygni A"
+  },
+  {
+   "name": "Tianjiu",
+   "designation": "22 Andromedae"
+  },
+  {
+   "name": "Tianlin",
+   "designation": "ο Tauri"
+  },
+  {
+   "name": "Tiansi",
+   "designation": "γ Cassiopeiae Aa"
+  },
+  {
+   "name": "Tianyi",
+   "designation": "7 Draconis"
+  },
+  {
+   "name": "Tianyue",
+   "designation": "4 Sagittarii A"
+  },
+  {
+   "name": "Timir",
+   "designation": "HD 148427"
+  },
+  {
+   "name": "Tislit",
+   "designation": "WASP-161"
+  },
+  {
+   "name": "Titawin",
+   "designation": "υ Andromedae A"
+  },
+  {
+   "name": "Tobo",
+   "designation": "16 Persei"
+  },
+  {
+   "name": "Tojil",
+   "designation": "WASP-22"
+  },
+  {
+   "name": "Toliman",
+   "designation": "α Centauri B"
+  },
+  {
+   "name": "Tonatiuh",
+   "designation": "HD 104985"
+  },
+  {
+   "name": "Tonglingxing",
+   "designation": "HD 49878"
+  },
+  {
+   "name": "Torcular",
+   "designation": "ο Piscium A"
+  },
+  {
+   "name": "Triminus",
+   "designation": "ι Trianguli Aa"
+  },
+  {
+   "name": "Tugongli",
+   "designation": "ξ Pegasi A"
+  },
+  {
+   "name": "Tuiren",
+   "designation": "HAT-P-36"
+  },
+  {
+   "name": "Tupã",
+   "designation": "HD 108147"
+  },
+  {
+   "name": "Tupi",
+   "designation": "HD 23079"
+  },
+  {
+   "name": "Tureis",
+   "designation": "ρ Puppis"
+  },
+  {
+   "name": "Tusizuo",
+   "designation": "109 Herculis"
+  },
+  {
+   "name": "Udang",
+   "designation": "θ Capricorni A"
+  },
+  {
+   "name": "Udkadua",
+   "designation": "λ Andromedae A"
+  },
+  {
+   "name": "Ukdah",
+   "designation": "ι Hydrae"
+  },
+  {
+   "name": "Uklun",
+   "designation": "HD 102117"
+  },
+  {
+   "name": "Ulfskeptr",
+   "designation": "85 Tauri"
+  },
+  {
+   "name": "Uñallamacha",
+   "designation": "HD 155985"
+  },
+  {
+   "name": "Unukalhai",
+   "designation": "α Serpentis"
+  },
+  {
+   "name": "Uridim",
+   "designation": "α Lupi"
+  },
+  {
+   "name": "Urquchillay",
+   "designation": "ζ2 Lyrae"
+  },
+  {
+   "name": "Uruk",
+   "designation": "HD 231701"
+  },
+  {
+   "name": "Uúba",
+   "designation": "LTT 9779"
+  },
+  {
+   "name": "Vega",
+   "designation": "α Lyrae"
+  },
+  {
+   "name": "Veritate",
+   "designation": "14 Andromedae"
+  },
+  {
+   "name": "Vindemiatrix",
+   "designation": "ε Virginis"
+  },
+  {
+   "name": "Waiping",
+   "designation": "δ Piscium"
+  },
+  {
+   "name": "Wasat",
+   "designation": "δ Geminorum Aa"
+  },
+  {
+   "name": "Wattle",
+   "designation": "WASP-19"
+  },
+  {
+   "name": "Wazn",
+   "designation": "β Columbae"
+  },
+  {
+   "name": "Weixiu",
+   "designation": "35 Arietis"
+  },
+  {
+   "name": "Wezen",
+   "designation": "δ Canis Majoris"
+  },
+  {
+   "name": "Wouri",
+   "designation": "WASP-69"
+  },
+  {
+   "name": "Wurren",
+   "designation": "ζ Phoenicis Aa"
+  },
+  {
+   "name": "Xami",
+   "designation": "α Circini"
+  },
+  {
+   "name": "Xamidimura",
+   "designation": "μ1 Scorpii Aa"
+  },
+  {
+   "name": "Xihe",
+   "designation": "HD 173416"
+  },
+  {
+   "name": "Xuange",
+   "designation": "λ Boötis"
+  },
+  {
+   "name": "Yaqana",
+   "designation": "ε Normae"
+  },
+  {
+   "name": "Yed Posterior",
+   "designation": "ε Ophiuchi"
+  },
+  {
+   "name": "Yed Prior",
+   "designation": "δ Ophiuchi"
+  },
+  {
+   "name": "Yildun",
+   "designation": "δ Ursae Minoris"
+  },
+  {
+   "name": "Yunü",
+   "designation": "31 Leonis A"
+  },
+  {
+   "name": "Yunyu",
+   "designation": "γ Piscium"
+  },
+  {
+   "name": "Yuyu",
+   "designation": "ι Cancri A"
+  },
+  {
+   "name": "Zaniah",
+   "designation": "η Virginis Aa"
+  },
+  {
+   "name": "Zaurak",
+   "designation": "γ Eridani"
+  },
+  {
+   "name": "Zavijava",
+   "designation": "β Virginis"
+  },
+  {
+   "name": "Zembra",
+   "designation": "HATS-72"
+  },
+  {
+   "name": "Zhang",
+   "designation": "υ1 Hydrae"
+  },
+  {
+   "name": "Zhou",
+   "designation": "β Serpentis A"
+  },
+  {
+   "name": "Zibal",
+   "designation": "ζ Eridani Aa"
+  },
+  {
+   "name": "Zibbatu",
+   "designation": "112 Piscium"
+  },
+  {
+   "name": "Zosma",
+   "designation": "δ Leonis"
+  },
+  {
+   "name": "Zubenelgenubi",
+   "designation": "α2 Librae Aa"
+  },
+  {
+   "name": "Zubenelhakrabi",
+   "designation": "γ Librae A"
+  },
+  {
+   "name": "Zubeneschamali",
+   "designation": "β Librae"
+  },
+  {
+   "name": "Zuogeng",
+   "designation": "η Arietis"
+  },
+  {
+   "name": "Zuoqi",
+   "designation": "δ Sagittae A"
+  }
+ ]
+}
