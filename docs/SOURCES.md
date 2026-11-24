@@ -8,6 +8,8 @@
 |---|---|---|---|
 | Мапи Сонця, планет і Місяця, кільця Сатурна, зоряне тло (`src/textures/`) | Solar System Scope, https://www.solarsystemscope.com/textures/ — файли `2k_*.jpg`, `2k_saturn_ring_alpha.png` | CC BY 4.0: «Distributed under Attribution 4.0 International license: You may use, adapt, and share these textures for any purpose, even commercially.» | на сторінці, 24.11.2026 |
 | Діаметри планет і Місяця, найближчі й найдальші відстані від Сонця, період Місяця | NASA Planetary Fact Sheet, https://nssdc.gsfc.nasa.gov/planetary/factsheet/ (оновлено 13.11.2026) | матеріали NASA зазвичай не захищені авторським правом у США (за пошуком; сторінку правил NASA ще не прочитано) | дані — на сторінці, 24.11.2026 |
+| Числа карток: маса, сила тяжіння, доба, рік, відстань, температура, супутники, кільця (`src/data/facts.json`) | той самий Planetary Fact Sheet; що означає кожен рядок — NASA Planetary Fact Sheet Notes, …/factsheet/planetfact_notes.html (оновлено 20.12.2021) | те саме | 24.11.2026 |
+| Сонце в картці: відношення до Землі, оберт, температура поверхні | NASA Sun Fact Sheet | те саме | 24.11.2026 |
 | Радіус Сонця | NASA Sun Fact Sheet, …/factsheet/sunfact.html (оновлено 9.05.2024) | те саме | 24.11.2026 |
 | Радіуси кілець Сатурна | NASA Saturnian Rings Fact Sheet, …/factsheet/satringfact.html (оновлено 19.04.2022) | те саме | 24.11.2026 |
 | Положення й обертання тіл | astronomy-engine 2.1.19 (npm) | MIT | у пакеті |

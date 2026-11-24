@@ -9,6 +9,12 @@ export type PlanetId = Exclude<BodyId, 'sun' | 'moon'>;
 
 export const PLANET_IDS: readonly PlanetId[] = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
 
+/**
+ * The giants: planets without a solid surface. NASA's sheet gives their gravity and temperature for the level
+ * where the pressure is one bar, and their surface pressure as unknown.
+ */
+export const GIANT_IDS: readonly PlanetId[] = ['jupiter', 'saturn', 'uranus', 'neptune'];
+
 /** The body another goes around: the Moon — the Earth, a planet — the Sun; the Sun — nothing. */
 export function parentOf(id: BodyId): BodyId | null {
   return id === 'sun' ? null : id === 'moon' ? 'earth' : 'sun';

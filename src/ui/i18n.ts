@@ -29,6 +29,21 @@ export function fmt(text: string, params: Record<string, string | number>): stri
   return text.replace(/\{(\w+)\}/g, (whole, key: string) => (key in params ? String(params[key]) : whole));
 }
 
+export type PluralForms = Partial<Record<Intl.LDMLPluralRule, string>>;
+
+/** The form of a text for a number ("1 day", "5 days"), with the number written the language's way. */
+export function plural(lang: string, n: number, forms: PluralForms, shown: string): string {
+  const form = forms[new Intl.PluralRules(lang).select(n)] ?? forms.other ?? '';
+  return fmt(form, { n: shown });
+}
+
+/** A number the language's way: at most `digits` after the point, or `significant` digits in all. */
+export function num(lang: string, n: number, digits = 0, significant?: number): string {
+  const text = new Intl.NumberFormat(lang, significant ? { maximumSignificantDigits: significant } : { maximumFractionDigits: digits }).format(n);
+  // a true minus sign, as wide as a digit — not a hyphen
+  return text.replace(/^-/, '−');
+}
+
 /** The name of a language in that language: "українська". */
 export function langName(code: string): string {
   const name = new Intl.DisplayNames([code], { type: 'language' }).of(code) ?? code;

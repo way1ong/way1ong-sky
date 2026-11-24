@@ -1,7 +1,7 @@
 // Where every body is at a moment, and how it is turned — astronomy-engine does the astronomy. Positions are
 // in kilometres from the Sun, in the scene's axes: the plane of the Earth's orbit (the ecliptic of J2000) is
 // the floor, +Y points to its north, +X to the March equinox.
-import { Body, GeoMoon, HelioVector, KM_PER_AU, MakeTime, PlanetOrbitalPeriod, RotateVector, Rotation_EQJ_ECL, RotationAxis, Vector } from 'astronomy-engine';
+import { Body, C_AUDAY, GeoMoon, HelioVector, Illumination, KM_PER_AU, MakeTime, PlanetOrbitalPeriod, RotateVector, Rotation_EQJ_ECL, RotationAxis, Vector } from 'astronomy-engine';
 import { BODY_IDS, MOON_PERIOD_DAYS, type BodyId, type PlanetId } from './bodies.ts';
 import { add, cross, normalize, scale, type Vec3 } from './vec.ts';
 
@@ -73,6 +73,16 @@ export function orbitKm(id: Exclude<BodyId, 'sun'>, date: Date, points: number):
     out.push(id === 'moon' ? scale(toScene(GeoMoon(at)), KM_PER_AU) : positionKm(id, at));
   }
   return out;
+}
+
+/** How long light takes to cross a distance, minutes (the speed of light is the engine's constant). */
+export function lightMinutes(km: number): number {
+  return (km / KM_PER_AU / C_AUDAY) * 1440;
+}
+
+/** The part of the Moon's disc that is lit as seen from the Earth, 0…1. */
+export function moonLitFraction(date: Date): number {
+  return Illumination(Body.Moon, date).phase_fraction;
 }
 
 export { KM_PER_AU };

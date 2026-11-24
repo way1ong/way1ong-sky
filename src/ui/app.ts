@@ -11,6 +11,7 @@ import { shadeOf, type Shade } from '../core/shadow.ts';
 import { length, sub, type Vec3 } from '../core/vec.ts';
 import { attachControls } from './controls.ts';
 import { h } from './dom.ts';
+import { createFactsDialog } from './facts-dialog.ts';
 import { dict, fmt, pickLang, type Dict } from './i18n.ts';
 import { createMenuDialog } from './menu-dialog.ts';
 import { createSceneView, type Orbit, type SceneView } from './scene.ts';
@@ -110,10 +111,12 @@ export function startApp(root: HTMLElement): void {
   const nowBtn = h('button', { class: 'chip', type: 'button' });
   const moreBtn = h('button', { class: 'chip', type: 'button' });
   timeBox.append(slowerBtn, pauseBtn, fasterBtn, nowBtn, moreBtn);
+  const factsBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-info', 'aria-hidden': 'true' }, 'i'));
   const menu = createMenuDialog();
   const timeDialog = createTimeDialog();
+  const factsDialog = createFactsDialog();
   const stage = h('div', { class: 'stage' }, canvas, labels);
-  const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine), menuBtn);
+  const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine), factsBtn, menuBtn);
   const bottom = h('div', { class: 'bottom' }, h('div', { class: 'bar' }, timeBox), h('div', { class: 'bar' }, scaleBox), dock);
   const main = h(
     'main',
@@ -124,6 +127,7 @@ export function startApp(root: HTMLElement): void {
     bottom,
     menu.el,
     timeDialog.el,
+    factsDialog.el,
   );
   root.replaceChildren(main);
 
@@ -210,6 +214,9 @@ export function startApp(root: HTMLElement): void {
     nowBtn.hidden = live;
     pauseBtn.setAttribute('aria-label', clock.paused ? d.time.play : d.time.pause);
     pauseBtn.replaceChildren(h('span', { class: clock.paused ? 'icon-play' : 'icon-pause', 'aria-hidden': 'true' }));
+    // The card is of the body looked at: no body in front of the camera — no button.
+    factsBtn.hidden = whole || flight !== null;
+    factsBtn.setAttribute('aria-label', fmt(d.card.open, { name: d.bodies[focus] }));
     for (const [id, chip] of chipOf) {
       const here = id === 'whole' ? whole : !whole && id === (flight?.to ?? focus);
       if (here) chip.setAttribute('aria-current', 'true');
@@ -341,6 +348,8 @@ export function startApp(root: HTMLElement): void {
       dirty = true;
     },
   });
+
+  factsBtn.addEventListener('click', () => factsDialog.open(d, lang, focus, date));
 
   menuBtn.addEventListener('click', () =>
     menu.open(d, lang, (code) => {

@@ -75,6 +75,71 @@
       "partial": "{date} — részleges napfogyatkozás. A halvány terület a Földön a Hold árnyékának széle. Az idő áll: indítsa el, és láthatja, ahogy mozog."
     }
   },
+  "card": {
+    "open": "Tények: {name}",
+    "title": "Tények",
+    "close": "Bezárás",
+    "rows": {
+      "diameter": "Átmérő az egyenlítőnél",
+      "mass": "Tömeg",
+      "gravity": "Gravitáció a felszínen",
+      "gravityGiant": "Gravitáció (ahol a nyomás akkora, mint a Föld felszínén)",
+      "day": "Egy nap, déltől délig",
+      "year": "Egy év, egy keringés a Nap körül",
+      "orbit": "Egy keringés a Föld körül",
+      "sunDistance": "Távolság a Naptól, átlagosan",
+      "earthDistance": "Távolság a Földtől, átlagosan",
+      "temperature": "Hőmérséklet, az egész égitest átlaga",
+      "temperatureGiant": "Hőmérséklet ott, ahol a nyomás akkora, mint a Föld felszínén",
+      "surfaceTemp": "A látható felszín hőmérséklete",
+      "rotation": "Egy fordulat a tengelye körül",
+      "moons": "Megerősített holdak",
+      "rings": "Gyűrűk",
+      "nowSun": "A Naptól most",
+      "nowEarth": "A Földtől most",
+      "lit": "Megvilágítva, a Földről nézve most"
+    },
+    "units": {
+      "km": "{n} km",
+      "millionKm": "{n} millió km",
+      "mass": "{n} × 10²⁴ kg",
+      "gravity": "{n} m/s²",
+      "hours": "{n} óra",
+      "celsius": "{n} °C",
+      "kelvin": "{n} K",
+      "percent": "{n}%",
+      "lightMin": "a fény {n} perc alatt ér oda",
+      "lightSec": "a fény {n} másodperc alatt ér oda",
+      "atLatitude": "a {n}. szélességi fokon",
+      "lightHours": "a fény {h} óra {m} perc alatt ér oda"
+    },
+    "earthDays": {
+      "one": "{n} földi nap",
+      "other": "{n} földi nap"
+    },
+    "earthYears": {
+      "one": "{n} földi év",
+      "other": "{n} földi év"
+    },
+    "timesEarth": "Föld × {n}",
+    "yes": "van",
+    "no": "nincs",
+    "most": {
+      "largest": "A legnagyobb bolygó",
+      "smallest": "A legkisebb bolygó",
+      "hottest": "Átlagosan a legforróbb bolygó",
+      "coldest": "Átlagosan a leghidegebb bolygó",
+      "longestDay": "A leghosszabb nap a bolygók között",
+      "shortestDay": "A legrövidebb nap a bolygók között",
+      "mostMoons": "A legtöbb megerősített hold",
+      "nearest": "A Naphoz legközelebbi bolygó",
+      "farthest": "A Naptól legtávolabbi bolygó"
+    },
+    "source": "A számok a NASA adatai (az adatlap frissítve: {updated}). A „most” értékeket az alkalmazás számítja a mutatott pillanatra: {date}.",
+    "sourceLink": "A NASA bolygóadatlapja",
+    "notesLink": "mit jelentenek a sorok",
+    "sunLink": "A NASA Nap-adatlapja"
+  },
   "keys": "A nyílbillentyűk forgatják a nézetet, a plusz és a mínusz a távolságot változtatja.",
   "settings": {
     "title": "Beállítások",

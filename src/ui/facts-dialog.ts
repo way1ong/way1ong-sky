@@ -1,0 +1,44 @@
+// A body's card: what it leads the planets in, its numbers with the Earth for comparison, where it is now —
+// and where the numbers come from.
+import type { BodyId } from '../core/bodies.ts';
+import { FACT_SOURCES } from '../core/facts.ts';
+import { h } from './dom.ts';
+import { cardBadges, cardRows } from './facts-text.ts';
+import { fmt, type Dict } from './i18n.ts';
+
+const link = (url: string, text: string) => h('a', { href: url, rel: 'noopener' }, text);
+
+export function createFactsDialog(): { el: HTMLDialogElement; open(d: Dict, lang: string, id: BodyId, date: Date): void } {
+  const el = h('dialog', { class: 'dialog', 'aria-labelledby': 'facts-title' });
+  return {
+    el,
+    open(d, lang, id, date) {
+      const badges = cardBadges(d, id);
+      const most = h('ul', { class: 'badges' });
+      for (const text of badges) most.append(h('li', { class: 'badge' }, text));
+      const list = h('dl', { class: 'facts' });
+      for (const row of cardRows(d, lang, id, date)) {
+        list.append(h('div', { class: 'fact' }, h('dt', {}, row.label), h('dd', {}, h('span', { class: 'fact__value' }, row.value), row.more ? h('span', { class: 'fact__more' }, row.more) : null)));
+      }
+      const close = h('button', { class: 'btn', type: 'button' }, d.card.close);
+      close.addEventListener('click', () => el.close());
+      const shown = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: '2-digit' }).format(date);
+      const source = id === 'sun' ? link(FACT_SOURCES.sun.url, d.card.sunLink) : link(FACT_SOURCES.planets.url, d.card.sourceLink);
+      el.replaceChildren(
+        h(
+          'div',
+          { class: 'dialog__body' },
+          h('h2', { id: 'facts-title' }, d.bodies[id]),
+          badges.length > 0 ? most : null,
+          list,
+          h('p', { class: 'fact__source' }, fmt(d.card.source, { updated: id === 'sun' ? FACT_SOURCES.sun.updated : FACT_SOURCES.planets.updated, date: shown })),
+          h('p', { class: 'fact__source' }, source, ' · ', link(FACT_SOURCES.notes.url, d.card.notesLink)),
+          h('div', { class: 'dialog__actions' }, close),
+        ),
+      );
+      if (!el.open) el.showModal();
+      el.scrollTop = 0;
+      close.focus({ preventScroll: true });
+    },
+  };
+}

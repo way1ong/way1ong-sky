@@ -75,6 +75,71 @@
       "partial": "{date}: a partial solar eclipse. The dim patch on the Earth is the edge of the Moon’s shadow. Time is stopped — let it run to watch it move."
     }
   },
+  "card": {
+    "open": "Facts: {name}",
+    "title": "Facts",
+    "close": "Close",
+    "rows": {
+      "diameter": "Diameter at the equator",
+      "mass": "Mass",
+      "gravity": "Gravity at the surface",
+      "gravityGiant": "Gravity (where the pressure is as at the Earth’s surface)",
+      "day": "A day, from noon to noon",
+      "year": "A year, once around the Sun",
+      "orbit": "Once around the Earth",
+      "sunDistance": "Distance from the Sun, on average",
+      "earthDistance": "Distance from the Earth, on average",
+      "temperature": "Temperature, the average over the whole body",
+      "temperatureGiant": "Temperature where the pressure is as at the Earth’s surface",
+      "surfaceTemp": "Temperature of the visible surface",
+      "rotation": "One turn about its axis",
+      "moons": "Confirmed moons",
+      "rings": "Rings",
+      "nowSun": "From the Sun now",
+      "nowEarth": "From the Earth now",
+      "lit": "Lit, as seen from the Earth now"
+    },
+    "units": {
+      "km": "{n} km",
+      "millionKm": "{n} million km",
+      "mass": "{n} × 10²⁴ kg",
+      "gravity": "{n} m/s²",
+      "hours": "{n} h",
+      "celsius": "{n} °C",
+      "kelvin": "{n} K",
+      "percent": "{n}%",
+      "lightMin": "light takes {n} min",
+      "lightSec": "light takes {n} s",
+      "atLatitude": "at {n}° latitude",
+      "lightHours": "light takes {h} h {m} min"
+    },
+    "earthDays": {
+      "one": "{n} Earth day",
+      "other": "{n} Earth days"
+    },
+    "earthYears": {
+      "one": "{n} Earth year",
+      "other": "{n} Earth years"
+    },
+    "timesEarth": "Earth × {n}",
+    "yes": "yes",
+    "no": "no",
+    "most": {
+      "largest": "The largest planet",
+      "smallest": "The smallest planet",
+      "hottest": "The hottest planet on average",
+      "coldest": "The coldest planet on average",
+      "longestDay": "The longest day of all the planets",
+      "shortestDay": "The shortest day of all the planets",
+      "mostMoons": "The most confirmed moons",
+      "nearest": "The nearest planet to the Sun",
+      "farthest": "The farthest planet from the Sun"
+    },
+    "source": "The numbers are NASA’s (fact sheet updated {updated}). “Now” is computed by the app for the moment shown: {date}.",
+    "sourceLink": "NASA Planetary Fact Sheet",
+    "notesLink": "what the rows mean",
+    "sunLink": "NASA Sun Fact Sheet"
+  },
   "keys": "Arrow keys turn the view, plus and minus change the distance.",
   "settings": {
     "title": "Settings",
