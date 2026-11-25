@@ -43,7 +43,7 @@ export function createConstellationDialog(): { el: HTMLDialogElement; open(d: Di
       close.addEventListener('click', () => el.close());
       const body = h('div', { class: 'dialog__body' }, h('h2', { id: 'constellation-title' }, name), h('p', { class: 'fact__source' }, t.kind));
       if (story && about) body.append(h('p', { class: 'fact__about' }, about), h('p', { class: 'fact__about' }, t.listed[story.listed]));
-      body.append(list, h('p', { class: 'fact__source' }, fmt(t.computed, { hour: SKY.story.eveningHour })));
+      body.append(list, h('p', { class: 'fact__source' }, t.area), h('p', { class: 'fact__source' }, fmt(t.computed, { hour: SKY.story.eveningHour })));
       if (story && about) {
         const credit = h('p', { class: 'fact__source' }, t.source, ' ');
         creditPages(story, lang).forEach(({ lang: key, page }, i) => credit.append(i > 0 ? ' · ' : '', link(page.url, t.pages[key])));

@@ -180,6 +180,176 @@
           "revision": 28597969
         }
       }
+    },
+    "Cyg": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Cygnus_(constellation)",
+          "revision": 1381803762
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Лебідь_(сузір'я)",
+          "revision": 44361572
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Hattyú_csillagkép",
+          "revision": 28571752
+        }
+      }
+    },
+    "Lyr": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Lyra",
+          "revision": 1384499800
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Ліра_(сузір'я)",
+          "revision": 49131354
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Lant_csillagkép",
+          "revision": 27074368
+        }
+      }
+    },
+    "Aql": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Aquila_(constellation)",
+          "revision": 1385473408
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Орел_(сузір'я)",
+          "revision": 44382916
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Sas_csillagkép",
+          "revision": 26148156
+        }
+      }
+    },
+    "CMa": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Canis_Major",
+          "revision": 1375700656
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Великий_Пес",
+          "revision": 48886377
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Nagy_Kutya_csillagkép",
+          "revision": 19108779
+        }
+      }
+    },
+    "CMi": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Canis_Minor",
+          "revision": 1386399390
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Малий_Пес",
+          "revision": 49211338
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Kis_Kutya_csillagkép",
+          "revision": 26050396
+        }
+      }
+    },
+    "Leo": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Leo_(constellation)",
+          "revision": 1386414356
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Лев_(сузір'я)",
+          "revision": 49224960
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Oroszlán_csillagkép",
+          "revision": 28106063
+        }
+      }
+    },
+    "Boo": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Boötes",
+          "revision": 1384468562
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Волопас_(сузір'я)",
+          "revision": 48992220
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Ökörhajcsár_csillagkép",
+          "revision": 29371135
+        }
+      }
+    },
+    "Vir": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Virgo_(constellation)",
+          "revision": 1380737838
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Діва_(сузір'я)",
+          "revision": 49230943
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Szűz_csillagkép",
+          "revision": 28295457
+        }
+      }
+    },
+    "Sco": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Scorpius",
+          "revision": 1386772525
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Скорпіон_(сузір'я)",
+          "revision": 49132320
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Skorpió_csillagkép",
+          "revision": 26244314
+        }
+      }
+    },
+    "Oph": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Ophiuchus",
+          "revision": 1385347691
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Змієносець_(сузір'я)",
+          "revision": 49131660
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Kígyótartó_csillagkép",
+          "revision": 27239379
+        }
+      }
     }
   }
 }
