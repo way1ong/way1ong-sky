@@ -47,6 +47,11 @@ export const SKY = {
     spinUpToRate: 86_400,
     /** The hour and minute are written up to this speed; faster, only the day — the digits would only flash. */
     clockUpToRate: 3_600,
+    /**
+     * The sky map runs no faster than this, forwards or backwards (the owner's decision of 25.11: an hour a
+     * second is enough, faster the sky only flickers). The flight keeps every speed.
+     */
+    skyUpToRate: 3_600,
   },
   /**
    * In a shadow (C): what is left of a body's light where another body hides the whole Sun. The Moon in the

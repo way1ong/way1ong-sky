@@ -32,6 +32,8 @@ const SIZES = [
   [390, 844],
   [768, 1024],
   [1366, 768],
+  // a phone lying on its side: the bars stand in columns at the sides
+  [740, 360],
 ];
 const LANGS = [
   ['en', 'en-GB', 'Europe/London'],
@@ -85,6 +87,17 @@ async function look(page, where, name) {
       if (!(el.getAttribute('aria-label') ?? el.textContent ?? '').trim() && el.tagName !== 'INPUT') out.push(`a ${el.tagName.toLowerCase()} without a name`);
     }
     for (const img of scope.querySelectorAll('img')) if (!img.getAttribute('alt')) out.push('a picture without a description');
+    // A phone lying on its side: the columns at the sides, the note and the buttons of free flight between
+    // them never lie on one another.
+    if (!dialog && getComputedStyle(document.querySelector('.app')).getPropertyValue('--side').trim() === '1') {
+      const parts = [...document.querySelectorAll('.bar--time, .bar--scale, .dock, .sky-bar, .fly, .note')].filter((el) => el.offsetParent).map((el) => [el.className, el.getBoundingClientRect()]);
+      for (let i = 0; i < parts.length; i++) {
+        for (let j = i + 1; j < parts.length; j++) {
+          const [a, b] = [parts[i][1], parts[j][1]];
+          if (a.left < b.right - 1 && a.right > b.left + 1 && a.top < b.bottom - 1 && a.bottom > b.top + 1) out.push(`"${parts[i][0]}" lies on "${parts[j][0]}"`);
+        }
+      }
+    }
     return out;
   }, TARGET);
   for (const text of found) note(`${where} ${name}`, text);
@@ -159,6 +172,17 @@ for (const [width, height] of SIZES) {
       const rows = await page.evaluate(() => new Set([...document.querySelectorAll('.top .icon-btn')].filter((b) => !b.hidden).map((b) => Math.round(b.getBoundingClientRect().top))).size);
       if (rows > 1) note(where, `the buttons of the heading stand in ${rows} rows`);
       await panels(page, where, 'at a body', 'earth', []);
+      // A low wide screen: the bars stand at the sides and the picture keeps most of the height.
+      if (width > height && height < 500) {
+        const lying = await page.evaluate(() => ({
+          side: getComputedStyle(document.querySelector('.app')).getPropertyValue('--side').trim() === '1',
+          free: (innerHeight - document.querySelector('.top').getBoundingClientRect().bottom) / innerHeight,
+          between: document.querySelector('.dock').getBoundingClientRect().left - document.querySelector('.bar--time').getBoundingClientRect().right,
+        }));
+        if (!lying.side) note(where, 'on a lying phone the bars do not stand at the sides');
+        else if (lying.between < lying.free * height) note(where, `between the columns there are ${Math.round(lying.between)}px, less than the height left for the picture`);
+        else console.log(`${where}: lying, the picture keeps ${Math.round(lying.free * 100)}% of the height`);
+      }
       await page.locator('.top .icon-btn').first().click();
       await page.waitForSelector('dialog[open] .photo img');
       await page.waitForFunction(() => {
@@ -209,6 +233,13 @@ for (const [width, height] of SIZES) {
       await look(page, where, 'sky');
       await page.locator('.note .icon-btn').click();
       await panels(page, where, 'the sky', 'sky', []);
+      // The sky's clock stops at its fastest speed after one step: pressing on changes nothing.
+      const faster = page.locator('.time .icon-btn').nth(2);
+      await faster.click();
+      const hour = await page.locator('.top__speed').textContent();
+      for (let i = 0; i < 3; i++) await faster.click();
+      if ((await page.locator('.top__speed').textContent()) !== hour) note(where, `the sky runs faster than its first speed: "${await page.locator('.top__speed').textContent()}"`);
+      await page.locator('.time .chip').first().click();
       await page.locator('.sky-bar .chip').nth(1).click();
       await page.waitForSelector('dialog[open] .place-list');
       if ((await page.locator('dialog[open] .place-list button').count()) < 100) note(where, 'the list of cities is short');
