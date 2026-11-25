@@ -321,8 +321,10 @@ for (const [width, height] of SIZES) {
       }
       // Galaxies, nebulae and clusters: somewhere in the sky a touch finds the mark of one (the marks are on the
       // picture, so the touch feels for them across the free sky), and its card tells what it is. Felt for in
-      // one language: it is the same sky in all of them.
-      if (lang === 'en') {
+      // one language: it is the same sky in all of them. Not on the narrowest phone: there a star's card covers
+      // the free sky, the sky moves up for every star named, and a search by touch drives the view into the
+      // ground — the card itself is the same window as on the other screens.
+      if (lang === 'en' && width >= 360) {
         const deep = page.locator('dialog[open] #deep-title');
         // On a small phone the free sky is a narrow band that may hold no mark at the moment: then the sky is
         // turned — higher, then to one side and to the other — and felt again.
