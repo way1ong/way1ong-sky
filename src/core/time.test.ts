@@ -3,7 +3,7 @@
 import { describe, expect, it } from 'vitest';
 import { SKY } from '../config.ts';
 import { radiusKm } from './bodies.ts';
-import { LIMITS, RATES, REAL_RATE, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, stepRate, togglePause } from './clock.ts';
+import { LIMITS, RATES, REAL_RATE, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, slowedTo, stepRate, togglePause } from './clock.ts';
 import { nextLunarEclipse, nextSolarEclipse } from './eclipses.ts';
 import { positionKm } from './ephemeris.ts';
 import { lightAt, overlap, shadeOf, type Shade } from './shadow.ts';
@@ -18,6 +18,35 @@ describe('the clock', () => {
     expect(isLive(clock, start + 5000)).toBe(true);
     expect(isRunningFast(clock)).toBe(false);
     expect(RATES[REAL_RATE]).toBe(1);
+  });
+
+  it('on the sky map runs no faster than an hour a second, forwards or backwards', () => {
+    const most = SKY.time.skyUpToRate;
+    expect(most).toBe(3_600);
+    let clock = liveClock(start);
+    for (let i = 0; i < 10; i++) clock = stepRate(clock, start, 1, most);
+    expect(RATES[clock.rate]).toBe(3_600);
+    for (let i = 0; i < 20; i++) clock = stepRate(clock, start, -1, most);
+    expect(RATES[clock.rate]).toBe(-3_600);
+    // one step back from the limit is real time again: no speed is skipped
+    expect(RATES[stepRate(clock, start, 1, most).rate]).toBe(1);
+  });
+
+  it('a clock that ran faster is slowed for the sky map in its own direction, without a jump', () => {
+    let week = liveClock(start);
+    for (let i = 0; i < 3; i++) week = stepRate(week, start, 1);
+    expect(RATES[week.rate]).toBe(604_800);
+    const slowed = slowedTo(week, start + 1000, SKY.time.skyUpToRate);
+    expect(RATES[slowed.rate]).toBe(3_600);
+    expect(shownAt(slowed, start + 1000)).toBe(shownAt(week, start + 1000));
+    let back = liveClock(start);
+    for (let i = 0; i < 4; i++) back = stepRate(back, start, -1);
+    expect(RATES[slowedTo(back, start, SKY.time.skyUpToRate).rate]).toBe(-3_600);
+    // slow enough already, or standing: left as it is
+    const hour = stepRate(liveClock(start), start, 1);
+    expect(slowedTo(hour, start + 500, SKY.time.skyUpToRate)).toBe(hour);
+    const paused = togglePause(week, start);
+    expect(slowedTo(paused, start, SKY.time.skyUpToRate).paused).toBe(true);
   });
 
   it('runs faster, slower and backwards by steps, without a jump at the change', () => {

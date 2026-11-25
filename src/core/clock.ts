@@ -38,10 +38,27 @@ export function togglePause(clock: Clock, real: number): Clock {
   return { ...rebased(clock, real), paused: !clock.paused };
 }
 
-/** One step faster (+1) or slower (−1) through the speeds; past real time the clock runs backwards. */
-export function stepRate(clock: Clock, real: number, step: 1 | -1): Clock {
-  const rate = Math.min(RATES.length - 1, Math.max(0, clock.rate + step));
+/** The slowest and the fastest of the speeds that run no faster than `upTo`, forwards or backwards. */
+function speedsUpTo(upTo: number): { first: number; last: number } {
+  const allowed = RATES.map((rate, i) => (Math.abs(rate) <= upTo ? i : -1)).filter((i) => i >= 0);
+  return { first: allowed[0] ?? REAL_RATE, last: allowed[allowed.length - 1] ?? REAL_RATE };
+}
+
+/**
+ * One step faster (+1) or slower (−1) through the speeds; past real time the clock runs backwards. With
+ * `upTo` the steps stop at that speed in both directions (the sky map, config.ts).
+ */
+export function stepRate(clock: Clock, real: number, step: 1 | -1, upTo = Infinity): Clock {
+  const { first, last } = speedsUpTo(upTo);
+  const rate = Math.min(last, Math.max(first, clock.rate + step));
   return { ...rebased(clock, real), rate, paused: false };
+}
+
+/** The same clock, running no faster than `upTo`: a faster one is slowed to it, in its own direction, without a jump. */
+export function slowedTo(clock: Clock, real: number, upTo: number): Clock {
+  const { first, last } = speedsUpTo(upTo);
+  const rate = Math.min(last, Math.max(first, clock.rate));
+  return rate === clock.rate ? clock : { ...rebased(clock, real), rate };
 }
 
 /** To a moment, standing still there. */

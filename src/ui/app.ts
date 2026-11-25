@@ -2,7 +2,7 @@
 // names over the picture, the menu. The astronomy is in ../core, the drawing in ./scene.ts.
 import { SKY } from '../config.ts';
 import { BODY_IDS, PLANET_IDS, parentOf, radiusKm, type BodyId } from '../core/bodies.ts';
-import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, stepRate, togglePause, type Clock } from '../core/clock.ts';
+import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, slowedTo, stepRate, togglePause, type Clock } from '../core/clock.ts';
 import { firstLook, turnLook, zoomLook, type Look } from '../core/dome.ts';
 import { nextLunarEclipse, nextSolarEclipse } from '../core/eclipses.ts';
 import { attitude, orbitKm, positionsKm, type Attitude } from '../core/ephemeris.ts';
@@ -383,12 +383,14 @@ export function startApp(root: HTMLElement): void {
     dirty = true;
   }
 
+  /** The sky map runs no faster than an hour a second (config.ts); the flight has every speed. */
+  const fastest = () => (screen === 'sky' ? SKY.time.skyUpToRate : Infinity);
   slowerBtn.addEventListener('click', () => {
-    clock = stepRate(clock, Date.now(), -1);
+    clock = stepRate(clock, Date.now(), -1, fastest());
     retime(showsSpin(clock) ? '' : d.time.noSpin);
   });
   fasterBtn.addEventListener('click', () => {
-    clock = stepRate(clock, Date.now(), 1);
+    clock = stepRate(clock, Date.now(), 1, fastest());
     retime(showsSpin(clock) ? '' : d.time.noSpin);
   });
   pauseBtn.addEventListener('click', () => {
@@ -570,6 +572,8 @@ export function startApp(root: HTMLElement): void {
     screen = next;
     const sky = screen === 'sky';
     thrust = 0;
+    // A clock that ran a week a second in the flight slows to the sky's fastest.
+    if (sky) clock = slowedTo(clock, Date.now(), SKY.time.skyUpToRate);
     canvas.hidden = sky;
     labels.hidden = sky;
     siteMarks.hidden = sky;
