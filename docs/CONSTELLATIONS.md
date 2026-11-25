@@ -14,7 +14,11 @@
 - Nowadays, when astronomers say something is “in” a given constellation, they mean it is simply within those defined boundaries, not that it is part of any star pattern. (https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx)
 - For IAU constellations, no stick figures or figurative painting styles are formally defined. (https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx)
 
-## Хто вніс до переліку (`sky.story.listed.ptolemy`)
+## Хто вніс до переліку (`sky.story.listed.*`, `sky.story.iau`) — для кожного з 88 сузір'їв
+
+Хто й коли — зі стовпців таблиці https://en.wikipedia.org/wiki/IAU_designated_constellations (версія 1387250710), розкладено в `src/data/constellation-origins.json`: 47 рядків «ancient / Ptolemy», 14 — «1756 / Lacaille», 12 — «1598 / Plancius, Keyser, de Houtman», 7 — «1690 / Hevelius», 4 — «Plancius» (1589, 1592, 1613 двічі), 3 — «ancient; 1756 / Ptolemy, Lacaille» (Carina, Puppis, Vela), 1 — «ancient; 1536 / Ptolemy; Caspar Vopel» (Coma Berenices).
+
+### Давні сузір'я (Птолемей)
 
 - It is one of the 88 modern constellations; it was among the 48 constellations listed by the 2nd-century AD astronomer Ptolemy. (https://en.wikipedia.org/wiki/Orion_(constellation), версія 1387071981)
 - Це було одне з 48 сузір'їв, перелічених астрономом Птолемеєм у II столітті нашої ери у його «Альмагесті» , який назвав його Великим Сузір'ям (Arktos Megale). (https://uk.wikipedia.org/wiki/Велика_Ведмедиця, версія 48449664)
@@ -23,6 +27,25 @@
 - században élt Klaudiosz Ptolemaiosz görög csillagász felsorolt, és egyike annak a 88 csillagképnek, amelyet a Nemzetközi Csillagászati Unió is elismer. (https://hu.wikipedia.org/wiki/Lant_csillagkép, версія 27074368 — кінець речення; початок обірвано крапкою після числа століття)
 - At its first General Assembly held in Rome in 1922, the IAU's Commission on Notations and Units agreed on a list of 88 constellations (https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx)
 - Таблиця https://en.wikipedia.org/wiki/IAU_designated_constellations (версія 1387250710): для кожного сузір'я з історією в стовпцях походження стоїть «ancient» і «Ptolemy».
+
+### Сузір'я нового часу
+
+Речення зі сторінки https://en.wikipedia.org/wiki/IAU_designated_constellations (версія 1387250710):
+
+- The most notable of these is Argo Navis , which was one of Ptolemy's original 48 constellations.
+- In the 1750s, the French astronomer Nicolas Louis de Lacaille divided this into three separate constellations: Carina , Puppis , and Vela .
+- The constellations were based on observations by Dutch navigators Pieter Dirkszoon Keyser and Frederick de Houtman , who were commissioned by Plancius to chart the southern sky on a voyage to what is now Indonesia. (примітка до рядків «1598»)
+- It is no longer clear who formed the observations into the constellations shown on the globe, and modern authors generally give credit to some combination of Kaiser, de Houtmann, and Plancius. (та сама примітка — тому в картці не сказано, хто саме «ввів» ці сузір'я)
+- The constellations Camelopardalis , Columba , and Monoceros , formed by Petrus Plancius in 1592 and in 1613, are often erroneously attributed to Jacob Bartsch and Augustin Royer . (примітка до рядків «Plancius»)
+
+Про Гевелія сторінка має лише рядки таблиці («1690 / Hevelius»); про Південний Хрест — рядок «1589 / Plancius».
+
+Волосся Вероніки — зі статті https://en.wikipedia.org/wiki/Coma_Berenices (версія 1387147135):
+
+- Similarly, Ptolemy did not include it among his 48 constellations in the Almagest ; considering it part of Leo and calling it Plokamos . (у реченні на сторінці стоять номери виносок)
+- In 1536 it appeared on a celestial globe by Caspar Vopel , who is credited with the asterism's designation as a constellation.
+
+Імена трьома мовами — назви записів Вікіданих (CC0), прочитані 25.11.2026: Q202703 — Nicolas Louis de Lacaille / Нікола Луї де Лакай / Nicolas-Louis de Lacaille; Q57963 — Johannes Hevelius / Ян Гевелій / Johannes Hevelius; Q333534 — Petrus Plancius / Петер Планціус / (угорської назви немає); Q961926 — Pieter Dirkszoon Keyser / Пітер Дірксзун Кейзер / (немає); Q257948 — Frederick de Houtman / Фредерік де Хаутман / (немає); Q1048065 — Caspar Vopel / (української й угорської назв немає). Де назви мовою немає, ім'я лишено латинкою. «Французький астроном» і «нідерландські мореплавці» — з речень вище.
 
 ## Оріон (Ori)
 

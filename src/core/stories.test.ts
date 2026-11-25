@@ -3,18 +3,15 @@ import en from '../i18n/en.json';
 import hu from '../i18n/hu.json';
 import uk from '../i18n/uk.json';
 import { FIGURES } from './stars.ts';
-import { STORIES, STORY_SOURCE, creditPages } from './stories.ts';
+import { ORIGINS, ORIGINS_SOURCE, STORIES, STORY_SOURCE, creditPages } from './stories.ts';
 
 const DICTIONARIES = { en, hu, uk } as const;
 
 describe('the stories of the constellations', () => {
-  it('each story is of a constellation on the map, names who listed it and has its text in every language', () => {
-    for (const [id, story] of Object.entries(STORIES)) {
+  it('each story is of a constellation on the map and has its text in every language', () => {
+    for (const id of Object.keys(STORIES)) {
       expect(FIGURES[id], id).toBeDefined();
-      for (const [lang, d] of Object.entries(DICTIONARIES)) {
-        expect((d.sky.story.about as Record<string, string>)[id], `${id} ${lang}`).toBeTruthy();
-        expect((d.sky.story.listed as Record<string, string>)[story.listed], `${id} ${lang}`).toBeTruthy();
-      }
+      for (const [lang, d] of Object.entries(DICTIONARIES)) expect((d.sky.story.about as Record<string, string>)[id], `${id} ${lang}`).toBeTruthy();
     }
   });
 
@@ -41,5 +38,29 @@ describe('the stories of the constellations', () => {
   it('the licence of the stories is the one of the articles', () => {
     expect(STORY_SOURCE.licence).toBe('CC BY-SA 4.0');
     expect(STORY_SOURCE.licenceUrl).toBe('https://creativecommons.org/licenses/by-sa/4.0/');
+  });
+});
+
+describe('who put each constellation on the list', () => {
+  it('is told for each of the 88, in words every language has, with a year where the words ask for one', () => {
+    expect(Object.keys(ORIGINS).sort()).toEqual(Object.keys(FIGURES).sort());
+    for (const [id, origin] of Object.entries(ORIGINS)) {
+      for (const [lang, d] of Object.entries(DICTIONARIES)) {
+        const words = (d.sky.story.listed as Record<string, string>)[origin.by];
+        expect(words, `${id} ${lang}`).toBeTruthy();
+        expect(words!.includes('{year}'), `${id} ${lang}`).toBe(origin.year !== undefined);
+      }
+    }
+  });
+
+  it('counts as the table of the 88 does (Wikipedia, revision 1387250710): 47 of Ptolemy, 14 of Lacaille, 7 of Hevelius, the three parts of Argo Navis', () => {
+    const count = (by: string) => Object.values(ORIGINS).filter((origin) => origin.by === by).length;
+    expect(ORIGINS_SOURCE.revision).toBe(1387250710);
+    expect(count('ptolemy')).toBe(47);
+    expect(count('lacaille')).toBe(14);
+    expect(count('hevelius')).toBe(7);
+    expect(Object.keys(ORIGINS).filter((id) => ORIGINS[id]!.by === 'argo').sort()).toEqual(['Car', 'Pup', 'Vel']);
+    // every constellation with a story so far is one of Ptolemy's
+    for (const id of Object.keys(STORIES)) expect(ORIGINS[id]?.by, id).toBe('ptolemy');
   });
 });

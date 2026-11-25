@@ -260,7 +260,7 @@
     "madeBy": "Made by way1ong",
     "photos": "Photos in the cards: NASA and its partners, named under each photo; some are cropped. This program is made independently of NASA.",
     "sky": "The sky from a place: stars — Wikidata (CC0); which stars are joined into constellations — d3-celestial by Olaf Frohn (BSD-3-Clause), after the charts of the IAU and Sky & Telescope; cities — Wikidata. Stars are drawn by day too, and the bending of light by the air near the horizon is not drawn. “Dark enough”, “in view” and “too faint for the eye” are the program’s own measures, not definitions of astronomy. For some stars Wikidata has no visual brightness: there the close Gaia G brightness is used. Proper names of stars: the names approved by the International Astronomical Union, from the list in Wikipedia (CC BY-SA 4.0), and the titles of the stars’ articles in Wikipedia.",
-    "stories": "The stories of the constellations are written after Wikipedia’s articles — the links to the articles stand under each story. The texts of the stories may be used under the same licence, CC BY-SA 4.0. The brightest star, the month of the best evenings and the height of a constellation are worked out by the program itself.",
+    "stories": "The stories of the constellations and the line on who listed each constellation are written after Wikipedia’s articles and table — the links stand under each card. The texts of the stories may be used under the same licence, CC BY-SA 4.0. The brightest star, the month of the best evenings and the height of a constellation are worked out by the program itself.",
     "links": {
       "photoLibrary": "NASA’s image and video library",
       "photoRules": "NASA’s rules for its pictures",
@@ -628,15 +628,24 @@
       "never": "not seen from this place — it never rises over the horizon",
       "computed": "The star, the month and the height are worked out by the program for the chosen place. “Best in the evening” is the month when the middle of the constellation stands highest at about {hour}:00.",
       "source": "The story is written after Wikipedia’s articles:",
+      "sourceListed": "Who listed the constellation — after Wikipedia’s table:",
       "pages": {
         "en": "in English",
         "uk": "in Ukrainian",
-        "hu": "in Hungarian"
+        "hu": "in Hungarian",
+        "list": "the table of constellations"
       },
       "licence": "The text of the story may be used on the same terms:",
       "listed": {
-        "ptolemy": "One of the 48 constellations listed by the astronomer Ptolemy in the 2nd century. Since 1922 it has been on the International Astronomical Union’s list of 88 constellations."
+        "ptolemy": "One of the 48 constellations listed by the astronomer Ptolemy in the 2nd century.",
+        "lacaille": "A modern constellation: it was introduced by the French astronomer Nicolas Louis de Lacaille ({year}).",
+        "southern": "One of the constellations of the southern sky that appeared in {year}, based on the observations of the Dutch navigators Pieter Dirkszoon Keyser and Frederick de Houtman, whom Petrus Plancius had commissioned to chart the southern sky.",
+        "plancius": "A modern constellation: it was formed by Petrus Plancius ({year}).",
+        "hevelius": "A modern constellation: it was introduced by Johannes Hevelius ({year}).",
+        "argo": "A part of the ancient constellation Argo Navis, one of Ptolemy’s 48: in the 1750s the French astronomer Nicolas Louis de Lacaille divided it into three separate constellations.",
+        "vopel": "Known since antiquity, yet Ptolemy did not include it among his 48 constellations and took it for a part of Leo. It became a constellation of its own on a celestial globe made by Caspar Vopel in {year}."
       },
+      "iau": "Since 1922 it has been on the International Astronomical Union’s list of 88 constellations.",
       "about": {
         "Ori": "Orion is a hunter of Greek mythology — a giant, a son of Poseidon, the god of the sea. Its seven brightest stars draw an hourglass: four of them make a large rectangle, and in its middle lie the three stars of Orion’s Belt. In one myth Orion boasted that he would kill every animal on Earth, and the angry goddess Gaia sent a scorpion against him (in other tellings it was Artemis or Apollo) — which is given as the reason why Orion and Scorpius are never in the sky at the same time.",
         "Tau": "Taurus, the Bull, is a constellation of the zodiac, and people have seen a bull in it since very old times. In Greek mythology it is Zeus, who took the form of a magnificent white bull to carry off Europa, a Phoenician princess. Old pictures show only the front half of the bull — explained by his being half under water as he carried Europa out to sea. In another myth it is Io, a lover of Zeus, whom he turned into a heifer to hide her from his wife Hera.",

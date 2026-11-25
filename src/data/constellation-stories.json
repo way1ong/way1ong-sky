@@ -6,13 +6,8 @@
     "terms": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
     "read": "2026-11-25"
   },
-  "list": {
-    "url": "https://en.wikipedia.org/wiki/IAU_designated_constellations",
-    "revision": 1387250710
-  },
   "stories": {
     "Ori": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Orion_(constellation)",
@@ -29,7 +24,6 @@
       }
     },
     "Tau": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Taurus_(constellation)",
@@ -46,7 +40,6 @@
       }
     },
     "Aur": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Auriga",
@@ -63,7 +56,6 @@
       }
     },
     "Gem": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Gemini_(constellation)",
@@ -80,7 +72,6 @@
       }
     },
     "Per": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Perseus_(constellation)",
@@ -97,7 +88,6 @@
       }
     },
     "Cas": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Cassiopeia_(constellation)",
@@ -114,7 +104,6 @@
       }
     },
     "And": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Andromeda_(constellation)",
@@ -131,7 +120,6 @@
       }
     },
     "Peg": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Pegasus_(constellation)",
@@ -148,7 +136,6 @@
       }
     },
     "UMa": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Ursa_Major",
@@ -165,7 +152,6 @@
       }
     },
     "UMi": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Ursa_Minor",
@@ -182,7 +168,6 @@
       }
     },
     "Cyg": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Cygnus_(constellation)",
@@ -199,7 +184,6 @@
       }
     },
     "Lyr": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Lyra",
@@ -216,7 +200,6 @@
       }
     },
     "Aql": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Aquila_(constellation)",
@@ -233,7 +216,6 @@
       }
     },
     "CMa": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Canis_Major",
@@ -250,7 +232,6 @@
       }
     },
     "CMi": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Canis_Minor",
@@ -267,7 +248,6 @@
       }
     },
     "Leo": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Leo_(constellation)",
@@ -284,7 +264,6 @@
       }
     },
     "Boo": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Boötes",
@@ -301,7 +280,6 @@
       }
     },
     "Vir": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Virgo_(constellation)",
@@ -318,7 +296,6 @@
       }
     },
     "Sco": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Scorpius",
@@ -335,7 +312,6 @@
       }
     },
     "Oph": {
-      "listed": "ptolemy",
       "pages": {
         "en": {
           "url": "https://en.wikipedia.org/wiki/Ophiuchus",

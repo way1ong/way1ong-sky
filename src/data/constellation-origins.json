@@ -1,0 +1,331 @@
+{
+  "source": {
+    "title": "Wikipedia, IAU designated constellations",
+    "url": "https://en.wikipedia.org/wiki/IAU_designated_constellations",
+    "revision": 1387250710,
+    "read": "2026-11-25",
+    "more": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Coma_Berenices",
+        "revision": 1387147135
+      },
+      {
+        "url": "https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx"
+      }
+    ]
+  },
+  "people": {
+    "ptolemy": "Q34943",
+    "lacaille": "Q202703",
+    "plancius": "Q333534",
+    "keyser": "Q961926",
+    "houtman": "Q257948",
+    "hevelius": "Q57963",
+    "vopel": "Q1048065"
+  },
+  "note": "Who put each constellation on the list: the columns of the table's rows (origin, creator). The names of the people in the dictionaries are the labels of these Wikidata items (CC0), read on the same day; where an item has no label in a language, the name stays in Latin letters.",
+  "origins": {
+    "And": {
+      "by": "ptolemy"
+    },
+    "Ant": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Aps": {
+      "by": "southern",
+      "year": 1598
+    },
+    "Aql": {
+      "by": "ptolemy"
+    },
+    "Aqr": {
+      "by": "ptolemy"
+    },
+    "Ara": {
+      "by": "ptolemy"
+    },
+    "Ari": {
+      "by": "ptolemy"
+    },
+    "Aur": {
+      "by": "ptolemy"
+    },
+    "Boo": {
+      "by": "ptolemy"
+    },
+    "CMa": {
+      "by": "ptolemy"
+    },
+    "CMi": {
+      "by": "ptolemy"
+    },
+    "CVn": {
+      "by": "hevelius",
+      "year": 1690
+    },
+    "Cae": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Cam": {
+      "by": "plancius",
+      "year": 1613
+    },
+    "Cap": {
+      "by": "ptolemy"
+    },
+    "Car": {
+      "by": "argo"
+    },
+    "Cas": {
+      "by": "ptolemy"
+    },
+    "Cen": {
+      "by": "ptolemy"
+    },
+    "Cep": {
+      "by": "ptolemy"
+    },
+    "Cet": {
+      "by": "ptolemy"
+    },
+    "Cha": {
+      "by": "southern",
+      "year": 1598
+    },
+    "Cir": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Cnc": {
+      "by": "ptolemy"
+    },
+    "Col": {
+      "by": "plancius",
+      "year": 1592
+    },
+    "Com": {
+      "by": "vopel",
+      "year": 1536
+    },
+    "CrA": {
+      "by": "ptolemy"
+    },
+    "CrB": {
+      "by": "ptolemy"
+    },
+    "Crt": {
+      "by": "ptolemy"
+    },
+    "Cru": {
+      "by": "plancius",
+      "year": 1589
+    },
+    "Crv": {
+      "by": "ptolemy"
+    },
+    "Cyg": {
+      "by": "ptolemy"
+    },
+    "Del": {
+      "by": "ptolemy"
+    },
+    "Dor": {
+      "by": "southern",
+      "year": 1598
+    },
+    "Dra": {
+      "by": "ptolemy"
+    },
+    "Equ": {
+      "by": "ptolemy"
+    },
+    "Eri": {
+      "by": "ptolemy"
+    },
+    "For": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Gem": {
+      "by": "ptolemy"
+    },
+    "Gru": {
+      "by": "southern",
+      "year": 1598
+    },
+    "Her": {
+      "by": "ptolemy"
+    },
+    "Hor": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Hya": {
+      "by": "ptolemy"
+    },
+    "Hyi": {
+      "by": "southern",
+      "year": 1598
+    },
+    "Ind": {
+      "by": "southern",
+      "year": 1598
+    },
+    "LMi": {
+      "by": "hevelius",
+      "year": 1690
+    },
+    "Lac": {
+      "by": "hevelius",
+      "year": 1690
+    },
+    "Leo": {
+      "by": "ptolemy"
+    },
+    "Lep": {
+      "by": "ptolemy"
+    },
+    "Lib": {
+      "by": "ptolemy"
+    },
+    "Lup": {
+      "by": "ptolemy"
+    },
+    "Lyn": {
+      "by": "hevelius",
+      "year": 1690
+    },
+    "Lyr": {
+      "by": "ptolemy"
+    },
+    "Men": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Mic": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Mon": {
+      "by": "plancius",
+      "year": 1613
+    },
+    "Mus": {
+      "by": "southern",
+      "year": 1598
+    },
+    "Nor": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Oct": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Oph": {
+      "by": "ptolemy"
+    },
+    "Ori": {
+      "by": "ptolemy"
+    },
+    "Pav": {
+      "by": "southern",
+      "year": 1598
+    },
+    "Peg": {
+      "by": "ptolemy"
+    },
+    "Per": {
+      "by": "ptolemy"
+    },
+    "Phe": {
+      "by": "southern",
+      "year": 1598
+    },
+    "Pic": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "PsA": {
+      "by": "ptolemy"
+    },
+    "Psc": {
+      "by": "ptolemy"
+    },
+    "Pup": {
+      "by": "argo"
+    },
+    "Pyx": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Ret": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Scl": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "Sco": {
+      "by": "ptolemy"
+    },
+    "Sct": {
+      "by": "hevelius",
+      "year": 1690
+    },
+    "Ser": {
+      "by": "ptolemy"
+    },
+    "Sex": {
+      "by": "hevelius",
+      "year": 1690
+    },
+    "Sge": {
+      "by": "ptolemy"
+    },
+    "Sgr": {
+      "by": "ptolemy"
+    },
+    "Tau": {
+      "by": "ptolemy"
+    },
+    "Tel": {
+      "by": "lacaille",
+      "year": 1756
+    },
+    "TrA": {
+      "by": "southern",
+      "year": 1598
+    },
+    "Tri": {
+      "by": "ptolemy"
+    },
+    "Tuc": {
+      "by": "southern",
+      "year": 1598
+    },
+    "UMa": {
+      "by": "ptolemy"
+    },
+    "UMi": {
+      "by": "ptolemy"
+    },
+    "Vel": {
+      "by": "argo"
+    },
+    "Vir": {
+      "by": "ptolemy"
+    },
+    "Vol": {
+      "by": "southern",
+      "year": 1598
+    },
+    "Vul": {
+      "by": "hevelius",
+      "year": 1690
+    }
+  }
+}

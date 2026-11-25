@@ -260,7 +260,7 @@
     "madeBy": "Készítette: way1ong",
     "photos": "A kártyák fotói: a NASA és partnerei, a nevük minden fotó alatt szerepel; néhány kép meg van vágva. A program a NASA-tól függetlenül készült.",
     "sky": "Az égbolt egy helyről: csillagok — Wikidata (CC0); a csillagképek vonalai — d3-celestial, szerző: Olaf Frohn (BSD-3-Clause), az IAU és a Sky & Telescope térképei nyomán; városok — Wikidata. A csillagok nappal is láthatók a képen, a fény légköri törése a horizont közelében nincs ábrázolva. Az „elég sötét”, a „látható” és a „szabad szemmel túl halvány” a program saját mércéi, nem csillagászati meghatározások. Néhány csillagnak a Wikidatában nincs vizuális fényessége: ott a hozzá közeli Gaia G fényesség szerepel. A csillagok tulajdonnevei: a Nemzetközi Csillagászati Unió által jóváhagyott nevek a Wikipédia listájából (CC BY-SA 4.0), valamint a csillagok Wikipédia-szócikkeinek címei.",
-    "stories": "A csillagképek történetei a Wikipédia szócikkei alapján készültek — a szócikkek hivatkozásai minden történet alatt megtalálhatók. A történetek szövege ugyanazzal a licenccel, CC BY-SA 4.0 alatt használható fel. A legfényesebb csillagot, a legjobb esték hónapját és a csillagkép magasságát maga a program számítja.",
+    "stories": "A csillagképek történetei és az a sor, hogy ki vette fel a csillagképet a listára, a Wikipédia szócikkei és táblázata alapján készültek — a hivatkozások minden kártya alatt megtalálhatók. A történetek szövege ugyanazzal a licenccel, CC BY-SA 4.0 alatt használható fel. A legfényesebb csillagot, a legjobb esték hónapját és a csillagkép magasságát maga a program számítja.",
     "links": {
       "photoLibrary": "a NASA kép- és videótára",
       "photoRules": "a NASA szabályai a képeiről",
@@ -628,15 +628,24 @@
       "never": "erről a helyről nem látható — nem kel a horizont fölé",
       "computed": "A csillagot, a hónapot és a magasságot maga a program számítja a kiválasztott helyre. „Este a legjobb” az a hónap, amikor a csillagkép közepe {hour} óra körül áll a legmagasabban.",
       "source": "A történet a Wikipédia szócikkei alapján készült:",
+      "sourceListed": "Hogy ki vette fel a csillagképet a listára — a Wikipédia táblázata alapján:",
       "pages": {
         "en": "angolul",
         "uk": "ukránul",
-        "hu": "magyarul"
+        "hu": "magyarul",
+        "list": "a csillagképek táblázata"
       },
       "licence": "A történet szövege ugyanilyen feltételekkel használható fel:",
       "listed": {
-        "ptolemy": "Egyike annak a 48 csillagképnek, amelyeket a 2. században élt Klaudiosz Ptolemaiosz görög csillagász felsorolt. 1922 óta szerepel a Nemzetközi Csillagászati Unió 88 csillagképet tartalmazó listáján."
+        "ptolemy": "Egyike annak a 48 csillagképnek, amelyeket a 2. században élt Klaudiosz Ptolemaiosz görög csillagász felsorolt.",
+        "lacaille": "Újkori csillagkép: Nicolas-Louis de Lacaille francia csillagász vezette be ({year}).",
+        "southern": "A déli égbolt egyik csillagképe, amely {year}-ban jelent meg Pieter Dirkszoon Keyser és Frederick de Houtman holland hajósok megfigyelései alapján; a déli ég feltérképezésével Petrus Plancius bízta meg őket.",
+        "plancius": "Újkori csillagkép: Petrus Plancius alkotta meg ({year}).",
+        "hevelius": "Újkori csillagkép: Johannes Hevelius vezette be ({year}).",
+        "argo": "Az ókori Argo Navis csillagkép része, amely Ptolemaiosz 48 csillagképének egyike volt: az 1750-es években Nicolas-Louis de Lacaille francia csillagász három külön csillagképre osztotta.",
+        "vopel": "Az ókor óta ismert, de Ptolemaiosz nem vette fel 48 csillagképe közé, és az Oroszlán részének tekintette. Önálló csillagképpé Caspar Vopel {year}-ban készült éggömbjén vált."
       },
+      "iau": "1922 óta szerepel a Nemzetközi Csillagászati Unió 88 csillagképet tartalmazó listáján.",
       "about": {
         "Ori": "Az Orion a görög mitológia óriás termetű vadásza, Poszeidón fia. Hét legfényesebb csillaga homokórára emlékeztető alakot rajzol: négy csillag nagy négyszöget alkot, közepén az Orion övének három csillagával. Az egyik változat szerint Artemisz skorpiót küldött rá; egy másik szerint a Földanya ölette meg a skorpióval, mert Orion azzal kérkedett, hogy minden vadállatot meg tud ölni — ezért nem látható az Orion és a Skorpió egyszerre az égen. Régi csillagtérképeken Íjász, Kaszás vagy Nimród néven is említik.",
         "Tau": "A Bika a tizenkét állatövi csillagkép egyike, és nagyon régóta bikát látnak benne. A görög mitológiában Zeusz fehér bika alakjában rabolta el Európét, a föníciai hercegnőt, és Kréta szigetére úszott vele. A régi ábrázolásokon a bikának csak az elülső fele látszik — ezt azzal magyarázták, hogy félig vízben van, amint Európét viszi a tengeren. Egy másik monda szerint a csillagkép Ió, Zeusz kedvese, akit Zeusz üszővé változtatott, hogy elrejtse felesége, Héra elől.",

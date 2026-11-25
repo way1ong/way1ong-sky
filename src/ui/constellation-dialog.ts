@@ -5,7 +5,7 @@ import { SKY } from '../config.ts';
 import { bestEvening, brightestStars, figureNow, overPlace } from '../core/constellations.ts';
 import type { Place, SkyTurn } from '../core/sky.ts';
 import { STARS, starName } from '../core/stars.ts';
-import { STORIES, STORY_SOURCE, creditPages } from '../core/stories.ts';
+import { ORIGINS, ORIGINS_SOURCE, STORIES, STORY_SOURCE, creditPages } from '../core/stories.ts';
 import { h } from './dom.ts';
 import { fmt, num, type Dict } from './i18n.ts';
 
@@ -42,14 +42,17 @@ export function createConstellationDialog(): { el: HTMLDialogElement; open(d: Di
       const close = h('button', { class: 'btn', type: 'button' }, d.card.close);
       close.addEventListener('click', () => el.close());
       const body = h('div', { class: 'dialog__body' }, h('h2', { id: 'constellation-title' }, name), h('p', { class: 'fact__source' }, t.kind));
-      if (story && about) body.append(h('p', { class: 'fact__about' }, about), h('p', { class: 'fact__about' }, t.listed[story.listed]));
+      if (story && about) body.append(h('p', { class: 'fact__about' }, about));
+      // Who put it on the list: known for every constellation, with or without a story.
+      const origin = ORIGINS[id];
+      if (origin) body.append(h('p', { class: 'fact__about' }, `${fmt(t.listed[origin.by], { year: origin.year ?? '' })} ${t.iau}`));
       body.append(list, h('p', { class: 'fact__source' }, t.area), h('p', { class: 'fact__source' }, fmt(t.computed, { hour: SKY.story.eveningHour })));
-      if (story && about) {
-        const credit = h('p', { class: 'fact__source' }, t.source, ' ');
-        creditPages(story, lang).forEach(({ lang: key, page }, i) => credit.append(i > 0 ? ' · ' : '', link(page.url, t.pages[key])));
-        credit.append(' ', t.licence, ' ', link(STORY_SOURCE.licenceUrl, STORY_SOURCE.licence));
-        body.append(credit);
-      }
+      // What is written after Wikipedia stands with its articles and their licence: the story after the
+      // constellation's articles, the line about who listed it after the table of the 88.
+      const credit = h('p', { class: 'fact__source' }, story && about ? t.source : t.sourceListed, ' ');
+      if (story && about) creditPages(story, lang).forEach(({ lang: key, page }) => credit.append(link(page.url, t.pages[key]), ' · '));
+      credit.append(link(ORIGINS_SOURCE.url, t.pages.list), ' ', t.licence, ' ', link(STORY_SOURCE.licenceUrl, STORY_SOURCE.licence));
+      body.append(credit);
       body.append(h('div', { class: 'dialog__actions' }, close));
       el.replaceChildren(body);
       if (!el.open) el.showModal();
