@@ -268,7 +268,7 @@
     },
     "moment": {
       "show": "A pillanat megmutatása",
-      "showLabel": "A leszállás pillanatának megmutatása: {name}",
+      "showLabel": "A pillanat megmutatása: {name}",
       "shown": "{name}: a leszállás pillanata — {date}, {time} világidő szerint. A Nap {altitude}°-kal állt a hely horizontja felett. A „Most” gomb visszahozza a jelent."
     }
   },
@@ -368,7 +368,7 @@
       "sets": "nyugszik: {time}",
       "phase": "Látvány",
       "fly": "Repülés oda",
-      "flyLabel": "Repülés ide: {name}",
+      "flyLabel": "Repülés oda: {name}",
       "close": "Kártya bezárása",
       "none": "A nézet közepén nincs csillag vagy bolygó."
     },

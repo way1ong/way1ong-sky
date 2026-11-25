@@ -268,7 +268,7 @@
     },
     "moment": {
       "show": "Show that moment",
-      "showLabel": "Show the moment of landing: {name}",
+      "showLabel": "Show that moment: {name}",
       "shown": "{name}: the moment of landing — {date}, {time} universal time. The Sun stood {altitude}° over the horizon of the place. “Now” brings the present back."
     }
   },
@@ -368,7 +368,7 @@
       "sets": "sets at {time}",
       "phase": "Look",
       "fly": "Fly there",
-      "flyLabel": "Fly to: {name}",
+      "flyLabel": "Fly there: {name}",
       "close": "Close the card",
       "none": "There is no star or planet in the middle of the view."
     },

@@ -205,11 +205,13 @@ for (const [width, height] of SIZES) {
       if (await page.locator('dialog[open]').count()) note(where, 'the window of the landing place stays open after "show that moment"');
       if (!/19(69|7[12])/.test((await page.locator('.top__line').first().textContent()) ?? '')) note(where, `"show that moment" did not take the clock to the landing: ${await page.locator('.top__line').first().textContent()}`);
       if (!(await page.locator('.note:not(.pick)').isVisible())) note(where, '"show that moment" says nothing');
+      // The Moon is turned to the landing place: its mark is in view.
+      if ((await page.locator('.site:visible').count()) === 0) note(where, 'no landing marks on the Moon turned to a landing place');
       await look(page, where, 'landing-moment');
       await page.locator('.note:not(.pick) .icon-btn').click();
+      // Back to the present: the Moon has turned since 1969, the place may be out of sight — nothing to check here.
       await page.locator('.time .chip').first().click();
       await page.waitForTimeout(300);
-      if ((await page.locator('.site:visible').count()) === 0) note(where, 'no landing marks on the Moon turned to a landing place');
       await look(page, where, 'moon');
 
       await chip(page, 2).click();
