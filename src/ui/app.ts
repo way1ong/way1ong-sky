@@ -31,6 +31,7 @@ import { createSceneView, type Orbit, type SceneView } from './scene.ts';
 import { createSiteDialog } from './site-dialog.ts';
 import { dayUT, missionName } from './site-text.ts';
 import { createAim } from './aim.ts';
+import { createConstellationDialog } from './constellation-dialog.ts';
 import { createSkyView, type SkyLayers } from './sky-view.ts';
 import { createTimeDialog } from './time-dialog.ts';
 import { createTonightDialog } from './tonight-dialog.ts';
@@ -197,6 +198,7 @@ export function startApp(root: HTMLElement): void {
   const satelliteDialog = createSatelliteDialog();
   const placeDialog = createPlaceDialog();
   const tonightDialog = createTonightDialog();
+  const constellationDialog = createConstellationDialog();
   const stage = h('div', { class: 'stage' }, canvas, skyCanvas, labels, siteMarks);
   const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine, nearLine), factsBtn, menuBtn, wideBtn);
   scaleBar.append(scaleBox);
@@ -218,6 +220,7 @@ export function startApp(root: HTMLElement): void {
     satelliteDialog.el,
     placeDialog.el,
     tonightDialog.el,
+    constellationDialog.el,
   );
   root.replaceChildren(main);
 
@@ -603,7 +606,11 @@ export function startApp(root: HTMLElement): void {
     },
     tap(x, y) {
       const found = pickAt(x, y, look, skyView.frame(), (turnNow ??= skyTurn(place, date)));
-      if (found) showPicked(found, true);
+      // A planet's mark wins; the name of a constellation wins over the stars when the finger is on its
+      // letters, or near them with no star in reach.
+      const figure = found?.kind === 'body' ? null : skyView.figureAt(x, y);
+      if (figure && (figure.gap === 0 || !found)) showConstellation(figure.id);
+      else if (found) showPicked(found, true);
       else closePicked();
     },
     pick() {
@@ -662,7 +669,9 @@ export function startApp(root: HTMLElement): void {
     const info = skyInfo(what, (turnNow ??= skyTurn(place, date)));
     // Jupiter over the horizon: its four moons as binoculars show them at this moment.
     const moons = id === 'jupiter' && info.altitude > 0 ? moonsBesideJupiter(turnNow) : null;
-    pickCard.show(d, lang, info, fly, moons);
+    // A star's card leads to the card of its constellation; a planet only passes through one.
+    const about = what.kind === 'star' && info.constellation in d.sky.constellations ? () => showConstellation(info.constellation) : null;
+    pickCard.show(d, lang, info, fly, moons, about);
     pickShownAt = performance.now();
     // Freshly picked and hidden by its own card (a low screen, a star low in the view): the sky moves up
     // just enough for it to stand over the card.
@@ -677,6 +686,10 @@ export function startApp(root: HTMLElement): void {
     }
     if (aloud) pickSaid.textContent = [...pickCard.el.querySelectorAll('h2, .pick__row')].map((part) => part.textContent).join('. ');
     dirty = true;
+  }
+  /** The card of a constellation: its story, if one is written, and what the program works out about it. */
+  function showConstellation(id: string): void {
+    constellationDialog.open(d, lang, id, place, (turnNow ??= skyTurn(place, date)));
   }
   /** Takes the card and the ring away. */
   function closePicked(): void {

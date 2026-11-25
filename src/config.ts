@@ -156,6 +156,15 @@ export const SKY = {
    */
   aim: { settleMs: 120, levelDeg: 50, northShare: 0.1, waitMs: 1_500 },
   /**
+   * The card of a constellation (C). `eveningHour` — "best in the evening" means the figure crosses the
+   * meridian at this hour of the place's own Sun time: the custom of sky guides and of Wikipedia's tables.
+   * `asBrightMag` — stars of a constellation this near in magnitude to its brightest are named beside it:
+   * catalogues differ by about as much, and which of two such stars is "the brightest" depends on the catalogue.
+   * `nameReachPx` — a touch this near the small letters of a constellation's name on the map still opens its
+   * card. `lowDeg` — a constellation whose middle never climbs higher than this over the place is said to stay low.
+   */
+  story: { eveningHour: 21, asBrightMag: 0.05, nameReachPx: 12, lowDeg: 20 },
+  /**
    * Jupiter through binoculars in its card (C): the drawing's size, CSS px of its own grid; how many px a
    * radius of Jupiter takes at the most (less when the moons would not fit in height); the moons' dots.
    */

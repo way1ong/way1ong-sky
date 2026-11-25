@@ -1,0 +1,32 @@
+{
+  "source": {
+    "title": "Wikipedia",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "terms": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+    "read": "2026-11-25"
+  },
+  "list": {
+    "url": "https://en.wikipedia.org/wiki/IAU_designated_constellations",
+    "revision": 1387250710
+  },
+  "stories": {
+    "Ori": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Orion_(constellation)",
+          "revision": 1387071981
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/%D0%9E%D1%80%D1%96%D0%BE%D0%BD_(%D1%81%D1%83%D0%B7%D1%96%D1%80%27%D1%8F)",
+          "revision": 49179190
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Orion_csillagk%C3%A9p",
+          "revision": 28644915
+        }
+      }
+    }
+  }
+}

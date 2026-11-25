@@ -260,6 +260,7 @@
     "madeBy": "Made by way1ong",
     "photos": "Photos in the cards: NASA and its partners, named under each photo; some are cropped. This program is made independently of NASA.",
     "sky": "The sky from a place: stars — Wikidata (CC0); which stars are joined into constellations — d3-celestial by Olaf Frohn (BSD-3-Clause), after the charts of the IAU and Sky & Telescope; cities — Wikidata. Stars are drawn by day too, and the bending of light by the air near the horizon is not drawn. “Dark enough”, “in view” and “too faint for the eye” are the program’s own measures, not definitions of astronomy. For some stars Wikidata has no visual brightness: there the close Gaia G brightness is used. Proper names of stars: the names approved by the International Astronomical Union, from the list in Wikipedia (CC BY-SA 4.0), and the titles of the stars’ articles in Wikipedia.",
+    "stories": "The stories of the constellations are written after Wikipedia’s articles — the links to the articles stand under each story. The texts of the stories may be used under the same licence, CC BY-SA 4.0. The brightest star, the month of the best evenings and the height of a constellation are worked out by the program itself.",
     "links": {
       "photoLibrary": "NASA’s image and video library",
       "photoRules": "NASA’s rules for its pictures",
@@ -360,9 +361,9 @@
     "open": "The sky from here",
     "toFlight": "Flight",
     "title": "The sky: {place}",
-    "scene": "The sky over the chosen place: stars, constellations, the Sun, the Moon and the planets. Drag to look around. Touch a star or a planet to learn what it is; on a keyboard Enter names what is in the middle.",
+    "scene": "The sky over the chosen place: stars, constellations, the Sun, the Moon and the planets. Drag to look around. Touch a star, a planet or the name of a constellation to learn what it is; on a keyboard Enter names what is in the middle.",
     "placeButton": "Place: {place}",
-    "note": "The sky over {place} at this moment. Drag to look around; two fingers or the wheel bring it nearer. Touch a star or a planet to learn what it is. The place is changed with the button below.",
+    "note": "The sky over {place} at this moment. Drag to look around; two fingers or the wheel bring it nearer. Touch a star, a planet or the name of a constellation to learn what it is. The place is changed with the button below.",
     "dayNote": "The Sun is up: the stars are drawn as if daylight did not hide them.",
     "compass": {
       "n": "N",
@@ -607,6 +608,37 @@
       "none": "This device does not tell the program how it is turned, so it cannot be pointed at the sky.",
       "denied": "Without the permission for motion sensors the map cannot follow the phone.",
       "level": "Lay the phone flat, screen up, for a moment — that is how it finds the north. Then raise it to the sky."
+    },
+    "story": {
+      "kind": "Constellation",
+      "button": "About the constellation",
+      "open": "About the constellation: {name}",
+      "rows": {
+        "brightest": "Brightest star",
+        "brightestMany": "Brightest stars",
+        "evening": "Best in the evening"
+      },
+      "star": "{name} · magnitude {mag}",
+      "unnamed": "a star without a name of its own",
+      "and": " and ",
+      "asBright": "about equally bright",
+      "always": "never sets at this place — seen on any clear night",
+      "low": "stays low here: up to {altitude}° over the horizon",
+      "never": "not seen from this place — it never rises over the horizon",
+      "computed": "The star, the month and the height are worked out by the program for the chosen place. “Best in the evening” is the month when the middle of the constellation stands highest at about {hour}:00.",
+      "source": "The story is written after Wikipedia’s articles:",
+      "pages": {
+        "en": "in English",
+        "uk": "in Ukrainian",
+        "hu": "in Hungarian"
+      },
+      "licence": "The text of the story may be used on the same terms:",
+      "listed": {
+        "ptolemy": "One of the 48 constellations listed by the astronomer Ptolemy in the 2nd century. Since 1922 it has been on the International Astronomical Union’s list of 88 constellations."
+      },
+      "about": {
+        "Ori": "Orion is a hunter of Greek mythology — a giant, a son of Poseidon, the god of the sea. Its seven brightest stars draw an hourglass: four of them make a large rectangle, and in its middle lie the three stars of Orion’s Belt. In one myth Orion boasted that he would kill every animal on Earth, and the angry goddess Gaia sent a scorpion against him (in other tellings it was Artemis or Apollo) — which is given as the reason why Orion and Scorpius are never in the sky at the same time."
+      }
     }
   },
   "install": {

@@ -79,6 +79,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
             h('li', {}, d.about.facts, ' ', link(SOURCES.planets.url, SOURCES.planets.title), ' · ', link(SOURCES.sun.url, SOURCES.sun.title), ' · ', link(SOURCES.rings.url, SOURCES.rings.title)),
             h('li', {}, d.about.photos, ' ', link(PHOTO_LIBRARY, d.about.links.photoLibrary), ' · ', link(PHOTO_RULES, d.about.links.photoRules)),
             h('li', {}, d.about.sky, ' ', link(CITY_SOURCE.url, 'Wikidata'), ' · ', link(STAR_NAMES_URL, d.about.links.starNames), ' · ', link(BY_SA_URL, 'CC BY-SA 4.0')),
+            h('li', {}, d.about.stories, ' ', link(BY_SA_URL, 'CC BY-SA 4.0')),
             h('li', {}, d.about.shadows),
             h('li', {}, d.about.aim),
             h('li', {}, d.about.engine),

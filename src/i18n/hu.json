@@ -260,6 +260,7 @@
     "madeBy": "Készítette: way1ong",
     "photos": "A kártyák fotói: a NASA és partnerei, a nevük minden fotó alatt szerepel; néhány kép meg van vágva. A program a NASA-tól függetlenül készült.",
     "sky": "Az égbolt egy helyről: csillagok — Wikidata (CC0); a csillagképek vonalai — d3-celestial, szerző: Olaf Frohn (BSD-3-Clause), az IAU és a Sky & Telescope térképei nyomán; városok — Wikidata. A csillagok nappal is láthatók a képen, a fény légköri törése a horizont közelében nincs ábrázolva. Az „elég sötét”, a „látható” és a „szabad szemmel túl halvány” a program saját mércéi, nem csillagászati meghatározások. Néhány csillagnak a Wikidatában nincs vizuális fényessége: ott a hozzá közeli Gaia G fényesség szerepel. A csillagok tulajdonnevei: a Nemzetközi Csillagászati Unió által jóváhagyott nevek a Wikipédia listájából (CC BY-SA 4.0), valamint a csillagok Wikipédia-szócikkeinek címei.",
+    "stories": "A csillagképek történetei a Wikipédia szócikkei alapján készültek — a szócikkek hivatkozásai minden történet alatt megtalálhatók. A történetek szövege ugyanazzal a licenccel, CC BY-SA 4.0 alatt használható fel. A legfényesebb csillagot, a legjobb esték hónapját és a csillagkép magasságát maga a program számítja.",
     "links": {
       "photoLibrary": "a NASA kép- és videótára",
       "photoRules": "a NASA szabályai a képeiről",
@@ -360,9 +361,9 @@
     "open": "Az égbolt innen",
     "toFlight": "Repülés",
     "title": "Égbolt: {place}",
-    "scene": "Az égbolt a kiválasztott hely felett: csillagok, csillagképek, a Nap, a Hold és a bolygók. Húzással nézhet körül. Érintsen meg egy csillagot vagy bolygót, hogy megtudja, mi az; billentyűzeten az Enter megnevezi, ami középen van.",
+    "scene": "Az égbolt a kiválasztott hely felett: csillagok, csillagképek, a Nap, a Hold és a bolygók. Húzással nézhet körül. Érintsen meg egy csillagot, bolygót vagy egy csillagkép nevét, hogy megtudja, mi az; billentyűzeten az Enter megnevezi, ami középen van.",
     "placeButton": "Hely: {place}",
-    "note": "Az égbolt {place} felett ebben a pillanatban. Húzással nézhet körül; két ujjal vagy a görgővel közelíthet. Érintsen meg egy csillagot vagy bolygót, hogy megtudja, mi az. A helyet a lenti gombbal változtathatja meg.",
+    "note": "Az égbolt {place} felett ebben a pillanatban. Húzással nézhet körül; két ujjal vagy a görgővel közelíthet. Érintsen meg egy csillagot, bolygót vagy egy csillagkép nevét, hogy megtudja, mi az. A helyet a lenti gombbal változtathatja meg.",
     "dayNote": "A Nap a horizont felett van: a csillagok úgy láthatók, mintha a nappali fény nem takarná el őket.",
     "compass": {
       "n": "É",
@@ -607,6 +608,37 @@
       "none": "Ez az eszköz nem közli a programmal, merre fordul, ezért nem lehet az égre irányítani.",
       "denied": "A mozgásérzékelők engedélye nélkül a térkép nem tudja követni a telefont.",
       "level": "Fektesse a telefont egy pillanatra vízszintesen, kijelzővel felfelé — így találja meg az északot. Utána emelje az ég felé."
+    },
+    "story": {
+      "kind": "Csillagkép",
+      "button": "A csillagképről",
+      "open": "A csillagképről: {name}",
+      "rows": {
+        "brightest": "Legfényesebb csillag",
+        "brightestMany": "Legfényesebb csillagok",
+        "evening": "Este a legjobb"
+      },
+      "star": "{name} · {mag} magnitúdó",
+      "unnamed": "saját név nélküli csillag",
+      "and": " és ",
+      "asBright": "közel egyforma fényesek",
+      "always": "ezen a helyen nem nyugszik le — bármely derült éjszakán látható",
+      "low": "itt alacsonyan marad: legfeljebb {altitude}° a horizont felett",
+      "never": "erről a helyről nem látható — nem kel a horizont fölé",
+      "computed": "A csillagot, a hónapot és a magasságot maga a program számítja a kiválasztott helyre. „Este a legjobb” az a hónap, amikor a csillagkép közepe {hour} óra körül áll a legmagasabban.",
+      "source": "A történet a Wikipédia szócikkei alapján készült:",
+      "pages": {
+        "en": "angolul",
+        "uk": "ukránul",
+        "hu": "magyarul"
+      },
+      "licence": "A történet szövege ugyanilyen feltételekkel használható fel:",
+      "listed": {
+        "ptolemy": "Egyike annak a 48 csillagképnek, amelyeket a 2. században élt Klaudiosz Ptolemaiosz görög csillagász felsorolt. 1922 óta szerepel a Nemzetközi Csillagászati Unió 88 csillagképet tartalmazó listáján."
+      },
+      "about": {
+        "Ori": "Az Orion a görög mitológia óriás termetű vadásza, Poszeidón fia. Hét legfényesebb csillaga homokórára emlékeztető alakot rajzol: négy csillag nagy négyszöget alkot, közepén az Orion övének három csillagával. Az egyik változat szerint Artemisz skorpiót küldött rá; egy másik szerint a Földanya ölette meg a skorpióval, mert Orion azzal kérkedett, hogy minden vadállatot meg tud ölni — ezért nem látható az Orion és a Skorpió egyszerre az égen. Régi csillagtérképeken Íjász, Kaszás vagy Nimród néven is említik."
+      }
     }
   },
   "install": {

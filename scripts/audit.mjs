@@ -289,6 +289,8 @@ for (const [width, height] of SIZES) {
       const card = page.locator('.pick');
       for (const [dx, dy] of [[0, 0], [-1, -1], [1, -1], [0, -1.5], [-0.5, 0.5], [0.5, 0.5], [-1, 0], [1, 0]]) {
         await page.mouse.click(room.x + dx * room.w, room.y + dy * room.h);
+        // The touch may have landed on the name of a constellation: its card is a window, looked at below.
+        if (await page.locator('dialog[open] #constellation-title').count()) await closeDialog(page);
         if (await card.isVisible()) break;
       }
       if (!(await card.isVisible())) note(where, 'no touch on the sky opened the card of a star');
@@ -298,6 +300,21 @@ for (const [width, height] of SIZES) {
         const box = await card.boundingBox();
         if (box && (box.x < 0 || box.x + box.width > width + 1 || box.y + box.height > height + 1)) note(where, 'the card of a star runs off the screen');
         await look(page, where, 'sky-card');
+        // A star's card leads to the card of its constellation: its name and what the program works out about it.
+        // (A planet's card has no such button: a planet only passes through a constellation.)
+        if (await card.locator('.pick__about').count()) {
+          await card.locator('.pick__about').click();
+          await page.waitForSelector('dialog[open] #constellation-title', { timeout: 3000 }).catch(() => undefined);
+          if (!(await page.locator('dialog[open] #constellation-title').count())) note(where, 'the card of a star does not lead to the card of its constellation');
+          else {
+            if (!((await page.locator('#constellation-title').textContent()) ?? '').trim()) note(where, 'the card of a constellation has no name');
+            if ((await page.locator('dialog[open] .fact').count()) < 2) note(where, 'the card of a constellation tells less than two things');
+            // A story never stands without its credit: the articles and the licence.
+            if ((await page.locator('dialog[open] .fact__about').count()) && (await page.locator('dialog[open] a[href*="wikipedia.org"]').count()) < 1) note(where, 'a story of a constellation without a link to its article');
+            await look(page, where, 'constellation');
+            await closeDialog(page);
+          }
+        }
         await page.keyboard.press('Escape');
         if (await card.isVisible()) note(where, 'Escape does not close the card of a star');
       }
