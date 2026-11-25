@@ -88,7 +88,7 @@ button {
 }
 
 .top__text {
-  flex: 1 1 10.5rem;
+  flex: 1 1 7rem;
   min-width: 0;
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
@@ -189,6 +189,38 @@ button {
   background: none;
 }
 
+/* Four corners turned outwards: a wider view. With the panels hidden they turn inwards: back to the panels. */
+.icon-wide {
+  width: 1.125rem;
+  height: 1.125rem;
+  background:
+    linear-gradient(var(--text) 0 0) left top / 7px 2px,
+    linear-gradient(var(--text) 0 0) left top / 2px 7px,
+    linear-gradient(var(--text) 0 0) right top / 7px 2px,
+    linear-gradient(var(--text) 0 0) right top / 2px 7px,
+    linear-gradient(var(--text) 0 0) left bottom / 7px 2px,
+    linear-gradient(var(--text) 0 0) left bottom / 2px 7px,
+    linear-gradient(var(--text) 0 0) right bottom / 7px 2px,
+    linear-gradient(var(--text) 0 0) right bottom / 2px 7px;
+  background-repeat: no-repeat;
+}
+.app--wide .icon-wide {
+  background-position:
+    left 0 top 5px,
+    left 5px top 0,
+    right 0 top 5px,
+    right 5px top 0,
+    left 0 bottom 5px,
+    left 5px bottom 0,
+    right 0 bottom 5px,
+    right 5px bottom 0;
+}
+/* The panels hidden: the picture has the screen. The button stays in its corner; free flight keeps its two buttons. */
+.app--wide .top > :not(.icon-btn--wide),
+.app--wide .note,
+.app--wide .bottom > :not(.fly) {
+  display: none;
+}
 .icon-close {
   position: relative;
   width: 1.125rem;

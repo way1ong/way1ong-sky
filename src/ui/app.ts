@@ -150,6 +150,9 @@ export function startApp(root: HTMLElement): void {
   const nearLine = h('p', { class: 'top__line', hidden: true });
   let nearNow: BodyId | null = null;
   const menuBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-menu', 'aria-hidden': 'true' }));
+  /** Hides the panels for a wider view of the picture and brings them back; stays in its corner all the time. */
+  const wideBtn = h('button', { class: 'icon-btn icon-btn--wide', type: 'button' }, h('span', { class: 'icon-wide', 'aria-hidden': 'true' }));
+  let wide = false;
   const note = h('p', { class: 'note__text', role: 'status' });
   const noteClose = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-close', 'aria-hidden': 'true' }));
   const noteBox = h('div', { class: 'note', hidden: true }, note, noteClose);
@@ -178,7 +181,7 @@ export function startApp(root: HTMLElement): void {
   const placeDialog = createPlaceDialog();
   const tonightDialog = createTonightDialog();
   const stage = h('div', { class: 'stage' }, canvas, skyCanvas, labels, siteMarks);
-  const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine, nearLine), factsBtn, menuBtn);
+  const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine, nearLine), factsBtn, menuBtn, wideBtn);
   scaleBar.append(scaleBox);
   const bottom = h('div', { class: 'bottom' }, flyBox, h('div', { class: 'bar' }, timeBox), scaleBar, dock, skyBox);
   const main = h(
@@ -223,6 +226,7 @@ export function startApp(root: HTMLElement): void {
     document.querySelector('meta[name="description"]')?.setAttribute('content', d.meta.description);
     canvas.setAttribute('aria-label', d.app.scene);
     menuBtn.setAttribute('aria-label', d.app.menu);
+    wideBtn.setAttribute('aria-label', wide ? d.app.showPanels : d.app.hidePanels);
     dock.setAttribute('aria-label', d.dock.label);
     timeBox.setAttribute('aria-label', d.time.label);
     slowerBtn.setAttribute('aria-label', d.time.slower);
@@ -335,15 +339,30 @@ export function startApp(root: HTMLElement): void {
 
   /** The bars cover the top and the bottom of the picture: the view centres on what is left free. */
   function measure(): void {
-    const top = header.getBoundingClientRect().bottom;
+    // With the panels hidden the picture has the whole screen, but for the two buttons of free flight.
+    const top = wide ? 0 : header.getBoundingClientRect().bottom;
     // The stage, not a canvas: of the two canvases one is always hidden and has no size.
-    const low = stage.clientHeight - bottom.getBoundingClientRect().top;
+    const low = wide && flyBox.hidden ? 0 : stage.clientHeight - bottom.getBoundingClientRect().top;
     scene.setCovered(top, low);
     skyView.setCovered(top, low);
     const free = Math.max(1, Math.min(stage.clientWidth, stage.clientHeight - top - low));
     squeeze = Math.min(stage.clientWidth, stage.clientHeight) / free;
     dirty = true;
   }
+
+  /** The panels hidden: only the picture, the button that brings them back and, in free flight, its two buttons. */
+  function setWide(next: boolean): void {
+    if (next === wide) return;
+    wide = next;
+    main.classList.toggle('app--wide', wide);
+    wideBtn.setAttribute('aria-label', wide ? d.app.showPanels : d.app.hidePanels);
+    measure();
+  }
+  wideBtn.addEventListener('click', () => setWide(!wide));
+  // Escape brings the panels back — unless a window is open: then it closes the window.
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && wide && !document.querySelector('dialog[open]')) setWide(false);
+  });
 
   const dayText = (moment: Date) => new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric' }).format(moment);
 

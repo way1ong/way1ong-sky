@@ -101,6 +101,34 @@ const closeDialog = async (page) => {
   await page.waitForFunction(() => !document.querySelector('dialog[open]'));
 };
 const chip = (page, i) => page.locator('.dock .chip').nth(i);
+/**
+ * The button that hides the panels: with them hidden only it and what `kept` names can be pressed, the
+ * button has not moved from under the finger, and both the button and Escape bring the panels back.
+ */
+const panels = async (page, where, what, shot, kept) => {
+  const button = page.locator('.top .icon-btn--wide');
+  const controls = () => page.locator('.top button:visible, .bottom button:visible, .note button:visible').count();
+  const before = await controls();
+  const place = await button.boundingBox();
+  const hide = await button.getAttribute('aria-label');
+  await button.click();
+  await page.waitForTimeout(200);
+  let left = 1;
+  for (const selector of kept) left += await page.locator(`${selector}:visible`).count();
+  if ((await controls()) !== left) note(where, `${what}: with the panels hidden ${await controls()} buttons are left, not ${left}`);
+  if (await page.locator('.top__text').isVisible()) note(where, `${what}: the heading stays with the panels hidden`);
+  const now = await button.boundingBox();
+  if (!now || !place || Math.abs(now.x - place.x) > 1 || Math.abs(now.y - place.y) > 1) note(where, `${what}: the button moved when the panels hid`);
+  if ((await button.getAttribute('aria-label')) === hide) note(where, `${what}: the button's name did not change`);
+  await look(page, where, `${shot}-wide`);
+  await button.click();
+  await page.waitForTimeout(150);
+  if ((await controls()) !== before) note(where, `${what}: the panels did not come back by the button`);
+  await button.click();
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(150);
+  if ((await controls()) !== before) note(where, `${what}: the panels did not come back by Escape`);
+};
 /** The dock: 0 the sky, 1 the whole system, 2 free flight, then the bodies from the Sun (3) on. */
 const BODY = { sun: 3, earth: 6, moon: 7, saturn: 10 };
 
@@ -127,6 +155,10 @@ for (const [width, height] of SIZES) {
       const title = (await page.locator('.top__name').textContent()) ?? '';
       const over = await page.evaluate(() => [...document.querySelectorAll('.labels[aria-hidden] .label')].filter((label) => !label.hidden).map((label) => label.textContent));
       if (over.includes(title)) note(where, `the name "${title}" is written over the body looked at`);
+      // At a body the heading has the most buttons beside it: they still stand in one row.
+      const rows = await page.evaluate(() => new Set([...document.querySelectorAll('.top .icon-btn')].filter((b) => !b.hidden).map((b) => Math.round(b.getBoundingClientRect().top))).size);
+      if (rows > 1) note(where, `the buttons of the heading stand in ${rows} rows`);
+      await panels(page, where, 'at a body', 'earth', []);
       await page.locator('.top .icon-btn').first().click();
       await page.waitForSelector('dialog[open] .photo img');
       await page.waitForFunction(() => {
@@ -153,6 +185,7 @@ for (const [width, height] of SIZES) {
       if (!(await page.locator('.fly').isVisible())) note(where, 'free flight shows no forward and back buttons');
       await look(page, where, 'free');
       await page.locator('.note .icon-btn').click();
+      await panels(page, where, 'free flight', 'free', ['.fly .chip--fly']);
 
       // The clock: faster, then back to now.
       await page.locator('.time .icon-btn').nth(2).click();
@@ -175,6 +208,7 @@ for (const [width, height] of SIZES) {
       await page.waitForTimeout(400);
       await look(page, where, 'sky');
       await page.locator('.note .icon-btn').click();
+      await panels(page, where, 'the sky', 'sky', []);
       await page.locator('.sky-bar .chip').nth(1).click();
       await page.waitForSelector('dialog[open] .place-list');
       if ((await page.locator('dialog[open] .place-list button').count()) < 100) note(where, 'the list of cities is short');
@@ -184,7 +218,7 @@ for (const [width, height] of SIZES) {
       await page.waitForSelector('dialog[open] #tonight-title');
       await look(page, where, 'tonight');
       await closeDialog(page);
-      await page.locator('.top .icon-btn').last().click();
+      await page.locator('.top .icon-btn:not(.icon-btn--wide)').last().click();
       await page.waitForSelector('dialog[open] [role="switch"]');
       await look(page, where, 'menu');
       await page.locator('dialog[open] [role="switch"]').nth(2).click();

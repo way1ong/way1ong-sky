@@ -240,6 +240,8 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
       ctx.textAlign = align;
       ctx.textBaseline = 'middle';
       ctx.lineWidth = 3;
+      // Round joins: sharp ones grow dark spikes over letters like M on a day sky.
+      ctx.lineJoin = 'round';
       ctx.strokeStyle = c.bg;
       ctx.globalAlpha = 0.7;
       ctx.strokeText(text, x, y);

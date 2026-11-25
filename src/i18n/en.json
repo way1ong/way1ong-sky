@@ -6,6 +6,8 @@
   "app": {
     "name": "Sky",
     "menu": "Menu",
+    "hidePanels": "Hide the panels",
+    "showPanels": "Show the panels",
     "scene": "The Solar System in 3D. Drag to look around, pinch or scroll to come closer; pick a body from the list to fly to it."
   },
   "bodies": {

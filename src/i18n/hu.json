@@ -6,6 +6,8 @@
   "app": {
     "name": "Sky",
     "menu": "Menü",
+    "hidePanels": "Panelek elrejtése",
+    "showPanels": "Panelek megjelenítése",
     "scene": "A Naprendszer 3D-ben. Húzással körülnézhet, csippentéssel vagy görgetéssel közelíthet; a listából válasszon égitestet, és odarepül."
   },
   "bodies": {
