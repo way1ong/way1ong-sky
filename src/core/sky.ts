@@ -1,7 +1,7 @@
 // The sky from a place on the Earth: where a star or a body stands over the horizon at a moment, and when a
 // body rises and sets. astronomy-engine does the astronomy; this module turns it into what the sky map needs.
 // A direction in the sky is a unit vector [east, north, up]: up is the zenith, the horizon is up = 0.
-import { Body, Equator, MakeTime, Observer, RotateVector, Rotation_EQJ_HOR, SearchRiseSet, Vector, type RotationMatrix } from 'astronomy-engine';
+import { Body, Equator, Illumination, MakeTime, Observer, RotateVector, Rotation_EQJ_HOR, SearchRiseSet, Vector, type RotationMatrix } from 'astronomy-engine';
 import type { BodyId } from './bodies.ts';
 import type { Vec3 } from './vec.ts';
 
@@ -84,6 +84,11 @@ export function bodyInSky(id: SkyBodyId, turn: SkyTurn): Vec3 {
  * does not happen in that time (the Sun in a polar summer). The engine counts a rising as the moment the
  * upper edge shows over a flat horizon, the bending of light by the air taken into account.
  */
+/** How bright a body is at a moment, as the engine reckons it: the smaller the number, the brighter. */
+export function bodyMagnitude(id: SkyBodyId, date: Date): number {
+  return Illumination(ENGINE[id], date).mag;
+}
+
 export function riseAndSet(id: SkyBodyId, place: Place, from: Date, days = 1): { rise: Date | null; set: Date | null } {
   const find = (direction: 1 | -1) => SearchRiseSet(ENGINE[id], observer(place), direction, from, days)?.date ?? null;
   return { rise: find(1), set: find(-1) };

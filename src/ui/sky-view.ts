@@ -4,7 +4,8 @@
 import { SKY } from '../config.ts';
 import { horizonOnScreen, project, skyDirection, type Frame, type Look } from '../core/dome.ts';
 import { moonLitFraction } from '../core/ephemeris.ts';
-import { SKY_BODY_IDS, altAz, bodyInSky, toSky, type SkyBodyId, type SkyTurn } from '../core/sky.ts';
+import { markBox, nameBox, placeBeside, shared, type Box, type NameAlign } from '../core/labels.ts';
+import { SKY_BODY_IDS, altAz, bodyInSky, bodyMagnitude, toSky, type SkyBodyId, type SkyTurn } from '../core/sky.ts';
 import { FIGURES, NAMED_STARS, STARS, STARS_LIMIT, starName } from '../core/stars.ts';
 import type { Vec3 } from '../core/vec.ts';
 import type { Dict } from './i18n.ts';
@@ -56,6 +57,7 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
   // The stars in the sky of the place: worked out once for a turn of the sky, not for every frame of a drag.
   let turnedFor: SkyTurn | null = null;
   const inSky: Vec3[] = [];
+  const magnitudes = {} as Record<SkyBodyId, number>;
 
   function palette(): Colours {
     if (colours) return colours;
@@ -108,6 +110,7 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
     if (turnedFor !== turn) {
       turnedFor = turn;
       STARS.forEach((star, i) => (inSky[i] = toSky(turn, star.at)));
+      for (const id of SKY_BODY_IDS) magnitudes[id] = bodyMagnitude(id, turn.date);
     }
     const bodies = SKY_BODY_IDS.map((id) => ({ id, sky: bodyInSky(id, turn) }));
     const sunHeight = altAz((bodies.find((b) => b.id === 'sun') as { sky: Vec3 }).sky).altitude;
@@ -158,11 +161,14 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
     ctx.globalAlpha = 1;
 
     // ---------- the Sun, the Moon, the planets ----------
-    const marks: { x: number; y: number; r: number; name: string; rank: number }[] = [];
+    const marks: { x: number; y: number; r: number; name: string; magnitude: number; faint: boolean }[] = [];
     for (const { id, sky } of bodies) {
       const p = project(look, f, sky);
       if (!p) continue;
-      const r = id === 'sun' ? paint.discPx.sun : id === 'moon' ? paint.discPx.moon : paint.discPx.planet;
+      const magnitude = magnitudes[id];
+      // A planet too faint for the eye is drawn smaller and weaker, not to be taken for a bright one.
+      const faint = id !== 'sun' && id !== 'moon' && magnitude > SKY.tonight.eyeMagnitude;
+      const r = id === 'sun' ? paint.discPx.sun : id === 'moon' ? paint.discPx.moon : faint ? paint.faintPlanet.px : paint.discPx.planet;
       if (id === 'moon') {
         // The Moon shows its phase: the lit part is turned to the Sun, as wide as the engine says it is lit.
         const sun = (bodies.find((b) => b.id === 'sun') as { sky: Vec3 }).sky;
@@ -188,11 +194,13 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
         ctx.restore();
       } else {
         ctx.fillStyle = id === 'sun' ? c.sun : c.planet;
+        ctx.globalAlpha = faint ? paint.faintPlanet.strength : 1;
         ctx.beginPath();
         ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
         ctx.fill();
+        ctx.globalAlpha = 1;
       }
-      marks.push({ x: p.x, y: p.y, r, name: d.bodies[id as SkyBodyId], rank: 0 });
+      marks.push({ x: p.x, y: p.y, r, name: d.bodies[id as SkyBodyId], magnitude, faint });
     }
 
     // ---------- the ground and the horizon ----------
@@ -224,14 +232,10 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
     ctx.stroke();
 
     // ---------- names: what is nearer to the top of this list is written first and keeps its place ----------
-    const taken: { left: number; right: number; top: number; bottom: number }[] = [];
-    const write = (text: string, x: number, y: number, colour: string, size: number, weight: number, align: CanvasTextAlign = 'left'): void => {
-      ctx.font = `${weight} ${size}px ${getComputedStyle(canvas).fontFamily}`;
-      const w = ctx.measureText(text).width;
-      const left = align === 'center' ? x - w / 2 : x;
-      const box = { left: left - paint.labelGapPx, right: left + w + paint.labelGapPx, top: y - size / 2 - paint.labelGapPx, bottom: y + size / 2 + paint.labelGapPx };
-      if (box.right < 0 || box.left > width || box.bottom < covered.top || box.top > height - covered.bottom) return;
-      if (taken.some((t) => box.left < t.right && box.right > t.left && box.top < t.bottom && box.bottom > t.top)) return;
+    const taken: Box[] = [];
+    const seen: Box = { left: 0, right: width, top: covered.top, bottom: height - covered.bottom };
+    const family = getComputedStyle(canvas).fontFamily;
+    const put = (text: string, x: number, y: number, colour: string, align: NameAlign, box: Box): void => {
       taken.push(box);
       ctx.textAlign = align;
       ctx.textBaseline = 'middle';
@@ -243,13 +247,28 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
       ctx.fillStyle = colour;
       ctx.fillText(text, x, y);
     };
+    /** A name with one place of its own: left out when the place is taken or out of sight. */
+    const write = (text: string, x: number, y: number, colour: string, size: number, weight: number, align: NameAlign = 'left'): void => {
+      ctx.font = `${weight} ${size}px ${family}`;
+      const box = nameBox(x, y, ctx.measureText(text).width, size, paint.labelGapPx, align);
+      if (shared(box, seen) === 0 || taken.some((other) => shared(box, other) > 0)) return;
+      put(text, x, y, colour, align, box);
+    };
 
     // The points of the compass sit on the horizon.
     COMPASS.forEach((key, i) => {
       const p = project(look, f, skyDirection(i * 45, 0));
       if (p) write(d.sky.compass[key], p.x, p.y + 14, i % 2 === 0 ? c.text : c.muted, i % 2 === 0 ? 15 : 12, 700, 'center');
     });
-    for (const mark of marks) write(mark.name, mark.x + mark.r + 5, mark.y, c.text, 14, 650);
+    // A body's name is never left out: when the place to the right of its mark is taken (two planets side by
+    // side), it goes to the left, under or over. The brighter body chooses first; no name covers a body's mark.
+    for (const mark of marks) taken.push(markBox(mark));
+    for (const mark of [...marks].sort((a, b) => a.magnitude - b.magnitude)) {
+      const size = mark.faint ? 12 : 14;
+      ctx.font = `${mark.faint ? 500 : 650} ${size}px ${family}`;
+      const place = placeBeside(mark, ctx.measureText(mark.name).width, size, paint.labelGapPx, taken, seen);
+      if (place) put(mark.name, place.x, place.y, mark.faint ? c.muted : c.text, place.align, place.box);
+    }
     if (layers.names) {
       const named = paint.named.wide + (paint.named.narrow - paint.named.wide) * near;
       for (const i of NAMED_STARS) {

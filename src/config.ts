@@ -89,7 +89,9 @@ export const SKY = {
    * `named` — stars this bright get their names, at the widest and the narrowest view;
    * `daylight` — the sky turns from night to day colour while the Sun climbs from `from` to `to` degrees over
    *   the horizon, and at full day the stars are drawn `starsLeft` as strong;
-   * `discPx` — the radii of the Sun's, the Moon's and a planet's marks; `labelGapPx` — room kept between names.
+   * `discPx` — the radii of the Sun's, the Moon's and a planet's marks; `faintPlanet` — a planet too faint for
+   *   the eye (`tonight.eyeMagnitude`) gets a smaller mark, drawn `strength` as strong, so that it is not taken
+   *   for a bright one; `labelGapPx` — room kept between names.
    */
   paint: {
     star: { brightMag: -1.5, brightPx: 3.4, faintPx: 0.55 },
@@ -97,6 +99,7 @@ export const SKY = {
     named: { wide: 1.6, narrow: 3.5 },
     daylight: { from: -12, to: 2, starsLeft: 0.12 },
     discPx: { sun: 9, moon: 8, planet: 3.5 },
+    faintPlanet: { px: 2, strength: 0.6 },
     labelGapPx: 4,
   },
   /**

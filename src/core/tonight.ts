@@ -3,12 +3,11 @@
 // screen writes them by the device's clock.
 import { Body, Illumination, MoonPhase, Observer, SearchAltitude, SearchRiseSet } from 'astronomy-engine';
 import { SKY } from '../config.ts';
-import { altAz, bodyInSky, riseAndSet, skyTurn, type Place, type SkyBodyId } from './sky.ts';
+import { altAz, bodyInSky, bodyMagnitude, riseAndSet, skyTurn, type Place, type SkyBodyId } from './sky.ts';
 
 export const PLANETS_IN_THE_SKY = ['mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'] as const satisfies readonly SkyBodyId[];
 export type SkyPlanetId = (typeof PLANETS_IN_THE_SKY)[number];
 
-const ENGINE: Record<SkyPlanetId, Body> = { mercury: Body.Mercury, venus: Body.Venus, mars: Body.Mars, jupiter: Body.Jupiter, saturn: Body.Saturn, uranus: Body.Uranus, neptune: Body.Neptune };
 
 /**
  * The eight looks of the Moon, by the angle between it and the Sun along the ecliptic: the engine gives 0 for
@@ -72,7 +71,7 @@ export function tonight(place: Place, now: Date): Tonight {
   };
 
   const planets = PLANETS_IN_THE_SKY.map((id): PlanetTonight => {
-    const magnitude = Illumination(ENGINE[id], moonAt).mag;
+    const magnitude = bodyMagnitude(id, moonAt);
     let seen: PlanetTonight['seen'] = null;
     if (dark) {
       const step = SKY.tonight.stepMinutes * 60_000;
