@@ -288,6 +288,30 @@ for (const [width, height] of SIZES) {
       if (!(await card.isVisible()) && !(await page.locator('.note:not(.pick)').isVisible())) note(where, 'Enter on the sky neither names a star nor says there is none');
       await page.keyboard.press('Escape');
       await page.locator('.note:not(.pick) .icon-btn').click().catch(() => undefined);
+      // Jupiter through binoculars: when Jupiter is in view tonight, its card on the map opens a drawing of its
+      // four moons and says their order in words.
+      await page.locator('.sky-bar .chip').nth(2).click();
+      await page.waitForSelector('dialog[open] #tonight-title');
+      const planets = page.locator('dialog[open] .site-list').first().locator('button');
+      const jupiter = (await planets.allTextContents()).findIndex((text) => /^(Jupiter|Юпітер)/.test(text.trim()));
+      if (jupiter < 0) await closeDialog(page);
+      else {
+        await planets.nth(jupiter).click();
+        await page.waitForTimeout(400);
+        await page.locator('canvas.sky').focus();
+        await page.keyboard.press('Enter');
+        const more = card.locator('details');
+        if (!(await more.count())) note(where, 'the card of Jupiter in the middle of the view has no drawing of its moons');
+        else {
+          await more.locator('summary').click();
+          if ((await card.locator('.moons__planet').count()) !== 1) note(where, 'the drawing of Jupiter’s moons has no planet');
+          if (!((await card.locator('.moons__said').textContent()) ?? '').trim()) note(where, 'the drawing of Jupiter’s moons says nothing in words');
+          await look(page, where, 'sky-jupiter');
+        }
+        await page.keyboard.press('Escape');
+        await page.locator('.note:not(.pick) .icon-btn').click().catch(() => undefined);
+        await page.locator('.time .chip').first().click();
+      }
       // The sky's clock stops at its fastest speed after one step: pressing on changes nothing.
       const faster = page.locator('.time .icon-btn').nth(2);
       await faster.click();

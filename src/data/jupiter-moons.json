@@ -1,0 +1,15 @@
+{
+  "source": {
+    "title": "NASA Jovian Satellite Fact Sheet",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/joviansatfact.html",
+    "updated": "6 December 2023",
+    "read": "2026-11-25"
+  },
+  "note": "The four Galilean satellites as the fact sheet gives them: mean radius (km), semi-major axis (thousand km), orbital period (days).",
+  "moons": {
+    "io": { "radiusKm": 1821.5, "semiMajorAxisThousandKm": 421.8, "periodDays": 1.769138 },
+    "europa": { "radiusKm": 1560.8, "semiMajorAxisThousandKm": 671.1, "periodDays": 3.551181 },
+    "ganymede": { "radiusKm": 2631.2, "semiMajorAxisThousandKm": 1070.4, "periodDays": 7.154553 },
+    "callisto": { "radiusKm": 2410.3, "semiMajorAxisThousandKm": 1882.7, "periodDays": 16.689017 }
+  }
+}

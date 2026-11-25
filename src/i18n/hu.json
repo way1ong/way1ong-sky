@@ -412,7 +412,20 @@
       "fly": "Repülés oda",
       "flyLabel": "Repülés oda: {name}",
       "close": "Kártya bezárása",
-      "none": "A nézet közepén nincs csillag vagy bolygó."
+      "none": "A nézet közepén nincs csillag vagy bolygó.",
+      "jupiter": {
+        "names": {
+          "io": "Io",
+          "europa": "Europa",
+          "ganymede": "Ganymedes",
+          "callisto": "Callisto"
+        },
+        "title": "Távcsőben most",
+        "order": "Balról jobbra: {list}.",
+        "behind": "{name} most a Jupiter korongja mögött van.",
+        "inFront": "{name} (a korong előtt)",
+        "note": "A rajz teteje a zenit felé néz, ahogy a kézi távcsőben; a távolságok a bolygó korongjával egy léptékben vannak."
+      }
     },
     "events": {
       "title": "Az év eseményei",

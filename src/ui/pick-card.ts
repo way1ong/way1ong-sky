@@ -1,14 +1,19 @@
 // The small card of what a touch on the sky map has named: its name, its constellation, how bright it is,
 // where it stands now, and for a body its rising and setting. It lies over the map without closing it.
+import type { MoonBeside } from '../core/jupiter-moons.ts';
 import type { SkyInfo } from '../core/pick.ts';
 import { starName } from '../core/stars.ts';
 import { h } from './dom.ts';
 import { fmt, num, type Dict } from './i18n.ts';
+import { jupiterFigure } from './jupiter-figure.ts';
 
 export interface PickCard {
   el: HTMLElement;
-  /** Shows the card; `fly` — what the "fly there" button does, null when there is no flight to offer. */
-  show(d: Dict, lang: string, info: SkyInfo, fly: (() => void) | null): void;
+  /**
+   * Shows the card; `fly` — what the "fly there" button does, null when there is no flight to offer;
+   * `moons` — Jupiter's four moons as they stand beside it, for Jupiter's card only.
+   */
+  show(d: Dict, lang: string, info: SkyInfo, fly: (() => void) | null, moons: readonly MoonBeside[] | null): void;
   hide(): void;
   readonly shown: boolean;
   onClose(run: () => void): void;
@@ -35,7 +40,7 @@ export function createPickCard(): PickCard {
     onClose(run) {
       closed = run;
     },
-    show(d, lang, info, fly) {
+    show(d, lang, info, fly, moons) {
       const t = d.sky.pick;
       const time = (at: Date) => new Intl.DateTimeFormat(lang, { hour: 'numeric', minute: '2-digit' }).format(at);
       const row = (label: string, value: string) => h('div', { class: 'pick__row' }, h('dt', {}, label), ' ', h('dd', {}, value));
@@ -60,18 +65,28 @@ export function createPickCard(): PickCard {
       turns.sort((one, other) => one.at.getTime() - other.at.getTime());
       if (turns.length > 0) rows.append(line(turns.map((turn) => turn.text).join(', ')));
 
+      // Jupiter through binoculars: folded away until asked for, so that the card stays small over the sky;
+      // once opened it stays open while the clock rewrites it.
+      const facts = h('div', { class: 'pick__facts' }, rows);
+      if (moons) {
+        const open = shownRows?.querySelector('details')?.open ?? false;
+        const more = h('details', { class: 'pick__more' }, h('summary', {}, d.sky.pick.jupiter.title), jupiterFigure(d, moons));
+        more.open = open;
+        facts.append(more);
+      }
+
       const key = `${lang}:${info.what.kind === 'body' ? info.what.id : info.what.index}`;
       if (!el.hidden && key === shownFor && shownRows) {
-        shownRows.replaceWith(rows);
-        shownRows = rows;
+        shownRows.replaceWith(facts);
+        shownRows = facts;
         return;
       }
       shownFor = key;
-      shownRows = rows;
+      shownRows = facts;
 
       const close = h('button', { class: 'icon-btn', type: 'button', 'aria-label': t.close }, h('span', { class: 'icon-close', 'aria-hidden': 'true' }));
       close.addEventListener('click', () => closed());
-      const text = h('div', { class: 'pick__text' }, h('h2', { class: 'pick__name' }, name), rows);
+      const text = h('div', { class: 'pick__text' }, h('h2', { class: 'pick__name' }, name), facts);
       if (fly) {
         const go = h('button', { class: 'chip', type: 'button', 'aria-label': fmt(t.flyLabel, { name }) }, t.fly);
         go.addEventListener('click', fly);

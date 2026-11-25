@@ -412,7 +412,20 @@
       "fly": "Fly there",
       "flyLabel": "Fly there: {name}",
       "close": "Close the card",
-      "none": "There is no star or planet in the middle of the view."
+      "none": "There is no star or planet in the middle of the view.",
+      "jupiter": {
+        "names": {
+          "io": "Io",
+          "europa": "Europa",
+          "ganymede": "Ganymede",
+          "callisto": "Callisto"
+        },
+        "title": "Through binoculars now",
+        "order": "From left to right: {list}.",
+        "behind": "{name} is behind Jupiter’s disc now.",
+        "inFront": "{name} (in front of the disc)",
+        "note": "The top of the drawing is towards the zenith, as in binoculars; the distances are to one scale with the planet’s disc."
+      }
     },
     "events": {
       "title": "Events of the year",

@@ -9,6 +9,7 @@ import { nextLunarEclipse, nextSolarEclipse } from '../core/eclipses.ts';
 import { attitude, orbitKm, positionsKm, type Attitude } from '../core/ephemeris.ts';
 import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, facing, flightAt, progress, type Flight, type View } from '../core/flight.ts';
 import { advance, freeFrom, keepOutside, lookPoint, nearest, radiusOnScreenPx, turnFree, type FreeView } from '../core/free.ts';
+import { moonsBesideJupiter } from '../core/jupiter-moons.ts';
 import { pickAt, pickedInSky, skyInfo, type Picked } from '../core/pick.ts';
 import { cityById, cityName, firstCity, type City } from '../core/places.ts';
 import type { PlanetTonight } from '../core/tonight.ts';
@@ -606,7 +607,10 @@ export function startApp(root: HTMLElement): void {
       setScreen('flight');
       flyTo(id);
     } : null;
-    pickCard.show(d, lang, skyInfo(what, (turnNow ??= skyTurn(place, date))), fly);
+    const info = skyInfo(what, (turnNow ??= skyTurn(place, date)));
+    // Jupiter over the horizon: its four moons as binoculars show them at this moment.
+    const moons = id === 'jupiter' && info.altitude > 0 ? moonsBesideJupiter(turnNow) : null;
+    pickCard.show(d, lang, info, fly, moons);
     pickShownAt = performance.now();
     // Freshly picked and hidden by its own card (a low screen, a star low in the view): the sky moves up
     // just enough for it to stand over the card.

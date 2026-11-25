@@ -230,6 +230,48 @@ button {
   display: flex;
 }
 
+/* Jupiter through binoculars, folded into its card on the sky map. */
+.pick__facts {
+  display: grid;
+  gap: 0.25rem;
+  justify-items: start;
+  min-width: 0;
+}
+/* The browser's own triangle shows that the line opens; the padding makes it tall enough for a finger. */
+.pick__more summary {
+  padding: 0.6875rem 0;
+  font-weight: 650;
+  cursor: pointer;
+}
+.moons {
+  display: grid;
+  gap: 0.375rem;
+  margin: 0;
+}
+.moons__drawing {
+  display: block;
+  width: 100%;
+  max-width: 20rem;
+  height: auto;
+  border-radius: 0.5rem;
+  background: var(--bg);
+}
+.moons__planet {
+  fill: var(--planet);
+}
+.moons__moon {
+  fill: var(--text);
+}
+.moons__name {
+  fill: var(--text);
+  font-size: 11px;
+}
+.moons figcaption {
+  font-size: 0.875rem;
+}
+.moons__note {
+  color: var(--muted);
+}
 /* A body beside the Earth, to one scale. */
 .size {
   display: grid;

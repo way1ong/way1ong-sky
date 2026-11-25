@@ -12,6 +12,7 @@
 | Сонце в картці: відношення до Землі, оберт, температура поверхні | NASA Sun Fact Sheet | те саме | 24.11.2026 |
 | Радіус Сонця | NASA Sun Fact Sheet, …/factsheet/sunfact.html (оновлено 9.05.2024) | те саме | 24.11.2026 |
 | Радіуси кілець Сатурна | NASA Saturnian Rings Fact Sheet, …/factsheet/satringfact.html (оновлено 19.04.2022) | те саме | 24.11.2026 |
+| Чотири великі супутники Юпітера: радіус, піввісь орбіти, період (`src/data/jupiter-moons.json`) — для звірки положень із рушія | NASA Jovian Satellite Fact Sheet, https://nssdc.gsfc.nasa.gov/planetary/factsheet/joviansatfact.html (оновлено 6.12.2023) | правила NASA, як для довідника планет | 25.11.2026 |
 | Положення й обертання тіл | astronomy-engine 2.1.19 (npm) | MIT | у пакеті |
 | 3D | three.js 0.187.0 (npm) | MIT | у пакеті |
 | Фото тіл у картках (`src/photos/`, десять знімків) | NASA Image and Video Library, https://images.nasa.gov/ — запис і автор кожного знімка: `src/data/photos.json`, `docs/PHOTOS.md` | Правила NASA, https://www.nasa.gov/nasa-brand-center/images-and-media/: «NASA content … generally are not subject to copyright in the United States. You may use this material for educational or informational purposes, including … Internet Web pages»; «NASA should be acknowledged as the source of the material»; комерційне використання «must not explicitly or implicitly convey NASA’s endorsement». Під кожним фото — автор із запису й посилання на запис; у «Про програму» — що програму зроблено незалежно від NASA | 24.11.2026 |

@@ -141,6 +141,11 @@ export const SKY = {
    * `words` — how a brightness is said in words: up to these magnitudes "very bright", "bright", "medium",
    *   fainter — "faint". The program's own words, not astronomy's.
    */
+  /**
+   * Jupiter through binoculars in its card (C): the drawing's size, CSS px of its own grid; how many px a
+   * radius of Jupiter takes at the most (less when the moons would not fit in height); the moons' dots.
+   */
+  moonsDrawing: { width: 300, height: 150, radiusPx: 5.3, moonPx: 2.2 },
   pick: { tap: { slopPx: 8, ms: 600 }, reachPx: 24, brighterPx: 3, overCardPx: 28, words: { veryBright: 1.5, bright: 3, medium: 4.5 } },
   /** Points of an orbit's line (C). */
   orbitPoints: 256,
