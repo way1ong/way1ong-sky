@@ -30,6 +30,7 @@ import { createSatelliteDialog } from './satellite-dialog.ts';
 import { createSceneView, type Orbit, type SceneView } from './scene.ts';
 import { createSiteDialog } from './site-dialog.ts';
 import { dayUT, missionName } from './site-text.ts';
+import { createAim } from './aim.ts';
 import { createSkyView, type SkyLayers } from './sky-view.ts';
 import { createTimeDialog } from './time-dialog.ts';
 import { createTonightDialog } from './tonight-dialog.ts';
@@ -178,7 +179,9 @@ export function startApp(root: HTMLElement): void {
   const toFlightBtn = h('button', { class: 'chip', type: 'button' });
   const placeBtn = h('button', { class: 'chip', type: 'button' });
   const tonightBtn = h('button', { class: 'chip', type: 'button' });
-  const skyBox = h('div', { class: 'bar sky-bar', role: 'group', hidden: true }, toFlightBtn, placeBtn, tonightBtn);
+  /** A trial: the sky map turns to where the phone is pointed. Offered only on devices held in the hand. */
+  const aimBtn = h('button', { class: 'chip', type: 'button', 'aria-pressed': 'false', hidden: true });
+  const skyBox = h('div', { class: 'bar sky-bar', role: 'group', hidden: true }, toFlightBtn, placeBtn, tonightBtn, aimBtn);
   const scaleBar = h('div', { class: 'bar bar--scale' });
   const slowerBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-skip icon-skip--back', 'aria-hidden': 'true' }));
   const pauseBtn = h('button', { class: 'icon-btn', type: 'button' });
@@ -262,6 +265,7 @@ export function startApp(root: HTMLElement): void {
     toFlightBtn.textContent = d.sky.toFlight;
     toFlightBtn.hidden = !graphics;
     tonightBtn.textContent = d.sky.tonight.button;
+    aimBtn.textContent = d.sky.aim.button;
     forwardBtn.textContent = d.free.forward;
 
     labels.replaceChildren();
@@ -584,7 +588,10 @@ export function startApp(root: HTMLElement): void {
   // ---------- the sky from a place ----------
   const skyView = createSkyView(skyCanvas);
   attachControls(skyCanvas, {
+    // A finger that drags the map takes it back from the phone's tilt; a touch that only names a star does not.
+    grab: () => endAim(d.sky.aim.off),
     turn(yaw, pitch) {
+      if (aim.on) return;
       // The controls speak in angles of the flight view; here the sky follows the finger pixel for pixel.
       const perPixel = (SKY.turnDegPerScreen * Math.PI) / 180 / Math.max(1, Math.min(skyCanvas.clientWidth, skyCanvas.clientHeight));
       look = turnLook(look, -yaw / perPixel, pitch / perPixel, skyView.frame());
@@ -607,6 +614,38 @@ export function startApp(root: HTMLElement): void {
     },
   });
 
+  // ---------- the sky follows the phone (a trial) ----------
+  const aim = createAim({
+    look(azimuth, altitude) {
+      look = { ...look, azimuth, altitude };
+      dirty = true;
+    },
+    needsLevel: () => say(d.sky.aim.level),
+    ended(why) {
+      aimBtn.setAttribute('aria-pressed', 'false');
+      say(why === 'denied' ? d.sky.aim.denied : d.sky.aim.none);
+    },
+  });
+  aimBtn.hidden = !aim.offered;
+  /** Gives the map back to the finger; `words` — what is said about it, none when something else speaks. */
+  function endAim(words = ''): void {
+    if (!aim.on) return;
+    aim.stop();
+    aimBtn.setAttribute('aria-pressed', 'false');
+    if (words) say(words);
+  }
+  aimBtn.addEventListener('click', () => {
+    if (aim.on) {
+      endAim(d.sky.aim.off);
+      return;
+    }
+    void aim.start().then(() => {
+      if (!aim.on) return;
+      aimBtn.setAttribute('aria-pressed', 'true');
+      say(d.sky.aim.on);
+    });
+  });
+
   /**
    * The card of a star or a body on the sky map, with a ring round it. `aloud` — said to a screen reader:
    * so when it was picked, not each time the running clock rewrites the card.
@@ -627,7 +666,7 @@ export function startApp(root: HTMLElement): void {
     pickShownAt = performance.now();
     // Freshly picked and hidden by its own card (a low screen, a star low in the view): the sky moves up
     // just enough for it to stand over the card.
-    if (aloud) {
+    if (aloud && !aim.on) {
       const card = pickCard.el.getBoundingClientRect();
       const from = stage.getBoundingClientRect();
       const at = project(look, skyView.frame(), pickedInSky(what, turnNow));
@@ -662,6 +701,7 @@ export function startApp(root: HTMLElement): void {
     const sky = screen === 'sky';
     thrust = 0;
     closePicked();
+    endAim();
     // A clock that ran a week a second in the flight slows to the sky's fastest.
     if (sky) clock = slowedTo(clock, Date.now(), SKY.time.skyUpToRate);
     canvas.hidden = sky;
@@ -692,6 +732,7 @@ export function startApp(root: HTMLElement): void {
   /** A planet from "Tonight": the clock goes to its best moment and stops, the view turns to it. */
   function showPlanet(planet: PlanetTonight): void {
     if (!planet.seen) return;
+    endAim();
     clock = jumpTo(clock, Date.now(), planet.seen.best.getTime());
     look = { ...look, azimuth: planet.seen.azimuth, altitude: Math.max(planet.seen.altitude, SKY.dome.firstLook.altitude) };
     const moment = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(planet.seen.best);
@@ -700,6 +741,7 @@ export function startApp(root: HTMLElement): void {
   /** An event of the year: the clock goes to the moment it is seen from the place and stops, the view turns to it, a ring marks the body. */
   function showEvent(event: SkyEvent): void {
     if (!event.view) return;
+    endAim();
     clock = jumpTo(clock, Date.now(), event.view.at.getTime());
     look = { ...look, azimuth: event.view.azimuth, altitude: Math.max(event.view.altitude, SKY.dome.firstLook.altitude) };
     retime(fmt(d.sky.events.shown, { name: eventName(d, event), when: eventMoment(d, lang, event.view.at) }));

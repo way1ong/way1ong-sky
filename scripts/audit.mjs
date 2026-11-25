@@ -25,6 +25,8 @@ if (shots) mkdirSync(shots, { recursive: true });
 const axeSource = axePath ? readFileSync(axePath, 'utf8') : null;
 
 const PORT = 4387;
+/** How long the program waits for a phone's tilt before saying there is none: `SKY.aim.waitMs` in src/config.ts. */
+const AIM_WAIT_MS = 1500;
 const ORIGIN = `http://localhost:${PORT}`;
 const SIZES = [
   [320, 568],
@@ -370,6 +372,28 @@ for (const [width, height] of SIZES) {
       await page.waitForTimeout(200);
       if (!(await page.evaluate(() => document.documentElement.hasAttribute('data-night')))) note(where, 'night mode did not turn on');
       await look(page, where, 'night');
+      // "Point the phone" (a trial): offered only to a device held in the hand; an imitated tilt turns it on,
+      // the button turns it off, and a device that reports no tilt is told so.
+      const aimBtn = page.locator('.sky-bar .chip').nth(3);
+      const handheld = await page.evaluate(() => matchMedia('(pointer: coarse)').matches);
+      if ((await aimBtn.isVisible()) !== handheld) note(where, handheld ? 'no button to point the phone on a phone' : 'the button to point the phone is shown on a computer');
+      if (handheld) {
+        const tilt = (alpha, beta) => page.evaluate(([a, b]) => window.dispatchEvent(new DeviceOrientationEvent('deviceorientationabsolute', { alpha: a, beta: b, gamma: 0, absolute: true })), [alpha, beta]);
+        await aimBtn.click();
+        for (let i = 0; i < 12; i++) {
+          await tilt(270, 130);
+          await page.waitForTimeout(40);
+        }
+        if ((await aimBtn.getAttribute('aria-pressed')) !== 'true') note(where, 'pointing the phone did not turn on');
+        await look(page, where, 'aim');
+        await aimBtn.click();
+        if ((await aimBtn.getAttribute('aria-pressed')) !== 'false') note(where, 'pointing the phone did not turn off');
+        await aimBtn.click();
+        await page.waitForTimeout(AIM_WAIT_MS + 400);
+        if ((await aimBtn.getAttribute('aria-pressed')) !== 'false') note(where, 'pointing the phone stays on though the device reports no tilt');
+        if (!(await page.locator('.note:not(.pick)').isVisible())) note(where, 'nothing is said when the device reports no tilt');
+        await look(page, where, 'aim-none');
+      }
       await page.locator('.sky-bar .chip').first().click();
       await page.waitForTimeout(300);
       if (await page.evaluate(() => document.documentElement.hasAttribute('data-night'))) note(where, 'night mode stays on in the flight');

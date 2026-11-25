@@ -255,6 +255,7 @@
     "moonMaps": "A Jupiter négy holdjának térképei: Credit: U.S. Geological Survey, a Voyager és a Galileo űrszondák felvételei alapján; közkincs. A térképek szürkeárnyalatosak, a pólusok közelében nincs felvétel. A holdak egyik oldalukat fordítják a Jupiter felé — hogy melyiket, azt a program csak közelítőleg mutatja; a holdak árnyékait és fogyatkozásait nem rajzoltuk meg.",
     "facts": "Az égitestek és a Szaturnusz gyűrűinek méretei: a NASA adatlapjai.",
     "shadows": "A Föld árnyéka a Holdon és a Hold árnyéka a Földön a valódi helyzetekből van kiszámítva. A fogyatkozó Hold rézszínű derengése kép, nem mérés.",
+    "aim": "A „Telefon az égre” az égtérképen kísérlet. A program a telefon dőlését és iránytűjét csak magán az eszközön olvassa, és sehová sem küldi. A telefon iránytűje pontatlan, ezért a képernyőn látható ég elcsúszhat a valódihoz képest; a kép nem dől a telefonnal együtt.",
     "engine": "Helyzet és forgás: astronomy-engine (MIT). 3D: three.js (MIT).",
     "madeBy": "Készítette: way1ong",
     "photos": "A kártyák fotói: a NASA és partnerei, a nevük minden fotó alatt szerepel; néhány kép meg van vágva. A program a NASA-tól függetlenül készült.",
@@ -598,6 +599,14 @@
       "Vir": "Szűz",
       "Vol": "Repülőhal",
       "Vul": "Kis Róka"
+    },
+    "aim": {
+      "button": "Telefon az égre",
+      "on": "Kísérlet: a térkép arra néz, amerre a telefon hátlapja. Ha az ég nem egyezik, mozgassa a telefont nyolcas alakban.",
+      "off": "Az irányzás kikapcsolva: a térkép újra az ujját követi.",
+      "none": "Ez az eszköz nem közli a programmal, merre fordul, ezért nem lehet az égre irányítani.",
+      "denied": "A mozgásérzékelők engedélye nélkül a térkép nem tudja követni a telefont.",
+      "level": "Fektesse a telefont egy pillanatra vízszintesen, kijelzővel felfelé — így találja meg az északot. Utána emelje az ég felé."
     }
   },
   "install": {

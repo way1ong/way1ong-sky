@@ -145,12 +145,21 @@ export const SKY = {
    * `words` — how a brightness is said in words: up to these magnitudes "very bright", "bright", "medium",
    *   fainter — "faint". The program's own words, not astronomy's.
    */
+  pick: { tap: { slopPx: 8, ms: 600 }, reachPx: 24, brighterPx: 3, overCardPx: 28, words: { veryBright: 1.5, bright: 3, medium: 4.5 } },
+  /**
+   * "Point the phone at the sky" (C) — a trial behind a button; none of these is measured on a real phone.
+   * `settleMs` — how softly the view follows the phone: in this time it covers about two thirds of the way to
+   * where the phone points now. `levelDeg` — an iPhone's compass heading is taken for "where the top of the
+   * phone points" only while the phone is tilted less than this from lying flat; `northShare` — how much of
+   * each new reading of the north is taken then. `waitMs` — a device that has reported no tilt in this time is
+   * told to have none.
+   */
+  aim: { settleMs: 120, levelDeg: 50, northShare: 0.1, waitMs: 1_500 },
   /**
    * Jupiter through binoculars in its card (C): the drawing's size, CSS px of its own grid; how many px a
    * radius of Jupiter takes at the most (less when the moons would not fit in height); the moons' dots.
    */
   moonsDrawing: { width: 300, height: 150, radiusPx: 5.3, moonPx: 2.2 },
-  pick: { tap: { slopPx: 8, ms: 600 }, reachPx: 24, brighterPx: 3, overCardPx: 28, words: { veryBright: 1.5, bright: 3, medium: 4.5 } },
   /** Points of an orbit's line (C). */
   orbitPoints: 256,
   /** Where the outer edge of ring A lies across the ring texture, 0…1 — measured on the texture itself. */

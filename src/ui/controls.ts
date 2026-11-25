@@ -5,6 +5,8 @@ import { SKY } from '../config.ts';
 export interface ControlEvents {
   /** Turn by these angles, radians. */
   turn(yaw: number, pitch: number): void;
+  /** A finger has begun to drag (it moved farther than a tap may), or an arrow key was pressed: before the first `turn` of it. */
+  grab?(): void;
   /** Multiply the distance by this. */
   zoom(factor: number): void;
   /** A short touch that did not drag: where it landed, CSS px from the element's corner. */
@@ -32,7 +34,10 @@ export function attachControls(el: HTMLElement, events: ControlEvents): () => vo
     const before = pointers.get(e.pointerId);
     if (!before) return;
     const wasApart = spread();
-    if (touch && Math.hypot(e.clientX - touch.x, e.clientY - touch.y) > SKY.pick.tap.slopPx) touch.moved = true;
+    if (touch && !touch.moved && Math.hypot(e.clientX - touch.x, e.clientY - touch.y) > SKY.pick.tap.slopPx) {
+      touch.moved = true;
+      events.grab?.();
+    }
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.size === 1) events.turn(-(e.clientX - before.x) * perPixel(), (e.clientY - before.y) * perPixel());
     else if (wasApart > 0 && spread() > 0) events.zoom(wasApart / spread());
@@ -69,6 +74,7 @@ export function attachControls(el: HTMLElement, events: ControlEvents): () => vo
     const action = moves[e.key];
     if (!action) return;
     e.preventDefault();
+    if (e.key.startsWith('Arrow')) events.grab?.();
     action();
   };
 
