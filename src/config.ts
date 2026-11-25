@@ -123,7 +123,7 @@ export const SKY = {
    * weight taken as typed in earnest; and the drawing of two bodies to one scale — the smaller is never
    * under `leastPx`, the larger fills at most `mostShare` of the drawing's height.
    */
-  you: { ageMost: 130, weightMostKg: 500, drawing: { leastPx: 3, mostShare: 0.8 } },
+  you: { ageMost: 130, weightMostKg: 500, drawing: { leastPx: 3, mostShare: 0.72 } },
   /**
    * "Events of the year" (C; the owner's decision of 25.11): what is listed and when two planets count as
    * meeting. `days` — how far ahead of the moment shown; `closeDeg` — two planets are "side by side" when

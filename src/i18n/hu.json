@@ -183,9 +183,15 @@
     "size": {
       "earth": "A Föld mellett",
       "moon": "A Hold mellett",
-      "bigger": "Átmérője a Földének {n}-szerese.",
+      "bigger": {
+        "one": "Átmérője a Földének {n}-szerese.",
+        "other": "Átmérője a Földének {n}-szerese."
+      },
       "smaller": "Átmérője a Földének {percent}%-a.",
-      "earthVsMoon": "A Föld átmérője a Holdénak {n}-szerese.",
+      "earthVsMoon": {
+        "one": "A Föld átmérője a Holdénak {n}-szerese.",
+        "other": "A Föld átmérője a Holdénak {n}-szerese."
+      },
       "arc": "Az egész égitest nem fér rá a rajzra: csak a széle látszik."
     }
   },

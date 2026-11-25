@@ -183,9 +183,15 @@
     "size": {
       "earth": "Beside the Earth",
       "moon": "Beside the Moon",
-      "bigger": "Its diameter is {n} times the Earth’s.",
+      "bigger": {
+        "one": "Its diameter is {n} times the Earth’s.",
+        "other": "Its diameter is {n} times the Earth’s."
+      },
       "smaller": "Its diameter is {percent}% of the Earth’s.",
-      "earthVsMoon": "The Earth’s diameter is {n} times the Moon’s.",
+      "earthVsMoon": {
+        "one": "The Earth’s diameter is {n} times the Moon’s.",
+        "other": "The Earth’s diameter is {n} times the Moon’s."
+      },
       "arc": "The whole body does not fit into the drawing: only its edge is seen."
     }
   },

@@ -189,6 +189,9 @@ for (const [width, height] of SIZES) {
         const img = document.querySelector('dialog[open] .photo img');
         return img.complete && img.naturalWidth > 0;
       });
+      // The card sets the body beside another, to one scale: two circles and words that say the same.
+      if ((await page.locator('dialog[open] .size circle').count()) !== 2) note(where, 'the card has no drawing of the body beside another');
+      if (!((await page.locator('dialog[open] .size figcaption').textContent()) ?? '').trim()) note(where, 'the drawing of sizes says nothing in words');
       await look(page, where, 'card');
       await closeDialog(page);
 
@@ -196,6 +199,12 @@ for (const [width, height] of SIZES) {
       await page.waitForTimeout(2200);
       await page.locator('.top .icon-btn').first().click();
       await page.waitForSelector('dialog[open] .site-list');
+      // "What if you were here?": a weight typed in is answered at once; on the Moon no age is asked for.
+      await page.locator('dialog[open] #you-weight').fill('70');
+      if (!((await page.locator('dialog[open] .you__out').textContent()) ?? '').trim()) note(where, 'a weight typed into the card gets no answer');
+      if (await page.locator('dialog[open] #you-age').count()) note(where, 'the Moon’s card asks for an age though the Moon has no year of its own');
+      await page.locator('dialog[open] .you').scrollIntoViewIfNeeded();
+      await look(page, where, 'card-you');
       await page.locator('dialog[open] .site-list button').nth(3).click();
       await page.waitForSelector('dialog[open] #site-title');
       await look(page, where, 'landing');
