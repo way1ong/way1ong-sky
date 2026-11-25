@@ -189,6 +189,8 @@ for (const [width, height] of SIZES) {
         const img = document.querySelector('dialog[open] .photo img');
         return img.complete && img.naturalWidth > 0;
       });
+      // The card tells the body's history in a few sentences.
+      if (((await page.locator('dialog[open] section[aria-labelledby="history-title"] p').textContent()) ?? '').trim().length < 80) note(where, 'the card tells no history of the body');
       // The card sets the body beside another, to one scale: two circles and words that say the same.
       if ((await page.locator('dialog[open] .size circle').count()) !== 2) note(where, 'the card has no drawing of the body beside another');
       if (!((await page.locator('dialog[open] .size figcaption').textContent()) ?? '').trim()) note(where, 'the drawing of sizes says nothing in words');
