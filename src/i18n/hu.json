@@ -265,6 +265,11 @@
       "cernan": "Eugene A. Cernan",
       "evans": "Ronald E. Evans",
       "schmitt": "Harrison H. Schmitt"
+    },
+    "moment": {
+      "show": "A pillanat megmutatása",
+      "showLabel": "A leszállás pillanatának megmutatása: {name}",
+      "shown": "{name}: a leszállás pillanata — {date}, {time} világidő szerint. A Nap {altitude}°-kal állt a hely horizontja felett. A „Most” gomb visszahozza a jelent."
     }
   },
   "free": {
@@ -366,6 +371,54 @@
       "flyLabel": "Repülés ide: {name}",
       "close": "Kártya bezárása",
       "none": "A nézet közepén nincs csillag vagy bolygó."
+    },
+    "events": {
+      "title": "Az év eseményei",
+      "intro": "Egy évre előre a mutatott dátumtól. A „látható” azt jelenti: sötétben és nem túl alacsonyan a horizont felett, a program saját mércéje szerint.",
+      "empty": "Erre az évre nincs esemény.",
+      "lunar": {
+        "total": "Teljes holdfogyatkozás",
+        "partial": "Részleges holdfogyatkozás"
+      },
+      "lunarWhat": "A Hold áthalad a Föld árnyékán.",
+      "solar": {
+        "total": "Teljes napfogyatkozás",
+        "annular": "Gyűrűs napfogyatkozás",
+        "partial": "Részleges napfogyatkozás"
+      },
+      "solarWhat": "Ebből a városból nézve a Hold a napkorong legfeljebb {percent}%-át takarja el. Soha ne nézzen a Napba különleges szemvédő nélkül.",
+      "meeting": "{a} és {b} egymás mellett",
+      "meetingWhat": "Legközelebb egymáshoz: {apart}° távolságra.",
+      "meetingNow": "Még egymás mellett: most {apart}° a távolságuk. Legközelebb ekkor voltak: {date}.",
+      "opposition": "{name}: szembenállás",
+      "oppositionWhat": "Az égen a Nappal szemben: akkor kel, amikor a Nap nyugszik, és egész éjjel látható.",
+      "elongation": {
+        "evening": "{name}: a legjobb esték",
+        "morning": "{name}: a legjobb hajnalok"
+      },
+      "elongationWhat": {
+        "evening": "A lehető legtávolabb a Naptól az égen ({apart}°): napnyugta után nyugaton keresse.",
+        "morning": "A lehető legtávolabb a Naptól az égen ({apart}°): napkelte előtt keleten keresse."
+      },
+      "seasons": {
+        "marchEquinox": "Márciusi napéjegyenlőség",
+        "juneSolstice": "Júniusi napforduló",
+        "septemberEquinox": "Szeptemberi napéjegyenlőség",
+        "decemberSolstice": "Decemberi napforduló"
+      },
+      "seasonWhat": {
+        "marchEquinox": "A Nap észak felé haladva átlépi az égi egyenlítőt.",
+        "juneSolstice": "A Nap a lehető legtávolabb van északra az égi egyenlítőtől.",
+        "septemberEquinox": "A Nap dél felé haladva átlépi az égi egyenlítőt.",
+        "decemberSolstice": "A Nap a lehető legtávolabb van délre az égi egyenlítőtől."
+      },
+      "seen": "Innen látható: {when}, {altitude}° a horizont felett, {direction}.",
+      "notInDark": "Innen sötétben nem látható.",
+      "moonUnder": "Innen nem látható: a Hold ekkor a horizont alatt van.",
+      "now": "most",
+      "at": "{date}, {time}",
+      "show": "Mutassa: {name}",
+      "shown": "{name} — {when}. A „Most” gomb visszahozza a jelent."
     },
     "menu": {
       "title": "Égbolt",

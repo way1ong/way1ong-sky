@@ -4,6 +4,7 @@ import { SKY } from '../config.ts';
 import { BODY_IDS, PLANET_IDS, parentOf, radiusKm, type BodyId } from '../core/bodies.ts';
 import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, slowedTo, stepRate, togglePause, type Clock } from '../core/clock.ts';
 import { firstLook, project, turnLook, zoomLook, type Look } from '../core/dome.ts';
+import type { SkyEvent } from '../core/events.ts';
 import { nextLunarEclipse, nextSolarEclipse } from '../core/eclipses.ts';
 import { attitude, orbitKm, positionsKm, type Attitude } from '../core/ephemeris.ts';
 import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, facing, flightAt, progress, type Flight, type View } from '../core/flight.ts';
@@ -13,19 +14,20 @@ import { cityById, cityName, firstCity, type City } from '../core/places.ts';
 import type { PlanetTonight } from '../core/tonight.ts';
 import { SCALES, sceneFromPlanet, sceneFromSun, scenePositions, sceneRadius, sceneRing, type ScaleMode } from '../core/scale.ts';
 import { shadeOf, type Shade } from '../core/shadow.ts';
-import { SITE_IDS, SITES, surfaceDirection, type SiteId } from '../core/sites.ts';
+import { SITE_IDS, SITES, sunOverSite, surfaceDirection, type SiteId } from '../core/sites.ts';
 import { altAz, bodyInSky, skyTurn, type SkyTurn } from '../core/sky.ts';
 import { add, length, scale, sub, type Vec3 } from '../core/vec.ts';
 import { attachControls } from './controls.ts';
 import { h } from './dom.ts';
+import { eventBody, eventMoment, eventName } from './events-list.ts';
 import { createFactsDialog } from './facts-dialog.ts';
-import { dict, fmt, pickLang, type Dict } from './i18n.ts';
+import { dict, fmt, num, pickLang, type Dict } from './i18n.ts';
 import { createMenuDialog } from './menu-dialog.ts';
 import { createPickCard } from './pick-card.ts';
 import { createPlaceDialog } from './place-dialog.ts';
 import { createSceneView, type Orbit, type SceneView } from './scene.ts';
 import { createSiteDialog } from './site-dialog.ts';
-import { missionName } from './site-text.ts';
+import { dayUT, missionName } from './site-text.ts';
 import { createSkyView, type SkyLayers } from './sky-view.ts';
 import { createTimeDialog } from './time-dialog.ts';
 import { createTonightDialog } from './tonight-dialog.ts';
@@ -286,7 +288,7 @@ export function startApp(root: HTMLElement): void {
     markOf.clear();
     for (const id of SITE_IDS) {
       const mark = h('button', { class: 'label site', type: 'button', hidden: true, 'aria-label': fmt(d.sites.open, { name: missionName(d, id) }) }, String(SITES[id].mission));
-      mark.addEventListener('click', () => siteDialog.open(d, lang, id));
+      mark.addEventListener('click', () => siteDialog.open(d, lang, id, showLanding));
       markOf.set(id, mark);
       siteMarks.append(mark);
     }
@@ -385,7 +387,7 @@ export function startApp(root: HTMLElement): void {
   // Escape brings the panels back — unless a window is open: then it closes the window.
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape' || document.querySelector('dialog[open]')) return;
-    if (pickCard.shown) closePicked();
+    if (picked) closePicked();
     else if (wide) setWide(false);
   });
 
@@ -678,7 +680,17 @@ export function startApp(root: HTMLElement): void {
     const moment = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(planet.seen.best);
     retime(fmt(d.sky.tonight.shown, { name: d.bodies[planet.id], date: moment }));
   }
-  tonightBtn.addEventListener('click', () => tonightDialog.open(d, lang, place, date, showPlanet));
+  /** An event of the year: the clock goes to the moment it is seen from the place and stops, the view turns to it, a ring marks the body. */
+  function showEvent(event: SkyEvent): void {
+    if (!event.view) return;
+    clock = jumpTo(clock, Date.now(), event.view.at.getTime());
+    look = { ...look, azimuth: event.view.azimuth, altitude: Math.max(event.view.altitude, SKY.dome.firstLook.altitude) };
+    retime(fmt(d.sky.events.shown, { name: eventName(d, event), when: eventMoment(d, lang, event.view.at) }));
+    // the ring without the card: the note has the card's place and says what is shown
+    picked = { kind: 'body', id: eventBody(event) };
+    dirty = true;
+  }
+  tonightBtn.addEventListener('click', () => tonightDialog.open(d, lang, place, date, showPlanet, showEvent));
 
   /** From the Moon's card to a landing place: the Moon turns that place to the camera, and its window opens. */
   function showSite(id: SiteId): void {
@@ -686,7 +698,18 @@ export function startApp(root: HTMLElement): void {
       view = { ...view, ...facing(surfaceDirection(turned.moon, SITES[id].lat, SITES[id].lon)) };
       dirty = true;
     }
-    siteDialog.open(d, lang, id);
+    siteDialog.open(d, lang, id, showLanding);
+  }
+
+  /** The minute of a landing: time stands there, the camera flies to the Moon and the Moon turns the place to it. */
+  function showLanding(id: SiteId): void {
+    const landed = new Date(SITES[id].landed);
+    const time = new Intl.DateTimeFormat(lang, { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' }).format(landed);
+    const text = fmt(d.sites.moment.shown, { name: missionName(d, id), date: dayUT(lang, SITES[id].landed), time, altitude: num(lang, sunOverSite(id, landed)) });
+    clock = jumpTo(clock, Date.now(), landed.getTime());
+    retime(text);
+    view = { ...view, ...facing(surfaceDirection(turned.moon, SITES[id].lat, SITES[id].lon)) };
+    fly('moon', arrivalDistance('moon', radius.moon), text);
   }
 
   factsBtn.addEventListener('click', () => factsDialog.open(d, lang, focus, date, showSite));

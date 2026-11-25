@@ -265,6 +265,11 @@
       "cernan": "Eugene A. Cernan",
       "evans": "Ronald E. Evans",
       "schmitt": "Harrison H. Schmitt"
+    },
+    "moment": {
+      "show": "Show that moment",
+      "showLabel": "Show the moment of landing: {name}",
+      "shown": "{name}: the moment of landing — {date}, {time} universal time. The Sun stood {altitude}° over the horizon of the place. “Now” brings the present back."
     }
   },
   "free": {
@@ -366,6 +371,54 @@
       "flyLabel": "Fly to: {name}",
       "close": "Close the card",
       "none": "There is no star or planet in the middle of the view."
+    },
+    "events": {
+      "title": "Events of the year",
+      "intro": "A year ahead of the date shown. “In view” means in the dark and not too low over the horizon, by the program’s own measures.",
+      "empty": "No events found for this year.",
+      "lunar": {
+        "total": "Total eclipse of the Moon",
+        "partial": "Partial eclipse of the Moon"
+      },
+      "lunarWhat": "The Moon passes through the Earth’s shadow.",
+      "solar": {
+        "total": "Total eclipse of the Sun",
+        "annular": "Annular eclipse of the Sun",
+        "partial": "Partial eclipse of the Sun"
+      },
+      "solarWhat": "From this city the Moon will cover up to {percent}% of the Sun’s disc. Never look at the Sun without special eye protection.",
+      "meeting": "{a} and {b} side by side",
+      "meetingWhat": "At their nearest: {apart}° apart.",
+      "meetingNow": "Still side by side: {apart}° apart now. They were nearest on {date}.",
+      "opposition": "{name} at opposition",
+      "oppositionWhat": "Opposite the Sun in the sky: it rises as the Sun sets and is in view all night.",
+      "elongation": {
+        "evening": "{name}: its best evenings",
+        "morning": "{name}: its best mornings"
+      },
+      "elongationWhat": {
+        "evening": "As far from the Sun in the sky as it gets ({apart}°): look west after sunset.",
+        "morning": "As far from the Sun in the sky as it gets ({apart}°): look east before sunrise."
+      },
+      "seasons": {
+        "marchEquinox": "March equinox",
+        "juneSolstice": "June solstice",
+        "septemberEquinox": "September equinox",
+        "decemberSolstice": "December solstice"
+      },
+      "seasonWhat": {
+        "marchEquinox": "The Sun crosses the celestial equator going north.",
+        "juneSolstice": "The Sun is as far north of the celestial equator as it gets.",
+        "septemberEquinox": "The Sun crosses the celestial equator going south.",
+        "decemberSolstice": "The Sun is as far south of the celestial equator as it gets."
+      },
+      "seen": "In view from here: {when}, {altitude}° over the horizon, {direction}.",
+      "notInDark": "Not in view from here in the dark.",
+      "moonUnder": "Not in view from here: the Moon is under the horizon then.",
+      "now": "now",
+      "at": "{date}, {time}",
+      "show": "Show: {name}",
+      "shown": "{name} — {when}. “Now” brings the present back."
     },
     "menu": {
       "title": "The sky",

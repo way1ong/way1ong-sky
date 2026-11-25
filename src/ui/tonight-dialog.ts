@@ -1,16 +1,21 @@
 // "Tonight in the sky": when it gets dark, how the Moon looks, which planets are in view, when and where —
 // worked out for the chosen place; a planet can be shown in the sky at its best moment.
+import { eventsAfter, type SkyEvent } from '../core/events.ts';
 import type { City } from '../core/places.ts';
 import { cityName } from '../core/places.ts';
 import { compassPoint, tonight, type PlanetTonight } from '../core/tonight.ts';
 import { h } from './dom.ts';
+import { eventsList } from './events-list.ts';
 import { fmt, num, type Dict } from './i18n.ts';
 
-export function createTonightDialog(): { el: HTMLDialogElement; open(d: Dict, lang: string, place: City, now: Date, show: (planet: PlanetTonight) => void): void } {
+export function createTonightDialog(): {
+  el: HTMLDialogElement;
+  open(d: Dict, lang: string, place: City, now: Date, show: (planet: PlanetTonight) => void, showEvent: (event: SkyEvent) => void): void;
+} {
   const el = h('dialog', { class: 'dialog', 'aria-labelledby': 'tonight-title' });
   return {
     el,
-    open(d, lang, place, now, show) {
+    open(d, lang, place, now, show, showEvent) {
       const t = d.sky.tonight;
       const night = tonight(place, now);
       const time = (at: Date) => new Intl.DateTimeFormat(lang, { hour: 'numeric', minute: '2-digit' }).format(at);
@@ -54,6 +59,16 @@ export function createTonightDialog(): { el: HTMLDialogElement; open(d: Dict, la
           sun,
           moon,
           h('section', { class: 'site-section', 'aria-labelledby': 'planets-title' }, h('h3', { id: 'planets-title' }, t.planets), planets),
+          h(
+            'section',
+            { class: 'site-section', 'aria-labelledby': 'events-title' },
+            h('h3', { id: 'events-title' }, d.sky.events.title),
+            h('p', { class: 'fact__source' }, d.sky.events.intro),
+            eventsList(d, lang, eventsAfter(place, now), (event) => {
+              el.close();
+              showEvent(event);
+            }),
+          ),
           h('div', { class: 'dialog__actions' }, close),
         ),
       );

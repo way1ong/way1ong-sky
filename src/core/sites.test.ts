@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { expect, it } from 'vitest';
 import { attitude, positionKm } from './ephemeris.ts';
-import { CREW_ROLES, SITE_IDS, SITES, surfaceDirection } from './sites.ts';
+import { CREW_ROLES, SITE_IDS, SITES, surfaceDirection, sunOverSite } from './sites.ts';
 import { cross, dot, length, normalize, sub } from './vec.ts';
 
 it('knows the six landings, each with its NASA page, crew and photo', () => {
@@ -40,11 +40,19 @@ it('puts every landing on the side of the Moon that faces the Earth, on the day 
   }
 });
 
-it('has the Sun up over every landing place at the moment of landing', () => {
+it('has the Sun up over every landing place at the moment of landing — a morning Sun, not a high one', () => {
   for (const id of SITE_IDS) {
     const date = new Date(SITES[id].landed);
     const toSun = normalize(sub(positionKm('sun', date), positionKm('moon', date)));
     const place = surfaceDirection(attitude('moon', date), SITES[id].lat, SITES[id].lon);
     expect(dot(place, toSun), id).toBeGreaterThan(0);
+    // the same said in degrees, as the note of "show that moment" says it
+    const height = sunOverSite(id, date);
+    expect(height, id).toBeCloseTo((Math.asin(dot(place, toSun)) * 180) / Math.PI, 6);
+    expect(height, id).toBeGreaterThan(0);
+    expect(height, id).toBeLessThan(30);
+    // and it does not stay up: some day of the weeks that follow, the place is in the night
+    const later = Array.from({ length: 30 }, (_, day) => sunOverSite(id, new Date(date.getTime() + (day + 1) * 86_400_000)));
+    expect(Math.min(...later), id).toBeLessThan(0);
   }
 });

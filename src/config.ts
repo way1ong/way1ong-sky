@@ -119,6 +119,14 @@ export const SKY = {
    */
   tonight: { darkSunAltitude: -6, leastAltitude: 5, stepMinutes: 10, eyeMagnitude: 5 },
   /**
+   * "Events of the year" (C; the owner's decision of 25.11): what is listed and when two planets count as
+   * meeting. `days` — how far ahead of the moment shown; `closeDeg` — two planets are "side by side" when
+   * at their nearest they stand closer than this; `sunClearDeg` — and both at least this far from the Sun,
+   * or the meeting is lost in its glare; `stillCloseDays` — a meeting whose nearest moment passed no longer
+   * ago than this is still listed while the two stay that close. The program's own measures, not astronomy's.
+   */
+  events: { days: 365, closeDeg: 5, sunClearDeg: 15, stillCloseDays: 30 },
+  /**
    * A touch on the sky map names what is there (C; the owner's decision of 25.11):
    * `tap` — a touch counts as one when the finger moved no more than `slopPx` and lifted within `ms`;
    * `reachPx` — how far from a star or from the edge of a body's mark the touch may land;
