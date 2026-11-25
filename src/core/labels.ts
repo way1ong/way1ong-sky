@@ -66,3 +66,20 @@ export function placeBeside(mark: { x: number; y: number; r: number }, width: nu
   }
   return best;
 }
+
+/**
+ * The place for a name that belongs to a point rather than to a mark (a constellation's, at the middle of its
+ * figure): centred on the point, else a row lower, a row higher, and so on up to `rows` rows away — the first
+ * place that is free and at least partly seen. No place (null) when all are taken: such a name is left out.
+ */
+export function placeAround(x: number, y: number, width: number, size: number, gap: number, taken: readonly Box[], seen: Box, rows: number): NamePlace | null {
+  const row = size + 2 * gap;
+  for (let step = 0; step <= rows; step++) {
+    for (const way of step === 0 ? [0] : [1, -1]) {
+      const at = y + way * step * row;
+      const box = nameBox(x, at, width, size, gap, 'center');
+      if (shared(box, seen) > 0 && taken.every((other) => shared(box, other) === 0)) return { x, y: at, align: 'center', box };
+    }
+  }
+  return null;
+}

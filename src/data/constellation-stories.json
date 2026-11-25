@@ -27,6 +27,159 @@
           "revision": 28644915
         }
       }
+    },
+    "Tau": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Taurus_(constellation)",
+          "revision": 1387406087
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Телець_(сузір'я)",
+          "revision": 49132167
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Bika_csillagkép",
+          "revision": 28729197
+        }
+      }
+    },
+    "Aur": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Auriga",
+          "revision": 1380735863
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Візничий_(сузір'я)",
+          "revision": 46689389
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Szekeres_csillagkép",
+          "revision": 26050394
+        }
+      }
+    },
+    "Gem": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Gemini_(constellation)",
+          "revision": 1386838871
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Близнята_(сузір'я)",
+          "revision": 48496956
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Ikrek_csillagkép",
+          "revision": 29273898
+        }
+      }
+    },
+    "Per": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Perseus_(constellation)",
+          "revision": 1384626682
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Персей_(сузір'я)",
+          "revision": 48813803
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Perseus_csillagkép",
+          "revision": 28323190
+        }
+      }
+    },
+    "Cas": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Cassiopeia_(constellation)",
+          "revision": 1386813078
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Кассіопея_(сузір'я)",
+          "revision": 49131033
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Cassiopeia_csillagkép",
+          "revision": 28832723
+        }
+      }
+    },
+    "And": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Andromeda_(constellation)",
+          "revision": 1384141124
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Андромеда_(сузір'я)",
+          "revision": 49173364
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Andromeda_csillagkép",
+          "revision": 28644906
+        }
+      }
+    },
+    "Peg": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(constellation)",
+          "revision": 1384869583
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Пегас_(сузір'я)",
+          "revision": 49220741
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Pegasus_csillagkép",
+          "revision": 24276367
+        }
+      }
+    },
+    "UMa": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Ursa_Major",
+          "revision": 1385032598
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Велика_Ведмедиця",
+          "revision": 48449664
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Nagy_Medve_csillagkép",
+          "revision": 28832653
+        }
+      }
+    },
+    "UMi": {
+      "listed": "ptolemy",
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Ursa_Minor",
+          "revision": 1370790757
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Мала_Ведмедиця",
+          "revision": 49131152
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Kis_Medve_csillagkép",
+          "revision": 28597969
+        }
+      }
     }
   }
 }

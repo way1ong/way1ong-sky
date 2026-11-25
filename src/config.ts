@@ -112,6 +112,8 @@ export const SKY = {
     /** The ring round what a touch has named stands this far from its mark, CSS px. */
     pickRingGapPx: 6,
     labelGapPx: 4,
+    /** A constellation's name whose place is taken moves up to this many rows down or up from the middle of its figure. */
+    figureNameRows: 3,
   },
   /**
    * "Tonight" (C) — the program's own measures of what can be seen, not definitions of astronomy:

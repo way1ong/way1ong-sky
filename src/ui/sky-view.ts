@@ -4,7 +4,7 @@
 import { SKY } from '../config.ts';
 import { horizonOnScreen, project, skyDirection, type Frame, type Look } from '../core/dome.ts';
 import { moonLitFraction } from '../core/ephemeris.ts';
-import { markBox, nameBox, placeBeside, shared, type Box, type NameAlign } from '../core/labels.ts';
+import { markBox, nameBox, placeAround, placeBeside, shared, type Box, type NameAlign } from '../core/labels.ts';
 import { faintestShown, markRadius, pickedInSky, tooFaintForTheEye, type Picked } from '../core/pick.ts';
 import { SKY_BODY_IDS, altAz, bodyInSky, bodyMagnitude, toSky, type SkyBodyId, type SkyTurn } from '../core/sky.ts';
 import { FIGURES, NAMED_STARS, STARS, STARS_LIMIT, starName } from '../core/stars.ts';
@@ -315,8 +315,15 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
         if (sky[2] < 0) continue;
         const p = project(look, f, sky);
         const name = (d.sky.constellations as Record<string, string>)[id];
-        const box = p && name ? write(name.toLocaleUpperCase(lang), p.x, p.y, c.figureName, 11, 650, 'center') : null;
-        if (box) figureNames.push({ id, box });
+        if (!p || !name) continue;
+        // The middle of a figure is often taken by the name of a star (Orion's by its belt): the name of the
+        // constellation then stands a row lower or higher — it is what opens the constellation's card.
+        const text = name.toLocaleUpperCase(lang);
+        ctx.font = `650 11px ${family}`;
+        const place = placeAround(p.x, p.y, ctx.measureText(text).width, 11, paint.labelGapPx, taken, seen, paint.figureNameRows);
+        if (!place) continue;
+        put(text, place.x, place.y, c.figureName, place.align, place.box);
+        figureNames.push({ id, box: place.box });
       }
     }
   }
