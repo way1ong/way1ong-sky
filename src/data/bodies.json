@@ -1,0 +1,63 @@
+{
+  "source": {
+    "planets": {
+      "title": "NASA Planetary Fact Sheet — Metric",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+      "updated": "13 November 2026",
+      "read": "2026-11-24"
+    },
+    "sun": {
+      "title": "NASA Sun Fact Sheet",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html",
+      "updated": "9 May 2024",
+      "read": "2026-11-24"
+    },
+    "rings": {
+      "title": "NASA Saturnian Rings Fact Sheet",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/satringfact.html",
+      "updated": "19 April 2022",
+      "read": "2026-11-24"
+    }
+  },
+  "sunRadiusKm": 695700,
+  "diameterKm": {
+    "mercury": 4879,
+    "venus": 12104,
+    "earth": 12756,
+    "moon": 3475,
+    "mars": 6792,
+    "jupiter": 142984,
+    "saturn": 120536,
+    "uranus": 51118,
+    "neptune": 49528
+  },
+  "perihelionMillionKm": {
+    "mercury": 46.0,
+    "venus": 107.5,
+    "earth": 147.1,
+    "mars": 206.7,
+    "jupiter": 740.6,
+    "saturn": 1357.6,
+    "uranus": 2732.7,
+    "neptune": 4471.1
+  },
+  "aphelionMillionKm": {
+    "mercury": 69.8,
+    "venus": 108.9,
+    "earth": 152.1,
+    "mars": 249.3,
+    "jupiter": 816.4,
+    "saturn": 1506.5,
+    "uranus": 3001.4,
+    "neptune": 4558.9
+  },
+  "moon": {
+    "perigeeMillionKm": 0.363,
+    "apogeeMillionKm": 0.406,
+    "orbitalPeriodDays": 27.3
+  },
+  "saturnRings": {
+    "saturnEquatorKm": 60268,
+    "aOuterEdgeKm": 136780
+  }
+}

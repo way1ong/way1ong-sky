@@ -1,0 +1,43 @@
+{
+  "read": "2026-11-24",
+  "pages": {
+    "sun": [
+      "https://science.nasa.gov/sun/",
+      "https://science.nasa.gov/sun/facts/"
+    ],
+    "mercury": [
+      "https://science.nasa.gov/mercury/",
+      "https://science.nasa.gov/mercury/facts/"
+    ],
+    "venus": [
+      "https://science.nasa.gov/venus/",
+      "https://science.nasa.gov/venus/venus-facts/"
+    ],
+    "earth": [
+      "https://science.nasa.gov/earth/facts/"
+    ],
+    "moon": [
+      "https://science.nasa.gov/moon/facts/"
+    ],
+    "mars": [
+      "https://science.nasa.gov/mars/",
+      "https://science.nasa.gov/mars/facts/"
+    ],
+    "jupiter": [
+      "https://science.nasa.gov/jupiter/",
+      "https://science.nasa.gov/jupiter/jupiter-facts/"
+    ],
+    "saturn": [
+      "https://science.nasa.gov/saturn/",
+      "https://science.nasa.gov/saturn/facts/"
+    ],
+    "uranus": [
+      "https://science.nasa.gov/uranus/",
+      "https://science.nasa.gov/uranus/facts/"
+    ],
+    "neptune": [
+      "https://science.nasa.gov/neptune/",
+      "https://science.nasa.gov/neptune/neptune-facts/"
+    ]
+  }
+}

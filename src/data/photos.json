@@ -1,0 +1,67 @@
+{
+  "read": "2026-11-24",
+  "library": "https://images.nasa.gov/",
+  "rules": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+  "photos": {
+    "sun": {
+      "nasaId": "PIA26681",
+      "title": "Image of Sun From NASA's Solar Dynamics Observatory",
+      "credit": "NASA/GSFC/Solar Dynamics Observatory",
+      "page": "https://images.nasa.gov/details/PIA26681"
+    },
+    "mercury": {
+      "nasaId": "PIA11245",
+      "title": "Mercury as Never Seen Before",
+      "credit": "NASA/Johns Hopkins University Applied Physics Laboratory/Carnegie Institution of Washington",
+      "page": "https://images.nasa.gov/details/PIA11245"
+    },
+    "venus": {
+      "nasaId": "PIA23791",
+      "title": "Venus from Mariner 10",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA23791"
+    },
+    "earth": {
+      "nasaId": "as17-148-22727",
+      "title": "View of the Earth seen by the Apollo 17 crew traveling toward the moon",
+      "credit": "NASA",
+      "page": "https://images.nasa.gov/details/as17-148-22727"
+    },
+    "moon": {
+      "nasaId": "art002e009276",
+      "title": "Even Closer Now",
+      "credit": "NASA",
+      "page": "https://images.nasa.gov/details/art002e009276"
+    },
+    "mars": {
+      "nasaId": "PIA00407",
+      "title": "Global Color Views of Mars",
+      "credit": "NASA/JPL/USGS",
+      "page": "https://images.nasa.gov/details/PIA00407"
+    },
+    "jupiter": {
+      "nasaId": "PIA02873",
+      "title": "High Resolution Globe of Jupiter",
+      "credit": "NASA/JPL/University of Arizona",
+      "page": "https://images.nasa.gov/details/PIA02873"
+    },
+    "saturn": {
+      "nasaId": "PIA05389",
+      "title": "Saturn in Color",
+      "credit": "NASA/JPL/Space Science Institute",
+      "page": "https://images.nasa.gov/details/PIA05389"
+    },
+    "uranus": {
+      "nasaId": "PIA18182",
+      "title": "Uranus as seen by NASA Voyager 2",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA18182"
+    },
+    "neptune": {
+      "nasaId": "PIA01492",
+      "title": "PIA01492",
+      "credit": "NASA/JPL",
+      "page": "https://images.nasa.gov/details/PIA01492"
+    }
+  }
+}

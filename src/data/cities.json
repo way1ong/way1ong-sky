@@ -1,0 +1,9124 @@
+{
+ "source": {
+  "title": "Wikidata",
+  "url": "https://www.wikidata.org/",
+  "licence": "CC0",
+  "read": "2026-11-24"
+ },
+ "note": "Capitals of the sovereign states of Europe and their big cities, as Wikidata has them; degrees north and east. Built by scripts/stars/cities.mjs.",
+ "byLanguage": {
+  "uk": "Q1899",
+  "hu": "Q1781",
+  "en": "Q84"
+ },
+ "cities": [
+  {
+   "id": "Q1017",
+   "lat": 50.78,
+   "lon": 6.08,
+   "names": {
+    "en": "Aachen",
+    "uk": "Аахен",
+    "hu": "Aachen"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q36405",
+   "lat": 57.15,
+   "lon": -2.1,
+   "names": {
+    "en": "Aberdeen",
+    "uk": "Абердін",
+    "hu": "Aberdeen"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q38545",
+   "lat": 36.99,
+   "lon": 35.33,
+   "names": {
+    "en": "Adana",
+    "uk": "Адана",
+    "hu": "Adana"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q175323",
+   "lat": 40.78,
+   "lon": 30.4,
+   "names": {
+    "en": "Adapazarı",
+    "uk": "Адапазари",
+    "hu": "Adapazarı"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q168197",
+   "lat": 37.76,
+   "lon": 38.28,
+   "names": {
+    "en": "Adıyaman",
+    "uk": "Адияман",
+    "hu": "Adıyaman"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q166824",
+   "lat": 38.76,
+   "lon": 30.54,
+   "names": {
+    "en": "Afyonkarahisar",
+    "uk": "Афьон-Карахісар",
+    "hu": "Afyonkarahisar"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q199575",
+   "lat": 39.72,
+   "lon": 43.05,
+   "names": {
+    "en": "Ağrı",
+    "uk": "Агри",
+    "hu": "Ağrı"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q47465",
+   "lat": 43.53,
+   "lon": 5.45,
+   "names": {
+    "en": "Aix-en-Provence",
+    "uk": "Екс-ан-Прованс",
+    "hu": "Aix-en-Provence"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q424700",
+   "lat": 36.71,
+   "lon": 38.95,
+   "names": {
+    "en": "Akçakale",
+    "uk": "Akçakale",
+    "hu": "Akçakale"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q209905",
+   "lat": 38.92,
+   "lon": 27.84,
+   "names": {
+    "en": "Akhisar",
+    "uk": "Акгісар",
+    "hu": "Akhisar"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q182025",
+   "lat": 38.37,
+   "lon": 34.03,
+   "names": {
+    "en": "Aksaray",
+    "uk": "Аксарай",
+    "hu": "Aksaray"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q198989",
+   "lat": 43.65,
+   "lon": 51.16,
+   "names": {
+    "en": "Aktau",
+    "uk": "Актау",
+    "hu": "Aktau"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q477232",
+   "lat": 50.28,
+   "lon": 57.23,
+   "names": {
+    "en": "Aktobe",
+    "uk": "Актобе",
+    "hu": "Aktöbe"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q138280",
+   "lat": 38.35,
+   "lon": 28.52,
+   "names": {
+    "en": "Alaşehir",
+    "uk": "Алашехір",
+    "hu": "Alaşehir"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q24008386",
+   "lat": 39,
+   "lon": -1.86,
+   "names": {
+    "en": "Albacete",
+    "uk": "Albacete City",
+    "hu": "Albacete City"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q24012786",
+   "lat": 40.48,
+   "lon": -3.37,
+   "names": {
+    "en": "Alcalá de Henares",
+    "uk": "Alcalá de Henares",
+    "hu": "Alcalá de Henares"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q161144",
+   "lat": 48.47,
+   "lon": 38.8,
+   "names": {
+    "en": "Alchevsk",
+    "uk": "Алчевськ",
+    "hu": "Alcsevszk"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q487679",
+   "lat": 40.53,
+   "lon": -3.63,
+   "names": {
+    "en": "Alcobendas",
+    "uk": "Алькобендас",
+    "hu": "Alcobendas"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q11959",
+   "lat": 38.35,
+   "lon": -0.48,
+   "names": {
+    "en": "Alicante",
+    "uk": "Аліканте",
+    "hu": "Alicante"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q35493",
+   "lat": 43.24,
+   "lon": 76.92,
+   "names": {
+    "en": "Almaty",
+    "uk": "Алмати",
+    "hu": "Almati"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q112795541",
+   "lat": 36.84,
+   "lon": -2.47,
+   "names": {
+    "en": "Almería",
+    "uk": "Almería city",
+    "hu": "Almería city"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q170532",
+   "lat": 40.65,
+   "lon": 35.83,
+   "names": {
+    "en": "Amasya",
+    "uk": "Амасья",
+    "hu": "Amasya"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q727",
+   "lat": 52.37,
+   "lon": 4.88,
+   "names": {
+    "en": "Amsterdam",
+    "uk": "Амстердам",
+    "hu": "Amszterdam"
+   },
+   "country": {
+    "en": "Kingdom of the Netherlands",
+    "uk": "Королівство Нідерланди",
+    "hu": "Holland Királyság"
+   }
+  },
+  {
+   "id": "Q3415",
+   "lat": 43.62,
+   "lon": 13.52,
+   "names": {
+    "en": "Ancona",
+    "uk": "Анкона",
+    "hu": "Ancona"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q1863",
+   "lat": 42.51,
+   "lon": 1.52,
+   "names": {
+    "en": "Andorra la Vella",
+    "uk": "Андорра-ла-Велья",
+    "hu": "Andorra la Vella"
+   },
+   "country": {
+    "en": "Andorra",
+    "uk": "Андорра",
+    "hu": "Andorra"
+   }
+  },
+  {
+   "id": "Q38380",
+   "lat": 47.47,
+   "lon": -0.55,
+   "names": {
+    "en": "Angers",
+    "uk": "Анже",
+    "hu": "Angers"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q546010",
+   "lat": 40.51,
+   "lon": 43.57,
+   "names": {
+    "en": "Ani",
+    "uk": "Ані",
+    "hu": "Ani"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q3640",
+   "lat": 39.94,
+   "lon": 32.84,
+   "names": {
+    "en": "Ankara",
+    "uk": "Анкара",
+    "hu": "Ankara"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q50189",
+   "lat": 45.9,
+   "lon": 6.13,
+   "names": {
+    "en": "Annecy",
+    "uk": "Ансі",
+    "hu": "Annecy"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q80561",
+   "lat": 36.2,
+   "lon": 36.16,
+   "names": {
+    "en": "Antakya",
+    "uk": "Антак'я",
+    "hu": "Antakya"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q6487",
+   "lat": 36.91,
+   "lon": 30.7,
+   "names": {
+    "en": "Antalya",
+    "uk": "Анталія",
+    "hu": "Antalya"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q12892",
+   "lat": 51.22,
+   "lon": 4.4,
+   "names": {
+    "en": "Antwerp",
+    "uk": "Антверпен",
+    "hu": "Antwerpen"
+   },
+   "country": {
+    "en": "Belgium",
+    "uk": "Бельгія",
+    "hu": "Belgium"
+   }
+  },
+  {
+   "id": "Q173591",
+   "lat": 46.17,
+   "lon": 21.32,
+   "names": {
+    "en": "Arad",
+    "uk": "Арад",
+    "hu": "Arad"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q16251875",
+   "lat": 37.32,
+   "lon": 40.72,
+   "names": {
+    "en": "Artuklu",
+    "uk": "Артуклу",
+    "hu": "Artuklu"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q1520",
+   "lat": 51.13,
+   "lon": 71.43,
+   "names": {
+    "en": "Astana",
+    "uk": "Астана",
+    "hu": "Asztana"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q1524",
+   "lat": 37.98,
+   "lon": 23.73,
+   "names": {
+    "en": "Athens",
+    "uk": "Афіни",
+    "hu": "Athén"
+   },
+   "country": {
+    "en": "Greece",
+    "uk": "Греція",
+    "hu": "Görögország"
+   }
+  },
+  {
+   "id": "Q486913",
+   "lat": 47.12,
+   "lon": 51.88,
+   "names": {
+    "en": "Atyrau",
+    "uk": "Атирау",
+    "hu": "Atirau"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q2749",
+   "lat": 48.37,
+   "lon": 10.9,
+   "names": {
+    "en": "Augsburg",
+    "uk": "Аугсбург",
+    "hu": "Augsburg"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q170457",
+   "lat": 37.85,
+   "lon": 27.85,
+   "names": {
+    "en": "Aydın",
+    "uk": "Айдин",
+    "hu": "Aydın"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q10737004",
+   "lat": 46.58,
+   "lon": 26.92,
+   "names": {
+    "en": "Bacău",
+    "uk": "Бакеу",
+    "hu": "Bákó"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q15679",
+   "lat": 38.88,
+   "lon": -6.97,
+   "names": {
+    "en": "Badajoz",
+    "uk": "Бадахос",
+    "hu": "Badajoz"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q185280",
+   "lat": 47.66,
+   "lon": 23.57,
+   "names": {
+    "en": "Baia Mare",
+    "uk": "Бая-Маре",
+    "hu": "Nagybánya"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q199723",
+   "lat": 39.65,
+   "lon": 27.88,
+   "names": {
+    "en": "Balıkesir",
+    "uk": "Баликесір",
+    "hu": "Balıkesir"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q214651",
+   "lat": 40.35,
+   "lon": 27.97,
+   "names": {
+    "en": "Bandırma",
+    "uk": "Бандирма",
+    "hu": "Bandırma"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q131127",
+   "lat": 44.77,
+   "lon": 17.19,
+   "names": {
+    "en": "Banja Luka",
+    "uk": "Баня-Лука",
+    "hu": "Banja Luka"
+   },
+   "country": {
+    "en": "Bosnia and Herzegovina",
+    "uk": "Боснія і Герцеговина",
+    "hu": "Bosznia-Hercegovina"
+   }
+  },
+  {
+   "id": "Q487801",
+   "lat": 43.3,
+   "lon": -2.99,
+   "names": {
+    "en": "Barakaldo",
+    "uk": "Баракальдо",
+    "hu": "Barakaldo"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q1492",
+   "lat": 41.38,
+   "lon": 2.18,
+   "names": {
+    "en": "Barcelona",
+    "uk": "Барселона",
+    "hu": "Barcelona"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q810196",
+   "lat": 51.26,
+   "lon": -1.09,
+   "names": {
+    "en": "Basingstoke",
+    "uk": "Бейсінгсток",
+    "hu": "Basingstoke"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q159835",
+   "lat": 37.88,
+   "lon": 41.13,
+   "names": {
+    "en": "Batman",
+    "uk": "Батман",
+    "hu": "Batman"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q25475",
+   "lat": 41.65,
+   "lon": 41.64,
+   "names": {
+    "en": "Batumi",
+    "uk": "Батумі",
+    "hu": "Batumi"
+   },
+   "country": {
+    "en": "Georgia",
+    "uk": "Грузія",
+    "hu": "Grúzia"
+   }
+  },
+  {
+   "id": "Q10686",
+   "lat": 54.6,
+   "lon": -5.93,
+   "names": {
+    "en": "Belfast",
+    "uk": "Белфаст",
+    "hu": "Belfast"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q3711",
+   "lat": 44.82,
+   "lon": 20.46,
+   "names": {
+    "en": "Belgrade",
+    "uk": "Белград",
+    "hu": "Belgrád"
+   },
+   "country": {
+    "en": "Serbia",
+    "uk": "Сербія",
+    "hu": "Szerbia"
+   }
+  },
+  {
+   "id": "Q33292",
+   "lat": 46.76,
+   "lon": 36.79,
+   "names": {
+    "en": "Berdiansk",
+    "uk": "Бердянськ",
+    "hu": "Bergyanszk"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q737822",
+   "lat": 39.12,
+   "lon": 27.18,
+   "names": {
+    "en": "Bergama",
+    "uk": "Берґама",
+    "hu": "Bergama"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q628",
+   "lat": 45.7,
+   "lon": 9.67,
+   "names": {
+    "en": "Bergamo",
+    "uk": "Бергамо",
+    "hu": "Bergamo"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q26793",
+   "lat": 60.39,
+   "lon": 5.32,
+   "names": {
+    "en": "Bergen",
+    "uk": "Берген",
+    "hu": "Bergen"
+   },
+   "country": {
+    "en": "Norway",
+    "uk": "Норвегія",
+    "hu": "Norvégia"
+   }
+  },
+  {
+   "id": "Q3117",
+   "lat": 50.99,
+   "lon": 7.14,
+   "names": {
+    "en": "Bergisch Gladbach",
+    "uk": "Бергіш-Гладбах",
+    "hu": "Bergisch Gladbach"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q64",
+   "lat": 52.52,
+   "lon": 13.38,
+   "names": {
+    "en": "Berlin",
+    "uk": "Берлін",
+    "hu": "Berlin"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q70",
+   "lat": 46.95,
+   "lon": 7.45,
+   "names": {
+    "en": "Bern",
+    "uk": "Берн",
+    "hu": "Bern"
+   },
+   "country": {
+    "en": "Switzerland",
+    "uk": "Швейцарія",
+    "hu": "Svájc"
+   }
+  },
+  {
+   "id": "Q37776",
+   "lat": 47.24,
+   "lon": 6.02,
+   "names": {
+    "en": "Besançon",
+    "uk": "Безансон",
+    "hu": "Besançon"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q459495",
+   "lat": 41.08,
+   "lon": 29.03,
+   "names": {
+    "en": "Beşiktaş",
+    "uk": "Бешикташ",
+    "hu": "Beşiktaş"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q761",
+   "lat": 53.13,
+   "lon": 23.17,
+   "names": {
+    "en": "Białystok",
+    "uk": "Білосток",
+    "hu": "Białystok"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q2112",
+   "lat": 52.02,
+   "lon": 8.53,
+   "names": {
+    "en": "Bielefeld",
+    "uk": "Білефельд",
+    "hu": "Bielefeld"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q106583",
+   "lat": 49.82,
+   "lon": 19.04,
+   "names": {
+    "en": "Bielsko-Biała",
+    "uk": "Бельсько-Бяла",
+    "hu": "Bielsko-Biała"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q207801",
+   "lat": 44.76,
+   "lon": 19.22,
+   "names": {
+    "en": "Bijeljina",
+    "uk": "Бієліна",
+    "hu": "Bijeljina"
+   },
+   "country": {
+    "en": "Bosnia and Herzegovina",
+    "uk": "Боснія і Герцеговина",
+    "hu": "Bosznia-Hercegovina"
+   }
+  },
+  {
+   "id": "Q33342",
+   "lat": 49.8,
+   "lon": 30.12,
+   "names": {
+    "en": "Bila Tserkva",
+    "uk": "Біла Церква",
+    "hu": "Bila Cerkva"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q208472",
+   "lat": 38.89,
+   "lon": 40.5,
+   "names": {
+    "en": "Bingöl",
+    "uk": "Бінгель",
+    "hu": "Bingöl"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q2256",
+   "lat": 52.48,
+   "lon": -1.9,
+   "names": {
+    "en": "Birmingham",
+    "uk": "Бірмінгем",
+    "hu": "Birmingham"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q2103",
+   "lat": 51.48,
+   "lon": 7.22,
+   "names": {
+    "en": "Bochum",
+    "uk": "Бохум",
+    "hu": "Bochum"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q184579",
+   "lat": 53.58,
+   "lon": -2.43,
+   "names": {
+    "en": "Bolton",
+    "uk": "Болтон",
+    "hu": "Bolton"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q200951",
+   "lat": 40.73,
+   "lon": 31.6,
+   "names": {
+    "en": "Bolu",
+    "uk": "Болу",
+    "hu": "Bolu"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q6526",
+   "lat": 46.5,
+   "lon": 11.35,
+   "names": {
+    "en": "Bolzano",
+    "uk": "Больцано",
+    "hu": "Bolzano"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q586",
+   "lat": 50.74,
+   "lon": 7.1,
+   "names": {
+    "en": "Bonn",
+    "uk": "Бонн",
+    "hu": "Bonn"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q1479",
+   "lat": 44.84,
+   "lon": -0.58,
+   "names": {
+    "en": "Bordeaux",
+    "uk": "Бордо",
+    "hu": "Bordeaux"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q3069",
+   "lat": 51.52,
+   "lon": 6.93,
+   "names": {
+    "en": "Bottrop",
+    "uk": "Боттроп",
+    "hu": "Bottrop"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q172455",
+   "lat": 48.84,
+   "lon": 2.24,
+   "names": {
+    "en": "Boulogne-Billancourt",
+    "uk": "Булонь-Біянкур",
+    "hu": "Boulogne-Billancourt"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q22905",
+   "lat": 53.79,
+   "lon": -1.75,
+   "names": {
+    "en": "Bradford",
+    "uk": "Бредфорд",
+    "hu": "Bradford"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q3344946",
+   "lat": 41.55,
+   "lon": -8.42,
+   "names": {
+    "en": "Braga",
+    "uk": "Braga",
+    "hu": "Braga"
+   },
+   "country": {
+    "en": "Portugal",
+    "uk": "Португалія",
+    "hu": "Portugália"
+   }
+  },
+  {
+   "id": "Q188478",
+   "lat": 45.27,
+   "lon": 27.96,
+   "names": {
+    "en": "Brăila",
+    "uk": "Бреїла",
+    "hu": "Brăila"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q82174",
+   "lat": 45.65,
+   "lon": 25.61,
+   "names": {
+    "en": "Brașov",
+    "uk": "Брашов",
+    "hu": "Brassó"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q1780",
+   "lat": 48.15,
+   "lon": 17.11,
+   "names": {
+    "en": "Bratislava",
+    "uk": "Братислава",
+    "hu": "Pozsony"
+   },
+   "country": {
+    "en": "Slovakia",
+    "uk": "Словаччина",
+    "hu": "Szlovákia"
+   }
+  },
+  {
+   "id": "Q1209",
+   "lat": 53.13,
+   "lon": 8.73,
+   "names": {
+    "en": "Bremen",
+    "uk": "Бремен",
+    "hu": "Bréma"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q2706",
+   "lat": 53.55,
+   "lon": 8.58,
+   "names": {
+    "en": "Bremerhaven",
+    "uk": "Бремергафен",
+    "hu": "Bremerhaven"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q12193",
+   "lat": 48.39,
+   "lon": -4.49,
+   "names": {
+    "en": "Brest",
+    "uk": "Брест",
+    "hu": "Brest"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q1022488",
+   "lat": 50.83,
+   "lon": -0.15,
+   "names": {
+    "en": "Brighton and Hove",
+    "uk": "Брайтон і Гоув",
+    "hu": "Brighton and Hove"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q23154",
+   "lat": 51.45,
+   "lon": -2.6,
+   "names": {
+    "en": "Bristol",
+    "uk": "Бристоль",
+    "hu": "Bristol"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q14960",
+   "lat": 49.2,
+   "lon": 16.61,
+   "names": {
+    "en": "Brno",
+    "uk": "Брно",
+    "hu": "Brno"
+   },
+   "country": {
+    "en": "Czech Republic",
+    "uk": "Чехія",
+    "hu": "Csehország"
+   }
+  },
+  {
+   "id": "Q841026",
+   "lat": 50.51,
+   "lon": 30.79,
+   "names": {
+    "en": "Brovary",
+    "uk": "Бровари",
+    "hu": "Brovari"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q12994",
+   "lat": 51.21,
+   "lon": 3.22,
+   "names": {
+    "en": "Bruges",
+    "uk": "Брюгге",
+    "hu": "Brugge"
+   },
+   "country": {
+    "en": "Belgium",
+    "uk": "Бельгія",
+    "hu": "Belgium"
+   }
+  },
+  {
+   "id": "Q2773",
+   "lat": 52.27,
+   "lon": 10.52,
+   "names": {
+    "en": "Brunswick",
+    "uk": "Брауншвейг",
+    "hu": "Braunschweig"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q239",
+   "lat": 50.85,
+   "lon": 4.35,
+   "names": {
+    "en": "Brussels",
+    "uk": "Брюссель",
+    "hu": "Brüsszel"
+   },
+   "country": {
+    "en": "Belgium",
+    "uk": "Бельгія",
+    "hu": "Belgium"
+   }
+  },
+  {
+   "id": "Q19660",
+   "lat": 44.41,
+   "lon": 26.1,
+   "names": {
+    "en": "Bucharest",
+    "uk": "Бухарест",
+    "hu": "Bukarest"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q1781",
+   "lat": 47.5,
+   "lon": 19.04,
+   "names": {
+    "en": "Budapest",
+    "uk": "Будапешт",
+    "hu": "Budapest"
+   },
+   "country": {
+    "en": "Hungary",
+    "uk": "Угорщина",
+    "hu": "Magyarország"
+   }
+  },
+  {
+   "id": "Q6509",
+   "lat": 42.5,
+   "lon": 27.47,
+   "names": {
+    "en": "Burgas",
+    "uk": "Бургас",
+    "hu": "Burgasz"
+   },
+   "country": {
+    "en": "Bulgaria",
+    "uk": "Болгарія",
+    "hu": "Bulgária"
+   }
+  },
+  {
+   "id": "Q43167665",
+   "lat": 42.34,
+   "lon": -3.7,
+   "names": {
+    "en": "Burgos",
+    "uk": "Burgos city",
+    "hu": "Burgos city"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q40738",
+   "lat": 40.19,
+   "lon": 29.08,
+   "names": {
+    "en": "Bursa",
+    "uk": "Бурса",
+    "hu": "Bursa"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q201404",
+   "lat": 45.15,
+   "lon": 26.82,
+   "names": {
+    "en": "Buzău",
+    "uk": "Бузеу",
+    "hu": "Bodzavásár"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q41252",
+   "lat": 53.12,
+   "lon": 18,
+   "names": {
+    "en": "Bydgoszcz",
+    "uk": "Бидгощ",
+    "hu": "Bydgoszcz"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q102350",
+   "lat": 50.35,
+   "lon": 18.92,
+   "names": {
+    "en": "Bytom",
+    "uk": "Битом",
+    "hu": "Bytom"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q31915930",
+   "lat": 36.52,
+   "lon": -6.28,
+   "names": {
+    "en": "Cádiz",
+    "uk": "Cádiz City",
+    "hu": "Cádiz City"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q41185",
+   "lat": 49.18,
+   "lon": -0.36,
+   "names": {
+    "en": "Caen",
+    "uk": "Кан",
+    "hu": "Caen"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q350",
+   "lat": 52.21,
+   "lon": 0.12,
+   "names": {
+    "en": "Cambridge",
+    "uk": "Кембридж",
+    "hu": "Cambridge"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q199712",
+   "lat": 40.15,
+   "lon": 26.4,
+   "names": {
+    "en": "Çanakkale",
+    "uk": "Чанаккале",
+    "hu": "Çanakkale"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q12172",
+   "lat": 47.57,
+   "lon": 7.6,
+   "names": {
+    "en": "Canton of Basel-Stadt",
+    "uk": "Базель-Штадт",
+    "hu": "Basel-Stadt kanton"
+   },
+   "country": {
+    "en": "Switzerland",
+    "uk": "Швейцарія",
+    "hu": "Svájc"
+   }
+  },
+  {
+   "id": "Q10690",
+   "lat": 51.48,
+   "lon": -3.18,
+   "names": {
+    "en": "Cardiff",
+    "uk": "Кардіфф",
+    "hu": "Cardiff"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q15092",
+   "lat": 39.99,
+   "lon": -0.04,
+   "names": {
+    "en": "Castellón de la Plana",
+    "uk": "Кастельйон-де-ла-Плана",
+    "hu": "Castellón de la Plana"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q1903",
+   "lat": 37.5,
+   "lon": 15.09,
+   "names": {
+    "en": "Catania",
+    "uk": "Катанія",
+    "hu": "Catania"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q2671609",
+   "lat": 40.83,
+   "lon": 29.37,
+   "names": {
+    "en": "Çayırova",
+    "uk": "Çayırova",
+    "hu": "Çayırova"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q272800",
+   "lat": 41.29,
+   "lon": 28,
+   "names": {
+    "en": "Çerkezköy",
+    "uk": "Çerkezköy",
+    "hu": "Çerkezköy"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q185346",
+   "lat": 37.03,
+   "lon": 35.81,
+   "names": {
+    "en": "Ceyhan",
+    "uk": "Джейган",
+    "hu": "Ceyhan"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q81046",
+   "lat": 50.42,
+   "lon": 4.44,
+   "names": {
+    "en": "Charleroi",
+    "uk": "Шарлеруа",
+    "hu": "Charleroi"
+   },
+   "country": {
+    "en": "Belgium",
+    "uk": "Бельгія",
+    "hu": "Belgium"
+   }
+  },
+  {
+   "id": "Q210985",
+   "lat": 51.74,
+   "lon": 0.48,
+   "names": {
+    "en": "Chelmsford",
+    "uk": "Челмсфорд",
+    "hu": "Chelmsford"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q206988",
+   "lat": 51.9,
+   "lon": -2.08,
+   "names": {
+    "en": "Cheltenham",
+    "uk": "Челтнем",
+    "hu": "Cheltenham"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q2795",
+   "lat": 50.83,
+   "lon": 12.92,
+   "names": {
+    "en": "Chemnitz",
+    "uk": "Хемніц",
+    "hu": "Chemnitz"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q157055",
+   "lat": 49.44,
+   "lon": 32.06,
+   "names": {
+    "en": "Cherkasy",
+    "uk": "Черкаси",
+    "hu": "Cserkaszi"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q157053",
+   "lat": 51.49,
+   "lon": 31.29,
+   "names": {
+    "en": "Chernihiv",
+    "uk": "Чернігів",
+    "hu": "Csernyihiv"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q157725",
+   "lat": 48.29,
+   "lon": 25.93,
+   "names": {
+    "en": "Chernivtsi",
+    "uk": "Чернівці",
+    "hu": "Csernyivci"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q21197",
+   "lat": 47.02,
+   "lon": 28.84,
+   "names": {
+    "en": "Chișinău",
+    "uk": "Кишинів",
+    "hu": "Chișinău"
+   },
+   "country": {
+    "en": "Moldova",
+    "uk": "Молдова",
+    "hu": "Moldova"
+   }
+  },
+  {
+   "id": "Q821363",
+   "lat": 37.33,
+   "lon": 42.18,
+   "names": {
+    "en": "Cizre",
+    "uk": "Джизре",
+    "hu": "Cizre"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q42168",
+   "lat": 45.78,
+   "lon": 3.09,
+   "names": {
+    "en": "Clermont-Ferrand",
+    "uk": "Клермон-Ферран",
+    "hu": "Clermont-Ferrand"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q100188",
+   "lat": 46.77,
+   "lon": 23.59,
+   "names": {
+    "en": "Cluj-Napoca",
+    "uk": "Клуж-Напока",
+    "hu": "Kolozsvár"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q184163",
+   "lat": 51.89,
+   "lon": 0.9,
+   "names": {
+    "en": "Colchester",
+    "uk": "Колчестер",
+    "hu": "Colchester"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q365",
+   "lat": 50.94,
+   "lon": 6.96,
+   "names": {
+    "en": "Cologne",
+    "uk": "Кельн",
+    "hu": "Köln"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q79808",
+   "lat": 44.18,
+   "lon": 28.65,
+   "names": {
+    "en": "Constanța",
+    "uk": "Констанца",
+    "hu": "Konstanca"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q1748",
+   "lat": 55.68,
+   "lon": 12.57,
+   "names": {
+    "en": "Copenhagen",
+    "uk": "Копенгаген",
+    "hu": "Koppenhága"
+   },
+   "country": {
+    "en": "Kingdom of Denmark",
+    "uk": "Королівство Данія",
+    "hu": "Dán Királyság"
+   }
+  },
+  {
+   "id": "Q101948176",
+   "lat": 37.88,
+   "lon": -4.78,
+   "names": {
+    "en": "Córdoba",
+    "uk": "Córdoba",
+    "hu": "Córdoba"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q36647",
+   "lat": 51.9,
+   "lon": -8.47,
+   "names": {
+    "en": "Cork",
+    "uk": "Корк",
+    "hu": "Cork"
+   },
+   "country": {
+    "en": "Ireland",
+    "uk": "Ірландія",
+    "hu": "Írország"
+   }
+  },
+  {
+   "id": "Q214655",
+   "lat": 41.16,
+   "lon": 27.8,
+   "names": {
+    "en": "Çorlu",
+    "uk": "Чорлу",
+    "hu": "Çorlu"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q206900",
+   "lat": 40.55,
+   "lon": 34.95,
+   "names": {
+    "en": "Çorum",
+    "uk": "Чорум",
+    "hu": "Çorum"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q3214",
+   "lat": 51.76,
+   "lon": 14.33,
+   "names": {
+    "en": "Cottbus",
+    "uk": "Котбус",
+    "hu": "Cottbus"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q6225",
+   "lat": 52.42,
+   "lon": -1.52,
+   "names": {
+    "en": "Coventry",
+    "uk": "Ковентрі",
+    "hu": "Coventry"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q168057",
+   "lat": 44.33,
+   "lon": 23.82,
+   "names": {
+    "en": "Craiova",
+    "uk": "Крайова",
+    "hu": "Craiova"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q103217",
+   "lat": 50.81,
+   "lon": 19.12,
+   "names": {
+    "en": "Częstochowa",
+    "uk": "Ченстохова",
+    "hu": "Częstochowa"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q2973",
+   "lat": 49.87,
+   "lon": 8.65,
+   "names": {
+    "en": "Darmstadt",
+    "uk": "Дармштадт",
+    "hu": "Darmstadt"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q79880",
+   "lat": 47.53,
+   "lon": 21.64,
+   "names": {
+    "en": "Debrecen",
+    "uk": "Дебрецен",
+    "hu": "Debrecen"
+   },
+   "country": {
+    "en": "Hungary",
+    "uk": "Угорщина",
+    "hu": "Magyarország"
+   }
+  },
+  {
+   "id": "Q170967",
+   "lat": 37.78,
+   "lon": 29.1,
+   "names": {
+    "en": "Denizli",
+    "uk": "Денізлі",
+    "hu": "Denizli"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q43475",
+   "lat": 52.92,
+   "lon": -1.48,
+   "names": {
+    "en": "Derby",
+    "uk": "Дербі",
+    "hu": "Derby"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q7003",
+   "lat": 47.32,
+   "lon": 5.04,
+   "names": {
+    "en": "Dijon",
+    "uk": "Діжон",
+    "hu": "Dijon"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q83387",
+   "lat": 37.92,
+   "lon": 40.22,
+   "names": {
+    "en": "Diyarbakır",
+    "uk": "Діярбакир",
+    "hu": "Diyarbakır"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q48256",
+   "lat": 48.47,
+   "lon": 35.04,
+   "names": {
+    "en": "Dnipro",
+    "uk": "Дніпро",
+    "hu": "Dnyipro"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q849535",
+   "lat": 39.55,
+   "lon": 44.08,
+   "names": {
+    "en": "Doğubayazıt",
+    "uk": "Догубаязит",
+    "hu": "Doğubayazıt"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q58900",
+   "lat": 53.52,
+   "lon": -1.13,
+   "names": {
+    "en": "Doncaster",
+    "uk": "Донкастер",
+    "hu": "Doncaster"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q43070",
+   "lat": 48.02,
+   "lon": 37.8,
+   "names": {
+    "en": "Donetsk",
+    "uk": "Донецьк",
+    "hu": "Doneck"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q1295",
+   "lat": 51.51,
+   "lon": 7.47,
+   "names": {
+    "en": "Dortmund",
+    "uk": "Дортмунд",
+    "hu": "Dortmund"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q1731",
+   "lat": 51.05,
+   "lon": 13.74,
+   "names": {
+    "en": "Dresden",
+    "uk": "Дрезден",
+    "hu": "Drezda"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q1761",
+   "lat": 53.35,
+   "lon": -6.26,
+   "names": {
+    "en": "Dublin",
+    "uk": "Дублін",
+    "hu": "Dublin"
+   },
+   "country": {
+    "en": "Ireland",
+    "uk": "Ірландія",
+    "hu": "Írország"
+   }
+  },
+  {
+   "id": "Q2100",
+   "lat": 51.43,
+   "lon": 6.76,
+   "names": {
+    "en": "Duisburg",
+    "uk": "Дуйсбург",
+    "hu": "Duisburg"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q123709",
+   "lat": 56.46,
+   "lon": -2.97,
+   "names": {
+    "en": "Dundee",
+    "uk": "Данді",
+    "hu": "Dundee"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q83285",
+   "lat": 41.31,
+   "lon": 19.45,
+   "names": {
+    "en": "Durrës",
+    "uk": "Дуррес",
+    "hu": "Durrës"
+   },
+   "country": {
+    "en": "Albania",
+    "uk": "Албанія",
+    "hu": "Albánia"
+   }
+  },
+  {
+   "id": "Q1718",
+   "lat": 51.23,
+   "lon": 6.78,
+   "names": {
+    "en": "Düsseldorf",
+    "uk": "Дюссельдорф",
+    "hu": "Düsseldorf"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q206885",
+   "lat": 40.84,
+   "lon": 31.16,
+   "names": {
+    "en": "Düzce",
+    "uk": "Дюздже",
+    "hu": "Düzce"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q208262",
+   "lat": 50.77,
+   "lon": 0.29,
+   "names": {
+    "en": "Eastbourne",
+    "uk": "Істборн",
+    "hu": "Eastbourne"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q23436",
+   "lat": 55.95,
+   "lon": -3.19,
+   "names": {
+    "en": "Edinburgh",
+    "uk": "Единбург",
+    "hu": "Edinburgh"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q43387",
+   "lat": 41.67,
+   "lon": 26.57,
+   "names": {
+    "en": "Edirne",
+    "uk": "Едірне",
+    "hu": "Edirne"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q1021818",
+   "lat": 39.6,
+   "lon": 27.02,
+   "names": {
+    "en": "Edremit",
+    "uk": "Едреміт",
+    "hu": "Edremit"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q496442",
+   "lat": 51.73,
+   "lon": 75.33,
+   "names": {
+    "en": "Ekibastuz",
+    "uk": "Екібастуз",
+    "hu": "Ekibastuz"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q174060",
+   "lat": 38.67,
+   "lon": 39.22,
+   "names": {
+    "en": "Elazığ",
+    "uk": "Елязиг",
+    "hu": "Elazığ"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q104712",
+   "lat": 54.15,
+   "lon": 19.41,
+   "names": {
+    "en": "Elbląg",
+    "uk": "Ельблонг",
+    "hu": "Elbląg"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q31916107",
+   "lat": 38.27,
+   "lon": -0.7,
+   "names": {
+    "en": "Elche",
+    "uk": "Elche",
+    "hu": "Elche"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q217667",
+   "lat": 37.89,
+   "lon": 21.38,
+   "names": {
+    "en": "Elis",
+    "uk": "Еліда",
+    "hu": "Élisz"
+   },
+   "country": {
+    "en": "Greece",
+    "uk": "Греція",
+    "hu": "Görögország"
+   }
+  },
+  {
+   "id": "Q996056",
+   "lat": 37.51,
+   "lon": 34.05,
+   "names": {
+    "en": "Ereğli",
+    "uk": "Ереглі",
+    "hu": "Ereğli"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q1729",
+   "lat": 50.98,
+   "lon": 11.03,
+   "names": {
+    "en": "Erfurt",
+    "uk": "Ерфурт",
+    "hu": "Erfurt"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q945363",
+   "lat": 38.27,
+   "lon": 39.76,
+   "names": {
+    "en": "Ergani",
+    "uk": "Ergani",
+    "hu": "Ergani"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q3126",
+   "lat": 49.59,
+   "lon": 11.01,
+   "names": {
+    "en": "Erlangen",
+    "uk": "Ерланген",
+    "hu": "Erlangen"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q136217",
+   "lat": 39.75,
+   "lon": 39.49,
+   "names": {
+    "en": "Erzincan",
+    "uk": "Ерзінджан",
+    "hu": "Erzincan"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q122803",
+   "lat": 39.91,
+   "lon": 41.28,
+   "names": {
+    "en": "Erzurum",
+    "uk": "Ерзурум",
+    "hu": "Erzurum"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q168866",
+   "lat": 39.78,
+   "lon": 30.52,
+   "names": {
+    "en": "Eskişehir",
+    "uk": "Ескішехір",
+    "hu": "Eskişehir"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q47034",
+   "lat": 60.21,
+   "lon": 24.66,
+   "names": {
+    "en": "Espoo",
+    "uk": "Еспоо",
+    "hu": "Espoo"
+   },
+   "country": {
+    "en": "Finland",
+    "uk": "Фінляндія",
+    "hu": "Finnország"
+   }
+  },
+  {
+   "id": "Q2066",
+   "lat": 51.45,
+   "lon": 7.01,
+   "names": {
+    "en": "Essen",
+    "uk": "Ессен",
+    "hu": "Essen"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q134672",
+   "lat": 50.73,
+   "lon": -3.53,
+   "names": {
+    "en": "Exeter",
+    "uk": "Ексетер",
+    "hu": "Exeter"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q738901",
+   "lat": 42.37,
+   "lon": 21.16,
+   "names": {
+    "en": "Ferizaj",
+    "uk": "Урошевац",
+    "hu": "Ferizaj"
+   },
+   "country": {
+    "en": "Kosovo",
+    "uk": "Косово",
+    "hu": "Koszovó"
+   }
+  },
+  {
+   "id": "Q13362",
+   "lat": 44.84,
+   "lon": 11.62,
+   "names": {
+    "en": "Ferrara",
+    "uk": "Феррара",
+    "hu": "Ferrara"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q207998",
+   "lat": 36.62,
+   "lon": 29.11,
+   "names": {
+    "en": "Fethiye",
+    "uk": "Фетгіє",
+    "hu": "Fethiye"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q2044",
+   "lat": 43.77,
+   "lon": 11.25,
+   "names": {
+    "en": "Florence",
+    "uk": "Флоренція",
+    "hu": "Firenze"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q13464",
+   "lat": 41.46,
+   "lon": 15.55,
+   "names": {
+    "en": "Foggia",
+    "uk": "Фоджа",
+    "hu": "Foggia"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q13367",
+   "lat": 44.22,
+   "lon": 12.04,
+   "names": {
+    "en": "Forlì",
+    "uk": "Форлі",
+    "hu": "Forlì"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q1794",
+   "lat": 50.11,
+   "lon": 8.68,
+   "names": {
+    "en": "Frankfurt",
+    "uk": "Франкфурт-на-Майні",
+    "hu": "Frankfurt am Main"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q391980",
+   "lat": 45.68,
+   "lon": 13.75,
+   "names": {
+    "en": "Free Territory of Trieste",
+    "uk": "Вільна територія Трієста",
+    "hu": "Trieszti Szabadterület"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q2833",
+   "lat": 47.99,
+   "lon": 7.85,
+   "names": {
+    "en": "Freiburg im Breisgau",
+    "uk": "Фрайбург",
+    "hu": "Freiburg im Breisgau"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q170996",
+   "lat": 45.43,
+   "lon": 28.06,
+   "names": {
+    "en": "Galați",
+    "uk": "Галац",
+    "hu": "Galac"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q93338",
+   "lat": 37.06,
+   "lon": 37.38,
+   "names": {
+    "en": "Gaziantep",
+    "uk": "Газіантеп",
+    "hu": "Gaziantep"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q1792",
+   "lat": 54.35,
+   "lon": 18.65,
+   "names": {
+    "en": "Gdańsk",
+    "uk": "Гданськ",
+    "hu": "Gdańsk"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q385",
+   "lat": 54.52,
+   "lon": 18.54,
+   "names": {
+    "en": "Gdynia",
+    "uk": "Гдиня",
+    "hu": "Gdynia"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q753752",
+   "lat": 40.43,
+   "lon": 29.16,
+   "names": {
+    "en": "Gemlik",
+    "uk": "Gemlik",
+    "hu": "Gemlik"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q71",
+   "lat": 46.2,
+   "lon": 6.15,
+   "names": {
+    "en": "Geneva",
+    "uk": "Женева",
+    "hu": "Genf"
+   },
+   "country": {
+    "en": "Switzerland",
+    "uk": "Швейцарія",
+    "hu": "Svájc"
+   }
+  },
+  {
+   "id": "Q1449",
+   "lat": 44.41,
+   "lon": 8.93,
+   "names": {
+    "en": "Genoa",
+    "uk": "Генуя",
+    "hu": "Genova"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q3750",
+   "lat": 50.88,
+   "lon": 12.08,
+   "names": {
+    "en": "Gera",
+    "uk": "Ґера",
+    "hu": "Gera"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q1296",
+   "lat": 51.05,
+   "lon": 3.73,
+   "names": {
+    "en": "Ghent",
+    "uk": "Гент",
+    "hu": "Gent"
+   },
+   "country": {
+    "en": "Belgium",
+    "uk": "Бельгія",
+    "hu": "Belgium"
+   }
+  },
+  {
+   "id": "Q201095",
+   "lat": 40.9,
+   "lon": 38.42,
+   "names": {
+    "en": "Giresun",
+    "uk": "Ґіресун",
+    "hu": "Giresun"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q24001084",
+   "lat": 41.98,
+   "lon": 2.82,
+   "names": {
+    "en": "Girona",
+    "uk": "Girona",
+    "hu": "Girona"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q72125",
+   "lat": 40.93,
+   "lon": 14.2,
+   "names": {
+    "en": "Giugliano in Campania",
+    "uk": "Джульяно-ін-Кампанія",
+    "hu": "Giugliano in Campania"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q4093",
+   "lat": 55.86,
+   "lon": -4.25,
+   "names": {
+    "en": "Glasgow",
+    "uk": "Глазго",
+    "hu": "Glasgow"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q105084",
+   "lat": 50.29,
+   "lon": 18.67,
+   "names": {
+    "en": "Gliwice",
+    "uk": "Гливиці",
+    "hu": "Gliwice"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q170497",
+   "lat": 51.87,
+   "lon": -2.25,
+   "names": {
+    "en": "Gloucester",
+    "uk": "Глостер",
+    "hu": "Gloucester"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q27162",
+   "lat": 40.7,
+   "lon": 29.87,
+   "names": {
+    "en": "Gölcük",
+    "uk": "Гелджюк",
+    "hu": "Gölcük"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q104731",
+   "lat": 52.73,
+   "lon": 15.25,
+   "names": {
+    "en": "Gorzów Wielkopolski",
+    "uk": "Гожув-Велькопольський",
+    "hu": "Gorzów Wielkopolski"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q25287",
+   "lat": 57.71,
+   "lon": 11.97,
+   "names": {
+    "en": "Gothenburg",
+    "uk": "Гетеборг",
+    "hu": "Göteborg"
+   },
+   "country": {
+    "en": "Sweden",
+    "uk": "Швеція",
+    "hu": "Svédország"
+   }
+  },
+  {
+   "id": "Q3033",
+   "lat": 51.53,
+   "lon": 9.94,
+   "names": {
+    "en": "Göttingen",
+    "uk": "Геттінген",
+    "hu": "Göttingen"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q13298",
+   "lat": 47.07,
+   "lon": 15.44,
+   "names": {
+    "en": "Graz",
+    "uk": "Грац",
+    "hu": "Graz"
+   },
+   "country": {
+    "en": "Austria",
+    "uk": "Австрія",
+    "hu": "Ausztria"
+   }
+  },
+  {
+   "id": "Q1289",
+   "lat": 45.19,
+   "lon": 5.73,
+   "names": {
+    "en": "Grenoble",
+    "uk": "Гренобль",
+    "hu": "Grenoble"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q134494",
+   "lat": 47.68,
+   "lon": 17.63,
+   "names": {
+    "en": "Győr",
+    "uk": "Дьєр",
+    "hu": "Győr"
+   },
+   "country": {
+    "en": "Hungary",
+    "uk": "Угорщина",
+    "hu": "Magyarország"
+   }
+  },
+  {
+   "id": "Q2871",
+   "lat": 51.36,
+   "lon": 7.47,
+   "names": {
+    "en": "Hagen",
+    "uk": "Гаген",
+    "hu": "Hagen"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q2814",
+   "lat": 51.48,
+   "lon": 11.97,
+   "names": {
+    "en": "Halle (Saale)",
+    "uk": "Галле",
+    "hu": "Halle"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q1055",
+   "lat": 53.55,
+   "lon": 10,
+   "names": {
+    "en": "Hamburg",
+    "uk": "Гамбург",
+    "hu": "Hamburg"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q2880",
+   "lat": 51.68,
+   "lon": 7.82,
+   "names": {
+    "en": "Hamm",
+    "uk": "Гамм",
+    "hu": "Hamm"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q1715",
+   "lat": 52.37,
+   "lon": 9.74,
+   "names": {
+    "en": "Hanover",
+    "uk": "Ганновер",
+    "hu": "Hannover"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q2966",
+   "lat": 49.41,
+   "lon": 8.69,
+   "names": {
+    "en": "Heidelberg",
+    "uk": "Гайдельберг",
+    "hu": "Heidelberg"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q715",
+   "lat": 49.14,
+   "lon": 9.22,
+   "names": {
+    "en": "Heilbronn",
+    "uk": "Гайльбронн",
+    "hu": "Heilbronn"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q25411",
+   "lat": 56.04,
+   "lon": 12.72,
+   "names": {
+    "en": "Helsingborg",
+    "uk": "Гельсінборг",
+    "hu": "Helsingborg"
+   },
+   "country": {
+    "en": "Sweden",
+    "uk": "Швеція",
+    "hu": "Svédország"
+   }
+  },
+  {
+   "id": "Q1757",
+   "lat": 60.17,
+   "lon": 24.94,
+   "names": {
+    "en": "Helsinki",
+    "uk": "Гельсінкі",
+    "hu": "Helsinki"
+   },
+   "country": {
+    "en": "Finland",
+    "uk": "Фінляндія",
+    "hu": "Finnország"
+   }
+  },
+  {
+   "id": "Q160544",
+   "lat": 35.34,
+   "lon": 25.13,
+   "names": {
+    "en": "Heraklion",
+    "uk": "Іракліон",
+    "hu": "Iráklio"
+   },
+   "country": {
+    "en": "Greece",
+    "uk": "Греція",
+    "hu": "Görögország"
+   }
+  },
+  {
+   "id": "Q2904",
+   "lat": 51.54,
+   "lon": 7.22,
+   "names": {
+    "en": "Herne",
+    "uk": "Герне",
+    "hu": "Herne"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q3185",
+   "lat": 52.15,
+   "lon": 9.95,
+   "names": {
+    "en": "Hildesheim",
+    "uk": "Гільдесгайм",
+    "hu": "Hildesheim"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q157260",
+   "lat": 48.33,
+   "lon": 38.09,
+   "names": {
+    "en": "Horlivka",
+    "uk": "Горлівка",
+    "hu": "Horlivka"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q201812",
+   "lat": 53.65,
+   "lon": -1.78,
+   "names": {
+    "en": "Huddersfield",
+    "uk": "Гаддерсфілд",
+    "hu": "Huddersfield"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q46852",
+   "lat": 47.16,
+   "lon": 27.59,
+   "names": {
+    "en": "Iași",
+    "uk": "Ясси",
+    "hu": "Jászvásár"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q483331",
+   "lat": 39.92,
+   "lon": 44.05,
+   "names": {
+    "en": "Iğdır",
+    "uk": "Игдир",
+    "hu": "Iğdır"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q343973",
+   "lat": 40.08,
+   "lon": 29.51,
+   "names": {
+    "en": "İnegöl",
+    "uk": "Інегель",
+    "hu": "İnegöl"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q3004",
+   "lat": 48.76,
+   "lon": 11.43,
+   "names": {
+    "en": "Ingolstadt",
+    "uk": "Інгольштадт",
+    "hu": "Ingolstadt"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q1735",
+   "lat": 47.27,
+   "lon": 11.39,
+   "names": {
+    "en": "Innsbruck",
+    "uk": "Інсбрук",
+    "hu": "Innsbruck"
+   },
+   "country": {
+    "en": "Austria",
+    "uk": "Австрія",
+    "hu": "Ausztria"
+   }
+  },
+  {
+   "id": "Q174341",
+   "lat": 36.59,
+   "lon": 36.17,
+   "names": {
+    "en": "İskenderun",
+    "uk": "Іскендерун",
+    "hu": "İskenderun"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q171031",
+   "lat": 37.77,
+   "lon": 30.55,
+   "names": {
+    "en": "Isparta",
+    "uk": "Испарта",
+    "hu": "Isparta"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q406",
+   "lat": 41.01,
+   "lon": 28.96,
+   "names": {
+    "en": "Istanbul",
+    "uk": "Стамбул",
+    "hu": "Isztambul"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q156726",
+   "lat": 48.92,
+   "lon": 24.71,
+   "names": {
+    "en": "Ivano-Frankivsk",
+    "uk": "Івано-Франківськ",
+    "hu": "Ivano-Frankivszk"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q35997",
+   "lat": 38.41,
+   "lon": 27.14,
+   "names": {
+    "en": "İzmir",
+    "uk": "Ізмір",
+    "hu": "İzmir"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q24013256",
+   "lat": 37.77,
+   "lon": -3.79,
+   "names": {
+    "en": "Jaén",
+    "uk": "Jaén",
+    "hu": "Jaén"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q3150",
+   "lat": 50.93,
+   "lon": 11.59,
+   "names": {
+    "en": "Jena",
+    "uk": "Єна",
+    "hu": "Jéna"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q134620",
+   "lat": 62.24,
+   "lon": 25.74,
+   "names": {
+    "en": "Jyväskylä",
+    "uk": "Ювяскюля",
+    "hu": "Jyväskylä"
+   },
+   "country": {
+    "en": "Finland",
+    "uk": "Фінляндія",
+    "hu": "Finnország"
+   }
+  },
+  {
+   "id": "Q1012824",
+   "lat": 37.37,
+   "lon": 36.1,
+   "names": {
+    "en": "Kadirli",
+    "uk": "Kadirli",
+    "hu": "Kadirli"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q932886",
+   "lat": 40.99,
+   "lon": 29.04,
+   "names": {
+    "en": "Kadıköy",
+    "uk": "Кадикей",
+    "hu": "Kadıköy"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q134703",
+   "lat": 37.59,
+   "lon": 36.95,
+   "names": {
+    "en": "Kahramanmaraş",
+    "uk": "Каграманмараш",
+    "hu": "Kahramanmaraş"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q3758",
+   "lat": 49.44,
+   "lon": 7.77,
+   "names": {
+    "en": "Kaiserslautern",
+    "uk": "Кайзерслаутерн",
+    "hu": "Kaiserslautern"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q52842",
+   "lat": 51.76,
+   "lon": 18.08,
+   "names": {
+    "en": "Kalisz",
+    "uk": "Каліш",
+    "hu": "Kalisz"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q193965",
+   "lat": 48.68,
+   "lon": 26.58,
+   "names": {
+    "en": "Kamianets-Podilskyi",
+    "uk": "Кам'янець-Подільський",
+    "hu": "Kamjanec-Pogyilszkij"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q156719",
+   "lat": 48.52,
+   "lon": 34.61,
+   "names": {
+    "en": "Kamyanske",
+    "uk": "Кам'янське",
+    "hu": "Kamjanszke"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q189697",
+   "lat": 41.2,
+   "lon": 32.63,
+   "names": {
+    "en": "Karabük",
+    "uk": "Карабюк",
+    "hu": "Karabük"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q1012887",
+   "lat": 41.28,
+   "lon": 31.42,
+   "names": {
+    "en": "Karadeniz Ereğli",
+    "uk": "Karadeniz Ereğli",
+    "hu": "Karadeniz Ereğli"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q484706",
+   "lat": 49.8,
+   "lon": 73.12,
+   "names": {
+    "en": "Karaganda",
+    "uk": "Караганда",
+    "hu": "Karagandi"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q262579",
+   "lat": 37.18,
+   "lon": 33.22,
+   "names": {
+    "en": "Karaman",
+    "uk": "Караман",
+    "hu": "Karaman"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q1040",
+   "lat": 49.02,
+   "lon": 8.4,
+   "names": {
+    "en": "Karlsruhe",
+    "uk": "Карлсруе",
+    "hu": "Karlsruhe"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q2865",
+   "lat": 51.32,
+   "lon": 9.5,
+   "names": {
+    "en": "Kassel",
+    "uk": "Кассель",
+    "hu": "Kassel"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q155915",
+   "lat": 41.38,
+   "lon": 33.78,
+   "names": {
+    "en": "Kastamonu",
+    "uk": "Кастамону",
+    "hu": "Kastamonu"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q588",
+   "lat": 50.25,
+   "lon": 19,
+   "names": {
+    "en": "Katowice",
+    "uk": "Катовиці",
+    "hu": "Katowice"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q4115712",
+   "lat": 54.9,
+   "lon": 23.93,
+   "names": {
+    "en": "Kaunas",
+    "uk": "Каунас",
+    "hu": "Kaunas"
+   },
+   "country": {
+    "en": "Lithuania",
+    "uk": "Литва",
+    "hu": "Litvánia"
+   }
+  },
+  {
+   "id": "Q48338",
+   "lat": 38.72,
+   "lon": 35.49,
+   "names": {
+    "en": "Kayseri",
+    "uk": "Кайсері",
+    "hu": "Kayseri"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q171357",
+   "lat": 46.91,
+   "lon": 19.69,
+   "names": {
+    "en": "Kecskemét",
+    "uk": "Кечкемет",
+    "hu": "Kecskemét"
+   },
+   "country": {
+    "en": "Hungary",
+    "uk": "Угорщина",
+    "hu": "Magyarország"
+   }
+  },
+  {
+   "id": "Q157065",
+   "lat": 45.34,
+   "lon": 36.47,
+   "names": {
+    "en": "Kerch",
+    "uk": "Керч",
+    "hu": "Kercs"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q42308",
+   "lat": 49.99,
+   "lon": 36.23,
+   "names": {
+    "en": "Kharkiv",
+    "uk": "Харків",
+    "hu": "Harkiv"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q156732",
+   "lat": 46.64,
+   "lon": 32.63,
+   "names": {
+    "en": "Kherson",
+    "uk": "Херсон",
+    "hu": "Herszon"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q156717",
+   "lat": 49.42,
+   "lon": 27,
+   "names": {
+    "en": "Khmelnytskyi",
+    "uk": "Хмельницький",
+    "hu": "Hmelnickij"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q1707",
+   "lat": 54.32,
+   "lon": 10.14,
+   "names": {
+    "en": "Kiel",
+    "uk": "Кіль",
+    "hu": "Kiel"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q102317",
+   "lat": 50.87,
+   "lon": 20.63,
+   "names": {
+    "en": "Kielce",
+    "uk": "Кельці",
+    "hu": "Kielce"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q206881",
+   "lat": 36.72,
+   "lon": 37.12,
+   "names": {
+    "en": "Kilis",
+    "uk": "Кіліс",
+    "hu": "Kilis"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q128147",
+   "lat": 53.74,
+   "lon": -0.33,
+   "names": {
+    "en": "Kingston upon Hull",
+    "uk": "Кінґстон-апон-Галл",
+    "hu": "Kingston upon Hull"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q206891",
+   "lat": 39.84,
+   "lon": 33.51,
+   "names": {
+    "en": "Kırıkkale",
+    "uk": "Кириккале",
+    "hu": "Kırıkkale"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q208005",
+   "lat": 39.15,
+   "lon": 34.16,
+   "names": {
+    "en": "Kırşehir",
+    "uk": "Киршехір",
+    "hu": "Kırşehir"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q693929",
+   "lat": 37.19,
+   "lon": 40.59,
+   "names": {
+    "en": "Kızıltepe",
+    "uk": "Кизилтепе",
+    "hu": "Kızıltepe"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q41753",
+   "lat": 46.62,
+   "lon": 14.3,
+   "names": {
+    "en": "Klagenfurt am Wörthersee",
+    "uk": "Клагенфурт-ам-Вертерзее",
+    "hu": "Klagenfurt am Wörthersee"
+   },
+   "country": {
+    "en": "Austria",
+    "uk": "Австрія",
+    "hu": "Ausztria"
+   }
+  },
+  {
+   "id": "Q776965",
+   "lat": 55.71,
+   "lon": 21.14,
+   "names": {
+    "en": "Klaipėda",
+    "uk": "Клайпеда",
+    "hu": "Klaipėda"
+   },
+   "country": {
+    "en": "Lithuania",
+    "uk": "Литва",
+    "hu": "Litvánia"
+   }
+  },
+  {
+   "id": "Q3104",
+   "lat": 50.36,
+   "lon": 7.6,
+   "names": {
+    "en": "Koblenz",
+    "uk": "Кобленц",
+    "hu": "Koblenz"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q83965",
+   "lat": 40.76,
+   "lon": 29.95,
+   "names": {
+    "en": "Kocaeli Province",
+    "uk": "Коджаелі",
+    "hu": "Kocaeli"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q490643",
+   "lat": 53.28,
+   "lon": 69.4,
+   "names": {
+    "en": "Kokshetau",
+    "uk": "Кокшетау",
+    "hu": "Köksetau"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q81551",
+   "lat": 37.87,
+   "lon": 32.49,
+   "names": {
+    "en": "Konya Province",
+    "uk": "Конья",
+    "hu": "Konya"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q27161",
+   "lat": 40.76,
+   "lon": 29.78,
+   "names": {
+    "en": "Körfez",
+    "uk": "Кьорфез",
+    "hu": "Körfez"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q25409",
+   "lat": 48.72,
+   "lon": 21.25,
+   "names": {
+    "en": "Košice",
+    "uk": "Кошиці",
+    "hu": "Kassa"
+   },
+   "country": {
+    "en": "Slovakia",
+    "uk": "Словаччина",
+    "hu": "Szlovákia"
+   }
+  },
+  {
+   "id": "Q488990",
+   "lat": 53.21,
+   "lon": 63.62,
+   "names": {
+    "en": "Kostanay",
+    "uk": "Костанай",
+    "hu": "Kosztanaj"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q62868",
+   "lat": 54.19,
+   "lon": 16.18,
+   "names": {
+    "en": "Koszalin",
+    "uk": "Кошалін",
+    "hu": "Koszalin"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q926426",
+   "lat": 37.45,
+   "lon": 35.81,
+   "names": {
+    "en": "Kozan",
+    "uk": "Козан",
+    "hu": "Kozan"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q167394",
+   "lat": 44.01,
+   "lon": 20.92,
+   "names": {
+    "en": "Kragujevac",
+    "uk": "Крагуєваць",
+    "hu": "Kragujevac"
+   },
+   "country": {
+    "en": "Serbia",
+    "uk": "Сербія",
+    "hu": "Szerbia"
+   }
+  },
+  {
+   "id": "Q31487",
+   "lat": 50.06,
+   "lon": 19.94,
+   "names": {
+    "en": "Kraków",
+    "uk": "Краків",
+    "hu": "Krakkó"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q33613",
+   "lat": 48.74,
+   "lon": 37.58,
+   "names": {
+    "en": "Kramatorsk",
+    "uk": "Краматорськ",
+    "hu": "Kramatorszk"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q2805",
+   "lat": 51.33,
+   "lon": 6.57,
+   "names": {
+    "en": "Krefeld",
+    "uk": "Крефельд",
+    "hu": "Krefeld"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q156724",
+   "lat": 49.06,
+   "lon": 33.4,
+   "names": {
+    "en": "Kremenchuk",
+    "uk": "Кременчук",
+    "hu": "Kremencsuk"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q158292",
+   "lat": 48.51,
+   "lon": 32.27,
+   "names": {
+    "en": "Kropyvnytskyi",
+    "uk": "Кропивницький",
+    "hu": "Kropivnickij"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q157137",
+   "lat": 47.91,
+   "lon": 33.39,
+   "names": {
+    "en": "Kryvyi Rih",
+    "uk": "Кривий Ріг",
+    "hu": "Krivij Rih"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q162279",
+   "lat": 62.89,
+   "lon": 27.68,
+   "names": {
+    "en": "Kuopio",
+    "uk": "Куопіо",
+    "hu": "Kuopio"
+   },
+   "country": {
+    "en": "Finland",
+    "uk": "Фінляндія",
+    "hu": "Finnország"
+   }
+  },
+  {
+   "id": "Q211952",
+   "lat": 37.86,
+   "lon": 27.27,
+   "names": {
+    "en": "Kuşadası",
+    "uk": "Кушадаси",
+    "hu": "Kuşadası"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q188894",
+   "lat": 39.42,
+   "lon": 29.98,
+   "names": {
+    "en": "Kütahya",
+    "uk": "Кютаг'я",
+    "hu": "Kütahya"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q172415",
+   "lat": 42.27,
+   "lon": 42.71,
+   "names": {
+    "en": "Kutaisi",
+    "uk": "Кутаїсі",
+    "hu": "Kutaiszi"
+   },
+   "country": {
+    "en": "Georgia",
+    "uk": "Грузія",
+    "hu": "Grúzia"
+   }
+  },
+  {
+   "id": "Q1899",
+   "lat": 50.45,
+   "lon": 30.52,
+   "names": {
+    "en": "Kyiv",
+    "uk": "Київ",
+    "hu": "Kijev"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   },
+   "zoneNames": [
+    "kiev"
+   ]
+  },
+  {
+   "id": "Q491123",
+   "lat": 44.85,
+   "lon": 65.5,
+   "names": {
+    "en": "Kyzylorda",
+    "uk": "Кизилорда",
+    "hu": "Kizilorda"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q15470",
+   "lat": 41.36,
+   "lon": 2.1,
+   "names": {
+    "en": "L'Hospitalet de Llobregat",
+    "uk": "Оспіталет-де-Льобрегат",
+    "hu": "L’Hospitalet de Llobregat"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q28911",
+   "lat": 60.98,
+   "lon": 25.65,
+   "names": {
+    "en": "Lahti",
+    "uk": "Лагті",
+    "hu": "Lahti"
+   },
+   "country": {
+    "en": "Finland",
+    "uk": "Фінляндія",
+    "hu": "Finnország"
+   }
+  },
+  {
+   "id": "Q178405",
+   "lat": 39.64,
+   "lon": 22.41,
+   "names": {
+    "en": "Larissa",
+    "uk": "Лариса",
+    "hu": "Lárisza"
+   },
+   "country": {
+    "en": "Greece",
+    "uk": "Греція",
+    "hu": "Görögország"
+   }
+  },
+  {
+   "id": "Q23984578",
+   "lat": 28.1,
+   "lon": -15.41,
+   "names": {
+    "en": "Las Palmas de Gran Canaria",
+    "uk": "Las Palmas de Gran Canaria",
+    "hu": "Las Palmas de Gran Canaria"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q13410",
+   "lat": 41.47,
+   "lon": 12.9,
+   "names": {
+    "en": "Latina",
+    "uk": "Латина",
+    "hu": "Latina"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q807",
+   "lat": 46.53,
+   "lon": 6.63,
+   "names": {
+    "en": "Lausanne",
+    "uk": "Лозанна",
+    "hu": "Lausanne"
+   },
+   "country": {
+    "en": "Switzerland",
+    "uk": "Швейцарія",
+    "hu": "Svájc"
+   }
+  },
+  {
+   "id": "Q42810",
+   "lat": 49.49,
+   "lon": 0.11,
+   "names": {
+    "en": "Le Havre",
+    "uk": "Гавр",
+    "hu": "Le Havre"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q1476",
+   "lat": 48,
+   "lon": 0.2,
+   "names": {
+    "en": "Le Mans",
+    "uk": "Ле-Ман",
+    "hu": "Le Mans"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q39121",
+   "lat": 53.8,
+   "lon": -1.54,
+   "names": {
+    "en": "Leeds",
+    "uk": "Лідс",
+    "hu": "Leeds"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q77433",
+   "lat": 40.33,
+   "lon": -3.77,
+   "names": {
+    "en": "Leganés",
+    "uk": "Леганес",
+    "hu": "Leganés"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q83065",
+   "lat": 52.64,
+   "lon": -1.13,
+   "names": {
+    "en": "Leicester",
+    "uk": "Лестер",
+    "hu": "Leicester"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q2079",
+   "lat": 51.34,
+   "lon": 12.37,
+   "names": {
+    "en": "Leipzig",
+    "uk": "Лейпциг",
+    "hu": "Lipcse"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q23995893",
+   "lat": 42.6,
+   "lon": -5.57,
+   "names": {
+    "en": "León",
+    "uk": "León",
+    "hu": "León"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q118958",
+   "lat": 50.88,
+   "lon": 4.7,
+   "names": {
+    "en": "Leuven",
+    "uk": "Левен",
+    "hu": "Leuven"
+   },
+   "country": {
+    "en": "Belgium",
+    "uk": "Бельгія",
+    "hu": "Belgium"
+   }
+  },
+  {
+   "id": "Q2938",
+   "lat": 51.03,
+   "lon": 6.98,
+   "names": {
+    "en": "Leverkusen",
+    "uk": "Леверкузен",
+    "hu": "Leverkusen"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q146351",
+   "lat": 50.77,
+   "lon": 15.05,
+   "names": {
+    "en": "Liberec",
+    "uk": "Ліберець",
+    "hu": "Liberec"
+   },
+   "country": {
+    "en": "Czech Republic",
+    "uk": "Чехія",
+    "hu": "Csehország"
+   }
+  },
+  {
+   "id": "Q3992",
+   "lat": 50.64,
+   "lon": 5.57,
+   "names": {
+    "en": "Liège",
+    "uk": "Льєж",
+    "hu": "Liège"
+   },
+   "country": {
+    "en": "Belgium",
+    "uk": "Бельгія",
+    "hu": "Belgium"
+   }
+  },
+  {
+   "id": "Q648",
+   "lat": 50.63,
+   "lon": 3.06,
+   "names": {
+    "en": "Lille",
+    "uk": "Лілль",
+    "hu": "Lille"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q185632",
+   "lat": 34.67,
+   "lon": 33.04,
+   "names": {
+    "en": "Limassol",
+    "uk": "Лімасол",
+    "hu": "Limassol"
+   },
+   "country": {
+    "en": "Cyprus",
+    "uk": "Кіпр",
+    "hu": "Ciprus"
+   }
+  },
+  {
+   "id": "Q45656",
+   "lat": 45.83,
+   "lon": 1.26,
+   "names": {
+    "en": "Limoges",
+    "uk": "Лімож",
+    "hu": "Limoges"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q180057",
+   "lat": 53.25,
+   "lon": -0.55,
+   "names": {
+    "en": "Lincoln",
+    "uk": "Лінкольн",
+    "hu": "Lincoln"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q25413",
+   "lat": 58.41,
+   "lon": 15.63,
+   "names": {
+    "en": "Linköping",
+    "uk": "Лінчепінг",
+    "hu": "Linköping"
+   },
+   "country": {
+    "en": "Sweden",
+    "uk": "Швеція",
+    "hu": "Svédország"
+   }
+  },
+  {
+   "id": "Q41329",
+   "lat": 48.31,
+   "lon": 14.29,
+   "names": {
+    "en": "Linz",
+    "uk": "Лінц",
+    "hu": "Linz"
+   },
+   "country": {
+    "en": "Austria",
+    "uk": "Австрія",
+    "hu": "Ausztria"
+   }
+  },
+  {
+   "id": "Q597",
+   "lat": 38.71,
+   "lon": -9.14,
+   "names": {
+    "en": "Lisbon",
+    "uk": "Лісабон",
+    "hu": "Lisszabon"
+   },
+   "country": {
+    "en": "Portugal",
+    "uk": "Португалія",
+    "hu": "Portugália"
+   }
+  },
+  {
+   "id": "Q24826",
+   "lat": 53.41,
+   "lon": -2.99,
+   "names": {
+    "en": "Liverpool",
+    "uk": "Ліверпуль",
+    "hu": "Liverpool"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q6761",
+   "lat": 43.55,
+   "lon": 10.32,
+   "names": {
+    "en": "Livorno",
+    "uk": "Ліворно",
+    "hu": "Livorno"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q437",
+   "lat": 46.05,
+   "lon": 14.51,
+   "names": {
+    "en": "Ljubljana",
+    "uk": "Любляна",
+    "hu": "Ljubljana"
+   },
+   "country": {
+    "en": "Slovenia",
+    "uk": "Словенія",
+    "hu": "Szlovénia"
+   }
+  },
+  {
+   "id": "Q580",
+   "lat": 51.75,
+   "lon": 19.47,
+   "names": {
+    "en": "Łódź",
+    "uk": "Лодзь",
+    "hu": "Łódź"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q31917806",
+   "lat": 42.47,
+   "lon": -2.45,
+   "names": {
+    "en": "Logroño",
+    "uk": "Logroño",
+    "hu": "Logroño"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q84",
+   "lat": 51.51,
+   "lon": -0.13,
+   "names": {
+    "en": "London",
+    "uk": "Лондон",
+    "hu": "London"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q2843",
+   "lat": 53.87,
+   "lon": 10.69,
+   "names": {
+    "en": "Lübeck",
+    "uk": "Любек",
+    "hu": "Lübeck"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q37333",
+   "lat": 51.25,
+   "lon": 22.57,
+   "names": {
+    "en": "Lublin",
+    "uk": "Люблін",
+    "hu": "Lublin"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q134279",
+   "lat": 48.57,
+   "lon": 39.3,
+   "names": {
+    "en": "Luhansk",
+    "uk": "Луганськ",
+    "hu": "Luhanszk"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q214670",
+   "lat": 41.41,
+   "lon": 27.36,
+   "names": {
+    "en": "Lüleburgaz",
+    "uk": "Люлебургаз",
+    "hu": "Lüleburgaz"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q7550",
+   "lat": 50.75,
+   "lon": 25.32,
+   "names": {
+    "en": "Lutsk",
+    "uk": "Луцьк",
+    "hu": "Luck"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q1842",
+   "lat": 49.61,
+   "lon": 6.13,
+   "names": {
+    "en": "Luxembourg",
+    "uk": "Люксембург",
+    "hu": "Luxembourg"
+   },
+   "country": {
+    "en": "Luxembourg",
+    "uk": "Люксембург",
+    "hu": "Luxemburg"
+   }
+  },
+  {
+   "id": "Q36036",
+   "lat": 49.84,
+   "lon": 24.03,
+   "names": {
+    "en": "Lviv",
+    "uk": "Львів",
+    "hu": "Lviv"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q456",
+   "lat": 45.77,
+   "lon": 4.83,
+   "names": {
+    "en": "Lyon",
+    "uk": "Ліон",
+    "hu": "Lyon"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q2807",
+   "lat": 40.42,
+   "lon": -3.7,
+   "names": {
+    "en": "Madrid",
+    "uk": "Мадрид",
+    "hu": "Madrid"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q1733",
+   "lat": 52.13,
+   "lon": 11.64,
+   "names": {
+    "en": "Magdeburg",
+    "uk": "Магдебург",
+    "hu": "Magdeburg"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q1720",
+   "lat": 50,
+   "lon": 8.27,
+   "names": {
+    "en": "Mainz",
+    "uk": "Майнц",
+    "hu": "Mainz"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q157134",
+   "lat": 48.06,
+   "lon": 37.96,
+   "names": {
+    "en": "Makiivka",
+    "uk": "Макіївка",
+    "hu": "Makijivka"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q8851",
+   "lat": 36.72,
+   "lon": -4.42,
+   "names": {
+    "en": "Málaga",
+    "uk": "Малага",
+    "hu": "Málaga"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q165995",
+   "lat": 38.35,
+   "lon": 38.31,
+   "names": {
+    "en": "Malatya",
+    "uk": "Малатья",
+    "hu": "Malatya"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q2211",
+   "lat": 55.58,
+   "lon": 13,
+   "names": {
+    "en": "Malmö",
+    "uk": "Мальме",
+    "hu": "Malmö"
+   },
+   "country": {
+    "en": "Sweden",
+    "uk": "Швеція",
+    "hu": "Svédország"
+   }
+  },
+  {
+   "id": "Q147089",
+   "lat": 38.61,
+   "lon": 27.43,
+   "names": {
+    "en": "Manisa",
+    "uk": "Маніса",
+    "hu": "Manisa"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q2119",
+   "lat": 49.49,
+   "lon": 8.47,
+   "names": {
+    "en": "Mannheim",
+    "uk": "Мангайм",
+    "hu": "Mannheim"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q1010",
+   "lat": 46.55,
+   "lon": 15.63,
+   "names": {
+    "en": "Maribor",
+    "uk": "Марибор",
+    "hu": "Maribor"
+   },
+   "country": {
+    "en": "Slovenia",
+    "uk": "Словенія",
+    "hu": "Szlovénia"
+   }
+  },
+  {
+   "id": "Q37133",
+   "lat": 47.13,
+   "lon": 37.56,
+   "names": {
+    "en": "Mariupol",
+    "uk": "Маріуполь",
+    "hu": "Mariupol"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q33349",
+   "lat": 46.85,
+   "lon": 35.37,
+   "names": {
+    "en": "Melitopol",
+    "uk": "Мелітополь",
+    "hu": "Melitopol"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q2152404",
+   "lat": 38.6,
+   "lon": 27.08,
+   "names": {
+    "en": "Menemen",
+    "uk": "Menemen",
+    "hu": "Menemen"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q134291",
+   "lat": 36.8,
+   "lon": 34.62,
+   "names": {
+    "en": "Mersin",
+    "uk": "Мерсін",
+    "hu": "Mersin"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q13666",
+   "lat": 38.19,
+   "lon": 15.55,
+   "names": {
+    "en": "Messina",
+    "uk": "Мессіна",
+    "hu": "Messina"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q22690",
+   "lat": 49.12,
+   "lon": 6.18,
+   "names": {
+    "en": "Metz",
+    "uk": "Мец",
+    "hu": "Metz"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q171866",
+   "lat": 54.57,
+   "lon": -1.23,
+   "names": {
+    "en": "Middlesbrough",
+    "uk": "Мідлсбро",
+    "hu": "Middlesbrough"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q743601",
+   "lat": 37.42,
+   "lon": 41.35,
+   "names": {
+    "en": "Midyat",
+    "uk": "Мідьят",
+    "hu": "Midyat"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q490",
+   "lat": 45.47,
+   "lon": 9.19,
+   "names": {
+    "en": "Milan",
+    "uk": "Мілан",
+    "hu": "Milánó"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q204234",
+   "lat": 52.03,
+   "lon": -0.77,
+   "names": {
+    "en": "Milton Keynes",
+    "uk": "Мілтон-Кінз",
+    "hu": "Milton Keynes"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q102397",
+   "lat": 48.1,
+   "lon": 20.78,
+   "names": {
+    "en": "Miskolc",
+    "uk": "Мішкольц",
+    "hu": "Miskolc"
+   },
+   "country": {
+    "en": "Hungary",
+    "uk": "Угорщина",
+    "hu": "Magyarország"
+   }
+  },
+  {
+   "id": "Q279",
+   "lat": 44.65,
+   "lon": 10.93,
+   "names": {
+    "en": "Modena",
+    "uk": "Модена",
+    "hu": "Modena"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q3132",
+   "lat": 51.46,
+   "lon": 6.62,
+   "names": {
+    "en": "Moers",
+    "uk": "Мерс",
+    "hu": "Moers"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q235",
+   "lat": 43.73,
+   "lon": 7.42,
+   "names": {
+    "en": "Monaco",
+    "uk": "Монако",
+    "hu": "Monaco"
+   },
+   "country": {
+    "en": "Monaco",
+    "uk": "Монако",
+    "hu": "Monaco"
+   }
+  },
+  {
+   "id": "Q2758",
+   "lat": 51.2,
+   "lon": 6.43,
+   "names": {
+    "en": "Mönchengladbach",
+    "uk": "Менхенгладбах",
+    "hu": "Mönchengladbach"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q6441",
+   "lat": 43.61,
+   "lon": 3.88,
+   "names": {
+    "en": "Montpellier",
+    "uk": "Монпельє",
+    "hu": "Montpellier"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q6252",
+   "lat": 45.58,
+   "lon": 9.27,
+   "names": {
+    "en": "Monza",
+    "uk": "Монца",
+    "hu": "Monza"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q187826",
+   "lat": 40.33,
+   "lon": -3.87,
+   "names": {
+    "en": "Móstoles",
+    "uk": "Мостолес",
+    "hu": "Móstoles"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q2899",
+   "lat": 51.43,
+   "lon": 6.88,
+   "names": {
+    "en": "Mülheim an der Ruhr",
+    "uk": "Мюльгайм-на-Рурі",
+    "hu": "Mülheim an der Ruhr"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q79815",
+   "lat": 47.75,
+   "lon": 7.34,
+   "names": {
+    "en": "Mulhouse",
+    "uk": "Мюлуз",
+    "hu": "Mulhouse"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q1726",
+   "lat": 48.14,
+   "lon": 11.57,
+   "names": {
+    "en": "Munich",
+    "uk": "Мюнхен",
+    "hu": "München"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q2742",
+   "lat": 51.96,
+   "lon": 7.63,
+   "names": {
+    "en": "Münster",
+    "uk": "Мюнстер",
+    "hu": "Münster"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q24019772",
+   "lat": 37.98,
+   "lon": -1.13,
+   "names": {
+    "en": "Murcia",
+    "uk": "Murcia City",
+    "hu": "Murcia"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q118995",
+   "lat": 38.73,
+   "lon": 41.49,
+   "names": {
+    "en": "Muş",
+    "uk": "Муш",
+    "hu": "Muş"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q41572",
+   "lat": 46.98,
+   "lon": 32,
+   "names": {
+    "en": "Mykolaiv",
+    "uk": "Миколаїв",
+    "hu": "Mikolajiv"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q134121",
+   "lat": 50.47,
+   "lon": 4.87,
+   "names": {
+    "en": "Namur",
+    "uk": "Намюр",
+    "hu": "Namur"
+   },
+   "country": {
+    "en": "Belgium",
+    "uk": "Бельгія",
+    "hu": "Belgium"
+   }
+  },
+  {
+   "id": "Q40898",
+   "lat": 48.69,
+   "lon": 6.18,
+   "names": {
+    "en": "Nancy",
+    "uk": "Нансі",
+    "hu": "Nancy"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q2634",
+   "lat": 40.84,
+   "lon": 14.25,
+   "names": {
+    "en": "Naples",
+    "uk": "Неаполь",
+    "hu": "Nápoly"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q637120",
+   "lat": 37.91,
+   "lon": 28.32,
+   "names": {
+    "en": "Nazilli",
+    "uk": "Назіллі",
+    "hu": "Nazilli"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q206879",
+   "lat": 38.63,
+   "lon": 34.71,
+   "names": {
+    "en": "Nevşehir",
+    "uk": "Невшехір",
+    "hu": "Nevşehir"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q1425428",
+   "lat": 54.98,
+   "lon": -1.61,
+   "names": {
+    "en": "Newcastle upon Tyne",
+    "uk": "Ньюкасл-апон-Тайн",
+    "hu": "Newcastle upon Tyne"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q101254",
+   "lat": 51.59,
+   "lon": -3,
+   "names": {
+    "en": "Newport",
+    "uk": "Ньюпорт",
+    "hu": "Newport"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q33959",
+   "lat": 43.7,
+   "lon": 7.27,
+   "names": {
+    "en": "Nice",
+    "uk": "Ніцца",
+    "hu": "Nizza"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q3856",
+   "lat": 35.17,
+   "lon": 33.37,
+   "names": {
+    "en": "Nicosia",
+    "uk": "Нікосія",
+    "hu": "Nicosia"
+   },
+   "country": {
+    "en": "Cyprus",
+    "uk": "Кіпр",
+    "hu": "Ciprus"
+   }
+  },
+  {
+   "id": "Q194146",
+   "lat": 37.97,
+   "lon": 34.68,
+   "names": {
+    "en": "Niğde",
+    "uk": "Нігде",
+    "hu": "Niğde"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q156760",
+   "lat": 47.57,
+   "lon": 34.4,
+   "names": {
+    "en": "Nikopol",
+    "uk": "Нікополь",
+    "hu": "Nyikopol"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q42807",
+   "lat": 43.84,
+   "lon": 4.36,
+   "names": {
+    "en": "Nîmes",
+    "uk": "Нім",
+    "hu": "Nîmes"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q129259",
+   "lat": 43.32,
+   "lon": 21.9,
+   "names": {
+    "en": "Niš",
+    "uk": "Ниш",
+    "hu": "Niš"
+   },
+   "country": {
+    "en": "Serbia",
+    "uk": "Сербія",
+    "hu": "Szerbia"
+   }
+  },
+  {
+   "id": "Q1012831",
+   "lat": 37.01,
+   "lon": 37.8,
+   "names": {
+    "en": "Nizip",
+    "uk": "Nizip",
+    "hu": "Nizip"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q130191",
+   "lat": 52.63,
+   "lon": 1.29,
+   "names": {
+    "en": "Norwich",
+    "uk": "Норвіч",
+    "hu": "Norwich"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q41262",
+   "lat": 52.95,
+   "lon": -1.15,
+   "names": {
+    "en": "Nottingham",
+    "uk": "Ноттінгем",
+    "hu": "Nottingham"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q9733",
+   "lat": -22.27,
+   "lon": 166.45,
+   "names": {
+    "en": "Nouméa",
+    "uk": "Нумеа",
+    "hu": "Nouméa"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q6046",
+   "lat": 45.45,
+   "lon": 8.62,
+   "names": {
+    "en": "Novara",
+    "uk": "Новара",
+    "hu": "Novara"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q202453",
+   "lat": 43.15,
+   "lon": 20.52,
+   "names": {
+    "en": "Novi Pazar",
+    "uk": "Нові Пазар",
+    "hu": "Novi Pazar"
+   },
+   "country": {
+    "en": "Serbia",
+    "uk": "Сербія",
+    "hu": "Szerbia"
+   }
+  },
+  {
+   "id": "Q55630",
+   "lat": 45.26,
+   "lon": 19.83,
+   "names": {
+    "en": "Novi Sad",
+    "uk": "Новий Сад",
+    "hu": "Újvidék"
+   },
+   "country": {
+    "en": "Serbia",
+    "uk": "Сербія",
+    "hu": "Szerbia"
+   }
+  },
+  {
+   "id": "Q2090",
+   "lat": 49.45,
+   "lon": 11.08,
+   "names": {
+    "en": "Nuremberg",
+    "uk": "Нюрнберг",
+    "hu": "Nürnberg"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q1553052",
+   "lat": 37.08,
+   "lon": 41.22,
+   "names": {
+    "en": "Nusaybin",
+    "uk": "Нусайбін",
+    "hu": "Nusaybin"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q171223",
+   "lat": 47.95,
+   "lon": 21.72,
+   "names": {
+    "en": "Nyíregyháza",
+    "uk": "Ньїредьгаза",
+    "hu": "Nyíregyháza"
+   },
+   "country": {
+    "en": "Hungary",
+    "uk": "Угорщина",
+    "hu": "Magyarország"
+   }
+  },
+  {
+   "id": "Q293927",
+   "lat": 38.23,
+   "lon": 27.97,
+   "names": {
+    "en": "Ödemiş district",
+    "uk": "Одеміш",
+    "hu": "Ödemiş"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q1874",
+   "lat": 46.48,
+   "lon": 30.73,
+   "names": {
+    "en": "Odesa",
+    "uk": "Одеса",
+    "hu": "Odessza"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q2936",
+   "lat": 53.14,
+   "lon": 8.21,
+   "names": {
+    "en": "Oldenburg",
+    "uk": "Ольденбург",
+    "hu": "Oldenburg"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q81137",
+   "lat": 49.59,
+   "lon": 17.25,
+   "names": {
+    "en": "Olomouc",
+    "uk": "Оломоуць",
+    "hu": "Olomouc"
+   },
+   "country": {
+    "en": "Czech Republic",
+    "uk": "Чехія",
+    "hu": "Csehország"
+   }
+  },
+  {
+   "id": "Q82765",
+   "lat": 53.78,
+   "lon": 20.49,
+   "names": {
+    "en": "Olsztyn",
+    "uk": "Ольштин",
+    "hu": "Olsztyn"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q92212",
+   "lat": 50.67,
+   "lon": 17.92,
+   "names": {
+    "en": "Opole",
+    "uk": "Ополе",
+    "hu": "Opole"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q93358",
+   "lat": 47.07,
+   "lon": 21.92,
+   "names": {
+    "en": "Oradea",
+    "uk": "Орадя",
+    "hu": "Nagyvárad"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q487439",
+   "lat": 51.22,
+   "lon": 51.37,
+   "names": {
+    "en": "Oral",
+    "uk": "Уральськ",
+    "hu": "Oral"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q184539",
+   "lat": 40.98,
+   "lon": 37.88,
+   "names": {
+    "en": "Ordu",
+    "uk": "Орду",
+    "hu": "Ordu"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q25732",
+   "lat": 59.27,
+   "lon": 15.2,
+   "names": {
+    "en": "Örebro",
+    "uk": "Еребру",
+    "hu": "Örebro"
+   },
+   "country": {
+    "en": "Sweden",
+    "uk": "Швеція",
+    "hu": "Svédország"
+   }
+  },
+  {
+   "id": "Q6548",
+   "lat": 47.9,
+   "lon": 1.9,
+   "names": {
+    "en": "Orléans",
+    "uk": "Орлеан",
+    "hu": "Orléans"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q162548",
+   "lat": 49.95,
+   "lon": 82.62,
+   "names": {
+    "en": "Oskemen",
+    "uk": "Оскемен",
+    "hu": "Öszkemen"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q585",
+   "lat": 59.91,
+   "lon": 10.74,
+   "names": {
+    "en": "Oslo",
+    "uk": "Осло",
+    "hu": "Oslo"
+   },
+   "country": {
+    "en": "Norway",
+    "uk": "Норвегія",
+    "hu": "Norvégia"
+   }
+  },
+  {
+   "id": "Q181379",
+   "lat": 37.08,
+   "lon": 36.25,
+   "names": {
+    "en": "Osmaniye",
+    "uk": "Османіє",
+    "hu": "Osmaniye"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q2916",
+   "lat": 52.28,
+   "lon": 8.04,
+   "names": {
+    "en": "Osnabrück",
+    "uk": "Оснабрюк",
+    "hu": "Osnabrück"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q8385",
+   "lat": 49.84,
+   "lon": 18.29,
+   "names": {
+    "en": "Ostrava",
+    "uk": "Острава",
+    "hu": "Ostrava"
+   },
+   "country": {
+    "en": "Czech Republic",
+    "uk": "Чехія",
+    "hu": "Csehország"
+   }
+  },
+  {
+   "id": "Q47048",
+   "lat": 65.01,
+   "lon": 25.47,
+   "names": {
+    "en": "Oulu",
+    "uk": "Оулу",
+    "hu": "Oulu"
+   },
+   "country": {
+    "en": "Finland",
+    "uk": "Фінляндія",
+    "hu": "Finnország"
+   }
+  },
+  {
+   "id": "Q21414421",
+   "lat": 43.36,
+   "lon": -5.84,
+   "names": {
+    "en": "Oviedo",
+    "uk": "Ов'єдо",
+    "hu": "Oviedo City"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q34217",
+   "lat": 51.75,
+   "lon": -1.26,
+   "names": {
+    "en": "Oxford",
+    "uk": "Оксфорд",
+    "hu": "Oxford"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q2971",
+   "lat": 51.72,
+   "lon": 8.77,
+   "names": {
+    "en": "Paderborn",
+    "uk": "Падерборн",
+    "hu": "Paderborn"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q617",
+   "lat": 45.41,
+   "lon": 11.87,
+   "names": {
+    "en": "Padua",
+    "uk": "Падуя",
+    "hu": "Padova"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q2656",
+   "lat": 38.12,
+   "lon": 13.36,
+   "names": {
+    "en": "Palermo",
+    "uk": "Палермо",
+    "hu": "Palermo"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q8826",
+   "lat": 39.57,
+   "lon": 2.65,
+   "names": {
+    "en": "Palma",
+    "uk": "Пальма",
+    "hu": "Palma de Mallorca"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q90",
+   "lat": 48.86,
+   "lon": 2.35,
+   "names": {
+    "en": "Paris",
+    "uk": "Париж",
+    "hu": "Párizs"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q2683",
+   "lat": 44.8,
+   "lon": 10.33,
+   "names": {
+    "en": "Parma",
+    "uk": "Парма",
+    "hu": "Parma"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q509324",
+   "lat": 39.23,
+   "lon": 42.86,
+   "names": {
+    "en": "Patnos",
+    "uk": "Patnos",
+    "hu": "Patnos"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q133123",
+   "lat": 38.25,
+   "lon": 21.73,
+   "names": {
+    "en": "Patras",
+    "uk": "Патри",
+    "hu": "Pátra"
+   },
+   "country": {
+    "en": "Greece",
+    "uk": "Греція",
+    "hu": "Görögország"
+   }
+  },
+  {
+   "id": "Q486282",
+   "lat": 52.32,
+   "lon": 76.96,
+   "names": {
+    "en": "Pavlodar",
+    "uk": "Павлодар",
+    "hu": "Pavlodar"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q237206",
+   "lat": 48.52,
+   "lon": 35.87,
+   "names": {
+    "en": "Pavlohrad",
+    "uk": "Павлоград",
+    "hu": "Pavlohrad"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q45779",
+   "lat": 46.07,
+   "lon": 18.23,
+   "names": {
+    "en": "Pécs",
+    "uk": "Печ",
+    "hu": "Pécs"
+   },
+   "country": {
+    "en": "Hungary",
+    "uk": "Угорщина",
+    "hu": "Magyarország"
+   }
+  },
+  {
+   "id": "Q6730",
+   "lat": 42.7,
+   "lon": 2.89,
+   "names": {
+    "en": "Perpignan",
+    "uk": "Перпіньян",
+    "hu": "Perpignan"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q3437",
+   "lat": 43.11,
+   "lon": 12.39,
+   "names": {
+    "en": "Perugia",
+    "uk": "Перуджа",
+    "hu": "Perugia"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q2704",
+   "lat": 42.46,
+   "lon": 14.21,
+   "names": {
+    "en": "Pescara",
+    "uk": "Пескара",
+    "hu": "Pescara"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q172438",
+   "lat": 52.57,
+   "lon": -0.24,
+   "names": {
+    "en": "Peterborough",
+    "uk": "Пітерборо",
+    "hu": "Peterborough"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q488379",
+   "lat": 54.86,
+   "lon": 69.14,
+   "names": {
+    "en": "Petropavl",
+    "uk": "Петропавловськ",
+    "hu": "Petropavl"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q3046",
+   "lat": 48.89,
+   "lon": 8.7,
+   "names": {
+    "en": "Pforzheim",
+    "uk": "Пфорцгайм",
+    "hu": "Pforzheim"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q13329",
+   "lat": 45.05,
+   "lon": 9.7,
+   "names": {
+    "en": "Piacenza",
+    "uk": "П'яченца",
+    "hu": "Piacenza"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q58976",
+   "lat": 37.94,
+   "lon": 23.65,
+   "names": {
+    "en": "Piraeus",
+    "uk": "Пірей",
+    "hu": "Pireusz"
+   },
+   "country": {
+    "en": "Greece",
+    "uk": "Греція",
+    "hu": "Görögország"
+   }
+  },
+  {
+   "id": "Q187938",
+   "lat": 44.87,
+   "lon": 24.88,
+   "names": {
+    "en": "Pitești",
+    "uk": "Пітешть",
+    "hu": "Pitești"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q165420",
+   "lat": 43.41,
+   "lon": 24.62,
+   "names": {
+    "en": "Pleven",
+    "uk": "Плевен",
+    "hu": "Pleven"
+   },
+   "country": {
+    "en": "Bulgaria",
+    "uk": "Болгарія",
+    "hu": "Bulgária"
+   }
+  },
+  {
+   "id": "Q104725",
+   "lat": 52.55,
+   "lon": 19.7,
+   "names": {
+    "en": "Płock",
+    "uk": "Плоцьк",
+    "hu": "Płock"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q179585",
+   "lat": 44.94,
+   "lon": 26.02,
+   "names": {
+    "en": "Ploiești",
+    "uk": "Плоєшті",
+    "hu": "Ploiești"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q459",
+   "lat": 42.14,
+   "lon": 24.74,
+   "names": {
+    "en": "Plovdiv",
+    "uk": "Пловдив",
+    "hu": "Plovdiv"
+   },
+   "country": {
+    "en": "Bulgaria",
+    "uk": "Болгарія",
+    "hu": "Bulgária"
+   }
+  },
+  {
+   "id": "Q43382",
+   "lat": 50.37,
+   "lon": -4.14,
+   "names": {
+    "en": "Plymouth",
+    "uk": "Плімут",
+    "hu": "Plymouth"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q43453",
+   "lat": 49.74,
+   "lon": 13.38,
+   "names": {
+    "en": "Plzeň",
+    "uk": "Пльзень",
+    "hu": "Plzeň"
+   },
+   "country": {
+    "en": "Czech Republic",
+    "uk": "Чехія",
+    "hu": "Csehország"
+   }
+  },
+  {
+   "id": "Q23564",
+   "lat": 42.44,
+   "lon": 19.26,
+   "names": {
+    "en": "Podgorica",
+    "uk": "Подгориця",
+    "hu": "Podgorica"
+   },
+   "country": {
+    "en": "Montenegro",
+    "uk": "Чорногорія",
+    "hu": "Montenegró"
+   }
+  },
+  {
+   "id": "Q945388",
+   "lat": 39.58,
+   "lon": 32.15,
+   "names": {
+    "en": "Polatlı",
+    "uk": "Polatlı",
+    "hu": "Polatlı"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q156747",
+   "lat": 49.59,
+   "lon": 34.55,
+   "names": {
+    "en": "Poltava",
+    "uk": "Полтава",
+    "hu": "Poltava"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q36433",
+   "lat": 41.15,
+   "lon": -8.61,
+   "names": {
+    "en": "Porto",
+    "uk": "Порту",
+    "hu": "Porto"
+   },
+   "country": {
+    "en": "Portugal",
+    "uk": "Португалія",
+    "hu": "Portugália"
+   }
+  },
+  {
+   "id": "Q72259",
+   "lat": 50.81,
+   "lon": -1.09,
+   "names": {
+    "en": "Portsmouth",
+    "uk": "Портсмут",
+    "hu": "Portsmouth"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q1711",
+   "lat": 52.4,
+   "lon": 13.06,
+   "names": {
+    "en": "Potsdam",
+    "uk": "Потсдам",
+    "hu": "Potsdam"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q268",
+   "lat": 52.41,
+   "lon": 16.93,
+   "names": {
+    "en": "Poznań",
+    "uk": "Познань",
+    "hu": "Poznań"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q1085",
+   "lat": 50.09,
+   "lon": 14.42,
+   "names": {
+    "en": "Prague",
+    "uk": "Прага",
+    "hu": "Prága"
+   },
+   "country": {
+    "en": "Czech Republic",
+    "uk": "Чехія",
+    "hu": "Csehország"
+   }
+  },
+  {
+   "id": "Q13377",
+   "lat": 43.88,
+   "lon": 11.1,
+   "names": {
+    "en": "Prato",
+    "uk": "Прато",
+    "hu": "Prato"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q184090",
+   "lat": 53.76,
+   "lon": -2.7,
+   "names": {
+    "en": "Preston",
+    "uk": "Престон",
+    "hu": "Preston"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q25270",
+   "lat": 42.67,
+   "lon": 21.17,
+   "names": {
+    "en": "Pristina",
+    "uk": "Приштина",
+    "hu": "Pristina"
+   },
+   "country": {
+    "en": "Kosovo",
+    "uk": "Косово",
+    "hu": "Koszovó"
+   }
+  },
+  {
+   "id": "Q200061",
+   "lat": 42.23,
+   "lon": 20.74,
+   "names": {
+    "en": "Prizren",
+    "uk": "Призрен",
+    "hu": "Prizren"
+   },
+   "country": {
+    "en": "Kosovo",
+    "uk": "Косово",
+    "hu": "Koszovó"
+   }
+  },
+  {
+   "id": "Q104740",
+   "lat": 51.42,
+   "lon": 21.15,
+   "names": {
+    "en": "Radom",
+    "uk": "Радом",
+    "hu": "Radom"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q13364",
+   "lat": 44.42,
+   "lon": 12.2,
+   "names": {
+    "en": "Ravenna",
+    "uk": "Равенна",
+    "hu": "Ravenna"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q3050",
+   "lat": 51.62,
+   "lon": 7.2,
+   "names": {
+    "en": "Recklinghausen",
+    "uk": "Реклінггаузен",
+    "hu": "Recklinghausen"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q2978",
+   "lat": 49.02,
+   "lon": 12.08,
+   "names": {
+    "en": "Regensburg",
+    "uk": "Регенсбург",
+    "hu": "Regensburg"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q8471",
+   "lat": 38.11,
+   "lon": 15.65,
+   "names": {
+    "en": "Reggio Calabria",
+    "uk": "Реджо-Калабрія",
+    "hu": "Reggio Calabria"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q13360",
+   "lat": 44.7,
+   "lon": 10.63,
+   "names": {
+    "en": "Reggio Emilia",
+    "uk": "Реджо-нель-Емілія",
+    "hu": "Reggio Emilia"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q41876",
+   "lat": 49.27,
+   "lon": 4.03,
+   "names": {
+    "en": "Reims",
+    "uk": "Реймс",
+    "hu": "Reims"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q3097",
+   "lat": 51.18,
+   "lon": 7.19,
+   "names": {
+    "en": "Remscheid",
+    "uk": "Ремшайд",
+    "hu": "Remscheid"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q3085",
+   "lat": 48.48,
+   "lon": 9.22,
+   "names": {
+    "en": "Reutlingen",
+    "uk": "Ройтлінґен",
+    "hu": "Reutlingen"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q1764",
+   "lat": 64.15,
+   "lon": -21.93,
+   "names": {
+    "en": "Reykjavík",
+    "uk": "Рейк'явік",
+    "hu": "Reykjavík"
+   },
+   "country": {
+    "en": "Iceland",
+    "uk": "Ісландія",
+    "hu": "Izland"
+   }
+  },
+  {
+   "id": "Q43048",
+   "lat": 36.17,
+   "lon": 27.92,
+   "names": {
+    "en": "Rhodes",
+    "uk": "Родос",
+    "hu": "Rodosz"
+   },
+   "country": {
+    "en": "Greece",
+    "uk": "Греція",
+    "hu": "Görögország"
+   }
+  },
+  {
+   "id": "Q1773",
+   "lat": 56.95,
+   "lon": 24.11,
+   "names": {
+    "en": "Riga",
+    "uk": "Рига",
+    "hu": "Riga"
+   },
+   "country": {
+    "en": "Latvia",
+    "uk": "Латвія",
+    "hu": "Lettország"
+   }
+  },
+  {
+   "id": "Q1647",
+   "lat": 45.33,
+   "lon": 14.43,
+   "names": {
+    "en": "Rijeka",
+    "uk": "Рієка",
+    "hu": "Fiume"
+   },
+   "country": {
+    "en": "Croatia",
+    "uk": "Хорватія",
+    "hu": "Horvátország"
+   }
+  },
+  {
+   "id": "Q13369",
+   "lat": 44.06,
+   "lon": 12.57,
+   "names": {
+    "en": "Rimini",
+    "uk": "Ріміні",
+    "hu": "Rimini"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q156739",
+   "lat": 50.62,
+   "lon": 26.25,
+   "names": {
+    "en": "Rivne",
+    "uk": "Рівне",
+    "hu": "Rivne"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q201101",
+   "lat": 41.02,
+   "lon": 40.52,
+   "names": {
+    "en": "Rize",
+    "uk": "Ризе",
+    "hu": "Rize"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q220",
+   "lat": 41.89,
+   "lon": 12.48,
+   "names": {
+    "en": "Rome",
+    "uk": "Рим",
+    "hu": "Róma"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q2861",
+   "lat": 54.08,
+   "lon": 12.13,
+   "names": {
+    "en": "Rostock",
+    "uk": "Росток",
+    "hu": "Rostock"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q217039",
+   "lat": 53.43,
+   "lon": -1.36,
+   "names": {
+    "en": "Rotherham",
+    "uk": "Ротергем",
+    "hu": "Rotherham"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q30974",
+   "lat": 49.44,
+   "lon": 1.1,
+   "names": {
+    "en": "Rouen",
+    "uk": "Руан",
+    "hu": "Rouen"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q1008853",
+   "lat": 52.97,
+   "lon": 63.12,
+   "names": {
+    "en": "Rudny",
+    "uk": "Рудний",
+    "hu": "Rudny"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q160173",
+   "lat": 43.84,
+   "lon": 25.95,
+   "names": {
+    "en": "Ruse",
+    "uk": "Русе",
+    "hu": "Rusze"
+   },
+   "country": {
+    "en": "Bulgaria",
+    "uk": "Болгарія",
+    "hu": "Bulgária"
+   }
+  },
+  {
+   "id": "Q182521",
+   "lat": 41.54,
+   "lon": 45.01,
+   "names": {
+    "en": "Rustavi",
+    "uk": "Руставі",
+    "hu": "Rusztavi"
+   },
+   "country": {
+    "en": "Georgia",
+    "uk": "Грузія",
+    "hu": "Grúzia"
+   }
+  },
+  {
+   "id": "Q107094",
+   "lat": 50.08,
+   "lon": 18.5,
+   "names": {
+    "en": "Rybnik",
+    "uk": "Рибник",
+    "hu": "Rybnik"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q598",
+   "lat": 50.04,
+   "lon": 22,
+   "names": {
+    "en": "Rzeszów",
+    "uk": "Ряшів",
+    "hu": "Rzeszów"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q1724",
+   "lat": 49.23,
+   "lon": 7,
+   "names": {
+    "en": "Saarbrücken",
+    "uk": "Саарбрюккен",
+    "hu": "Saarbrücken"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q12258",
+   "lat": 41.55,
+   "lon": 2.11,
+   "names": {
+    "en": "Sabadell",
+    "uk": "Сабадель",
+    "hu": "Sabadell"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q47045",
+   "lat": -20.88,
+   "lon": 55.45,
+   "names": {
+    "en": "Saint-Denis",
+    "uk": "Сен-Дені",
+    "hu": "Saint-Denis"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q42716",
+   "lat": 45.43,
+   "lon": 4.39,
+   "names": {
+    "en": "Saint-Étienne",
+    "uk": "Сент-Етьєн",
+    "hu": "Saint-Étienne"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q316887",
+   "lat": -21.01,
+   "lon": 55.27,
+   "names": {
+    "en": "Saint-Paul",
+    "uk": "Сен-Поль",
+    "hu": "Saint-Paul"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q116442617",
+   "lat": 40.97,
+   "lon": -5.67,
+   "names": {
+    "en": "Salamanca",
+    "uk": "Salamanca City",
+    "hu": "Salamanca City"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q1083",
+   "lat": 40.68,
+   "lon": 14.76,
+   "names": {
+    "en": "Salerno",
+    "uk": "Салерно",
+    "hu": "Salerno"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q47952",
+   "lat": 53.48,
+   "lon": -2.29,
+   "names": {
+    "en": "Salford",
+    "uk": "Солфорд",
+    "hu": "Salford"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q1012935",
+   "lat": 38.48,
+   "lon": 28.14,
+   "names": {
+    "en": "Salihli",
+    "uk": "Саліхли",
+    "hu": "Salihli"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q34713",
+   "lat": 47.8,
+   "lon": 13.04,
+   "names": {
+    "en": "Salzburg",
+    "uk": "Зальцбург",
+    "hu": "Salzburg"
+   },
+   "country": {
+    "en": "Austria",
+    "uk": "Австрія",
+    "hu": "Ausztria"
+   }
+  },
+  {
+   "id": "Q3200",
+   "lat": 52.15,
+   "lon": 10.36,
+   "names": {
+    "en": "Salzgitter",
+    "uk": "Зальцґіттер",
+    "hu": "Salzgitter"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q840957",
+   "lat": 36.09,
+   "lon": 35.98,
+   "names": {
+    "en": "Samandağ",
+    "uk": "Самандаг",
+    "hu": "Samandağ"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q160450",
+   "lat": 41.29,
+   "lon": 36.33,
+   "names": {
+    "en": "Samsun",
+    "uk": "Самсун",
+    "hu": "Samsun"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q54898",
+   "lat": 28.49,
+   "lon": -16.32,
+   "names": {
+    "en": "San Cristóbal de La Laguna",
+    "uk": "Сан-Кристобаль-де-ла-Лагуна",
+    "hu": "San Cristóbal de La Laguna"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q1848",
+   "lat": 43.93,
+   "lon": 12.45,
+   "names": {
+    "en": "San Marino",
+    "uk": "Сан-Марино",
+    "hu": "San Marino"
+   },
+   "country": {
+    "en": "San Marino",
+    "uk": "Сан-Марино",
+    "hu": "San Marino"
+   }
+  },
+  {
+   "id": "Q651744",
+   "lat": 59.89,
+   "lon": 10.53,
+   "names": {
+    "en": "Sandvika",
+    "uk": "Саннвіка",
+    "hu": "Sandvika"
+   },
+   "country": {
+    "en": "Norway",
+    "uk": "Норвегія",
+    "hu": "Norvégia"
+   }
+  },
+  {
+   "id": "Q133118",
+   "lat": 37.16,
+   "lon": 38.79,
+   "names": {
+    "en": "Şanlıurfa",
+    "uk": "Шанлиурфа",
+    "hu": "Şanlıurfa"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q24014650",
+   "lat": 28.46,
+   "lon": -16.25,
+   "names": {
+    "en": "Santa Cruz de Tenerife",
+    "uk": "Santa Cruz de Tenerife",
+    "hu": "Santa Cruz de Tenerife"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q23992498",
+   "lat": 43.46,
+   "lon": -3.81,
+   "names": {
+    "en": "Santander",
+    "uk": "Santander City",
+    "hu": "Santander City"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q11194",
+   "lat": 43.86,
+   "lon": 18.41,
+   "names": {
+    "en": "Sarajevo",
+    "uk": "Сараєво",
+    "hu": "Szarajevó"
+   },
+   "country": {
+    "en": "Bosnia and Herzegovina",
+    "uk": "Боснія і Герцеговина",
+    "hu": "Bosznia-Hercegovina"
+   }
+  },
+  {
+   "id": "Q857107",
+   "lat": 41.17,
+   "lon": 29.05,
+   "names": {
+    "en": "Sarıyer",
+    "uk": "Сариєр",
+    "hu": "Sarıyer"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q13629",
+   "lat": 40.73,
+   "lon": 8.56,
+   "names": {
+    "en": "Sassari",
+    "uk": "Сассарі",
+    "hu": "Sassari"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q185332",
+   "lat": 47.79,
+   "lon": 22.89,
+   "names": {
+    "en": "Satu Mare",
+    "uk": "Сату-Маре",
+    "hu": "Szatmárnémeti"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q1709",
+   "lat": 53.63,
+   "lon": 11.41,
+   "names": {
+    "en": "Schwerin",
+    "uk": "Шверін",
+    "hu": "Schwerin"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q61944",
+   "lat": 50.41,
+   "lon": 80.23,
+   "names": {
+    "en": "Semey",
+    "uk": "Семей",
+    "hu": "Szemej"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q7525",
+   "lat": 44.6,
+   "lon": 33.52,
+   "names": {
+    "en": "Sevastopol",
+    "uk": "Севастополь",
+    "hu": "Szevasztopol"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q55893348",
+   "lat": 37.39,
+   "lon": -5.99,
+   "names": {
+    "en": "Seville",
+    "uk": "Seville city",
+    "hu": "Seville city"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q42448",
+   "lat": 53.38,
+   "lon": -1.47,
+   "names": {
+    "en": "Sheffield",
+    "uk": "Шеффілд",
+    "hu": "Sheffield"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q485496",
+   "lat": 42.3,
+   "lon": 69.6,
+   "names": {
+    "en": "Shymkent",
+    "uk": "Шимкент",
+    "hu": "Simkent"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q134712",
+   "lat": 55.93,
+   "lon": 23.32,
+   "names": {
+    "en": "Šiauliai",
+    "uk": "Шяуляй",
+    "hu": "Šiauliai"
+   },
+   "country": {
+    "en": "Lithuania",
+    "uk": "Литва",
+    "hu": "Litvánia"
+   }
+  },
+  {
+   "id": "Q83324",
+   "lat": 45.8,
+   "lon": 24.15,
+   "names": {
+    "en": "Sibiu",
+    "uk": "Сібіу",
+    "hu": "Nagyszeben"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q3167",
+   "lat": 50.88,
+   "lon": 8.02,
+   "names": {
+    "en": "Siegen",
+    "uk": "Зіген",
+    "hu": "Siegen"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q185084",
+   "lat": 37.84,
+   "lon": 41.95,
+   "names": {
+    "en": "Siirt",
+    "uk": "Сіїрт",
+    "hu": "Siirt"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q1012881",
+   "lat": 37.25,
+   "lon": 42.47,
+   "names": {
+    "en": "Silopi",
+    "uk": "Силопі",
+    "hu": "Silopi"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q19566",
+   "lat": 44.95,
+   "lon": 34.1,
+   "names": {
+    "en": "Simferopol",
+    "uk": "Сімферополь",
+    "hu": "Szimferopol"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q599416",
+   "lat": 42.03,
+   "lon": 35.15,
+   "names": {
+    "en": "Sinop",
+    "uk": "Сіноп",
+    "hu": "Sinop"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q107401",
+   "lat": 39.75,
+   "lon": 37.02,
+   "names": {
+    "en": "Sivas",
+    "uk": "Сівас",
+    "hu": "Sivas"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q216897",
+   "lat": 37.75,
+   "lon": 39.32,
+   "names": {
+    "en": "Siverek",
+    "uk": "Siverek",
+    "hu": "Siverek"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q384",
+   "lat": 42,
+   "lon": 21.43,
+   "names": {
+    "en": "Skopje",
+    "uk": "Скоп'є",
+    "hu": "Szkopje"
+   },
+   "country": {
+    "en": "North Macedonia",
+    "uk": "Північна Македонія",
+    "hu": "Észak-Macedónia"
+   }
+  },
+  {
+   "id": "Q178385",
+   "lat": 42.68,
+   "lon": 26.33,
+   "names": {
+    "en": "Sliven",
+    "uk": "Сливен",
+    "hu": "Szliven"
+   },
+   "country": {
+    "en": "Bulgaria",
+    "uk": "Болгарія",
+    "hu": "Bulgária"
+   }
+  },
+  {
+   "id": "Q211907",
+   "lat": 51.51,
+   "lon": -0.59,
+   "names": {
+    "en": "Slough",
+    "uk": "Слау",
+    "hu": "Slough"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q33581",
+   "lat": 48.85,
+   "lon": 37.61,
+   "names": {
+    "en": "Sloviansk",
+    "uk": "Слов'янськ",
+    "hu": "Szlovjanszk"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q472",
+   "lat": 42.7,
+   "lon": 23.32,
+   "names": {
+    "en": "Sofia",
+    "uk": "Софія",
+    "hu": "Szófia"
+   },
+   "country": {
+    "en": "Bulgaria",
+    "uk": "Болгарія",
+    "hu": "Bulgária"
+   }
+  },
+  {
+   "id": "Q397343",
+   "lat": 52.41,
+   "lon": -1.77,
+   "names": {
+    "en": "Solihull",
+    "uk": "Солігалл",
+    "hu": "Solihull"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q2942",
+   "lat": 51.17,
+   "lon": 7.08,
+   "names": {
+    "en": "Solingen",
+    "uk": "Золінген",
+    "hu": "Solingen"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q13124930",
+   "lat": 39.18,
+   "lon": 27.61,
+   "names": {
+    "en": "Soma",
+    "uk": "Сома",
+    "hu": "Soma (település)"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q105060",
+   "lat": 50.3,
+   "lon": 19.17,
+   "names": {
+    "en": "Sosnowiec",
+    "uk": "Сосновець",
+    "hu": "Sosnowiec"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q79848",
+   "lat": 50.91,
+   "lon": -1.4,
+   "names": {
+    "en": "Southampton",
+    "uk": "Саутгемптон",
+    "hu": "Southampton"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q203995",
+   "lat": 51.54,
+   "lon": 0.71,
+   "names": {
+    "en": "Southend-on-Sea",
+    "uk": "Саутенд-он-Сі",
+    "hu": "Southend-on-Sea"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q1663",
+   "lat": 43.51,
+   "lon": 16.44,
+   "names": {
+    "en": "Split",
+    "uk": "Спліт",
+    "hu": "Split"
+   },
+   "country": {
+    "en": "Croatia",
+    "uk": "Хорватія",
+    "hu": "Horvátország"
+   }
+  },
+  {
+   "id": "Q153647",
+   "lat": 53.45,
+   "lon": -2.75,
+   "names": {
+    "en": "St Helens",
+    "uk": "Сент-Геленс",
+    "hu": "St Helens"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q170415",
+   "lat": 42.43,
+   "lon": 25.63,
+   "names": {
+    "en": "Stara Zagora",
+    "uk": "Стара Загора",
+    "hu": "Sztara Zagora"
+   },
+   "country": {
+    "en": "Bulgaria",
+    "uk": "Болгарія",
+    "hu": "Bulgária"
+   }
+  },
+  {
+   "id": "Q26772333",
+   "lat": 58.97,
+   "lon": 5.73,
+   "names": {
+    "en": "Stavanger",
+    "uk": "Ставанґер",
+    "hu": "Stavanger"
+   },
+   "country": {
+    "en": "Norway",
+    "uk": "Норвегія",
+    "hu": "Norvégia"
+   }
+  },
+  {
+   "id": "Q1754",
+   "lat": 59.33,
+   "lon": 18.07,
+   "names": {
+    "en": "Stockholm",
+    "uk": "Стокгольм",
+    "hu": "Stockholm"
+   },
+   "country": {
+    "en": "Sweden",
+    "uk": "Швеція",
+    "hu": "Svédország"
+   }
+  },
+  {
+   "id": "Q134902",
+   "lat": 53,
+   "lon": -2.18,
+   "names": {
+    "en": "Stoke-on-Trent",
+    "uk": "Сток-он-Трент",
+    "hu": "Stoke-on-Trent"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q6602",
+   "lat": 48.57,
+   "lon": 7.75,
+   "names": {
+    "en": "Strasbourg",
+    "uk": "Страсбург",
+    "hu": "Strasbourg"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q1022",
+   "lat": 48.78,
+   "lon": 9.18,
+   "names": {
+    "en": "Stuttgart",
+    "uk": "Штутгарт",
+    "hu": "Stuttgart"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q170287",
+   "lat": 46.1,
+   "lon": 19.67,
+   "names": {
+    "en": "Subotica",
+    "uk": "Суботиця",
+    "hu": "Szabadka"
+   },
+   "country": {
+    "en": "Serbia",
+    "uk": "Сербія",
+    "hu": "Szerbia"
+   }
+  },
+  {
+   "id": "Q46400",
+   "lat": 47.65,
+   "lon": 26.26,
+   "names": {
+    "en": "Suceava",
+    "uk": "Сучава",
+    "hu": "Szucsáva"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q16897309",
+   "lat": 40.98,
+   "lon": 27.52,
+   "names": {
+    "en": "Süleymanpaşa",
+    "uk": "Süleymanpaşa",
+    "hu": "Süleymanpaşa"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q156752",
+   "lat": 50.91,
+   "lon": 34.8,
+   "names": {
+    "en": "Sumy",
+    "uk": "Суми",
+    "hu": "Szumi"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q188304",
+   "lat": 54.9,
+   "lon": -1.38,
+   "names": {
+    "en": "Sunderland",
+    "uk": "Сандерленд",
+    "hu": "Sunderland"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q23051",
+   "lat": 51.62,
+   "lon": -3.95,
+   "names": {
+    "en": "Swansea",
+    "uk": "Суонсі",
+    "hu": "Swansea"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q200942",
+   "lat": 51.56,
+   "lon": -1.78,
+   "names": {
+    "en": "Swindon",
+    "uk": "Свіндон",
+    "hu": "Swindon"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q13670",
+   "lat": 37.07,
+   "lon": 15.29,
+   "names": {
+    "en": "Syracuse",
+    "uk": "Сиракуза",
+    "hu": "Siracusa"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q393",
+   "lat": 53.42,
+   "lon": 14.56,
+   "names": {
+    "en": "Szczecin",
+    "uk": "Щецин",
+    "hu": "Szczecin"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q81581",
+   "lat": 46.25,
+   "lon": 20.17,
+   "names": {
+    "en": "Szeged",
+    "uk": "Сегед",
+    "hu": "Szeged"
+   },
+   "country": {
+    "en": "Hungary",
+    "uk": "Угорщина",
+    "hu": "Magyarország"
+   }
+  },
+  {
+   "id": "Q491102",
+   "lat": 45.02,
+   "lon": 78.37,
+   "names": {
+    "en": "Taldyqorğan",
+    "uk": "Талдикорган",
+    "hu": "Taldikorgan"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q1770",
+   "lat": 59.44,
+   "lon": 24.75,
+   "names": {
+    "en": "Tallinn",
+    "uk": "Таллінн",
+    "hu": "Tallinn"
+   },
+   "country": {
+    "en": "Estonia",
+    "uk": "Естонія",
+    "hu": "Észtország"
+   }
+  },
+  {
+   "id": "Q40840",
+   "lat": 61.5,
+   "lon": 23.76,
+   "names": {
+    "en": "Tampere",
+    "uk": "Тампере",
+    "hu": "Tampere"
+   },
+   "country": {
+    "en": "Finland",
+    "uk": "Фінляндія",
+    "hu": "Finnország"
+   }
+  },
+  {
+   "id": "Q13498",
+   "lat": 40.47,
+   "lon": 17.24,
+   "names": {
+    "en": "Taranto",
+    "uk": "Таранто",
+    "hu": "Taranto"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q486545",
+   "lat": 42.88,
+   "lon": 71.37,
+   "names": {
+    "en": "Taraz",
+    "uk": "Тараз",
+    "hu": "Taraz"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q186349",
+   "lat": 46.55,
+   "lon": 24.56,
+   "names": {
+    "en": "Târgu Mureș",
+    "uk": "Тирґу-Муреш",
+    "hu": "Marosvásárhely"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q106281",
+   "lat": 50.01,
+   "lon": 20.99,
+   "names": {
+    "en": "Tarnów",
+    "uk": "Тарнів",
+    "hu": "Tarnów"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q134287",
+   "lat": 36.92,
+   "lon": 34.9,
+   "names": {
+    "en": "Tarsus",
+    "uk": "Тарс",
+    "hu": "Tarsus"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q994",
+   "lat": 41.72,
+   "lon": 44.79,
+   "names": {
+    "en": "Tbilisi",
+    "uk": "Тбілісі",
+    "hu": "Tbiliszi"
+   },
+   "country": {
+    "en": "Georgia",
+    "uk": "Грузія",
+    "hu": "Grúzia"
+   }
+  },
+  {
+   "id": "Q576938",
+   "lat": 52.68,
+   "lon": -2.45,
+   "names": {
+    "en": "Telford",
+    "uk": "Телфорд (Англія)",
+    "hu": "Telford"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q1001104",
+   "lat": 50.05,
+   "lon": 72.96,
+   "names": {
+    "en": "Temirtau",
+    "uk": "Темиртау",
+    "hu": "Temirtau"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q8621",
+   "lat": 42.56,
+   "lon": 12.65,
+   "names": {
+    "en": "Terni",
+    "uk": "Терні",
+    "hu": "Terni"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q156743",
+   "lat": 49.57,
+   "lon": 25.6,
+   "names": {
+    "en": "Ternopil",
+    "uk": "Тернопіль",
+    "hu": "Ternopil"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q13939",
+   "lat": 41.56,
+   "lon": 2.01,
+   "names": {
+    "en": "Terrassa",
+    "uk": "Тарраса",
+    "hu": "Terrassa"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q17151",
+   "lat": 40.64,
+   "lon": 22.94,
+   "names": {
+    "en": "Thessaloniki",
+    "uk": "Салоніки",
+    "hu": "Szaloniki"
+   },
+   "country": {
+    "en": "Greece",
+    "uk": "Греція",
+    "hu": "Görögország"
+   }
+  },
+  {
+   "id": "Q83404",
+   "lat": 45.76,
+   "lon": 21.23,
+   "names": {
+    "en": "Timișoara",
+    "uk": "Тімішоара",
+    "hu": "Temesvár"
+   },
+   "country": {
+    "en": "Romania",
+    "uk": "Румунія",
+    "hu": "Románia"
+   }
+  },
+  {
+   "id": "Q19689",
+   "lat": 41.33,
+   "lon": 19.82,
+   "names": {
+    "en": "Tirana",
+    "uk": "Тирана",
+    "hu": "Tirana"
+   },
+   "country": {
+    "en": "Albania",
+    "uk": "Албанія",
+    "hu": "Albánia"
+   }
+  },
+  {
+   "id": "Q132572",
+   "lat": 46.85,
+   "lon": 29.63,
+   "names": {
+    "en": "Tiraspol",
+    "uk": "Тирасполь",
+    "hu": "Tiraszpol"
+   },
+   "country": {
+    "en": "Moldova",
+    "uk": "Молдова",
+    "hu": "Moldova"
+   }
+  },
+  {
+   "id": "Q183651",
+   "lat": 40.31,
+   "lon": 36.55,
+   "names": {
+    "en": "Tokat",
+    "uk": "Токат",
+    "hu": "Tokat"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q47554",
+   "lat": 53.01,
+   "lon": 18.6,
+   "names": {
+    "en": "Toruń",
+    "uk": "Торунь",
+    "hu": "Toruń"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q7880",
+   "lat": 43.6,
+   "lon": 1.44,
+   "names": {
+    "en": "Toulouse",
+    "uk": "Тулуза",
+    "hu": "Toulouse"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q288",
+   "lat": 47.39,
+   "lon": 0.69,
+   "names": {
+    "en": "Tours",
+    "uk": "Тур",
+    "hu": "Tours"
+   },
+   "country": {
+    "en": "France",
+    "uk": "Франція",
+    "hu": "Franciaország"
+   }
+  },
+  {
+   "id": "Q45301",
+   "lat": 41.01,
+   "lon": 39.72,
+   "names": {
+    "en": "Trabzon",
+    "uk": "Трабзон",
+    "hu": "Trabzon"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q3138",
+   "lat": 49.76,
+   "lon": 6.64,
+   "names": {
+    "en": "Trier",
+    "uk": "Трір",
+    "hu": "Trier"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q25804",
+   "lat": 63.44,
+   "lon": 10.4,
+   "names": {
+    "en": "Trondheim",
+    "uk": "Тронгейм",
+    "hu": "Trondheim"
+   },
+   "country": {
+    "en": "Norway",
+    "uk": "Норвегія",
+    "hu": "Norvégia"
+   }
+  },
+  {
+   "id": "Q17396881",
+   "lat": 38.5,
+   "lon": 27.71,
+   "names": {
+    "en": "Turgutlu",
+    "uk": "Тургутлу",
+    "hu": "Turgutlu"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q495",
+   "lat": 45.08,
+   "lon": 7.68,
+   "names": {
+    "en": "Turin",
+    "uk": "Турин",
+    "hu": "Torino"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q848638",
+   "lat": 43.3,
+   "lon": 68.27,
+   "names": {
+    "en": "Turkistan",
+    "uk": "Туркестан",
+    "hu": "Türkisztán"
+   },
+   "country": {
+    "en": "Kazakhstan",
+    "uk": "Казахстан",
+    "hu": "Kazahsztán"
+   }
+  },
+  {
+   "id": "Q38511",
+   "lat": 60.45,
+   "lon": 22.27,
+   "names": {
+    "en": "Turku",
+    "uk": "Турку",
+    "hu": "Turku"
+   },
+   "country": {
+    "en": "Finland",
+    "uk": "Фінляндія",
+    "hu": "Finnország"
+   }
+  },
+  {
+   "id": "Q174684",
+   "lat": 44.54,
+   "lon": 18.68,
+   "names": {
+    "en": "Tuzla",
+    "uk": "Тузла",
+    "hu": "Tuzla"
+   },
+   "country": {
+    "en": "Bosnia and Herzegovina",
+    "uk": "Боснія і Герцеговина",
+    "hu": "Bosznia-Hercegovina"
+   }
+  },
+  {
+   "id": "Q11977",
+   "lat": 50.12,
+   "lon": 18.99,
+   "names": {
+    "en": "Tychy",
+    "uk": "Тихи",
+    "hu": "Tychy"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q3012",
+   "lat": 48.4,
+   "lon": 9.99,
+   "names": {
+    "en": "Ulm",
+    "uk": "Ульм",
+    "hu": "Ulm"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q334985",
+   "lat": 41.13,
+   "lon": 37.29,
+   "names": {
+    "en": "Ünye",
+    "uk": "Ünye",
+    "hu": "Ünye"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q25286",
+   "lat": 59.85,
+   "lon": 17.64,
+   "names": {
+    "en": "Uppsala",
+    "uk": "Уппсала",
+    "hu": "Uppsala"
+   },
+   "country": {
+    "en": "Sweden",
+    "uk": "Швеція",
+    "hu": "Svédország"
+   }
+  },
+  {
+   "id": "Q189134",
+   "lat": 38.68,
+   "lon": 29.4,
+   "names": {
+    "en": "Uşak",
+    "uk": "Ушак",
+    "hu": "Uşak"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q156711",
+   "lat": 48.62,
+   "lon": 22.3,
+   "names": {
+    "en": "Uzhhorod",
+    "uk": "Ужгород",
+    "hu": "Ungvár"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q1844",
+   "lat": 47.14,
+   "lon": 9.52,
+   "names": {
+    "en": "Vaduz",
+    "uk": "Вадуц",
+    "hu": "Vaduz"
+   },
+   "country": {
+    "en": "Liechtenstein",
+    "uk": "Ліхтенштейн",
+    "hu": "Liechtenstein"
+   }
+  },
+  {
+   "id": "Q24017120",
+   "lat": 39.46,
+   "lon": -0.35,
+   "names": {
+    "en": "Valencia",
+    "uk": "City of Valencia",
+    "hu": "City of Valencia"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q31925679",
+   "lat": 41.65,
+   "lon": -4.73,
+   "names": {
+    "en": "Valladolid",
+    "uk": "Valladolid city",
+    "hu": "Valladolid city"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q23800",
+   "lat": 35.9,
+   "lon": 14.51,
+   "names": {
+    "en": "Valletta",
+    "uk": "Валлетта",
+    "hu": "Valletta"
+   },
+   "country": {
+    "en": "Malta",
+    "uk": "Мальта",
+    "hu": "Málta"
+   }
+  },
+  {
+   "id": "Q83061",
+   "lat": 38.5,
+   "lon": 43.42,
+   "names": {
+    "en": "Van",
+    "uk": "Ван",
+    "hu": "Van"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q127623",
+   "lat": 60.29,
+   "lon": 25.04,
+   "names": {
+    "en": "Vantaa",
+    "uk": "Вантаа",
+    "hu": "Vantaa"
+   },
+   "country": {
+    "en": "Finland",
+    "uk": "Фінляндія",
+    "hu": "Finnország"
+   }
+  },
+  {
+   "id": "Q6506",
+   "lat": 43.21,
+   "lon": 27.91,
+   "names": {
+    "en": "Varna",
+    "uk": "Варна",
+    "hu": "Várna"
+   },
+   "country": {
+    "en": "Bulgaria",
+    "uk": "Болгарія",
+    "hu": "Bulgária"
+   }
+  },
+  {
+   "id": "Q25412",
+   "lat": 59.62,
+   "lon": 16.54,
+   "names": {
+    "en": "Västerås",
+    "uk": "Вестерос",
+    "hu": "Västerås"
+   },
+   "country": {
+    "en": "Sweden",
+    "uk": "Швеція",
+    "hu": "Svédország"
+   }
+  },
+  {
+   "id": "Q641",
+   "lat": 45.44,
+   "lon": 12.33,
+   "names": {
+    "en": "Venice",
+    "uk": "Венеція",
+    "hu": "Velence"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q2028",
+   "lat": 45.44,
+   "lon": 10.99,
+   "names": {
+    "en": "Verona",
+    "uk": "Верона",
+    "hu": "Verona"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q6537",
+   "lat": 45.55,
+   "lon": 11.55,
+   "names": {
+    "en": "Vicenza",
+    "uk": "Віченца",
+    "hu": "Vicenza"
+   },
+   "country": {
+    "en": "Italy",
+    "uk": "Італія",
+    "hu": "Olaszország"
+   }
+  },
+  {
+   "id": "Q1741",
+   "lat": 48.21,
+   "lon": 16.37,
+   "names": {
+    "en": "Vienna",
+    "uk": "Відень",
+    "hu": "Bécs"
+   },
+   "country": {
+    "en": "Austria",
+    "uk": "Австрія",
+    "hu": "Ausztria"
+   }
+  },
+  {
+   "id": "Q216",
+   "lat": 54.69,
+   "lon": 25.28,
+   "names": {
+    "en": "Vilnius",
+    "uk": "Вільнюс",
+    "hu": "Vilnius"
+   },
+   "country": {
+    "en": "Lithuania",
+    "uk": "Литва",
+    "hu": "Litvánia"
+   }
+  },
+  {
+   "id": "Q157144",
+   "lat": 49.24,
+   "lon": 28.47,
+   "names": {
+    "en": "Vinnytsia",
+    "uk": "Вінниця",
+    "hu": "Vinnicja"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q497731",
+   "lat": 37.23,
+   "lon": 39.77,
+   "names": {
+    "en": "Viranşehir",
+    "uk": "Viranşehir",
+    "hu": "Viranşehir"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q110732",
+   "lat": 50.77,
+   "lon": 16.28,
+   "names": {
+    "en": "Wałbrzych",
+    "uk": "Валбжих",
+    "hu": "Wałbrzych"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q215733",
+   "lat": 53.39,
+   "lon": -2.6,
+   "names": {
+    "en": "Warrington",
+    "uk": "Воррінгтон",
+    "hu": "Warrington"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q270",
+   "lat": 52.23,
+   "lon": 21.01,
+   "names": {
+    "en": "Warsaw",
+    "uk": "Варшава",
+    "hu": "Varsó"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q1721",
+   "lat": 50.08,
+   "lon": 8.24,
+   "names": {
+    "en": "Wiesbaden",
+    "uk": "Вісбаден",
+    "hu": "Wiesbaden"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q208143",
+   "lat": 53.54,
+   "lon": -2.63,
+   "names": {
+    "en": "Wigan",
+    "uk": "Віган",
+    "hu": "Wigan"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q9125",
+   "lat": 47.5,
+   "lon": 8.73,
+   "names": {
+    "en": "Winterthur",
+    "uk": "Вінтертур",
+    "hu": "Winterthur"
+   },
+   "country": {
+    "en": "Switzerland",
+    "uk": "Швейцарія",
+    "hu": "Svájc"
+   }
+  },
+  {
+   "id": "Q3764",
+   "lat": 51.43,
+   "lon": 7.33,
+   "names": {
+    "en": "Witten",
+    "uk": "Віттен",
+    "hu": "Witten"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q106681",
+   "lat": 52.65,
+   "lon": 19.05,
+   "names": {
+    "en": "Włocławek",
+    "uk": "Влоцлавек",
+    "hu": "Włocławek"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q3014",
+   "lat": 52.42,
+   "lon": 10.79,
+   "names": {
+    "en": "Wolfsburg",
+    "uk": "Вольфсбург",
+    "hu": "Wolfsburg"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q126269",
+   "lat": 52.58,
+   "lon": -2.13,
+   "names": {
+    "en": "Wolverhampton",
+    "uk": "Вулвергемптон",
+    "hu": "Wolverhampton"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q1646181",
+   "lat": 52.19,
+   "lon": -2.22,
+   "names": {
+    "en": "Worcester",
+    "uk": "Вустер",
+    "hu": "Worcester"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q843868",
+   "lat": 53.05,
+   "lon": -3.01,
+   "names": {
+    "en": "Wrexham County Borough",
+    "uk": "Рексем",
+    "hu": "Wrexham County Borough"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q1799",
+   "lat": 51.11,
+   "lon": 17.03,
+   "names": {
+    "en": "Wrocław",
+    "uk": "Вроцлав",
+    "hu": "Wrocław"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q2107",
+   "lat": 51.27,
+   "lon": 7.18,
+   "names": {
+    "en": "Wuppertal",
+    "uk": "Вупперталь",
+    "hu": "Wuppertal"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q2999",
+   "lat": 49.79,
+   "lon": 9.93,
+   "names": {
+    "en": "Würzburg",
+    "uk": "Вюрцбург",
+    "hu": "Würzburg"
+   },
+   "country": {
+    "en": "Germany",
+    "uk": "Німеччина",
+    "hu": "Németország"
+   }
+  },
+  {
+   "id": "Q80349557",
+   "lat": 43.55,
+   "lon": -5.66,
+   "names": {
+    "en": "Xixón",
+    "uk": "Xixón City",
+    "hu": "Xixón City"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q205942",
+   "lat": 40.66,
+   "lon": 29.27,
+   "names": {
+    "en": "Yalova",
+    "uk": "Ялова",
+    "hu": "Yalova"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q33345",
+   "lat": 45.2,
+   "lon": 33.36,
+   "names": {
+    "en": "Yevpatoriya",
+    "uk": "Євпаторія",
+    "hu": "Jevpatorija"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q42462",
+   "lat": 53.95,
+   "lon": -1.08,
+   "names": {
+    "en": "York",
+    "uk": "Йорк",
+    "hu": "York"
+   },
+   "country": {
+    "en": "United Kingdom",
+    "uk": "Сполучене Королівство",
+    "hu": "Egyesült Királyság"
+   }
+  },
+  {
+   "id": "Q210292",
+   "lat": 39.82,
+   "lon": 34.81,
+   "names": {
+    "en": "Yozgat",
+    "uk": "Йозгат",
+    "hu": "Yozgat"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q2176882",
+   "lat": 37.57,
+   "lon": 44.28,
+   "names": {
+    "en": "Yüksekova district",
+    "uk": "Yüksekova district",
+    "hu": "Yüksekova district"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q103892",
+   "lat": 50.3,
+   "lon": 18.78,
+   "names": {
+    "en": "Zabrze",
+    "uk": "Забже",
+    "hu": "Zabrze"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q1435",
+   "lat": 45.81,
+   "lon": 15.98,
+   "names": {
+    "en": "Zagreb",
+    "uk": "Загреб",
+    "hu": "Zágráb"
+   },
+   "country": {
+    "en": "Croatia",
+    "uk": "Хорватія",
+    "hu": "Horvátország"
+   }
+  },
+  {
+   "id": "Q157835",
+   "lat": 47.85,
+   "lon": 35.12,
+   "names": {
+    "en": "Zaporizhzhia",
+    "uk": "Запоріжжя",
+    "hu": "Zaporizzsja"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q31926034",
+   "lat": 41.66,
+   "lon": -0.88,
+   "names": {
+    "en": "Zaragoza",
+    "uk": "Сарагоса",
+    "hu": "Zaragoza"
+   },
+   "country": {
+    "en": "Spain",
+    "uk": "Іспанія",
+    "hu": "Spanyolország"
+   }
+  },
+  {
+   "id": "Q184046",
+   "lat": 44.2,
+   "lon": 17.9,
+   "names": {
+    "en": "Zenica",
+    "uk": "Зениця",
+    "hu": "Zenica"
+   },
+   "country": {
+    "en": "Bosnia and Herzegovina",
+    "uk": "Боснія і Герцеговина",
+    "hu": "Bosznia-Hercegovina"
+   }
+  },
+  {
+   "id": "Q156713",
+   "lat": 50.25,
+   "lon": 28.66,
+   "names": {
+    "en": "Zhytomyr",
+    "uk": "Житомир",
+    "hu": "Zsitomir"
+   },
+   "country": {
+    "en": "Ukraine",
+    "uk": "Україна",
+    "hu": "Ukrajna"
+   }
+  },
+  {
+   "id": "Q104720",
+   "lat": 51.94,
+   "lon": 15.51,
+   "names": {
+    "en": "Zielona Góra",
+    "uk": "Зелена Гура",
+    "hu": "Zielona Góra"
+   },
+   "country": {
+    "en": "Poland",
+    "uk": "Польща",
+    "hu": "Lengyelország"
+   }
+  },
+  {
+   "id": "Q187895",
+   "lat": 41.45,
+   "lon": 31.78,
+   "names": {
+    "en": "Zonguldak",
+    "uk": "Зонґулдак",
+    "hu": "Zonguldak"
+   },
+   "country": {
+    "en": "Turkey",
+    "uk": "Туреччина",
+    "hu": "Törökország"
+   }
+  },
+  {
+   "id": "Q72",
+   "lat": 47.37,
+   "lon": 8.54,
+   "names": {
+    "en": "Zurich",
+    "uk": "Цюрих",
+    "hu": "Zürich"
+   },
+   "country": {
+    "en": "Switzerland",
+    "uk": "Швейцарія",
+    "hu": "Svájc"
+   }
+  }
+ ]
+}

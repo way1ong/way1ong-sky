@@ -1,0 +1,121 @@
+{
+  "source": {
+    "planets": {
+      "title": "NASA Planetary Fact Sheet \u2014 Metric",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+      "updated": "13 November 2026",
+      "read": "2026-11-24"
+    },
+    "notes": {
+      "title": "NASA Planetary Fact Sheet Notes",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/planetfact_notes.html",
+      "updated": "20 December 2021",
+      "read": "2026-11-24"
+    },
+    "sun": {
+      "title": "NASA Sun Fact Sheet",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html",
+      "updated": "9 May 2024",
+      "read": "2026-11-24"
+    }
+  },
+  "planets": {
+    "mercury": {
+      "massE24kg": 0.33,
+      "gravity": 3.7,
+      "dayHours": 4222.6,
+      "yearDays": 88.0,
+      "sunDistanceMillionKm": 57.9,
+      "meanTempC": 167.0,
+      "moons": 0,
+      "rings": false
+    },
+    "venus": {
+      "massE24kg": 4.87,
+      "gravity": 8.9,
+      "dayHours": 2802.0,
+      "yearDays": 224.7,
+      "sunDistanceMillionKm": 108.2,
+      "meanTempC": 464.0,
+      "moons": 0,
+      "rings": false
+    },
+    "earth": {
+      "massE24kg": 5.97,
+      "gravity": 9.8,
+      "dayHours": 24.0,
+      "yearDays": 365.2,
+      "sunDistanceMillionKm": 149.6,
+      "meanTempC": 15.0,
+      "moons": 1,
+      "rings": false
+    },
+    "mars": {
+      "massE24kg": 0.642,
+      "gravity": 3.7,
+      "dayHours": 24.7,
+      "yearDays": 687.0,
+      "sunDistanceMillionKm": 228.0,
+      "meanTempC": -65.0,
+      "moons": 2,
+      "rings": false
+    },
+    "jupiter": {
+      "massE24kg": 1898.0,
+      "gravity": 23.1,
+      "dayHours": 9.9,
+      "yearDays": 4331.0,
+      "sunDistanceMillionKm": 778.5,
+      "meanTempC": -110.0,
+      "moons": 95,
+      "rings": true
+    },
+    "saturn": {
+      "massE24kg": 568.0,
+      "gravity": 9.0,
+      "dayHours": 10.7,
+      "yearDays": 10747.0,
+      "sunDistanceMillionKm": 1432.0,
+      "meanTempC": -140.0,
+      "moons": 274,
+      "rings": true
+    },
+    "uranus": {
+      "massE24kg": 86.8,
+      "gravity": 8.7,
+      "dayHours": 17.2,
+      "yearDays": 30589.0,
+      "sunDistanceMillionKm": 2867.0,
+      "meanTempC": -195.0,
+      "moons": 28,
+      "rings": true
+    },
+    "neptune": {
+      "massE24kg": 102.0,
+      "gravity": 11.0,
+      "dayHours": 16.1,
+      "yearDays": 59800.0,
+      "sunDistanceMillionKm": 4515.0,
+      "meanTempC": -200.0,
+      "moons": 16,
+      "rings": true
+    }
+  },
+  "moon": {
+    "massE24kg": 0.073,
+    "gravity": 1.6,
+    "dayHours": 708.7,
+    "orbitDays": 27.3,
+    "earthDistanceMillionKm": 0.384,
+    "meanTempC": -20.0
+  },
+  "sun": {
+    "radiusToEarth": 109.2,
+    "massToEarth": 332900,
+    "gravity": 274.0,
+    "gravityToEarth": 28.0,
+    "rotationHours": 609.12,
+    "rotationAtLatitudeDeg": 16,
+    "effectiveTempK": 5772
+  }
+}

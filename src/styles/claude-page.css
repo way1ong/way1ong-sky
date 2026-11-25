@@ -1,0 +1,11 @@
+/* Only for the claude.ai test page (scripts/claude-page.mjs). The page there may be shown in a light look;
+   space stays dark in both, so the single dark palette of tokens.css is said once more for either choice. */
+:root[data-theme='dark'],
+:root[data-theme='light'] {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}

@@ -1,0 +1,59 @@
+/* Every colour of the screen lives here. Space is dark by day and by night: one theme. */
+:root {
+  color-scheme: dark;
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --bg: #05070d;
+  --panel: rgb(14 19 31 / 0.86);
+  --surface: #131a2a;
+  --text: #eef2fb;
+  --muted: #aab4cc;
+  --line: #5d6b8c;
+  --accent: #ffcf6b;
+  --on-accent: #1b1405;
+  --focus: #ffcf6b;
+  --backdrop: rgb(0 0 0 / 0.6);
+  --shadow: 0 6px 18px rgb(0 0 0 / 0.55);
+
+  /* The flight: the lines of the orbits, the Sun's glow, the tint of Saturn's rings, how dim the starry backdrop is. */
+  --orbit: #8fa3c8;
+  --glow: #ffd28a;
+  --ring-tint: #d8d0c0;
+  --backdrop-dim: #9a9a9a;
+
+  /* The sky from a place. */
+  --sky-night: #060a16;
+  --sky-day: #2c5d94;
+  --ground: #0d1410;
+  --horizon: #6f8a6a;
+  --star: #f4f7ff;
+  --figure: #5f7fb8;
+  --figure-name: #8fa9d8;
+  --sun: #ffd76a;
+  --moon: #e8e6dc;
+  --planet: #ffb58a;
+}
+
+/* Night mode of the sky map: everything in dim red, which does not spoil eyes used to the dark. */
+:root[data-night] {
+  --bg: #0a0303;
+  --panel: rgb(24 7 5 / 0.88);
+  --surface: #1c0806;
+  --text: #ff7a6b;
+  --muted: #d9675a;
+  --line: #7a2f28;
+  --accent: #ff9a85;
+  --on-accent: #1a0503;
+  --focus: #ff9a85;
+
+  --sky-night: #0a0303;
+  --sky-day: #2a0d0a;
+  --ground: #140504;
+  --horizon: #8a3d33;
+  --star: #ff8f80;
+  --figure: #7a2f28;
+  --figure-name: #c8584b;
+  --sun: #ff9a85;
+  --moon: #f08576;
+  --planet: #e86a5a;
+}
