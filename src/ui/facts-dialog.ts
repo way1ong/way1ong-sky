@@ -9,6 +9,8 @@ import { cardBadges, cardRows } from './facts-text.ts';
 import { fmt, type Dict } from './i18n.ts';
 import { photoUrl } from './photos.ts';
 import { missionName } from './site-text.ts';
+import { sizeFigure } from './size-figure.ts';
+import { youSection } from './you-section.ts';
 
 const link = (url: string, text: string) => h('a', { href: url, rel: 'noopener' }, text);
 
@@ -60,8 +62,10 @@ export function createFactsDialog(): { el: HTMLDialogElement; open(d: Dict, lang
           badges.length > 0 ? most : null,
           picture,
           h('p', { class: 'fact__about' }, d.card.about[id]),
+          sizeFigure(d, lang, id),
           landings,
           list,
+          youSection(d, lang, id),
           h('p', { class: 'fact__source' }, fmt(d.card.source, { updated: dayOf(lang, id === 'sun' ? FACT_SOURCES.sun.updated : FACT_SOURCES.planets.updated), date: shown })),
           h('p', { class: 'fact__source' }, source, ' · ', link(FACT_SOURCES.notes.url, d.card.notesLink), ' · ', link(DESCRIPTION_PAGES[id][0] as string, d.card.aboutSource)),
           h('div', { class: 'dialog__actions' }, close),

@@ -167,7 +167,27 @@
       "neptune": "Neptune, from the last whole-planet images of NASA’s Voyager 2, taken 4 days and 20 hours before its closest approach. The Great Dark Spot is in view."
     },
     "photoBy": "Photo: {credit}",
-    "photoAlt": "Photo: {name}"
+    "photoAlt": "Photo: {name}",
+    "you": {
+      "title": "What if you were here?",
+      "intro": "Enter your age and weight. They stay on this device: the program neither keeps nor sends them.",
+      "age": "Your age, years",
+      "weight": "Your weight, kg",
+      "years": {
+        "one": "By the years here you would be {n} year old.",
+        "other": "By the years here you would be {n} years old."
+      },
+      "scale": "A scale would show {n} kg.",
+      "giant": "The weight is worked out for the level where the pressure is as at the Earth’s surface."
+    },
+    "size": {
+      "earth": "Beside the Earth",
+      "moon": "Beside the Moon",
+      "bigger": "Its diameter is {n} times the Earth’s.",
+      "smaller": "Its diameter is {percent}% of the Earth’s.",
+      "earthVsMoon": "The Earth’s diameter is {n} times the Moon’s.",
+      "arc": "The whole body does not fit into the drawing: only its edge is seen."
+    }
   },
   "keys": "Arrow keys turn the view, plus and minus change the distance.",
   "settings": {

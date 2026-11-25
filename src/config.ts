@@ -119,6 +119,12 @@ export const SKY = {
    */
   tonight: { darkSunAltitude: -6, leastAltitude: 5, stepMinutes: 10, eyeMagnitude: 5 },
   /**
+   * "What if you were here?" in a body's card (C; the owner's decision of 25.11): the greatest age and
+   * weight taken as typed in earnest; and the drawing of two bodies to one scale — the smaller is never
+   * under `leastPx`, the larger fills at most `mostShare` of the drawing's height.
+   */
+  you: { ageMost: 130, weightMostKg: 500, drawing: { leastPx: 3, mostShare: 0.8 } },
+  /**
    * "Events of the year" (C; the owner's decision of 25.11): what is listed and when two planets count as
    * meeting. `days` — how far ahead of the moment shown; `closeDeg` — two planets are "side by side" when
    * at their nearest they stand closer than this; `sunClearDeg` — and both at least this far from the Sun,

@@ -167,7 +167,27 @@
       "neptune": "A Neptunusz a NASA Voyager–2 űrszondájának utolsó, az egész bolygót mutató felvételeiből, 4 nappal és 20 órával a legnagyobb megközelítés előtt. Látszik a Nagy Sötét Folt."
     },
     "photoBy": "Fotó: {credit}",
-    "photoAlt": "Fotó: {name}"
+    "photoAlt": "Fotó: {name}",
+    "you": {
+      "title": "És ha Ön itt lenne?",
+      "intro": "Adja meg életkorát és testsúlyát. Ezek ezen az eszközön maradnak: a program nem tárolja és nem küldi el őket.",
+      "age": "Az Ön életkora, év",
+      "weight": "Az Ön testsúlya, kg",
+      "years": {
+        "one": "Az itteni évek szerint Ön {n} éves lenne.",
+        "other": "Az itteni évek szerint Ön {n} éves lenne."
+      },
+      "scale": "A mérleg {n} kg-ot mutatna.",
+      "giant": "A súlyt arra a szintre számoltuk, ahol a nyomás akkora, mint a Föld felszínén."
+    },
+    "size": {
+      "earth": "A Föld mellett",
+      "moon": "A Hold mellett",
+      "bigger": "Átmérője a Földének {n}-szerese.",
+      "smaller": "Átmérője a Földének {percent}%-a.",
+      "earthVsMoon": "A Föld átmérője a Holdénak {n}-szerese.",
+      "arc": "Az egész égitest nem fér rá a rajzra: csak a széle látszik."
+    }
   },
   "keys": "A nyílbillentyűk forgatják a nézetet, a plusz és a mínusz a távolságot változtatja.",
   "settings": {
