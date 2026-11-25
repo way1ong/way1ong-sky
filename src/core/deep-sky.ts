@@ -100,6 +100,20 @@ export function deepAt(x: number, y: number, look: Look, frame: Frame, turn: Sky
   return best?.o ?? null;
 }
 
+/** How far a point of the screen is from where a direction of the sky is drawn, CSS px; Infinity — it is not drawn. */
+export function screenGap(x: number, y: number, look: Look, frame: Frame, sky: Vec3): number {
+  const p = project(look, frame, sky);
+  return p ? Math.hypot(p.x - x, p.y - y) : Infinity;
+}
+
+/**
+ * A touch in reach of both an object's mark and a body's (a planet passing a cluster): the one whose middle
+ * the finger is nearer to is meant. `body` — where the body stands in the sky of the place.
+ */
+export function deepNearerThanBody(x: number, y: number, look: Look, frame: Frame, turn: SkyTurn, o: DeepObject, body: Vec3): boolean {
+  return screenGap(x, y, look, frame, toSky(turn, o.at)) < screenGap(x, y, look, frame, body);
+}
+
 /** Where it stands at the moment shown: height, degrees, and the point of the compass. */
 export function deepNow(o: DeepObject, turn: SkyTurn): { altitude: number; compass: ReturnType<typeof compassPoint> } {
   const seen = altAz(toSky(turn, o.at));

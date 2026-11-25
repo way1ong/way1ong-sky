@@ -334,9 +334,10 @@ for (const [width, height] of SIZES) {
             await page.mouse.move(room.x + (turn[0] * room.w) / 2, room.y + (turn[1] * room.h) / 2, { steps: 6 });
             await page.mouse.up();
           }
-          for (let gy = -1.8; gy <= 1.8; gy += 0.3) {
-            for (let gx = -1.8; gx <= 1.8; gx += 0.3) {
-              await page.mouse.click(room.x + gx * room.w, room.y + gy * room.h);
+          // Whole steps: with steps of 0.3 the sum misses the last row and the last column.
+          for (let row = -6; row <= 6; row++) {
+            for (let column = -6; column <= 6; column++) {
+              await page.mouse.click(room.x + column * 0.3 * room.w, room.y + row * 0.3 * room.h);
               if (await deep.count()) break search;
               if (await page.locator('dialog[open]').count()) await closeDialog(page);
               // A star's card lies over the sky (over most of it on a small phone): it is put away, or the

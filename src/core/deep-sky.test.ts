@@ -4,8 +4,8 @@ import { SKY } from '../config.ts';
 import en from '../i18n/en.json';
 import hu from '../i18n/hu.json';
 import uk from '../i18n/uk.json';
-import { DEEP, DEEP_KINDS, DEEP_VIEWS, deepAt, deepBestEvening, deepById, deepIn, deepNamed, deepNow, deepOverPlace, messierName } from './deep-sky.ts';
-import { project, type Frame, type Look } from './dome.ts';
+import { DEEP, DEEP_KINDS, DEEP_VIEWS, deepAt, deepBestEvening, deepById, deepIn, deepNamed, deepNearerThanBody, deepNow, deepOverPlace, messierName, screenGap } from './deep-sky.ts';
+import { project, skyDirection, type Frame, type Look } from './dome.ts';
 import { altAz, skyTurn, toSky } from './sky.ts';
 import { STARS } from './stars.ts';
 import { length } from './vec.ts';
@@ -136,6 +136,32 @@ describe('a touch on the map', () => {
       const p = project(down, frame, at);
       if (p) expect(deepAt(p.x, p.y, down, frame, turn)?.id, o.id).not.toBe(o.id);
     }
+  });
+});
+
+describe('a planet beside a cluster (Uranus by the Pleiades in 2026)', () => {
+  const turn = skyTurn(budapest, new Date('2026-11-25T21:00:00Z'));
+  const pleiades = deepById('m45') as (typeof DEEP)[number];
+  const cluster = toSky(turn, pleiades.at);
+  const seen = altAz(cluster);
+  const look: Look = { azimuth: seen.azimuth, altitude: seen.altitude, fov: 100 };
+  const at = project(look, frame, cluster) as { x: number; y: number };
+  // A body a little to the side of the cluster: both marks are in reach of one finger.
+  const beside = skyDirection(seen.azimuth + 3, seen.altitude);
+  const planet = project(look, frame, beside) as { x: number; y: number };
+
+  it('the two marks stand a finger apart or less', () => {
+    expect(Math.hypot(planet.x - at.x, planet.y - at.y)).toBeLessThan(SKY.deep.reachPx);
+    expect(screenGap(at.x, at.y, look, frame, cluster)).toBeCloseTo(0, 6);
+  });
+
+  it('a touch on the cluster means the cluster, a touch on the planet — the planet', () => {
+    expect(deepNearerThanBody(at.x, at.y, look, frame, turn, pleiades, beside)).toBe(true);
+    expect(deepNearerThanBody(planet.x, planet.y, look, frame, turn, pleiades, beside)).toBe(false);
+  });
+
+  it('something that is not drawn is infinitely far from every touch', () => {
+    expect(screenGap(at.x, at.y, look, frame, [-cluster[0], -cluster[1], -cluster[2]])).toBe(Infinity);
   });
 });
 
