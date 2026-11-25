@@ -49,6 +49,7 @@ src/ui/                екран: сцена three.js, керування, сп
 src/i18n/              словники en/hu/uk.json; i18n.test.ts їх звіряє
 src/styles/            tokens.css (кольори), app.css; claude-page.css — лише для тестової сторінки
 src/textures/          мапи тіл і тло (Solar System Scope, CC BY 4.0); чорно-білі карти супутників Юпітера (U.S. Geological Survey, суспільне надбання) — docs/SOURCES.md
+src/art/               старовинні малюнки сузір'їв (атлас «Urania's Mirror», 1825, суспільне надбання); запис кожного — src/data/constellation-art.json, сторінки файлів і ліцензії — docs/ART.md
 src/photos/            фото тіл для карток (NASA); запис і автор кожного — src/data/photos.json, підписи й джерела — docs/PHOTOS.md
 src/photos/sites/      фото з місць посадок «Аполлонів»; src/data/sites.json — координати, дати, екіпажі, числа місій зі сторінок NASA
 scripts/claude-page.mjs  програма одним файлом для тестової сторінки claude.ai

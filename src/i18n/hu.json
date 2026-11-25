@@ -261,6 +261,7 @@
     "photos": "A kártyák fotói: a NASA és partnerei, a nevük minden fotó alatt szerepel; néhány kép meg van vágva. A program a NASA-tól függetlenül készült.",
     "sky": "Az égbolt egy helyről: csillagok — Wikidata (CC0); a csillagképek vonalai — d3-celestial, szerző: Olaf Frohn (BSD-3-Clause), az IAU és a Sky & Telescope térképei nyomán; városok — Wikidata. A csillagok nappal is láthatók a képen, a fény légköri törése a horizont közelében nincs ábrázolva. Az „elég sötét”, a „látható” és a „szabad szemmel túl halvány” a program saját mércéi, nem csillagászati meghatározások. Néhány csillagnak a Wikidatában nincs vizuális fényessége: ott a hozzá közeli Gaia G fényesség szerepel. A csillagok tulajdonnevei: a Nemzetközi Csillagászati Unió által jóváhagyott nevek a Wikipédia listájából (CC BY-SA 4.0), valamint a csillagok Wikipédia-szócikkeinek címei.",
     "stories": "A csillagképek történetei és az a sor, hogy ki vette fel a csillagképet a listára, a Wikipédia szócikkei és táblázata alapján készültek — a hivatkozások minden kártya alatt megtalálhatók. A történetek szövege ugyanazzal a licenccel, CC BY-SA 4.0 alatt használható fel. A legfényesebb csillagot, a legjobb esték hónapját és a csillagkép magasságát maga a program számítja.",
+    "art": "A csillagképek rajzai az „Urania’s Mirror” csillagatlasz (metszette: Sidney Hall, 1825) lapjai a Wikimedia Commonsból, közkincsek; a szkennelt képeket Adam Cuerden restaurálta. A több csillagképet ábrázoló lapokból a szükséges alakot vágtuk ki. Minden rajz alatt megtalálható a fájl oldalának hivatkozása.",
     "links": {
       "photoLibrary": "a NASA kép- és videótára",
       "photoRules": "a NASA szabályai a képeiről",
@@ -667,6 +668,19 @@
         "Vir": "A Szűz (latinul Virgo) a tizenkét állatövi csillagkép egyike. A görögök Démétért látták benne, a rómaiak Cerest; később az igazság istennőjével azonosították — Diké, melléknevén Asztraia, a monda szerint elhagyta a Földet, és csillagképpé lett. A babiloni időkben a termékenységet jelképezte, kalászként értelmezték; legfényesebb csillaga a Spica. A középkorban Szűz Máriát látták benne.",
         "Sco": "A Skorpió (latinul Scorpius) a tizenkét állatövi csillagkép egyike; mitológiai története összekapcsolódik az Orionnal. Egy monda szerint Artemisz, a vadászat istennője küldte a skorpiót Orion után, hogy megölje; egy másik szerint a Földanya ölette meg vele a fennhéjázó Oriont, aki kijelentette, hogy minden vadállatot meg tud ölni. A skorpió az égen is üldözi őt, de sosem érheti el: csak akkor kel fel keleten, amikor Orion már lenyugodott nyugaton.",
         "Oph": "A Kígyótartó (latinul Ophiuchus) egy kígyóval körbefont férfit formáz. A görögök Aszklépiosszal, a gyógyítás istenével azonosítják, akinek jelképe az orvosi pálca, amelyre kígyó tekeredik. A monda szerint Zeusz villámmal megölte Aszklépioszt, de megsajnálta a jóságos gyógyítót, és felemelte az Olümposzra, az istenek közé. Más monda Laokoónnal, a trójai pappal hozza kapcsolatba a csillagképet."
+      },
+      "art": {
+        "alt": "{name}: rajz egy régi csillagatlaszból",
+        "by": "Rajz: {artist}, „{title}” atlasz ({year})",
+        "restored": "a szkennelt képet restaurálta: {name}",
+        "holders": {
+          "loc": "Library of Congress, a Wikimedia Commonson keresztül",
+          "nms": "National Museums of Scotland, a Wikimedia Commonson keresztül",
+          "dolby": "a Wikimedia Commonson keresztül"
+        },
+        "part": "Az atlasz egyik lapjának részlete.",
+        "link": "A fájl oldala — közkincs.",
+        "note": "Így rajzolták meg a csillagképet a 19. században."
       }
     }
   },

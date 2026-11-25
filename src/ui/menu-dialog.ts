@@ -1,5 +1,6 @@
 // The menu: the language, the choices of the sky map, and what the app is made of — with the credits its
 // sources ask for.
+import { ART_SET } from '../core/art.ts';
 import { SATELLITE_MAPS, SATELLITE_PAGES } from '../core/satellites.ts';
 import { SKY } from '../config.ts';
 import { SOURCES } from '../core/bodies.ts';
@@ -80,6 +81,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
             h('li', {}, d.about.photos, ' ', link(PHOTO_LIBRARY, d.about.links.photoLibrary), ' · ', link(PHOTO_RULES, d.about.links.photoRules)),
             h('li', {}, d.about.sky, ' ', link(CITY_SOURCE.url, 'Wikidata'), ' · ', link(STAR_NAMES_URL, d.about.links.starNames), ' · ', link(BY_SA_URL, 'CC BY-SA 4.0')),
             h('li', {}, d.about.stories, ' ', link(BY_SA_URL, 'CC BY-SA 4.0')),
+            h('li', {}, d.about.art, ' ', link(ART_SET.category, 'Wikimedia Commons')),
             h('li', {}, d.about.shadows),
             h('li', {}, d.about.aim),
             h('li', {}, d.about.engine),

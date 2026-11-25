@@ -1,0 +1,257 @@
+{
+  "set": {
+    "title": "Urania's Mirror",
+    "artist": "Sidney Hall",
+    "year": 1825,
+    "restorer": "Adam Cuerden",
+    "category": "https://commons.wikimedia.org/wiki/Category:Urania%27s_Mirror",
+    "licence": "public domain",
+    "read": "2026-11-25",
+    "made": "thumbnails of the files, cut out where a plate is shared (crop: left, top, right, bottom as shares of the plate), reduced to 840 px on the long side, WebP"
+  },
+  "plates": {
+    "And": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Gloria_Frederici,_Andromeda,_and_Triangula.jpg",
+      "width": 589,
+      "height": 840,
+      "part": false,
+      "holder": "loc",
+      "restored": true
+    },
+    "Aql": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Delphinus,_Sagitta,_Aquila,_and_Antinous.jpg",
+      "width": 840,
+      "height": 743,
+      "part": true,
+      "holder": "loc",
+      "restored": true,
+      "crop": [
+        0.26,
+        0.2,
+        0.92,
+        0.61
+      ],
+      "plateAlsoShows": [
+        "Delphinus",
+        "Sagitta",
+        "Antinous"
+      ]
+    },
+    "Aur": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Auriga.jpg",
+      "width": 588,
+      "height": 840,
+      "part": false,
+      "holder": "loc",
+      "restored": true
+    },
+    "Boo": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Bootes,_Canes_Venatici,_Coma_Berenices,_and_Quadrans_Muralis.jpg",
+      "width": 577,
+      "height": 840,
+      "part": true,
+      "holder": "loc",
+      "restored": true,
+      "crop": [
+        0.16,
+        0.11,
+        0.57,
+        0.96
+      ],
+      "plateAlsoShows": [
+        "Canes Venatici",
+        "Coma Berenices",
+        "Quadrans Muralis"
+      ]
+    },
+    "CMa": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Canis_Major,_Lepus,_Columba_Noachi_%26_Cela_Sculptoris.jpg",
+      "width": 605,
+      "height": 840,
+      "part": true,
+      "holder": "loc",
+      "restored": true,
+      "crop": [
+        0.07,
+        0.07,
+        0.51,
+        0.94
+      ],
+      "plateAlsoShows": [
+        "Lepus",
+        "Columba Noachi",
+        "Cela Sculptoris"
+      ]
+    },
+    "CMi": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Monoceros,_Canis_Minor,_and_Atelier_Typographique.jpg",
+      "width": 480,
+      "height": 416,
+      "part": true,
+      "holder": "loc",
+      "restored": true,
+      "crop": [
+        0.36,
+        0.07,
+        0.61,
+        0.38
+      ],
+      "plateAlsoShows": [
+        "Monoceros",
+        "Atelier Typographique"
+      ]
+    },
+    "Cas": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Cassiopeia_(image_right_side_up).jpg",
+      "width": 585,
+      "height": 840,
+      "part": false,
+      "holder": "loc",
+      "restored": true
+    },
+    "Cyg": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Lacerta,_Cygnus,_Lyra,_Vulpecula_and_Anser.jpg",
+      "width": 820,
+      "height": 840,
+      "part": true,
+      "holder": "loc",
+      "restored": true,
+      "crop": [
+        0.24,
+        0.07,
+        0.74,
+        0.8
+      ],
+      "plateAlsoShows": [
+        "Lacerta",
+        "Lyra",
+        "Vulpecula and Anser"
+      ]
+    },
+    "Gem": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Gemini.jpg",
+      "width": 840,
+      "height": 587,
+      "part": false,
+      "holder": "loc",
+      "restored": true
+    },
+    "Leo": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Leo_Major_and_Leo_Minor.jpg",
+      "width": 840,
+      "height": 754,
+      "part": true,
+      "holder": "loc",
+      "restored": true,
+      "crop": [
+        0.05,
+        0.32,
+        0.97,
+        0.9
+      ],
+      "plateAlsoShows": [
+        "Leo Minor"
+      ]
+    },
+    "Lyr": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Lacerta,_Cygnus,_Lyra,_Vulpecula_and_Anser.jpg",
+      "width": 384,
+      "height": 553,
+      "part": true,
+      "holder": "loc",
+      "restored": true,
+      "crop": [
+        0.69,
+        0.4,
+        0.89,
+        0.81
+      ],
+      "plateAlsoShows": [
+        "Lacerta",
+        "Cygnus",
+        "Vulpecula and Anser"
+      ]
+    },
+    "Oph": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Taurus_Poniatowski,_Serpentarius,_Scutum_Sobiesky,_and_Serpens.jpg",
+      "width": 840,
+      "height": 591,
+      "part": false,
+      "holder": "loc",
+      "restored": true
+    },
+    "Ori": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Orion_(best_currently_available_version_-_2014).jpg",
+      "width": 584,
+      "height": 840,
+      "part": false,
+      "holder": "dolby",
+      "restored": true
+    },
+    "Peg": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Pegasus_and_Equuleus_(best_currently_available_version_-_2014).jpg",
+      "width": 840,
+      "height": 585,
+      "part": false,
+      "holder": "nms",
+      "restored": false
+    },
+    "Per": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Perseus.jpg",
+      "width": 840,
+      "height": 588,
+      "part": false,
+      "holder": "loc",
+      "restored": true
+    },
+    "Sco": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Scorpio.jpg",
+      "width": 586,
+      "height": 840,
+      "part": false,
+      "holder": "loc",
+      "restored": true
+    },
+    "Tau": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Taurus.jpg",
+      "width": 840,
+      "height": 591,
+      "part": false,
+      "holder": "loc",
+      "restored": true
+    },
+    "UMa": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Ursa_Major.jpg",
+      "width": 840,
+      "height": 590,
+      "part": false,
+      "holder": "loc",
+      "restored": true
+    },
+    "UMi": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Draco_and_Ursa_Minor.jpg",
+      "width": 820,
+      "height": 840,
+      "part": true,
+      "holder": "loc",
+      "restored": true,
+      "crop": [
+        0.2,
+        0.41,
+        0.7,
+        0.77
+      ],
+      "plateAlsoShows": [
+        "Draco"
+      ]
+    },
+    "Vir": {
+      "page": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania's_Mirror_-_Virgo.jpg",
+      "width": 840,
+      "height": 590,
+      "part": false,
+      "holder": "loc",
+      "restored": true
+    }
+  }
+}

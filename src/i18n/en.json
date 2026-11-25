@@ -261,6 +261,7 @@
     "photos": "Photos in the cards: NASA and its partners, named under each photo; some are cropped. This program is made independently of NASA.",
     "sky": "The sky from a place: stars — Wikidata (CC0); which stars are joined into constellations — d3-celestial by Olaf Frohn (BSD-3-Clause), after the charts of the IAU and Sky & Telescope; cities — Wikidata. Stars are drawn by day too, and the bending of light by the air near the horizon is not drawn. “Dark enough”, “in view” and “too faint for the eye” are the program’s own measures, not definitions of astronomy. For some stars Wikidata has no visual brightness: there the close Gaia G brightness is used. Proper names of stars: the names approved by the International Astronomical Union, from the list in Wikipedia (CC BY-SA 4.0), and the titles of the stars’ articles in Wikipedia.",
     "stories": "The stories of the constellations and the line on who listed each constellation are written after Wikipedia’s articles and table — the links stand under each card. The texts of the stories may be used under the same licence, CC BY-SA 4.0. The brightest star, the month of the best evenings and the height of a constellation are worked out by the program itself.",
+    "art": "The drawings of the constellations are cards of the star atlas “Urania’s Mirror” (engraved by Sidney Hall, 1825) from Wikimedia Commons, public domain; the scans were restored by Adam Cuerden. From cards that show several constellations the figure needed is cut out. Under each drawing there is a link to the page of its file.",
     "links": {
       "photoLibrary": "NASA’s image and video library",
       "photoRules": "NASA’s rules for its pictures",
@@ -667,6 +668,19 @@
         "Vir": "The name means “maiden” in Latin. The Greeks and Romans identified the constellation with the goddesses Demeter and Persephone, and with Astraea, a goddess of justice, who left the earth and fled to the sky, becoming the constellation. Its star Spica is Latin for “ear of grain”: in Babylon a part of the constellation was “The Furrow” of the goddess Shala with her ear of grain, and so it became associated with fertility. Erigone, the daughter of Icarius, was also seen in it; in the Middle Ages Virgo was associated with the Virgin Mary.",
         "Sco": "Scorpius is a constellation of the zodiac; the Babylonians already called it the Scorpion. In Greek mythology its story belongs to Orion. In one version Orion boasted to the goddess Artemis and her mother Leto that he would kill every animal on Earth, and they sent a giant scorpion to kill him; in others the scorpion was sent by Apollo or by Gaia. Zeus raised both to the sky, where Orion hunts every winter but flees every summer when the scorpion comes.",
         "Oph": "The name comes from the Ancient Greek for “serpent-bearer”, and the constellation is drawn as a man grasping a snake — the snake itself is the constellation Serpens. To the ancient Greeks it was the god Apollo struggling with a huge snake that guarded the Oracle of Delphi. Later it was identified with the healer Asclepius, who learned the secret of keeping death at bay by watching one serpent bring another healing herbs; to keep the human race from becoming immortal Jupiter killed him with a bolt of lightning, but later placed his image in the heavens. Another myth names Laocoön, the Trojan priest slain by two sea serpents."
+      },
+      "art": {
+        "alt": "{name}: a drawing from an old star atlas",
+        "by": "Drawing: {artist}, the atlas “{title}” ({year})",
+        "restored": "scan restored by {name}",
+        "holders": {
+          "loc": "Library of Congress, via Wikimedia Commons",
+          "nms": "National Museums of Scotland, via Wikimedia Commons",
+          "dolby": "via Wikimedia Commons"
+        },
+        "part": "A part of the atlas’s card.",
+        "link": "The file’s page — public domain.",
+        "note": "This is how the constellation was drawn in the 19th century."
       }
     }
   },

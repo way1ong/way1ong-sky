@@ -2,10 +2,12 @@
 // licensed under the card), and what the program itself works out — its brightest star, the month of its
 // best evenings, whether it sets at the place and where it stands at the moment shown.
 import { SKY } from '../config.ts';
+import { ART_SET, PLATES } from '../core/art.ts';
 import { bestEvening, brightestStars, figureNow, overPlace } from '../core/constellations.ts';
 import type { Place, SkyTurn } from '../core/sky.ts';
 import { STARS, starName } from '../core/stars.ts';
 import { ORIGINS, ORIGINS_SOURCE, STORIES, STORY_SOURCE, creditPages } from '../core/stories.ts';
+import { artUrl } from './art.ts';
 import { h } from './dom.ts';
 import { fmt, num, type Dict } from './i18n.ts';
 
@@ -42,6 +44,21 @@ export function createConstellationDialog(): { el: HTMLDialogElement; open(d: Di
       const close = h('button', { class: 'btn', type: 'button' }, d.card.close);
       close.addEventListener('click', () => el.close());
       const body = h('div', { class: 'dialog__body' }, h('h2', { id: 'constellation-title' }, name), h('p', { class: 'fact__source' }, t.kind));
+      // An old drawing of the figure, where the program has one: with who drew it and whose scan it is.
+      const plate = PLATES[id];
+      const picture = plate ? artUrl(id) : undefined;
+      if (plate && picture) {
+        const a = t.art;
+        const credit = [fmt(a.by, { artist: ART_SET.artist, title: ART_SET.title, year: ART_SET.year }), plate.restored ? fmt(a.restored, { name: ART_SET.restorer }) : '', a.holders[plate.holder]].filter(Boolean).join('; ');
+        body.append(
+          h(
+            'figure',
+            { class: 'photo photo--art' },
+            h('img', { src: picture, alt: fmt(a.alt, { name }), width: String(plate.width), height: String(plate.height), decoding: 'async' }),
+            h('figcaption', {}, plate.part ? `${a.part} ` : '', `${credit}. `, link(plate.page, a.link), ` ${a.note}`),
+          ),
+        );
+      }
       if (story && about) body.append(h('p', { class: 'fact__about' }, about));
       // Who put it on the list: known for every constellation, with or without a story.
       const origin = ORIGINS[id];

@@ -758,6 +758,14 @@ button {
   background: var(--bg);
 }
 
+/* An old drawing of a constellation keeps its own shape: plates stand upright or lie, cut-outs differ. */
+.photo--art img {
+  aspect-ratio: auto;
+  max-height: 60vh;
+  width: auto;
+  max-width: 100%;
+}
+
 .photo figcaption {
   font-size: 0.875rem;
   line-height: 1.45;
