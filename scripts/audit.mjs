@@ -233,6 +233,13 @@ for (const [width, height] of SIZES) {
       await look(page, where, 'sky');
       await page.locator('.note .icon-btn').click();
       await panels(page, where, 'the sky', 'sky', []);
+      // The sky's clock stops at its fastest speed after one step: pressing on changes nothing.
+      const faster = page.locator('.time .icon-btn').nth(2);
+      await faster.click();
+      const hour = await page.locator('.top__speed').textContent();
+      for (let i = 0; i < 3; i++) await faster.click();
+      if ((await page.locator('.top__speed').textContent()) !== hour) note(where, `the sky runs faster than its first speed: "${await page.locator('.top__speed').textContent()}"`);
+      await page.locator('.time .chip').first().click();
       await page.locator('.sky-bar .chip').nth(1).click();
       await page.waitForSelector('dialog[open] .place-list');
       if ((await page.locator('dialog[open] .place-list button').count()) < 100) note(where, 'the list of cities is short');
