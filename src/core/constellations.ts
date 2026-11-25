@@ -54,14 +54,17 @@ export function brightestStars(figure: string): readonly number[] {
 }
 
 /**
- * How a figure lives in the sky of a place, by the height of its middle: it never sets, it never rises, or it
- * comes and goes. `highest` — how high the middle stands when it crosses the meridian, degrees.
+ * How a figure lives in the sky of a place: it never sets (not one of its stars does), it never rises (not
+ * one does), or it comes and goes — also when only a part of it ever sets. `highest` — how high its middle
+ * stands when it crosses the meridian, degrees.
  */
 export function overPlace(figure: string, place: Place): { highest: number; stays: 'always' | 'never' | 'sometimes' } {
-  const { dec } = equatorial(figureMiddle(figure));
-  const highest = 90 - Math.abs(place.lat - dec);
-  const lowest = Math.abs(place.lat + dec) - 90;
-  return { highest, stays: lowest > 0 ? 'always' : highest < 0 ? 'never' : 'sometimes' };
+  const highest = 90 - Math.abs(place.lat - equatorial(figureMiddle(figure)).dec);
+  const stars = [...new Set((FIGURES[figure] ?? []).flat())].map((i) => (STARS[i] as (typeof STARS)[number]).dec);
+  // A star's lowest and highest stand over the horizon, by its declination and the place's latitude.
+  const allStayUp = stars.every((dec) => Math.abs(place.lat + dec) - 90 > 0);
+  const noneComesUp = stars.every((dec) => 90 - Math.abs(place.lat - dec) < 0);
+  return { highest, stays: stars.length > 0 && allStayUp ? 'always' : stars.length > 0 && noneComesUp ? 'never' : 'sometimes' };
 }
 
 /**

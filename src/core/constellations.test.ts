@@ -67,24 +67,38 @@ describe('the best evenings of a constellation', () => {
 });
 
 describe('how a figure lives in the sky of a place', () => {
-  it('"always" never goes under the horizon in a day, "never" never comes over it, the others do both', () => {
+  it('"always" — not one star of the figure goes under the horizon in a day; "never" — not one comes over it; the others do neither', () => {
     for (const place of [NORTH, SOUTH]) {
       for (const id of Object.keys(FIGURES)) {
-        const heights: number[] = [];
-        for (let minutes = 0; minutes < 24 * 60; minutes += 10) heights.push(figureNow(id, skyTurn(place, new Date(FROM.getTime() + minutes * 60_000))).altitude);
+        const stars = [...new Set((FIGURES[id] ?? []).flat())].map((i) => STARS[i]!.at);
+        let [low, high, middleHigh] = [Infinity, -Infinity, -Infinity];
+        for (let minutes = 0; minutes < 24 * 60; minutes += 10) {
+          const turn = skyTurn(place, new Date(FROM.getTime() + minutes * 60_000));
+          for (const star of stars) {
+            const { altitude } = altAz(toSky(turn, star));
+            low = Math.min(low, altitude);
+            high = Math.max(high, altitude);
+          }
+          middleHigh = Math.max(middleHigh, figureNow(id, turn).altitude);
+        }
         const { stays, highest } = overPlace(id, place);
-        const [low, high] = [Math.min(...heights), Math.max(...heights)];
-        // a figure whose middle only grazes the horizon may fall on either side of a ten-minute step
+        // a star that only grazes the horizon may fall on either side: the catalogue's axes drift a little from the sky of the date
         if (stays === 'always') expect(low, id).toBeGreaterThan(-0.5);
         else if (stays === 'never') expect(high, id).toBeLessThan(0.5);
         else {
           expect(low, id).toBeLessThan(0.5);
           expect(high, id).toBeGreaterThan(-0.5);
         }
-        // sampled every ten minutes, and the catalogue's axes drift a little from the sky of the date
-        expect(Math.abs(high - highest), id).toBeLessThan(1);
+        // sampled every ten minutes
+        expect(Math.abs(middleHigh - highest), id).toBeLessThan(1);
       }
     }
+  });
+
+  it('a figure that only partly stays up is not said to stay: Perseus over the middle of Europe', () => {
+    // its middle never sets there, its southern stars do
+    expect(overPlace('Per', NORTH).stays).toBe('sometimes');
+    expect(overPlace('UMi', NORTH).stays).toBe('always');
   });
 
   it('the middle of a figure is a direction of length 1', () => {
