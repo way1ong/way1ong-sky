@@ -324,11 +324,25 @@ for (const [width, height] of SIZES) {
       // one language: it is the same sky in all of them.
       if (lang === 'en') {
         const deep = page.locator('dialog[open] #deep-title');
-        search: for (let gy = -1.8; gy <= 1.8; gy += 0.3) {
-          for (let gx = -1.8; gx <= 1.8; gx += 0.3) {
-            await page.mouse.click(room.x + gx * room.w, room.y + gy * room.h);
-            if (await deep.count()) break search;
-            if (await page.locator('dialog[open]').count()) await closeDialog(page);
+        // On a small phone the free sky is a narrow band that may hold no mark at the moment: then the sky is
+        // turned — higher, then to one side and to the other — and felt again.
+        const turns = [null, [0, 1.4], [1.6, 0], [-3.2, 0]];
+        search: for (const turn of turns) {
+          if (turn) {
+            await page.mouse.move(room.x - (turn[0] * room.w) / 2, room.y - (turn[1] * room.h) / 2);
+            await page.mouse.down();
+            await page.mouse.move(room.x + (turn[0] * room.w) / 2, room.y + (turn[1] * room.h) / 2, { steps: 6 });
+            await page.mouse.up();
+          }
+          for (let gy = -1.8; gy <= 1.8; gy += 0.3) {
+            for (let gx = -1.8; gx <= 1.8; gx += 0.3) {
+              await page.mouse.click(room.x + gx * room.w, room.y + gy * room.h);
+              if (await deep.count()) break search;
+              if (await page.locator('dialog[open]').count()) await closeDialog(page);
+              // A star's card lies over the sky (over most of it on a small phone): it is put away, or the
+              // next touches would land on it and its buttons.
+              if (await card.isVisible()) await page.keyboard.press('Escape');
+            }
           }
         }
         if (!(await deep.count())) note(where, 'no touch on the sky found a galaxy, a nebula or a cluster');
