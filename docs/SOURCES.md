@@ -20,6 +20,7 @@
 | Місії: час поза кораблем, шлях поверхнею, маса зразків | NASA NSSDCA, Apollo Lunar Landings, …/planetary/lunar/apolloland.html (оновлено 6.03.2017) | матеріал NASA | 24.11.2026 |
 | Фото з місць посадок (`src/photos/sites/`, шість знімків) | NASA Image and Video Library — `docs/PHOTOS.md` | правила NASA, як для фото тіл; без людей у кадрі | 24.11.2026 |
 | Описи тіл у картках (`card.about.*` у словниках) — власні тексти трьома мовами за фактами зі сторінок NASA Science, science.nasa.gov; адреси сторінок — `src/data/descriptions.json`, речення NASA під кожним описом — `docs/DESCRIPTIONS.md` | NASA Science | матеріал NASA (ті самі правила); тексти — наші, не переклад і не копія; під описом — посилання на сторінку NASA | 24.11.2026 |
+| Історія й дослідження тіл у картках (`card.history.*` у словниках) — власні тексти трьома мовами за реченнями зі сторінок NASA Science («facts» і «exploration» кожного тіла) та переліком NASA NSSDCA «Chronology of Mars Exploration»; адреси — `src/data/history.json`, речення — `docs/HISTORY.md` | science.nasa.gov, nssdc.gsfc.nasa.gov | правила NASA, як для описів: факти не захищені, тексти власні | 25.11.2026 |
 
 Що зроблено з мапами: перезбережено як JPEG меншої ваги; з кілець узято одну смугу 1024 × 2 точки. Де на текстурі кілець зовнішній край кільця A — виміряно на самій текстурі (`ringTextureAOuterAt` у `src/config.ts`), щоб кільця стояли на своїх справжніх радіусах.
 

@@ -1,7 +1,7 @@
 // A body's card: its photo, a few sentences about it, what it leads the planets in, its numbers with the Earth
 // for comparison, where it is now — and where all of that comes from.
 import type { BodyId } from '../core/bodies.ts';
-import { DESCRIPTION_PAGES, FACT_SOURCES } from '../core/facts.ts';
+import { DESCRIPTION_PAGES, FACT_SOURCES, HISTORY_PAGES } from '../core/facts.ts';
 import { PHOTOS } from '../core/photos.ts';
 import { SITE_IDS, type SiteId } from '../core/sites.ts';
 import { h } from './dom.ts';
@@ -62,12 +62,13 @@ export function createFactsDialog(): { el: HTMLDialogElement; open(d: Dict, lang
           badges.length > 0 ? most : null,
           picture,
           h('p', { class: 'fact__about' }, d.card.about[id]),
+          h('section', { class: 'site-section', 'aria-labelledby': 'history-title' }, h('h3', { id: 'history-title' }, d.card.history.title), h('p', { class: 'fact__about' }, d.card.history.text[id])),
           sizeFigure(d, lang, id),
           landings,
           list,
           youSection(d, lang, id),
           h('p', { class: 'fact__source' }, fmt(d.card.source, { updated: dayOf(lang, id === 'sun' ? FACT_SOURCES.sun.updated : FACT_SOURCES.planets.updated), date: shown })),
-          h('p', { class: 'fact__source' }, source, ' · ', link(FACT_SOURCES.notes.url, d.card.notesLink), ' · ', link(DESCRIPTION_PAGES[id][0] as string, d.card.aboutSource)),
+          h('p', { class: 'fact__source' }, source, ' · ', link(FACT_SOURCES.notes.url, d.card.notesLink), ' · ', link(DESCRIPTION_PAGES[id][0] as string, d.card.aboutSource), ' · ', link((HISTORY_PAGES[id][1] ?? HISTORY_PAGES[id][0]) as string, d.card.history.link)),
           h('div', { class: 'dialog__actions' }, close),
         ),
       );

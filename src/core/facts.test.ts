@@ -84,3 +84,14 @@ describe('now', () => {
     expect(now.lightToEarthMin as number).toBeLessThan(1);
   });
 });
+
+it('tells the history of every body after NASA pages it can link to, in every language', async () => {
+  const { HISTORY_PAGES } = await import('./facts.ts');
+  const { BODY_IDS } = await import('./bodies.ts');
+  const dictionaries = await Promise.all(['en', 'hu', 'uk'].map((lang) => import(`../i18n/${lang}.json`)));
+  for (const id of BODY_IDS) {
+    expect(HISTORY_PAGES[id]?.length, id).toBeGreaterThan(0);
+    for (const url of HISTORY_PAGES[id]) expect(url, id).toMatch(/^https:\/\/(science\.nasa\.gov|nssdc\.gsfc\.nasa\.gov)\//);
+    for (const d of dictionaries) expect((d.default.card.history.text as Record<string, string>)[id]?.length ?? 0, id).toBeGreaterThan(80);
+  }
+});

@@ -1,0 +1,46 @@
+{
+  "read": "2026-11-25",
+  "note": "The pages the texts card.history.* rest on; the sentences of NASA under each text are in docs/HISTORY.md.",
+  "pages": {
+    "sun": [
+      "https://science.nasa.gov/sun/facts/",
+      "https://science.nasa.gov/sun/exploration/"
+    ],
+    "mercury": [
+      "https://science.nasa.gov/mercury/facts/",
+      "https://science.nasa.gov/mercury/exploration/",
+      "https://science.nasa.gov/venus/venus-facts/"
+    ],
+    "venus": [
+      "https://science.nasa.gov/venus/venus-facts/",
+      "https://science.nasa.gov/venus/exploration/"
+    ],
+    "earth": [
+      "https://science.nasa.gov/earth/facts/"
+    ],
+    "moon": [
+      "https://science.nasa.gov/moon/facts/",
+      "https://science.nasa.gov/moon/exploration/"
+    ],
+    "mars": [
+      "https://science.nasa.gov/mars/facts/",
+      "https://nssdc.gsfc.nasa.gov/planetary/chronology_mars.html"
+    ],
+    "jupiter": [
+      "https://science.nasa.gov/jupiter/jupiter-facts/",
+      "https://science.nasa.gov/jupiter/exploration/"
+    ],
+    "saturn": [
+      "https://science.nasa.gov/saturn/facts/",
+      "https://science.nasa.gov/saturn/exploration/"
+    ],
+    "uranus": [
+      "https://science.nasa.gov/uranus/facts/",
+      "https://science.nasa.gov/uranus/exploration/"
+    ],
+    "neptune": [
+      "https://science.nasa.gov/neptune/neptune-facts/",
+      "https://science.nasa.gov/neptune/exploration/"
+    ]
+  }
+}
