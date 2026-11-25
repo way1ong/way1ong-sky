@@ -278,9 +278,9 @@
     "open": "Az égbolt innen",
     "toFlight": "Repülés",
     "title": "Égbolt: {place}",
-    "scene": "Az égbolt a kiválasztott hely felett: csillagok, csillagképek, a Nap, a Hold és a bolygók. Húzással nézhet körül.",
+    "scene": "Az égbolt a kiválasztott hely felett: csillagok, csillagképek, a Nap, a Hold és a bolygók. Húzással nézhet körül. Érintsen meg egy csillagot vagy bolygót, hogy megtudja, mi az; billentyűzeten az Enter megnevezi, ami középen van.",
     "placeButton": "Hely: {place}",
-    "note": "Az égbolt {place} felett ebben a pillanatban. Húzással nézhet körül; két ujjal vagy a görgővel közelíthet. A helyet a lenti gombbal változtathatja meg.",
+    "note": "Az égbolt {place} felett ebben a pillanatban. Húzással nézhet körül; két ujjal vagy a görgővel közelíthet. Érintsen meg egy csillagot vagy bolygót, hogy megtudja, mi az. A helyet a lenti gombbal változtathatja meg.",
     "dayNote": "A Nap a horizont felett van: a csillagok úgy láthatók, mintha a nappali fény nem takarná el őket.",
     "compass": {
       "n": "É",
@@ -341,6 +341,31 @@
         "w": "nyugat",
         "nw": "északnyugat"
       }
+    },
+    "pick": {
+      "star": "Csillag",
+      "unnamed": "Saját név nélküli csillag",
+      "planet": "Bolygó",
+      "kindIn": "{kind}, csillagkép:",
+      "constellation": "Csillagkép",
+      "brightness": "Fényesség",
+      "words": {
+        "veryBright": "nagyon fényes",
+        "bright": "fényes",
+        "medium": "közepes",
+        "faint": "halvány — sötét helyről látható"
+      },
+      "magnitude": "{word} · {mag} magnitúdó",
+      "now": "Most",
+      "up": "{altitude}° a horizont felett, {direction}",
+      "under": "a horizont alatt",
+      "rises": "kel: {time}",
+      "sets": "nyugszik: {time}",
+      "phase": "Látvány",
+      "fly": "Repülés oda",
+      "flyLabel": "Repülés ide: {name}",
+      "close": "Kártya bezárása",
+      "none": "A nézet közepén nincs csillag vagy bolygó."
     },
     "menu": {
       "title": "Égbolt",

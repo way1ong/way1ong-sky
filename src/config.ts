@@ -105,6 +105,8 @@ export const SKY = {
     daylight: { from: -12, to: 2, starsLeft: 0.12 },
     discPx: { sun: 9, moon: 8, planet: 3.5 },
     faintPlanet: { px: 2, strength: 0.6 },
+    /** The ring round what a touch has named stands this far from its mark, CSS px. */
+    pickRingGapPx: 6,
     labelGapPx: 4,
   },
   /**
@@ -116,6 +118,16 @@ export const SKY = {
    *   fainter stars, but a planet that faint cannot be told from them without a chart and a dark sky.
    */
   tonight: { darkSunAltitude: -6, leastAltitude: 5, stepMinutes: 10, eyeMagnitude: 5 },
+  /**
+   * A touch on the sky map names what is there (C; the owner's decision of 25.11):
+   * `tap` — a touch counts as one when the finger moved no more than `slopPx` and lifted within `ms`;
+   * `reachPx` — how far from a star or from the edge of a body's mark the touch may land;
+   * `brighterPx` — of two stars under the finger the brighter may be this much farther for each magnitude;
+   * `overCardPx` — what was picked is kept this far over the edge of its card when the card would hide it;
+   * `words` — how a brightness is said in words: up to these magnitudes "very bright", "bright", "medium",
+   *   fainter — "faint". The program's own words, not astronomy's.
+   */
+  pick: { tap: { slopPx: 8, ms: 600 }, reachPx: 24, brighterPx: 3, overCardPx: 28, words: { veryBright: 1.5, bright: 3, medium: 4.5 } },
   /** Points of an orbit's line (C). */
   orbitPoints: 256,
   /** Where the outer edge of ring A lies across the ring texture, 0…1 — measured on the texture itself. */

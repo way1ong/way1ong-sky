@@ -3,11 +3,12 @@
 import { SKY } from '../config.ts';
 import { BODY_IDS, PLANET_IDS, parentOf, radiusKm, type BodyId } from '../core/bodies.ts';
 import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, slowedTo, stepRate, togglePause, type Clock } from '../core/clock.ts';
-import { firstLook, turnLook, zoomLook, type Look } from '../core/dome.ts';
+import { firstLook, project, turnLook, zoomLook, type Look } from '../core/dome.ts';
 import { nextLunarEclipse, nextSolarEclipse } from '../core/eclipses.ts';
 import { attitude, orbitKm, positionsKm, type Attitude } from '../core/ephemeris.ts';
 import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, facing, flightAt, progress, type Flight, type View } from '../core/flight.ts';
 import { advance, freeFrom, keepOutside, lookPoint, nearest, radiusOnScreenPx, turnFree, type FreeView } from '../core/free.ts';
+import { pickAt, pickedInSky, skyInfo, type Picked } from '../core/pick.ts';
 import { cityById, cityName, firstCity, type City } from '../core/places.ts';
 import type { PlanetTonight } from '../core/tonight.ts';
 import { SCALES, sceneFromPlanet, sceneFromSun, scenePositions, sceneRadius, sceneRing, type ScaleMode } from '../core/scale.ts';
@@ -20,6 +21,7 @@ import { h } from './dom.ts';
 import { createFactsDialog } from './facts-dialog.ts';
 import { dict, fmt, pickLang, type Dict } from './i18n.ts';
 import { createMenuDialog } from './menu-dialog.ts';
+import { createPickCard } from './pick-card.ts';
 import { createPlaceDialog } from './place-dialog.ts';
 import { createSceneView, type Orbit, type SceneView } from './scene.ts';
 import { createSiteDialog } from './site-dialog.ts';
@@ -156,6 +158,12 @@ export function startApp(root: HTMLElement): void {
   const note = h('p', { class: 'note__text', role: 'status' });
   const noteClose = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-close', 'aria-hidden': 'true' }));
   const noteBox = h('div', { class: 'note', hidden: true }, note, noteClose);
+  /** The card of what a touch on the sky map has named; it takes the note's place. */
+  const pickCard = createPickCard();
+  /** Says the card once to a screen reader: the card itself is rewritten silently while the clock runs. */
+  const pickSaid = h('p', { class: 'visually-hidden', role: 'status' });
+  let picked: Picked | null = null;
+  let pickShownAt = 0;
   const dock = h('ul', { class: 'dock' });
   const scaleBox = h('fieldset', { class: 'scale' });
   const timeBox = h('div', { class: 'time', role: 'group' });
@@ -191,6 +199,8 @@ export function startApp(root: HTMLElement): void {
     stage,
     header,
     noteBox,
+    pickCard.el,
+    pickSaid,
     bottom,
     menu.el,
     timeDialog.el,
@@ -332,6 +342,13 @@ export function startApp(root: HTMLElement): void {
   function say(text: string): void {
     note.textContent = text;
     noteBox.hidden = text === '';
+    // The note and the card of a star share one place: words that come take it, and the ring goes with the card.
+    if (text !== '' && picked) {
+      picked = null;
+      pickCard.hide();
+      pickSaid.textContent = '';
+      dirty = true;
+    }
   }
   noteClose.addEventListener('click', () => {
     say('');
@@ -367,7 +384,9 @@ export function startApp(root: HTMLElement): void {
   wideBtn.addEventListener('click', () => setWide(!wide));
   // Escape brings the panels back — unless a window is open: then it closes the window.
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && wide && !document.querySelector('dialog[open]')) setWide(false);
+    if (event.key !== 'Escape' || document.querySelector('dialog[open]')) return;
+    if (pickCard.shown) closePicked();
+    else if (wide) setWide(false);
   });
 
   const dayText = (moment: Date) => new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric' }).format(moment);
@@ -559,7 +578,58 @@ export function startApp(root: HTMLElement): void {
       look = zoomLook(look, factor);
       dirty = true;
     },
+    tap(x, y) {
+      const found = pickAt(x, y, look, skyView.frame(), (turnNow ??= skyTurn(place, date)));
+      if (found) showPicked(found, true);
+      else closePicked();
+    },
+    pick() {
+      const middle = skyView.frame();
+      const found = pickAt(middle.cx, middle.cy, look, middle, (turnNow ??= skyTurn(place, date)));
+      if (found) showPicked(found, true);
+      else say(d.sky.pick.none);
+    },
   });
+
+  /**
+   * The card of a star or a body on the sky map, with a ring round it. `aloud` — said to a screen reader:
+   * so when it was picked, not each time the running clock rewrites the card.
+   */
+  function showPicked(what: Picked, aloud: boolean): void {
+    picked = what;
+    say('');
+    const id = what.kind === 'body' ? what.id : null;
+    const fly = id && graphics ? () => {
+      closePicked();
+      setScreen('flight');
+      flyTo(id);
+    } : null;
+    pickCard.show(d, lang, skyInfo(what, (turnNow ??= skyTurn(place, date))), fly);
+    pickShownAt = performance.now();
+    // Freshly picked and hidden by its own card (a low screen, a star low in the view): the sky moves up
+    // just enough for it to stand over the card.
+    if (aloud) {
+      const card = pickCard.el.getBoundingClientRect();
+      const from = stage.getBoundingClientRect();
+      const at = project(look, skyView.frame(), pickedInSky(what, turnNow));
+      const gap = SKY.pick.overCardPx;
+      if (at && at.x + from.left > card.left - gap && at.x + from.left < card.right + gap && at.y + from.top > card.top - gap && at.y + from.top < card.bottom) {
+        look = turnLook(look, 0, card.top - gap - (at.y + from.top), skyView.frame());
+      }
+    }
+    if (aloud) pickSaid.textContent = [...pickCard.el.querySelectorAll('h2, .pick__row')].map((part) => part.textContent).join('. ');
+    dirty = true;
+  }
+  /** Takes the card and the ring away. */
+  function closePicked(): void {
+    if (!picked) return;
+    picked = null;
+    pickCard.hide();
+    pickSaid.textContent = '';
+    dirty = true;
+    if (screen === 'sky') skyCanvas.focus({ preventScroll: true });
+  }
+  pickCard.onClose(closePicked);
 
   /** What is said on coming to the sky: whose sky it is, how to look around, and what is not as in life. */
   function skyNote(): string {
@@ -572,6 +642,7 @@ export function startApp(root: HTMLElement): void {
     screen = next;
     const sky = screen === 'sky';
     thrust = 0;
+    closePicked();
     // A clock that ran a week a second in the flight slows to the sky's fastest.
     if (sky) clock = slowedTo(clock, Date.now(), SKY.time.skyUpToRate);
     canvas.hidden = sky;
@@ -734,8 +805,11 @@ export function startApp(root: HTMLElement): void {
     if (screen === 'sky') {
       if (dirty) {
         dirty = false;
+        const moved = turnNow === null;
         turnNow ??= skyTurn(place, date);
-        skyView.draw({ look, turn: turnNow, layers, lang, d });
+        // The moment or the place has changed: the card tells where the star stands now — at most once a second.
+        if (moved && picked && pickCard.shown && now - pickShownAt > 1000) showPicked(picked, false);
+        skyView.draw({ look, turn: turnNow, layers, lang, d, picked });
       }
       window.requestAnimationFrame(frame);
       return;

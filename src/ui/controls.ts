@@ -7,6 +7,10 @@ export interface ControlEvents {
   turn(yaw: number, pitch: number): void;
   /** Multiply the distance by this. */
   zoom(factor: number): void;
+  /** A short touch that did not drag: where it landed, CSS px from the element's corner. */
+  tap?(x: number, y: number): void;
+  /** Enter or the space bar: the same as a touch in the middle of the view, for the keyboard. */
+  pick?(): void;
 }
 
 export function attachControls(el: HTMLElement, events: ControlEvents): () => void {
@@ -17,7 +21,10 @@ export function attachControls(el: HTMLElement, events: ControlEvents): () => vo
     return a && b ? Math.hypot(a.x - b.x, a.y - b.y) : 0;
   };
 
+  // A touch that neither dragged nor lasted is a tap; a second finger makes it a pinch, never a tap.
+  let touch: { id: number; x: number; y: number; at: number; moved: boolean } | null = null;
   const down = (e: PointerEvent) => {
+    touch = pointers.size === 0 ? { id: e.pointerId, x: e.clientX, y: e.clientY, at: e.timeStamp, moved: false } : null;
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     el.setPointerCapture(e.pointerId);
   };
@@ -25,12 +32,19 @@ export function attachControls(el: HTMLElement, events: ControlEvents): () => vo
     const before = pointers.get(e.pointerId);
     if (!before) return;
     const wasApart = spread();
+    if (touch && Math.hypot(e.clientX - touch.x, e.clientY - touch.y) > SKY.pick.tap.slopPx) touch.moved = true;
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.size === 1) events.turn(-(e.clientX - before.x) * perPixel(), (e.clientY - before.y) * perPixel());
     else if (wasApart > 0 && spread() > 0) events.zoom(wasApart / spread());
   };
   const up = (e: PointerEvent) => {
     pointers.delete(e.pointerId);
+    const tapped = touch && touch.id === e.pointerId && e.type === 'pointerup' && !touch.moved && e.timeStamp - touch.at <= SKY.pick.tap.ms;
+    touch = null;
+    if (tapped && events.tap) {
+      const box = el.getBoundingClientRect();
+      events.tap(e.clientX - box.left, e.clientY - box.top);
+    }
   };
   const wheel = (e: WheelEvent) => {
     e.preventDefault();
@@ -47,6 +61,11 @@ export function attachControls(el: HTMLElement, events: ControlEvents): () => vo
       '=': () => events.zoom(1 / SKY.zoomStep),
       '-': () => events.zoom(SKY.zoomStep),
     };
+    if ((e.key === 'Enter' || e.key === ' ') && events.pick) {
+      e.preventDefault();
+      events.pick();
+      return;
+    }
     const action = moves[e.key];
     if (!action) return;
     e.preventDefault();

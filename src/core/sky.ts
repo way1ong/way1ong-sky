@@ -15,7 +15,8 @@ export interface Place {
 export const SKY_BODY_IDS = ['sun', 'moon', 'mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'] as const satisfies readonly BodyId[];
 export type SkyBodyId = (typeof SKY_BODY_IDS)[number];
 
-const ENGINE: Record<SkyBodyId, Body> = {
+/** The engine's own name of each body of the sky. */
+export const ENGINE_BODY: Record<SkyBodyId, Body> = {
   sun: Body.Sun,
   moon: Body.Moon,
   mercury: Body.Mercury,
@@ -69,7 +70,7 @@ export function altAz(sky: Vec3): { altitude: number; azimuth: number } {
 
 /** Where a body is among the stars as seen from the place — the Moon is near enough for the place to matter. */
 export function bodyDirection(id: SkyBodyId, place: Place, date: Date): Vec3 {
-  const at = Equator(ENGINE[id], date, observer(place), false, true).vec;
+  const at = Equator(ENGINE_BODY[id], date, observer(place), false, true).vec;
   const l = Math.hypot(at.x, at.y, at.z);
   return [at.x / l, at.y / l, at.z / l];
 }
@@ -86,11 +87,11 @@ export function bodyInSky(id: SkyBodyId, turn: SkyTurn): Vec3 {
  */
 /** How bright a body is at a moment, as the engine reckons it: the smaller the number, the brighter. */
 export function bodyMagnitude(id: SkyBodyId, date: Date): number {
-  return Illumination(ENGINE[id], date).mag;
+  return Illumination(ENGINE_BODY[id], date).mag;
 }
 
 export function riseAndSet(id: SkyBodyId, place: Place, from: Date, days = 1): { rise: Date | null; set: Date | null } {
-  const find = (direction: 1 | -1) => SearchRiseSet(ENGINE[id], observer(place), direction, from, days)?.date ?? null;
+  const find = (direction: 1 | -1) => SearchRiseSet(ENGINE_BODY[id], observer(place), direction, from, days)?.date ?? null;
   return { rise: find(1), set: find(-1) };
 }
 

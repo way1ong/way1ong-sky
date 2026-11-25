@@ -233,6 +233,40 @@ for (const [width, height] of SIZES) {
       await look(page, where, 'sky');
       await page.locator('.note .icon-btn').click();
       await panels(page, where, 'the sky', 'sky', []);
+      // A touch on the sky names what is there. Somewhere in the free sky a touch finds a star: try a few places.
+      const room = await page.evaluate(() => {
+        const side = getComputedStyle(document.querySelector('.app')).getPropertyValue('--side').trim() === '1';
+        const top = document.querySelector('.top').getBoundingClientRect().bottom;
+        const low = side ? innerHeight : document.querySelector('.bottom').getBoundingClientRect().top;
+        return { x: innerWidth / 2, y: (top + low) / 2, w: Math.min(innerWidth, 360) / 4, h: (low - top) / 4 };
+      });
+      const card = page.locator('.pick');
+      for (const [dx, dy] of [[0, 0], [-1, -1], [1, -1], [0, -1.5], [-0.5, 0.5], [0.5, 0.5], [-1, 0], [1, 0]]) {
+        await page.mouse.click(room.x + dx * room.w, room.y + dy * room.h);
+        if (await card.isVisible()) break;
+      }
+      if (!(await card.isVisible())) note(where, 'no touch on the sky opened the card of a star');
+      else {
+        if (!((await card.locator('h2').textContent()) ?? '').trim()) note(where, 'the card of a star has no name');
+        if ((await card.locator('.pick__row').count()) < 3) note(where, 'the card of a star tells less than three things');
+        const box = await card.boundingBox();
+        if (box && (box.x < 0 || box.x + box.width > width + 1 || box.y + box.height > height + 1)) note(where, 'the card of a star runs off the screen');
+        await look(page, where, 'sky-card');
+        await page.keyboard.press('Escape');
+        if (await card.isVisible()) note(where, 'Escape does not close the card of a star');
+      }
+      // A drag turns the sky and names nothing.
+      await page.mouse.move(room.x, room.y);
+      await page.mouse.down();
+      await page.mouse.move(room.x + 50, room.y + 12, { steps: 4 });
+      await page.mouse.up();
+      if (await card.isVisible()) note(where, 'a drag across the sky opened a card');
+      // The keyboard: Enter names what is in the middle, or says there is nothing there.
+      await page.locator('canvas.sky').focus();
+      await page.keyboard.press('Enter');
+      if (!(await card.isVisible()) && !(await page.locator('.note:not(.pick)').isVisible())) note(where, 'Enter on the sky neither names a star nor says there is none');
+      await page.keyboard.press('Escape');
+      await page.locator('.note:not(.pick) .icon-btn').click().catch(() => undefined);
       // The sky's clock stops at its fastest speed after one step: pressing on changes nothing.
       const faster = page.locator('.time .icon-btn').nth(2);
       await faster.click();

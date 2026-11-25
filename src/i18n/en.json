@@ -278,9 +278,9 @@
     "open": "The sky from here",
     "toFlight": "Flight",
     "title": "The sky: {place}",
-    "scene": "The sky over the chosen place: stars, constellations, the Sun, the Moon and the planets. Drag to look around.",
+    "scene": "The sky over the chosen place: stars, constellations, the Sun, the Moon and the planets. Drag to look around. Touch a star or a planet to learn what it is; on a keyboard Enter names what is in the middle.",
     "placeButton": "Place: {place}",
-    "note": "The sky over {place} at this moment. Drag to look around; two fingers or the wheel bring it nearer. The place is changed with the button below.",
+    "note": "The sky over {place} at this moment. Drag to look around; two fingers or the wheel bring it nearer. Touch a star or a planet to learn what it is. The place is changed with the button below.",
     "dayNote": "The Sun is up: the stars are drawn as if daylight did not hide them.",
     "compass": {
       "n": "N",
@@ -341,6 +341,31 @@
         "w": "west",
         "nw": "north-west"
       }
+    },
+    "pick": {
+      "star": "Star",
+      "unnamed": "A star without a name of its own",
+      "planet": "Planet",
+      "kindIn": "{kind} in",
+      "constellation": "Constellation",
+      "brightness": "Brightness",
+      "words": {
+        "veryBright": "very bright",
+        "bright": "bright",
+        "medium": "medium",
+        "faint": "faint — seen from a dark place"
+      },
+      "magnitude": "{word} · magnitude {mag}",
+      "now": "Now",
+      "up": "{altitude}° over the horizon, {direction}",
+      "under": "under the horizon",
+      "rises": "rises at {time}",
+      "sets": "sets at {time}",
+      "phase": "Look",
+      "fly": "Fly there",
+      "flyLabel": "Fly to: {name}",
+      "close": "Close the card",
+      "none": "There is no star or planet in the middle of the view."
     },
     "menu": {
       "title": "The sky",

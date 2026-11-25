@@ -189,6 +189,47 @@ button {
   background: none;
 }
 
+/*
+  The card of what a touch on the sky map has named. It lies at the bottom of the free room, over the
+  bars: what was touched is mostly higher and stays in sight.
+*/
+.pick {
+  align-self: end;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+.pick__text {
+  display: grid;
+  gap: 0.25rem;
+  justify-items: start;
+  min-width: 0;
+  padding: 0.25rem 0;
+}
+.pick__name {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.25;
+}
+.pick__rows {
+  display: grid;
+  gap: 0.125rem;
+  margin: 0;
+  font-size: 0.9375rem;
+}
+/* A label and its value run on as one line of text and wrap as text does. */
+.pick__row dt,
+.pick__row dd {
+  display: inline;
+  margin: 0;
+}
+.pick__row dt {
+  color: var(--muted);
+}
+/* With the panels hidden the card is still what a touch asks for. */
+.app--wide .pick {
+  display: flex;
+}
+
 /* Four corners turned outwards: a wider view. With the panels hidden they turn inwards: back to the panels. */
 .icon-wide {
   width: 1.125rem;
