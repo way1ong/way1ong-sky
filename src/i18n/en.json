@@ -167,7 +167,49 @@
       "neptune": "Neptune, from the last whole-planet images of NASA’s Voyager 2, taken 4 days and 20 hours before its closest approach. The Great Dark Spot is in view."
     },
     "photoBy": "Photo: {credit}",
-    "photoAlt": "Photo: {name}"
+    "photoAlt": "Photo: {name}",
+    "you": {
+      "title": "What if you were here?",
+      "intro": "Enter your age and weight. They stay on this device: the program neither keeps nor sends them.",
+      "age": "Your age, years",
+      "weight": "Your weight, kg",
+      "years": {
+        "one": "By the years here you would be {n} year old.",
+        "other": "By the years here you would be {n} years old."
+      },
+      "scale": "A scale would show {n} kg.",
+      "giant": "The weight is worked out for the level where the pressure is as at the Earth’s surface."
+    },
+    "size": {
+      "earth": "Beside the Earth",
+      "moon": "Beside the Moon",
+      "bigger": {
+        "one": "Its diameter is {n} times the Earth’s.",
+        "other": "Its diameter is {n} times the Earth’s."
+      },
+      "smaller": "Its diameter is {percent}% of the Earth’s.",
+      "earthVsMoon": {
+        "one": "The Earth’s diameter is {n} times the Moon’s.",
+        "other": "The Earth’s diameter is {n} times the Moon’s."
+      },
+      "arc": "The whole body does not fit into the drawing: only its edge is seen."
+    },
+    "history": {
+      "title": "History and exploration",
+      "link": "History — after NASA’s pages",
+      "text": {
+        "sun": "In Latin the Sun is “sol”, and the Sun god of the ancient Greeks was Helios: words like “solar” and “heliosphere” come from them. Several spacecraft watch the Sun; the SOHO observatory has done so since its launch in 1995. In 2021 NASA’s Parker Solar Probe became the first spacecraft to fly through the corona, the Sun’s upper atmosphere.",
+        "mercury": "Mercury is named for the swiftest of the ancient Roman gods; it is one of the five bright planets the Romans could see in the sky. The first spacecraft to visit it was NASA’s Mariner 10, launched in 1973; the first to orbit it was MESSENGER, launched in 2004. In 2018 Europe and Japan launched BepiColombo, a joint mission of two spacecraft.",
+        "venus": "Venus is named for the ancient Roman goddess of love and beauty — the only planet named after a female god. The ancients took it for two objects, a morning star and an evening star. Its phases, first observed by Galileo through his telescope, gave the key proof that the planets go round the Sun. On December 14, 1962, NASA’s Mariner 2 flew past Venus — the first visit of a spacecraft to another planet. Between 1961 and 1984 ten Soviet Venera probes reached its surface.",
+        "earth": "Earth is the only planet whose English name does not come from Greek or Roman mythology: the word is about 1,000 years old and simply means “the ground”. Every language has its own name for our planet. Today many spacecraft in orbit study the Earth as a whole system — the atmosphere, the ocean, the glaciers and the solid ground.",
+        "moon": "The Moon shares its name with all moons because people did not know of others until Galileo discovered four moons of Jupiter in 1610. In 1959 the Soviet Luna 1 was the first spacecraft to fly by the Moon, in 1966 Luna 9 made the first soft landing, and in 1969 Apollo 11 landed the first people. From 1969 to 1972 twelve American astronauts walked on the Moon. In April 2026 Artemis II carried four astronauts around its far side.",
+        "mars": "The ancient Romans named Mars for their god of war because its reddish color reminded them of blood; the Egyptians called it “Her Desher”, the red one. In the list of missions to Mars that NASA keeps, the first flyby that did not fail is Mariner 4, launched in 1964; the first orbiters were launched in 1971, and the first lander with a rover, Mars Pathfinder, in 1996. Mars is the only planet where rovers roam.",
+        "jupiter": "Jupiter shines bright, so people have known it since ancient times; it is named for the king of the Roman gods. In 1610 Galileo Galilei made the first detailed observations of it with a small homemade telescope and saw its four largest moons. NASA’s first spacecraft to the outer planets, Pioneer 10, came closest to Jupiter on December 4, 1973. The Galileo spacecraft orbited the planet for almost eight years, and on July 4, 2016, Juno entered orbit around it.",
+        "saturn": "Saturn is the farthest planet found by the unaided eye, known since ancient times; the oldest written records of it, about 700 BCE, are attributed to the Assyrians. It is named for the Roman god of agriculture. In 1610 Galileo saw its rings but took them for a “triple planet”; in 1655 Christiaan Huygens discovered the rings and the largest moon, Titan. Pioneer 11 was the first spacecraft to reach Saturn, on September 1, 1979; on July 1, 2004, Cassini became the first to orbit it, and on January 14, 2005, the Huygens probe landed on Titan.",
+        "uranus": "Uranus was the first planet found with a telescope: the British astronomer William Herschel discovered it on March 13, 1781, taking it at first for a comet or a star. He wanted to name it after King George III, but the name suggested by Johann Bode — that of the Greek god of the sky — was the one that stayed. Only one spacecraft has visited it: on January 24, 1986, Voyager 2 passed 81,500 kilometers from its cloud tops and discovered 10 new moons and two new rings.",
+        "neptune": "Neptune was the first planet found by calculation: Uranus did not move as expected, and the French mathematician Urbain Le Verrier worked out where an unknown planet should be. In 1846 Johann Galle at the Berlin Observatory found it on his first night of searching. Galileo had seen Neptune in 1612 and 1613 but recorded it as a fixed star. The planet is named for the Roman god of the sea. Only one spacecraft has studied it up close: Voyager 2, in 1989."
+      }
+    }
   },
   "keys": "Arrow keys turn the view, plus and minus change the distance.",
   "settings": {
@@ -265,6 +307,11 @@
       "cernan": "Eugene A. Cernan",
       "evans": "Ronald E. Evans",
       "schmitt": "Harrison H. Schmitt"
+    },
+    "moment": {
+      "show": "Show that moment",
+      "showLabel": "Show that moment: {name}",
+      "shown": "{name}: the moment of landing — {date}, {time} universal time. The Sun stood {altitude}° over the horizon of the place. “Now” brings the present back."
     }
   },
   "free": {
@@ -278,9 +325,9 @@
     "open": "The sky from here",
     "toFlight": "Flight",
     "title": "The sky: {place}",
-    "scene": "The sky over the chosen place: stars, constellations, the Sun, the Moon and the planets. Drag to look around.",
+    "scene": "The sky over the chosen place: stars, constellations, the Sun, the Moon and the planets. Drag to look around. Touch a star or a planet to learn what it is; on a keyboard Enter names what is in the middle.",
     "placeButton": "Place: {place}",
-    "note": "The sky over {place} at this moment. Drag to look around; two fingers or the wheel bring it nearer. The place is changed with the button below.",
+    "note": "The sky over {place} at this moment. Drag to look around; two fingers or the wheel bring it nearer. Touch a star or a planet to learn what it is. The place is changed with the button below.",
     "dayNote": "The Sun is up: the stars are drawn as if daylight did not hide them.",
     "compass": {
       "n": "N",
@@ -341,6 +388,92 @@
         "w": "west",
         "nw": "north-west"
       }
+    },
+    "pick": {
+      "star": "Star",
+      "unnamed": "A star without a name of its own",
+      "planet": "Planet",
+      "kindIn": "{kind} in",
+      "constellation": "Constellation",
+      "brightness": "Brightness",
+      "words": {
+        "veryBright": "very bright",
+        "bright": "bright",
+        "medium": "medium",
+        "faint": "faint — seen from a dark place"
+      },
+      "magnitude": "{word} · magnitude {mag}",
+      "now": "Now",
+      "up": "{altitude}° over the horizon, {direction}",
+      "under": "under the horizon",
+      "rises": "rises at {time}",
+      "sets": "sets at {time}",
+      "phase": "Look",
+      "fly": "Fly there",
+      "flyLabel": "Fly there: {name}",
+      "close": "Close the card",
+      "none": "There is no star or planet in the middle of the view.",
+      "jupiter": {
+        "names": {
+          "io": "Io",
+          "europa": "Europa",
+          "ganymede": "Ganymede",
+          "callisto": "Callisto"
+        },
+        "title": "Through binoculars now",
+        "order": "From left to right: {list}.",
+        "behind": "{name} is behind Jupiter’s disc now.",
+        "inFront": "{name} (in front of the disc)",
+        "note": "The top of the drawing is towards the zenith, as in binoculars; the distances are to one scale with the planet’s disc."
+      }
+    },
+    "events": {
+      "title": "Events of the year",
+      "intro": "A year ahead of the date shown. “In view” means in the dark and not too low over the horizon, by the program’s own measures.",
+      "empty": "No events found for this year.",
+      "lunar": {
+        "total": "Total eclipse of the Moon",
+        "partial": "Partial eclipse of the Moon"
+      },
+      "lunarWhat": "The Moon passes through the Earth’s shadow.",
+      "solar": {
+        "total": "Total eclipse of the Sun",
+        "annular": "Annular eclipse of the Sun",
+        "partial": "Partial eclipse of the Sun"
+      },
+      "solarWhat": "From this city the Moon will cover up to {percent}% of the Sun’s disc. Never look at the Sun without special eye protection.",
+      "meeting": "{a} and {b} side by side",
+      "meetingWhat": "At their nearest: {apart}° apart.",
+      "meetingNow": "Still side by side: {apart}° apart now; they were nearest on {date}",
+      "opposition": "{name} at opposition",
+      "oppositionWhat": "Opposite the Sun in the sky: it rises as the Sun sets and is in view all night.",
+      "elongation": {
+        "evening": "{name}: its best evenings",
+        "morning": "{name}: its best mornings"
+      },
+      "elongationWhat": {
+        "evening": "As far from the Sun in the sky as it gets ({apart}°): look west after sunset.",
+        "morning": "As far from the Sun in the sky as it gets ({apart}°): look east before sunrise."
+      },
+      "seasons": {
+        "marchEquinox": "March equinox",
+        "juneSolstice": "June solstice",
+        "septemberEquinox": "September equinox",
+        "decemberSolstice": "December solstice"
+      },
+      "seasonWhat": {
+        "marchEquinox": "The Sun crosses the celestial equator going north.",
+        "juneSolstice": "The Sun is as far north of the celestial equator as it gets.",
+        "septemberEquinox": "The Sun crosses the celestial equator going south.",
+        "decemberSolstice": "The Sun is as far south of the celestial equator as it gets."
+      },
+      "seen": "In view from here: {when}, {altitude}° over the horizon, {direction}.",
+      "notInDark": "Not in view from here in the dark.",
+      "moonUnder": "Not in view from here: the Moon is under the horizon then.",
+      "now": "now",
+      "at": "{date}, {time}",
+      "show": "Show: {name}",
+      "shown": "{name} — {when}. “Now” brings the present back."
     },
     "menu": {
       "title": "The sky",

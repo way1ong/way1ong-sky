@@ -8,11 +8,11 @@ import { missionName, siteRows } from './site-text.ts';
 
 const link = (url: string, text: string) => h('a', { href: url, rel: 'noopener' }, text);
 
-export function createSiteDialog(): { el: HTMLDialogElement; open(d: Dict, lang: string, id: SiteId): void } {
+export function createSiteDialog(): { el: HTMLDialogElement; open(d: Dict, lang: string, id: SiteId, showMoment: (id: SiteId) => void): void } {
   const el = h('dialog', { class: 'dialog', 'aria-labelledby': 'site-title' });
   return {
     el,
-    open(d, lang, id) {
+    open(d, lang, id, showMoment) {
       const site = SITES[id];
       const name = missionName(d, id);
       const picture = h(
@@ -27,6 +27,12 @@ export function createSiteDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
       }
       const close = h('button', { class: 'btn', type: 'button' }, d.card.close);
       close.addEventListener('click', () => el.close());
+      // The clock goes to the minute of the landing and the Moon turns the place to the viewer.
+      const moment = h('button', { class: 'chip', type: 'button', 'aria-label': fmt(d.sites.moment.showLabel, { name }) }, d.sites.moment.show);
+      moment.addEventListener('click', () => {
+        el.close();
+        showMoment(id);
+      });
       el.replaceChildren(
         h(
           'div',
@@ -46,7 +52,7 @@ export function createSiteDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
             ' · ',
             link(SITE_SOURCES.coordinates.url, d.sites.coordinatesLink),
           ),
-          h('div', { class: 'dialog__actions' }, close),
+          h('div', { class: 'dialog__actions' }, moment, close),
         ),
       );
       if (!el.open) el.showModal();

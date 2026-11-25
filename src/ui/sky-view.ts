@@ -5,6 +5,7 @@ import { SKY } from '../config.ts';
 import { horizonOnScreen, project, skyDirection, type Frame, type Look } from '../core/dome.ts';
 import { moonLitFraction } from '../core/ephemeris.ts';
 import { markBox, nameBox, placeBeside, shared, type Box, type NameAlign } from '../core/labels.ts';
+import { faintestShown, markRadius, pickedInSky, tooFaintForTheEye, type Picked } from '../core/pick.ts';
 import { SKY_BODY_IDS, altAz, bodyInSky, bodyMagnitude, toSky, type SkyBodyId, type SkyTurn } from '../core/sky.ts';
 import { FIGURES, NAMED_STARS, STARS, STARS_LIMIT, starName } from '../core/stars.ts';
 import type { Vec3 } from '../core/vec.ts';
@@ -21,6 +22,8 @@ export interface SkyPicture {
   layers: SkyLayers;
   lang: string;
   d: Dict;
+  /** What a touch has named: a ring is drawn round it. */
+  picked: Picked | null;
 }
 
 export interface SkyView {
@@ -100,7 +103,7 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
 
   function draw(picture: SkyPicture): void {
     resize();
-    const { look, turn, layers, d, lang } = picture;
+    const { look, turn, layers, d, lang, picked } = picture;
     const c = palette();
     const f = frame();
     const width = canvas.clientWidth;
@@ -144,7 +147,7 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
     }
 
     // ---------- the stars ----------
-    const faintest = paint.faintest.wide + (paint.faintest.narrow - paint.faintest.wide) * near;
+    const faintest = faintestShown(look.fov);
     ctx.fillStyle = c.star;
     for (let i = 0; i < STARS.length; i++) {
       const star = STARS[i] as (typeof STARS)[number];
@@ -167,8 +170,8 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
       if (!p) continue;
       const magnitude = magnitudes[id];
       // A planet too faint for the eye is drawn smaller and weaker, not to be taken for a bright one.
-      const faint = id !== 'sun' && id !== 'moon' && magnitude > SKY.tonight.eyeMagnitude;
-      const r = id === 'sun' ? paint.discPx.sun : id === 'moon' ? paint.discPx.moon : faint ? paint.faintPlanet.px : paint.discPx.planet;
+      const faint = tooFaintForTheEye(id, magnitude);
+      const r = markRadius(id, magnitude);
       if (id === 'moon') {
         // The Moon shows its phase: the lit part is turned to the Sun, as wide as the engine says it is lit.
         const sun = (bodies.find((b) => b.id === 'sun') as { sky: Vec3 }).sky;
@@ -230,6 +233,19 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
       ctx.arc(horizon.cx, horizon.cy, horizon.r, 0, Math.PI * 2);
     }
     ctx.stroke();
+
+    // ---------- the ring round what a touch has named ----------
+    if (picked) {
+      const p = project(look, f, pickedInSky(picked, turn));
+      if (p) {
+        const r = picked.kind === 'body' ? markRadius(picked.id, magnitudes[picked.id]) : paint.star.brightPx;
+        ctx.strokeStyle = c.text;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r + paint.pickRingGapPx, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    }
 
     // ---------- names: what is nearer to the top of this list is written first and keeps its place ----------
     const taken: Box[] = [];

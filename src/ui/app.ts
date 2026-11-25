@@ -3,27 +3,32 @@
 import { SKY } from '../config.ts';
 import { BODY_IDS, PLANET_IDS, parentOf, radiusKm, type BodyId } from '../core/bodies.ts';
 import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, slowedTo, stepRate, togglePause, type Clock } from '../core/clock.ts';
-import { firstLook, turnLook, zoomLook, type Look } from '../core/dome.ts';
+import { firstLook, project, turnLook, zoomLook, type Look } from '../core/dome.ts';
+import type { SkyEvent } from '../core/events.ts';
 import { nextLunarEclipse, nextSolarEclipse } from '../core/eclipses.ts';
 import { attitude, orbitKm, positionsKm, type Attitude } from '../core/ephemeris.ts';
 import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, facing, flightAt, progress, type Flight, type View } from '../core/flight.ts';
 import { advance, freeFrom, keepOutside, lookPoint, nearest, radiusOnScreenPx, turnFree, type FreeView } from '../core/free.ts';
+import { moonsBesideJupiter } from '../core/jupiter-moons.ts';
+import { pickAt, pickedInSky, skyInfo, type Picked } from '../core/pick.ts';
 import { cityById, cityName, firstCity, type City } from '../core/places.ts';
 import type { PlanetTonight } from '../core/tonight.ts';
 import { SCALES, sceneFromPlanet, sceneFromSun, scenePositions, sceneRadius, sceneRing, type ScaleMode } from '../core/scale.ts';
 import { shadeOf, type Shade } from '../core/shadow.ts';
-import { SITE_IDS, SITES, surfaceDirection, type SiteId } from '../core/sites.ts';
+import { SITE_IDS, SITES, sunOverSite, surfaceDirection, type SiteId } from '../core/sites.ts';
 import { altAz, bodyInSky, skyTurn, type SkyTurn } from '../core/sky.ts';
 import { add, length, scale, sub, type Vec3 } from '../core/vec.ts';
 import { attachControls } from './controls.ts';
 import { h } from './dom.ts';
+import { eventBody, eventMoment, eventName } from './events-list.ts';
 import { createFactsDialog } from './facts-dialog.ts';
-import { dict, fmt, pickLang, type Dict } from './i18n.ts';
+import { dict, fmt, num, pickLang, type Dict } from './i18n.ts';
 import { createMenuDialog } from './menu-dialog.ts';
+import { createPickCard } from './pick-card.ts';
 import { createPlaceDialog } from './place-dialog.ts';
 import { createSceneView, type Orbit, type SceneView } from './scene.ts';
 import { createSiteDialog } from './site-dialog.ts';
-import { missionName } from './site-text.ts';
+import { dayUT, missionName } from './site-text.ts';
 import { createSkyView, type SkyLayers } from './sky-view.ts';
 import { createTimeDialog } from './time-dialog.ts';
 import { createTonightDialog } from './tonight-dialog.ts';
@@ -156,6 +161,12 @@ export function startApp(root: HTMLElement): void {
   const note = h('p', { class: 'note__text', role: 'status' });
   const noteClose = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-close', 'aria-hidden': 'true' }));
   const noteBox = h('div', { class: 'note', hidden: true }, note, noteClose);
+  /** The card of what a touch on the sky map has named; it takes the note's place. */
+  const pickCard = createPickCard();
+  /** Says the card once to a screen reader: the card itself is rewritten silently while the clock runs. */
+  const pickSaid = h('p', { class: 'visually-hidden', role: 'status' });
+  let picked: Picked | null = null;
+  let pickShownAt = 0;
   const dock = h('ul', { class: 'dock' });
   const scaleBox = h('fieldset', { class: 'scale' });
   const timeBox = h('div', { class: 'time', role: 'group' });
@@ -191,6 +202,8 @@ export function startApp(root: HTMLElement): void {
     stage,
     header,
     noteBox,
+    pickCard.el,
+    pickSaid,
     bottom,
     menu.el,
     timeDialog.el,
@@ -276,7 +289,7 @@ export function startApp(root: HTMLElement): void {
     markOf.clear();
     for (const id of SITE_IDS) {
       const mark = h('button', { class: 'label site', type: 'button', hidden: true, 'aria-label': fmt(d.sites.open, { name: missionName(d, id) }) }, String(SITES[id].mission));
-      mark.addEventListener('click', () => siteDialog.open(d, lang, id));
+      mark.addEventListener('click', () => siteDialog.open(d, lang, id, showLanding));
       markOf.set(id, mark);
       siteMarks.append(mark);
     }
@@ -332,6 +345,13 @@ export function startApp(root: HTMLElement): void {
   function say(text: string): void {
     note.textContent = text;
     noteBox.hidden = text === '';
+    // The note and the card of a star share one place: words that come take it, and the ring goes with the card.
+    if (text !== '' && picked) {
+      picked = null;
+      pickCard.hide();
+      pickSaid.textContent = '';
+      dirty = true;
+    }
   }
   noteClose.addEventListener('click', () => {
     say('');
@@ -367,7 +387,9 @@ export function startApp(root: HTMLElement): void {
   wideBtn.addEventListener('click', () => setWide(!wide));
   // Escape brings the panels back — unless a window is open: then it closes the window.
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && wide && !document.querySelector('dialog[open]')) setWide(false);
+    if (event.key !== 'Escape' || document.querySelector('dialog[open]')) return;
+    if (picked) closePicked();
+    else if (wide) setWide(false);
   });
 
   const dayText = (moment: Date) => new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric' }).format(moment);
@@ -559,7 +581,61 @@ export function startApp(root: HTMLElement): void {
       look = zoomLook(look, factor);
       dirty = true;
     },
+    tap(x, y) {
+      const found = pickAt(x, y, look, skyView.frame(), (turnNow ??= skyTurn(place, date)));
+      if (found) showPicked(found, true);
+      else closePicked();
+    },
+    pick() {
+      const middle = skyView.frame();
+      const found = pickAt(middle.cx, middle.cy, look, middle, (turnNow ??= skyTurn(place, date)));
+      if (found) showPicked(found, true);
+      else say(d.sky.pick.none);
+    },
   });
+
+  /**
+   * The card of a star or a body on the sky map, with a ring round it. `aloud` — said to a screen reader:
+   * so when it was picked, not each time the running clock rewrites the card.
+   */
+  function showPicked(what: Picked, aloud: boolean): void {
+    picked = what;
+    say('');
+    const id = what.kind === 'body' ? what.id : null;
+    const fly = id && graphics ? () => {
+      closePicked();
+      setScreen('flight');
+      flyTo(id);
+    } : null;
+    const info = skyInfo(what, (turnNow ??= skyTurn(place, date)));
+    // Jupiter over the horizon: its four moons as binoculars show them at this moment.
+    const moons = id === 'jupiter' && info.altitude > 0 ? moonsBesideJupiter(turnNow) : null;
+    pickCard.show(d, lang, info, fly, moons);
+    pickShownAt = performance.now();
+    // Freshly picked and hidden by its own card (a low screen, a star low in the view): the sky moves up
+    // just enough for it to stand over the card.
+    if (aloud) {
+      const card = pickCard.el.getBoundingClientRect();
+      const from = stage.getBoundingClientRect();
+      const at = project(look, skyView.frame(), pickedInSky(what, turnNow));
+      const gap = SKY.pick.overCardPx;
+      if (at && at.x + from.left > card.left - gap && at.x + from.left < card.right + gap && at.y + from.top > card.top - gap && at.y + from.top < card.bottom) {
+        look = turnLook(look, 0, card.top - gap - (at.y + from.top), skyView.frame());
+      }
+    }
+    if (aloud) pickSaid.textContent = [...pickCard.el.querySelectorAll('h2, .pick__row')].map((part) => part.textContent).join('. ');
+    dirty = true;
+  }
+  /** Takes the card and the ring away. */
+  function closePicked(): void {
+    if (!picked) return;
+    picked = null;
+    pickCard.hide();
+    pickSaid.textContent = '';
+    dirty = true;
+    if (screen === 'sky') skyCanvas.focus({ preventScroll: true });
+  }
+  pickCard.onClose(closePicked);
 
   /** What is said on coming to the sky: whose sky it is, how to look around, and what is not as in life. */
   function skyNote(): string {
@@ -572,6 +648,7 @@ export function startApp(root: HTMLElement): void {
     screen = next;
     const sky = screen === 'sky';
     thrust = 0;
+    closePicked();
     // A clock that ran a week a second in the flight slows to the sky's fastest.
     if (sky) clock = slowedTo(clock, Date.now(), SKY.time.skyUpToRate);
     canvas.hidden = sky;
@@ -607,7 +684,17 @@ export function startApp(root: HTMLElement): void {
     const moment = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(planet.seen.best);
     retime(fmt(d.sky.tonight.shown, { name: d.bodies[planet.id], date: moment }));
   }
-  tonightBtn.addEventListener('click', () => tonightDialog.open(d, lang, place, date, showPlanet));
+  /** An event of the year: the clock goes to the moment it is seen from the place and stops, the view turns to it, a ring marks the body. */
+  function showEvent(event: SkyEvent): void {
+    if (!event.view) return;
+    clock = jumpTo(clock, Date.now(), event.view.at.getTime());
+    look = { ...look, azimuth: event.view.azimuth, altitude: Math.max(event.view.altitude, SKY.dome.firstLook.altitude) };
+    retime(fmt(d.sky.events.shown, { name: eventName(d, event), when: eventMoment(d, lang, event.view.at) }));
+    // the ring without the card: the note has the card's place and says what is shown
+    picked = { kind: 'body', id: eventBody(event) };
+    dirty = true;
+  }
+  tonightBtn.addEventListener('click', () => tonightDialog.open(d, lang, place, date, showPlanet, showEvent));
 
   /** From the Moon's card to a landing place: the Moon turns that place to the camera, and its window opens. */
   function showSite(id: SiteId): void {
@@ -615,7 +702,18 @@ export function startApp(root: HTMLElement): void {
       view = { ...view, ...facing(surfaceDirection(turned.moon, SITES[id].lat, SITES[id].lon)) };
       dirty = true;
     }
-    siteDialog.open(d, lang, id);
+    siteDialog.open(d, lang, id, showLanding);
+  }
+
+  /** The minute of a landing: time stands there, the camera flies to the Moon and the Moon turns the place to it. */
+  function showLanding(id: SiteId): void {
+    const landed = new Date(SITES[id].landed);
+    const time = new Intl.DateTimeFormat(lang, { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' }).format(landed);
+    const text = fmt(d.sites.moment.shown, { name: missionName(d, id), date: dayUT(lang, SITES[id].landed), time, altitude: num(lang, sunOverSite(id, landed)) });
+    clock = jumpTo(clock, Date.now(), landed.getTime());
+    retime(text);
+    view = { ...view, ...facing(surfaceDirection(turned.moon, SITES[id].lat, SITES[id].lon)) };
+    fly('moon', arrivalDistance('moon', radius.moon), text);
   }
 
   factsBtn.addEventListener('click', () => factsDialog.open(d, lang, focus, date, showSite));
@@ -734,8 +832,11 @@ export function startApp(root: HTMLElement): void {
     if (screen === 'sky') {
       if (dirty) {
         dirty = false;
+        const moved = turnNow === null;
         turnNow ??= skyTurn(place, date);
-        skyView.draw({ look, turn: turnNow, layers, lang, d });
+        // The moment or the place has changed: the card tells where the star stands now — at most once a second.
+        if (moved && picked && pickCard.shown && now - pickShownAt > 1000) showPicked(picked, false);
+        skyView.draw({ look, turn: turnNow, layers, lang, d, picked });
       }
       window.requestAnimationFrame(frame);
       return;

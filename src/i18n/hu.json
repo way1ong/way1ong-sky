@@ -167,7 +167,49 @@
       "neptune": "A Neptunusz a NASA Voyager–2 űrszondájának utolsó, az egész bolygót mutató felvételeiből, 4 nappal és 20 órával a legnagyobb megközelítés előtt. Látszik a Nagy Sötét Folt."
     },
     "photoBy": "Fotó: {credit}",
-    "photoAlt": "Fotó: {name}"
+    "photoAlt": "Fotó: {name}",
+    "you": {
+      "title": "És ha Ön itt lenne?",
+      "intro": "Adja meg életkorát és testsúlyát. Ezek ezen az eszközön maradnak: a program nem tárolja és nem küldi el őket.",
+      "age": "Az Ön életkora, év",
+      "weight": "Az Ön testsúlya, kg",
+      "years": {
+        "one": "Az itteni évek szerint Ön {n} éves lenne.",
+        "other": "Az itteni évek szerint Ön {n} éves lenne."
+      },
+      "scale": "A mérleg {n} kg-ot mutatna.",
+      "giant": "A súlyt arra a szintre számoltuk, ahol a nyomás akkora, mint a Föld felszínén."
+    },
+    "size": {
+      "earth": "A Föld mellett",
+      "moon": "A Hold mellett",
+      "bigger": {
+        "one": "Átmérője a Földének {n}-szerese.",
+        "other": "Átmérője a Földének {n}-szerese."
+      },
+      "smaller": "Átmérője a Földének {percent}%-a.",
+      "earthVsMoon": {
+        "one": "A Föld átmérője a Holdénak {n}-szerese.",
+        "other": "A Föld átmérője a Holdénak {n}-szerese."
+      },
+      "arc": "Az egész égitest nem fér rá a rajzra: csak a széle látszik."
+    },
+    "history": {
+      "title": "Történet és kutatás",
+      "link": "Történet — a NASA oldalai alapján",
+      "text": {
+        "sun": "A Nap latinul „sol”, az ókori görögök napistene pedig Héliosz volt: ezekből erednek az olyan szavak, mint a „szoláris” és a „helioszféra”. A Napot több űreszköz figyeli; a SOHO obszervatórium 1995-ös indítása óta. 2021-ben a NASA Parker napszondája elsőként repült át a koronán, a Nap felső légkörén.",
+        "mercury": "A Merkúr a leggyorsabb ókori római istenről kapta a nevét; egyike annak az öt fényes bolygónak, amelyet a rómaiak az égen láthattak. Elsőként a NASA 1973-ban indított Mariner–10 szondája járt nála; elsőként a 2004-ben indított MESSENGER állt pályára körülötte. 2018-ban Európa és Japán közös, két űreszközből álló küldetést indított BepiColombo néven.",
+        "venus": "A Vénusz a szerelem és a szépség ókori római istennőjéről kapta a nevét — ez az egyetlen bolygó, amelyet istennőről neveztek el. A régiek két égitestnek hitték: hajnalcsillagnak és esthajnalcsillagnak. Fázisai, amelyeket először Galilei figyelt meg távcsővel, kulcsfontosságú bizonyítékot adtak arra, hogy a bolygók a Nap körül keringenek. 1962. december 14-én a NASA Mariner–2 szondája elrepült a Vénusz mellett — ez volt az első űreszköz, amely egy másik bolygónál járt. 1961 és 1984 között tíz szovjet Venyera szonda érte el a felszínét.",
+        "earth": "A Föld az egyetlen bolygó, amelynek angol neve nem a görög vagy római mitológiából ered: az Earth szó mintegy ezeréves, és egyszerűen „talajt” jelent. Bolygónknak minden nyelven megvan a maga neve. Ma számos, Föld körül keringő űreszköz vizsgálja a Földet egységes rendszerként — a légkört, az óceánt, a gleccsereket és a szilárd talajt.",
+        "moon": "A Holdnak sokáig nem kellett saját név: az emberek nem tudtak más holdakról, amíg Galilei 1610-ben fel nem fedezte a Jupiter négy holdját. 1959-ben a szovjet Luna–1 elsőként repült el a Hold mellett, 1966-ban a Luna–9 elsőként szállt le rá simán, 1969-ben pedig az Apollo–11 először vitt embert a felszínére. 1969 és 1972 között tizenkét amerikai űrhajós járt a Holdon. 2026 áprilisában az Artemis II négy űrhajóst vitt el a Hold túlsó oldala körül.",
+        "mars": "A Marsot az ókori rómaiak a háború istenéről nevezték el, mert vöröses színe a vérre emlékeztette őket; az egyiptomiak „Her Desher”-nek, a vörösnek hívták. A NASA Mars-küldetéseket felsoroló jegyzékében az első nem sikertelen elrepülés az 1964-ben indított Mariner–4; az első keringőegységeket 1971-ben indították, az első marsjárós leszállóegységet, a Mars Pathfindert pedig 1996-ban. A Mars az egyetlen bolygó, amelyen marsjárók közlekednek.",
+        "jupiter": "A Jupiter fényesen ragyog, ezért az emberek ősidők óta ismerik; a római istenek királyáról kapta a nevét. 1610-ben Galileo Galilei kis, saját készítésű távcsövével elsőként figyelte meg részletesen, és meglátta négy legnagyobb holdját. A NASA első, külső bolygókhoz küldött űreszköze, a Pioneer–10 1973. december 4-én került legközelebb a Jupiterhez. A Galileo űrszonda csaknem nyolc évig keringett a bolygó körül, 2016. július 4-én pedig a Juno állt pályára körülötte.",
+        "saturn": "A Szaturnusz a legtávolabbi szabad szemmel felfedezett bolygó, ősidők óta ismert; a róla szóló legrégebbi, Kr. e. 700 körüli feljegyzéseket az asszíroknak tulajdonítják. A földművelés római istenéről kapta a nevét. 1610-ben Galilei meglátta a gyűrűit, de „hármas bolygónak” vélte; 1655-ben Christiaan Huygens felfedezte a gyűrűket és a legnagyobb holdat, a Titant. Elsőként a Pioneer–11 érte el a Szaturnuszt 1979. szeptember 1-jén; 2004. július 1-jén a Cassini elsőként állt pályára körülötte, 2005. január 14-én pedig a Huygens szonda leszállt a Titanra.",
+        "uranus": "Az Uránusz az első bolygó, amelyet távcsővel találtak meg: William Herschel brit csillagász 1781. március 13-án fedezte fel, és eleinte üstökösnek vagy csillagnak vélte. III. György királyról akarta elnevezni, de a Johann Bode javasolta név maradt meg — az ég görög istenéé. Csak egy űreszköz járt nála: 1986. január 24-én a Voyager–2 81 500 kilométerre haladt el a felhőinek teteje felett, és 10 új holdat meg két új gyűrűt fedezett fel.",
+        "neptune": "A Neptunusz az első bolygó, amelyet számítással találtak meg: az Uránusz nem úgy mozgott, ahogy várták, és Urbain Le Verrier francia matematikus kiszámította, hol kell lennie egy ismeretlen bolygónak. 1846-ban Johann Galle a berlini csillagvizsgálóban a keresés első éjszakáján megtalálta. Galilei már 1612-ben és 1613-ban látta a Neptunuszt, de állócsillagként jegyezte fel. A bolygó a tenger római istenéről kapta a nevét. Csak egy űreszköz vizsgálta közelről: a Voyager–2, 1989-ben."
+      }
+    }
   },
   "keys": "A nyílbillentyűk forgatják a nézetet, a plusz és a mínusz a távolságot változtatja.",
   "settings": {
@@ -265,6 +307,11 @@
       "cernan": "Eugene A. Cernan",
       "evans": "Ronald E. Evans",
       "schmitt": "Harrison H. Schmitt"
+    },
+    "moment": {
+      "show": "A pillanat megmutatása",
+      "showLabel": "A pillanat megmutatása: {name}",
+      "shown": "{name}: a leszállás pillanata — {date}, {time} világidő szerint. A Nap {altitude}°-kal állt a hely horizontja felett. A „Most” gomb visszahozza a jelent."
     }
   },
   "free": {
@@ -278,9 +325,9 @@
     "open": "Az égbolt innen",
     "toFlight": "Repülés",
     "title": "Égbolt: {place}",
-    "scene": "Az égbolt a kiválasztott hely felett: csillagok, csillagképek, a Nap, a Hold és a bolygók. Húzással nézhet körül.",
+    "scene": "Az égbolt a kiválasztott hely felett: csillagok, csillagképek, a Nap, a Hold és a bolygók. Húzással nézhet körül. Érintsen meg egy csillagot vagy bolygót, hogy megtudja, mi az; billentyűzeten az Enter megnevezi, ami középen van.",
     "placeButton": "Hely: {place}",
-    "note": "Az égbolt {place} felett ebben a pillanatban. Húzással nézhet körül; két ujjal vagy a görgővel közelíthet. A helyet a lenti gombbal változtathatja meg.",
+    "note": "Az égbolt {place} felett ebben a pillanatban. Húzással nézhet körül; két ujjal vagy a görgővel közelíthet. Érintsen meg egy csillagot vagy bolygót, hogy megtudja, mi az. A helyet a lenti gombbal változtathatja meg.",
     "dayNote": "A Nap a horizont felett van: a csillagok úgy láthatók, mintha a nappali fény nem takarná el őket.",
     "compass": {
       "n": "É",
@@ -341,6 +388,92 @@
         "w": "nyugat",
         "nw": "északnyugat"
       }
+    },
+    "pick": {
+      "star": "Csillag",
+      "unnamed": "Saját név nélküli csillag",
+      "planet": "Bolygó",
+      "kindIn": "{kind}, csillagkép:",
+      "constellation": "Csillagkép",
+      "brightness": "Fényesség",
+      "words": {
+        "veryBright": "nagyon fényes",
+        "bright": "fényes",
+        "medium": "közepes",
+        "faint": "halvány — sötét helyről látható"
+      },
+      "magnitude": "{word} · {mag} magnitúdó",
+      "now": "Most",
+      "up": "{altitude}° a horizont felett, {direction}",
+      "under": "a horizont alatt",
+      "rises": "kel: {time}",
+      "sets": "nyugszik: {time}",
+      "phase": "Látvány",
+      "fly": "Repülés oda",
+      "flyLabel": "Repülés oda: {name}",
+      "close": "Kártya bezárása",
+      "none": "A nézet közepén nincs csillag vagy bolygó.",
+      "jupiter": {
+        "names": {
+          "io": "Io",
+          "europa": "Europa",
+          "ganymede": "Ganymedes",
+          "callisto": "Callisto"
+        },
+        "title": "Távcsőben most",
+        "order": "Balról jobbra: {list}.",
+        "behind": "{name} most a Jupiter korongja mögött van.",
+        "inFront": "{name} (a korong előtt)",
+        "note": "A rajz teteje a zenit felé néz, ahogy a kézi távcsőben; a távolságok a bolygó korongjával egy léptékben vannak."
+      }
+    },
+    "events": {
+      "title": "Az év eseményei",
+      "intro": "Egy évre előre a mutatott dátumtól. A „látható” azt jelenti: sötétben és nem túl alacsonyan a horizont felett, a program saját mércéje szerint.",
+      "empty": "Erre az évre nincs esemény.",
+      "lunar": {
+        "total": "Teljes holdfogyatkozás",
+        "partial": "Részleges holdfogyatkozás"
+      },
+      "lunarWhat": "A Hold áthalad a Föld árnyékán.",
+      "solar": {
+        "total": "Teljes napfogyatkozás",
+        "annular": "Gyűrűs napfogyatkozás",
+        "partial": "Részleges napfogyatkozás"
+      },
+      "solarWhat": "Ebből a városból nézve a Hold a napkorong legfeljebb {percent}%-át takarja el. Soha ne nézzen a Napba különleges szemvédő nélkül.",
+      "meeting": "{a} és {b} egymás mellett",
+      "meetingWhat": "Legközelebb egymáshoz: {apart}° távolságra.",
+      "meetingNow": "Még egymás mellett: most {apart}° a távolságuk; legközelebb ekkor voltak: {date}",
+      "opposition": "{name}: szembenállás",
+      "oppositionWhat": "Az égen a Nappal szemben: akkor kel, amikor a Nap nyugszik, és egész éjjel látható.",
+      "elongation": {
+        "evening": "{name}: a legjobb esték",
+        "morning": "{name}: a legjobb hajnalok"
+      },
+      "elongationWhat": {
+        "evening": "A lehető legtávolabb a Naptól az égen ({apart}°): napnyugta után nyugaton keresse.",
+        "morning": "A lehető legtávolabb a Naptól az égen ({apart}°): napkelte előtt keleten keresse."
+      },
+      "seasons": {
+        "marchEquinox": "Márciusi napéjegyenlőség",
+        "juneSolstice": "Júniusi napforduló",
+        "septemberEquinox": "Szeptemberi napéjegyenlőség",
+        "decemberSolstice": "Decemberi napforduló"
+      },
+      "seasonWhat": {
+        "marchEquinox": "A Nap észak felé haladva átlépi az égi egyenlítőt.",
+        "juneSolstice": "A Nap a lehető legtávolabb van északra az égi egyenlítőtől.",
+        "septemberEquinox": "A Nap dél felé haladva átlépi az égi egyenlítőt.",
+        "decemberSolstice": "A Nap a lehető legtávolabb van délre az égi egyenlítőtől."
+      },
+      "seen": "Innen látható: {when}, {altitude}° a horizont felett, {direction}.",
+      "notInDark": "Innen sötétben nem látható.",
+      "moonUnder": "Innen nem látható: a Hold ekkor a horizont alatt van.",
+      "now": "most",
+      "at": "{date}, {time}",
+      "show": "Mutassa: {name}",
+      "shown": "{name} — {when}. A „Most” gomb visszahozza a jelent."
     },
     "menu": {
       "title": "Égbolt",

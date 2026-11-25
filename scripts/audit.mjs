@@ -189,6 +189,11 @@ for (const [width, height] of SIZES) {
         const img = document.querySelector('dialog[open] .photo img');
         return img.complete && img.naturalWidth > 0;
       });
+      // The card tells the body's history in a few sentences.
+      if (((await page.locator('dialog[open] section[aria-labelledby="history-title"] p').textContent()) ?? '').trim().length < 80) note(where, 'the card tells no history of the body');
+      // The card sets the body beside another, to one scale: two circles and words that say the same.
+      if ((await page.locator('dialog[open] .size circle').count()) !== 2) note(where, 'the card has no drawing of the body beside another');
+      if (!((await page.locator('dialog[open] .size figcaption').textContent()) ?? '').trim()) note(where, 'the drawing of sizes says nothing in words');
       await look(page, where, 'card');
       await closeDialog(page);
 
@@ -196,12 +201,28 @@ for (const [width, height] of SIZES) {
       await page.waitForTimeout(2200);
       await page.locator('.top .icon-btn').first().click();
       await page.waitForSelector('dialog[open] .site-list');
+      // "What if you were here?": a weight typed in is answered at once; on the Moon no age is asked for.
+      await page.locator('dialog[open] #you-weight').fill('70');
+      if (!((await page.locator('dialog[open] .you__out').textContent()) ?? '').trim()) note(where, 'a weight typed into the card gets no answer');
+      if (await page.locator('dialog[open] #you-age').count()) note(where, 'the Moon’s card asks for an age though the Moon has no year of its own');
+      await page.locator('dialog[open] .you').scrollIntoViewIfNeeded();
+      await look(page, where, 'card-you');
       await page.locator('dialog[open] .site-list button').nth(3).click();
       await page.waitForSelector('dialog[open] #site-title');
       await look(page, where, 'landing');
-      await closeDialog(page);
-      await page.waitForTimeout(300);
+      // "Show that moment": the clock goes to the landing (1969–1972) and stops, the note says so.
+      await page.locator('dialog[open] .dialog__actions .chip').click();
+      await page.waitForTimeout(2400);
+      if (await page.locator('dialog[open]').count()) note(where, 'the window of the landing place stays open after "show that moment"');
+      if (!/19(69|7[12])/.test((await page.locator('.top__line').first().textContent()) ?? '')) note(where, `"show that moment" did not take the clock to the landing: ${await page.locator('.top__line').first().textContent()}`);
+      if (!(await page.locator('.note:not(.pick)').isVisible())) note(where, '"show that moment" says nothing');
+      // The Moon is turned to the landing place: its mark is in view.
       if ((await page.locator('.site:visible').count()) === 0) note(where, 'no landing marks on the Moon turned to a landing place');
+      await look(page, where, 'landing-moment');
+      await page.locator('.note:not(.pick) .icon-btn').click();
+      // Back to the present: the Moon has turned since 1969, the place may be out of sight — nothing to check here.
+      await page.locator('.time .chip').first().click();
+      await page.waitForTimeout(300);
       await look(page, where, 'moon');
 
       await chip(page, 2).click();
@@ -233,6 +254,64 @@ for (const [width, height] of SIZES) {
       await look(page, where, 'sky');
       await page.locator('.note .icon-btn').click();
       await panels(page, where, 'the sky', 'sky', []);
+      // A touch on the sky names what is there. Somewhere in the free sky a touch finds a star: try a few places.
+      const room = await page.evaluate(() => {
+        const side = getComputedStyle(document.querySelector('.app')).getPropertyValue('--side').trim() === '1';
+        const top = document.querySelector('.top').getBoundingClientRect().bottom;
+        const low = side ? innerHeight : document.querySelector('.bottom').getBoundingClientRect().top;
+        return { x: innerWidth / 2, y: (top + low) / 2, w: Math.min(innerWidth, 360) / 4, h: (low - top) / 4 };
+      });
+      const card = page.locator('.pick');
+      for (const [dx, dy] of [[0, 0], [-1, -1], [1, -1], [0, -1.5], [-0.5, 0.5], [0.5, 0.5], [-1, 0], [1, 0]]) {
+        await page.mouse.click(room.x + dx * room.w, room.y + dy * room.h);
+        if (await card.isVisible()) break;
+      }
+      if (!(await card.isVisible())) note(where, 'no touch on the sky opened the card of a star');
+      else {
+        if (!((await card.locator('h2').textContent()) ?? '').trim()) note(where, 'the card of a star has no name');
+        if ((await card.locator('.pick__row').count()) < 3) note(where, 'the card of a star tells less than three things');
+        const box = await card.boundingBox();
+        if (box && (box.x < 0 || box.x + box.width > width + 1 || box.y + box.height > height + 1)) note(where, 'the card of a star runs off the screen');
+        await look(page, where, 'sky-card');
+        await page.keyboard.press('Escape');
+        if (await card.isVisible()) note(where, 'Escape does not close the card of a star');
+      }
+      // A drag turns the sky and names nothing.
+      await page.mouse.move(room.x, room.y);
+      await page.mouse.down();
+      await page.mouse.move(room.x + 50, room.y + 12, { steps: 4 });
+      await page.mouse.up();
+      if (await card.isVisible()) note(where, 'a drag across the sky opened a card');
+      // The keyboard: Enter names what is in the middle, or says there is nothing there.
+      await page.locator('canvas.sky').focus();
+      await page.keyboard.press('Enter');
+      if (!(await card.isVisible()) && !(await page.locator('.note:not(.pick)').isVisible())) note(where, 'Enter on the sky neither names a star nor says there is none');
+      await page.keyboard.press('Escape');
+      await page.locator('.note:not(.pick) .icon-btn').click().catch(() => undefined);
+      // Jupiter through binoculars: when Jupiter is in view tonight, its card on the map opens a drawing of its
+      // four moons and says their order in words.
+      await page.locator('.sky-bar .chip').nth(2).click();
+      await page.waitForSelector('dialog[open] #tonight-title');
+      const planets = page.locator('dialog[open] .site-list').first().locator('button');
+      const jupiter = (await planets.allTextContents()).findIndex((text) => /^(Jupiter|Юпітер)/.test(text.trim()));
+      if (jupiter < 0) await closeDialog(page);
+      else {
+        await planets.nth(jupiter).click();
+        await page.waitForTimeout(400);
+        await page.locator('canvas.sky').focus();
+        await page.keyboard.press('Enter');
+        const more = card.locator('details');
+        if (!(await more.count())) note(where, 'the card of Jupiter in the middle of the view has no drawing of its moons');
+        else {
+          await more.locator('summary').click();
+          if ((await card.locator('.moons__planet').count()) !== 1) note(where, 'the drawing of Jupiter’s moons has no planet');
+          if (!((await card.locator('.moons__said').textContent()) ?? '').trim()) note(where, 'the drawing of Jupiter’s moons says nothing in words');
+          await look(page, where, 'sky-jupiter');
+        }
+        await page.keyboard.press('Escape');
+        await page.locator('.note:not(.pick) .icon-btn').click().catch(() => undefined);
+        await page.locator('.time .chip').first().click();
+      }
       // The sky's clock stops at its fastest speed after one step: pressing on changes nothing.
       const faster = page.locator('.time .icon-btn').nth(2);
       await faster.click();
@@ -248,7 +327,21 @@ for (const [width, height] of SIZES) {
       await page.locator('.sky-bar .chip').nth(2).click();
       await page.waitForSelector('dialog[open] #tonight-title');
       await look(page, where, 'tonight');
-      await closeDialog(page);
+      // The events of the year: the four turns of the year are always among them; one that is seen can be shown.
+      const events = page.locator('dialog[open] section[aria-labelledby="events-title"] li');
+      if ((await events.count()) < 4) note(where, `the events of the year list ${await events.count()} events`);
+      const shown = page.locator('dialog[open] section[aria-labelledby="events-title"] button').first();
+      if (await shown.count()) {
+        await shown.click();
+        await page.waitForTimeout(400);
+        if (await page.locator('dialog[open]').count()) note(where, 'the window stays open after an event is shown');
+        if (!(await page.locator('.note:not(.pick)').isVisible())) note(where, 'showing an event says nothing');
+        await look(page, where, 'sky-event');
+        await page.locator('.note:not(.pick) .icon-btn').click();
+        await page.locator('.time .chip').first().click();
+      } else {
+        await closeDialog(page);
+      }
       await page.locator('.top .icon-btn:not(.icon-btn--wide)').last().click();
       await page.waitForSelector('dialog[open] [role="switch"]');
       await look(page, where, 'menu');

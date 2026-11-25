@@ -105,6 +105,8 @@ export const SKY = {
     daylight: { from: -12, to: 2, starsLeft: 0.12 },
     discPx: { sun: 9, moon: 8, planet: 3.5 },
     faintPlanet: { px: 2, strength: 0.6 },
+    /** The ring round what a touch has named stands this far from its mark, CSS px. */
+    pickRingGapPx: 6,
     labelGapPx: 4,
   },
   /**
@@ -116,6 +118,35 @@ export const SKY = {
    *   fainter stars, but a planet that faint cannot be told from them without a chart and a dark sky.
    */
   tonight: { darkSunAltitude: -6, leastAltitude: 5, stepMinutes: 10, eyeMagnitude: 5 },
+  /**
+   * "What if you were here?" in a body's card (C; the owner's decision of 25.11): the greatest age and
+   * weight taken as typed in earnest; and the drawing of two bodies to one scale — the smaller is never
+   * under `leastPx`, the larger fills at most `mostShare` of the drawing's height.
+   */
+  you: { ageMost: 130, weightMostKg: 500, drawing: { leastPx: 3, mostShare: 0.72 } },
+  /**
+   * "Events of the year" (C; the owner's decision of 25.11): what is listed and when two planets count as
+   * meeting. `days` — how far ahead of the moment shown; `closeDeg` — two planets are "side by side" when
+   * at their nearest they stand closer than this; `sunClearDeg` — and both at least this far from the Sun,
+   * or the meeting is lost in its glare; `stillCloseDays` — a meeting whose nearest moment passed no longer
+   * ago than this is still listed while the two stay that close. The program's own measures, not astronomy's.
+   */
+  events: { days: 365, closeDeg: 5, sunClearDeg: 15, stillCloseDays: 30 },
+  /**
+   * A touch on the sky map names what is there (C; the owner's decision of 25.11):
+   * `tap` — a touch counts as one when the finger moved no more than `slopPx` and lifted within `ms`;
+   * `reachPx` — how far from a star or from the edge of a body's mark the touch may land;
+   * `brighterPx` — of two stars under the finger the brighter may be this much farther for each magnitude;
+   * `overCardPx` — what was picked is kept this far over the edge of its card when the card would hide it;
+   * `words` — how a brightness is said in words: up to these magnitudes "very bright", "bright", "medium",
+   *   fainter — "faint". The program's own words, not astronomy's.
+   */
+  /**
+   * Jupiter through binoculars in its card (C): the drawing's size, CSS px of its own grid; how many px a
+   * radius of Jupiter takes at the most (less when the moons would not fit in height); the moons' dots.
+   */
+  moonsDrawing: { width: 300, height: 150, radiusPx: 5.3, moonPx: 2.2 },
+  pick: { tap: { slopPx: 8, ms: 600 }, reachPx: 24, brighterPx: 3, overCardPx: 28, words: { veryBright: 1.5, bright: 3, medium: 4.5 } },
   /** Points of an orbit's line (C). */
   orbitPoints: 256,
   /** Where the outer edge of ring A lies across the ring texture, 0…1 — measured on the texture itself. */

@@ -5,6 +5,7 @@
 import { PLANET_IDS, radiusKm, type BodyId, type PlanetId } from './bodies.ts';
 import descriptions from '../data/descriptions.json';
 import data from '../data/facts.json';
+import history from '../data/history.json';
 import { lightMinutes, moonLitFraction, positionKm } from './ephemeris.ts';
 import { length, sub } from './vec.ts';
 
@@ -12,6 +13,8 @@ export const FACT_SOURCES = data.source;
 
 /** The NASA Science pages a body's description rests on (docs/DESCRIPTIONS.md); the first is linked from the card. */
 export const DESCRIPTION_PAGES: Record<BodyId, string[]> = descriptions.pages;
+/** The NASA pages the history of each body is told after (docs/HISTORY.md has their sentences). */
+export const HISTORY_PAGES: Record<BodyId, string[]> = history.pages;
 
 const EARTH = data.planets.earth;
 
