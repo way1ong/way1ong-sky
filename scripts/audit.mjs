@@ -199,7 +199,15 @@ for (const [width, height] of SIZES) {
       await page.locator('dialog[open] .site-list button').nth(3).click();
       await page.waitForSelector('dialog[open] #site-title');
       await look(page, where, 'landing');
-      await closeDialog(page);
+      // "Show that moment": the clock goes to the landing (1969–1972) and stops, the note says so.
+      await page.locator('dialog[open] .dialog__actions .chip').click();
+      await page.waitForTimeout(2400);
+      if (await page.locator('dialog[open]').count()) note(where, 'the window of the landing place stays open after "show that moment"');
+      if (!/19(69|7[12])/.test((await page.locator('.top__line').first().textContent()) ?? '')) note(where, `"show that moment" did not take the clock to the landing: ${await page.locator('.top__line').first().textContent()}`);
+      if (!(await page.locator('.note:not(.pick)').isVisible())) note(where, '"show that moment" says nothing');
+      await look(page, where, 'landing-moment');
+      await page.locator('.note:not(.pick) .icon-btn').click();
+      await page.locator('.time .chip').first().click();
       await page.waitForTimeout(300);
       if ((await page.locator('.site:visible').count()) === 0) note(where, 'no landing marks on the Moon turned to a landing place');
       await look(page, where, 'moon');
@@ -282,7 +290,21 @@ for (const [width, height] of SIZES) {
       await page.locator('.sky-bar .chip').nth(2).click();
       await page.waitForSelector('dialog[open] #tonight-title');
       await look(page, where, 'tonight');
-      await closeDialog(page);
+      // The events of the year: the four turns of the year are always among them; one that is seen can be shown.
+      const events = page.locator('dialog[open] section[aria-labelledby="events-title"] li');
+      if ((await events.count()) < 4) note(where, `the events of the year list ${await events.count()} events`);
+      const shown = page.locator('dialog[open] section[aria-labelledby="events-title"] button').first();
+      if (await shown.count()) {
+        await shown.click();
+        await page.waitForTimeout(400);
+        if (await page.locator('dialog[open]').count()) note(where, 'the window stays open after an event is shown');
+        if (!(await page.locator('.note:not(.pick)').isVisible())) note(where, 'showing an event says nothing');
+        await look(page, where, 'sky-event');
+        await page.locator('.note:not(.pick) .icon-btn').click();
+        await page.locator('.time .chip').first().click();
+      } else {
+        await closeDialog(page);
+      }
       await page.locator('.top .icon-btn:not(.icon-btn--wide)').last().click();
       await page.waitForSelector('dialog[open] [role="switch"]');
       await look(page, where, 'menu');

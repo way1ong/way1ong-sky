@@ -43,8 +43,17 @@ describe('the events of a year', () => {
     expect(still && still.kind === 'meeting' && still.ongoing).toBe(true);
     if (still?.kind !== 'meeting') return;
     expect(still.apart).toBeCloseTo(4.1, 1);
-    // what to show is that very night, not the night of the nearest moment
-    expect(Math.abs((still.view?.at.getTime() ?? 0) - asked.getTime())).toBeLessThan(86_400_000);
+    // what to show is ahead of the moment asked at and within a day of it — not a night already over
+    const shown = still.view?.at.getTime() ?? 0;
+    expect(shown).toBeGreaterThanOrEqual(asked.getTime());
+    expect(shown - asked.getTime()).toBeLessThan(86_400_000);
+    // asked in the morning twilight, when that night's dark is over, it shows the night to come
+    for (const hour of [5, 6, 7, 12, 20]) {
+      const at = new Date(Date.UTC(2026, 10, 25, hour));
+      const then = eventsAfter(budapest, at).find((event) => event.kind === 'meeting' && event.ongoing);
+      expect(then?.view, `asked at ${hour} UT`).toBeTruthy();
+      expect(then?.view?.at.getTime() ?? 0, `asked at ${hour} UT`).toBeGreaterThanOrEqual(at.getTime());
+    }
     // long after, the two have parted and the meeting is gone from the list
     const later = eventsAfter(budapest, new Date(asked.getTime() + 60 * 86_400_000));
     expect(later.some((event) => event.kind === 'meeting' && event.at.getTime() === still.at.getTime())).toBe(false);
@@ -90,6 +99,8 @@ describe('the events of a year', () => {
         expect(Math.abs(event.view.at.getTime() - event.at.getTime())).toBeLessThan(1.5 * 86_400_000);
       }
     }
+    // a turn of the year is a moment of the calendar: nothing to show
+    for (const event of of('season')) expect(event.view).toBeNull();
     for (const event of of('lunarEclipse')) expect(event.view !== null).toBe(altAz(bodyInSky('moon', skyTurn(budapest, event.at))).altitude > 0);
   });
 

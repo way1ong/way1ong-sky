@@ -389,7 +389,7 @@
       "solarWhat": "Ebből a városból nézve a Hold a napkorong legfeljebb {percent}%-át takarja el. Soha ne nézzen a Napba különleges szemvédő nélkül.",
       "meeting": "{a} és {b} egymás mellett",
       "meetingWhat": "Legközelebb egymáshoz: {apart}° távolságra.",
-      "meetingNow": "Még egymás mellett: most {apart}° a távolságuk. Legközelebb ekkor voltak: {date}.",
+      "meetingNow": "Még egymás mellett: most {apart}° a távolságuk; legközelebb ekkor voltak: {date}",
       "opposition": "{name}: szembenállás",
       "oppositionWhat": "Az égen a Nappal szemben: akkor kel, amikor a Nap nyugszik, és egész éjjel látható.",
       "elongation": {

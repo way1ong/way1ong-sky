@@ -40,8 +40,8 @@ src/data/bodies.json, facts.json  числа про Сонячну систем�
 src/data/cities.json   міста для карти неба (Вікідані) — робить scripts/stars/cities.mjs
 src/data/stars.json, constellations.json  зорі (Вікідані, CC0) і які з них з'єднано в сузір'я (d3-celestial, BSD-3) — робить scripts/stars/build.mjs, руками не правити
 src/data/descriptions.json  сторінки NASA Science, за якими написано описи тіл; речення NASA під кожним описом — docs/DESCRIPTIONS.md
-src/core/              логіка без DOM: тіла, положення (astronomy-engine), масштаби, політ камери й вільний політ, годинник програми, тіні й затемнення, місця посадок на Місяці; небо з місця на Землі: sky.ts (де світило над обрієм), stars.ts, dome.ts (купол на екрані), labels.ts (де писати назву, щоб назви не налягали), pick.ts (що під пальцем і що про нього сказати), tonight.ts («сьогодні на небі»), places.ts (міста); поруч тести
-src/ui/                екран: сцена three.js, керування, список тіл, підписи, меню; небо — sky-view.ts (малює на полотні), pick-card.ts (картка названого світила), вікна place-dialog.ts і tonight-dialog.ts
+src/core/              логіка без DOM: тіла, положення (astronomy-engine), масштаби, політ камери й вільний політ, годинник програми, тіні й затемнення, місця посадок на Місяці; небо з місця на Землі: sky.ts (де світило над обрієм), stars.ts, dome.ts (купол на екрані), labels.ts (де писати назву, щоб назви не налягали), pick.ts (що під пальцем і що про нього сказати), events.ts («події року»), tonight.ts («сьогодні на небі»), places.ts (міста); поруч тести
+src/ui/                екран: сцена three.js, керування, список тіл, підписи, меню; небо — sky-view.ts (малює на полотні), pick-card.ts (картка названого світила), events-list.ts (список «подій року»), вікна place-dialog.ts і tonight-dialog.ts
 src/i18n/              словники en/hu/uk.json; i18n.test.ts їх звіряє
 src/styles/            tokens.css (кольори), app.css; claude-page.css — лише для тестової сторінки
 src/textures/          мапи тіл і тло (Solar System Scope, CC BY 4.0) — docs/SOURCES.md

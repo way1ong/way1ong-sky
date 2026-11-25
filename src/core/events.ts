@@ -49,17 +49,20 @@ const ifUp = (view: EventView): EventView | null => (view.altitude > 0 ? view : 
 
 /**
  * The best moment of the night round an event to see planets from the place: in the dark, all of them at
- * least as high as "Tonight" asks, the lowest of them as high as it gets. Null — no such moment.
+ * least as high as "Tonight" asks, the lowest of them as high as it gets. Null — no such moment. `ahead` —
+ * only the night that is on or comes: for what goes on now, a night already over is of no use.
  */
-function bestInDark(ids: readonly SkyBodyId[], place: Place, around: Date): EventView | null {
+function bestInDark(ids: readonly SkyBodyId[], place: Place, around: Date, ahead = false): EventView | null {
   // The night that is on at the moment or comes after it, and the one before: the nearer in time wins.
   let best: EventView | null = null;
   let height = -Infinity;
-  for (const from of [new Date(around.getTime() - DAY / 2), around]) {
+  // Looking ahead in the morning twilight, the night that is "on" has no dark left: then the next one.
+  for (const from of ahead ? [around, new Date(around.getTime() + DAY / 2)] : [new Date(around.getTime() - DAY / 2), around]) {
     const dark = tonight(place, from).dark;
     if (!dark) continue;
     for (let t = dark.from.getTime(); t <= dark.to.getTime(); t += SKY.tonight.stepMinutes * 60_000) {
       const at = new Date(t);
+      if (ahead && at < around) continue;
       const turn = skyTurn(place, at);
       const views = ids.map((id) => altAz(bodyInSky(id, turn)));
       const lowest = Math.min(...views.map((view) => view.altitude));
@@ -103,7 +106,7 @@ function meetings(place: Place, from: Date, days: number): SkyEvent[] {
         if (at >= from) {
           if (clear(a, b, at)) out.push({ kind: 'meeting', at, bodies: [a, b], apart: apartAt(a, b, at), ongoing: false, view: bestInDark([a, b], place, at) });
         } else if (apartAt(a, b, from) < closeDeg && clear(a, b, from)) {
-          out.push({ kind: 'meeting', at, bodies: [a, b], apart: apartAt(a, b, from), ongoing: true, view: bestInDark([a, b], place, from) });
+          out.push({ kind: 'meeting', at, bodies: [a, b], apart: apartAt(a, b, from), ongoing: true, view: bestInDark([a, b], place, from, true) });
         }
       }
     }
@@ -153,7 +156,8 @@ export function eventsAfter(place: Place, from: Date, days: number = SKY.events.
       ['septemberEquinox', turns.sep_equinox.date],
       ['decemberSolstice', turns.dec_solstice.date],
     ];
-    for (const [season, at] of moments) if (within(at)) out.push({ kind: 'season', at, season, view: ifUp(standing('sun', place, at)) });
+    // A moment of the calendar, not a sight: nothing to show in the sky.
+    for (const [season, at] of moments) if (within(at)) out.push({ kind: 'season', at, season, view: null });
   }
 
   return out.sort((one, other) => one.at.getTime() - other.at.getTime());

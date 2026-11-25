@@ -389,7 +389,7 @@
       "solarWhat": "From this city the Moon will cover up to {percent}% of the Sun’s disc. Never look at the Sun without special eye protection.",
       "meeting": "{a} and {b} side by side",
       "meetingWhat": "At their nearest: {apart}° apart.",
-      "meetingNow": "Still side by side: {apart}° apart now. They were nearest on {date}.",
+      "meetingNow": "Still side by side: {apart}° apart now; they were nearest on {date}",
       "opposition": "{name} at opposition",
       "oppositionWhat": "Opposite the Sun in the sky: it rises as the Sun sets and is in view all night.",
       "elongation": {
