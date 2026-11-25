@@ -2,13 +2,13 @@
 // on the Earth. astronomy-engine gives the moons' places round Jupiter; this module turns them into what the
 // eye sees — how far to the right or left of the planet and how far up, in radii of Jupiter's disc.
 import { C_AUDAY, Equator, JupiterMoons, KM_PER_AU, Observer, Body } from 'astronomy-engine';
-import { radiusKm } from './bodies.ts';
+import { SATELLITE_IDS, radiusKm, type SatelliteId } from './bodies.ts';
 import data from '../data/jupiter-moons.json';
 import { toSky, type SkyTurn } from './sky.ts';
 import { cross, dot, normalize, scale, sub, type Vec3 } from './vec.ts';
 
-export const JUPITER_MOON_IDS = ['io', 'europa', 'ganymede', 'callisto'] as const;
-export type JupiterMoonId = (typeof JUPITER_MOON_IDS)[number];
+export const JUPITER_MOON_IDS = SATELLITE_IDS;
+export type JupiterMoonId = SatelliteId;
 export const JUPITER_MOONS = data.moons;
 export const JUPITER_MOONS_SOURCE = data.source;
 

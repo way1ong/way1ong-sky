@@ -1,7 +1,7 @@
 // The screen: which body the camera looks at, from where, in which scale; the list of bodies to fly to, the
 // names over the picture, the menu. The astronomy is in ../core, the drawing in ./scene.ts.
 import { SKY } from '../config.ts';
-import { BODY_IDS, PLANET_IDS, parentOf, radiusKm, type BodyId } from '../core/bodies.ts';
+import { BODY_IDS, PLANET_IDS, SATELLITE_IDS, WORLD_IDS, isSatellite, parentOf, radiusKm, type BodyId, type WorldId } from '../core/bodies.ts';
 import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, slowedTo, stepRate, togglePause, type Clock } from '../core/clock.ts';
 import { firstLook, project, turnLook, zoomLook, type Look } from '../core/dome.ts';
 import type { SkyEvent } from '../core/events.ts';
@@ -26,6 +26,7 @@ import { dict, fmt, num, pickLang, type Dict } from './i18n.ts';
 import { createMenuDialog } from './menu-dialog.ts';
 import { createPickCard } from './pick-card.ts';
 import { createPlaceDialog } from './place-dialog.ts';
+import { createSatelliteDialog } from './satellite-dialog.ts';
 import { createSceneView, type Orbit, type SceneView } from './scene.ts';
 import { createSiteDialog } from './site-dialog.ts';
 import { dayUT, missionName } from './site-text.ts';
@@ -79,7 +80,7 @@ export function startApp(root: HTMLElement): void {
   let spinDate = date;
   /** The moment the lines of the orbits were drawn for. */
   let orbitsDate = date;
-  let focus: BodyId = 'sun';
+  let focus: WorldId = 'sun';
   /** Which of the two modes is on the screen: the flight through the Solar System or the sky from a place. */
   let screen: 'flight' | 'sky' = 'flight';
   let look: Look = firstLook();
@@ -102,16 +103,16 @@ export function startApp(root: HTMLElement): void {
   let dirty = true;
 
   // ---------- what the picture is made from, recomputed when the day or the scale changes ----------
-  let where = {} as Record<BodyId, Vec3>;
-  let radius = {} as Record<BodyId, number>;
-  let turned = {} as Record<BodyId, Attitude>;
+  let where = {} as Record<WorldId, Vec3>;
+  let radius = {} as Record<WorldId, number>;
+  let turned = {} as Record<WorldId, Attitude>;
   let shade: Partial<Record<BodyId, Shade | null>> = {};
 
   function compute(): void {
     const km = positionsKm(date);
     where = scenePositions(km, mode);
     if (showsSpin(clock)) spinDate = date;
-    for (const id of BODY_IDS) {
+    for (const id of WORLD_IDS) {
       radius[id] = sceneRadius(id, mode);
       turned[id] = attitude(id, spinDate);
     }
@@ -128,10 +129,11 @@ export function startApp(root: HTMLElement): void {
     scene.setOrbits(orbits());
   }
 
-  function orbits(): Partial<Record<BodyId, Orbit>> {
-    const out: Partial<Record<BodyId, Orbit>> = {};
+  function orbits(): Partial<Record<WorldId, Orbit>> {
+    const out: Partial<Record<WorldId, Orbit>> = {};
     for (const id of PLANET_IDS) out[id] = { around: 'sun', points: orbitKm(id, date, SKY.orbitPoints).map((p) => sceneFromSun(p, mode)) };
     out.moon = { around: 'earth', points: orbitKm('moon', date, SKY.orbitPoints).map((p) => sceneFromPlanet(p, 'earth', mode)) };
+    for (const id of SATELLITE_IDS) out[id] = { around: 'jupiter', points: orbitKm(id, date, SKY.orbitPoints).map((p) => sceneFromPlanet(p, 'jupiter', mode, id)) };
     return out;
   }
 
@@ -153,7 +155,7 @@ export function startApp(root: HTMLElement): void {
   const speedLine = h('p', { class: 'top__line top__speed' });
   /** In free flight: the body the camera is nearest to. */
   const nearLine = h('p', { class: 'top__line', hidden: true });
-  let nearNow: BodyId | null = null;
+  let nearNow: WorldId | null = null;
   const menuBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-menu', 'aria-hidden': 'true' }));
   /** Hides the panels for a wider view of the picture and brings them back; stays in its corner all the time. */
   const wideBtn = h('button', { class: 'icon-btn icon-btn--wide', type: 'button' }, h('span', { class: 'icon-wide', 'aria-hidden': 'true' }));
@@ -189,6 +191,7 @@ export function startApp(root: HTMLElement): void {
   const timeDialog = createTimeDialog();
   const factsDialog = createFactsDialog();
   const siteDialog = createSiteDialog();
+  const satelliteDialog = createSatelliteDialog();
   const placeDialog = createPlaceDialog();
   const tonightDialog = createTonightDialog();
   const stage = h('div', { class: 'stage' }, canvas, skyCanvas, labels, siteMarks);
@@ -209,6 +212,7 @@ export function startApp(root: HTMLElement): void {
     timeDialog.el,
     factsDialog.el,
     siteDialog.el,
+    satelliteDialog.el,
     placeDialog.el,
     tonightDialog.el,
   );
@@ -227,9 +231,11 @@ export function startApp(root: HTMLElement): void {
     dirty = true;
   };
 
-  const labelOf = new Map<BodyId, HTMLButtonElement>();
+  const labelOf = new Map<WorldId, HTMLButtonElement>();
   /** How wide every name is on the screen, CSS px — measured when the names are written. */
-  const labelWidth = new Map<BodyId, number>();
+  const labelWidth = new Map<WorldId, number>();
+  /** The name of anything the flight can fly to: a body of the list, or a moon of Jupiter. */
+  const nameOf = (id: WorldId): string => (isSatellite(id) ? d.satellites[id] : d.bodies[id]);
   const chipOf = new Map<BodyId | 'whole' | 'free', HTMLButtonElement>();
   const markOf = new Map<SiteId, HTMLButtonElement>();
 
@@ -284,6 +290,13 @@ export function startApp(root: HTMLElement): void {
       labelOf.set(id, label);
       labels.append(label);
     }
+    // Jupiter's moons have names over the picture, but no place in the list: they are reached from Jupiter.
+    for (const id of SATELLITE_IDS) {
+      const label = h('button', { class: 'label', type: 'button', tabindex: -1 }, d.satellites[id]);
+      label.addEventListener('click', () => flyTo(id));
+      labelOf.set(id, label);
+      labels.append(label);
+    }
 
     siteMarks.replaceChildren();
     markOf.clear();
@@ -313,11 +326,11 @@ export function startApp(root: HTMLElement): void {
   function describe(): void {
     const whole = !free && focus === 'sun' && !flight && view.distance > arrivalDistance('sun', radius.sun) * 1.5;
     const sky = screen === 'sky';
-    title.textContent = sky ? fmt(d.sky.title, { place: cityName(place, lang) }) : flight ? fmt(d.status.flying, { name: d.bodies[flight.to] }) : free ? d.free.title : whole ? d.dock.whole : fmt(d.status.at, { name: d.bodies[focus] });
+    title.textContent = sky ? fmt(d.sky.title, { place: cityName(place, lang) }) : flight ? fmt(d.status.flying, { name: nameOf(flight.to) }) : free ? d.free.title : whole ? d.dock.whole : fmt(d.status.at, { name: nameOf(focus) });
     placeBtn.textContent = fmt(d.sky.placeButton, { place: cityName(place, lang) });
     document.documentElement.toggleAttribute('data-night', sky && night);
     nearNow = free && !sky ? nearest(free.at, where, radius).id : null;
-    nearLine.textContent = nearNow ? fmt(d.free.near, { name: d.bodies[nearNow] }) : '';
+    nearLine.textContent = nearNow ? fmt(d.free.near, { name: nameOf(nearNow) }) : '';
     nearLine.hidden = !nearNow;
     flyBox.hidden = !free || sky;
     const real = Date.now();
@@ -333,7 +346,7 @@ export function startApp(root: HTMLElement): void {
     pauseBtn.replaceChildren(h('span', { class: clock.paused ? 'icon-play' : 'icon-pause', 'aria-hidden': 'true' }));
     // The card is of the body looked at: no body in front of the camera — no button.
     factsBtn.hidden = sky || whole || flight !== null || free !== null;
-    factsBtn.setAttribute('aria-label', fmt(d.card.open, { name: d.bodies[focus] }));
+    factsBtn.setAttribute('aria-label', fmt(d.card.open, { name: nameOf(focus) }));
     for (const [id, chip] of chipOf) {
       const here = id === 'free' ? free !== null : id === 'whole' ? whole : !whole && !free && id === (flight?.to ?? focus);
       if (here) chip.setAttribute('aria-current', 'true');
@@ -454,7 +467,7 @@ export function startApp(root: HTMLElement): void {
   // ---------- moves ----------
   const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function fly(to: BodyId, endDistance: number, text = ''): void {
+  function fly(to: WorldId, endDistance: number, text = ''): void {
     if (free) {
       // Out of free flight: the flight starts on the very spot, looking the same way.
       const look = lookPoint(free, where, radius);
@@ -519,7 +532,7 @@ export function startApp(root: HTMLElement): void {
     });
   }
 
-  function flyTo(id: BodyId): void {
+  function flyTo(id: WorldId): void {
     fly(id, arrivalDistance(id, radius[id]));
   }
 
@@ -716,7 +729,8 @@ export function startApp(root: HTMLElement): void {
     fly('moon', arrivalDistance('moon', radius.moon), text);
   }
 
-  factsBtn.addEventListener('click', () => factsDialog.open(d, lang, focus, date, showSite));
+  // The card is of the body looked at: a moon of Jupiter has its own, shorter one.
+  factsBtn.addEventListener('click', () => (isSatellite(focus) ? satelliteDialog.open(d, lang, focus) : factsDialog.open(d, lang, focus, date, showSite, flyTo)));
 
   menuBtn.addEventListener('click', () =>
     menu.open(
@@ -758,8 +772,12 @@ export function startApp(root: HTMLElement): void {
     const taken: { left: number; right: number; y: number }[] = [];
     // The body looked at first, then the Sun and the planets, the Moon last: a name too close to one already
     // placed is left out, or the Moon's would lie on the Earth's.
-    const order = [flight?.to ?? focus, ...BODY_IDS.filter((id) => id !== (flight?.to ?? focus) && parentOf(id) !== 'earth'), 'moon' as const];
-    const seen = new Set<BodyId>();
+    const aim = flight?.to ?? focus;
+    // Jupiter's moons are named only by Jupiter: from afar their names would only crowd its own.
+    const byJupiter = aim === 'jupiter' || isSatellite(aim) || (free !== null && nearNow !== null && (nearNow === 'jupiter' || isSatellite(nearNow)));
+    for (const id of SATELLITE_IDS) if (!byJupiter) (labelOf.get(id) as HTMLButtonElement).hidden = true;
+    const order: WorldId[] = [aim, ...BODY_IDS.filter((id) => id !== aim && parentOf(id) !== 'earth'), 'moon', ...(byJupiter ? SATELLITE_IDS : [])];
+    const seen = new Set<WorldId>();
     for (const id of order) {
       if (seen.has(id)) continue;
       seen.add(id);

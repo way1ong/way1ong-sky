@@ -17,8 +17,12 @@ export const SKY = {
    * `distance * d^distancePower` units away; a body `r` Earth radii across is drawn `radius * r^radiusPower`
    * units in radius; a moon keeps its direction and stands `moonGap` radii of its planet from the planet's
    * middle.
+   * `satelliteGap` — Jupiter's four moons stand this many radii of Jupiter from its middle, in the order of
+   * their true orbits, far enough from Jupiter and from one another for the camera that looks at one
+   * of them to stand clear of the rest (their true distances, from about six to twenty-six radii of Jupiter, are
+   * in NASA's fact sheet and are what the true scale shows).
    */
-  handy: { distance: 16, distancePower: 0.5, radius: 0.5, radiusPower: 0.4, moonGap: 2.2 },
+  handy: { distance: 16, distancePower: 0.5, radius: 0.5, radiusPower: 0.4, moonGap: 2.2, satelliteGap: { io: 2.6, europa: 3.75, ganymede: 5.1, callisto: 6.5 } },
 
   /** The camera, in radii of the body it looks at (C): how close it may come, where a flight ends. */
   camera: { closest: 1.25, arrive: 4, arriveSun: 9 },

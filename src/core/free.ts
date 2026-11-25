@@ -3,7 +3,7 @@
 // press crosses the emptiness between planets quickly and creeps up to a planet slowly — and the camera never
 // goes nearer to a body than it may in the ordinary view.
 import { SKY } from '../config.ts';
-import { BODY_IDS, type BodyId } from './bodies.ts';
+import { WORLD_IDS, type WorldId } from './bodies.ts';
 import { clampPitch, eye, type View } from './flight.ts';
 import { add, dot, length, scale, sub, type Vec3 } from './vec.ts';
 
@@ -15,8 +15,8 @@ export interface FreeView {
   pitch: number;
 }
 
-type Places = Record<BodyId, Vec3>;
-type Radii = Record<BodyId, number>;
+type Places = Record<WorldId, Vec3>;
+type Radii = Record<WorldId, number>;
 
 /** The unit vector the camera looks along. */
 export function lookDirection(free: Pick<FreeView, 'yaw' | 'pitch'>): Vec3 {
@@ -34,9 +34,9 @@ export function turnFree(free: FreeView, yaw: number, pitch: number): FreeView {
 }
 
 /** The body whose surface is nearest, how far that surface is and how far its middle. */
-export function nearest(at: Vec3, where: Places, radius: Radii): { id: BodyId; gap: number; distance: number } {
-  let best = { id: BODY_IDS[0] as BodyId, gap: Infinity, distance: Infinity };
-  for (const id of BODY_IDS) {
+export function nearest(at: Vec3, where: Places, radius: Radii): { id: WorldId; gap: number; distance: number } {
+  let best = { id: WORLD_IDS[0] as WorldId, gap: Infinity, distance: Infinity };
+  for (const id of WORLD_IDS) {
     const distance = length(sub(at, where[id]));
     const gap = distance - radius[id];
     if (gap < best.gap) best = { id, gap, distance };
@@ -47,7 +47,7 @@ export function nearest(at: Vec3, where: Places, radius: Radii): { id: BodyId; g
 /** Out of every body: no nearer to a middle than the ordinary view may come. */
 export function keepOutside(at: Vec3, where: Places, radius: Radii): Vec3 {
   let out = at;
-  for (const id of BODY_IDS) {
+  for (const id of WORLD_IDS) {
     const from = sub(out, where[id]);
     const distance = length(from);
     const least = radius[id] * SKY.camera.closest;
@@ -64,7 +64,7 @@ export function keepOutside(at: Vec3, where: Places, radius: Radii): Vec3 {
  */
 export function clearWay(at: Vec3, direction: Vec3, wanted: number, where: Places, radius: Radii): number {
   let way = wanted;
-  for (const id of BODY_IDS) {
+  for (const id of WORLD_IDS) {
     const least = radius[id] * SKY.camera.closest;
     const from = sub(at, where[id]);
     const along = dot(from, direction);

@@ -5,11 +5,43 @@
     "updated": "6 December 2023",
     "read": "2026-11-25"
   },
-  "note": "The four Galilean satellites as the fact sheet gives them: mean radius (km), semi-major axis (thousand km), orbital period (days).",
+  "note": "The four Galilean satellites as the fact sheet gives them: mass (10^20 kg), mean radius (km), mean density (kg/m3), visual geometric albedo, semi-major axis (thousand km), orbital period (days). mapCentreLongitude — the longitude in the middle of the map of the surface, as its page at the U.S. Geological Survey says (null — the page does not say).",
   "moons": {
-    "io": { "radiusKm": 1821.5, "semiMajorAxisThousandKm": 421.8, "periodDays": 1.769138 },
-    "europa": { "radiusKm": 1560.8, "semiMajorAxisThousandKm": 671.1, "periodDays": 3.551181 },
-    "ganymede": { "radiusKm": 2631.2, "semiMajorAxisThousandKm": 1070.4, "periodDays": 7.154553 },
-    "callisto": { "radiusKm": 2410.3, "semiMajorAxisThousandKm": 1882.7, "periodDays": 16.689017 }
+    "io": {
+      "massE20kg": 893.2,
+      "radiusKm": 1821.5,
+      "densityKgM3": 3530,
+      "albedo": 0.62,
+      "semiMajorAxisThousandKm": 421.8,
+      "periodDays": 1.769138,
+      "mapCentreLongitude": 0
+    },
+    "europa": {
+      "massE20kg": 480.0,
+      "radiusKm": 1560.8,
+      "densityKgM3": 3010,
+      "albedo": 0.68,
+      "semiMajorAxisThousandKm": 671.1,
+      "periodDays": 3.551181,
+      "mapCentreLongitude": 180
+    },
+    "ganymede": {
+      "massE20kg": 1481.9,
+      "radiusKm": 2631.2,
+      "densityKgM3": 1940,
+      "albedo": 0.44,
+      "semiMajorAxisThousandKm": 1070.4,
+      "periodDays": 7.154553,
+      "mapCentreLongitude": null
+    },
+    "callisto": {
+      "massE20kg": 1075.9,
+      "radiusKm": 2410.3,
+      "densityKgM3": 1830,
+      "albedo": 0.19,
+      "semiMajorAxisThousandKm": 1882.7,
+      "periodDays": 16.689017,
+      "mapCentreLongitude": null
+    }
   }
 }

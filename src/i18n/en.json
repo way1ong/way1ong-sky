@@ -22,6 +22,12 @@
     "uranus": "Uranus",
     "neptune": "Neptune"
   },
+  "satellites": {
+    "io": "Io",
+    "europa": "Europa",
+    "ganymede": "Ganymede",
+    "callisto": "Callisto"
+  },
   "dock": {
     "label": "Fly to",
     "whole": "Whole system"
@@ -211,6 +217,31 @@
       }
     }
   },
+  "moonCard": {
+    "kind": "A moon of Jupiter",
+    "rows": {
+      "diameter": "Mean diameter",
+      "mass": "Mass",
+      "density": "Mean density",
+      "distance": "Distance from Jupiter (half the long axis of its orbit)",
+      "period": "Once round Jupiter"
+    },
+    "density": "{n} kg/m³",
+    "sameSide": "always turns the same side to Jupiter",
+    "source": "Numbers — NASA (the Jovian satellite fact sheet, updated {updated}).",
+    "map": "Map of the surface: U.S. Geological Survey, from images of the Voyager and Galileo spacecraft; it is in shades of grey. Which side of the moon faces Jupiter is shown only roughly in the program.",
+    "sourceLink": "NASA’s fact sheet on Jupiter’s moons",
+    "mapLink": "Rules of the U.S. Geological Survey",
+    "listTitle": "Moons",
+    "listIntro": "Jupiter’s four large moons. You can fly to each of them.",
+    "flyTo": "Fly to the moon: {name}",
+    "about": {
+      "io": "Io is the most volcanically active world in the solar system, with hundreds of volcanoes; some throw lava fountains dozens of kilometers high. It is caught between Jupiter’s massive gravity and the precisely timed pulls of its neighbors Europa and Ganymede. The volcanoes cover its face with new deposits faster than large craters can mark it. Voyager 1 spotted the first signs of this volcanism in 1979; most of what we know about Io comes from the Galileo spacecraft.",
+      "europa": "There is strong evidence that the icy moon Europa has a saltwater ocean — perhaps one of the best places to look for environments where life could exist beyond Earth. Europa is the fourth largest of Jupiter’s moons. Most of what we know about it comes from the Galileo mission; on October 14, 2024, NASA launched Europa Clipper, the first mission to study Europa in detail.",
+      "ganymede": "Ganymede is the largest moon in the solar system, bigger even than the planet Mercury. It is the only moon known to have its own magnetic field, which causes auroras around its poles. The dark areas of its surface are older and heavily cratered, the light ones younger. There is strong evidence of an underground saltwater ocean that may hold more water than all of Earth’s surface. The Juno spacecraft photographed it in detail in June 2021.",
+      "callisto": "Callisto is the most heavily cratered object in the solar system. It is Jupiter’s second largest moon and the third largest in the solar system. Data from the Galileo spacecraft in the 1990s showed that it may hide a salty ocean beneath its surface. Callisto and Jupiter’s three other largest moons were discovered in 1610 by the Italian scientist Galileo Galilei."
+    }
+  },
   "keys": "Arrow keys turn the view, plus and minus change the distance.",
   "settings": {
     "title": "Settings",
@@ -221,6 +252,7 @@
     "text": "The bodies stand where they really are today; the positions are computed on your device. Nothing is sent anywhere: no ads, no tracking, no account.",
     "sources": "Sources",
     "textures": "Maps of the Sun, the planets and the Moon, and the starry background: Solar System Scope, CC BY 4.0. The background is decoration: its stars are not placed by a catalogue.",
+    "moonMaps": "Maps of Jupiter’s four moons: Credit: U.S. Geological Survey, from images of the Voyager and Galileo spacecraft; public domain. The maps are in shades of grey and have no images near the poles. The moons turn one side to Jupiter — which side is shown only roughly; the moons’ shadows and eclipses are not drawn.",
     "facts": "Sizes of the bodies and of Saturn’s rings: NASA fact sheets.",
     "shadows": "The Earth’s shadow on the Moon and the Moon’s on the Earth are computed from the real positions. The copper glow of the eclipsed Moon is a picture, not a measurement.",
     "engine": "Positions and rotation: astronomy-engine (MIT). 3D: three.js (MIT).",
@@ -230,7 +262,9 @@
     "links": {
       "photoLibrary": "NASA’s image and video library",
       "photoRules": "NASA’s rules for its pictures",
-      "starNames": "Wikipedia: list of proper names of stars (in English)"
+      "starNames": "Wikipedia: list of proper names of stars (in English)",
+      "moonRules": "rules of the U.S. Geological Survey",
+      "moonCatalogue": "catalogue of maps"
     }
   },
   "actions": {
@@ -414,12 +448,6 @@
       "close": "Close the card",
       "none": "There is no star or planet in the middle of the view.",
       "jupiter": {
-        "names": {
-          "io": "Io",
-          "europa": "Europa",
-          "ganymede": "Ganymede",
-          "callisto": "Callisto"
-        },
         "title": "Through binoculars now",
         "order": "From left to right: {list}.",
         "behind": "{name} is behind Jupiter’s disc now.",

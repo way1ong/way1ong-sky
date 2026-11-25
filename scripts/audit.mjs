@@ -143,7 +143,7 @@ const panels = async (page, where, what, shot, kept) => {
   if ((await controls()) !== before) note(where, `${what}: the panels did not come back by Escape`);
 };
 /** The dock: 0 the sky, 1 the whole system, 2 free flight, then the bodies from the Sun (3) on. */
-const BODY = { sun: 3, earth: 6, moon: 7, saturn: 10 };
+const BODY = { sun: 3, earth: 6, moon: 7, jupiter: 9, saturn: 10 };
 
 for (const [width, height] of SIZES) {
   for (const [lang, locale, timezoneId] of LANGS) {
@@ -195,6 +195,26 @@ for (const [width, height] of SIZES) {
       if ((await page.locator('dialog[open] .size circle').count()) !== 2) note(where, 'the card has no drawing of the body beside another');
       if (!((await page.locator('dialog[open] .size figcaption').textContent()) ?? '').trim()) note(where, 'the drawing of sizes says nothing in words');
       await look(page, where, 'card');
+      await closeDialog(page);
+
+      // Jupiter's card leads to its four moons: the flight goes to the one chosen, and it has a card of its own.
+      await chip(page, BODY.jupiter).click();
+      await page.waitForTimeout(2200);
+      await page.locator('.top .icon-btn').first().click();
+      await page.waitForSelector('dialog[open] section[aria-labelledby="moons-title"]');
+      const moons = page.locator('dialog[open] section[aria-labelledby="moons-title"] button');
+      if ((await moons.count()) !== 4) note(where, `Jupiter's card lists ${await moons.count()} moons`);
+      const moon = ((await moons.first().textContent()) ?? '').trim();
+      await moons.first().click();
+      await page.waitForTimeout(2400);
+      if (((await page.locator('.top__name').textContent()) ?? '').trim() !== moon) note(where, `the flight from Jupiter's card did not come to ${moon}: ${await page.locator('.top__name').textContent()}`);
+      if (!(await page.locator('.labels[aria-hidden] .label:not([hidden])').count())) note(where, 'no names over the picture by a moon of Jupiter');
+      await look(page, where, 'jupiter-moon');
+      await page.locator('.top .icon-btn').first().click();
+      await page.waitForSelector('dialog[open] #satellite-title');
+      if ((await page.locator('dialog[open] .fact').count()) < 5) note(where, 'the card of a moon of Jupiter has fewer than five rows');
+      if (((await page.locator('dialog[open] .fact__about').textContent()) ?? '').trim().length < 60) note(where, 'the card of a moon of Jupiter tells nothing about it');
+      await look(page, where, 'jupiter-moon-card');
       await closeDialog(page);
 
       await chip(page, BODY.moon).click();

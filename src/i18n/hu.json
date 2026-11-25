@@ -22,6 +22,12 @@
     "uranus": "Uránusz",
     "neptune": "Neptunusz"
   },
+  "satellites": {
+    "io": "Io",
+    "europa": "Europa",
+    "ganymede": "Ganymedes",
+    "callisto": "Callisto"
+  },
   "dock": {
     "label": "Repülés ide",
     "whole": "Az egész rendszer"
@@ -211,6 +217,31 @@
       }
     }
   },
+  "moonCard": {
+    "kind": "A Jupiter holdja",
+    "rows": {
+      "diameter": "Közepes átmérő",
+      "mass": "Tömeg",
+      "density": "Közepes sűrűség",
+      "distance": "Távolság a Jupitertől (a pálya fél nagytengelye)",
+      "period": "Egy keringés a Jupiter körül"
+    },
+    "density": "{n} kg/m³",
+    "sameSide": "mindig ugyanazt az oldalát fordítja a Jupiter felé",
+    "source": "A számok forrása: NASA (a Jupiter holdjainak adatlapja, frissítve: {updated}).",
+    "map": "A felszín térképe: U.S. Geological Survey, a Voyager és a Galileo űrszondák felvételei alapján; a térkép szürkeárnyalatos. Hogy a hold melyik oldala néz a Jupiter felé, azt a program csak közelítőleg mutatja.",
+    "sourceLink": "A NASA adatlapja a Jupiter holdjairól",
+    "mapLink": "Az U.S. Geological Survey szabályai",
+    "listTitle": "Holdak",
+    "listIntro": "A Jupiter négy nagy holdja. Mindegyikhez oda lehet repülni.",
+    "flyTo": "Repülés a holdhoz: {name}",
+    "about": {
+      "io": "Az Io a Naprendszer vulkanikusan legaktívabb égiteste: több száz vulkánja van, némelyik több tíz kilométer magas lávaszökőkutat lövell ki. A Jupiter hatalmas gravitációja és két szomszédja, az Europa és a Ganymedes pontosan időzített vonzása között őrlődik. A vulkánok gyorsabban borítják be új lerakódásokkal a felszínét, mint ahogy nagy kráterek megjelölhetnék. E vulkanizmus első jeleit 1979-ben a Voyager–1 vette észre; az Ióról szóló tudásunk nagy része a Galileo űrszondától származik.",
+      "europa": "Erős bizonyítékok szólnak amellett, hogy a jeges Europa holdnak sós vizű óceánja van — talán az egyik legjobb hely, ahol a Földön kívül az élet számára alkalmas környezetet lehet keresni. Az Europa a Jupiter negyedik legnagyobb holdja. Amit róla tudunk, annak nagy része a Galileo küldetés megfigyeléseiből származik; 2024. október 14-én a NASA elindította az Europa Clippert, az első küldetést, amely részletesen vizsgálja az Europát.",
+      "ganymede": "A Ganymedes a Naprendszer legnagyobb holdja, még a Merkúr bolygónál is nagyobb. Ez az egyetlen ismert hold, amelynek saját mágneses tere van; ez sarki fényt kelt a pólusai körül. Felszínének sötét területei idősebbek és sűrűn kráterezettek, a világosak fiatalabbak. Erős bizonyítékok utalnak felszín alatti sós vizű óceánra, amelyben több víz lehet, mint a Föld egész felszínén. 2021 júniusában a Juno űrszonda készített róla részletes felvételeket.",
+      "callisto": "A Callisto a Naprendszer legsűrűbben kráterezett égiteste. A Jupiter második és a Naprendszer harmadik legnagyobb holdja. A Galileo űrszonda 1990-es évekbeli adatai szerint a felszíne alatt talán sós óceán rejtőzik. A Callistót és a Jupiter három másik legnagyobb holdját 1610-ben fedezte fel Galileo Galilei olasz tudós."
+    }
+  },
   "keys": "A nyílbillentyűk forgatják a nézetet, a plusz és a mínusz a távolságot változtatja.",
   "settings": {
     "title": "Beállítások",
@@ -221,6 +252,7 @@
     "text": "Az égitestek ott állnak, ahol ma valóban vannak; a helyzetüket az Ön eszköze számítja ki. Semmit sem küldünk sehová: nincs reklám, követés vagy fiók.",
     "sources": "Források",
     "textures": "A Nap, a bolygók és a Hold térképei, valamint a csillagos háttér: Solar System Scope, CC BY 4.0. A háttér díszítés: csillagai nem katalógus szerint állnak.",
+    "moonMaps": "A Jupiter négy holdjának térképei: Credit: U.S. Geological Survey, a Voyager és a Galileo űrszondák felvételei alapján; közkincs. A térképek szürkeárnyalatosak, a pólusok közelében nincs felvétel. A holdak egyik oldalukat fordítják a Jupiter felé — hogy melyiket, azt a program csak közelítőleg mutatja; a holdak árnyékait és fogyatkozásait nem rajzoltuk meg.",
     "facts": "Az égitestek és a Szaturnusz gyűrűinek méretei: a NASA adatlapjai.",
     "shadows": "A Föld árnyéka a Holdon és a Hold árnyéka a Földön a valódi helyzetekből van kiszámítva. A fogyatkozó Hold rézszínű derengése kép, nem mérés.",
     "engine": "Helyzet és forgás: astronomy-engine (MIT). 3D: three.js (MIT).",
@@ -230,7 +262,9 @@
     "links": {
       "photoLibrary": "a NASA kép- és videótára",
       "photoRules": "a NASA szabályai a képeiről",
-      "starNames": "Wikipédia: a csillagok tulajdonneveinek listája (angolul)"
+      "starNames": "Wikipédia: a csillagok tulajdonneveinek listája (angolul)",
+      "moonRules": "az U.S. Geological Survey szabályai",
+      "moonCatalogue": "térképkatalógus"
     }
   },
   "actions": {
@@ -414,12 +448,6 @@
       "close": "Kártya bezárása",
       "none": "A nézet közepén nincs csillag vagy bolygó.",
       "jupiter": {
-        "names": {
-          "io": "Io",
-          "europa": "Europa",
-          "ganymede": "Ganymedes",
-          "callisto": "Callisto"
-        },
         "title": "Távcsőben most",
         "order": "Balról jobbra: {list}.",
         "behind": "{name} most a Jupiter korongja mögött van.",

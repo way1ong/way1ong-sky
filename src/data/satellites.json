@@ -1,0 +1,17 @@
+{
+  "read": "2026-11-25",
+  "note": "The NASA Science pages the descriptions of Jupiter's moons rest on (their sentences are in docs/MOONS.md), and where the maps of their surfaces come from: the catalogue of the U.S. Geological Survey's Astrogeology Science Center. The Survey's rule for what it has made — U.S. Public Domain, credit asked for — is on its page of copyrights and credits.",
+  "pages": {
+    "io": "https://science.nasa.gov/jupiter/jupiter-moons/io/",
+    "europa": "https://science.nasa.gov/jupiter/jupiter-moons/europa/",
+    "ganymede": "https://science.nasa.gov/jupiter/jupiter-moons/ganymede/",
+    "callisto": "https://science.nasa.gov/jupiter/jupiter-moons/callisto/"
+  },
+  "maps": {
+    "io": "https://astrogeology.usgs.gov/search/map/io_voyager_galileo_ssi_global_mosaic_1km",
+    "europa": "https://astrogeology.usgs.gov/search/map/europa_voyager_galileo_ssi_global_mosaic_500m",
+    "ganymede": "https://astrogeology.usgs.gov/search/map/ganymede_voyager_galileo_simple_cylindrical",
+    "callisto": "https://astrogeology.usgs.gov/search/map/callisto_galileo_voyager_simple_cylindrical_global_map"
+  },
+  "rules": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+}

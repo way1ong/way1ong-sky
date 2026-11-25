@@ -1,6 +1,6 @@
 // A body's card: its photo, a few sentences about it, what it leads the planets in, its numbers with the Earth
 // for comparison, where it is now — and where all of that comes from.
-import type { BodyId } from '../core/bodies.ts';
+import { SATELLITE_IDS, type BodyId, type SatelliteId } from '../core/bodies.ts';
 import { DESCRIPTION_PAGES, FACT_SOURCES, HISTORY_PAGES } from '../core/facts.ts';
 import { PHOTOS } from '../core/photos.ts';
 import { SITE_IDS, type SiteId } from '../core/sites.ts';
@@ -20,11 +20,14 @@ function dayOf(lang: string, written: string): string {
   return Number.isNaN(at.getTime()) ? written : new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(at);
 }
 
-export function createFactsDialog(): { el: HTMLDialogElement; open(d: Dict, lang: string, id: BodyId, date: Date, onSite: (site: SiteId) => void): void } {
+export function createFactsDialog(): {
+  el: HTMLDialogElement;
+  open(d: Dict, lang: string, id: BodyId, date: Date, onSite: (site: SiteId) => void, onSatellite: (moon: SatelliteId) => void): void;
+} {
   const el = h('dialog', { class: 'dialog', 'aria-labelledby': 'facts-title' });
   return {
     el,
-    open(d, lang, id, date, onSite) {
+    open(d, lang, id, date, onSite, onSatellite) {
       const badges = cardBadges(d, id);
       const most = h('ul', { class: 'badges' });
       for (const text of badges) most.append(h('li', { class: 'badge' }, text));
@@ -50,6 +53,17 @@ export function createFactsDialog(): { el: HTMLDialogElement; open(d: Dict, lang
         places.append(h('li', {}, button));
       }
       const landings = id === 'moon' ? h('section', { class: 'site-section', 'aria-labelledby': 'sites-title' }, h('h3', { id: 'sites-title' }, d.sites.title), h('p', { class: 'fact__source' }, d.sites.intro), places) : null;
+      // Jupiter's card leads to its four large moons: the flight goes to the one chosen.
+      const moons = h('ul', { class: 'site-list' });
+      for (const moon of SATELLITE_IDS) {
+        const button = h('button', { class: 'chip chip--wide', type: 'button', 'aria-label': fmt(d.moonCard.flyTo, { name: d.satellites[moon] }) }, d.satellites[moon]);
+        button.addEventListener('click', () => {
+          el.close();
+          onSatellite(moon);
+        });
+        moons.append(h('li', {}, button));
+      }
+      const satellites = id === 'jupiter' ? h('section', { class: 'site-section', 'aria-labelledby': 'moons-title' }, h('h3', { id: 'moons-title' }, d.moonCard.listTitle), h('p', { class: 'fact__source' }, d.moonCard.listIntro), moons) : null;
       const close = h('button', { class: 'btn', type: 'button' }, d.card.close);
       close.addEventListener('click', () => el.close());
       const shown = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: '2-digit' }).format(date);
@@ -65,6 +79,7 @@ export function createFactsDialog(): { el: HTMLDialogElement; open(d: Dict, lang
           h('section', { class: 'site-section', 'aria-labelledby': 'history-title' }, h('h3', { id: 'history-title' }, d.card.history.title), h('p', { class: 'fact__about' }, d.card.history.text[id])),
           sizeFigure(d, lang, id),
           landings,
+          satellites,
           list,
           youSection(d, lang, id),
           h('p', { class: 'fact__source' }, fmt(d.card.source, { updated: dayOf(lang, id === 'sun' ? FACT_SOURCES.sun.updated : FACT_SOURCES.planets.updated), date: shown })),
