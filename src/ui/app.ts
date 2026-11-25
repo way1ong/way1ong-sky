@@ -1,7 +1,7 @@
 // The screen: which body the camera looks at, from where, in which scale; the list of bodies to fly to, the
 // names over the picture, the menu. The astronomy is in ../core, the drawing in ./scene.ts.
 import { SKY } from '../config.ts';
-import { BODY_IDS, PLANET_IDS, parentOf, radiusKm, type BodyId } from '../core/bodies.ts';
+import { BODY_IDS, PLANET_IDS, SATELLITE_IDS, WORLD_IDS, isSatellite, parentOf, radiusKm, type BodyId, type WorldId } from '../core/bodies.ts';
 import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, slowedTo, stepRate, togglePause, type Clock } from '../core/clock.ts';
 import { firstLook, project, turnLook, zoomLook, type Look } from '../core/dome.ts';
 import type { SkyEvent } from '../core/events.ts';
@@ -26,9 +26,12 @@ import { dict, fmt, num, pickLang, type Dict } from './i18n.ts';
 import { createMenuDialog } from './menu-dialog.ts';
 import { createPickCard } from './pick-card.ts';
 import { createPlaceDialog } from './place-dialog.ts';
+import { createSatelliteDialog } from './satellite-dialog.ts';
 import { createSceneView, type Orbit, type SceneView } from './scene.ts';
 import { createSiteDialog } from './site-dialog.ts';
 import { dayUT, missionName } from './site-text.ts';
+import { createAim } from './aim.ts';
+import { createConstellationDialog } from './constellation-dialog.ts';
 import { createSkyView, type SkyLayers } from './sky-view.ts';
 import { createTimeDialog } from './time-dialog.ts';
 import { createTonightDialog } from './tonight-dialog.ts';
@@ -79,7 +82,7 @@ export function startApp(root: HTMLElement): void {
   let spinDate = date;
   /** The moment the lines of the orbits were drawn for. */
   let orbitsDate = date;
-  let focus: BodyId = 'sun';
+  let focus: WorldId = 'sun';
   /** Which of the two modes is on the screen: the flight through the Solar System or the sky from a place. */
   let screen: 'flight' | 'sky' = 'flight';
   let look: Look = firstLook();
@@ -102,16 +105,16 @@ export function startApp(root: HTMLElement): void {
   let dirty = true;
 
   // ---------- what the picture is made from, recomputed when the day or the scale changes ----------
-  let where = {} as Record<BodyId, Vec3>;
-  let radius = {} as Record<BodyId, number>;
-  let turned = {} as Record<BodyId, Attitude>;
+  let where = {} as Record<WorldId, Vec3>;
+  let radius = {} as Record<WorldId, number>;
+  let turned = {} as Record<WorldId, Attitude>;
   let shade: Partial<Record<BodyId, Shade | null>> = {};
 
   function compute(): void {
     const km = positionsKm(date);
     where = scenePositions(km, mode);
     if (showsSpin(clock)) spinDate = date;
-    for (const id of BODY_IDS) {
+    for (const id of WORLD_IDS) {
       radius[id] = sceneRadius(id, mode);
       turned[id] = attitude(id, spinDate);
     }
@@ -128,10 +131,11 @@ export function startApp(root: HTMLElement): void {
     scene.setOrbits(orbits());
   }
 
-  function orbits(): Partial<Record<BodyId, Orbit>> {
-    const out: Partial<Record<BodyId, Orbit>> = {};
+  function orbits(): Partial<Record<WorldId, Orbit>> {
+    const out: Partial<Record<WorldId, Orbit>> = {};
     for (const id of PLANET_IDS) out[id] = { around: 'sun', points: orbitKm(id, date, SKY.orbitPoints).map((p) => sceneFromSun(p, mode)) };
     out.moon = { around: 'earth', points: orbitKm('moon', date, SKY.orbitPoints).map((p) => sceneFromPlanet(p, 'earth', mode)) };
+    for (const id of SATELLITE_IDS) out[id] = { around: 'jupiter', points: orbitKm(id, date, SKY.orbitPoints).map((p) => sceneFromPlanet(p, 'jupiter', mode, id)) };
     return out;
   }
 
@@ -153,7 +157,7 @@ export function startApp(root: HTMLElement): void {
   const speedLine = h('p', { class: 'top__line top__speed' });
   /** In free flight: the body the camera is nearest to. */
   const nearLine = h('p', { class: 'top__line', hidden: true });
-  let nearNow: BodyId | null = null;
+  let nearNow: WorldId | null = null;
   const menuBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-menu', 'aria-hidden': 'true' }));
   /** Hides the panels for a wider view of the picture and brings them back; stays in its corner all the time. */
   const wideBtn = h('button', { class: 'icon-btn icon-btn--wide', type: 'button' }, h('span', { class: 'icon-wide', 'aria-hidden': 'true' }));
@@ -176,7 +180,9 @@ export function startApp(root: HTMLElement): void {
   const toFlightBtn = h('button', { class: 'chip', type: 'button' });
   const placeBtn = h('button', { class: 'chip', type: 'button' });
   const tonightBtn = h('button', { class: 'chip', type: 'button' });
-  const skyBox = h('div', { class: 'bar sky-bar', role: 'group', hidden: true }, toFlightBtn, placeBtn, tonightBtn);
+  /** A trial: the sky map turns to where the phone is pointed. Offered only on devices held in the hand. */
+  const aimBtn = h('button', { class: 'chip', type: 'button', 'aria-pressed': 'false', hidden: true });
+  const skyBox = h('div', { class: 'bar sky-bar', role: 'group', hidden: true }, toFlightBtn, placeBtn, tonightBtn, aimBtn);
   const scaleBar = h('div', { class: 'bar bar--scale' });
   const slowerBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-skip icon-skip--back', 'aria-hidden': 'true' }));
   const pauseBtn = h('button', { class: 'icon-btn', type: 'button' });
@@ -189,8 +195,10 @@ export function startApp(root: HTMLElement): void {
   const timeDialog = createTimeDialog();
   const factsDialog = createFactsDialog();
   const siteDialog = createSiteDialog();
+  const satelliteDialog = createSatelliteDialog();
   const placeDialog = createPlaceDialog();
   const tonightDialog = createTonightDialog();
+  const constellationDialog = createConstellationDialog();
   const stage = h('div', { class: 'stage' }, canvas, skyCanvas, labels, siteMarks);
   const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine, nearLine), factsBtn, menuBtn, wideBtn);
   scaleBar.append(scaleBox);
@@ -209,8 +217,10 @@ export function startApp(root: HTMLElement): void {
     timeDialog.el,
     factsDialog.el,
     siteDialog.el,
+    satelliteDialog.el,
     placeDialog.el,
     tonightDialog.el,
+    constellationDialog.el,
   );
   root.replaceChildren(main);
 
@@ -227,9 +237,11 @@ export function startApp(root: HTMLElement): void {
     dirty = true;
   };
 
-  const labelOf = new Map<BodyId, HTMLButtonElement>();
+  const labelOf = new Map<WorldId, HTMLButtonElement>();
   /** How wide every name is on the screen, CSS px — measured when the names are written. */
-  const labelWidth = new Map<BodyId, number>();
+  const labelWidth = new Map<WorldId, number>();
+  /** The name of anything the flight can fly to: a body of the list, or a moon of Jupiter. */
+  const nameOf = (id: WorldId): string => (isSatellite(id) ? d.satellites[id] : d.bodies[id]);
   const chipOf = new Map<BodyId | 'whole' | 'free', HTMLButtonElement>();
   const markOf = new Map<SiteId, HTMLButtonElement>();
 
@@ -256,6 +268,7 @@ export function startApp(root: HTMLElement): void {
     toFlightBtn.textContent = d.sky.toFlight;
     toFlightBtn.hidden = !graphics;
     tonightBtn.textContent = d.sky.tonight.button;
+    aimBtn.textContent = d.sky.aim.button;
     forwardBtn.textContent = d.free.forward;
 
     labels.replaceChildren();
@@ -280,6 +293,13 @@ export function startApp(root: HTMLElement): void {
       dock.append(h('li', {}, chip));
       // The names over the picture repeat the list for the finger and the mouse: the keyboard walks the list.
       const label = h('button', { class: 'label', type: 'button', tabindex: -1 }, d.bodies[id]);
+      label.addEventListener('click', () => flyTo(id));
+      labelOf.set(id, label);
+      labels.append(label);
+    }
+    // Jupiter's moons have names over the picture, but no place in the list: they are reached from Jupiter.
+    for (const id of SATELLITE_IDS) {
+      const label = h('button', { class: 'label', type: 'button', tabindex: -1 }, d.satellites[id]);
       label.addEventListener('click', () => flyTo(id));
       labelOf.set(id, label);
       labels.append(label);
@@ -313,11 +333,11 @@ export function startApp(root: HTMLElement): void {
   function describe(): void {
     const whole = !free && focus === 'sun' && !flight && view.distance > arrivalDistance('sun', radius.sun) * 1.5;
     const sky = screen === 'sky';
-    title.textContent = sky ? fmt(d.sky.title, { place: cityName(place, lang) }) : flight ? fmt(d.status.flying, { name: d.bodies[flight.to] }) : free ? d.free.title : whole ? d.dock.whole : fmt(d.status.at, { name: d.bodies[focus] });
+    title.textContent = sky ? fmt(d.sky.title, { place: cityName(place, lang) }) : flight ? fmt(d.status.flying, { name: nameOf(flight.to) }) : free ? d.free.title : whole ? d.dock.whole : fmt(d.status.at, { name: nameOf(focus) });
     placeBtn.textContent = fmt(d.sky.placeButton, { place: cityName(place, lang) });
     document.documentElement.toggleAttribute('data-night', sky && night);
     nearNow = free && !sky ? nearest(free.at, where, radius).id : null;
-    nearLine.textContent = nearNow ? fmt(d.free.near, { name: d.bodies[nearNow] }) : '';
+    nearLine.textContent = nearNow ? fmt(d.free.near, { name: nameOf(nearNow) }) : '';
     nearLine.hidden = !nearNow;
     flyBox.hidden = !free || sky;
     const real = Date.now();
@@ -333,7 +353,7 @@ export function startApp(root: HTMLElement): void {
     pauseBtn.replaceChildren(h('span', { class: clock.paused ? 'icon-play' : 'icon-pause', 'aria-hidden': 'true' }));
     // The card is of the body looked at: no body in front of the camera — no button.
     factsBtn.hidden = sky || whole || flight !== null || free !== null;
-    factsBtn.setAttribute('aria-label', fmt(d.card.open, { name: d.bodies[focus] }));
+    factsBtn.setAttribute('aria-label', fmt(d.card.open, { name: nameOf(focus) }));
     for (const [id, chip] of chipOf) {
       const here = id === 'free' ? free !== null : id === 'whole' ? whole : !whole && !free && id === (flight?.to ?? focus);
       if (here) chip.setAttribute('aria-current', 'true');
@@ -454,7 +474,7 @@ export function startApp(root: HTMLElement): void {
   // ---------- moves ----------
   const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function fly(to: BodyId, endDistance: number, text = ''): void {
+  function fly(to: WorldId, endDistance: number, text = ''): void {
     if (free) {
       // Out of free flight: the flight starts on the very spot, looking the same way.
       const look = lookPoint(free, where, radius);
@@ -519,7 +539,7 @@ export function startApp(root: HTMLElement): void {
     });
   }
 
-  function flyTo(id: BodyId): void {
+  function flyTo(id: WorldId): void {
     fly(id, arrivalDistance(id, radius[id]));
   }
 
@@ -571,7 +591,10 @@ export function startApp(root: HTMLElement): void {
   // ---------- the sky from a place ----------
   const skyView = createSkyView(skyCanvas);
   attachControls(skyCanvas, {
+    // A finger that drags the map takes it back from the phone's tilt; a touch that only names a star does not.
+    grab: () => endAim(d.sky.aim.off),
     turn(yaw, pitch) {
+      if (aim.on) return;
       // The controls speak in angles of the flight view; here the sky follows the finger pixel for pixel.
       const perPixel = (SKY.turnDegPerScreen * Math.PI) / 180 / Math.max(1, Math.min(skyCanvas.clientWidth, skyCanvas.clientHeight));
       look = turnLook(look, -yaw / perPixel, pitch / perPixel, skyView.frame());
@@ -583,7 +606,11 @@ export function startApp(root: HTMLElement): void {
     },
     tap(x, y) {
       const found = pickAt(x, y, look, skyView.frame(), (turnNow ??= skyTurn(place, date)));
-      if (found) showPicked(found, true);
+      // A planet's mark wins; the name of a constellation wins over the stars when the finger is on its
+      // letters, or near them with no star in reach.
+      const figure = found?.kind === 'body' ? null : skyView.figureAt(x, y);
+      if (figure && (figure.gap === 0 || !found)) showConstellation(figure.id);
+      else if (found) showPicked(found, true);
       else closePicked();
     },
     pick() {
@@ -592,6 +619,38 @@ export function startApp(root: HTMLElement): void {
       if (found) showPicked(found, true);
       else say(d.sky.pick.none);
     },
+  });
+
+  // ---------- the sky follows the phone (a trial) ----------
+  const aim = createAim({
+    look(azimuth, altitude) {
+      look = { ...look, azimuth, altitude };
+      dirty = true;
+    },
+    needsLevel: () => say(d.sky.aim.level),
+    ended(why) {
+      aimBtn.setAttribute('aria-pressed', 'false');
+      say(why === 'denied' ? d.sky.aim.denied : d.sky.aim.none);
+    },
+  });
+  aimBtn.hidden = !aim.offered;
+  /** Gives the map back to the finger; `words` — what is said about it, none when something else speaks. */
+  function endAim(words = ''): void {
+    if (!aim.on) return;
+    aim.stop();
+    aimBtn.setAttribute('aria-pressed', 'false');
+    if (words) say(words);
+  }
+  aimBtn.addEventListener('click', () => {
+    if (aim.on) {
+      endAim(d.sky.aim.off);
+      return;
+    }
+    void aim.start().then(() => {
+      if (!aim.on) return;
+      aimBtn.setAttribute('aria-pressed', 'true');
+      say(d.sky.aim.on);
+    });
   });
 
   /**
@@ -610,11 +669,13 @@ export function startApp(root: HTMLElement): void {
     const info = skyInfo(what, (turnNow ??= skyTurn(place, date)));
     // Jupiter over the horizon: its four moons as binoculars show them at this moment.
     const moons = id === 'jupiter' && info.altitude > 0 ? moonsBesideJupiter(turnNow) : null;
-    pickCard.show(d, lang, info, fly, moons);
+    // A star's card leads to the card of its constellation; a planet only passes through one.
+    const about = what.kind === 'star' && info.constellation in d.sky.constellations ? () => showConstellation(info.constellation) : null;
+    pickCard.show(d, lang, info, fly, moons, about);
     pickShownAt = performance.now();
     // Freshly picked and hidden by its own card (a low screen, a star low in the view): the sky moves up
     // just enough for it to stand over the card.
-    if (aloud) {
+    if (aloud && !aim.on) {
       const card = pickCard.el.getBoundingClientRect();
       const from = stage.getBoundingClientRect();
       const at = project(look, skyView.frame(), pickedInSky(what, turnNow));
@@ -625,6 +686,10 @@ export function startApp(root: HTMLElement): void {
     }
     if (aloud) pickSaid.textContent = [...pickCard.el.querySelectorAll('h2, .pick__row')].map((part) => part.textContent).join('. ');
     dirty = true;
+  }
+  /** The card of a constellation: its story, if one is written, and what the program works out about it. */
+  function showConstellation(id: string): void {
+    constellationDialog.open(d, lang, id, place, (turnNow ??= skyTurn(place, date)));
   }
   /** Takes the card and the ring away. */
   function closePicked(): void {
@@ -649,6 +714,7 @@ export function startApp(root: HTMLElement): void {
     const sky = screen === 'sky';
     thrust = 0;
     closePicked();
+    endAim();
     // A clock that ran a week a second in the flight slows to the sky's fastest.
     if (sky) clock = slowedTo(clock, Date.now(), SKY.time.skyUpToRate);
     canvas.hidden = sky;
@@ -679,6 +745,7 @@ export function startApp(root: HTMLElement): void {
   /** A planet from "Tonight": the clock goes to its best moment and stops, the view turns to it. */
   function showPlanet(planet: PlanetTonight): void {
     if (!planet.seen) return;
+    endAim();
     clock = jumpTo(clock, Date.now(), planet.seen.best.getTime());
     look = { ...look, azimuth: planet.seen.azimuth, altitude: Math.max(planet.seen.altitude, SKY.dome.firstLook.altitude) };
     const moment = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(planet.seen.best);
@@ -687,6 +754,7 @@ export function startApp(root: HTMLElement): void {
   /** An event of the year: the clock goes to the moment it is seen from the place and stops, the view turns to it, a ring marks the body. */
   function showEvent(event: SkyEvent): void {
     if (!event.view) return;
+    endAim();
     clock = jumpTo(clock, Date.now(), event.view.at.getTime());
     look = { ...look, azimuth: event.view.azimuth, altitude: Math.max(event.view.altitude, SKY.dome.firstLook.altitude) };
     retime(fmt(d.sky.events.shown, { name: eventName(d, event), when: eventMoment(d, lang, event.view.at) }));
@@ -716,7 +784,8 @@ export function startApp(root: HTMLElement): void {
     fly('moon', arrivalDistance('moon', radius.moon), text);
   }
 
-  factsBtn.addEventListener('click', () => factsDialog.open(d, lang, focus, date, showSite));
+  // The card is of the body looked at: a moon of Jupiter has its own, shorter one.
+  factsBtn.addEventListener('click', () => (isSatellite(focus) ? satelliteDialog.open(d, lang, focus) : factsDialog.open(d, lang, focus, date, showSite, flyTo)));
 
   menuBtn.addEventListener('click', () =>
     menu.open(
@@ -758,8 +827,12 @@ export function startApp(root: HTMLElement): void {
     const taken: { left: number; right: number; y: number }[] = [];
     // The body looked at first, then the Sun and the planets, the Moon last: a name too close to one already
     // placed is left out, or the Moon's would lie on the Earth's.
-    const order = [flight?.to ?? focus, ...BODY_IDS.filter((id) => id !== (flight?.to ?? focus) && parentOf(id) !== 'earth'), 'moon' as const];
-    const seen = new Set<BodyId>();
+    const aim = flight?.to ?? focus;
+    // Jupiter's moons are named only by Jupiter: from afar their names would only crowd its own.
+    const byJupiter = aim === 'jupiter' || isSatellite(aim) || (free !== null && nearNow !== null && (nearNow === 'jupiter' || isSatellite(nearNow)));
+    for (const id of SATELLITE_IDS) if (!byJupiter) (labelOf.get(id) as HTMLButtonElement).hidden = true;
+    const order: WorldId[] = [aim, ...BODY_IDS.filter((id) => id !== aim && parentOf(id) !== 'earth'), 'moon', ...(byJupiter ? SATELLITE_IDS : [])];
+    const seen = new Set<WorldId>();
     for (const id of order) {
       if (seen.has(id)) continue;
       seen.add(id);

@@ -3,7 +3,7 @@
 // the point looked at from body to body and changes the distance smoothly; distances change by a ratio, not
 // by a difference, because they span from a moon's doorstep to the whole system.
 import { SKY } from '../config.ts';
-import type { BodyId } from './bodies.ts';
+import type { WorldId } from './bodies.ts';
 import { lerp, type Vec3 } from './vec.ts';
 
 export interface View {
@@ -38,7 +38,7 @@ export function facing(dir: Vec3, turnBy = 0): { yaw: number; pitch: number } {
 }
 
 /** How far the camera stops from a body it has flown to. */
-export function arrivalDistance(id: BodyId, bodyRadius: number): number {
+export function arrivalDistance(id: WorldId, bodyRadius: number): number {
   return bodyRadius * (id === 'sun' ? SKY.camera.arriveSun : SKY.camera.arrive);
 }
 
@@ -57,10 +57,10 @@ export function ease(t: number): number {
 }
 
 export interface Flight {
-  from: BodyId;
+  from: WorldId;
   /** A flight out of free flight starts from this point instead of a body. */
   fromPoint?: Vec3;
-  to: BodyId;
+  to: WorldId;
   startDistance: number;
   endDistance: number;
   startedAt: number;
@@ -73,7 +73,7 @@ export function progress(flight: Flight, now: number): number {
 }
 
 /** The point looked at and the distance during a flight; `where` gives every body's place right now. */
-export function flightAt(flight: Flight, now: number, where: Record<BodyId, Vec3>): { target: Vec3; distance: number } {
+export function flightAt(flight: Flight, now: number, where: Record<WorldId, Vec3>): { target: Vec3; distance: number } {
   const t = ease(progress(flight, now));
   return { target: lerp(flight.fromPoint ?? where[flight.from], where[flight.to], t), distance: flight.startDistance * (flight.endDistance / flight.startDistance) ** t };
 }

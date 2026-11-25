@@ -11,9 +11,10 @@ export interface PickCard {
   el: HTMLElement;
   /**
    * Shows the card; `fly` — what the "fly there" button does, null when there is no flight to offer;
-   * `moons` — Jupiter's four moons as they stand beside it, for Jupiter's card only.
+   * `moons` — Jupiter's four moons as they stand beside it, for Jupiter's card only; `about` — opens the
+   * card of the constellation the star stands in.
    */
-  show(d: Dict, lang: string, info: SkyInfo, fly: (() => void) | null, moons: readonly MoonBeside[] | null): void;
+  show(d: Dict, lang: string, info: SkyInfo, fly: (() => void) | null, moons: readonly MoonBeside[] | null, about: (() => void) | null): void;
   hide(): void;
   readonly shown: boolean;
   onClose(run: () => void): void;
@@ -40,7 +41,7 @@ export function createPickCard(): PickCard {
     onClose(run) {
       closed = run;
     },
-    show(d, lang, info, fly, moons) {
+    show(d, lang, info, fly, moons, about) {
       const t = d.sky.pick;
       const time = (at: Date) => new Intl.DateTimeFormat(lang, { hour: 'numeric', minute: '2-digit' }).format(at);
       const row = (label: string, value: string) => h('div', { class: 'pick__row' }, h('dt', {}, label), ' ', h('dd', {}, value));
@@ -91,6 +92,11 @@ export function createPickCard(): PickCard {
         const go = h('button', { class: 'chip', type: 'button', 'aria-label': fmt(t.flyLabel, { name }) }, t.fly);
         go.addEventListener('click', fly);
         text.append(go);
+      }
+      if (about) {
+        const more = h('button', { class: 'chip pick__about', type: 'button', 'aria-label': fmt(d.sky.story.open, { name: constellation }) }, d.sky.story.button);
+        more.addEventListener('click', about);
+        text.append(more);
       }
       el.replaceChildren(text, close);
       el.hidden = false;

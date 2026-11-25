@@ -4,7 +4,7 @@
 import { SKY } from '../config.ts';
 import { horizonOnScreen, project, skyDirection, type Frame, type Look } from '../core/dome.ts';
 import { moonLitFraction } from '../core/ephemeris.ts';
-import { markBox, nameBox, placeBeside, shared, type Box, type NameAlign } from '../core/labels.ts';
+import { markBox, nameBox, placeAround, placeBeside, shared, type Box, type NameAlign } from '../core/labels.ts';
 import { faintestShown, markRadius, pickedInSky, tooFaintForTheEye, type Picked } from '../core/pick.ts';
 import { SKY_BODY_IDS, altAz, bodyInSky, bodyMagnitude, toSky, type SkyBodyId, type SkyTurn } from '../core/sky.ts';
 import { FIGURES, NAMED_STARS, STARS, STARS_LIMIT, starName } from '../core/stars.ts';
@@ -35,6 +35,8 @@ export interface SkyView {
   frame(): Frame;
   /** The colours have changed (night mode): read them again. */
   restyle(): void;
+  /** The constellation whose name is written at a point of the screen, as last drawn, and how far from its letters the point is, CSS px. */
+  figureAt(x: number, y: number): { id: string; gap: number } | null;
 }
 
 const COMPASS = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'] as const;
@@ -56,6 +58,8 @@ const between = (t: number) => Math.max(0, Math.min(1, t));
 export function createSkyView(canvas: HTMLCanvasElement): SkyView {
   const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
   let covered = { top: 0, bottom: 0 };
+  /** Where the names of the constellations were written by the last drawing. */
+  let figureNames: { id: string; box: Box }[] = [];
   let colours: Colours | null = null;
   // The stars in the sky of the place: worked out once for a turn of the sky, not for every frame of a drag.
   let turnedFor: SkyTurn | null = null;
@@ -266,11 +270,12 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
       ctx.fillText(text, x, y);
     };
     /** A name with one place of its own: left out when the place is taken or out of sight. */
-    const write = (text: string, x: number, y: number, colour: string, size: number, weight: number, align: NameAlign = 'left'): void => {
+    const write = (text: string, x: number, y: number, colour: string, size: number, weight: number, align: NameAlign = 'left'): Box | null => {
       ctx.font = `${weight} ${size}px ${family}`;
       const box = nameBox(x, y, ctx.measureText(text).width, size, paint.labelGapPx, align);
-      if (shared(box, seen) === 0 || taken.some((other) => shared(box, other) > 0)) return;
+      if (shared(box, seen) === 0 || taken.some((other) => shared(box, other) > 0)) return null;
       put(text, x, y, colour, align, box);
+      return box;
     };
 
     // The points of the compass sit on the horizon.
@@ -299,6 +304,7 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
         if (p && name) write(name, p.x + 6, p.y, c.muted, 12, 500);
       }
     }
+    figureNames = [];
     if (layers.figures && layers.names) {
       for (const [id, figure] of Object.entries(FIGURES)) {
         const ends = [...new Set(figure.flat())];
@@ -309,9 +315,33 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
         if (sky[2] < 0) continue;
         const p = project(look, f, sky);
         const name = (d.sky.constellations as Record<string, string>)[id];
-        if (p && name) write(name.toLocaleUpperCase(lang), p.x, p.y, c.figureName, 11, 650, 'center');
+        if (!p || !name) continue;
+        // The middle of a figure is often taken by the name of a star (Orion's by its belt): the name of the
+        // constellation then stands a row lower or higher — it is what opens the constellation's card.
+        const text = name.toLocaleUpperCase(lang);
+        ctx.font = `650 11px ${family}`;
+        const place = placeAround(p.x, p.y, ctx.measureText(text).width, 11, paint.labelGapPx, taken, seen, paint.figureNameRows);
+        if (!place) continue;
+        put(text, place.x, place.y, c.figureName, place.align, place.box);
+        figureNames.push({ id, box: place.box });
       }
     }
+  }
+
+  /**
+   * The constellation whose name is written at a point of the screen, as last drawn, and how far from the
+   * letters the point is (0 — on them); a finger is given some reach round the small letters.
+   */
+  function figureAt(x: number, y: number): { id: string; gap: number } | null {
+    const reach = SKY.story.nameReachPx;
+    let best: { id: string; gap: number } | null = null;
+    for (const { id, box } of figureNames) {
+      const dx = Math.max(box.left - x, 0, x - box.right);
+      const dy = Math.max(box.top - y, 0, y - box.bottom);
+      const gap = Math.hypot(dx, dy);
+      if (gap <= reach && (!best || gap < best.gap)) best = { id, gap };
+    }
+    return best;
   }
 
   function setCovered(top: number, bottom: number): void {
@@ -322,5 +352,5 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
     colours = null;
   }
 
-  return { draw, resize, setCovered, frame, restyle };
+  return { draw, resize, setCovered, frame, restyle, figureAt };
 }

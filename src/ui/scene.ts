@@ -5,7 +5,7 @@
 // billions of kilometres from the Sun.
 import * as THREE from 'three';
 import { SKY } from '../config.ts';
-import { BODY_IDS, type BodyId } from '../core/bodies.ts';
+import { WORLD_IDS, type WorldId } from '../core/bodies.ts';
 import type { Attitude } from '../core/ephemeris.ts';
 import type { Shade } from '../core/shadow.ts';
 import { cross, sub, type Vec3 } from '../core/vec.ts';
@@ -13,12 +13,12 @@ import { shadeMaterial, type ShadeMaterial } from './shade-material.ts';
 import { BODY_TEXTURES, RING_TEXTURE, STARS_TEXTURE } from './textures.ts';
 
 export interface Frame {
-  where: Record<BodyId, Vec3>;
-  radius: Record<BodyId, number>;
-  turned: Record<BodyId, Attitude>;
+  where: Record<WorldId, Vec3>;
+  radius: Record<WorldId, number>;
+  turned: Record<WorldId, Attitude>;
   ring: { inner: number; outer: number };
   /** Bodies another body may hide the Sun from: the shadow on each; null — none now. */
-  shade: Partial<Record<BodyId, Shade | null>>;
+  shade: Partial<Record<WorldId, Shade | null>>;
   /** The point looked at and the place of the camera, scene units. */
   target: Vec3;
   eye: Vec3;
@@ -26,7 +26,7 @@ export interface Frame {
 
 export interface Orbit {
   /** The body the line goes around: its place is the line's origin. */
-  around: BodyId;
+  around: WorldId;
   points: Vec3[];
 }
 
@@ -34,14 +34,14 @@ export interface SceneView {
   /** Draws a frame. */
   draw(frame: Frame): void;
   /** New lines of the orbits (after the scale or the day has changed). */
-  setOrbits(orbits: Partial<Record<BodyId, Orbit>>): void;
+  setOrbits(orbits: Partial<Record<WorldId, Orbit>>): void;
   /** The place of a body on the screen, CSS pixels from the canvas corner; null — behind the camera. */
-  onScreen(id: BodyId): { x: number; y: number } | null;
+  onScreen(id: WorldId): { x: number; y: number } | null;
   /**
    * A place on a body's surface, given as a unit vector from the body's centre: where it is on the screen and
    * how squarely it faces the camera (1 — straight at it, 0 — on the edge of the disc, below 0 — on the far side).
    */
-  surfaceOnScreen(id: BodyId, direction: Vec3): { x: number; y: number; facing: number } | null;
+  surfaceOnScreen(id: WorldId, direction: Vec3): { x: number; y: number; facing: number } | null;
   resize(): void;
   /** How much of the picture the bars cover at the top and at the bottom, CSS px: the view centres between them. */
   setCovered(top: number, bottom: number): void;
@@ -120,9 +120,9 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
 
   // ---------- bodies ----------
   const ball = new THREE.SphereGeometry(1, 96, 48);
-  const meshes = {} as Record<BodyId, THREE.Mesh>;
-  const shaded: Partial<Record<BodyId, ShadeMaterial>> = {};
-  for (const id of BODY_IDS) {
+  const meshes = {} as Record<WorldId, THREE.Mesh>;
+  const shaded: Partial<Record<WorldId, ShadeMaterial>> = {};
+  for (const id of WORLD_IDS) {
     const map = picture(BODY_TEXTURES[id]);
     const tint = id === 'moon' ? SKY.shade.moon : id === 'earth' ? SKY.shade.earth : null;
     if (tint) shaded[id] = shadeMaterial(map, tint);
@@ -149,16 +149,16 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
   scene.add(sky);
 
   // ---------- the lines of the orbits ----------
-  const lines = new Map<BodyId, { line: THREE.LineLoop; around: BodyId }>();
+  const lines = new Map<WorldId, { line: THREE.LineLoop; around: WorldId }>();
   const lineMaterial = new THREE.LineBasicMaterial({ color: new THREE.Color(tint('--orbit')), transparent: true, opacity: 0.45, depthWrite: false });
 
-  function setOrbits(orbits: Partial<Record<BodyId, Orbit>>): void {
+  function setOrbits(orbits: Partial<Record<WorldId, Orbit>>): void {
     for (const { line } of lines.values()) {
       scene.remove(line);
       line.geometry.dispose();
     }
     lines.clear();
-    for (const [id, orbit] of Object.entries(orbits) as [BodyId, Orbit][]) {
+    for (const [id, orbit] of Object.entries(orbits) as [WorldId, Orbit][]) {
       const geometry = new THREE.BufferGeometry();
       geometry.setAttribute('position', new THREE.Float32BufferAttribute(orbit.points.flat(), 3));
       const line = new THREE.LineLoop(geometry, lineMaterial);
@@ -175,7 +175,7 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
   function draw(frame: Frame): void {
     last = frame;
     const rel = (p: Vec3): Vec3 => sub(p, frame.target);
-    for (const id of BODY_IDS) {
+    for (const id of WORLD_IDS) {
       const mesh = meshes[id];
       mesh.position.set(...rel(frame.where[id]));
       mesh.scale.setScalar(frame.radius[id]);
@@ -185,7 +185,7 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
       basis.makeBasis(new THREE.Vector3(...meridian), new THREE.Vector3(...north), new THREE.Vector3(...z));
       mesh.quaternion.setFromRotationMatrix(basis);
     }
-    for (const [id, material] of Object.entries(shaded) as [BodyId, ShadeMaterial][]) material.set(frame.shade[id] ?? null);
+    for (const [id, material] of Object.entries(shaded) as [WorldId, ShadeMaterial][]) material.set(frame.shade[id] ?? null);
     sunlight.position.copy(meshes.sun.position);
     glow.position.copy(meshes.sun.position);
     glow.scale.setScalar(frame.radius.sun * 7);
@@ -218,7 +218,7 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
   }
 
   const projected = new THREE.Vector3();
-  function onScreen(id: BodyId): { x: number; y: number } | null {
+  function onScreen(id: WorldId): { x: number; y: number } | null {
     if (!last) return null;
     projected.copy(meshes[id].position).project(camera);
     if (projected.z > 1 || projected.z < -1) return null;
@@ -226,7 +226,7 @@ export function createSceneView(canvas: HTMLCanvasElement): SceneView {
   }
 
   const toCamera = new THREE.Vector3();
-  function surfaceOnScreen(id: BodyId, direction: Vec3): { x: number; y: number; facing: number } | null {
+  function surfaceOnScreen(id: WorldId, direction: Vec3): { x: number; y: number; facing: number } | null {
     if (!last) return null;
     const mesh = meshes[id];
     projected.set(...direction).multiplyScalar(mesh.scale.x).add(mesh.position);

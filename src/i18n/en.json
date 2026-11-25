@@ -22,6 +22,12 @@
     "uranus": "Uranus",
     "neptune": "Neptune"
   },
+  "satellites": {
+    "io": "Io",
+    "europa": "Europa",
+    "ganymede": "Ganymede",
+    "callisto": "Callisto"
+  },
   "dock": {
     "label": "Fly to",
     "whole": "Whole system"
@@ -211,6 +217,31 @@
       }
     }
   },
+  "moonCard": {
+    "kind": "A moon of Jupiter",
+    "rows": {
+      "diameter": "Mean diameter",
+      "mass": "Mass",
+      "density": "Mean density",
+      "distance": "Distance from Jupiter (half the long axis of its orbit)",
+      "period": "Once round Jupiter"
+    },
+    "density": "{n} kg/m³",
+    "sameSide": "always turns the same side to Jupiter",
+    "source": "Numbers — NASA (the Jovian satellite fact sheet, updated {updated}).",
+    "map": "Map of the surface: U.S. Geological Survey, from images of the Voyager and Galileo spacecraft; it is in shades of grey. Which side of the moon faces Jupiter is shown only roughly in the program.",
+    "sourceLink": "NASA’s fact sheet on Jupiter’s moons",
+    "mapLink": "Rules of the U.S. Geological Survey",
+    "listTitle": "Moons",
+    "listIntro": "Jupiter’s four large moons. You can fly to each of them.",
+    "flyTo": "Fly to the moon: {name}",
+    "about": {
+      "io": "Io is the most volcanically active world in the solar system, with hundreds of volcanoes; some throw lava fountains dozens of kilometers high. It is caught between Jupiter’s massive gravity and the precisely timed pulls of its neighbors Europa and Ganymede. The volcanoes cover its face with new deposits faster than large craters can mark it. Voyager 1 spotted the first signs of this volcanism in 1979; most of what we know about Io comes from the Galileo spacecraft.",
+      "europa": "There is strong evidence that the icy moon Europa has a saltwater ocean — perhaps one of the best places to look for environments where life could exist beyond Earth. Europa is the fourth largest of Jupiter’s moons. Most of what we know about it comes from the Galileo mission; on October 14, 2024, NASA launched Europa Clipper, the first mission to study Europa in detail.",
+      "ganymede": "Ganymede is the largest moon in the solar system, bigger even than the planet Mercury. It is the only moon known to have its own magnetic field, which causes auroras around its poles. The dark areas of its surface are older and heavily cratered, the light ones younger. There is strong evidence of an underground saltwater ocean that may hold more water than all of Earth’s surface. The Juno spacecraft photographed it in detail in June 2021.",
+      "callisto": "Callisto is the most heavily cratered object in the solar system. It is Jupiter’s second largest moon and the third largest in the solar system. Data from the Galileo spacecraft in the 1990s showed that it may hide a salty ocean beneath its surface. Callisto and Jupiter’s three other largest moons were discovered in 1610 by the Italian scientist Galileo Galilei."
+    }
+  },
   "keys": "Arrow keys turn the view, plus and minus change the distance.",
   "settings": {
     "title": "Settings",
@@ -221,16 +252,21 @@
     "text": "The bodies stand where they really are today; the positions are computed on your device. Nothing is sent anywhere: no ads, no tracking, no account.",
     "sources": "Sources",
     "textures": "Maps of the Sun, the planets and the Moon, and the starry background: Solar System Scope, CC BY 4.0. The background is decoration: its stars are not placed by a catalogue.",
+    "moonMaps": "Maps of Jupiter’s four moons: Credit: U.S. Geological Survey, from images of the Voyager and Galileo spacecraft; public domain. The maps are in shades of grey and have no images near the poles. The moons turn one side to Jupiter — which side is shown only roughly; the moons’ shadows and eclipses are not drawn.",
     "facts": "Sizes of the bodies and of Saturn’s rings: NASA fact sheets.",
     "shadows": "The Earth’s shadow on the Moon and the Moon’s on the Earth are computed from the real positions. The copper glow of the eclipsed Moon is a picture, not a measurement.",
+    "aim": "“Point the phone” on the sky map is a trial. The program reads the phone’s tilt and compass on the device only and sends them nowhere. A phone’s compass is rough, so the sky on the screen may be shifted against the real one; the picture does not lean with the phone.",
     "engine": "Positions and rotation: astronomy-engine (MIT). 3D: three.js (MIT).",
     "madeBy": "Made by way1ong",
     "photos": "Photos in the cards: NASA and its partners, named under each photo; some are cropped. This program is made independently of NASA.",
     "sky": "The sky from a place: stars — Wikidata (CC0); which stars are joined into constellations — d3-celestial by Olaf Frohn (BSD-3-Clause), after the charts of the IAU and Sky & Telescope; cities — Wikidata. Stars are drawn by day too, and the bending of light by the air near the horizon is not drawn. “Dark enough”, “in view” and “too faint for the eye” are the program’s own measures, not definitions of astronomy. For some stars Wikidata has no visual brightness: there the close Gaia G brightness is used. Proper names of stars: the names approved by the International Astronomical Union, from the list in Wikipedia (CC BY-SA 4.0), and the titles of the stars’ articles in Wikipedia.",
+    "stories": "The stories of the constellations and the line on who listed each constellation are written after Wikipedia’s articles and table — the links stand under each card. The texts of the stories may be used under the same licence, CC BY-SA 4.0. The brightest star, the month of the best evenings and the height of a constellation are worked out by the program itself.",
     "links": {
       "photoLibrary": "NASA’s image and video library",
       "photoRules": "NASA’s rules for its pictures",
-      "starNames": "Wikipedia: list of proper names of stars (in English)"
+      "starNames": "Wikipedia: list of proper names of stars (in English)",
+      "moonRules": "rules of the U.S. Geological Survey",
+      "moonCatalogue": "catalogue of maps"
     }
   },
   "actions": {
@@ -325,9 +361,9 @@
     "open": "The sky from here",
     "toFlight": "Flight",
     "title": "The sky: {place}",
-    "scene": "The sky over the chosen place: stars, constellations, the Sun, the Moon and the planets. Drag to look around. Touch a star or a planet to learn what it is; on a keyboard Enter names what is in the middle.",
+    "scene": "The sky over the chosen place: stars, constellations, the Sun, the Moon and the planets. Drag to look around. Touch a star, a planet or the name of a constellation to learn what it is; on a keyboard Enter names what is in the middle.",
     "placeButton": "Place: {place}",
-    "note": "The sky over {place} at this moment. Drag to look around; two fingers or the wheel bring it nearer. Touch a star or a planet to learn what it is. The place is changed with the button below.",
+    "note": "The sky over {place} at this moment. Drag to look around; two fingers or the wheel bring it nearer. Touch a star, a planet or the name of a constellation to learn what it is. The place is changed with the button below.",
     "dayNote": "The Sun is up: the stars are drawn as if daylight did not hide them.",
     "compass": {
       "n": "N",
@@ -393,7 +429,7 @@
       "star": "Star",
       "unnamed": "A star without a name of its own",
       "planet": "Planet",
-      "kindIn": "{kind} in",
+      "kindIn": "{kind} within the borders of",
       "constellation": "Constellation",
       "brightness": "Brightness",
       "words": {
@@ -414,12 +450,6 @@
       "close": "Close the card",
       "none": "There is no star or planet in the middle of the view.",
       "jupiter": {
-        "names": {
-          "io": "Io",
-          "europa": "Europa",
-          "ganymede": "Ganymede",
-          "callisto": "Callisto"
-        },
         "title": "Through binoculars now",
         "order": "From left to right: {list}.",
         "behind": "{name} is behind Jupiter’s disc now.",
@@ -570,6 +600,74 @@
       "Vir": "Virgo",
       "Vol": "Volans",
       "Vul": "Vulpecula"
+    },
+    "aim": {
+      "button": "Point the phone",
+      "on": "A trial: the map looks where the back of the phone looks. If the sky does not match, move the phone in a figure of eight.",
+      "off": "Pointing is off: the map follows the finger again.",
+      "none": "This device does not tell the program how it is turned, so it cannot be pointed at the sky.",
+      "denied": "Without the permission for motion sensors the map cannot follow the phone.",
+      "level": "Lay the phone flat, screen up, for a moment — that is how it finds the north. Then raise it to the sky."
+    },
+    "story": {
+      "kind": "Constellation",
+      "area": "A constellation is an area of the sky within borders, not only a figure. The lines on the map join just the brightest stars; every star within the borders belongs to the constellation.",
+      "button": "About the constellation",
+      "open": "About the constellation: {name}",
+      "rows": {
+        "brightest": "Brightest star",
+        "brightestMany": "Brightest stars",
+        "evening": "Best in the evening"
+      },
+      "star": "{name} · magnitude {mag}",
+      "unnamed": "a star without a name of its own",
+      "and": " and ",
+      "asBright": "about equally bright",
+      "always": "never sets at this place — seen on any clear night",
+      "low": "stays low here: up to {altitude}° over the horizon",
+      "never": "not seen from this place — it never rises over the horizon",
+      "computed": "The star, the month and the height are worked out by the program for the chosen place. “Best in the evening” is the month when the middle of the constellation stands highest at about {hour}:00.",
+      "source": "The story is written after Wikipedia’s articles:",
+      "sourceListed": "Who listed the constellation — after Wikipedia’s table:",
+      "pages": {
+        "en": "in English",
+        "uk": "in Ukrainian",
+        "hu": "in Hungarian",
+        "list": "the table of constellations"
+      },
+      "licence": "The text of the story may be used on the same terms:",
+      "listed": {
+        "ptolemy": "One of the 48 constellations listed by the astronomer Ptolemy in the 2nd century.",
+        "lacaille": "A modern constellation: it was introduced by the French astronomer Nicolas Louis de Lacaille ({year}).",
+        "southern": "One of the constellations of the southern sky that appeared in {year}, based on the observations of the Dutch navigators Pieter Dirkszoon Keyser and Frederick de Houtman, whom Petrus Plancius had commissioned to chart the southern sky.",
+        "plancius": "A modern constellation: it was formed by Petrus Plancius ({year}).",
+        "hevelius": "A modern constellation: it was introduced by Johannes Hevelius ({year}).",
+        "argo": "A part of the ancient constellation Argo Navis, one of Ptolemy’s 48: in the 1750s the French astronomer Nicolas Louis de Lacaille divided it into three separate constellations.",
+        "vopel": "Known since antiquity, yet Ptolemy did not include it among his 48 constellations and took it for a part of Leo. It became a constellation of its own on a celestial globe made by Caspar Vopel in {year}."
+      },
+      "iau": "Since 1922 it has been on the International Astronomical Union’s list of 88 constellations.",
+      "about": {
+        "Ori": "Orion is a hunter of Greek mythology — a giant, a son of Poseidon, the god of the sea. Its seven brightest stars draw an hourglass: four of them make a large rectangle, and in its middle lie the three stars of Orion’s Belt. In one myth Orion boasted that he would kill every animal on Earth, and the angry goddess Gaia sent a scorpion against him (in other tellings it was Artemis or Apollo) — which is given as the reason why Orion and Scorpius are never in the sky at the same time.",
+        "Tau": "Taurus, the Bull, is a constellation of the zodiac, and people have seen a bull in it since very old times. In Greek mythology it is Zeus, who took the form of a magnificent white bull to carry off Europa, a Phoenician princess. Old pictures show only the front half of the bull — explained by his being half under water as he carried Europa out to sea. In another myth it is Io, a lover of Zeus, whom he turned into a heifer to hide her from his wife Hera.",
+        "Aur": "The Latin name Auriga means “the charioteer”. The constellation is drawn as a chariot driver who holds a goat over his left shoulder and two kids under his arm. In Greek mythology he is most often Erichthonius, a king of Athens raised by the goddess Athena: he is credited with inventing the four-horse chariot, and Zeus placed him in the heavens. In another version he is the charioteer Myrtilus, set in the sky after his death by his father Hermes. The brightest star, Capella, is tied to the she-goat Amalthea, who nursed the infant Zeus.",
+        "Gem": "The name is Latin for “twins”: they are Castor and Pollux of Greek mythology, the sons of Leda, both of them Argonauts. In the usual telling they had different fathers: Castor was the mortal son of Tyndareus, king of Sparta, and Pollux the son of Zeus. When Castor died, Pollux begged Zeus to give his brother immortality, and Zeus united them in the heavens. Two bright stars of the constellation bear their names.",
+        "Per": "The constellation is named after Perseus, a hero of Greek mythology and the son of Danaë. King Polydectes sent him to bring the head of Medusa the Gorgon, whose face turned to stone all who looked at her; Perseus slew her in her sleep. Going on, he rescued Andromeda, the daughter of King Cepheus, who was to be sacrificed to a sea monster — in one version he killed it with his sword, in another he turned it to stone with Medusa’s head. In the sky Perseus lies near Andromeda, Cepheus, Cassiopeia, Cetus and Pegasus.",
+        "Cas": "The constellation is named after Cassiopeia of Greek mythology — the queen of Aethiopia, wife of King Cepheus and mother of Andromeda. It is easy to recognise by its “W” of five bright stars. Cassiopeia boasted that her daughter was more beautiful than the Nereids, the sea nymphs (or, in another telling, that she herself was), and the enraged Poseidon sent a sea monster against her country. As a punishment she was placed in the sky on her throne and made to wheel around the north celestial pole, clinging to it half of the time so as not to fall off.",
+        "And": "The constellation is named for Andromeda of the Greek myth, the daughter of Cassiopeia and King Cepheus; in English it is also known as “the Chained Lady”. When Cassiopeia bragged that her daughter was more beautiful than the sea nymphs, Poseidon sent the sea monster Cetus against Aethiopia, and an oracle said that only the sacrifice of the princess would save the kingdom. Andromeda was chained to a rock by the sea, but the hero Perseus saved her — in one version he turned the monster to stone with the head of Medusa, in another he slew it with his sword. They married, and after her death Athena placed Andromeda in the sky. The neighbouring constellations Perseus, Cassiopeia and Cepheus are other characters of the same myth.",
+        "Peg": "The constellation is named after Pegasus, the winged horse of Greek mythology. He was born from the blood of Medusa when Perseus cut off her head. One myth says that his hooves dug out the spring Hippocrene, whose water gave the gift of poetry. Pegasus became the horse of Bellerophon, who killed the Chimera with his help; but when Bellerophon asked to be carried to Mount Olympus, Zeus made the horse throw him off. Three stars of Pegasus and one of Andromeda form the large Square of Pegasus.",
+        "UMa": "Its Latin name means “greater bear”, and many peoples have seen a bear in these stars. Its seven main stars are the Big Dipper, also called the Plough or the Wagon. In the Greek myth the nymph Callisto bore Zeus a son, Arcas, and Zeus’s jealous wife Hera turned her into a bear. When Arcas later met the bear and almost speared her, Zeus whisked them both into the sky: Callisto as Ursa Major and Arcas as Boötes (in another telling, as the Little Bear).",
+        "UMi": "Ursa Minor is Latin for “Lesser Bear”; its seven stars make a smaller ladle, the Little Dipper, with four stars in the bowl. It holds Polaris, the north pole star, and so has long been important to mariners. There is no single myth of it. In one tradition it is a nymph, a nurse of Zeus, whom the god honoured with a place in the sky; in another, two bears saved the infant Zeus from his father Cronus by hiding him on Mount Ida, and he later set them in the sky — their tails growing long as he swung them up.",
+        "Cyg": "Cygnus takes its name from the Latinised Greek word for “swan”; its bright stars form the Northern Cross. In Greek mythology it has been identified with several swans. In one myth it is Zeus, who disguised himself as a swan to seduce Leda, the wife of the Spartan king Tyndareus. In another it is Cygnus, the friend of Phaethon: when Phaethon fell with the Sun’s chariot into the river Eridanus, Cygnus grieved and dived for his bones for many days, and the gods, touched, turned him into a swan and placed him among the stars. Deneb, its brightest star, marks the swan’s tail.",
+        "Lyr": "Lyra is Latin for “lyre”; in Greek mythology it is the lyre of Orpheus, whose music was said to charm even rocks. To reclaim his wife, the nymph Eurydice, Orpheus entered the Underworld, and his playing charmed its god, Hades. Hades let him lead Eurydice back on one condition — never to look back until they were outside. Near the very end Orpheus looked back, and Eurydice was left in the Underworld forever. His lyre was placed in the sky by Zeus.",
+        "Aql": "Its name is Latin for “eagle”. It is often held to be the eagle that carried the thunderbolts of Zeus; the Greek constellation is probably based on a Babylonian Eagle. The same eagle was sent by Zeus to carry Ganymede to Mount Olympus to serve as cup-bearer to the gods (in another telling Zeus himself took the shape of the bird). Other sources say it is the bird that Zeus ordered to attack Prometheus.",
+        "CMa": "Its name is Latin for “greater dog”, in contrast to Canis Minor, the “lesser dog”; both are drawn following Orion, the hunter, through the sky. In Greek mythology Canis Major was the dog Laelaps, a gift from Zeus to Europa — or, in other tellings, a hound so famed for its speed that Zeus raised it to the sky. It was also taken for one of Orion’s hunting dogs, pursuing the Hare. It holds Sirius, the brightest star of the night sky, known as the “dog star”.",
+        "CMi": "Its name is Latin for “lesser dog”; with Canis Major it follows Orion the hunter. The ancient Greeks called it Procyon, “coming before the dog”. One myth links it with Maera, the dog of Icarius of Athens: the dog led Icarius’ daughter Erigone to her father’s body, neither outlived him, and all three were placed in the sky — Erigone as Virgo and Icarius as Boötes. Another connects it with the Teumessian Fox, turned to stone together with its hunter, the dog Laelaps, by Zeus, who placed them in heaven as Canis Minor and Canis Major.",
+        "Leo": "Its name is Latin for “lion”, and its shape recalls a crouching lion. To the ancient Greeks it was the Nemean Lion, whose hide no weapon could pierce. Heracles had to defeat it with his bare hands — the first of his twelve labours — and Zeus commemorated the labour by placing the Lion in the sky.",
+        "Boo": "The name comes from a Greek word for “herdsman” or “ploughman” — literally “ox-driver”: the Greeks saw the nearby Big Dipper as a cart with oxen. Whom Boötes stands for in Greek mythology is not clear. Some myths say that he invented the plough and was set among the stars for it. Another tells of Icarius, taught to make wine by Dionysus: shepherds thought his strong wine had poisoned their friends and killed him, and Zeus honoured him and his daughter Erigone by placing them in the sky as Boötes and Virgo. Arcturus, the name of its brightest star, means “guardian of the bear”.",
+        "Vir": "The name means “maiden” in Latin. The Greeks and Romans identified the constellation with the goddesses Demeter and Persephone, and with Astraea, a goddess of justice, who left the earth and fled to the sky, becoming the constellation. Its star Spica is Latin for “ear of grain”: in Babylon a part of the constellation was “The Furrow” of the goddess Shala with her ear of grain, and so it became associated with fertility. Erigone, the daughter of Icarius, was also seen in it; in the Middle Ages Virgo was associated with the Virgin Mary.",
+        "Sco": "Scorpius is a constellation of the zodiac; the Babylonians already called it the Scorpion. In Greek mythology its story belongs to Orion. In one version Orion boasted to the goddess Artemis and her mother Leto that he would kill every animal on Earth, and they sent a giant scorpion to kill him; in others the scorpion was sent by Apollo or by Gaia. Zeus raised both to the sky, where Orion hunts every winter but flees every summer when the scorpion comes.",
+        "Oph": "The name comes from the Ancient Greek for “serpent-bearer”, and the constellation is drawn as a man grasping a snake — the snake itself is the constellation Serpens. To the ancient Greeks it was the god Apollo struggling with a huge snake that guarded the Oracle of Delphi. Later it was identified with the healer Asclepius, who learned the secret of keeping death at bay by watching one serpent bring another healing herbs; to keep the human race from becoming immortal Jupiter killed him with a bolt of lightning, but later placed his image in the heavens. Another myth names Laocoön, the Trojan priest slain by two sea serpents."
+      }
     }
   },
   "install": {

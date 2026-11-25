@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { SKY } from '../config.ts';
-import { BODY_IDS, type BodyId } from './bodies.ts';
+import { WORLD_IDS, type WorldId } from './bodies.ts';
 import { positionsKm } from './ephemeris.ts';
 import { eye, flightAt, type View } from './flight.ts';
 import { advance, clearWay, freeFrom, keepOutside, lookDirection, lookPoint, nearest, turnFree } from './free.ts';
@@ -10,7 +10,7 @@ import { dot, length, sub, type Vec3 } from './vec.ts';
 const date = new Date('2026-11-24T12:00:00Z');
 const world = (mode: (typeof SCALES)[number]) => {
   const where = scenePositions(positionsKm(date), mode);
-  const radius = Object.fromEntries(BODY_IDS.map((id) => [id, sceneRadius(id, mode)])) as Record<BodyId, number>;
+  const radius = Object.fromEntries(WORLD_IDS.map((id) => [id, sceneRadius(id, mode)])) as Record<WorldId, number>;
   return { where, radius };
 };
 const view: View = { yaw: 0.6, pitch: 0.4, distance: 3 };
@@ -32,7 +32,7 @@ describe('free flight', () => {
   it('finds the body whose surface is nearest', () => {
     for (const mode of SCALES) {
       const { where, radius } = world(mode);
-      for (const id of BODY_IDS) {
+      for (const id of WORLD_IDS) {
         const near = nearest(eye(where[id], { ...view, distance: radius[id] * 2 }), where, radius);
         expect(near.id, `${mode} ${id}`).toBe(id);
         expect(near.gap).toBeCloseTo(radius[id], 9);
@@ -54,10 +54,10 @@ describe('free flight', () => {
   it('never comes nearer to a body than the ordinary view may, however long it flies at it', () => {
     for (const mode of SCALES) {
       const { where, radius } = world(mode);
-      for (const id of BODY_IDS) {
+      for (const id of WORLD_IDS) {
         let free = freeFrom(where[id], { ...view, distance: radius[id] * 40 });
         for (let i = 0; i < 400; i++) free = advance(free, 0.9, where, radius, 1e9);
-        for (const other of BODY_IDS) expect(length(sub(free.at, where[other])) / radius[other], `${mode} ${id} ${other}`).toBeGreaterThanOrEqual(SKY.camera.closest - 1e-9);
+        for (const other of WORLD_IDS) expect(length(sub(free.at, where[other])) / radius[other], `${mode} ${id} ${other}`).toBeGreaterThanOrEqual(SKY.camera.closest - 1e-9);
         expect(length(sub(free.at, where[id])) / radius[id]).toBeCloseTo(SKY.camera.closest, 6);
       }
     }

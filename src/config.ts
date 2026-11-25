@@ -17,8 +17,12 @@ export const SKY = {
    * `distance * d^distancePower` units away; a body `r` Earth radii across is drawn `radius * r^radiusPower`
    * units in radius; a moon keeps its direction and stands `moonGap` radii of its planet from the planet's
    * middle.
+   * `satelliteGap` — Jupiter's four moons stand this many radii of Jupiter from its middle, in the order of
+   * their true orbits, far enough from Jupiter and from one another for the camera that looks at one
+   * of them to stand clear of the rest (their true distances, from about six to twenty-six radii of Jupiter, are
+   * in NASA's fact sheet and are what the true scale shows).
    */
-  handy: { distance: 16, distancePower: 0.5, radius: 0.5, radiusPower: 0.4, moonGap: 2.2 },
+  handy: { distance: 16, distancePower: 0.5, radius: 0.5, radiusPower: 0.4, moonGap: 2.2, satelliteGap: { io: 2.6, europa: 3.75, ganymede: 5.1, callisto: 6.5 } },
 
   /** The camera, in radii of the body it looks at (C): how close it may come, where a flight ends. */
   camera: { closest: 1.25, arrive: 4, arriveSun: 9 },
@@ -108,6 +112,8 @@ export const SKY = {
     /** The ring round what a touch has named stands this far from its mark, CSS px. */
     pickRingGapPx: 6,
     labelGapPx: 4,
+    /** A constellation's name whose place is taken moves up to this many rows down or up from the middle of its figure. */
+    figureNameRows: 3,
   },
   /**
    * "Tonight" (C) — the program's own measures of what can be seen, not definitions of astronomy:
@@ -141,12 +147,30 @@ export const SKY = {
    * `words` — how a brightness is said in words: up to these magnitudes "very bright", "bright", "medium",
    *   fainter — "faint". The program's own words, not astronomy's.
    */
+  pick: { tap: { slopPx: 8, ms: 600 }, reachPx: 24, brighterPx: 3, overCardPx: 28, words: { veryBright: 1.5, bright: 3, medium: 4.5 } },
+  /**
+   * "Point the phone at the sky" (C) — a trial behind a button; none of these is measured on a real phone.
+   * `settleMs` — how softly the view follows the phone: in this time it covers about two thirds of the way to
+   * where the phone points now. `levelDeg` — an iPhone's compass heading is taken for "where the top of the
+   * phone points" only while the phone is tilted less than this from lying flat; `northShare` — how much of
+   * each new reading of the north is taken then. `waitMs` — a device that has reported no tilt in this time is
+   * told to have none.
+   */
+  aim: { settleMs: 120, levelDeg: 50, northShare: 0.1, waitMs: 1_500 },
+  /**
+   * The card of a constellation (C). `eveningHour` — "best in the evening" means the figure crosses the
+   * meridian at this hour of the place's own Sun time: the custom of sky guides and of Wikipedia's tables.
+   * `asBrightMag` — stars of a constellation this near in magnitude to its brightest are named beside it:
+   * catalogues differ by about as much, and which of two such stars is "the brightest" depends on the catalogue.
+   * `nameReachPx` — a touch this near the small letters of a constellation's name on the map still opens its
+   * card. `lowDeg` — a constellation whose middle never climbs higher than this over the place is said to stay low.
+   */
+  story: { eveningHour: 21, asBrightMag: 0.05, nameReachPx: 12, lowDeg: 20 },
   /**
    * Jupiter through binoculars in its card (C): the drawing's size, CSS px of its own grid; how many px a
    * radius of Jupiter takes at the most (less when the moons would not fit in height); the moons' dots.
    */
   moonsDrawing: { width: 300, height: 150, radiusPx: 5.3, moonPx: 2.2 },
-  pick: { tap: { slopPx: 8, ms: 600 }, reachPx: 24, brighterPx: 3, overCardPx: 28, words: { veryBright: 1.5, bright: 3, medium: 4.5 } },
   /** Points of an orbit's line (C). */
   orbitPoints: 256,
   /** Where the outer edge of ring A lies across the ring texture, 0…1 — measured on the texture itself. */

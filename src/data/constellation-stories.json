@@ -1,0 +1,331 @@
+{
+  "source": {
+    "title": "Wikipedia",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "terms": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+    "read": "2026-11-25"
+  },
+  "stories": {
+    "Ori": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Orion_(constellation)",
+          "revision": 1387071981
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/%D0%9E%D1%80%D1%96%D0%BE%D0%BD_(%D1%81%D1%83%D0%B7%D1%96%D1%80%27%D1%8F)",
+          "revision": 49179190
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Orion_csillagk%C3%A9p",
+          "revision": 28644915
+        }
+      }
+    },
+    "Tau": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Taurus_(constellation)",
+          "revision": 1387406087
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Телець_(сузір'я)",
+          "revision": 49132167
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Bika_csillagkép",
+          "revision": 28729197
+        }
+      }
+    },
+    "Aur": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Auriga",
+          "revision": 1380735863
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Візничий_(сузір'я)",
+          "revision": 46689389
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Szekeres_csillagkép",
+          "revision": 26050394
+        }
+      }
+    },
+    "Gem": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Gemini_(constellation)",
+          "revision": 1386838871
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Близнята_(сузір'я)",
+          "revision": 48496956
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Ikrek_csillagkép",
+          "revision": 29273898
+        }
+      }
+    },
+    "Per": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Perseus_(constellation)",
+          "revision": 1384626682
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Персей_(сузір'я)",
+          "revision": 48813803
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Perseus_csillagkép",
+          "revision": 28323190
+        }
+      }
+    },
+    "Cas": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Cassiopeia_(constellation)",
+          "revision": 1386813078
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Кассіопея_(сузір'я)",
+          "revision": 49131033
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Cassiopeia_csillagkép",
+          "revision": 28832723
+        }
+      }
+    },
+    "And": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Andromeda_(constellation)",
+          "revision": 1384141124
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Андромеда_(сузір'я)",
+          "revision": 49173364
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Andromeda_csillagkép",
+          "revision": 28644906
+        }
+      }
+    },
+    "Peg": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(constellation)",
+          "revision": 1384869583
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Пегас_(сузір'я)",
+          "revision": 49220741
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Pegasus_csillagkép",
+          "revision": 24276367
+        }
+      }
+    },
+    "UMa": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Ursa_Major",
+          "revision": 1385032598
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Велика_Ведмедиця",
+          "revision": 48449664
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Nagy_Medve_csillagkép",
+          "revision": 28832653
+        }
+      }
+    },
+    "UMi": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Ursa_Minor",
+          "revision": 1370790757
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Мала_Ведмедиця",
+          "revision": 49131152
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Kis_Medve_csillagkép",
+          "revision": 28597969
+        }
+      }
+    },
+    "Cyg": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Cygnus_(constellation)",
+          "revision": 1381803762
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Лебідь_(сузір'я)",
+          "revision": 44361572
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Hattyú_csillagkép",
+          "revision": 28571752
+        }
+      }
+    },
+    "Lyr": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Lyra",
+          "revision": 1384499800
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Ліра_(сузір'я)",
+          "revision": 49131354
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Lant_csillagkép",
+          "revision": 27074368
+        }
+      }
+    },
+    "Aql": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Aquila_(constellation)",
+          "revision": 1385473408
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Орел_(сузір'я)",
+          "revision": 44382916
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Sas_csillagkép",
+          "revision": 26148156
+        }
+      }
+    },
+    "CMa": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Canis_Major",
+          "revision": 1375700656
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Великий_Пес",
+          "revision": 48886377
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Nagy_Kutya_csillagkép",
+          "revision": 19108779
+        }
+      }
+    },
+    "CMi": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Canis_Minor",
+          "revision": 1386399390
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Малий_Пес",
+          "revision": 49211338
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Kis_Kutya_csillagkép",
+          "revision": 26050396
+        }
+      }
+    },
+    "Leo": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Leo_(constellation)",
+          "revision": 1386414356
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Лев_(сузір'я)",
+          "revision": 49224960
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Oroszlán_csillagkép",
+          "revision": 28106063
+        }
+      }
+    },
+    "Boo": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Boötes",
+          "revision": 1384468562
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Волопас_(сузір'я)",
+          "revision": 48992220
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Ökörhajcsár_csillagkép",
+          "revision": 29371135
+        }
+      }
+    },
+    "Vir": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Virgo_(constellation)",
+          "revision": 1380737838
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Діва_(сузір'я)",
+          "revision": 49230943
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Szűz_csillagkép",
+          "revision": 28295457
+        }
+      }
+    },
+    "Sco": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Scorpius",
+          "revision": 1386772525
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Скорпіон_(сузір'я)",
+          "revision": 49132320
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Skorpió_csillagkép",
+          "revision": 26244314
+        }
+      }
+    },
+    "Oph": {
+      "pages": {
+        "en": {
+          "url": "https://en.wikipedia.org/wiki/Ophiuchus",
+          "revision": 1385347691
+        },
+        "uk": {
+          "url": "https://uk.wikipedia.org/wiki/Змієносець_(сузір'я)",
+          "revision": 49131660
+        },
+        "hu": {
+          "url": "https://hu.wikipedia.org/wiki/Kígyótartó_csillagkép",
+          "revision": 27239379
+        }
+      }
+    }
+  }
+}

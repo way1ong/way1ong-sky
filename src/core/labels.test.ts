@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { SKY } from '../config.ts';
 import { project, type Frame } from './dome.ts';
-import { markBox, nameBox, placeBeside, shared, type Box } from './labels.ts';
+import { markBox, nameBox, placeAround, placeBeside, shared, type Box } from './labels.ts';
 import { CITIES } from './places.ts';
 import { altAz, bodyInSky, bodyMagnitude, skyTurn } from './sky.ts';
 
@@ -86,5 +86,42 @@ describe('Mars and Jupiter side by side over Budapest on 27 November 2026', () =
   it('Neptune is too faint for the eye that night and Jupiter is not', () => {
     expect(bodyMagnitude('neptune', date)).toBeGreaterThan(SKY.tonight.eyeMagnitude);
     expect(bodyMagnitude('jupiter', date)).toBeLessThan(SKY.tonight.eyeMagnitude);
+  });
+});
+
+describe('a name at a point of its own (a constellation at the middle of its figure)', () => {
+  const seen: Box = { left: 0, right: 360, top: 0, bottom: 600 };
+  const [width, size, gap] = [60, 11, 4];
+  const row = size + 2 * gap;
+
+  it('stands on the point when the place is free', () => {
+    const place = placeAround(180, 300, width, size, gap, [], seen, 2);
+    expect(place).toMatchObject({ x: 180, y: 300, align: 'center' });
+  });
+
+  it('moves a row lower when a star\'s name has the place, a row higher when that is taken too', () => {
+    const star = nameBox(170, 300, 70, size, gap);
+    const lower = placeAround(180, 300, width, size, gap, [star], seen, 2);
+    expect(lower?.y).toBe(300 + row);
+    expect(shared(lower!.box, star)).toBe(0);
+    const higher = placeAround(180, 300, width, size, gap, [star, lower!.box], seen, 2);
+    expect(higher?.y).toBe(300 - row);
+  });
+
+  it('is left out when every row it may take is taken, and when it would not be seen at all', () => {
+    const wall: Box = { left: 100, right: 260, top: 300 - 3 * row, bottom: 300 + 3 * row };
+    expect(placeAround(180, 300, width, size, gap, [wall], seen, 2)).toBeNull();
+    expect(placeAround(180, -200, width, size, gap, [], seen, 2)).toBeNull();
+  });
+
+  it('never lies on what is taken', () => {
+    const taken: Box[] = [];
+    for (let i = 0; i < 40; i++) {
+      const place = placeAround(60 + ((i * 53) % 240), 80 + ((i * 97) % 440), width, size, gap, taken, seen, 2);
+      if (!place) continue;
+      for (const other of taken) expect(shared(place.box, other)).toBe(0);
+      taken.push(place.box);
+    }
+    expect(taken.length).toBeGreaterThan(10);
   });
 });

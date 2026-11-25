@@ -22,6 +22,12 @@
     "uranus": "Uránusz",
     "neptune": "Neptunusz"
   },
+  "satellites": {
+    "io": "Io",
+    "europa": "Europa",
+    "ganymede": "Ganymedes",
+    "callisto": "Callisto"
+  },
   "dock": {
     "label": "Repülés ide",
     "whole": "Az egész rendszer"
@@ -211,6 +217,31 @@
       }
     }
   },
+  "moonCard": {
+    "kind": "A Jupiter holdja",
+    "rows": {
+      "diameter": "Közepes átmérő",
+      "mass": "Tömeg",
+      "density": "Közepes sűrűség",
+      "distance": "Távolság a Jupitertől (a pálya fél nagytengelye)",
+      "period": "Egy keringés a Jupiter körül"
+    },
+    "density": "{n} kg/m³",
+    "sameSide": "mindig ugyanazt az oldalát fordítja a Jupiter felé",
+    "source": "A számok forrása: NASA (a Jupiter holdjainak adatlapja, frissítve: {updated}).",
+    "map": "A felszín térképe: U.S. Geological Survey, a Voyager és a Galileo űrszondák felvételei alapján; a térkép szürkeárnyalatos. Hogy a hold melyik oldala néz a Jupiter felé, azt a program csak közelítőleg mutatja.",
+    "sourceLink": "A NASA adatlapja a Jupiter holdjairól",
+    "mapLink": "Az U.S. Geological Survey szabályai",
+    "listTitle": "Holdak",
+    "listIntro": "A Jupiter négy nagy holdja. Mindegyikhez oda lehet repülni.",
+    "flyTo": "Repülés a holdhoz: {name}",
+    "about": {
+      "io": "Az Io a Naprendszer vulkanikusan legaktívabb égiteste: több száz vulkánja van, némelyik több tíz kilométer magas lávaszökőkutat lövell ki. A Jupiter hatalmas gravitációja és két szomszédja, az Europa és a Ganymedes pontosan időzített vonzása között őrlődik. A vulkánok gyorsabban borítják be új lerakódásokkal a felszínét, mint ahogy nagy kráterek megjelölhetnék. E vulkanizmus első jeleit 1979-ben a Voyager–1 vette észre; az Ióról szóló tudásunk nagy része a Galileo űrszondától származik.",
+      "europa": "Erős bizonyítékok szólnak amellett, hogy a jeges Europa holdnak sós vizű óceánja van — talán az egyik legjobb hely, ahol a Földön kívül az élet számára alkalmas környezetet lehet keresni. Az Europa a Jupiter negyedik legnagyobb holdja. Amit róla tudunk, annak nagy része a Galileo küldetés megfigyeléseiből származik; 2024. október 14-én a NASA elindította az Europa Clippert, az első küldetést, amely részletesen vizsgálja az Europát.",
+      "ganymede": "A Ganymedes a Naprendszer legnagyobb holdja, még a Merkúr bolygónál is nagyobb. Ez az egyetlen ismert hold, amelynek saját mágneses tere van; ez sarki fényt kelt a pólusai körül. Felszínének sötét területei idősebbek és sűrűn kráterezettek, a világosak fiatalabbak. Erős bizonyítékok utalnak felszín alatti sós vizű óceánra, amelyben több víz lehet, mint a Föld egész felszínén. 2021 júniusában a Juno űrszonda készített róla részletes felvételeket.",
+      "callisto": "A Callisto a Naprendszer legsűrűbben kráterezett égiteste. A Jupiter második és a Naprendszer harmadik legnagyobb holdja. A Galileo űrszonda 1990-es évekbeli adatai szerint a felszíne alatt talán sós óceán rejtőzik. A Callistót és a Jupiter három másik legnagyobb holdját 1610-ben fedezte fel Galileo Galilei olasz tudós."
+    }
+  },
   "keys": "A nyílbillentyűk forgatják a nézetet, a plusz és a mínusz a távolságot változtatja.",
   "settings": {
     "title": "Beállítások",
@@ -221,16 +252,21 @@
     "text": "Az égitestek ott állnak, ahol ma valóban vannak; a helyzetüket az Ön eszköze számítja ki. Semmit sem küldünk sehová: nincs reklám, követés vagy fiók.",
     "sources": "Források",
     "textures": "A Nap, a bolygók és a Hold térképei, valamint a csillagos háttér: Solar System Scope, CC BY 4.0. A háttér díszítés: csillagai nem katalógus szerint állnak.",
+    "moonMaps": "A Jupiter négy holdjának térképei: Credit: U.S. Geological Survey, a Voyager és a Galileo űrszondák felvételei alapján; közkincs. A térképek szürkeárnyalatosak, a pólusok közelében nincs felvétel. A holdak egyik oldalukat fordítják a Jupiter felé — hogy melyiket, azt a program csak közelítőleg mutatja; a holdak árnyékait és fogyatkozásait nem rajzoltuk meg.",
     "facts": "Az égitestek és a Szaturnusz gyűrűinek méretei: a NASA adatlapjai.",
     "shadows": "A Föld árnyéka a Holdon és a Hold árnyéka a Földön a valódi helyzetekből van kiszámítva. A fogyatkozó Hold rézszínű derengése kép, nem mérés.",
+    "aim": "A „Telefon az égre” az égtérképen kísérlet. A program a telefon dőlését és iránytűjét csak magán az eszközön olvassa, és sehová sem küldi. A telefon iránytűje pontatlan, ezért a képernyőn látható ég elcsúszhat a valódihoz képest; a kép nem dől a telefonnal együtt.",
     "engine": "Helyzet és forgás: astronomy-engine (MIT). 3D: three.js (MIT).",
     "madeBy": "Készítette: way1ong",
     "photos": "A kártyák fotói: a NASA és partnerei, a nevük minden fotó alatt szerepel; néhány kép meg van vágva. A program a NASA-tól függetlenül készült.",
     "sky": "Az égbolt egy helyről: csillagok — Wikidata (CC0); a csillagképek vonalai — d3-celestial, szerző: Olaf Frohn (BSD-3-Clause), az IAU és a Sky & Telescope térképei nyomán; városok — Wikidata. A csillagok nappal is láthatók a képen, a fény légköri törése a horizont közelében nincs ábrázolva. Az „elég sötét”, a „látható” és a „szabad szemmel túl halvány” a program saját mércéi, nem csillagászati meghatározások. Néhány csillagnak a Wikidatában nincs vizuális fényessége: ott a hozzá közeli Gaia G fényesség szerepel. A csillagok tulajdonnevei: a Nemzetközi Csillagászati Unió által jóváhagyott nevek a Wikipédia listájából (CC BY-SA 4.0), valamint a csillagok Wikipédia-szócikkeinek címei.",
+    "stories": "A csillagképek történetei és az a sor, hogy ki vette fel a csillagképet a listára, a Wikipédia szócikkei és táblázata alapján készültek — a hivatkozások minden kártya alatt megtalálhatók. A történetek szövege ugyanazzal a licenccel, CC BY-SA 4.0 alatt használható fel. A legfényesebb csillagot, a legjobb esték hónapját és a csillagkép magasságát maga a program számítja.",
     "links": {
       "photoLibrary": "a NASA kép- és videótára",
       "photoRules": "a NASA szabályai a képeiről",
-      "starNames": "Wikipédia: a csillagok tulajdonneveinek listája (angolul)"
+      "starNames": "Wikipédia: a csillagok tulajdonneveinek listája (angolul)",
+      "moonRules": "az U.S. Geological Survey szabályai",
+      "moonCatalogue": "térképkatalógus"
     }
   },
   "actions": {
@@ -325,9 +361,9 @@
     "open": "Az égbolt innen",
     "toFlight": "Repülés",
     "title": "Égbolt: {place}",
-    "scene": "Az égbolt a kiválasztott hely felett: csillagok, csillagképek, a Nap, a Hold és a bolygók. Húzással nézhet körül. Érintsen meg egy csillagot vagy bolygót, hogy megtudja, mi az; billentyűzeten az Enter megnevezi, ami középen van.",
+    "scene": "Az égbolt a kiválasztott hely felett: csillagok, csillagképek, a Nap, a Hold és a bolygók. Húzással nézhet körül. Érintsen meg egy csillagot, bolygót vagy egy csillagkép nevét, hogy megtudja, mi az; billentyűzeten az Enter megnevezi, ami középen van.",
     "placeButton": "Hely: {place}",
-    "note": "Az égbolt {place} felett ebben a pillanatban. Húzással nézhet körül; két ujjal vagy a görgővel közelíthet. Érintsen meg egy csillagot vagy bolygót, hogy megtudja, mi az. A helyet a lenti gombbal változtathatja meg.",
+    "note": "Az égbolt {place} felett ebben a pillanatban. Húzással nézhet körül; két ujjal vagy a görgővel közelíthet. Érintsen meg egy csillagot, bolygót vagy egy csillagkép nevét, hogy megtudja, mi az. A helyet a lenti gombbal változtathatja meg.",
     "dayNote": "A Nap a horizont felett van: a csillagok úgy láthatók, mintha a nappali fény nem takarná el őket.",
     "compass": {
       "n": "É",
@@ -393,7 +429,7 @@
       "star": "Csillag",
       "unnamed": "Saját név nélküli csillag",
       "planet": "Bolygó",
-      "kindIn": "{kind}, csillagkép:",
+      "kindIn": "{kind} a csillagkép határain belül:",
       "constellation": "Csillagkép",
       "brightness": "Fényesség",
       "words": {
@@ -414,12 +450,6 @@
       "close": "Kártya bezárása",
       "none": "A nézet közepén nincs csillag vagy bolygó.",
       "jupiter": {
-        "names": {
-          "io": "Io",
-          "europa": "Europa",
-          "ganymede": "Ganymedes",
-          "callisto": "Callisto"
-        },
         "title": "Távcsőben most",
         "order": "Balról jobbra: {list}.",
         "behind": "{name} most a Jupiter korongja mögött van.",
@@ -570,6 +600,74 @@
       "Vir": "Szűz",
       "Vol": "Repülőhal",
       "Vul": "Kis Róka"
+    },
+    "aim": {
+      "button": "Telefon az égre",
+      "on": "Kísérlet: a térkép arra néz, amerre a telefon hátlapja. Ha az ég nem egyezik, mozgassa a telefont nyolcas alakban.",
+      "off": "Az irányzás kikapcsolva: a térkép újra az ujját követi.",
+      "none": "Ez az eszköz nem közli a programmal, merre fordul, ezért nem lehet az égre irányítani.",
+      "denied": "A mozgásérzékelők engedélye nélkül a térkép nem tudja követni a telefont.",
+      "level": "Fektesse a telefont egy pillanatra vízszintesen, kijelzővel felfelé — így találja meg az északot. Utána emelje az ég felé."
+    },
+    "story": {
+      "kind": "Csillagkép",
+      "area": "A csillagkép az égbolt határokkal körülvett területe, nem csupán alakzat. A térkép vonalai csak a legfényesebb csillagokat kötik össze; a csillagképhez tartozik minden csillag, amely a határain belül van.",
+      "button": "A csillagképről",
+      "open": "A csillagképről: {name}",
+      "rows": {
+        "brightest": "Legfényesebb csillag",
+        "brightestMany": "Legfényesebb csillagok",
+        "evening": "Este a legjobb"
+      },
+      "star": "{name} · {mag} magnitúdó",
+      "unnamed": "saját név nélküli csillag",
+      "and": " és ",
+      "asBright": "közel egyforma fényesek",
+      "always": "ezen a helyen nem nyugszik le — bármely derült éjszakán látható",
+      "low": "itt alacsonyan marad: legfeljebb {altitude}° a horizont felett",
+      "never": "erről a helyről nem látható — nem kel a horizont fölé",
+      "computed": "A csillagot, a hónapot és a magasságot maga a program számítja a kiválasztott helyre. „Este a legjobb” az a hónap, amikor a csillagkép közepe {hour} óra körül áll a legmagasabban.",
+      "source": "A történet a Wikipédia szócikkei alapján készült:",
+      "sourceListed": "Hogy ki vette fel a csillagképet a listára — a Wikipédia táblázata alapján:",
+      "pages": {
+        "en": "angolul",
+        "uk": "ukránul",
+        "hu": "magyarul",
+        "list": "a csillagképek táblázata"
+      },
+      "licence": "A történet szövege ugyanilyen feltételekkel használható fel:",
+      "listed": {
+        "ptolemy": "Egyike annak a 48 csillagképnek, amelyeket a 2. században élt Klaudiosz Ptolemaiosz görög csillagász felsorolt.",
+        "lacaille": "Újkori csillagkép: Nicolas-Louis de Lacaille francia csillagász vezette be ({year}).",
+        "southern": "A déli égbolt egyik csillagképe, amely {year}-ban jelent meg Pieter Dirkszoon Keyser és Frederick de Houtman holland hajósok megfigyelései alapján; a déli ég feltérképezésével Petrus Plancius bízta meg őket.",
+        "plancius": "Újkori csillagkép: Petrus Plancius alkotta meg ({year}).",
+        "hevelius": "Újkori csillagkép: Johannes Hevelius vezette be ({year}).",
+        "argo": "Az ókori Argo Navis csillagkép része, amely Ptolemaiosz 48 csillagképének egyike volt: az 1750-es években Nicolas-Louis de Lacaille francia csillagász három külön csillagképre osztotta.",
+        "vopel": "Az ókor óta ismert, de Ptolemaiosz nem vette fel 48 csillagképe közé, és az Oroszlán részének tekintette. Önálló csillagképpé Caspar Vopel {year}-ban készült éggömbjén vált."
+      },
+      "iau": "1922 óta szerepel a Nemzetközi Csillagászati Unió 88 csillagképet tartalmazó listáján.",
+      "about": {
+        "Ori": "Az Orion a görög mitológia óriás termetű vadásza, Poszeidón fia. Hét legfényesebb csillaga homokórára emlékeztető alakot rajzol: négy csillag nagy négyszöget alkot, közepén az Orion övének három csillagával. Az egyik változat szerint Artemisz skorpiót küldött rá; egy másik szerint a Földanya ölette meg a skorpióval, mert Orion azzal kérkedett, hogy minden vadállatot meg tud ölni — ezért nem látható az Orion és a Skorpió egyszerre az égen. Régi csillagtérképeken Íjász, Kaszás vagy Nimród néven is említik.",
+        "Tau": "A Bika a tizenkét állatövi csillagkép egyike, és nagyon régóta bikát látnak benne. A görög mitológiában Zeusz fehér bika alakjában rabolta el Európét, a föníciai hercegnőt, és Kréta szigetére úszott vele. A régi ábrázolásokon a bikának csak az elülső fele látszik — ezt azzal magyarázták, hogy félig vízben van, amint Európét viszi a tengeren. Egy másik monda szerint a csillagkép Ió, Zeusz kedvese, akit Zeusz üszővé változtatott, hogy elrejtse felesége, Héra elől.",
+        "Aur": "A Szekeres latin neve, Auriga, kocsihajtót jelent. A legkorábbi időktől úgy ábrázolták, hogy kecskét vagy kecskegidákat dajkál az ölében. Sokan Erikthonioszt látták benne, a Földanya és Héphaisztosz gyermekét, aki bevezette a négylovas kocsikat Athénban. Egy másik értelmezés szerint a balsorsú kocsihajtó, Mürtilosz alakja, akit apja, Hermész helyezett a csillagok közé. Legfényesebb csillagát, a Capellát az Amalthea nevű kecskéhez kötik, amely a mítoszban Zeuszt szoptatta.",
+        "Gem": "Az Ikrek a tizenkét állatövi csillagkép egyike; latin neve, Gemini, ikreket jelent. A görög mitológia ikerpárja, Kasztór és Pollux Léda spártai királyné fiai voltak. Az egyik változat szerint mindketten Zeusz fiai, a másik szerint Pollux apja Zeusz, Kasztóré pedig Tündareósz spártai király. A nagy testvéri szeretet jutalmául az istenek a csillagos égre helyezték őket. A magyar mondakincs Két Árva néven emlékezik meg a csillagképről.",
+        "Per": "A csillagkép a görög mitológia hőséről, Perszeuszról, Danaé fiáról kapta a nevét. Perszeusz levágta Medusza, az egyik Gorgó fejét — a Gorgók olyan szörnyűek voltak, hogy aki rájuk nézett, kővé dermedt. Hazafelé tartva megmentette Andromédát, Képheusz király leányát a tengeri szörnytől: az egyik változat szerint a szörny a Gorgó fejének láttán kővé változott, a másik szerint Perszeusz karddal ölte meg. Az égen a Perseus az Andromeda, a Cepheus, a Cassiopeia, a Cet és a Pegasus csillagkép közelében áll.",
+        "Cas": "A csillagkép a görög mitológia Kassziopeiájáról kapta a nevét: ő Képheusz aithiopiai király felesége és Androméda anyja volt. Helyzetétől függően M vagy W formájú. A királyné azzal dicsekedett, hogy szebb a tengeri nimfáknál (más változatban a leányát mondta szebbnek náluk), ezért Poszeidón, a tengerek istene tengeri szörnyet küldött az országra. Büntetésül a trónjához kötözve került az égre, ahol fél napig fejjel lefelé függ. A magyar néphagyományban „Korcsma” néven emlegetik.",
+        "And": "A csillagkép a görög mitológia Androméda királylányáról kapta a nevét, aki Képheusz aithiopiai király és Kassziopeia királyné leánya volt. Anyja dicsekvése miatt az istenek megharagudtak, és Poszeidón, a tengerek istene tengeri szörnyet küldött az országra; Andromédát a tengerparti sziklához láncolták, hogy a szörny zsákmánya legyen. Ekkor érkezett a hős Perszeusz, aki éppen hazafelé tartott, miután megölte Meduszát, az egyik gorgót: legyőzte a szörnyet, kiszabadította a leányt, majd feleségül vette. A történet minden szereplője — az Andromeda, a Cepheus, a Cassiopeia, a Perseus és a Cet — csillagképként látható az égbolton.",
+        "Peg": "A csillagkép Pégaszoszról, a görög mitológia szárnyas lováról kapta a nevét, akit Poszeidón a gorgók egyikével, Meduszával nemzett. A mondák szerint patkója ütésével fakasztotta a Hippokrene forrást, és a múzsák lovának is tartják. Bellerophontész az ő segítségével győzte le Khimairát; később azonban a hős Pégaszosz hátán az Olümposzra akart felszállni, mire Zeusz megvadította a lovat, és az levetette lovasát. Három csillaga az Andromeda egyik csillagával együtt nagy négyszöget alkot.",
+        "UMa": "A Nagy Medve (latinul Ursa Major) hét legfényesebb csillaga alkotja a Göncölszekeret. Neve a görög mitológiából ered: Kallisztó nimfának Zeusztól fia született, Arkasz. Zeusz felesége, Héra istennő meg akarta ölni a nimfát, de Zeusz az égre helyezte őt a fiával együtt — ők a Nagy és a Kis Medve; egy másik változat szerint Arkasz az Ökörhajcsár csillagkép lett. A magyar mondavilágban Göncöl csodatevő táltos volt: amikor eltörött a szekere kereke, és hiába várt segítséget az emberektől, szekerével együtt az égbe repült.",
+        "UMi": "A Kis Medve (latinul Ursa Minor) a magyar hitvilágban Kis Göncöl. Számos nép szekérként ismerte: négy csillaga a kocsit, három a rudat alkotja. Az ókori görögök a Nagy Medvében és a Kis Medvében Kallisztót és fiát, Arkaszt látták; egy másik változat szerint Arkasz az Ökörhajcsár csillagkép, a Kis Medve pedig egy kutya. Legfényesebb csillaga a Polaris, az északi sarkcsillag.",
+        "Cyg": "A Hattyú (latinul Cygnus) kereszt alakú csillagkép, ezért Északi Keresztnek is nevezik. A görög mítosz szerint Phaethón, Héliosz fia vagy unokaöccse olyan szerencsétlenül kormányozta a szekerét, hogy balesetet szenvedett és meghalt; gyászoló barátját, Küknoszt Apollón változtatta hattyúvá, és emelte az égboltra. Más változat szerint maga Phaethón emelkedett az égbe hattyú képében. Egy másik monda szerint Zeusz változott hattyúvá, hogy részt vehessen egy tiltott szerelmi találkán.",
+        "Lyr": "A líra a régi görögök hangszere volt; az ógörög szövegek magyar fordításában gyakran lant néven szerepel, ehhez igazodik a csillagkép magyar neve is. A mitológia szerint Hermész találta fel, de Apollónnak kellett adnia. Az egyik monda szerint a lant Arióné volt; a másik Orpheuszhoz fűződik, aki az alvilágból akarta visszahozni kedvesét. Énekével megszelídítette a Kerberoszt, Perszephoné pedig visszaengedte Eurüdikét azzal a feltétellel, hogy Orpheusz nem néz hátra. A dalnok azonban visszanézett, és örökre elveszítette kedvesét.",
+        "Aql": "A Sas (latinul Aquila) a görögök szemében Zeusz madara volt: többek között az volt a feladata, hogy visszaszerezze a villámokat, amelyeket Zeusz elhajigált. A csillagképhez fűződik Ganümédész, a szépséges ifjú elrablásának mítosza, amelyben maga Zeusz jelenik meg a madár képében. Egy másik monda szerint ez az a sasmadár, amely a Kaukázusban oszlophoz láncolt Prométheusz máját tépte hajnaltól alkonyatig, míg Héraklész le nem lőtte.",
+        "CMa": "A Nagy Kutya (latinul Canis Major) a Kis Kutyával együtt Orionnak, az égi vadásznak a kísérője: követik őt napi, keletről nyugat felé tartó útján. Egy görög monda szerint a Nagy Kutya Lailapsz, Kephalosz kutyája, aki hiába üldözte a teumésszoszi rókát, míg végül mindketten kővé váltak; a két állatot Zeusz helyezte az égre. A csillagkép legfényesebb csillaga a Szíriusz, amelynek magyar népi neve Sánta Kata.",
+        "CMi": "A Kis Kutya (latinul Canis Minor) Orionnak, a Vadásznak a kisebbik kutyája a téli égbolton. Az egyik monda szerint Maira, Ikariosz hű kutyája, akinek segítségével Ikariosz lánya, Érigoné megtalálta apja holttestét. Egy másik görög monda szerint a Kis Kutya a teumésszoszi róka, akit soha nem sikerült elfogni, a Nagy Kutya pedig Lailapsz, aki hiába üldözte, míg végül mindketten kővé váltak; a két állatot Zeusz helyezte az égre.",
+        "Leo": "Az Oroszlán (latinul Leo) a tizenkét állatövi csillagkép egyike. A nemeai oroszlánról kapta a nevét, akit Héraklész pusztított el tizenkét munkájának egyike során. A fenevadon nem fogott fegyver, ezért a hősnek puszta kézzel kellett legyőznie. A szörnyet Zeusz helyezte az égre Héraklész hőstette emlékére.",
+        "Boo": "Az Ökörhajcsárhoz (latinul Bootes) több legenda fűződik. Az egyik szerint ő találta fel a szántást; a másik szerint medvetáncoltató volt, aki a Nagy Medvét táncoltatja. Egy további legenda az athéni Ikariosszal azonosítja, akit Dionüszosz megtanított a borkészítés titkára: akik a borából ittak, azokról azt hitték, mérgezés áldozatai, ezért Ikarioszt megölték. Leányát, Érigonét Zeusz (némelyek szerint Dionüszosz) Szűzként az égre helyezte, Ikariosz pedig az Ökörhajcsár csillagkép lett. A csillagkép régebbi neve Arcturus volt, azaz a Medve Őre.",
+        "Vir": "A Szűz (latinul Virgo) a tizenkét állatövi csillagkép egyike. A görögök Démétért látták benne, a rómaiak Cerest; később az igazság istennőjével azonosították — Diké, melléknevén Asztraia, a monda szerint elhagyta a Földet, és csillagképpé lett. A babiloni időkben a termékenységet jelképezte, kalászként értelmezték; legfényesebb csillaga a Spica. A középkorban Szűz Máriát látták benne.",
+        "Sco": "A Skorpió (latinul Scorpius) a tizenkét állatövi csillagkép egyike; mitológiai története összekapcsolódik az Orionnal. Egy monda szerint Artemisz, a vadászat istennője küldte a skorpiót Orion után, hogy megölje; egy másik szerint a Földanya ölette meg vele a fennhéjázó Oriont, aki kijelentette, hogy minden vadállatot meg tud ölni. A skorpió az égen is üldözi őt, de sosem érheti el: csak akkor kel fel keleten, amikor Orion már lenyugodott nyugaton.",
+        "Oph": "A Kígyótartó (latinul Ophiuchus) egy kígyóval körbefont férfit formáz. A görögök Aszklépiosszal, a gyógyítás istenével azonosítják, akinek jelképe az orvosi pálca, amelyre kígyó tekeredik. A monda szerint Zeusz villámmal megölte Aszklépioszt, de megsajnálta a jóságos gyógyítót, és felemelte az Olümposzra, az istenek közé. Más monda Laokoónnal, a trójai pappal hozza kapcsolatba a csillagképet."
+      }
     }
   },
   "install": {

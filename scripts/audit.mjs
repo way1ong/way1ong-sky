@@ -25,6 +25,8 @@ if (shots) mkdirSync(shots, { recursive: true });
 const axeSource = axePath ? readFileSync(axePath, 'utf8') : null;
 
 const PORT = 4387;
+/** How long the program waits for a phone's tilt before saying there is none: `SKY.aim.waitMs` in src/config.ts. */
+const AIM_WAIT_MS = 1500;
 const ORIGIN = `http://localhost:${PORT}`;
 const SIZES = [
   [320, 568],
@@ -143,7 +145,7 @@ const panels = async (page, where, what, shot, kept) => {
   if ((await controls()) !== before) note(where, `${what}: the panels did not come back by Escape`);
 };
 /** The dock: 0 the sky, 1 the whole system, 2 free flight, then the bodies from the Sun (3) on. */
-const BODY = { sun: 3, earth: 6, moon: 7, saturn: 10 };
+const BODY = { sun: 3, earth: 6, moon: 7, jupiter: 9, saturn: 10 };
 
 for (const [width, height] of SIZES) {
   for (const [lang, locale, timezoneId] of LANGS) {
@@ -195,6 +197,29 @@ for (const [width, height] of SIZES) {
       if ((await page.locator('dialog[open] .size circle').count()) !== 2) note(where, 'the card has no drawing of the body beside another');
       if (!((await page.locator('dialog[open] .size figcaption').textContent()) ?? '').trim()) note(where, 'the drawing of sizes says nothing in words');
       await look(page, where, 'card');
+      await closeDialog(page);
+
+      // Jupiter's card leads to its four moons: the flight goes to the one chosen, and it has a card of its own.
+      await chip(page, BODY.jupiter).click();
+      await page.waitForTimeout(2200);
+      await page.locator('.top .icon-btn').first().click();
+      await page.waitForSelector('dialog[open] section[aria-labelledby="moons-title"]');
+      const moons = page.locator('dialog[open] section[aria-labelledby="moons-title"] button');
+      if ((await moons.count()) !== 4) note(where, `Jupiter's card lists ${await moons.count()} moons`);
+      const moon = ((await moons.first().textContent()) ?? '').trim();
+      // Beside Jupiter its moons are named over the picture (by a moon seen close up there may be nothing else in view).
+      const moonNames = (await moons.allTextContents()).map((text) => text.trim());
+      const named = (await page.locator('.labels[aria-hidden] .label:not([hidden])').allTextContents()).map((text) => text.trim());
+      if (!named.some((text) => moonNames.includes(text))) note(where, `no moon is named over the picture beside Jupiter: ${named.join(', ')}`);
+      await moons.first().click();
+      await page.waitForTimeout(2400);
+      if (((await page.locator('.top__name').textContent()) ?? '').trim() !== moon) note(where, `the flight from Jupiter's card did not come to ${moon}: ${await page.locator('.top__name').textContent()}`);
+      await look(page, where, 'jupiter-moon');
+      await page.locator('.top .icon-btn').first().click();
+      await page.waitForSelector('dialog[open] #satellite-title');
+      if ((await page.locator('dialog[open] .fact').count()) < 5) note(where, 'the card of a moon of Jupiter has fewer than five rows');
+      if (((await page.locator('dialog[open] .fact__about').textContent()) ?? '').trim().length < 60) note(where, 'the card of a moon of Jupiter tells nothing about it');
+      await look(page, where, 'jupiter-moon-card');
       await closeDialog(page);
 
       await chip(page, BODY.moon).click();
@@ -264,6 +289,8 @@ for (const [width, height] of SIZES) {
       const card = page.locator('.pick');
       for (const [dx, dy] of [[0, 0], [-1, -1], [1, -1], [0, -1.5], [-0.5, 0.5], [0.5, 0.5], [-1, 0], [1, 0]]) {
         await page.mouse.click(room.x + dx * room.w, room.y + dy * room.h);
+        // The touch may have landed on the name of a constellation: its card is a window, looked at below.
+        if (await page.locator('dialog[open] #constellation-title').count()) await closeDialog(page);
         if (await card.isVisible()) break;
       }
       if (!(await card.isVisible())) note(where, 'no touch on the sky opened the card of a star');
@@ -273,6 +300,21 @@ for (const [width, height] of SIZES) {
         const box = await card.boundingBox();
         if (box && (box.x < 0 || box.x + box.width > width + 1 || box.y + box.height > height + 1)) note(where, 'the card of a star runs off the screen');
         await look(page, where, 'sky-card');
+        // A star's card leads to the card of its constellation: its name and what the program works out about it.
+        // (A planet's card has no such button: a planet only passes through a constellation.)
+        if (await card.locator('.pick__about').count()) {
+          await card.locator('.pick__about').click();
+          await page.waitForSelector('dialog[open] #constellation-title', { timeout: 3000 }).catch(() => undefined);
+          if (!(await page.locator('dialog[open] #constellation-title').count())) note(where, 'the card of a star does not lead to the card of its constellation');
+          else {
+            if (!((await page.locator('#constellation-title').textContent()) ?? '').trim()) note(where, 'the card of a constellation has no name');
+            if ((await page.locator('dialog[open] .fact').count()) < 2) note(where, 'the card of a constellation tells less than two things');
+            // A story never stands without its credit: the articles and the licence.
+            if ((await page.locator('dialog[open] .fact__about').count()) && (await page.locator('dialog[open] a[href*="wikipedia.org"]').count()) < 1) note(where, 'a story of a constellation without a link to its article');
+            await look(page, where, 'constellation');
+            await closeDialog(page);
+          }
+        }
         await page.keyboard.press('Escape');
         if (await card.isVisible()) note(where, 'Escape does not close the card of a star');
       }
@@ -350,6 +392,28 @@ for (const [width, height] of SIZES) {
       await page.waitForTimeout(200);
       if (!(await page.evaluate(() => document.documentElement.hasAttribute('data-night')))) note(where, 'night mode did not turn on');
       await look(page, where, 'night');
+      // "Point the phone" (a trial): offered only to a device held in the hand; an imitated tilt turns it on,
+      // the button turns it off, and a device that reports no tilt is told so.
+      const aimBtn = page.locator('.sky-bar .chip').nth(3);
+      const handheld = await page.evaluate(() => matchMedia('(pointer: coarse)').matches);
+      if ((await aimBtn.isVisible()) !== handheld) note(where, handheld ? 'no button to point the phone on a phone' : 'the button to point the phone is shown on a computer');
+      if (handheld) {
+        const tilt = (alpha, beta) => page.evaluate(([a, b]) => window.dispatchEvent(new DeviceOrientationEvent('deviceorientationabsolute', { alpha: a, beta: b, gamma: 0, absolute: true })), [alpha, beta]);
+        await aimBtn.click();
+        for (let i = 0; i < 12; i++) {
+          await tilt(270, 130);
+          await page.waitForTimeout(40);
+        }
+        if ((await aimBtn.getAttribute('aria-pressed')) !== 'true') note(where, 'pointing the phone did not turn on');
+        await look(page, where, 'aim');
+        await aimBtn.click();
+        if ((await aimBtn.getAttribute('aria-pressed')) !== 'false') note(where, 'pointing the phone did not turn off');
+        await aimBtn.click();
+        await page.waitForTimeout(AIM_WAIT_MS + 400);
+        if ((await aimBtn.getAttribute('aria-pressed')) !== 'false') note(where, 'pointing the phone stays on though the device reports no tilt');
+        if (!(await page.locator('.note:not(.pick)').isVisible())) note(where, 'nothing is said when the device reports no tilt');
+        await look(page, where, 'aim-none');
+      }
       await page.locator('.sky-bar .chip').first().click();
       await page.waitForTimeout(300);
       if (await page.evaluate(() => document.documentElement.hasAttribute('data-night'))) note(where, 'night mode stays on in the flight');

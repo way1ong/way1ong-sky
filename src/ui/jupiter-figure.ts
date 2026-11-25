@@ -26,9 +26,9 @@ export function jupiterFigure(d: Dict, moons: readonly MoonBeside[]): HTMLElemen
 
   // In words: the moons and the planet from left to right; a moon behind the disc is told apart.
   const seen = moons.filter((moon) => moon.onDisc !== 'behind');
-  const row = [...seen.map((moon) => ({ at: moon.right, name: moon.onDisc === 'inFront' ? fmt(t.inFront, { name: t.names[moon.id] }) : t.names[moon.id] })), { at: 0, name: d.bodies.jupiter }];
+  const row = [...seen.map((moon) => ({ at: moon.right, name: moon.onDisc === 'inFront' ? fmt(t.inFront, { name: d.satellites[moon.id] }) : d.satellites[moon.id] })), { at: 0, name: d.bodies.jupiter }];
   row.sort((one, other) => one.at - other.at);
-  const said = [fmt(t.order, { list: row.map((item) => item.name).join(', ') }), ...moons.filter((moon) => moon.onDisc === 'behind').map((moon) => fmt(t.behind, { name: t.names[moon.id] }))].join(' ');
+  const said = [fmt(t.order, { list: row.map((item) => item.name).join(', ') }), ...moons.filter((moon) => moon.onDisc === 'behind').map((moon) => fmt(t.behind, { name: d.satellites[moon.id] }))].join(' ');
 
   const picture = svg('svg', { class: 'moons__drawing', viewBox: `0 0 ${width} ${height}`, role: 'img', 'aria-label': said });
   picture.append(svg('circle', { class: 'moons__planet', cx, cy, r: k }));
@@ -38,7 +38,7 @@ export function jupiterFigure(d: Dict, moons: readonly MoonBeside[]): HTMLElemen
   const frame: Box = { left: 0, right: width, top: 0, bottom: height };
   for (const mark of marks) {
     picture.append(svg('circle', { class: 'moons__moon', cx: mark.x, cy: mark.y, r: mark.r }));
-    const name = t.names[mark.moon.id];
+    const name = d.satellites[mark.moon.id];
     const place = placeBeside(mark, name.length * 6.4, 11, 2, taken, frame);
     if (!place) continue;
     taken.push(place.box);

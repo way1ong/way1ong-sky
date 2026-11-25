@@ -2,11 +2,12 @@
 // and the clock for how the Earth is turned; and the app's own rules for the scales and the camera.
 import { describe, expect, it } from 'vitest';
 import { SKY } from '../config.ts';
-import { BODY_IDS, MOON_DISTANCE_RANGE_KM, PLANET_IDS, parentOf, radiusKm, ringSpanKm, sunDistanceRangeKm } from './bodies.ts';
+import { MOON_DISTANCE_RANGE_KM, PLANET_IDS, SATELLITE_IDS, WORLD_IDS, parentOf, radiusKm, ringSpanKm, sunDistanceRangeKm } from './bodies.ts';
 import { attitude, orbitKm, orbitalPeriodDays, positionKm, positionsKm } from './ephemeris.ts';
+import { JUPITER_MOONS } from './jupiter-moons.ts';
 import { arrivalDistance, clampDistance, clampPitch, distanceToFit, ease, eye, flightAt, progress, type Flight } from './flight.ts';
 import { sceneFromSun, scenePositions, sceneRadius, sceneRing } from './scale.ts';
-import { cross, dot, length, normalize, sub, type Vec3 } from './vec.ts';
+import { cross, dot, length, normalize, scale, sub, type Vec3 } from './vec.ts';
 
 /** A day in every month of several years, at different hours. */
 const DATES = Array.from({ length: 60 }, (_, i) => new Date(Date.UTC(2024 + Math.floor(i / 12), i % 12, 1 + (i % 27), (i * 7) % 24)));
@@ -79,7 +80,7 @@ describe('how the Earth is turned', () => {
   });
 
   it('pole and meridian are unit vectors at a right angle, for every body', () => {
-    for (const id of BODY_IDS) {
+    for (const id of WORLD_IDS) {
       const { north, meridian } = attitude(id, DATES[3] as Date);
       expect(length(north), id).toBeCloseTo(1, 9);
       expect(length(meridian), id).toBeCloseTo(1, 9);
@@ -110,8 +111,8 @@ describe('the two scales', () => {
   it('in handy scale no body touches another, and the Moon stands clear of the Earth', () => {
     for (const date of DATES) {
       const scene = scenePositions(positionsKm(date), 'handy');
-      for (const a of BODY_IDS) {
-        for (const b of BODY_IDS) {
+      for (const a of WORLD_IDS) {
+        for (const b of WORLD_IDS) {
           if (a >= b) continue;
           const gap = length(sub(scene[a], scene[b])) - sceneRadius(a, 'handy') - sceneRadius(b, 'handy');
           expect(gap, `${a}–${b} ${date.toISOString()}`).toBeGreaterThan(0.1);
@@ -119,7 +120,7 @@ describe('the two scales', () => {
       }
       // Saturn's rings reach farther than Saturn itself: nothing comes inside them either
       const ring = sceneRing('handy').outer;
-      for (const id of BODY_IDS) if (id !== 'saturn') expect(length(sub(scene[id], scene.saturn)), id).toBeGreaterThan(ring + sceneRadius(id, 'handy'));
+      for (const id of WORLD_IDS) if (id !== 'saturn') expect(length(sub(scene[id], scene.saturn)), id).toBeGreaterThan(ring + sceneRadius(id, 'handy'));
     }
   });
 
@@ -159,7 +160,7 @@ describe('the camera', () => {
   });
 
   it('a flight starts at one body and ends at the other, changing the distance by a ratio', () => {
-    const where = { sun: [0, 0, 0], earth: [10, 0, 0] } as unknown as Record<(typeof BODY_IDS)[number], Vec3>;
+    const where = { sun: [0, 0, 0], earth: [10, 0, 0] } as unknown as Record<(typeof WORLD_IDS)[number], Vec3>;
     const flight: Flight = { from: 'sun', to: 'earth', startDistance: 100, endDistance: 1, startedAt: 1000, durationMs: 2000 };
     expect(flightAt(flight, 1000, where)).toEqual({ target: [0, 0, 0], distance: 100 });
     expect(flightAt(flight, 3000, where).target).toEqual([10, 0, 0]);
@@ -171,5 +172,56 @@ describe('the camera', () => {
     expect(ease(0)).toBe(0);
     expect(ease(1)).toBe(1);
     expect(ease(0.25)).toBeLessThan(0.25);
+  });
+});
+
+describe('the four moons of Jupiter as bodies of the flight', () => {
+  it('go round Jupiter where NASA puts them, in the plane of its equator, turning the same side to it', () => {
+    for (const date of DATES) {
+      const km = positionsKm(date);
+      const jupiterNorth = attitude('jupiter', date).north;
+      for (const id of SATELLITE_IDS) {
+        expect(parentOf(id)).toBe('jupiter');
+        const from = sub(km[id], km.jupiter);
+        expect(length(from) / 1000 / JUPITER_MOONS[id].semiMajorAxisThousandKm, id).toBeGreaterThan(0.98);
+        expect(length(from) / 1000 / JUPITER_MOONS[id].semiMajorAxisThousandKm, id).toBeLessThan(1.02);
+        const { north, meridian } = attitude(id, date);
+        // the pole of the moon stands as Jupiter's does: the orbits lie in Jupiter's equator, give or take a degree
+        expect(dot(north, jupiterNorth), id).toBeGreaterThan(0.999);
+        // the middle of the map looks at Jupiter or straight away from it, as the map's page says
+        const toJupiter = normalize(scale(from, -1));
+        expect(Math.abs(dot(meridian, toJupiter)), id).toBeGreaterThan(0.999);
+        expect(Math.sign(dot(meridian, toJupiter)), id).toBe(JUPITER_MOONS[id].mapCentreLongitude === 0 ? 1 : -1);
+      }
+    }
+  });
+
+  it('in handy scale stand round Jupiter in the order of their true orbits, clear of it and of one another', () => {
+    const scene = scenePositions(positionsKm(DATES[0] as Date), 'handy');
+    const gaps = SATELLITE_IDS.map((id) => length(sub(scene[id], scene.jupiter)));
+    let inner = sceneRadius('jupiter', 'handy');
+    SATELLITE_IDS.forEach((id, i) => {
+      // even with the moons in one line, each begins after the one before has ended
+      expect((gaps[i] as number) - sceneRadius(id, 'handy'), id).toBeGreaterThan(inner);
+      inner = (gaps[i] as number) + sceneRadius(id, 'handy');
+    });
+    // the camera that has flown to a moon stands clear of Jupiter and of the moons on either side
+    SATELLITE_IDS.forEach((id, i) => {
+      const arrive = arrivalDistance(id, sceneRadius(id, 'handy'));
+      const before = i === 0 ? sceneRadius('jupiter', 'handy') : (gaps[i - 1] as number) + sceneRadius(SATELLITE_IDS[i - 1] as (typeof SATELLITE_IDS)[number], 'handy');
+      expect((gaps[i] as number) - arrive, id).toBeGreaterThan(before);
+    });
+    // and the order is that of the true orbits
+    expect([...SATELLITE_IDS].sort((a, b) => JUPITER_MOONS[a].semiMajorAxisThousandKm - JUPITER_MOONS[b].semiMajorAxisThousandKm)).toEqual([...SATELLITE_IDS]);
+  });
+
+  it('the line of a moon’s orbit closes round Jupiter after one period', () => {
+    for (const id of SATELLITE_IDS) {
+      const line = orbitKm(id, DATES[0] as Date, 64);
+      expect(line).toHaveLength(64);
+      for (const point of line) expect(length(point) / 1000 / JUPITER_MOONS[id].semiMajorAxisThousandKm, id).toBeGreaterThan(0.98);
+      // the last point is one step short of the first: the loop closes
+      expect(length(sub(line[63] as Vec3, line[0] as Vec3)), id).toBeLessThan((2 * Math.PI * JUPITER_MOONS[id].semiMajorAxisThousandKm * 1000) / 64 * 1.3);
+    }
   });
 });
