@@ -207,10 +207,13 @@ for (const [width, height] of SIZES) {
       const moons = page.locator('dialog[open] section[aria-labelledby="moons-title"] button');
       if ((await moons.count()) !== 4) note(where, `Jupiter's card lists ${await moons.count()} moons`);
       const moon = ((await moons.first().textContent()) ?? '').trim();
+      // Beside Jupiter its moons are named over the picture (by a moon seen close up there may be nothing else in view).
+      const moonNames = (await moons.allTextContents()).map((text) => text.trim());
+      const named = (await page.locator('.labels[aria-hidden] .label:not([hidden])').allTextContents()).map((text) => text.trim());
+      if (!named.some((text) => moonNames.includes(text))) note(where, `no moon is named over the picture beside Jupiter: ${named.join(', ')}`);
       await moons.first().click();
       await page.waitForTimeout(2400);
       if (((await page.locator('.top__name').textContent()) ?? '').trim() !== moon) note(where, `the flight from Jupiter's card did not come to ${moon}: ${await page.locator('.top__name').textContent()}`);
-      if (!(await page.locator('.labels[aria-hidden] .label:not([hidden])').count())) note(where, 'no names over the picture by a moon of Jupiter');
       await look(page, where, 'jupiter-moon');
       await page.locator('.top .icon-btn').first().click();
       await page.waitForSelector('dialog[open] #satellite-title');
