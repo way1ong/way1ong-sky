@@ -166,7 +166,7 @@ export function startApp(root: HTMLElement): void {
   const placeBtn = h('button', { class: 'chip', type: 'button' });
   const tonightBtn = h('button', { class: 'chip', type: 'button' });
   const skyBox = h('div', { class: 'bar sky-bar', role: 'group', hidden: true }, toFlightBtn, placeBtn, tonightBtn);
-  const scaleBar = h('div', { class: 'bar' });
+  const scaleBar = h('div', { class: 'bar bar--scale' });
   const slowerBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-skip icon-skip--back', 'aria-hidden': 'true' }));
   const pauseBtn = h('button', { class: 'icon-btn', type: 'button' });
   const fasterBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-skip', 'aria-hidden': 'true' }));
@@ -183,7 +183,8 @@ export function startApp(root: HTMLElement): void {
   const stage = h('div', { class: 'stage' }, canvas, skyCanvas, labels, siteMarks);
   const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine, nearLine), factsBtn, menuBtn, wideBtn);
   scaleBar.append(scaleBox);
-  const bottom = h('div', { class: 'bottom' }, flyBox, h('div', { class: 'bar' }, timeBox), scaleBar, dock, skyBox);
+  const timeBar = h('div', { class: 'bar bar--time' }, timeBox);
+  const bottom = h('div', { class: 'bottom' }, flyBox, timeBar, scaleBar, dock, skyBox);
   const main = h(
     'main',
     { class: 'app' },
@@ -339,13 +340,18 @@ export function startApp(root: HTMLElement): void {
 
   /** The bars cover the top and the bottom of the picture: the view centres on what is left free. */
   function measure(): void {
+    // On a phone lying on its side the bars stand in columns at the sides (the styles say so with --side):
+    // the picture then has the whole height under the heading and the width between the columns.
+    const side = getComputedStyle(main).getPropertyValue('--side').trim() === '1';
     // With the panels hidden the picture has the whole screen, but for the two buttons of free flight.
     const top = wide ? 0 : header.getBoundingClientRect().bottom;
     // The stage, not a canvas: of the two canvases one is always hidden and has no size.
-    const low = wide && flyBox.hidden ? 0 : stage.clientHeight - bottom.getBoundingClientRect().top;
+    const low = (wide || side) && flyBox.hidden ? 0 : stage.clientHeight - (side ? flyBox : bottom).getBoundingClientRect().top;
     scene.setCovered(top, low);
     skyView.setCovered(top, low);
-    const free = Math.max(1, Math.min(stage.clientWidth, stage.clientHeight - top - low));
+    const right = screen === 'sky' ? skyBox : dock;
+    const between = side && !wide ? right.getBoundingClientRect().left - timeBar.getBoundingClientRect().right : stage.clientWidth;
+    const free = Math.max(1, Math.min(between, stage.clientHeight - top - low));
     squeeze = Math.min(stage.clientWidth, stage.clientHeight) / free;
     dirty = true;
   }
