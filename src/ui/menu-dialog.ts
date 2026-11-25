@@ -4,6 +4,7 @@ import { ART_SET } from '../core/art.ts';
 import { SATELLITE_MAPS, SATELLITE_PAGES } from '../core/satellites.ts';
 import { SKY } from '../config.ts';
 import { SOURCES } from '../core/bodies.ts';
+import { DEEP_SOURCE } from '../core/deep-sky.ts';
 import { CITY_SOURCE } from '../core/places.ts';
 import { PHOTO_LIBRARY, PHOTO_RULES } from '../core/photos.ts';
 import { h } from './dom.ts';
@@ -22,8 +23,9 @@ const link = (url: string, text: string) => h('a', { href: url, rel: 'noopener' 
 export interface SkyChoices {
   figures: boolean;
   names: boolean;
+  deep: boolean;
   night: boolean;
-  toggle(choice: 'figures' | 'names' | 'night'): void;
+  toggle(choice: 'figures' | 'names' | 'deep' | 'night'): void;
 }
 
 export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang: string, setLang: (code: string) => void, sky: SkyChoices): void } {
@@ -41,7 +43,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
         langs.append(h('li', {}, button));
       }
       const choices = h('ul', { class: 'site-list' });
-      for (const choice of ['figures', 'names', 'night'] as const) {
+      for (const choice of ['figures', 'names', 'deep', 'night'] as const) {
         const button = h('button', { class: 'chip chip--wide', type: 'button', role: 'switch', 'aria-checked': String(sky[choice]) }, d.sky.menu[choice]);
         button.addEventListener('click', () => {
           sky.toggle(choice);
@@ -82,6 +84,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
             h('li', {}, d.about.sky, ' ', link(CITY_SOURCE.url, 'Wikidata'), ' · ', link(STAR_NAMES_URL, d.about.links.starNames), ' · ', link(BY_SA_URL, 'CC BY-SA 4.0')),
             h('li', {}, d.about.stories, ' ', link(BY_SA_URL, 'CC BY-SA 4.0')),
             h('li', {}, d.about.art, ' ', link(ART_SET.category, 'Wikimedia Commons')),
+            h('li', {}, d.about.deep, ' ', link(DEEP_SOURCE.facts.url, d.about.links.deepCatalogue), ' · ', link(DEEP_SOURCE.positions.url, DEEP_SOURCE.positions.title), ' · ', link(DEEP_SOURCE.photos.url, d.about.links.deepPhotos)),
             h('li', {}, d.about.shadows),
             h('li', {}, d.about.aim),
             h('li', {}, d.about.engine),

@@ -73,7 +73,11 @@ export function overPlace(figure: string, place: Place): { highest: number; stay
  * guides. Returned as that moment. About the same day every year; the month is what is told.
  */
 export function bestEvening(figure: string, place: Place, from: Date): Date {
-  const { ra } = equatorial(figureMiddle(figure));
+  return bestEveningOf(equatorial(figureMiddle(figure)).ra, place, from);
+}
+
+/** The same for any place among the stars, by its right ascension in hours. */
+export function bestEveningOf(ra: number, place: Place, from: Date): Date {
   // The evening hour by the place's mean Sun, as a moment of the world's clock, on the day of `from`.
   const day = Math.floor(from.getTime() / DAY) * DAY;
   const evening = day + (SKY.story.eveningHour - place.lon / 15) * 3_600_000;

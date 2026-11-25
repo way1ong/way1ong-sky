@@ -262,12 +262,15 @@
     "sky": "Az égbolt egy helyről: csillagok — Wikidata (CC0); a csillagképek vonalai — d3-celestial, szerző: Olaf Frohn (BSD-3-Clause), az IAU és a Sky & Telescope térképei nyomán; városok — Wikidata. A csillagok nappal is láthatók a képen, a fény légköri törése a horizont közelében nincs ábrázolva. Az „elég sötét”, a „látható” és a „szabad szemmel túl halvány” a program saját mércéi, nem csillagászati meghatározások. Néhány csillagnak a Wikidatában nincs vizuális fényessége: ott a hozzá közeli Gaia G fényesség szerepel. A csillagok tulajdonnevei: a Nemzetközi Csillagászati Unió által jóváhagyott nevek a Wikipédia listájából (CC BY-SA 4.0), valamint a csillagok Wikipédia-szócikkeinek címei.",
     "stories": "A csillagképek történetei és az a sor, hogy ki vette fel a csillagképet a listára, a Wikipédia szócikkei és táblázata alapján készültek — a hivatkozások minden kártya alatt megtalálhatók. A történetek szövege ugyanazzal a licenccel, CC BY-SA 4.0 alatt használható fel. A legfényesebb csillagot, a legjobb esték hónapját és a csillagkép magasságát maga a program számítja.",
     "art": "A csillagképek rajzai az „Urania’s Mirror” csillagatlasz (metszette: Sidney Hall, 1825) lapjai a Wikimedia Commonsból, közkincsek; a szkennelt képeket Adam Cuerden restaurálta. A több csillagképet ábrázoló lapokból a szükséges alakot vágtuk ki. Minden rajz alatt megtalálható a fájl oldalának hivatkozása.",
+    "deep": "Galaxisok, ködök és csillaghalmazok az égtérképen: hogy mik ezek, milyen messze vannak és milyen fényesek — a NASA oldalai alapján (a Hubble Messier-katalógusa); hogy hol vannak — Wikidata (CC0); a felvételek — NASA, ESA és az Űrtávcső Tudományos Intézet, a szerző minden felvétel alatt szerepel.",
     "links": {
       "photoLibrary": "a NASA kép- és videótára",
       "photoRules": "a NASA szabályai a képeiről",
       "starNames": "Wikipédia: a csillagok tulajdonneveinek listája (angolul)",
       "moonRules": "az U.S. Geological Survey szabályai",
-      "moonCatalogue": "térképkatalógus"
+      "moonCatalogue": "térképkatalógus",
+      "deepCatalogue": "a Hubble Messier-katalógusa",
+      "deepPhotos": "a Hubble-felvételek felhasználási feltételei"
     }
   },
   "actions": {
@@ -510,6 +513,7 @@
       "title": "Égbolt",
       "figures": "A csillagképek vonalai",
       "names": "A csillagok és csillagképek nevei",
+      "deep": "Galaxisok, ködök és csillaghalmazok",
       "night": "Éjszakai mód: vörös képernyő, amely nem vakít a sötétben"
     },
     "constellations": {
@@ -681,6 +685,99 @@
         "part": "Az atlasz egyik lapjának részlete.",
         "link": "A fájl oldala — közkincs.",
         "note": "Így rajzolták meg a csillagképet a 19. században."
+      }
+    },
+    "deep": {
+      "named": "{name} ({messier})",
+      "open": "{name}: a kártya megnyitása",
+      "here": "A határain belül",
+      "kinds": {
+        "galaxy": "Galaxis",
+        "nebula": "Köd",
+        "open": "Nyílthalmaz",
+        "globular": "Gömbhalmaz"
+      },
+      "rows": {
+        "constellation": "Csillagkép",
+        "distance": "Távolság",
+        "brightness": "Fényesség"
+      },
+      "lightYears": {
+        "one": "{n} fényév",
+        "other": "{n} fényév"
+      },
+      "millions": "{n} millió fényév",
+      "magnitude": "{mag} magnitúdó",
+      "views": {
+        "eye": "sötét ég alatt szabad szemmel is látható",
+        "binoculars": "távcsővel (binokulárral) látható",
+        "telescope": "csillagászati távcső kell hozzá"
+      },
+      "photo": {
+        "alt": "{name}: a Hubble űrtávcső felvétele",
+        "part": "A felvétel csak egy részét mutatja: a Hubble az égbolt nagyon keskeny darabját látja.",
+        "credit": "Fotó: {credit}.",
+        "shows": {
+          "m45": "A felvétel nem magát a halmazt mutatja, hanem egy porfelhőt a Merope, a halmaz egyik csillaga mellett (a csillag közvetlenül a kép jobb felső szélén kívül van): a Hubble az égbolt nagyon keskeny darabját látja."
+        }
+      },
+      "computed": "A hónapot és a magasságot maga a program számítja ki a kiválasztott helyre. A „legjobb este” az a hónap, amikor az objektum {hour} óra körül áll a legmagasabban.",
+      "source": "Hogy mi ez, milyen messze van és milyen fényes — a NASA erről az objektumról szóló oldala alapján; hogy hol van az égen — Wikidata.",
+      "links": {
+        "page": "A NASA oldala (angolul)"
+      },
+      "names": {
+        "m1": "Rák-köd",
+        "m8": "Lagúna-köd",
+        "m11": "Vadkacsa-halmaz",
+        "m16": "Sas-köd",
+        "m17": "Omega-köd",
+        "m20": "Trifid-köd",
+        "m24": "Kis Sagittarius-csillagfelhő",
+        "m27": "Súlyzó-köd",
+        "m31": "Androméda-galaxis",
+        "m33": "Triangulum-galaxis",
+        "m42": "Orion-köd",
+        "m44": "Praesepe",
+        "m45": "Fiastyúk",
+        "m51": "Örvény-galaxis",
+        "m57": "Gyűrűs-köd",
+        "m104": "Sombrero-galaxis"
+      },
+      "about": {
+        "m1": "Egy felrobbant csillag maradványa: a robbanást 1054-ben kínai csillagászok közel egy hónapig a nappali égen is látták. Ma hat fényév széles felhő, közepén egy gyorsan forgó neutroncsillaggal — az elpusztult csillag rendkívül sűrű magjával. A ködöt John Bevis angol csillagász fedezte fel 1731-ben.",
+        "m2": "Több mint 150 000 csillagból álló gömb, amelyet a csillagok saját tömegvonzása tart össze. Átmérője több mint 150 fényév: a legnagyobb ilyen halmazok egyike. Jean-Dominique Maraldi fedezte fel 1746-ban, miközben egy üstököst figyelt.",
+        "m3": "Az egyik legnagyobb és legfényesebb gömbhalmaz: több mint 500 000 csillag, kora nyolcmilliárd év. Több változócsillag van benne, mint bármely más ismert halmazban. Ez a katalógus első objektuma, amelyet Charles Messier maga fedezett fel, 1764-ben.",
+        "m4": "A Földhöz legközelebbi gömbhalmaz — csillagok hatalmas gömbje. A számítások szerint akár 40 000 fehér törpe is lehet benne: ősi csillagok magjai, amelyek külső rétegei elsodródtak. Viszonylag könnyű megtalálni a narancsvörös Antares csillag mellett. Jean-Philippe Loys de Chéseaux fedezte fel 1746-ban.",
+        "m5": "A Tejútrendszer egyik legöregebb gömbhalmaza: csillagainak többsége több mint 12 milliárd éve keletkezett. Binokulárban fényfoltnak látszik. Gottfried Kirch német csillagász fedezte fel 1702-ben.",
+        "m7": "Mintegy 80 csillagból álló nyílthalmaz, amely körülbelül 220 millió éve keletkezett. Klaudiosz Ptolemaiosz már 130-ban feljegyezte — ezért Ptolemaiosz-halmaznak is nevezik. Közvetlenül a Skorpió fullánkja mellett áll; déli szélességekről látszik a legjobban.",
+        "m8": "Hatalmas gáz- és porfelhő, amelyben csillagok születnek. A belsejében lévő nagy tömegű fiatal csillagok ultraibolya fénnyel árasztják el a gázt, ettől világít. A ködnek saját csillaghalmaza is van. Giovanni Battista Hodierna olasz csillagász fedezte fel 1654-ben.",
+        "m10": "Fényes gömbhalmaz. Arról ismert, hogy sok olyan csillag van benne, amely jóval fiatalabbnak látszik a szomszédainál. Charles Messier fedezte fel 1764-ben.",
+        "m11": "Az egyik legsűrűbb nyílthalmaz; nagyjából 220 millió éve keletkezett. Nevét legfényesebb csillagainak V alakú ékéről kapta. A Messier-katalógus 26 nyílthalmaza közül ez a legtávolabbi, amely szabad szemmel is látható. Gottfried Kirch fedezte fel 1681-ben.",
+        "m13": "Az északi égbolt egyik legfényesebb csillaghalmaza: több mint 100 000 csillag. Magja közelében a csillagok körülbelül százszor sűrűbben állnak, mint a Nap környezetében — olyan szorosan, hogy olykor össze is ütköznek. Edmond Halley fedezte fel 1714-ben.",
+        "m15": "Az egyik legöregebb és legsűrűbb gömbhalmaz: mintegy 12 milliárd éves. Ez volt az első gömbhalmaz, amelyben planetáris ködöt találtak — egy haldokló csillag gázburkát. Jean-Dominique Maraldi fedezte fel 1746-ban.",
+        "m16": "Köd, amelyben csillagok születnek, egy csillaghalmazzal együtt. Itt állnak a híres „Teremtés oszlopai” — 4–5 fényév magas gáz- és poroszlopok, amelyek újszülött csillagokat rejtenek; az egész köd 70-szer 55 fényév kiterjedésű. Kis távcső a halmazt mutatja meg, az oszlopokhoz nagy távcső kell. Jean-Philippe Loys de Chéseaux fedezte fel 1745-ben.",
+        "m17": "A Tejútrendszer egyik legnagyobb csillagkeletkezési területe; Hattyú-ködnek is nevezik. Benne van galaxisunk egyik legfiatalabb csillaghalmaza, amely mindössze egymillió éves. A fiatal csillagok sugárzása elpárologtatja és lebontja a hideg gázfelhőket, amelyekben a csillagok születnek. Jean-Philippe Loys de Chéseaux fedezte fel 1745-ben.",
+        "m20": "Köd, amelyben csillagok születnek. Nevét három sűrű porsávjáról kapta. A fiatal csillagok ultraibolya fénnyel árasztják el a környező gázt, és ezzel magát a ködöt is átformálják. Charles Messier fedezte fel 1764-ben.",
+        "m22": "A Földhöz legközelebbi gömbhalmazok egyike: sűrűn álló ősi csillagok mintegy 70 fényév átmérőjű gömbje. Az égen akkora területet foglal el, mint a telihold. Abraham Ihle német amatőr csillagász fedezte fel 1665-ben, miközben a Szaturnuszt kereste — ez az egyik elsőként felfedezett gömbhalmaz.",
+        "m24": "Nem önálló objektum, hanem egy 600 fényév széles tiszta „ablak” a porfelhők között: rajta át galaxisunk Sagittarius-spirálkarjának csillagsokasága látszik. Szabad szemmel ködös folt, binokulárban már csillagokra bomlik. Charles Messier 1764-ben vette fel a katalógusába.",
+        "m27": "Az elsőként felfedezett planetáris köd: egy öreg csillag élete végén ledobott burka. Az ilyen ködöknek nincs közük a bolygókhoz — nevüket arról kapták, hogy kis távcsőben kerek, bolygószerű korongnak látszanak. Charles Messier vette észre 1764-ben.",
+        "m31": "A Tejútrendszerünkhöz legközelebbi nagy galaxis. Majdnem éléről látjuk. A Hubble mintegy 200 millió, a Napnál forróbb csillagot különített el benne — ez összes csillagának csak töredéke. Első ismert említése Abd ar-Rahman asz-Szúfi perzsa csillagász 964-ben írt, „Az állócsillagok könyve” című művében található.",
+        "m33": "Lokális Csoportunk harmadik legnagyobb galaxisa az Androméda-galaxis és a Tejútrendszer után; nagyjából fele akkora, mint a miénk. Tízszer gyorsabban születnek benne csillagok, mint átlagosan az Andromédában. Az egyik legtávolabbi objektum, amelyet éles szemű megfigyelő szabad szemmel megláthat — kivételesen tiszta és sötét ég alatt.",
+        "m35": "Viszonylag fiatal nyílthalmaz: mintegy 150 millió éves. Körülbelül 400 csillaga nagyjából 30 fényévnyi területen oszlik el — forró kék csillagok idősebb narancssárga és vörös óriások mellett. Philippe Loys de Chéseaux svájci csillagász fedezte fel 1745-ben.",
+        "m42": "A Földhöz legközelebbi nagy csillagkeletkezési terület: hatalmas por- és gázfelhő, amelyben rengeteg új csillag születik. A köd alakját a fényes közepén lévő négy nagy tömegű fiatal csillag formálja. Szabad szemmel is megtalálható közvetlenül az Orion öve alatt; a történelem során sok kultúra ismerte.",
+        "m44": "Mintegy 1000 csillagból álló nyílthalmaz, a Földhöz legközelebbiek egyike; 600–700 millió éves. Szabad szemmel fényfolt a Rák csillagképben, binokulárban körülbelül 20 csillaga látszik. Elsőként Galilei különített el benne csillagokat — mintegy negyvenet.",
+        "m45": "Nyílthalmaz, amelyet Hét nővérnek is neveznek: több mint ezer, a gravitáció által lazán összetartott csillag, amelyekből szabad szemmel csak a legfényesebb néhány látszik. Ősidők óta ismert, ezért nincs felfedezője; távcsővel elsőként Galileo Galilei nézte meg.",
+        "m48": "Közepes korú nyílthalmaz: a magjában lévő 100–200 csillagtól összesen akár ezer tagig. Charles Messier 1771-ben hibás helyzettel jegyezte fel, így a halmaz „elveszett” — Johann Elert Bode 1782 körül, Caroline Herschel pedig 1783-ban fedezte fel újra.",
+        "m51": "Spirálgalaxis. Karjai csillaggyárak: összesűrítik a hidrogéngázt, és új csillagok halmazait hozzák létre. Egyes csillagászok szerint a karok azért ilyen feltűnőek, mert a galaxis közel került az egyik kar végén látható kis, sárgás galaxishoz. Charles Messier fedezte fel 1773-ban.",
+        "m55": "100 000 csillagból álló, mintegy 100 fényév átmérőjű gömbhalmaz. Nagy és elég fényes, de nincs sűrű magja, és sok csillaga halvány — ezért binokulárban csak kerek, ködös folt. Először 1752-ben vették észre a mai Dél-Afrika területéről.",
+        "m57": "Egy Naphoz hasonló csillag világító maradványa. A közepén lévő kék gáz valójában egy megnyúlt felhő, amelyet a végéről látunk; ez hatol át a körülötte lévő vörös „fánkon”. A színek az összetételt mutatják: a mélykék a hélium, a világoskék a hidrogén és az oxigén, a vöröses a nitrogén és a kén. Antoine Darquier de Pellepoix francia csillagász fedezte fel 1779-ben.",
+        "m62": "Galaxisunk egyik legszabálytalanabb alakú gömbhalmaza; csaknem 12 milliárd éves. Nagyon sűrű magjában 150 000 csillag van. A fényes Antares csillagtól könnyű megtalálni. Charles Messier fedezte fel 1771-ben.",
+        "m67": "Több mint 500, a gravitáció által lazán összetartott csillag. A nyílthalmazok általában fiatalok, ez viszont az egyik legöregebb ismert: mintegy 4 milliárd éves, nagyjából annyi, mint a Nap. Körülbelül száz csillaga összetételében és korában a Naphoz hasonló. Johann Gottfried Koehler német csillagász jegyezte fel először 1779-ben.",
+        "m71": "Ősi csillagok mintegy 27 fényév átmérőjű gömbje; a csillagok 9–10 milliárd évesek. A csillagászok csak az 1970-es években jutottak arra, hogy ez gömbhalmaz, csak meglehetősen ritka. Jean-Philippe de Chéseaux svájci csillagász vette észre a 18. század közepén.",
+        "m81": "Az éjszakai égbolt egyik legfényesebb galaxisa. Spirálkarjai, amelyek egészen a magig csavarodnak, fiatal, forró, kékes csillagokból állnak. Közepén 70 millió naptömegű fekete lyuk van — körülbelül 15-ször nagyobb tömegű, mint a Tejútrendszer központi fekete lyuka. Johann Elert Bode német csillagász fedezte fel 1774-ben.",
+        "m92": "A Tejútrendszer egyik legfényesebb és legöregebb gömbhalmaza: majdnem olyan idős, mint a Világegyetem. Mintegy 330 000 csillag zsúfolódik benne. Galaxisunk magja körül kering, akár egy kísérő. Johann Elert Bode fedezte fel 1777-ben.",
+        "m104": "Majdnem éléről látszó spirálgalaxis, amely széles karimájú mexikói kalapra hasonlít. Ragyogó fehér magját vastag porsávok övezik. Csaknem 2000 gömbhalmaz veszi körül — tízszer annyi, mint a Tejútrendszert. Pierre Méchain francia csillagász fedezte fel 1781-ben."
       }
     }
   },

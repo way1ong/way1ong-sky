@@ -68,6 +68,25 @@ export function placeBeside(mark: { x: number; y: number; r: number }, width: nu
 }
 
 /**
+ * The place for a name that may be left out (a galaxy's, a cluster's): the first of the same four places
+ * beside its mark that is wholly free and at least partly seen; null — none is, and the name is not written.
+ */
+export function placeFree(mark: { x: number; y: number; r: number }, width: number, size: number, gap: number, taken: readonly Box[], seen: Box): NamePlace | null {
+  const off = mark.r + gap + 1;
+  const tries: [number, number, NameAlign][] = [
+    [mark.x + off, mark.y, 'left'],
+    [mark.x - off, mark.y, 'right'],
+    [mark.x, mark.y + off + size / 2, 'center'],
+    [mark.x, mark.y - off - size / 2, 'center'],
+  ];
+  for (const [x, y, align] of tries) {
+    const box = nameBox(x, y, width, size, gap, align);
+    if (shared(box, seen) > 0 && taken.every((other) => shared(box, other) === 0)) return { x, y, align, box };
+  }
+  return null;
+}
+
+/**
  * The place for a name that belongs to a point rather than to a mark (a constellation's, at the middle of its
  * figure): centred on the point, else a row lower, a row higher, and so on up to `rows` rows away — the first
  * place that is free and at least partly seen. No place (null) when all are taken: such a name is left out.

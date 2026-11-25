@@ -167,6 +167,13 @@ export const SKY = {
    */
   story: { eveningHour: 21, asBrightMag: 0.05, nameReachPx: 12, lowDeg: 20 },
   /**
+   * Galaxies, nebulae and star clusters on the sky map (C; the owner's decision of 25.11). `markPx` — half
+   * the size of a mark, CSS px; `reachPx` — how far from the mark's middle a touch may land; `named` — an
+   * object this bright gets its name on the map, at the widest and the narrowest view (at the narrowest —
+   * every one). Which objects there are and how each is seen is not decided here: data/deep-sky.json.
+   */
+  deep: { markPx: 6, reachPx: 22, named: { wide: 4.5, narrow: 13 } },
+  /**
    * Jupiter through binoculars in its card (C): the drawing's size, CSS px of its own grid; how many px a
    * radius of Jupiter takes at the most (less when the moons would not fit in height); the moons' dots.
    */
