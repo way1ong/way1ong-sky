@@ -4,6 +4,7 @@ import { eventsAfter, type SkyEvent } from '../core/events.ts';
 import type { City } from '../core/places.ts';
 import { cityName } from '../core/places.ts';
 import { compassPoint, tonight, type PlanetTonight } from '../core/tonight.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import { eventsList } from './events-list.ts';
 import { fmt, num, type Dict } from './i18n.ts';
@@ -51,6 +52,7 @@ export function createTonightDialog(): {
       const close = h('button', { class: 'btn', type: 'button' }, d.card.close);
       close.addEventListener('click', () => el.close());
       el.replaceChildren(
+        dialogCross(el, d.actions.close),
         h(
           'div',
           { class: 'dialog__body' },

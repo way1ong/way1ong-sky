@@ -3,6 +3,7 @@
 import type { SatelliteId } from '../core/bodies.ts';
 import { JUPITER_MOONS, JUPITER_MOONS_SOURCE } from '../core/jupiter-moons.ts';
 import { SATELLITE_PAGES } from '../core/satellites.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import { fmt, num, plural, type Dict } from './i18n.ts';
 
@@ -31,6 +32,7 @@ export function createSatelliteDialog(): { el: HTMLDialogElement; open(d: Dict, 
       const updated = new Date(`${JUPITER_MOONS_SOURCE.updated} UTC`);
       const day = Number.isNaN(updated.getTime()) ? JUPITER_MOONS_SOURCE.updated : new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(updated);
       el.replaceChildren(
+        dialogCross(el, d.actions.close),
         h(
           'div',
           { class: 'dialog__body' },

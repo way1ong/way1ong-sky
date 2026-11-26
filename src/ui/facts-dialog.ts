@@ -4,6 +4,7 @@ import { SATELLITE_IDS, type BodyId, type SatelliteId } from '../core/bodies.ts'
 import { DESCRIPTION_PAGES, FACT_SOURCES, HISTORY_PAGES } from '../core/facts.ts';
 import { PHOTOS } from '../core/photos.ts';
 import { SITE_IDS, type SiteId } from '../core/sites.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import { cardBadges, cardRows } from './facts-text.ts';
 import { fmt, type Dict } from './i18n.ts';
@@ -69,6 +70,7 @@ export function createFactsDialog(): {
       const shown = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: '2-digit' }).format(date);
       const source = id === 'sun' ? link(FACT_SOURCES.sun.url, d.card.sunLink) : link(FACT_SOURCES.planets.url, d.card.sourceLink);
       el.replaceChildren(
+        dialogCross(el, d.actions.close),
         h(
           'div',
           { class: 'dialog__body' },

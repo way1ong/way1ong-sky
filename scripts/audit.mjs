@@ -78,6 +78,13 @@ async function look(page, where, name) {
     if (sideways > 0) out.push(`the page scrolls sideways by ${sideways}px`);
     const dialog = document.querySelector('dialog[open]');
     if (dialog && dialog.scrollWidth > dialog.clientWidth) out.push(`the window scrolls sideways by ${dialog.scrollWidth - dialog.clientWidth}px`);
+    // Every window has a cross in its top corner, in sight wherever the window is scrolled to.
+    if (dialog) {
+      const cross = dialog.querySelector('.dialog__cross')?.getBoundingClientRect();
+      const box = dialog.getBoundingClientRect();
+      if (!cross) out.push('the window has no cross to close it at the top');
+      else if (cross.top < box.top || cross.bottom > box.top + 80 || cross.right > box.right) out.push('the cross of the window is not in its top corner');
+    }
     const scope = dialog ?? document;
     for (const el of scope.querySelectorAll('button, a[href], input, [role="switch"]')) {
       if (!el.offsetParent || el.closest('[hidden]')) continue;
@@ -591,6 +598,14 @@ for (const [width, height] of SIZES.filter(([w]) => !onlyWidth || w === onlyWidt
       await page.locator('.top .icon-btn:not(.icon-btn--wide)').last().click();
       await page.waitForSelector('dialog[open] [role="switch"]');
       await look(page, where, 'menu');
+      // The menu is long: scrolled to its end, its cross is still in the top corner and closes it.
+      await page.locator('dialog[open]').evaluate((dialog) => dialog.scrollTo(0, dialog.scrollHeight));
+      await look(page, where, 'menu-end');
+      await page.locator('dialog[open] .dialog__cross').click();
+      await page.waitForTimeout(150);
+      if (await page.locator('dialog[open]').count()) note(where, 'the cross does not close the menu');
+      await page.locator('.top .icon-btn:not(.icon-btn--wide)').last().click();
+      await page.waitForSelector('dialog[open] [role="switch"]');
       if ((await page.locator('dialog[open] [role="switch"]').count()) !== 4) note(where, 'the menu must have four switches of the sky: lines, names, galaxies and nebulae, night mode');
       await page.locator('dialog[open] [role="switch"]').last().click();
       await closeDialog(page);

@@ -1,5 +1,6 @@
 // "Place": the city the sky is shown for — chosen from a list, the phone is asked nothing.
 import { CITIES, cityName, countryName, type City } from '../core/places.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import type { Dict } from './i18n.ts';
 
@@ -33,6 +34,7 @@ export function createPlaceDialog(): { el: HTMLDialogElement; open(d: Dict, lang
       const close = h('button', { class: 'btn', type: 'button' }, d.card.close);
       close.addEventListener('click', () => el.close());
       el.replaceChildren(
+        dialogCross(el, d.actions.close),
         h(
           'div',
           { class: 'dialog__body' },

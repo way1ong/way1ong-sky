@@ -665,6 +665,28 @@ button {
   box-shadow: var(--shadow);
 }
 
+/*
+ * The cross of a window stays in its top corner while the window scrolls: a row of no height that sticks to
+ * the top, with the button hanging from it. The heading leaves room for it.
+ */
+.dialog__top {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  height: 0;
+}
+
+.dialog__cross {
+  margin: 0.5rem 0.5rem 0 0;
+  background: var(--surface);
+}
+
+.dialog__top + .dialog__body > h2:first-child {
+  padding-right: 3rem;
+}
+
 .dialog::backdrop {
   background: var(--backdrop);
 }

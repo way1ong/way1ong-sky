@@ -10,6 +10,7 @@ import { STARS, starName } from '../core/stars.ts';
 import { ORIGINS, ORIGINS_SOURCE, STORIES, STORY_SOURCE, creditPages } from '../core/stories.ts';
 import { artUrl } from './art.ts';
 import { deepName } from './deep-text.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import { fmt, num, type Dict } from './i18n.ts';
 
@@ -99,7 +100,7 @@ export function createConstellationDialog(): {
       credit.append(link(ORIGINS_SOURCE.url, t.pages.list), ' ', t.licence, ' ', link(STORY_SOURCE.licenceUrl, STORY_SOURCE.licence));
       body.append(credit);
       body.append(h('div', { class: 'dialog__actions' }, close));
-      el.replaceChildren(body);
+      el.replaceChildren(dialogCross(el, d.actions.close), body);
       if (!el.open) el.showModal();
       el.scrollTop = 0;
       close.focus({ preventScroll: true });

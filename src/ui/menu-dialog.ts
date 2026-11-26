@@ -8,6 +8,7 @@ import { DEEP_SOURCE } from '../core/deep-sky.ts';
 import { MILKY_WAY } from '../core/far.ts';
 import { CITY_SOURCE } from '../core/places.ts';
 import { PHOTO_LIBRARY, PHOTO_RULES } from '../core/photos.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import { flagOf } from './flags.ts';
 import { install, installWay } from './install.ts';
@@ -74,6 +75,7 @@ export function createMenuDialog(): {
       close.addEventListener('click', () => el.close());
       const made = SKY.links.site ? link(SKY.links.site, d.about.madeBy) : d.about.madeBy;
       el.replaceChildren(
+        dialogCross(el, d.actions.close),
         h(
           'div',
           { class: 'dialog__body' },
