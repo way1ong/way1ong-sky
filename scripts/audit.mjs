@@ -208,9 +208,22 @@ for (const [width, height] of SIZES) {
       if ((await moons.count()) !== 4) note(where, `Jupiter's card lists ${await moons.count()} moons`);
       const moon = ((await moons.first().textContent()) ?? '').trim();
       // Beside Jupiter its moons are named over the picture (by a moon seen close up there may be nothing else in view).
+      // On a narrow screen they may all stand past its edges at this hour: then a look from farther away shows them.
       const moonNames = (await moons.allTextContents()).map((text) => text.trim());
-      const named = (await page.locator('.labels[aria-hidden] .label:not([hidden])').allTextContents()).map((text) => text.trim());
-      if (!named.some((text) => moonNames.includes(text))) note(where, `no moon is named over the picture beside Jupiter: ${named.join(', ')}`);
+      const namedNow = async () => (await page.locator('.labels[aria-hidden] .label:not([hidden])').allTextContents()).map((text) => text.trim());
+      let named = await namedNow();
+      if (!named.some((text) => moonNames.includes(text))) {
+        await closeDialog(page);
+        await page.locator('canvas:not(.sky)').focus();
+        for (let step = 0; step < 8 && !named.some((text) => moonNames.includes(text)); step++) {
+          await page.keyboard.press('-');
+          await page.waitForTimeout(300);
+          named = await namedNow();
+        }
+        if (!named.some((text) => moonNames.includes(text))) note(where, `no moon is named over the picture beside Jupiter, even from farther away: ${named.join(', ')}`);
+        await page.locator('.top .icon-btn').first().click();
+        await page.waitForSelector('dialog[open] section[aria-labelledby="moons-title"]');
+      }
       await moons.first().click();
       await page.waitForTimeout(2400);
       if (((await page.locator('.top__name').textContent()) ?? '').trim() !== moon) note(where, `the flight from Jupiter's card did not come to ${moon}: ${await page.locator('.top__name').textContent()}`);
@@ -377,7 +390,8 @@ for (const [width, height] of SIZES) {
       // The keyboard: Enter names what is in the middle, or says there is nothing there.
       await page.locator('canvas.sky').focus();
       await page.keyboard.press('Enter');
-      if (!(await card.isVisible()) && !(await page.locator('.note:not(.pick)').isVisible())) note(where, 'Enter on the sky neither names a star nor says there is none');
+      // (A galaxy, a nebula or a cluster in the middle opens its own card, a window.)
+      if (!(await card.isVisible()) && !(await page.locator('.note:not(.pick)').isVisible()) && !(await page.locator('dialog[open]').count())) note(where, 'Enter on the sky neither names a star nor says there is none');
       await page.keyboard.press('Escape');
       await page.locator('.note:not(.pick) .icon-btn').click().catch(() => undefined);
       // Jupiter through binoculars: when Jupiter is in view tonight, its card on the map opens a drawing of its

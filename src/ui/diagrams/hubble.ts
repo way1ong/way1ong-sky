@@ -23,6 +23,6 @@ export const hubble: Diagram = {
     { key: 'instruments', x: 342, y: 36, anchor: 'end' },
     { key: 'secondary', x: 120, y: 138, anchor: 'middle' },
     { key: 'primary', x: 342, y: 138, anchor: 'end' },
-    { key: 'air', x: 175, y: 186, anchor: 'middle' },
+    { key: 'air', x: 175, y: 183, anchor: 'middle' },
   ],
 };
