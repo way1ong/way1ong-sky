@@ -1,0 +1,15 @@
+{
+  "source": {
+    "nasaId": "PIA10748",
+    "title": "Our Milky Way Gets a Makeover  Artist Concept",
+    "credit": "NASA/JPL-Caltech",
+    "created": "2008-06-03",
+    "page": "https://images.nasa.gov/details/PIA10748",
+    "rules": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "annotated": "https://science.nasa.gov/resource/the-milky-way-galaxy/",
+    "read": "2026-11-26"
+  },
+  "note": "An artist's concept: nobody has photographed our galaxy from outside. The grid numbers are read by scripts/galaxy/measure.py from the annotated version of the same picture (1600 px): the Sun's place, the step of the circles round it — one circle every 5,000 light-years by the picture's own labels — and how far above the Sun the bright middle is. They only lay the picture in its place; what the texts say is NASA's words (docs/GALAXY.md).",
+  "picture": { "width": 2048, "height": 2048 },
+  "grid": { "frame": 1600, "sun": [800, 1107], "ringPx": 58.8, "ringLightYears": 5000, "middleUpPx": 311 }
+}
