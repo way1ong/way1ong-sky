@@ -24,6 +24,7 @@ import { h } from './dom.ts';
 import { eventBody, eventMoment, eventName } from './events-list.ts';
 import { createFactsDialog } from './facts-dialog.ts';
 import { dict, fmt, num, pickLang, type Dict } from './i18n.ts';
+import { createInstrumentsDialog } from './instruments-dialog.ts';
 import { createMenuDialog } from './menu-dialog.ts';
 import { createPickCard } from './pick-card.ts';
 import { createPlaceDialog } from './place-dialog.ts';
@@ -204,6 +205,7 @@ export function startApp(root: HTMLElement): void {
   const tonightDialog = createTonightDialog();
   const constellationDialog = createConstellationDialog();
   const deepDialog = createDeepSkyDialog();
+  const instrumentsDialog = createInstrumentsDialog();
   const stage = h('div', { class: 'stage' }, canvas, skyCanvas, labels, siteMarks);
   const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine, nearLine), factsBtn, menuBtn, wideBtn);
   scaleBar.append(scaleBox);
@@ -227,6 +229,7 @@ export function startApp(root: HTMLElement): void {
     tonightDialog.el,
     constellationDialog.el,
     deepDialog.el,
+    instrumentsDialog.el,
   );
   root.replaceChildren(main);
 
@@ -841,6 +844,7 @@ export function startApp(root: HTMLElement): void {
           dirty = true;
         },
       },
+      () => instrumentsDialog.open(d, lang),
     ),
   );
 

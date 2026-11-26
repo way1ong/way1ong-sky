@@ -1,0 +1,365 @@
+{
+ "source": {
+  "wikipedia": {
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "read": "2026-11-25"
+  },
+  "agency": {
+   "read": "2026-11-25"
+  }
+ },
+ "note": "The order is the order of the section. pages — the Wikipedia articles a card is written after, by language, with the revision read; agency — the pages of NASA and ESA it is written after. The sentences are in docs/INSTRUMENTS.md. picture — an old engraving of the instrument from Wikimedia Commons, public domain: the page of its file and the size of the copy in the program (src/instruments/).",
+ "instruments": [
+  {
+   "id": "gnomon",
+   "pages": {
+    "en": [
+     {
+      "title": "Gnomon",
+      "url": "https://en.wikipedia.org/wiki/Gnomon",
+      "revision": 1371694159
+     },
+     {
+      "title": "Sundial",
+      "url": "https://en.wikipedia.org/wiki/Sundial",
+      "revision": 1386994960
+     }
+    ],
+    "uk": [
+     {
+      "title": "Гномон",
+      "url": "https://uk.wikipedia.org/wiki/%D0%93%D0%BD%D0%BE%D0%BC%D0%BE%D0%BD",
+      "revision": 45485879
+     },
+     {
+      "title": "Сонячний годинник",
+      "url": "https://uk.wikipedia.org/wiki/%D0%A1%D0%BE%D0%BD%D1%8F%D1%87%D0%BD%D0%B8%D0%B9_%D0%B3%D0%BE%D0%B4%D0%B8%D0%BD%D0%BD%D0%B8%D0%BA",
+      "revision": 48228033
+     }
+    ],
+    "hu": [
+     {
+      "title": "Gnómon",
+      "url": "https://hu.wikipedia.org/wiki/Gn%C3%B3mon",
+      "revision": 25729841
+     },
+     {
+      "title": "Napóra",
+      "url": "https://hu.wikipedia.org/wiki/Nap%C3%B3ra",
+      "revision": 28669567
+     }
+    ]
+   },
+   "agency": []
+  },
+  {
+   "id": "armillary",
+   "pages": {
+    "en": [
+     {
+      "title": "Armillary sphere",
+      "url": "https://en.wikipedia.org/wiki/Armillary_sphere",
+      "revision": 1380728957
+     },
+     {
+      "title": "Ecliptic",
+      "url": "https://en.wikipedia.org/wiki/Ecliptic",
+      "revision": 1387432437
+     }
+    ],
+    "uk": [
+     {
+      "title": "Армілярна сфера",
+      "url": "https://uk.wikipedia.org/wiki/%D0%90%D1%80%D0%BC%D1%96%D0%BB%D1%8F%D1%80%D0%BD%D0%B0_%D1%81%D1%84%D0%B5%D1%80%D0%B0",
+      "revision": 42805197
+     }
+    ],
+    "hu": [
+     {
+      "title": "Armilláris gömb",
+      "url": "https://hu.wikipedia.org/wiki/Armill%C3%A1ris_g%C3%B6mb",
+      "revision": 27821998
+     }
+    ]
+   },
+   "agency": [],
+   "picture": {
+    "page": "https://commons.wikimedia.org/wiki/File:EB1711_Armillary_Sphere.png",
+    "width": 488,
+    "height": 720
+   }
+  },
+  {
+   "id": "astrolabe",
+   "pages": {
+    "en": [
+     {
+      "title": "Astrolabe",
+      "url": "https://en.wikipedia.org/wiki/Astrolabe",
+      "revision": 1385561674
+     },
+     {
+      "title": "Ecliptic",
+      "url": "https://en.wikipedia.org/wiki/Ecliptic",
+      "revision": 1387432437
+     }
+    ],
+    "uk": [
+     {
+      "title": "Астролябія",
+      "url": "https://uk.wikipedia.org/wiki/%D0%90%D1%81%D1%82%D1%80%D0%BE%D0%BB%D1%8F%D0%B1%D1%96%D1%8F",
+      "revision": 48802646
+     }
+    ],
+    "hu": [
+     {
+      "title": "Asztrolábium",
+      "url": "https://hu.wikipedia.org/wiki/Asztrol%C3%A1bium",
+      "revision": 28570349
+     }
+    ]
+   },
+   "agency": [],
+   "picture": {
+    "page": "https://commons.wikimedia.org/wiki/File:Lot-stoffler-johannes-1452-1531-elucidatio-fabricae-usuque-astrolabii-6069643.jpg",
+    "width": 549,
+    "height": 720
+   }
+  },
+  {
+   "id": "quadrant",
+   "pages": {
+    "en": [
+     {
+      "title": "Quadrant (instrument)",
+      "url": "https://en.wikipedia.org/wiki/Quadrant_(instrument)",
+      "revision": 1385664537
+     },
+     {
+      "title": "Mural instrument",
+      "url": "https://en.wikipedia.org/wiki/Mural_instrument",
+      "revision": 1372871303
+     },
+     {
+      "title": "Tycho Brahe",
+      "url": "https://en.wikipedia.org/wiki/Tycho_Brahe",
+      "revision": 1385564332
+     }
+    ],
+    "uk": [
+     {
+      "title": "Квадрант (інструмент)",
+      "url": "https://uk.wikipedia.org/wiki/%D0%9A%D0%B2%D0%B0%D0%B4%D1%80%D0%B0%D0%BD%D1%82_(%D1%96%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82)",
+      "revision": 49236315
+     },
+     {
+      "title": "Тихо Браге",
+      "url": "https://uk.wikipedia.org/wiki/%D0%A2%D0%B8%D1%85%D0%BE_%D0%91%D1%80%D0%B0%D0%B3%D0%B5",
+      "revision": 48900560
+     }
+    ],
+    "hu": [
+     {
+      "title": "Kvadráns",
+      "url": "https://hu.wikipedia.org/wiki/Kvadr%C3%A1ns",
+      "revision": 21195329
+     },
+     {
+      "title": "Tycho Brahe",
+      "url": "https://hu.wikipedia.org/wiki/Tycho_Brahe",
+      "revision": 28973836
+     }
+    ]
+   },
+   "agency": [],
+   "picture": {
+    "page": "https://commons.wikimedia.org/wiki/File:Tycho-Brahe-Mural-Quadrant.jpg",
+    "width": 533,
+    "height": 720
+   }
+  },
+  {
+   "id": "refractor",
+   "pages": {
+    "en": [
+     {
+      "title": "Refracting telescope",
+      "url": "https://en.wikipedia.org/wiki/Refracting_telescope",
+      "revision": 1377068574
+     },
+     {
+      "title": "Telescope",
+      "url": "https://en.wikipedia.org/wiki/Telescope",
+      "revision": 1387365661
+     }
+    ],
+    "uk": [
+     {
+      "title": "Рефрактор",
+      "url": "https://uk.wikipedia.org/wiki/%D0%A0%D0%B5%D1%84%D1%80%D0%B0%D0%BA%D1%82%D0%BE%D1%80",
+      "revision": 47587464
+     },
+     {
+      "title": "Телескоп",
+      "url": "https://uk.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BB%D0%B5%D1%81%D0%BA%D0%BE%D0%BF",
+      "revision": 48269399
+     }
+    ],
+    "hu": [
+     {
+      "title": "Távcső",
+      "url": "https://hu.wikipedia.org/wiki/T%C3%A1vcs%C5%91",
+      "revision": 28949643
+     }
+    ]
+   },
+   "agency": [
+    "https://science.nasa.gov/universe/telescopes-101/"
+   ],
+   "picture": {
+    "page": "https://commons.wikimedia.org/wiki/File:Houghton_Typ_620.73.451_-_Johannes_Hevelius%2C_Machinae_coelestis%2C_1673.jpg",
+    "width": 720,
+    "height": 602
+   }
+  },
+  {
+   "id": "reflector",
+   "pages": {
+    "en": [
+     {
+      "title": "Reflecting telescope",
+      "url": "https://en.wikipedia.org/wiki/Reflecting_telescope",
+      "revision": 1387707989
+     }
+    ],
+    "uk": [
+     {
+      "title": "Рефлектор (телескоп)",
+      "url": "https://uk.wikipedia.org/wiki/%D0%A0%D0%B5%D1%84%D0%BB%D0%B5%D0%BA%D1%82%D0%BE%D1%80_(%D1%82%D0%B5%D0%BB%D0%B5%D1%81%D0%BA%D0%BE%D0%BF)",
+      "revision": 44338296
+     }
+    ],
+    "hu": [
+     {
+      "title": "Távcső",
+      "url": "https://hu.wikipedia.org/wiki/T%C3%A1vcs%C5%91",
+      "revision": 28949643
+     }
+    ]
+   },
+   "agency": [
+    "https://science.nasa.gov/universe/telescopes-101/"
+   ]
+  },
+  {
+   "id": "spectroscope",
+   "pages": {
+    "en": [
+     {
+      "title": "Astronomical spectroscopy",
+      "url": "https://en.wikipedia.org/wiki/Astronomical_spectroscopy",
+      "revision": 1386664342
+     },
+     {
+      "title": "Optical spectrometer",
+      "url": "https://en.wikipedia.org/wiki/Optical_spectrometer",
+      "revision": 1382038304
+     }
+    ],
+    "uk": [
+     {
+      "title": "Астроспектроскопія",
+      "url": "https://uk.wikipedia.org/wiki/%D0%90%D1%81%D1%82%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D1%81%D0%BA%D0%BE%D0%BF%D1%96%D1%8F",
+      "revision": 49018492
+     },
+     {
+      "title": "Спектроскоп",
+      "url": "https://uk.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D1%81%D0%BA%D0%BE%D0%BF",
+      "revision": 30797023
+     }
+    ],
+    "hu": [
+     {
+      "title": "Csillagászati színképelemzés",
+      "url": "https://hu.wikipedia.org/wiki/Csillag%C3%A1szati_sz%C3%ADnk%C3%A9pelemz%C3%A9s",
+      "revision": 29189796
+     }
+    ]
+   },
+   "agency": [
+    "https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-spectroscopy/"
+   ]
+  },
+  {
+   "id": "plate",
+   "pages": {
+    "en": [
+     {
+      "title": "Astrophotography",
+      "url": "https://en.wikipedia.org/wiki/Astrophotography",
+      "revision": 1387379009
+     }
+    ],
+    "uk": [
+     {
+      "title": "Астрофотографія",
+      "url": "https://uk.wikipedia.org/wiki/%D0%90%D1%81%D1%82%D1%80%D0%BE%D1%84%D0%BE%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D1%96%D1%8F",
+      "revision": 48898143
+     }
+    ]
+   },
+   "agency": []
+  },
+  {
+   "id": "radio",
+   "pages": {
+    "en": [
+     {
+      "title": "Radio telescope",
+      "url": "https://en.wikipedia.org/wiki/Radio_telescope",
+      "revision": 1387330469
+     }
+    ],
+    "uk": [
+     {
+      "title": "Радіотелескоп",
+      "url": "https://uk.wikipedia.org/wiki/%D0%A0%D0%B0%D0%B4%D1%96%D0%BE%D1%82%D0%B5%D0%BB%D0%B5%D1%81%D0%BA%D0%BE%D0%BF",
+      "revision": 47379296
+     }
+    ],
+    "hu": [
+     {
+      "title": "Rádiótávcső",
+      "url": "https://hu.wikipedia.org/wiki/R%C3%A1di%C3%B3t%C3%A1vcs%C5%91",
+      "revision": 29521725
+     }
+    ]
+   },
+   "agency": [
+    "https://science.nasa.gov/universe/telescopes-101/"
+   ]
+  },
+  {
+   "id": "hubble",
+   "pages": {},
+   "agency": [
+    "https://esahubble.org/about/general/fact_sheet/",
+    "https://science.nasa.gov/mission/hubble/observatory/",
+    "https://science.nasa.gov/mission/hubble/observatory/design/",
+    "https://science.nasa.gov/mission/hubble/overview/why-have-a-telescope-in-space/",
+    "https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-spectroscopy/"
+   ]
+  },
+  {
+   "id": "webb",
+   "pages": {},
+   "agency": [
+    "https://science.nasa.gov/mission/webb/about-overview/",
+    "https://science.nasa.gov/mission/webb/science-overview/",
+    "https://science.nasa.gov/mission/webb/webbs-mirrors/",
+    "https://science.nasa.gov/mission/webb/webbs-sunshield/"
+   ]
+  }
+ ]
+}

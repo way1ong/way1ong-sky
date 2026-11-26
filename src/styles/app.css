@@ -948,3 +948,92 @@ button {
     overflow-y: auto;
   }
 }
+
+/* The drawings of the instruments: shapes written for the program, coloured by the theme. */
+.diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  background: var(--bg);
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.diagram .dg-line { stroke: var(--line); stroke-width: 2; }
+.diagram .dg-soft { stroke: var(--muted); stroke-width: 1; }
+.diagram .dg-dash { stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 2 4; }
+.diagram .dg-body { stroke: var(--text); stroke-width: 2.4; }
+.diagram .dg-wall { stroke: var(--line); stroke-width: 9; stroke-linecap: butt; }
+.diagram .dg-shadow { stroke: var(--muted); stroke-width: 5; stroke-linecap: butt; }
+.diagram .dg-ray { stroke: var(--sun); stroke-width: 1.6; }
+.diagram .dg-gold { stroke: var(--sun); }
+.diagram .dg-glass { stroke: var(--deep); stroke-width: 1.8; fill: var(--deep); fill-opacity: 0.3; }
+.diagram .dg-open { fill: none; }
+.diagram .dg-thin { stroke-width: 1.2; }
+.diagram .dg-thick { stroke-width: 4; fill: none; }
+.diagram .dg-dashed { stroke-dasharray: 5 4; }
+.diagram .dg-fill { fill: var(--text); stroke: none; }
+.diagram .dg-sun { fill: var(--sun); stroke: none; }
+.diagram .dg-arrow { fill: var(--sun); stroke: none; }
+.diagram .dg-ground { fill: var(--ground); stroke: var(--horizon); stroke-width: 1.5; }
+.diagram .dg-dark { stroke: var(--bg); stroke-width: 2; stroke-linecap: butt; }
+.diagram .dg-c1 { stroke: var(--spec-1); stroke-width: 1.6; }
+.diagram .dg-c2 { stroke: var(--spec-2); stroke-width: 1.6; }
+.diagram .dg-c3 { stroke: var(--spec-3); stroke-width: 1.6; }
+.diagram .dg-c4 { stroke: var(--spec-4); stroke-width: 1.6; }
+.diagram .dg-c5 { stroke: var(--spec-5); stroke-width: 1.6; }
+.diagram .dg-f1 { fill: var(--spec-1); stroke: none; }
+.diagram .dg-f2 { fill: var(--spec-2); stroke: none; }
+.diagram .dg-f3 { fill: var(--spec-3); stroke: none; }
+.diagram .dg-f4 { fill: var(--spec-4); stroke: none; }
+.diagram .dg-f5 { fill: var(--spec-5); stroke: none; }
+.diagram .dg-text { fill: var(--text); stroke: none; font-size: 15px; font-weight: 550; }
+.diagram .dg-quiet { fill: var(--muted); font-weight: 400; }
+
+/* The list of the instruments: each a wide button with its time under its name. */
+.dialog .instruments {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.instrument {
+  display: grid;
+  gap: 0.125rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.875rem;
+  border: 2px solid var(--line);
+  border-radius: 0.75rem;
+  background: var(--panel);
+  text-align: start;
+  cursor: pointer;
+}
+
+.instrument__name {
+  font-weight: 650;
+}
+
+.instrument__when {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* Under a card: back, to the list, on — they wrap on a narrow phone. */
+.dialog .steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.dialog .steps .chip {
+  flex: 0 1 auto;
+  max-width: 100%;
+  white-space: normal;
+  text-align: start;
+}

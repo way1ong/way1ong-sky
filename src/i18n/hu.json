@@ -263,6 +263,7 @@
     "stories": "A csillagképek történetei és az a sor, hogy ki vette fel a csillagképet a listára, a Wikipédia szócikkei és táblázata alapján készültek — a hivatkozások minden kártya alatt megtalálhatók. A történetek szövege ugyanazzal a licenccel, CC BY-SA 4.0 alatt használható fel. A legfényesebb csillagot, a legjobb esték hónapját és a csillagkép magasságát maga a program számítja.",
     "art": "A csillagképek rajzai az „Urania’s Mirror” csillagatlasz (metszette: Sidney Hall, 1825) lapjai a Wikimedia Commonsból, közkincsek; a szkennelt képeket Adam Cuerden restaurálta. A több csillagképet ábrázoló lapokból a szükséges alakot vágtuk ki. Minden rajz alatt megtalálható a fájl oldalának hivatkozása.",
     "deep": "Galaxisok, ködök és csillaghalmazok az égtérképen: hogy mik ezek, milyen messze vannak és milyen fényesek — a NASA oldalai alapján (a Hubble Messier-katalógusa); hogy hol vannak — Wikidata (CC0); a felvételek — NASA, ESA és az Űrtávcső Tudományos Intézet, a szerző minden felvétel alatt szerepel.",
+    "instruments": "„A csillagászok műszerei” rész: a szövegek sajátok, a Wikipédia három nyelvű szócikkei, valamint a NASA és az ESA oldalai alapján készültek; minden kártya alatt ott vannak a forrásaira mutató hivatkozások. A rajzok a programhoz készültek, nem méretarányosak. A Wikipédia alapján írt kártyák szövege a következő feltételekkel használható fel:",
     "links": {
       "photoLibrary": "a NASA kép- és videótára",
       "photoRules": "a NASA szabályai a képeiről",
@@ -786,5 +787,208 @@
     "text": "A program alkalmazásként telepíthető: saját ikont kap, és internet nélkül is megnyílik.",
     "button": "A program telepítése",
     "ios": "iPhone-on és iPaden: koppintson a „Megosztás”, majd a „Főképernyőhöz adás” lehetőségre. A program saját ikont kap, és internet nélkül is megnyílik."
+  },
+  "instruments": {
+    "title": "A csillagászok műszerei",
+    "lead": "Az árnyékot vető pálcától az űrtávcsövekig: mivel mérték az emberek az eget, és hogyan működnek ezek a műszerek.",
+    "open": "A csillagászok műszerei",
+    "read": "Olvasnivaló",
+    "place": "{n} / {total}",
+    "kind": "A csillagászok műszerei · {place} · {when}",
+    "drawn": "A rajz a programhoz készült; nem méretarányos.",
+    "gave": "Mit adott",
+    "inApp": "A programban",
+    "toList": "Vissza a listához",
+    "before": "Előző: {name}",
+    "after": "Következő: {name}",
+    "source": "Forrás:",
+    "licence": "A szöveg ugyanilyen feltételekkel használható fel:",
+    "pages": {
+      "en": "Wikipédia angolul — {title}",
+      "uk": "Wikipédia ukránul — {title}",
+      "hu": "Wikipédia — {title}",
+      "nasa": "a NASA oldala (angolul)",
+      "esa": "az ESA oldala (angolul)"
+    },
+    "picture": {
+      "alt": "{name}: régi metszet",
+      "link": "A fájl oldala a Wikimedia Commonsban",
+      "publicDomain": "Közkincs.",
+      "captions": {
+        "armillary": "Armilláris gömb: metszet az Encyclopaedia Britannicából, 1771.",
+        "astrolabe": "Oldal Johannes Stöffler asztrolábiumról szóló könyvéből, 1524: a műszerrel egy torony tetejét célozzák meg, hogy megmérjék a magasságát.",
+        "quadrant": "Tycho Brahe fali kvadránsa Uraniborgban: metszet 1598-as könyvéből. A jobb oldali megfigyelő a bal felső nyíláson át néz egy csillagot; az egyik segéd az óráról olvassa le az időt, a másik feljegyzi a méréseket.",
+        "refractor": "Johannes Hevelius 45 méter fókusztávolságú távcsöve: metszet Machinae coelestis című könyvéből, 1673. A Harvard Egyetem Houghton Könyvtárának szkennelése."
+      }
+    },
+    "items": {
+      "gnomon": {
+        "name": "Gnómon és napóra",
+        "when": "az ókortól",
+        "how": "A gnómon vízszintes alapon álló függőleges pálca, az egyik legősibb és legegyszerűbb csillagászati mérőműszer. Árnyékának hosszából és irányából megtudható, milyen magasan áll a Nap — és így az is, hány óra van. A napóra ugyanez a gnómon beosztott lappal: az árnyék a nap folyamán egyik óravonaltól a másikig halad.",
+        "story": "A Kínában ismert legrégebbi gnómon egy festett pálca körülbelül i. e. 2300-ból. A legkorábbi ismert napórák egyiptomi és babilóniai árnyékórák körülbelül i. e. 1500-ból. Úgy tartják, hogy ezt a babilóniai műszert Anaximandrosz filozófus ismertette meg a görögökkel.",
+        "gave": "A napszakot — a napfordulókor mért árnyékból pedig az ekliptika és az égi egyenlítő hajlásszögét is.",
+        "alt": "Rajz: a Nap sugara egy függőleges pálca csúcsa fölött halad el, a pálca árnyéka a földön fekszik; a föld és a sugár közötti szög a Nap magassága.",
+        "labels": {
+          "sun": "Nap",
+          "rod": "gnómon",
+          "shadow": "árnyék",
+          "angle": "szög — a Nap magassága"
+        }
+      },
+      "armillary": {
+        "name": "Armilláris gömb",
+        "when": "az ókortól",
+        "how": "Az égbolt gyűrűkből álló modellje. Fokbeosztásos fémkörei az égi egyenlítőt, az ekliptikát — a Nap látszólagos útját az éggömbön —, a meridiánokat és a szélességi köröket jelenítik meg. Közepén általában kis golyó van: a Föld, a későbbieken a Nap. Az égitestek koordinátáinak meghatározására használták.",
+        "story": "Egymástól függetlenül találták fel Kínában — talán már az i. e. 4. században — és Görögországban az i. e. 3. században. Hipparkhosz görög csillagász Eratoszthenészt nevezte meg feltalálójaként. Később az iszlám világban és a középkori Európában is használták.",
+        "gave": "A távcső 17. századi megjelenéséig ez volt a csillagászok legfontosabb műszere az égi helyzetek meghatározásához.",
+        "alt": "Rajz: a Föld kis golyója körül egy meridiánkör és két, egymáshoz képest megdöntött gyűrű áll: az egyenlítő és az ekliptika; a pólusokon tengely megy át.",
+        "labels": {
+          "axis": "tengely a pólusokon át",
+          "equator": "egyenlítő",
+          "earth": "Föld",
+          "ecliptic": "ekliptika",
+          "meridian": "meridián"
+        }
+      },
+      "astrolabe": {
+        "name": "Asztrolábium",
+        "when": "a hellenisztikus kortól",
+        "how": "Fémkorong, amellyel mérni és számolni is lehet. Fokbeosztásos peremű testének mélyedésében lapos lemezek fekszenek, fölöttük pedig egy áttört keret — a rete — forog az ekliptika körével és a legfényesebb csillagok mutatóival. Irányzó vonalzója is van: a függőlegesen tartott asztrolábiummal megcélozzák a csillagot vagy a Napot, és a peremen fokokban leolvassák a magasságát.",
+        "story": "Lényegében az armilláris gömb sík változata. A hellenisztikus korban jelent meg; hogy ki találta fel, arról a források eltérnek — gyakran Hipparkhoszt említik. Neve a görög „csillag” és „venni” szavakból áll: a csillag magasságát „veszik” vele.",
+        "gave": "Az égitest horizont feletti magasságát éjjel-nappal; csillagokat és bolygókat azonosítottak vele, és az idő ismeretében meghatározták a hely földrajzi szélességét — és fordítva.",
+        "alt": "Rajz: fokbeosztásos peremű korong, fölötte áttört csillagtérkép; az irányzó vonalzó egy csillagra mutat, és a korong peremén leolvasható a szög — a csillag magassága.",
+        "labels": {
+          "star": "csillag",
+          "altitude": "magasság",
+          "rule": "irányzó vonalzó",
+          "rete": "áttört csillagtérkép",
+          "disc": "beosztott korong"
+        }
+      },
+      "quadrant": {
+        "name": "Kvadráns és fali kvadráns",
+        "when": "a távcső előtt",
+        "how": "A kvadráns 90°-ig terjedő szögek mérésére szolgáló műszer. A fali kvadránst olyan falra szerelték, amely pontosan a meridián mentén áll. A megfigyelő addig mozgatja az irányzékot az ív mentén, amíg a tőle az ív középpontjában lévő irányzékon át húzott vonal az égitestre nem mutat — és az íven leolvassa a magasságát.",
+        "story": "A kvadránst először Ptolemaiosz javasolta, az asztrolábium jobb változataként. Az egyik legnagyobb fali kvadránst Tycho Brahe dán csillagász készítette — ő volt az utolsó nagy csillagász, aki távcső nélkül dolgozott.",
+        "gave": "Az égitestek helyzetét, sokkal pontosabban, mint Tycho Brahe bármelyik elődje. Segédje, Johannes Kepler ezekből a mérésekből vezette le a bolygómozgás három törvényét.",
+        "alt": "Rajz: a meridián mentén álló fal nyílással, alatta fokbeosztásos negyedkör; a csillag sugara a középpontban lévő irányzékon át az íven mozgó irányzékhoz ér, a szög a csillag magassága.",
+        "labels": {
+          "star": "csillag",
+          "centre": "irányzék a középpontban",
+          "altitude": "magasság",
+          "slide": "mozgó irányzék",
+          "arc": "fokbeosztásos ív",
+          "wall": "fal"
+        }
+      },
+      "refractor": {
+        "name": "Lencsés távcső (refraktor)",
+        "when": "1608 körül",
+        "how": "Olyan távcső, amelynek fő része egy lencse. Elöl nagy domború lencse áll, utána hosszú cső következik, hátul pedig az okulár. A lencsék megtörik a fényt, ahogyan a szemüveg is: az elülső összegyűjti a csillag sugarait, az okulár pedig a szembe vezeti őket.",
+        "story": "Az első feljegyzés ilyen csőről 1608 körül maradt fenn Hans Lippershey-től, a hollandiai Middelburg szemüvegkészítőjétől: megpróbálta szabadalmaztatni, de nem járt sikerrel. 1609-ben Galileo Galilei hallott a találmányról, elkészítette saját csövét — elöl domború, a szemnél homorú lencsével —, és elsőként használta az ég megfigyelésére.",
+        "gave": "A Hold krátereit, a Jupiter négy legnagyobb holdját és a Vénusz fázisait.",
+        "inApp": "Ehhez a négy holdhoz el lehet repülni: „Repülés” — Jupiter.",
+        "alt": "Rajz: a csillag sugarai a cső elején lévő domború lencsén haladnak át, összetartanak, és az okulár homorú lencséjén át a szembe jutnak.",
+        "labels": {
+          "light": "a csillag fénye",
+          "tube": "cső",
+          "lens": "domború lencse",
+          "eyepiece": "homorú lencse — okulár",
+          "eye": "szem"
+        }
+      },
+      "reflector": {
+        "name": "Tükrös távcső (reflektor)",
+        "when": "1670 körül",
+        "how": "Olyan távcső, amelynek fő része egy tükör. Newton távcsövében a fény a cső alján lévő homorú fémtükörre esik, és visszaverődik a fókusz felé. A fókusz közelében ferdén elhelyezett kis síktükör oldalra, a csövön kívülre tereli a nyalábot — ott nézik okuláron át.",
+        "story": "Az első működő tükrös távcsövet Isaac Newton építette; a források különböző éveket említenek, 1668-tól 1672-ig. Észrevette, hogy a lencsék, akárcsak a prizmák, színeire bontják a fehér fényt, így a lencsés távcsőben a csillagok színes foltok lesznek.",
+        "gave": "A mai tudomány szinte minden nagy távcsöve tükrös. A Hubble és a Webb is.",
+        "alt": "Rajz: a sugarak belépnek a nyitott csőbe, visszaverődnek az alján lévő homorú tükörről, és egy kis síktükör oldalra tereli őket, az okulárhoz és a szemhez.",
+        "labels": {
+          "light": "a csillag fénye",
+          "eye": "szem",
+          "eyepiece": "okulár",
+          "flat": "síktükör",
+          "mirror": "homorú tükör",
+          "tube": "cső"
+        }
+      },
+      "spectroscope": {
+        "name": "Spektroszkóp",
+        "when": "a 19. századtól",
+        "how": "Olyan műszer, amely a fényt színképpé — színek sávjává — bontja. A csillag fénye keskeny résen halad át, majd egy prizma vagy optikai rács hullámhossz szerint szétteríti. Az izzó szilárd test folytonos színképet ad, az izzó gáz csak meghatározott hullámhosszakon világít, és ha a forró testet hűvösebb gáz veszi körül, a színképben sötét vonalak jelennek meg — ott, ahol az a gáz világítana.",
+        "story": "A kezdet a 17. század, amikor Isaac Newton prizmán vezetett át egy napfénysugarat. Az első modern spektroszkópot — prizmát, rést és távcsövet együtt — Joseph von Fraunhofer készítette. Az 1850-es években Gustav Kirchhoff és Robert Bunsen megmagyarázta, honnan erednek a sötét vonalak.",
+        "gave": "Hogy miből vannak a csillagok: a sötét vonalakat ismert gázok vonalaival összevetve meghatározható a kémiai összetételük. 1863-ban William Huggins spektroszkóppal bizonyította, hogy a csillagok ugyanazokból az elemekből állnak, amelyek a Földön is megvannak.",
+        "alt": "Rajz: a csillag fénye egy résen és egy prizmán halad át, színekre bomlik, és sávként — színképként — jelenik meg, amelyben sötét vonalak látszanak.",
+        "labels": {
+          "light": "a csillag fénye",
+          "slit": "rés",
+          "prism": "prizma",
+          "lines": "sötét vonalak",
+          "spectrum": "színkép"
+        }
+      },
+      "plate": {
+        "name": "Fotólemez",
+        "when": "1840-től",
+        "how": "A fotólemezt a szem helyére teszik a távcsőbe. A szemmel ellentétben hosszú ideig gyűjti a fényt, ezért a hosszú expozícióval készült felvételen az is megjelenik, amit szemmel nem lehet látni. A nagy távcsöveket óriási fényképezőgépként kezdték építeni.",
+        "story": "A Holdat elsőként Louis Daguerre, a dagerrotípia feltalálója próbálta lefényképezni 1839-ben. Az első sikeres holdfelvételt 1840. március 23-án John William Draper készítette: 20 perces expozícióval, 13 cm-es tükrös távcsővel. A Napon kívüli első csillagot — a Vegát — 1850 júliusában fényképezték le a Harvard College Obszervatóriumban.",
+        "gave": "Több százezer új, szemmel láthatatlan csillagot és ködöt.",
+        "alt": "Rajz: a csillag halvány fénye áthalad a távcső lencséjén, és a fotólemezen gyűlik össze; az óra azt mutatja, hogy a fény sokáig gyűlik.",
+        "labels": {
+          "light": "halvány fény",
+          "telescope": "távcső",
+          "plate": "fotólemez",
+          "time": "hosszú expozíció"
+        }
+      },
+      "radio": {
+        "name": "Rádiótávcső",
+        "when": "az 1930-as évektől",
+        "how": "Antenna rádióvevővel, amely az égből érkező rádióhullámokat fogja fel. Általában nagy „tányér” — homorú fémtükör, amely rácsos szerkezetű és több tíz méter átmérőjű is lehet: a rádióhullámokat a fókuszában gyűjti össze, ahol a vevő áll.",
+        "story": "A világűrből érkező rádióhullámokat az 1930-as évek elején Karl Jansky mérnök vette észre elsőként — egy olyan antennával, amelyet a rádióvevők zajának vizsgálatára építettek. Arra jutott, hogy a sistergés a Tejútrendszerből ered, és a Galaxis középpontja felől, a Nyilas csillagkép irányából a legerősebb. Az első, kifejezetten erre épített rádiótávcsövet — egy kilencméteres tányért — 1937-ben Grote Reber rádióamatőr állította fel a saját udvarán.",
+        "gave": "A pulzárokat és a kvazárokat, valamint galaxisok, ködök, sőt a bolygók rádiósugárzásának rádió„képét”.",
+        "alt": "Rajz: a rádióhullámok felülről egy nagy tányérra esnek, visszaverődnek róla, és a fókuszban találkoznak, ahol a vevő áll.",
+        "labels": {
+          "waves": "rádióhullámok",
+          "receiver": "vevő a fókuszban",
+          "dish": "tányér",
+          "reflects": "visszaveri a hullámokat"
+        }
+      },
+      "hubble": {
+        "name": "Hubble űrtávcső",
+        "when": "1990-től",
+        "how": "Az első Föld körüli pályára állított csillagászati obszervatórium, amely az ultraibolyától a közeli infravörösig készít felvételeket. A fény a főtükörre esik, onnan a kisebb segédtükörre verődik, az pedig a főtükör nyílásán át visszaküldi — a kamerákhoz és a spektrográfokhoz. Miért az űrben: a Föld légköre a fény egy részét egyáltalán nem engedi át, mozgó légrétegei pedig elmossák a képet — a csillagok is miattuk pislákolnak.",
+        "story": "1990. április 24-én indították a Discovery űrsiklón. Néhány száz kilométer magasan kering a Föld körül — a légkör fölött.",
+        "gave": "Elsőként észlelte és vizsgálta meg egy Naprendszeren kívüli bolygó légkörét.",
+        "inApp": "A Hubble felvételei az égtérkép galaxisainak, ködeinek és halmazainak kártyáin láthatók.",
+        "alt": "Rajz: a távcső a Föld légköre fölött; a fény a főtükörről a segédtükörre verődik, és a főtükör nyílásán át a kamerákhoz jut.",
+        "labels": {
+          "light": "fény",
+          "instruments": "kamerák és spektrográfok",
+          "secondary": "segédtükör",
+          "primary": "főtükör",
+          "air": "a Föld légköre"
+        }
+      },
+      "webb": {
+        "name": "James Webb űrtávcső",
+        "when": "2021-től",
+        "how": "Infravörös távcső. Főtükre 18 hatszögletű szegmensből áll, amelyek egyetlen nagy homorú tükörként működnek; mindegyiket nagyon vékony aranyréteg borítja, mert az arany jobban veri vissza az infravörös fényt. Ahhoz, hogy a távoli objektumok halvány hőjét észlelje, a tükröknek és az érzékelőknek rendkívül hidegnek kell lenniük, ezért a távcsövet napernyő védi a fénytől és a hőtől.",
+        "story": "2021. december 25-én indították Francia Guyanából egy Ariane–5 rakétával. A Nap körül kering, 1,5 millió kilométerre a Földtől. Korábban Új Generációs Űrtávcsőnek hívták; 2002-ben nevezték át a NASA egy korábbi vezetőjéről.",
+        "gave": "Azt a korszakot, amikor az első csillagok és galaxisok keletkeztek; a porfelhőkbe burkolt csillagokat; a vizet más világok légkörében.",
+        "alt": "Rajz: a napernyő fölött áll az aranyszegmensekből álló főtükör; a fény róla a segédtükörre, majd vissza, a műszerekhez verődik. A Nap az ernyő másik oldalán van.",
+        "labels": {
+          "primary": "18 aranyszegmens",
+          "secondary": "segédtükör",
+          "instruments": "műszerek",
+          "light": "infravörös fény",
+          "shield": "napernyő",
+          "hot": "a Nap ezen az oldalon van"
+        }
+      }
+    }
   }
 }

@@ -263,6 +263,7 @@
     "stories": "The stories of the constellations and the line on who listed each constellation are written after Wikipedia’s articles and table — the links stand under each card. The texts of the stories may be used under the same licence, CC BY-SA 4.0. The brightest star, the month of the best evenings and the height of a constellation are worked out by the program itself.",
     "art": "The drawings of the constellations are cards of the star atlas “Urania’s Mirror” (engraved by Sidney Hall, 1825) from Wikimedia Commons, public domain; the scans were restored by Adam Cuerden. From cards that show several constellations the figure needed is cut out. Under each drawing there is a link to the page of its file.",
     "deep": "Galaxies, nebulae and star clusters on the sky map: what they are, how far and how bright — after NASA’s pages of Hubble’s Messier Catalog; where they are — Wikidata (CC0); the photographs — NASA, ESA and the Space Telescope Science Institute, each named under its photograph.",
+    "instruments": "The section “Instruments of astronomers”: the texts are our own, written after Wikipedia’s articles in three languages and the pages of NASA and ESA; under each card are the links to its sources. The drawings are made for the program and are not to scale. The texts of the cards written after Wikipedia may be used on the terms of",
     "links": {
       "photoLibrary": "NASA’s image and video library",
       "photoRules": "NASA’s rules for its pictures",
@@ -786,5 +787,208 @@
     "text": "The program can be installed like an app: it gets its own icon and opens without internet.",
     "button": "Install the program",
     "ios": "On iPhone and iPad: tap “Share”, then “Add to Home Screen”. The program gets its own icon and opens without internet."
+  },
+  "instruments": {
+    "title": "Instruments of astronomers",
+    "lead": "From a rod that casts a shadow to telescopes in space: what people measured the sky with, and how these instruments work.",
+    "open": "Instruments of astronomers",
+    "read": "To read",
+    "place": "{n} of {total}",
+    "kind": "Instruments of astronomers · {place} · {when}",
+    "drawn": "The drawing is made for the program; it is not to scale.",
+    "gave": "What it gave",
+    "inApp": "In the program",
+    "toList": "To the list",
+    "before": "Previous: {name}",
+    "after": "Next: {name}",
+    "source": "Written after:",
+    "licence": "The text may be used on the same terms:",
+    "pages": {
+      "en": "Wikipedia — {title}",
+      "uk": "Wikipedia in Ukrainian — {title}",
+      "hu": "Wikipedia in Hungarian — {title}",
+      "nasa": "NASA’s page",
+      "esa": "ESA’s page"
+    },
+    "picture": {
+      "alt": "{name}: an old engraving",
+      "link": "The file’s page on Wikimedia Commons",
+      "publicDomain": "Public domain.",
+      "captions": {
+        "armillary": "An armillary sphere: an engraving from the Encyclopaedia Britannica, 1771.",
+        "astrolabe": "A page from Johannes Stöffler’s book on the astrolabe, 1524: the instrument is aimed at the top of a tower to measure its height.",
+        "quadrant": "Tycho Brahe’s mural quadrant at Uraniborg: an engraving from his book of 1598. The observer on the right views a star through the opening at the upper left; one assistant reads the time off a clock, another records the measurements.",
+        "refractor": "Johannes Hevelius’s telescope with a focal length of 45 meters: an engraving from his book Machinae coelestis, 1673. A scan of Houghton Library, Harvard University."
+      }
+    },
+    "items": {
+      "gnomon": {
+        "name": "Gnomon and sundial",
+        "when": "since antiquity",
+        "how": "A gnomon is an upright rod on level ground, one of the oldest and simplest instruments of astronomy. The length and the direction of its shadow tell how high the Sun stands — and so the time of day. A sundial is the same gnomon with a marked plate: through the day the shadow passes from one hour-line to the next.",
+        "story": "The oldest gnomon known in China is a painted stick of about 2300 BC. The earliest sundials known are Egyptian and Babylonian shadow clocks of about 1500 BC. The philosopher Anaximander is credited with bringing this Babylonian instrument to the Greeks.",
+        "gave": "The time of day — and, from the shadow measured at the solstices, the tilt of the ecliptic to the celestial equator.",
+        "alt": "A drawing: a ray of the Sun passes over the top of an upright rod, whose shadow lies on the ground; the angle between the ground and the ray is the height of the Sun.",
+        "labels": {
+          "sun": "the Sun",
+          "rod": "gnomon",
+          "shadow": "shadow",
+          "angle": "angle — the Sun’s height"
+        }
+      },
+      "armillary": {
+        "name": "Armillary sphere",
+        "when": "since antiquity",
+        "how": "A model of the sky made of rings. Graduated metal circles stand for the celestial equator, the ecliptic — the apparent path of the Sun on the celestial sphere — meridians and parallels. A small ball usually sits in the middle: the Earth, and in later ones the Sun. It was used to find the coordinates of the lights of the sky.",
+        "story": "It was invented separately in China — possibly as early as the 4th century BC — and in Greece in the 3rd century BC. The Greek astronomer Hipparchus credited Eratosthenes as its inventor. Later it was used in the Islamic world and in medieval Europe.",
+        "gave": "Before the telescope came in the 17th century, it was the astronomers’ prime instrument for finding positions in the sky.",
+        "alt": "A drawing: round a small ball of the Earth stand the circle of a meridian and two rings tilted to each other, the equator and the ecliptic; an axis passes through the poles.",
+        "labels": {
+          "axis": "axis through the poles",
+          "equator": "equator",
+          "earth": "the Earth",
+          "ecliptic": "ecliptic",
+          "meridian": "meridian"
+        }
+      },
+      "astrolabe": {
+        "name": "Astrolabe",
+        "when": "since Hellenistic times",
+        "how": "A metal disc for both measuring and reckoning. In the hollow of its body, which has a graduated rim, lie flat plates, and over them turns a cut-out frame — the rete — with the circle of the ecliptic and pointers to the brightest stars. It also has a sighting rule: with the astrolabe held upright, one aims the rule at a star or the Sun and reads the height in degrees on the rim.",
+        "story": "It is essentially a flat version of the armillary sphere. It appeared in Hellenistic times; the sources differ on who invented it, and Hipparchus is often named. Its name is made of the Greek words for “star” and “to take”: it “takes” the height of a star.",
+        "gave": "The height of a body over the horizon, day or night; it served to identify stars and planets and, given the time, to find the latitude of a place — and the other way round.",
+        "alt": "A drawing: a disc with a graduated rim and a cut-out star map over it; the sighting rule is aimed at a star, and the angle — the star’s height — is read on the rim.",
+        "labels": {
+          "star": "star",
+          "altitude": "height",
+          "rule": "sighting rule",
+          "rete": "cut-out star map",
+          "disc": "disc with degrees"
+        }
+      },
+      "quadrant": {
+        "name": "Quadrant and mural quadrant",
+        "when": "before the telescope",
+        "how": "A quadrant is an instrument that measures angles up to 90°. A mural quadrant is fixed to a wall that stands exactly along the meridian. The observer moves a sight along the arc until the line from it through the sight at the centre of the arc points at the body — and reads its height on the arc.",
+        "story": "The quadrant was first proposed by Ptolemy as a better kind of astrolabe. One of the largest mural quadrants was made by the Danish astronomer Tycho Brahe — the last major astronomer to work without a telescope.",
+        "gave": "Positions of the lights of the sky far more accurate than those of any of Tycho Brahe’s predecessors. His assistant Johannes Kepler used these measurements to work out his three laws of planetary motion.",
+        "alt": "A drawing: a wall along the meridian with an opening, and under it a quarter of a circle with degrees; a star’s ray goes through the sight at the centre to the sliding sight on the arc, and the angle is the star’s height.",
+        "labels": {
+          "star": "star",
+          "centre": "sight at the centre",
+          "altitude": "height",
+          "slide": "sliding sight",
+          "arc": "arc with degrees",
+          "wall": "wall"
+        }
+      },
+      "refractor": {
+        "name": "Refracting telescope",
+        "when": "about 1608",
+        "how": "A telescope whose main part is a lens. A large convex lens stands at the front, then comes a long tube, and at the rear an eyepiece. Lenses bend light, as eyeglasses do: the front one gathers the rays of a star, and the eyepiece hands them to the eye.",
+        "story": "The first record of such a tube was left about 1608 by Hans Lippershey, a spectacle maker of Middelburg in the Netherlands: he tried to patent it and did not succeed. In 1609 Galileo Galilei heard of the invention, made a tube of his own — with a convex lens at the front and a concave one at the eye — and was the first to observe the sky with it.",
+        "gave": "Craters on the Moon, the four largest moons of Jupiter and the phases of Venus.",
+        "inApp": "You can fly to these four moons: “Flight” — Jupiter.",
+        "alt": "A drawing: the rays of a star pass through a convex lens at the front of a tube, come together and through the concave lens of the eyepiece reach the eye.",
+        "labels": {
+          "light": "light of a star",
+          "tube": "tube",
+          "lens": "convex lens",
+          "eyepiece": "concave lens — eyepiece",
+          "eye": "eye"
+        }
+      },
+      "reflector": {
+        "name": "Reflecting telescope",
+        "when": "about 1670",
+        "how": "A telescope whose main part is a mirror. In Newton’s telescope the light falls on a curved metal mirror at the bottom of the tube and is reflected back towards a focus. A small flat mirror, set at a slant near the focus, turns the beam aside, out of the tube — where it is looked at through an eyepiece.",
+        "story": "The first working reflecting telescope was built by Isaac Newton; the sources name different years, from 1668 to 1672. He had noticed that lenses, like prisms, split white light into colors, so that in a telescope of lenses the stars become colored blots.",
+        "gave": "Almost all of the major telescopes of today’s science are reflectors. Hubble and Webb are, too.",
+        "alt": "A drawing: rays enter an open tube, are reflected by the curved mirror at its bottom, and a small flat mirror turns them aside, to the eyepiece and the eye.",
+        "labels": {
+          "light": "light of a star",
+          "eye": "eye",
+          "eyepiece": "eyepiece",
+          "flat": "flat mirror",
+          "mirror": "curved mirror",
+          "tube": "tube"
+        }
+      },
+      "spectroscope": {
+        "name": "Spectroscope",
+        "when": "since the 19th century",
+        "how": "An instrument that spreads light into a spectrum — a band of colors. The light of a star passes through a narrow slit, and then a prism or a diffraction grating spreads it by wavelength. A hot solid body gives a continuous spectrum, a hot gas shines only at particular wavelengths, and when a hot body is surrounded by cooler gas, dark lines appear in the spectrum — where that gas would shine.",
+        "story": "It began in the 17th century, when Isaac Newton passed a beam of sunlight through a prism. The first modern spectroscope — a prism, a slit and a telescope together — was made by Joseph von Fraunhofer. In the 1850s Gustav Kirchhoff and Robert Bunsen explained where the dark lines come from.",
+        "gave": "What the stars are made of: by comparing the dark lines with the lines of known gases, their chemical composition is found. In 1863 William Huggins proved with a spectroscope that the stars consist of the same elements that exist on the Earth.",
+        "alt": "A drawing: the light of a star passes through a slit and a prism, fans out into colors and falls as a band — the spectrum — in which dark lines are seen.",
+        "labels": {
+          "light": "light of a star",
+          "slit": "slit",
+          "prism": "prism",
+          "lines": "dark lines",
+          "spectrum": "spectrum"
+        }
+      },
+      "plate": {
+        "name": "Photographic plate",
+        "when": "since 1840",
+        "how": "A photographic plate is put into a telescope in place of the eye. Unlike the eye, it gathers light for a long time, so a picture taken with a long exposure shows what the eye cannot see. Large telescopes came to be built as big cameras.",
+        "story": "The first to try to photograph the Moon was Louis Daguerre, the inventor of the daguerreotype, in 1839. The first successful photograph of the Moon was made on March 23, 1840, by John William Draper: an exposure of 20 minutes, a 13 cm reflecting telescope. The first star other than the Sun — Vega — was photographed in July 1850 at Harvard College Observatory.",
+        "gave": "Hundreds of thousands of new stars and nebulae invisible to the eye.",
+        "alt": "A drawing: the faint light of a star passes through the lens of a telescope and gathers on a photographic plate; a clock shows that the light is gathered for a long time.",
+        "labels": {
+          "light": "faint light",
+          "telescope": "telescope",
+          "plate": "photographic plate",
+          "time": "long exposure"
+        }
+      },
+      "radio": {
+        "name": "Radio telescope",
+        "when": "since the 1930s",
+        "how": "An antenna with a radio receiver that catches radio waves from the sky. It is usually a large dish — a curved metal mirror that may be made of mesh and tens of meters across: it gathers the radio waves at its focus, where the receiver stands.",
+        "story": "Radio waves from space were first noticed in the early 1930s by the engineer Karl Jansky — with an antenna built to study the noise of radio receivers. He concluded that the hiss came from the Milky Way and was strongest from the direction of the center of the Galaxy, in the constellation of Sagittarius. The first purpose-built radio telescope — a nine-meter dish — was put up in 1937 by the radio amateur Grote Reber in his back yard.",
+        "gave": "Pulsars and quasars, and radio “pictures” of galaxies, of nebulae and even of the radio emissions of planets.",
+        "alt": "A drawing: radio waves fall from above on a large dish, are reflected by it and meet at the focus, where the receiver stands.",
+        "labels": {
+          "waves": "radio waves",
+          "receiver": "receiver at the focus",
+          "dish": "dish",
+          "reflects": "reflects radio waves"
+        }
+      },
+      "hubble": {
+        "name": "Hubble Space Telescope",
+        "when": "since 1990",
+        "how": "The first astronomical observatory in orbit round the Earth that records images in light from ultraviolet to near infrared. The light falls on the main mirror, is reflected to a smaller, second mirror, and that one sends it back through a hole in the main mirror — to the cameras and spectrographs. Why in space: the Earth’s air blocks some light altogether, and its shifting pockets blur the images — they are also why the stars twinkle.",
+        "story": "It was launched on April 24, 1990, aboard the space shuttle Discovery. It flies round the Earth a few hundred kilometers up — above the atmosphere.",
+        "gave": "It was the first telescope to detect and analyze the atmosphere of a planet outside the Solar System.",
+        "inApp": "Hubble’s photographs are in the cards of the galaxies, nebulae and clusters on the sky map.",
+        "alt": "A drawing: the telescope above the Earth’s atmosphere; the light is reflected from the main mirror to the second mirror and goes through a hole in the main one to the cameras.",
+        "labels": {
+          "light": "light",
+          "instruments": "cameras and spectrographs",
+          "secondary": "second mirror",
+          "primary": "main mirror",
+          "air": "the Earth’s atmosphere"
+        }
+      },
+      "webb": {
+        "name": "James Webb Space Telescope",
+        "when": "since 2021",
+        "how": "An infrared telescope. Its main mirror is made of 18 hexagonal segments that act as one large curved mirror; each has a very thin coating of gold, which reflects infrared light better. To detect the faint heat of distant objects, the mirrors and the sensors must be kept extremely cold, so a sunshield protects the telescope from light and heat.",
+        "story": "It was launched on December 25, 2021, from French Guiana on an Ariane 5 rocket. It orbits the Sun 1.5 million kilometers from the Earth. It was formerly known as the Next Generation Space Telescope; in 2002 it was renamed after a former NASA administrator.",
+        "gave": "The era when the first stars and galaxies formed; stars shrouded in clouds of dust; water in the atmospheres of other worlds.",
+        "alt": "A drawing: over the sunshield stands the main mirror of gold segments; the light is reflected from it to the second mirror and back, to the instruments. The Sun is on the other side of the shield.",
+        "labels": {
+          "primary": "18 gold segments",
+          "secondary": "second mirror",
+          "instruments": "instruments",
+          "light": "infrared light",
+          "shield": "sunshield",
+          "hot": "the Sun is on this side"
+        }
+      }
+    }
   }
 }
