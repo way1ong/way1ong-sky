@@ -1,0 +1,643 @@
+{
+ "source": {
+  "facts": {
+   "title": "NASA, Hubble's Messier Catalog",
+   "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/",
+   "read": "2026-11-25"
+  },
+  "photos": {
+   "title": "Space Telescope Science Institute: copyright",
+   "url": "https://www.stsci.edu/copyright",
+   "read": "2026-11-25"
+  },
+  "positions": {
+   "title": "Wikidata",
+   "url": "https://www.wikidata.org/",
+   "licence": "CC0",
+   "read": "2026-11-25"
+  }
+ },
+ "note": "kind, mag, lightYears, view — from the NASA page of each object (page); ra, dec — degrees, J2000, from the Wikidata item (item). Brightest first.",
+ "objects": [
+  {
+   "id": "m45",
+   "messier": 45,
+   "kind": "open",
+   "ra": 56.75,
+   "dec": 24.1167,
+   "mag": 1.6,
+   "lightYears": 445,
+   "view": "eye",
+   "item": "Q13423",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-45/",
+   "photo": {
+    "width": 570,
+    "height": 640,
+    "credit": "NASA and the Hubble Heritage Team (STScI/AURA); Acknowledgment: George Herbig and Theodore Simon (Institute for Astronomy, University of Hawaii)",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/interstellar_cloud_in_pleiades-jpg.webp"
+   }
+  },
+  {
+   "id": "m31",
+   "messier": 31,
+   "kind": "galaxy",
+   "ra": 10.6847,
+   "dec": 41.2687,
+   "mag": 3.1,
+   "lightYears": 2500000,
+   "view": "eye",
+   "item": "Q2469",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-31/",
+   "photo": {
+    "width": 640,
+    "height": 150,
+    "credit": "NASA, ESA, Benjamin F. Williams (UWashington), Zhuo Chen (UWashington), L. Clifton Johnson (Northwestern); Image Processing: Joseph DePasquale (STScI)",
+    "part": false,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/galaxies/andromeda/Hubble_M31Mosaic_2025_42208x9870_STScI-01JGY8MZB6RAYKZ1V4CHGN37Q6.jpg"
+   }
+  },
+  {
+   "id": "m7",
+   "messier": 7,
+   "kind": "open",
+   "ra": 268.4625,
+   "dec": -34.7933,
+   "mag": 3.3,
+   "lightYears": 980,
+   "view": "eye",
+   "item": "Q11234",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-7/",
+   "photo": {
+    "width": 622,
+    "height": 640,
+    "credit": "NASA, ESA, D. Bennett (University of Maryland), and K. Sahu (STScI); Image Processing: Gladys Kober",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/06/hubble-m7-wfc3-2-flat-final-jpg.webp"
+   }
+  },
+  {
+   "id": "m44",
+   "messier": 44,
+   "kind": "open",
+   "ra": 130.1,
+   "dec": 19.6667,
+   "mag": 3.7,
+   "lightYears": 600,
+   "view": "eye",
+   "item": "Q13760",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-44/"
+  },
+  {
+   "id": "m42",
+   "messier": 42,
+   "kind": "nebula",
+   "ra": 83.8104,
+   "dec": -5.3911,
+   "mag": 4.0,
+   "lightYears": 1500,
+   "view": "eye",
+   "item": "Q13903",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-42/",
+   "photo": {
+    "width": 640,
+    "height": 640,
+    "credit": "NASA, ESA, M. Robberto (Space Telescope Science Institute/ESA) and the Hubble Space Telescope Orion Treasury Project Team",
+    "part": false,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/orion-nebula-xlarge_web-jpg.webp"
+   }
+  },
+  {
+   "id": "m24",
+   "messier": 24,
+   "kind": "open",
+   "ra": 274.2,
+   "dec": -18.55,
+   "mag": 4.6,
+   "lightYears": 10000,
+   "view": "eye",
+   "item": "Q13618",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-24/",
+   "photo": {
+    "width": 640,
+    "height": 342,
+    "credit": "NASA, ESA, and R. Sahai (Jet Propulsion Laboratory); Processing: Gladys Kober (NASA/Catholic University of America)",
+    "part": true,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/stars/star-cloud/Hubble_M24_1_flat_FINAL_A_rot90.jpg"
+   }
+  },
+  {
+   "id": "m22",
+   "messier": 22,
+   "kind": "globular",
+   "ra": 279.0997,
+   "dec": -23.9047,
+   "mag": 5.1,
+   "lightYears": 10000,
+   "view": "eye",
+   "item": "Q11392",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-22/",
+   "photo": {
+    "width": 627,
+    "height": 640,
+    "credit": "ESA/Hubble & NASA",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/potw1514a-jpg.webp"
+   }
+  },
+  {
+   "id": "m35",
+   "messier": 35,
+   "kind": "open",
+   "ra": 92.225,
+   "dec": 24.3333,
+   "mag": 5.3,
+   "lightYears": 2800,
+   "view": "eye",
+   "item": "Q13736",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-35/",
+   "photo": {
+    "width": 640,
+    "height": 420,
+    "credit": "NASA, ESA, and E. Nelan (Space Telescope Science Institute), A. Riess (The Johns Hopkins University), J. Rhodes (Jet Propulsion Laboratory) ; Processing: Gladys Kober (NASA/Catholic University of America)",
+    "part": true,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/stars/open-clusters/Hubble_M35_WFPC2ok_flat_FINAL1.jpg"
+   }
+  },
+  {
+   "id": "m48",
+   "messier": 48,
+   "kind": "open",
+   "ra": 123.429,
+   "dec": -5.75,
+   "mag": 5.5,
+   "lightYears": 2500,
+   "view": "eye",
+   "item": "Q13951",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-48/",
+   "photo": {
+    "width": 640,
+    "height": 372,
+    "credit": "NASA, ESA, A. Riess (The Johns Hopkins University): Processing: Gladys Kober (NASA/Catholic University of America)",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2024/08/hubble-m48-1-flat-final-2.jpg"
+   }
+  },
+  {
+   "id": "m33",
+   "messier": 33,
+   "kind": "galaxy",
+   "ra": 23.4621,
+   "dec": 30.6602,
+   "mag": 5.7,
+   "lightYears": 3000000,
+   "view": "eye",
+   "item": "Q13724",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-33/",
+   "photo": {
+    "width": 640,
+    "height": 360,
+    "credit": "NASA, ESA, and M. Durbin, J. Dalcanton and B. F. Williams (University of Washington)",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/heic1901a-jpg.webp"
+   }
+  },
+  {
+   "id": "m13",
+   "messier": 13,
+   "kind": "globular",
+   "ra": 250.4235,
+   "dec": 36.4613,
+   "mag": 5.8,
+   "lightYears": 25000,
+   "view": "binoculars",
+   "item": "Q11312",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-13/",
+   "photo": {
+    "width": 640,
+    "height": 640,
+    "credit": "ESA/Hubble and NASA",
+    "part": true,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/stars/globular-clusters/Hubble_M13_2010_potw1011a.jpg"
+   }
+  },
+  {
+   "id": "m4",
+   "messier": 4,
+   "kind": "globular",
+   "ra": 245.8967,
+   "dec": -26.5257,
+   "mag": 5.9,
+   "lightYears": 5500,
+   "view": "telescope",
+   "item": "Q11212",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-4/",
+   "photo": {
+    "width": 638,
+    "height": 640,
+    "credit": "NASA, ESA, G. Piotto (Universita degli Studi di Padova), S. Anderson (University of Washington), A. Sarajedini (Florida Atlantic University), L. Bedin (INAF - Osservatorio Astronomico di Padova); Image Processing: Gladys Kober (NASA/Catholic University of America)",
+    "part": false,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/stars/globular-clusters/Hubble_M4_WFC3_ACS_ok_flat_cont_FINAL.jpg"
+   }
+  },
+  {
+   "id": "m8",
+   "messier": 8,
+   "kind": "nebula",
+   "ra": 270.9042,
+   "dec": -24.3867,
+   "mag": 6.0,
+   "lightYears": 5200,
+   "view": "eye",
+   "item": "Q11243",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-8/",
+   "photo": {
+    "width": 640,
+    "height": 342,
+    "credit": "NASA, ESA, M. Mutchler (Space Telescope Science Institute); Processing: Gladys Kober (NASA/Catholic University of America)",
+    "part": true,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/nebulae/emission/Hubble_M8_ACS_1_flat_FINAL.jpg"
+   }
+  },
+  {
+   "id": "m16",
+   "messier": 16,
+   "kind": "nebula",
+   "ra": 274.7,
+   "dec": -13.8067,
+   "mag": 6.0,
+   "lightYears": 7000,
+   "view": "telescope",
+   "item": "Q11349",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-16/",
+   "photo": {
+    "width": 614,
+    "height": 640,
+    "credit": "NASA, ESA and the Hubble Heritage Team (STScI/AURA)",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/hubble_birthofstars_0-jpg.webp"
+   }
+  },
+  {
+   "id": "m17",
+   "messier": 17,
+   "kind": "nebula",
+   "ra": 275.1958,
+   "dec": -16.1717,
+   "mag": 6.0,
+   "lightYears": 5500,
+   "view": "binoculars",
+   "item": "Q11357",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-17/",
+   "photo": {
+    "width": 640,
+    "height": 360,
+    "credit": "NASA, ESA, and A. Kraus (The University of Texas at Austin); Processing: Gladys Kober (NASA/Catholic University of America)",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2017/10/m17-field2-f110wf160w-a1-final-vers1.jpg"
+   }
+  },
+  {
+   "id": "m67",
+   "messier": 67,
+   "kind": "open",
+   "ra": 132.825,
+   "dec": 11.8,
+   "mag": 6.1,
+   "lightYears": 2800,
+   "view": "binoculars",
+   "item": "Q13997",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-67/",
+   "photo": {
+    "width": 640,
+    "height": 592,
+    "credit": "NASA, ESA, and J. Krist (Jet Propulsion Laboratory); Processing: Gladys Kober (NASA/Catholic University of America)",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2024/02/m67-acs-1mstr-flat-final.jpg"
+   }
+  },
+  {
+   "id": "m71",
+   "messier": 71,
+   "kind": "globular",
+   "ra": 298.4437,
+   "dec": 18.7792,
+   "mag": 6.1,
+   "lightYears": 13000,
+   "view": "binoculars",
+   "item": "Q14006",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-71/",
+   "photo": {
+    "width": 634,
+    "height": 640,
+    "credit": "ESA/Hubble and NASA",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/potw1018a-jpg.webp"
+   }
+  },
+  {
+   "id": "m3",
+   "messier": 3,
+   "kind": "globular",
+   "ra": 205.5484,
+   "dec": 28.3773,
+   "mag": 6.2,
+   "lightYears": 34000,
+   "view": "binoculars",
+   "item": "Q78384126",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-3/",
+   "photo": {
+    "width": 640,
+    "height": 560,
+    "credit": "ESA/Hubble & NASA, G. Piotto et al.",
+    "part": false,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/stars/globular-clusters/Hubble_M3_2019_potw1914a.jpg"
+   }
+  },
+  {
+   "id": "m15",
+   "messier": 15,
+   "kind": "globular",
+   "ra": 322.493,
+   "dec": 12.167,
+   "mag": 6.2,
+   "lightYears": 33600,
+   "view": "binoculars",
+   "item": "Q11332",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-15/",
+   "photo": {
+    "width": 596,
+    "height": 640,
+    "credit": "NASA, ESA",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/heic1321a-jpg.webp"
+   }
+  },
+  {
+   "id": "m2",
+   "messier": 2,
+   "kind": "globular",
+   "ra": 323.3626,
+   "dec": -0.8233,
+   "mag": 6.3,
+   "lightYears": 37000,
+   "view": "eye",
+   "item": "Q11099",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-2/",
+   "photo": {
+    "width": 636,
+    "height": 640,
+    "credit": "ESA/Hubble & NASA, G. Piotto et al.",
+    "part": false,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/stars/globular-clusters/Hubble_M2_potw1913a.jpg"
+   }
+  },
+  {
+   "id": "m11",
+   "messier": 11,
+   "kind": "open",
+   "ra": 282.7708,
+   "dec": -6.27,
+   "mag": 6.3,
+   "lightYears": 6200,
+   "view": "eye",
+   "item": "Q11294",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-11/",
+   "photo": {
+    "width": 640,
+    "height": 614,
+    "credit": "ESA/Hubble & NASA, P. Dobbie et al.",
+    "part": true,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/stars/open-clusters/Hubble_M11_2019_potw1912a.jpg"
+   }
+  },
+  {
+   "id": "m20",
+   "messier": 20,
+   "kind": "nebula",
+   "ra": 270.675,
+   "dec": -22.9717,
+   "mag": 6.3,
+   "lightYears": 5000,
+   "view": "telescope",
+   "item": "Q11377",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-20/",
+   "photo": {
+    "width": 640,
+    "height": 619,
+    "credit": "NASA, ESA, STScI; Image Processing: Joseph DePasquale (STScI)",
+    "part": true,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/releases/2026/04/STScI-01KM5VPG2R1WX1SY7ASDJ9JEV5.jpg"
+   }
+  },
+  {
+   "id": "m55",
+   "messier": 55,
+   "kind": "globular",
+   "ra": 294.9988,
+   "dec": -30.9647,
+   "mag": 6.3,
+   "lightYears": 20000,
+   "view": "binoculars",
+   "item": "Q13965",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-55/",
+   "photo": {
+    "width": 640,
+    "height": 626,
+    "credit": "NASA, ESA, A. Sarajedini (Florida Atlantic University), and M. Libralato (STScI, ESA, JWST); Image Processing: Gladys Kober",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/06/hubble-m55-mos-acs-long-flat-final2-jpg.webp"
+   }
+  },
+  {
+   "id": "m92",
+   "messier": 92,
+   "kind": "globular",
+   "ra": 259.2807,
+   "dec": 43.1358,
+   "mag": 6.3,
+   "lightYears": 27000,
+   "view": "eye",
+   "item": "Q78262275",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-92/",
+   "photo": {
+    "width": 640,
+    "height": 628,
+    "credit": "ESA/Hubble & NASA; Acknowledgment: Gilles Chapdelaine",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/potw1449a_0-jpg.webp"
+   }
+  },
+  {
+   "id": "m10",
+   "messier": 10,
+   "kind": "globular",
+   "ra": 254.2877,
+   "dec": -4.1003,
+   "mag": 6.4,
+   "lightYears": 15000,
+   "view": "binoculars",
+   "item": "Q11267",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-10/",
+   "photo": {
+    "width": 640,
+    "height": 590,
+    "credit": "NASA, ESA, G. Piotto (Universita degli Studi di Padova); Image Processing: Gladys Kober (NASA/Catholic University of America)",
+    "part": true,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/stars/globular-clusters/Hubble_M10_WFC3UVIS_flat_FINAL_2026.jpg"
+   }
+  },
+  {
+   "id": "m62",
+   "messier": 62,
+   "kind": "globular",
+   "ra": 255.3025,
+   "dec": -30.1124,
+   "mag": 6.6,
+   "lightYears": 22200,
+   "view": "binoculars",
+   "item": "Q13980",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-62/",
+   "photo": {
+    "width": 624,
+    "height": 640,
+    "credit": "NASA, ESA, and S. Anderson (University of Washington) and J. Chaname (Pontificia Universidad Católica de Chile)",
+    "part": false,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/stars/globular-clusters/Hubble_M62_2019_potw1915a.jpg"
+   }
+  },
+  {
+   "id": "m5",
+   "messier": 5,
+   "kind": "globular",
+   "ra": 229.6384,
+   "dec": 2.081,
+   "mag": 6.7,
+   "lightYears": 25000,
+   "view": "binoculars",
+   "item": "Q11217",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-5/",
+   "photo": {
+    "width": 640,
+    "height": 594,
+    "credit": "NASA, ESA, G. Piotto (Universita degli Studi di Padova); Image Processing: Gladys Kober (NASA/Catholic University of America)",
+    "part": false,
+    "file": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/stars/globular-clusters/Hubble_M5_WFC3_UV_flat_FINAL.jpg"
+   }
+  },
+  {
+   "id": "m81",
+   "messier": 81,
+   "kind": "galaxy",
+   "ra": 148.8882,
+   "dec": 69.0653,
+   "mag": 6.9,
+   "lightYears": 11600000,
+   "view": "binoculars",
+   "item": "Q81102410",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-81/",
+   "photo": {
+    "width": 640,
+    "height": 428,
+    "credit": "NASA, ESA and the Hubble Heritage Team (STScI/AURA)",
+    "part": false,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/m81-print-jpg.webp"
+   }
+  },
+  {
+   "id": "m27",
+   "messier": 27,
+   "kind": "nebula",
+   "ra": 299.9015,
+   "dec": 22.7212,
+   "mag": 7.5,
+   "lightYears": 1200,
+   "view": "telescope",
+   "item": "Q13628",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-27/",
+   "photo": {
+    "width": 640,
+    "height": 380,
+    "credit": "NASA/ESA and the Hubble Heritage Team (STScI/AURA)",
+    "part": true,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/opo0306a-jpg.webp"
+   }
+  },
+  {
+   "id": "m104",
+   "messier": 104,
+   "kind": "galaxy",
+   "ra": 189.9976,
+   "dec": -11.6231,
+   "mag": 8.0,
+   "lightYears": 28000000,
+   "view": "telescope",
+   "item": "Q91461627",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-104/",
+   "photo": {
+    "width": 640,
+    "height": 355,
+    "credit": "NASA and The Hubble Heritage Team (STScI/AURA)",
+    "part": false,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/sombrero-galaxy-hubble-jpg.webp"
+   }
+  },
+  {
+   "id": "m1",
+   "messier": 1,
+   "kind": "nebula",
+   "ra": 83.6331,
+   "dec": 22.0145,
+   "mag": 8.4,
+   "lightYears": 6500,
+   "view": "telescope",
+   "item": "Q10934",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-1/",
+   "photo": {
+    "width": 640,
+    "height": 640,
+    "credit": "NASA, ESA, J. Hester and A. Loll (Arizona State University)",
+    "part": false,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/crab-nebula-mosaic-jpg.webp"
+   }
+  },
+  {
+   "id": "m51",
+   "messier": 51,
+   "kind": "galaxy",
+   "ra": 202.4696,
+   "dec": 47.1953,
+   "mag": 8.4,
+   "lightYears": 31000000,
+   "view": "telescope",
+   "item": "Q13957",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-51/",
+   "photo": {
+    "width": 640,
+    "height": 445,
+    "credit": "NASA, ESA, S. Beckwith (STScI) and the Hubble Heritage Team (STScI/AURA)",
+    "part": false,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/m51-and-companion_0-jpg.webp"
+   }
+  },
+  {
+   "id": "m57",
+   "messier": 57,
+   "kind": "nebula",
+   "ra": 283.3962,
+   "dec": 33.0291,
+   "mag": 8.8,
+   "lightYears": 2000,
+   "view": "telescope",
+   "item": "Q13969",
+   "page": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-57/",
+   "photo": {
+    "width": 640,
+    "height": 640,
+    "credit": "NASA, ESA and the Hubble Heritage (STScI/AURA)-ESA/Hubble Collaboration",
+    "part": false,
+    "file": "https://science.nasa.gov/wp-content/uploads/2023/04/ring-nebula-full_jpg-jpg.webp"
+   }
+  }
+ ]
+}

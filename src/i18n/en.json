@@ -261,12 +261,16 @@
     "photos": "Photos in the cards: NASA and its partners, named under each photo; some are cropped. This program is made independently of NASA.",
     "sky": "The sky from a place: stars — Wikidata (CC0); which stars are joined into constellations — d3-celestial by Olaf Frohn (BSD-3-Clause), after the charts of the IAU and Sky & Telescope; cities — Wikidata. Stars are drawn by day too, and the bending of light by the air near the horizon is not drawn. “Dark enough”, “in view” and “too faint for the eye” are the program’s own measures, not definitions of astronomy. For some stars Wikidata has no visual brightness: there the close Gaia G brightness is used. Proper names of stars: the names approved by the International Astronomical Union, from the list in Wikipedia (CC BY-SA 4.0), and the titles of the stars’ articles in Wikipedia.",
     "stories": "The stories of the constellations and the line on who listed each constellation are written after Wikipedia’s articles and table — the links stand under each card. The texts of the stories may be used under the same licence, CC BY-SA 4.0. The brightest star, the month of the best evenings and the height of a constellation are worked out by the program itself.",
+    "art": "The drawings of the constellations are cards of the star atlas “Urania’s Mirror” (engraved by Sidney Hall, 1825) from Wikimedia Commons, public domain; the scans were restored by Adam Cuerden. From cards that show several constellations the figure needed is cut out. Under each drawing there is a link to the page of its file.",
+    "deep": "Galaxies, nebulae and star clusters on the sky map: what they are, how far and how bright — after NASA’s pages of Hubble’s Messier Catalog; where they are — Wikidata (CC0); the photographs — NASA, ESA and the Space Telescope Science Institute, each named under its photograph.",
     "links": {
       "photoLibrary": "NASA’s image and video library",
       "photoRules": "NASA’s rules for its pictures",
       "starNames": "Wikipedia: list of proper names of stars (in English)",
       "moonRules": "rules of the U.S. Geological Survey",
-      "moonCatalogue": "catalogue of maps"
+      "moonCatalogue": "catalogue of maps",
+      "deepCatalogue": "Hubble’s Messier Catalog",
+      "deepPhotos": "the terms of Hubble’s images"
     }
   },
   "actions": {
@@ -509,6 +513,7 @@
       "title": "The sky",
       "figures": "Lines of the constellations",
       "names": "Names of stars and constellations",
+      "deep": "Galaxies, nebulae and star clusters",
       "night": "Night mode: a red screen that does not dazzle in the dark"
     },
     "constellations": {
@@ -667,6 +672,112 @@
         "Vir": "The name means “maiden” in Latin. The Greeks and Romans identified the constellation with the goddesses Demeter and Persephone, and with Astraea, a goddess of justice, who left the earth and fled to the sky, becoming the constellation. Its star Spica is Latin for “ear of grain”: in Babylon a part of the constellation was “The Furrow” of the goddess Shala with her ear of grain, and so it became associated with fertility. Erigone, the daughter of Icarius, was also seen in it; in the Middle Ages Virgo was associated with the Virgin Mary.",
         "Sco": "Scorpius is a constellation of the zodiac; the Babylonians already called it the Scorpion. In Greek mythology its story belongs to Orion. In one version Orion boasted to the goddess Artemis and her mother Leto that he would kill every animal on Earth, and they sent a giant scorpion to kill him; in others the scorpion was sent by Apollo or by Gaia. Zeus raised both to the sky, where Orion hunts every winter but flees every summer when the scorpion comes.",
         "Oph": "The name comes from the Ancient Greek for “serpent-bearer”, and the constellation is drawn as a man grasping a snake — the snake itself is the constellation Serpens. To the ancient Greeks it was the god Apollo struggling with a huge snake that guarded the Oracle of Delphi. Later it was identified with the healer Asclepius, who learned the secret of keeping death at bay by watching one serpent bring another healing herbs; to keep the human race from becoming immortal Jupiter killed him with a bolt of lightning, but later placed his image in the heavens. Another myth names Laocoön, the Trojan priest slain by two sea serpents."
+      },
+      "art": {
+        "alt": "{name}: a drawing from an old star atlas",
+        "by": "Drawing: {artist}, the atlas “{title}” ({year})",
+        "restored": "scan restored by {name}",
+        "holders": {
+          "loc": "Library of Congress, via Wikimedia Commons",
+          "nms": "National Museums of Scotland, via Wikimedia Commons",
+          "dolby": "via Wikimedia Commons"
+        },
+        "part": "A part of the atlas’s card.",
+        "link": "The file’s page — public domain.",
+        "note": "This is how the constellation was drawn in the 19th century."
+      }
+    },
+    "deep": {
+      "named": "{name} ({messier})",
+      "open": "{name}: open its card",
+      "here": "Within its borders",
+      "kinds": {
+        "galaxy": "Galaxy",
+        "nebula": "Nebula",
+        "open": "Open star cluster",
+        "globular": "Globular star cluster"
+      },
+      "rows": {
+        "constellation": "Constellation",
+        "distance": "Distance",
+        "brightness": "Brightness"
+      },
+      "lightYears": {
+        "one": "{n} light-year",
+        "other": "{n} light-years"
+      },
+      "millions": "{n} million light-years",
+      "magnitude": "magnitude {mag}",
+      "views": {
+        "eye": "seen with the naked eye under a dark sky",
+        "binoculars": "seen through binoculars",
+        "telescope": "needs a telescope"
+      },
+      "photo": {
+        "alt": "{name}: a photograph by the Hubble Space Telescope",
+        "part": "The photograph shows only a part of it: Hubble sees a very narrow patch of the sky.",
+        "credit": "Photo: {credit}.",
+        "shows": {
+          "m45": "The photograph shows not the cluster itself but a cloud of dust beside Merope, one of its stars (the star is just outside the frame, to the upper right): Hubble sees a very narrow patch of the sky."
+        }
+      },
+      "computed": "The month and the height are worked out by the program for the chosen place. “Best in the evening” is the month when the object stands highest at about {hour} o’clock.",
+      "source": "What it is, how far and how bright — after NASA’s page of this object; where it is in the sky — Wikidata.",
+      "links": {
+        "page": "NASA’s page"
+      },
+      "names": {
+        "m1": "Crab Nebula",
+        "m8": "Lagoon Nebula",
+        "m11": "Wild Duck Cluster",
+        "m16": "Eagle Nebula",
+        "m17": "Omega Nebula",
+        "m20": "Trifid Nebula",
+        "m24": "Sagittarius Star Cloud",
+        "m27": "Dumbbell Nebula",
+        "m31": "Andromeda Galaxy",
+        "m33": "Triangulum Galaxy",
+        "m42": "Orion Nebula",
+        "m44": "Beehive Cluster",
+        "m45": "Pleiades",
+        "m51": "Whirlpool Galaxy",
+        "m57": "Ring Nebula",
+        "m104": "Sombrero Galaxy"
+      },
+      "about": {
+        "m1": "What is left of a star that blew up: in 1054 Chinese astronomers saw the explosion in the daytime sky for nearly a month. Today it is a cloud six light-years wide, with a rapidly spinning neutron star — the ultra-dense core of the dead star — at its center. The nebula was discovered by the English astronomer John Bevis in 1731.",
+        "m2": "A ball of over 150,000 stars held together by their own gravity. It is more than 150 light-years across — one of the largest clusters of its kind. Jean-Dominique Maraldi discovered it in 1746 while observing a comet.",
+        "m3": "One of the largest and brightest globular clusters: over 500,000 stars, eight billion years old. It holds more variable stars than any other known cluster. It was the first object of the catalog that Charles Messier discovered himself, in 1764.",
+        "m4": "The globular cluster closest to Earth — a huge ball of stars. It is predicted to hold up to 40,000 white dwarfs: the cores of ancient stars whose outer layers have drifted away. It is relatively easy to find beside the orange-red star Antares. Jean-Philippe Loys de Chéseaux discovered it in 1746.",
+        "m5": "One of the oldest globular clusters of the Milky Way: most of its stars formed more than 12 billion years ago. In binoculars it looks like a patch of light. The German astronomer Gottfried Kirch discovered it in 1702.",
+        "m7": "An open cluster of about 80 stars that formed some 220 million years ago. Claudius Ptolemy recorded it as early as 130 AD — hence its nickname, Ptolemy’s Cluster. It stands right next to the stinger of the Scorpion and is seen best from southern latitudes.",
+        "m8": "A vast cloud of gas and dust where stars are born. The massive young stars inside flood the gas with ultraviolet light and make it shine. The nebula has a star cluster of its own. The Italian astronomer Giovanni Battista Hodierna discovered it in 1654.",
+        "m10": "A bright globular cluster. It is known for its many stars that look far younger than their neighbors. Charles Messier discovered it in 1764.",
+        "m11": "One of the most densely populated open clusters; it formed roughly 220 million years ago. It is named for the V-shaped wedge of its brightest stars. Of the 26 open clusters in Messier’s catalog it is the most distant that can be seen with the naked eye. Gottfried Kirch discovered it in 1681.",
+        "m13": "One of the brightest star clusters of the northern sky: over 100,000 stars. Near its core the stars stand about a hundred times closer together than around our Sun — so close that they sometimes collide. Edmond Halley discovered it in 1714.",
+        "m15": "One of the oldest and densest globular clusters: about 12 billion years old. It was the first globular cluster found to hold a planetary nebula — the gaseous shell of a dying star. Jean-Dominique Maraldi discovered it in 1746.",
+        "m16": "A nebula where stars are born, together with a star cluster. Here stand the famous Pillars of Creation — columns of gas and dust 4 to 5 light-years tall that hide newborn stars; the whole nebula spans 70 by 55 light-years. A small telescope shows the cluster, the pillars need a large one. Jean-Philippe Loys de Chéseaux discovered it in 1745.",
+        "m17": "One of the largest star-forming regions of the Milky Way; it is also called the Swan Nebula. It holds one of our galaxy’s youngest star clusters, only a million years old. The radiation of the young stars evaporates and erodes the cold clouds of gas in which stars form. Jean-Philippe Loys de Chéseaux discovered it in 1745.",
+        "m20": "A nebula where stars are born. It is named for its three bands of thick dust. The young stars flood the gas around them with ultraviolet light and so reshape the nebula itself. Charles Messier discovered it in 1764.",
+        "m22": "One of the globular clusters closest to Earth: a ball of densely packed ancient stars about 70 light-years across. In the sky it takes up as much room as the full Moon. The German amateur Abraham Ihle discovered it in 1665 while looking for Saturn — it is one of the first globular clusters ever found.",
+        "m24": "Not a single object but a clear window between clouds of dust, 600 light-years wide: through it a host of stars of the Sagittarius spiral arm of our galaxy is seen. To the eye it is a hazy patch; binoculars begin to resolve its stars. Charles Messier entered it in his catalog in 1764.",
+        "m27": "The first planetary nebula ever discovered: the shell an old star shed at the end of its life. Such nebulae have nothing to do with planets — the name comes from their round, planet-like look in small telescopes. Charles Messier spotted it in 1764.",
+        "m31": "The nearest major galaxy to our Milky Way. We see it almost edge-on. Hubble has resolved about 200 million stars in it that are hotter than our Sun — only a fraction of all its stars. The first known report of it is in the Book of Fixed Stars by the Persian astronomer Abd al-Rahman al-Sufi, from the year 964.",
+        "m33": "The third-largest galaxy of our Local Group after the Andromeda Galaxy and the Milky Way, about half the size of ours. Stars form in it ten times faster than on average in Andromeda. It is one of the most distant objects a keen eye can see unaided — under an exceptionally clear and dark sky.",
+        "m35": "A relatively young open cluster, about 150 million years old. Its approximately 400 stars are spread over some 30 light-years — hot blue stars beside older orange and red giants. The Swiss astronomer Philippe Loys de Chéseaux discovered it in 1745.",
+        "m42": "The closest large star-forming region to Earth: an enormous cloud of dust and gas where vast numbers of new stars are being made. Four massive young stars in its bright middle shape the nebula. The naked eye can spot it just below Orion’s belt; many cultures have known it throughout history.",
+        "m44": "An open cluster of around 1,000 stars, one of the closest to Earth; it is 600 to 700 million years old. It is also known as Praesepe. To the eye it is a blur of light in Cancer, and binoculars show about 20 stars. Galileo was the first to make out stars in it — around forty.",
+        "m45": "An open cluster also called the Seven Sisters: over a thousand stars loosely bound by gravity, of which the eye sees only a handful of the brightest. It has been known since ancient times, so it has no discoverer; Galileo Galilei was the first to look at it through a telescope.",
+        "m48": "An open cluster of middle age: from 100–200 stars at its core to as many as 1,000 in all. Charles Messier recorded it in 1771 at the wrong position, and the cluster was “lost” — it was found again by Johann Elert Bode around 1782 and by Caroline Herschel in 1783.",
+        "m51": "A spiral galaxy. Its arms are star factories: they compress hydrogen gas and make clusters of new stars. Some astronomers think the arms are so prominent because of a close encounter with the small, yellowish galaxy at the tip of one of them. Charles Messier discovered it in 1773.",
+        "m55": "A globular cluster of 100,000 stars about 100 light-years across. It is large and reasonably bright, but it has no dense core and many of its stars are faint — so in binoculars it is only a round hazy patch. It was first spotted in 1752 from what is now South Africa.",
+        "m57": "The glowing remains of a Sun-like star. The blue gas in the middle is in fact an elongated cloud seen end-on, piercing the red doughnut around it. The colors show what it is made of: deep blue is helium, light blue is hydrogen and oxygen, reddish is nitrogen and sulfur. The French astronomer Antoine Darquier de Pellepoix discovered it in 1779.",
+        "m62": "One of the most irregularly shaped globular clusters of our galaxy, almost 12 billion years old. Its very dense core holds 150,000 stars. It is easily found from the bright star Antares. Charles Messier discovered it in 1771.",
+        "m67": "Over 500 stars loosely bound by gravity. Open clusters are usually young, but this is one of the oldest known: about 4 billion years, nearly the age of our Sun. About a hundred of its stars are like the Sun in composition and age. The German astronomer Johann Gottfried Koehler first recorded it in 1779.",
+        "m71": "A ball of ancient stars about 27 light-years across; they are 9 to 10 billion years old. Only in the 1970s did astronomers come to the view that it is a globular cluster, though a rather sparse one. The Swiss astronomer Jean-Philippe de Chéseaux spotted it in the middle of the eighteenth century.",
+        "m81": "One of the brightest galaxies of the night sky. Its spiral arms, which wind all the way down into the nucleus, are made of young, hot, bluish stars. At its center sits a black hole of 70 million solar masses — about 15 times the mass of the Milky Way’s central black hole. The German astronomer Johann Elert Bode discovered it in 1774.",
+        "m92": "One of the brightest and oldest globular clusters of the Milky Way: almost as old as the Universe. About 330,000 stars are tightly packed in it. It orbits the core of our galaxy like a satellite. Johann Elert Bode discovered it in 1777.",
+        "m104": "A spiral galaxy seen nearly edge-on, like a broad-brimmed Mexican hat. Its brilliant white core is encircled by thick lanes of dust. Nearly 2,000 globular clusters surround it — ten times more than the Milky Way has. The French astronomer Pierre Méchain discovered it in 1781."
       }
     }
   },

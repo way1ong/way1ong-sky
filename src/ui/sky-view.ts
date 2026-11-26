@@ -1,10 +1,12 @@
 // The sky from a place, painted on a flat canvas: the ground and the horizon with the points of the compass,
-// the figures of the constellations, the stars, the Sun, the Moon and the planets, and their names. It only
+// the figures of the constellations, the stars, the marks of galaxies, nebulae and clusters, the Sun, the
+// Moon and the planets, and their names. It only
 // paints what it is told: where the view looks, how the sky is turned, which layers are on.
 import { SKY } from '../config.ts';
+import { DEEP, deepNamed, messierName, type DeepKind } from '../core/deep-sky.ts';
 import { horizonOnScreen, project, skyDirection, type Frame, type Look } from '../core/dome.ts';
 import { moonLitFraction } from '../core/ephemeris.ts';
-import { markBox, nameBox, placeAround, placeBeside, shared, type Box, type NameAlign } from '../core/labels.ts';
+import { markBox, nameBox, placeAround, placeBeside, placeFree, shared, type Box, type NameAlign } from '../core/labels.ts';
 import { faintestShown, markRadius, pickedInSky, tooFaintForTheEye, type Picked } from '../core/pick.ts';
 import { SKY_BODY_IDS, altAz, bodyInSky, bodyMagnitude, toSky, type SkyBodyId, type SkyTurn } from '../core/sky.ts';
 import { FIGURES, NAMED_STARS, STARS, STARS_LIMIT, starName } from '../core/stars.ts';
@@ -14,6 +16,8 @@ import type { Dict } from './i18n.ts';
 export interface SkyLayers {
   figures: boolean;
   names: boolean;
+  /** The marks of galaxies, nebulae and star clusters. */
+  deep: boolean;
 }
 
 export interface SkyPicture {
@@ -41,7 +45,7 @@ export interface SkyView {
 
 const COMPASS = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'] as const;
 
-type Colours = Record<'night' | 'day' | 'ground' | 'horizon' | 'star' | 'figure' | 'figureName' | 'sun' | 'moon' | 'planet' | 'text' | 'muted' | 'bg', string>;
+type Colours = Record<'night' | 'day' | 'ground' | 'horizon' | 'star' | 'figure' | 'figureName' | 'deep' | 'sun' | 'moon' | 'planet' | 'text' | 'muted' | 'bg', string>;
 
 /** "#rrggbb" as numbers, to mix two colours. */
 function rgb(hex: string): [number, number, number] {
@@ -54,6 +58,37 @@ const blend = (a: Rgb, b: Rgb, t: number): Rgb => [a[0] + (b[0] - a[0]) * t, a[1
 const written = (colour: Rgb): string => `rgb(${colour.map(Math.round).join(' ')})`;
 const mix = (a: string, b: string, t: number): string => written(blend(rgb(a), rgb(b), t));
 const between = (t: number) => Math.max(0, Math.min(1, t));
+
+/**
+ * The signs star charts use: a galaxy is an oval, a nebula a square, an open cluster a dotted circle, a
+ * globular cluster a circle with a cross.
+ */
+const deepSign: Record<DeepKind, (ctx: CanvasRenderingContext2D, x: number, y: number, r: number) => void> = {
+  galaxy(ctx, x, y, r) {
+    ctx.beginPath();
+    ctx.ellipse(x, y, r * 1.25, r * 0.6, -Math.PI / 6, 0, Math.PI * 2);
+    ctx.stroke();
+  },
+  nebula(ctx, x, y, r) {
+    ctx.strokeRect(x - r * 0.85, y - r * 0.85, r * 1.7, r * 1.7);
+  },
+  open(ctx, x, y, r) {
+    ctx.setLineDash([2.5, 2.5]);
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  },
+  globular(ctx, x, y, r) {
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.moveTo(x - r, y);
+    ctx.lineTo(x + r, y);
+    ctx.moveTo(x, y - r);
+    ctx.lineTo(x, y + r);
+    ctx.stroke();
+  },
+};
 
 export function createSkyView(canvas: HTMLCanvasElement): SkyView {
   const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
@@ -78,6 +113,7 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
       star: get('--star'),
       figure: get('--figure'),
       figureName: get('--figure-name'),
+      deep: get('--deep'),
       sun: get('--sun'),
       moon: get('--moon'),
       planet: get('--planet'),
@@ -166,6 +202,24 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
       ctx.fill();
     }
     ctx.globalAlpha = 1;
+
+    // ---------- galaxies, nebulae, clusters: the signs of star charts ----------
+    const deepMarks: { x: number; y: number; name: string }[] = [];
+    if (layers.deep) {
+      const r = SKY.deep.markPx;
+      ctx.strokeStyle = c.deep;
+      ctx.lineWidth = 1.4;
+      ctx.globalAlpha = 0.35 + 0.65 * starStrength;
+      for (const o of DEEP) {
+        const sky = toSky(turn, o.at);
+        if (sky[2] < 0) continue;
+        const p = project(look, f, sky);
+        if (!p || p.x < -r || p.y < -r || p.x > width + r || p.y > height + r) continue;
+        deepSign[o.kind](ctx, p.x, p.y, r);
+        if (deepNamed(o, look.fov)) deepMarks.push({ x: p.x, y: p.y, name: (d.sky.deep.names as Record<string, string>)[o.id] ?? messierName(o) });
+      }
+      ctx.globalAlpha = 1;
+    }
 
     // ---------- the Sun, the Moon, the planets ----------
     const marks: { x: number; y: number; r: number; name: string; magnitude: number; faint: boolean }[] = [];
@@ -291,6 +345,16 @@ export function createSkyView(canvas: HTMLCanvasElement): SkyView {
       ctx.font = `${mark.faint ? 500 : 650} ${size}px ${family}`;
       const place = placeBeside(mark, ctx.measureText(mark.name).width, size, paint.labelGapPx, taken, seen);
       if (place) put(mark.name, place.x, place.y, mark.faint ? c.muted : c.text, place.align, place.box);
+    }
+    // The names of galaxies, nebulae and clusters, in the colour of their marks; no other name covers a mark.
+    for (const mark of deepMarks) taken.push(markBox({ ...mark, r: SKY.deep.markPx }));
+    if (layers.names) {
+      ctx.font = `500 12px ${family}`;
+      for (const mark of deepMarks) {
+        // Beside its mark wherever there is room: to the right, to the left, under or over; with no room — no name.
+        const place = placeFree({ ...mark, r: SKY.deep.markPx }, ctx.measureText(mark.name).width, 12, paint.labelGapPx, taken, seen);
+        if (place) put(mark.name, place.x, place.y, c.deep, place.align, place.box);
+      }
     }
     if (layers.names) {
       const named = paint.named.wide + (paint.named.narrow - paint.named.wide) * near;

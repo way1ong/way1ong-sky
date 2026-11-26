@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { SKY } from '../config.ts';
 import { project, type Frame } from './dome.ts';
-import { markBox, nameBox, placeAround, placeBeside, shared, type Box } from './labels.ts';
+import { markBox, nameBox, placeAround, placeBeside, placeFree, shared, type Box } from './labels.ts';
 import { CITIES } from './places.ts';
 import { altAz, bodyInSky, bodyMagnitude, skyTurn } from './sky.ts';
 
@@ -123,5 +123,42 @@ describe('a name at a point of its own (a constellation at the middle of its fig
       taken.push(place.box);
     }
     expect(taken.length).toBeGreaterThan(10);
+  });
+});
+
+describe('a name that may be left out (a galaxy, a cluster)', () => {
+  const seen: Box = { left: 0, right: 360, top: 0, bottom: 640 };
+  const mark = { x: 180, y: 300, r: 6 };
+  const width = 60;
+  const size = 12;
+  const gap = 4;
+
+  it('stands to the right of its mark when that is free, and does not touch the mark', () => {
+    const place = placeFree(mark, width, size, gap, [markBox(mark)], seen);
+    expect(place?.align).toBe('left');
+    expect(shared(place!.box, markBox(mark))).toBe(0);
+  });
+
+  it('moves to the left, under, over as the places are taken', () => {
+    // Something thin on the mark's own row to the right, then to the left too: a line of a figure, a star's name.
+    const atRight: Box = { left: 200, right: 230, top: 298, bottom: 302 };
+    const atLeft: Box = { left: 130, right: 160, top: 298, bottom: 302 };
+    expect(placeFree(mark, width, size, gap, [atRight], seen)?.align).toBe('right');
+    const under = placeFree(mark, width, size, gap, [atRight, atLeft], seen)!;
+    expect(under.align).toBe('center');
+    expect(under.y).toBeGreaterThan(mark.y);
+    const over = placeFree(mark, width, size, gap, [atRight, atLeft, under.box], seen)!;
+    expect(over.y).toBeLessThan(mark.y);
+  });
+
+  it('is left out when all four places are taken — it never covers another name', () => {
+    const all: Box = { left: 0, right: 360, top: 250, bottom: 350 };
+    expect(placeFree(mark, width, size, gap, [all], seen)).toBeNull();
+  });
+
+  it('a neighbour a pixel into the place to the right is enough to move it', () => {
+    const right = placeFree(mark, width, size, gap, [], seen)!;
+    const neighbour: Box = { left: right.box.left + 3, right: right.box.right, top: right.box.bottom - 1, bottom: right.box.bottom + 19 };
+    expect(placeFree(mark, width, size, gap, [neighbour], seen)?.align).toBe('right');
   });
 });

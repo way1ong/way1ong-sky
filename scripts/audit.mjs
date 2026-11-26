@@ -289,8 +289,9 @@ for (const [width, height] of SIZES) {
       const card = page.locator('.pick');
       for (const [dx, dy] of [[0, 0], [-1, -1], [1, -1], [0, -1.5], [-0.5, 0.5], [0.5, 0.5], [-1, 0], [1, 0]]) {
         await page.mouse.click(room.x + dx * room.w, room.y + dy * room.h);
-        // The touch may have landed on the name of a constellation: its card is a window, looked at below.
-        if (await page.locator('dialog[open] #constellation-title').count()) await closeDialog(page);
+        // The touch may have landed on the name of a constellation or on the mark of a galaxy, a nebula or a
+        // cluster: their cards are windows, looked at below.
+        if (await page.locator('dialog[open] #constellation-title, dialog[open] #deep-title').count()) await closeDialog(page);
         if (await card.isVisible()) break;
       }
       if (!(await card.isVisible())) note(where, 'no touch on the sky opened the card of a star');
@@ -317,6 +318,55 @@ for (const [width, height] of SIZES) {
         }
         await page.keyboard.press('Escape');
         if (await card.isVisible()) note(where, 'Escape does not close the card of a star');
+      }
+      // Galaxies, nebulae and clusters: somewhere in the sky a touch finds the mark of one (the marks are on the
+      // picture, so the touch feels for them across the free sky), and its card tells what it is. Felt for in
+      // one language: it is the same sky in all of them. Not on the narrowest phone: there a star's card covers
+      // the free sky, the sky moves up for every star named, and a search by touch drives the view into the
+      // ground — the card itself is the same window as on the other screens.
+      if (lang === 'en' && width >= 360) {
+        const deep = page.locator('dialog[open] #deep-title');
+        // On a small phone the free sky is a narrow band that may hold no mark at the moment: then the sky is
+        // turned — higher, then to one side and to the other — and felt again.
+        const turns = [null, [0, 1.4], [1.6, 0], [-3.2, 0]];
+        search: for (const turn of turns) {
+          if (turn) {
+            await page.mouse.move(room.x - (turn[0] * room.w) / 2, room.y - (turn[1] * room.h) / 2);
+            await page.mouse.down();
+            await page.mouse.move(room.x + (turn[0] * room.w) / 2, room.y + (turn[1] * room.h) / 2, { steps: 6 });
+            await page.mouse.up();
+          }
+          // Whole steps: with steps of 0.3 the sum misses the last row and the last column.
+          for (let row = -6; row <= 6; row++) {
+            for (let column = -6; column <= 6; column++) {
+              await page.mouse.click(room.x + column * 0.3 * room.w, room.y + row * 0.3 * room.h);
+              if (await deep.count()) break search;
+              if (await page.locator('dialog[open]').count()) await closeDialog(page);
+              // A star's card lies over the sky (over most of it on a small phone): it is put away, or the
+              // next touches would land on it and its buttons.
+              if (await card.isVisible()) await page.keyboard.press('Escape');
+            }
+          }
+        }
+        if (!(await deep.count())) note(where, 'no touch on the sky found a galaxy, a nebula or a cluster');
+        else {
+          if (!((await deep.textContent()) ?? '').trim()) note(where, 'the card of a galaxy, a nebula or a cluster has no name');
+          if ((await page.locator('dialog[open] .fact').count()) < 4) note(where, 'the card of a galaxy, a nebula or a cluster tells less than four things');
+          if (!(await page.locator('dialog[open] .fact__about').count())) note(where, 'the card of a galaxy, a nebula or a cluster does not say what it is');
+          if (!(await page.locator('dialog[open] a[href*="science.nasa.gov"]').count())) note(where, 'the card of a galaxy, a nebula or a cluster has no link to its source');
+          // A photograph never stands without whose it is.
+          if ((await page.locator('dialog[open] figure img').count()) && !((await page.locator('dialog[open] figcaption').textContent()) ?? '').trim()) note(where, 'a photograph of a galaxy, a nebula or a cluster without its credit');
+          await page.locator('dialog[open] figure img').evaluate((img) => img.decode().catch(() => undefined)).catch(() => undefined);
+          await look(page, where, 'deep-sky');
+          // Its card leads to the card of its constellation, and that one names it back.
+          await page.locator('dialog[open] .dialog__actions .chip').click();
+          await page.waitForSelector('dialog[open] #constellation-title', { timeout: 3000 }).catch(() => undefined);
+          if (!(await page.locator('dialog[open] #constellation-title').count())) note(where, 'the card of a galaxy, a nebula or a cluster does not lead to its constellation');
+          else if (!(await page.locator('dialog[open] .chips .chip').count())) note(where, 'the card of a constellation does not name what lies within it');
+          await look(page, where, 'constellation-deep');
+          await closeDialog(page);
+        }
+        await page.keyboard.press('Escape');
       }
       // A drag turns the sky and names nothing.
       await page.mouse.move(room.x, room.y);
@@ -387,7 +437,8 @@ for (const [width, height] of SIZES) {
       await page.locator('.top .icon-btn:not(.icon-btn--wide)').last().click();
       await page.waitForSelector('dialog[open] [role="switch"]');
       await look(page, where, 'menu');
-      await page.locator('dialog[open] [role="switch"]').nth(2).click();
+      if ((await page.locator('dialog[open] [role="switch"]').count()) !== 4) note(where, 'the menu must have four switches of the sky: lines, names, galaxies and nebulae, night mode');
+      await page.locator('dialog[open] [role="switch"]').last().click();
       await closeDialog(page);
       await page.waitForTimeout(200);
       if (!(await page.evaluate(() => document.documentElement.hasAttribute('data-night')))) note(where, 'night mode did not turn on');

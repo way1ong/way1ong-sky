@@ -3,13 +3,14 @@
 import { SKY } from '../config.ts';
 import { BODY_IDS, PLANET_IDS, SATELLITE_IDS, WORLD_IDS, isSatellite, parentOf, radiusKm, type BodyId, type WorldId } from '../core/bodies.ts';
 import { RATES, atLimit, isLive, isRunningFast, jumpTo, liveClock, showsSpin, showsTimeOfDay, shownAt, slowedTo, stepRate, togglePause, type Clock } from '../core/clock.ts';
-import { firstLook, project, turnLook, zoomLook, type Look } from '../core/dome.ts';
+import { firstLook, project, turnLook, zoomLook, type Frame, type Look } from '../core/dome.ts';
 import type { SkyEvent } from '../core/events.ts';
 import { nextLunarEclipse, nextSolarEclipse } from '../core/eclipses.ts';
 import { attitude, orbitKm, positionsKm, type Attitude } from '../core/ephemeris.ts';
 import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, facing, flightAt, progress, type Flight, type View } from '../core/flight.ts';
 import { advance, freeFrom, keepOutside, lookPoint, nearest, radiusOnScreenPx, turnFree, type FreeView } from '../core/free.ts';
 import { moonsBesideJupiter } from '../core/jupiter-moons.ts';
+import { deepAt, deepById, deepNearerThanBody, type DeepObject } from '../core/deep-sky.ts';
 import { pickAt, pickedInSky, skyInfo, type Picked } from '../core/pick.ts';
 import { cityById, cityName, firstCity, type City } from '../core/places.ts';
 import type { PlanetTonight } from '../core/tonight.ts';
@@ -32,6 +33,7 @@ import { createSiteDialog } from './site-dialog.ts';
 import { dayUT, missionName } from './site-text.ts';
 import { createAim } from './aim.ts';
 import { createConstellationDialog } from './constellation-dialog.ts';
+import { createDeepSkyDialog } from './deep-sky-dialog.ts';
 import { createSkyView, type SkyLayers } from './sky-view.ts';
 import { createTimeDialog } from './time-dialog.ts';
 import { createTonightDialog } from './tonight-dialog.ts';
@@ -44,6 +46,7 @@ interface Saved {
   place?: string;
   figures?: boolean;
   names?: boolean;
+  deep?: boolean;
   night?: boolean;
 }
 
@@ -55,6 +58,7 @@ function load(): Saved {
       place: typeof saved.place === 'string' ? saved.place : undefined,
       figures: typeof saved.figures === 'boolean' ? saved.figures : undefined,
       names: typeof saved.names === 'boolean' ? saved.names : undefined,
+      deep: typeof saved.deep === 'boolean' ? saved.deep : undefined,
       night: typeof saved.night === 'boolean' ? saved.night : undefined,
     };
   } catch {
@@ -88,12 +92,12 @@ export function startApp(root: HTMLElement): void {
   let look: Look = firstLook();
   /** The place the sky is shown for: the saved one, else the city of the device's time zone, else a capital by language. */
   let place: City = cityById(saved.place) ?? firstCity(new Intl.DateTimeFormat().resolvedOptions().timeZone, lang);
-  let layers: SkyLayers = { figures: saved.figures ?? true, names: saved.names ?? true };
+  let layers: SkyLayers = { figures: saved.figures ?? true, names: saved.names ?? true, deep: saved.deep ?? true };
   /** How the sky is turned over the place at the moment shown; null — to be worked out again. */
   let turnNow: SkyTurn | null = null;
   /** The red screen for the dark: on while the sky is on the screen. */
   let night = saved.night ?? false;
-  const keep = () => save({ lang, place: place.id, figures: layers.figures, names: layers.names, night });
+  const keep = () => save({ lang, place: place.id, figures: layers.figures, names: layers.names, deep: layers.deep, night });
   let flight: Flight | null = null;
   /** Free flight: the camera stands where the player has flown it, tied to no body. */
   let free: FreeView | null = null;
@@ -199,6 +203,7 @@ export function startApp(root: HTMLElement): void {
   const placeDialog = createPlaceDialog();
   const tonightDialog = createTonightDialog();
   const constellationDialog = createConstellationDialog();
+  const deepDialog = createDeepSkyDialog();
   const stage = h('div', { class: 'stage' }, canvas, skyCanvas, labels, siteMarks);
   const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine, nearLine), factsBtn, menuBtn, wideBtn);
   scaleBar.append(scaleBox);
@@ -221,6 +226,7 @@ export function startApp(root: HTMLElement): void {
     placeDialog.el,
     tonightDialog.el,
     constellationDialog.el,
+    deepDialog.el,
   );
   root.replaceChildren(main);
 
@@ -606,17 +612,23 @@ export function startApp(root: HTMLElement): void {
     },
     tap(x, y) {
       const found = pickAt(x, y, look, skyView.frame(), (turnNow ??= skyTurn(place, date)));
-      // A planet's mark wins; the name of a constellation wins over the stars when the finger is on its
-      // letters, or near them with no star in reach.
-      const figure = found?.kind === 'body' ? null : skyView.figureAt(x, y);
-      if (figure && (figure.gap === 0 || !found)) showConstellation(figure.id);
+      // A planet's mark wins over the stars; the mark of a galaxy, a nebula or a cluster wins over a star
+      // beside it — its card tells more — and over a planet when the finger is nearer to it (Uranus by the
+      // Pleiades); the name of a constellation wins over the stars when the finger is on its letters, or
+      // near them with no star in reach.
+      const deep = deepUnder(x, y, skyView.frame(), found);
+      const figure = found?.kind === 'body' || deep ? null : skyView.figureAt(x, y);
+      if (deep) showDeep(deep.id);
+      else if (figure && (figure.gap === 0 || !found)) showConstellation(figure.id);
       else if (found) showPicked(found, true);
       else closePicked();
     },
     pick() {
       const middle = skyView.frame();
       const found = pickAt(middle.cx, middle.cy, look, middle, (turnNow ??= skyTurn(place, date)));
-      if (found) showPicked(found, true);
+      const deep = deepUnder(middle.cx, middle.cy, middle, found);
+      if (deep) showDeep(deep.id);
+      else if (found) showPicked(found, true);
       else say(d.sky.pick.none);
     },
   });
@@ -689,7 +701,22 @@ export function startApp(root: HTMLElement): void {
   }
   /** The card of a constellation: its story, if one is written, and what the program works out about it. */
   function showConstellation(id: string): void {
-    constellationDialog.open(d, lang, id, place, (turnNow ??= skyTurn(place, date)));
+    constellationDialog.open(d, lang, id, place, (turnNow ??= skyTurn(place, date)), showDeep);
+  }
+  /** The galaxy, nebula or cluster a touch means, given the star or body found under it; null — none. */
+  function deepUnder(x: number, y: number, frame: Frame, found: Picked | null): DeepObject | null {
+    if (!layers.deep) return null;
+    const turn = (turnNow ??= skyTurn(place, date));
+    const o = deepAt(x, y, look, frame, turn);
+    if (!o || found?.kind !== 'body') return o;
+    return deepNearerThanBody(x, y, look, frame, turn, o, pickedInSky(found, turn)) ? o : null;
+  }
+  /** The card of a galaxy, a nebula or a star cluster. */
+  function showDeep(id: string): void {
+    const o = deepById(id);
+    if (!o) return;
+    closePicked();
+    deepDialog.open(d, lang, o, place, (turnNow ??= skyTurn(place, date)), () => showConstellation(o.constellation));
   }
   /** Takes the card and the ring away. */
   function closePicked(): void {
@@ -803,6 +830,7 @@ export function startApp(root: HTMLElement): void {
       {
         figures: layers.figures,
         names: layers.names,
+        deep: layers.deep,
         night,
         toggle(choice) {
           if (choice === 'night') night = !night;
