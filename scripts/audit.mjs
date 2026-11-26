@@ -208,9 +208,22 @@ for (const [width, height] of SIZES) {
       if ((await moons.count()) !== 4) note(where, `Jupiter's card lists ${await moons.count()} moons`);
       const moon = ((await moons.first().textContent()) ?? '').trim();
       // Beside Jupiter its moons are named over the picture (by a moon seen close up there may be nothing else in view).
+      // On a narrow screen they may all stand past its edges at this hour: then a look from farther away shows them.
       const moonNames = (await moons.allTextContents()).map((text) => text.trim());
-      const named = (await page.locator('.labels[aria-hidden] .label:not([hidden])').allTextContents()).map((text) => text.trim());
-      if (!named.some((text) => moonNames.includes(text))) note(where, `no moon is named over the picture beside Jupiter: ${named.join(', ')}`);
+      const namedNow = async () => (await page.locator('.labels[aria-hidden] .label:not([hidden])').allTextContents()).map((text) => text.trim());
+      let named = await namedNow();
+      if (!named.some((text) => moonNames.includes(text))) {
+        await closeDialog(page);
+        await page.locator('canvas:not(.sky)').focus();
+        for (let step = 0; step < 8 && !named.some((text) => moonNames.includes(text)); step++) {
+          await page.keyboard.press('-');
+          await page.waitForTimeout(300);
+          named = await namedNow();
+        }
+        if (!named.some((text) => moonNames.includes(text))) note(where, `no moon is named over the picture beside Jupiter, even from farther away: ${named.join(', ')}`);
+        await page.locator('.top .icon-btn').first().click();
+        await page.waitForSelector('dialog[open] section[aria-labelledby="moons-title"]');
+      }
       await moons.first().click();
       await page.waitForTimeout(2400);
       if (((await page.locator('.top__name').textContent()) ?? '').trim() !== moon) note(where, `the flight from Jupiter's card did not come to ${moon}: ${await page.locator('.top__name').textContent()}`);
@@ -377,7 +390,8 @@ for (const [width, height] of SIZES) {
       // The keyboard: Enter names what is in the middle, or says there is nothing there.
       await page.locator('canvas.sky').focus();
       await page.keyboard.press('Enter');
-      if (!(await card.isVisible()) && !(await page.locator('.note:not(.pick)').isVisible())) note(where, 'Enter on the sky neither names a star nor says there is none');
+      // (A galaxy, a nebula or a cluster in the middle opens its own card, a window.)
+      if (!(await card.isVisible()) && !(await page.locator('.note:not(.pick)').isVisible()) && !(await page.locator('dialog[open]').count())) note(where, 'Enter on the sky neither names a star nor says there is none');
       await page.keyboard.press('Escape');
       await page.locator('.note:not(.pick) .icon-btn').click().catch(() => undefined);
       // Jupiter through binoculars: when Jupiter is in view tonight, its card on the map opens a drawing of its
@@ -434,6 +448,57 @@ for (const [width, height] of SIZES) {
       } else {
         await closeDialog(page);
       }
+      // The instruments of astronomers: from the menu to the list, then card after card to the last one — each
+      // with its drawing, whose labels stay inside it and do not lie on one another, its text and its sources.
+      await page.locator('.top .icon-btn:not(.icon-btn--wide)').last().click();
+      await page.waitForSelector('dialog[open] [role="switch"]');
+      await page.locator('dialog[open] section[aria-labelledby="read-title"] .chip').click();
+      await page.waitForSelector('dialog[open] .instruments', { timeout: 3000 }).catch(() => undefined);
+      const instruments = await page.locator('dialog[open] .instrument').count();
+      if (instruments < 10) note(where, `the list of instruments holds ${instruments} of them`);
+      else {
+        await look(page, where, 'instruments');
+        await page.locator('dialog[open] .instrument').first().click();
+        for (let i = 0; i < instruments; i++) {
+          await page.waitForSelector('dialog[open] svg.diagram');
+          const name = ((await page.locator('#instruments-title').textContent()) ?? '').trim();
+          const drawing = await page.evaluate(() => {
+            const svg = document.querySelector('dialog[open] svg.diagram');
+            const [, , w, h] = svg.getAttribute('viewBox').split(' ').map(Number);
+            const boxes = [...svg.querySelectorAll('text')].map((text) => ({ words: text.textContent, box: text.getBBox() }));
+            const wrong = [];
+            if (boxes.length < 3) wrong.push(`only ${boxes.length} labels`);
+            for (const { words, box } of boxes) {
+              if (!words.trim()) wrong.push('an empty label');
+              if (box.x < 0 || box.x + box.width > w || box.y < 0 || box.y + box.height > h) wrong.push(`the label "${words}" runs out of the drawing`);
+            }
+            for (let a = 0; a < boxes.length; a++) {
+              for (let b = a + 1; b < boxes.length; b++) {
+                const [one, other] = [boxes[a].box, boxes[b].box];
+                if (Math.min(one.x + one.width, other.x + other.width) - Math.max(one.x, other.x) > 0 && Math.min(one.y + one.height, other.y + other.height) - Math.max(one.y, other.y) > 1) wrong.push(`the labels "${boxes[a].words}" and "${boxes[b].words}" lie on one another`);
+              }
+            }
+            return wrong;
+          });
+          for (const wrong of drawing) note(where, `the instrument "${name}": ${wrong}`);
+          if (!name) note(where, `the card of instrument ${i + 1} has no name`);
+          if ((await page.locator('dialog[open] .fact__about').count()) < 2) note(where, `the instrument "${name}" is told in less than two paragraphs`);
+          if (!(await page.locator('dialog[open] .fact__source a[href]').count())) note(where, `the instrument "${name}" names no source`);
+          // An engraving never stands without where it is from.
+          if ((await page.locator('dialog[open] figure img').count()) && !(await page.locator('dialog[open] figure a[href*="commons.wikimedia.org"]').count())) note(where, `the engraving of "${name}" has no link to its file`);
+          if (i === 1 || i === 4) {
+            await page.locator('dialog[open] figure img').evaluate((img) => img.decode().catch(() => undefined)).catch(() => undefined);
+            await look(page, where, `instrument-${i + 1}`);
+          }
+          if (i < instruments - 1) await page.locator('dialog[open] .steps .chip').last().click();
+        }
+        // From the last card back to the list: the focus returns to the instrument that was read.
+        await page.locator('dialog[open] .dialog__actions .chip').click();
+        await page.waitForSelector('dialog[open] .instruments', { timeout: 3000 }).catch(() => undefined);
+        if (!(await page.evaluate(() => document.activeElement?.classList.contains('instrument')))) note(where, 'back in the list of instruments the focus is not on an instrument');
+      }
+      await closeDialog(page);
+
       await page.locator('.top .icon-btn:not(.icon-btn--wide)').last().click();
       await page.waitForSelector('dialog[open] [role="switch"]');
       await look(page, where, 'menu');

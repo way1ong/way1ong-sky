@@ -28,11 +28,15 @@ export interface SkyChoices {
   toggle(choice: 'figures' | 'names' | 'deep' | 'night'): void;
 }
 
-export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang: string, setLang: (code: string) => void, sky: SkyChoices): void } {
+export function createMenuDialog(): {
+  el: HTMLDialogElement;
+  /** `instruments` — opens the section on the instruments of astronomers. */
+  open(d: Dict, lang: string, setLang: (code: string) => void, sky: SkyChoices, instruments: () => void): void;
+} {
   const el = h('dialog', { class: 'dialog', 'aria-labelledby': 'menu-title' });
   return {
     el,
-    open(d, lang, setLang, sky) {
+    open(d, lang, setLang, sky, instruments) {
       // The languages as buttons, each with its flag and its own name: a list of options cannot show pictures.
       const langs = h('ul', { class: 'langs', 'aria-labelledby': 'lang-label' });
       let current: HTMLButtonElement | null = null;
@@ -51,6 +55,12 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
         });
         choices.append(h('li', {}, button));
       }
+      // What is read rather than looked at: the instruments of astronomers.
+      const toInstruments = h('button', { class: 'chip chip--wide', type: 'button' }, d.instruments.open);
+      toInstruments.addEventListener('click', () => {
+        el.close();
+        instruments();
+      });
       // Installing: the browser's own window where it has one, a short instruction on iPhone and iPad.
       const way = installWay();
       const installButton = h('button', { class: 'chip chip--wide', type: 'button' }, d.install.button);
@@ -69,6 +79,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
           h('h2', { id: 'menu-title' }, d.settings.title),
           h('div', { class: 'field' }, h('p', { id: 'lang-label' }, d.settings.language), langs),
           h('section', { class: 'site-section', 'aria-labelledby': 'sky-choices' }, h('h3', { id: 'sky-choices' }, d.sky.menu.title), choices),
+          h('section', { class: 'site-section', 'aria-labelledby': 'read-title' }, h('h3', { id: 'read-title' }, d.instruments.read), toInstruments),
           installing,
           h('h2', {}, d.about.title),
           h('p', {}, d.about.text),
@@ -85,6 +96,7 @@ export function createMenuDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
             h('li', {}, d.about.stories, ' ', link(BY_SA_URL, 'CC BY-SA 4.0')),
             h('li', {}, d.about.art, ' ', link(ART_SET.category, 'Wikimedia Commons')),
             h('li', {}, d.about.deep, ' ', link(DEEP_SOURCE.facts.url, d.about.links.deepCatalogue), ' · ', link(DEEP_SOURCE.positions.url, DEEP_SOURCE.positions.title), ' · ', link(DEEP_SOURCE.photos.url, d.about.links.deepPhotos)),
+            h('li', {}, d.about.instruments, ' ', link(BY_SA_URL, 'CC BY-SA 4.0')),
             h('li', {}, d.about.shadows),
             h('li', {}, d.about.aim),
             h('li', {}, d.about.engine),

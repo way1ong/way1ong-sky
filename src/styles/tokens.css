@@ -30,6 +30,12 @@
   --figure: #5f7fb8;
   --figure-name: #8fa9d8;
   --deep: #8fd8c0;
+  /* The band of colours in the drawing of the spectroscope, from red to violet. */
+  --spec-1: #ff6b5e;
+  --spec-2: #ffd76a;
+  --spec-3: #7fd67f;
+  --spec-4: #6aa9ff;
+  --spec-5: #b48cff;
   --sun: #ffd76a;
   --moon: #e8e6dc;
   --planet: #ffb58a;
@@ -55,6 +61,11 @@
   --figure: #7a2f28;
   --figure-name: #c8584b;
   --deep: #e0705f;
+  --spec-1: #ff8f80;
+  --spec-2: #e86a5a;
+  --spec-3: #c8584b;
+  --spec-4: #a8463b;
+  --spec-5: #7a2f28;
   --sun: #ff9a85;
   --moon: #f08576;
   --planet: #e86a5a;
