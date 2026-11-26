@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { SKY } from '../config.ts';
-import { bestEvening, brightestStars, figureMiddle, figureNow, overPlace } from './constellations.ts';
+import { bestEvening, brightestStars, figureMiddle, figureNow, overPlace, poleStarNow } from './constellations.ts';
 import { altAz, skyTurn, toSky } from './sky.ts';
 import { FIGURES, STARS, starName } from './stars.ts';
 import { length } from './vec.ts';
@@ -103,5 +103,26 @@ describe('how a figure lives in the sky of a place', () => {
 
   it('the middle of a figure is a direction of length 1', () => {
     for (const id of Object.keys(FIGURES)) expect(length(figureMiddle(id))).toBeCloseTo(1, 9);
+  });
+});
+
+// Wikipedia, "Ursa Minor" (revision 1370790757): "Ursa Minor has traditionally been important for navigation,
+// particularly by mariners, because of Polaris being the north pole star."
+describe('the pole star', () => {
+  it('is Polaris, stands in the north and as high as the latitude of the place', () => {
+    for (const [lat, lon] of [[47.4979, 19.0402], [59.3293, 18.0686], [35.6895, 139.6917]] as const) {
+      for (const date of ['2026-01-10T20:00:00Z', '2026-07-10T02:00:00Z']) {
+        const pole = poleStarNow(skyTurn({ lat, lon }, new Date(date)));
+        expect(pole).not.toBeNull();
+        expect(starName(pole!.index, 'en')).toBe('Polaris');
+        expect(Math.abs(pole!.altitude - lat)).toBeLessThan(1.5);
+        expect(Math.min(pole!.azimuth, 360 - pole!.azimuth)).toBeLessThan(2.5);
+      }
+    }
+  });
+
+  it('is never seen from the southern half of the Earth', () => {
+    const pole = poleStarNow(skyTurn({ lat: -33.8688, lon: 151.2093 }, new Date('2026-03-01T12:00:00Z')));
+    expect(pole!.altitude).toBeLessThan(0);
   });
 });

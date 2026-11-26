@@ -192,6 +192,23 @@ export function marksShown(view: FarView, frame: FarFrame): boolean {
   return milkyWayPx(view, frame) >= SKY.far.marksFromPx;
 }
 
+/** How bright the picture of the Milky Way is drawn: dimmer when the view is deep inside it. */
+export function pictureLight(view: FarView, frame: FarFrame): number {
+  const { pictureLight: full, pictureDimFrom, pictureLeastLight } = SKY.far;
+  const sides = milkyWayPx(view, frame) / (2 * frame.half);
+  return Math.max(pictureLeastLight, full * Math.min(1, Math.sqrt(pictureDimFrom / sides)));
+}
+
+/**
+ * A galaxy so near the Milky Way at this scale that the two would lie on one another however the model is
+ * turned: among the far galaxies our neighbours are such. It is not drawn apart, and the Milky Way's name
+ * says it has company.
+ */
+export function mergedWithHome(o: FarObject, view: FarView, frame: FarFrame): boolean {
+  if (marksShown(view, frame)) return false;
+  return (length(sub(o.at, MIDDLE)) * 2 * frame.half) / view.span < SKY.far.mergedWithinPx;
+}
+
 /**
  * How the picture of the Milky Way is laid on the screen: the six numbers of a canvas transform that takes
  * a pixel of the picture to its place. Smaller than `thumbPx`, the picture is enlarged about the Galaxy's middle.
@@ -220,8 +237,11 @@ export interface FarFlight {
 
 const ease = (t: number) => t * t * (3 - 2 * t);
 
-/** The view at a moment of a flight: the centre slides, the scale changes by equal ratios in equal times; the turn is kept. */
-export function farFlightAt(flight: FarFlight, now: number): { view: FarView; done: boolean } {
+/**
+ * The view at a moment of a flight: the centre slides, the scale changes by equal ratios in equal times; the
+ * turn is kept. `share` — how much of the way is done, 0…1.
+ */
+export function farFlightAt(flight: FarFlight, now: number): { view: FarView; done: boolean; share: number } {
   const t = flight.ms <= 0 ? 1 : Math.max(0, Math.min(1, (now - flight.startedAt) / flight.ms));
   const k = ease(t);
   const { from, to } = flight;
@@ -229,7 +249,7 @@ export function farFlightAt(flight: FarFlight, now: number): { view: FarView; do
   // The centre moves with the scale, or a far target would stay off the screen for most of the flight.
   const share = from.span === to.span ? k : (span - from.span) / (to.span - from.span);
   const centre = add(from.centre, scale(sub(to.centre, from.centre), share));
-  return { view: { yaw: from.yaw, pitch: from.pitch, centre, span }, done: t >= 1 };
+  return { view: { yaw: from.yaw, pitch: from.pitch, centre, span }, done: t >= 1, share: k };
 }
 
 /** The view that has arrived at a galaxy: it in the middle, `arriveZoom` times closer than its rung. */
@@ -253,7 +273,10 @@ export function farAt(x: number, y: number, view: FarView, frame: FarFrame, arri
     const gap = Math.hypot(p.x - x, p.y - y);
     if (gap <= reach && (!best || gap < best.gap)) best = { touch, gap };
   };
-  for (const o of GALAXIES) offer({ kind: 'object', id: o.object.id }, o.at, o.object.id === arrived ? arrivedShare * frame.half : Math.max(reachPx, thumbPx / 2));
+  for (const o of GALAXIES) {
+    if (o.object.id !== arrived && mergedWithHome(o, view, frame)) continue;
+    offer({ kind: 'object', id: o.object.id }, o.at, o.object.id === arrived ? arrivedShare * frame.half : Math.max(reachPx, thumbPx / 2));
+  }
   if (marksShown(view, frame)) {
     for (const o of FAR) if (!o.galaxy) offer({ kind: 'object', id: o.object.id }, o.at, reachPx);
     offer({ kind: 'sun' }, SUN, reachPx);

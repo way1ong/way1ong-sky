@@ -264,6 +264,7 @@
     "art": "The drawings of the constellations are cards of the star atlas “Urania’s Mirror” (engraved by Sidney Hall, 1825) from Wikimedia Commons, public domain; the scans were restored by Adam Cuerden. From cards that show several constellations the figure needed is cut out. Under each drawing there is a link to the page of its file.",
     "deep": "Galaxies, nebulae and star clusters on the sky map: what they are, how far and how bright — after NASA’s pages of Hubble’s Messier Catalog; where they are — Wikidata (CC0); the photographs — NASA, ESA and the Space Telescope Science Institute, each named under its photograph.",
     "instruments": "The section “Instruments of astronomers”: the texts are our own, written after Wikipedia’s articles in three languages and the pages of NASA and ESA; under each card are the links to its sources. The drawings are made for the program and are not to scale. The texts of the cards written after Wikipedia may be used on the terms of",
+    "far": "Beyond the Solar System: the Milky Way from outside is an artist’s concept (NASA/JPL-Caltech), not a photograph; the Sun’s place and the scale are taken from the grid of the same picture. The clusters, nebulae and galaxies stand in the directions Wikidata gives, at the distances of NASA’s pages. The galaxies are shown by Hubble’s photographs, facing the viewer and larger than to scale.",
     "links": {
       "photoLibrary": "NASA’s image and video library",
       "photoRules": "NASA’s rules for its pictures",
@@ -271,7 +272,8 @@
       "moonRules": "rules of the U.S. Geological Survey",
       "moonCatalogue": "catalogue of maps",
       "deepCatalogue": "Hubble’s Messier Catalog",
-      "deepPhotos": "the terms of Hubble’s images"
+      "deepPhotos": "the terms of Hubble’s images",
+      "milkyWay": "the picture’s record"
     }
   },
   "actions": {
@@ -623,7 +625,8 @@
       "rows": {
         "brightest": "Brightest star",
         "brightestMany": "Brightest stars",
-        "evening": "Best in the evening"
+        "evening": "Best in the evening",
+        "north": "Where north is"
       },
       "star": "{name} · magnitude {mag}",
       "unnamed": "a star without a name of its own",
@@ -632,6 +635,10 @@
       "always": "never sets at this place — seen on any clear night",
       "low": "stays low here: up to {altitude}° over the horizon",
       "never": "not seen from this place — it never rises over the horizon",
+      "north": {
+        "seen": "{name} marks north: from here it stands {altitude}° above the horizon",
+        "never": "{name} marks north, but it is never seen from this place"
+      },
       "computed": "The star, the month and the height are worked out by the program for the chosen place. “Best in the evening” is the month when the middle of the constellation stands highest at about {hour}:00.",
       "source": "The story is written after Wikipedia’s articles:",
       "sourceListed": "Who listed the constellation — after Wikipedia’s table:",
@@ -989,6 +996,41 @@
           "hot": "the Sun is on this side"
         }
       }
+    }
+  },
+  "far": {
+    "open": "To the galaxies",
+    "label": "Beyond the Solar System",
+    "scene": "A model: the Milky Way, the Sun’s place in it, star clusters, nebulae and the neighbouring galaxies. The list of buttons below says what is where; the arrow keys turn the model, plus and minus change the scale, Enter names what is in the middle.",
+    "toFlight": "Solar System",
+    "toSky": "The sky from here",
+    "rungs": {
+      "near": "Round the Sun",
+      "galaxy": "Our Galaxy",
+      "group": "Neighbouring galaxies",
+      "far": "Far galaxies"
+    },
+    "width": "The screen is about {distance} across",
+    "away": "{distance} from us",
+    "years": {
+      "millions": "{n} million years",
+      "plain": {
+        "one": "{n} year",
+        "other": "{n} years"
+      }
+    },
+    "milkyWayAndNear": "Milky Way and its neighbours",
+    "sun": "Sun",
+    "middle": "middle of the Galaxy",
+    "milkyWay": "Milky Way",
+    "notes": {
+      "near": "The clusters and nebulae of the sky map, in their places round the Sun. The line from a mark shows how far above or below the plane of the Galaxy it stands. Drag to turn; touch a mark to open its card.",
+      "galaxy": "The Milky Way from outside is an artist’s concept by NASA: nobody has photographed it from there. The Sun and the clusters are placed by NASA’s distances. Drag to turn; touch a mark to open its card.",
+      "group": "The galaxies are shown by Hubble’s photographs — as they are seen from the Earth; nobody has seen them from another side. Their sizes are enlarged: at this scale each would be a dot. Touch a galaxy to fly to it.",
+      "far": "The galaxies are shown by Hubble’s photographs — as they are seen from the Earth; nobody has seen them from another side. Their sizes are enlarged: at this scale each would be a dot. Touch a galaxy to fly to it.",
+      "sun": "We are here. In NASA’s words, the Earth is in one of the spiral arms, about halfway from the middle of the Galaxy; the Solar System takes about 240 million years to go once round the middle.",
+      "arrived": "{name}: Hubble’s photograph, enlarged. The light we see in it took {years} to reach us. Touch the photograph or the “i” button to open its card.",
+      "nothing": "None of the marks is in the middle. Turn the model or change the scale."
     }
   }
 }

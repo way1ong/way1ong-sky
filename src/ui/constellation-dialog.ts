@@ -3,7 +3,7 @@
 // best evenings, whether it sets at the place and where it stands at the moment shown.
 import { SKY } from '../config.ts';
 import { ART_SET, PLATES } from '../core/art.ts';
-import { bestEvening, brightestStars, constellationOf, figureNow, overPlace } from '../core/constellations.ts';
+import { bestEvening, brightestStars, constellationOf, figureNow, overPlace, poleStarNow } from '../core/constellations.ts';
 import { deepIn } from '../core/deep-sky.ts';
 import type { Place, SkyTurn } from '../core/sky.ts';
 import { STARS, starName } from '../core/stars.ts';
@@ -45,6 +45,13 @@ export function createConstellationDialog(): {
         list.append(row(t.rows.evening, month, more));
         const now = figureNow(id, turn);
         list.append(row(d.sky.pick.now, now.altitude >= 0 ? fmt(d.sky.pick.up, { altitude: num(lang, now.altitude), direction: d.sky.tonight.directions[now.compass] }) : d.sky.pick.under));
+      }
+
+      // The Little Bear holds the pole star: its card says where north is from the place.
+      const pole = id === 'UMi' ? poleStarNow(turn) : null;
+      if (pole) {
+        const star = starName(pole.index, lang) ?? t.unnamed;
+        list.append(row(t.rows.north, pole.altitude > 0 ? fmt(t.north.seen, { name: star, altitude: num(lang, pole.altitude) }) : fmt(t.north.never, { name: star })));
       }
 
       const close = h('button', { class: 'btn', type: 'button' }, d.card.close);

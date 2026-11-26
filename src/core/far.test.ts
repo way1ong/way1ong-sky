@@ -2,7 +2,7 @@ import { Constellation } from 'astronomy-engine';
 import { describe, expect, it } from 'vitest';
 import { SKY } from '../config.ts';
 import { DEEP } from './deep-sky.ts';
-import { FAR, GALAXIES, MIDDLE, MILKY_WAY, RUNGS, SUN, arrivedAt, clampSpan, enlarged, farAt, farAxes, farById, farFlightAt, firstFarView, footOf, fromGalactic, galactic, longLat, marksShown, milkyWayPx, pictureOnScreen, pictureToModel, projectFar, rungLook, rungMembers, rungOf, scaleLine, turnFar, zoomFar, type FarFrame, type FarView } from './far.ts';
+import { FAR, GALAXIES, MIDDLE, MILKY_WAY, RUNGS, SUN, arrivedAt, clampSpan, enlarged, farAt, farAxes, farById, farFlightAt, firstFarView, footOf, fromGalactic, galactic, longLat, marksShown, mergedWithHome, milkyWayPx, pictureLight, pictureOnScreen, pictureToModel, projectFar, rungLook, rungMembers, rungOf, scaleLine, turnFar, zoomFar, type FarFrame, type FarView } from './far.ts';
 import { starDirection } from './sky.ts';
 import { cross, dot, length, sub, type Vec3 } from './vec.ts';
 
@@ -191,6 +191,30 @@ describe('the model on the screen', () => {
     expect(marksShown(near, frame)).toBe(true);
     expect(marksShown(firstFarView('near'), frame)).toBe(true);
     expect(marksShown(firstFarView('group'), frame)).toBe(false);
+  });
+
+  it('dims the picture when the view is deep inside it', () => {
+    expect(pictureLight(firstFarView('galaxy'), frame)).toBe(SKY.far.pictureLight);
+    expect(pictureLight(firstFarView('far'), frame)).toBe(SKY.far.pictureLight);
+    const near = pictureLight(firstFarView('near'), frame);
+    expect(near).toBeLessThan(SKY.far.pictureLight * 0.6);
+    expect(near).toBeGreaterThanOrEqual(SKY.far.pictureLeastLight);
+  });
+
+  it('does not draw our neighbours apart from the Milky Way where they would lie on it', () => {
+    const [m31, m33, m81] = [farById('m31')!, farById('m33')!, farById('m81')!];
+    for (const yaw of [0, 1.5, 3, 4.5]) {
+      const far: FarView = { ...firstFarView('far'), yaw };
+      expect(mergedWithHome(m31, far, frame)).toBe(true);
+      expect(mergedWithHome(m33, far, frame)).toBe(true);
+      // a touch there means the Milky Way, not a neighbour hidden in it
+      const home = projectFar(MIDDLE, far, frame);
+      expect(farAt(home.x, home.y, far, frame, null)).toEqual({ kind: 'milkyWay' });
+      // a galaxy of the far rung is drawn however the model is turned
+      expect(mergedWithHome(m81, far, frame)).toBe(false);
+    }
+    for (const yaw of [0, 1.5, 3, 4.5]) expect(mergedWithHome(m31, { ...firstFarView('group'), yaw }, frame)).toBe(false);
+    expect(mergedWithHome(m31, firstFarView('galaxy'), frame)).toBe(false);
   });
 
   it('draws a round scale line no longer than asked', () => {

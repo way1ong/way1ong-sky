@@ -186,6 +186,9 @@ export const SKY = {
    * nebulae are shown while the Milky Way's picture is at least `marksFromPx` wide — smaller, they would lie
    * in one heap. `stemFromPx` — a line to the Galaxy's plane is drawn for an object at least this far from
    * it on the screen. `zoom` — how far past the nearest and the farthest rung the view may go.
+   * `pictureLight` — how bright the picture of the Milky Way is drawn; wider than `pictureDimFrom` shorter
+   * sides of the screen it grows dimmer (down to `pictureLeastLight`), or the marks would drown in it.
+   * `mergedWithinPx` — a galaxy this close to the Milky Way on the screen is not drawn apart from it.
    */
   far: {
     nearLightYears: 7500,
@@ -202,6 +205,9 @@ export const SKY = {
     reachPx: 24,
     stemFromPx: 5,
     pictureLight: 0.9,
+    pictureDimFrom: 1.6,
+    pictureLeastLight: 0.35,
+    mergedWithinPx: 44,
     flyMs: 1500,
     zoom: { closer: 0.4, farther: 1.3 },
   },

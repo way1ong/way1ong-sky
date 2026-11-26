@@ -102,6 +102,11 @@ button {
   overflow-wrap: anywhere;
 }
 
+/* A long name beside three buttons (a galaxy flown to, on a small phone): smaller letters, so no word is broken. */
+.top__name--long {
+  font-size: clamp(0.9375rem, 4.7vw, 1.375rem);
+}
+
 .top__line {
   margin: 0.125rem 0 0;
   color: var(--muted);
@@ -1036,4 +1041,10 @@ button {
   max-width: 100%;
   white-space: normal;
   text-align: start;
+}
+
+/* Beyond the Solar System: the model's canvas lies over the flight's, like the sky's. */
+.stage canvas.far {
+  position: absolute;
+  inset: 0;
 }
