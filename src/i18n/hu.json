@@ -366,7 +366,7 @@
   },
   "sky": {
     "open": "Az égbolt innen",
-    "toFlight": "Repülés",
+    "toFlight": "Naprendszer",
     "title": "Égbolt: {place}",
     "scene": "Az égbolt a kiválasztott hely felett: csillagok, csillagképek, a Nap, a Hold és a bolygók. Húzással nézhet körül. Érintsen meg egy csillagot, bolygót vagy egy csillagkép nevét, hogy megtudja, mi az; billentyűzeten az Enter megnevezi, ami középen van.",
     "placeButton": "Hely: {place}",
@@ -794,6 +794,10 @@
     "text": "A program alkalmazásként telepíthető: saját ikont kap, és internet nélkül is megnyílik.",
     "button": "A program telepítése",
     "ios": "iPhone-on és iPaden: koppintson a „Megosztás”, majd a „Főképernyőhöz adás” lehetőségre. A program saját ikont kap, és internet nélkül is megnyílik."
+  },
+  "update": {
+    "ready": "Megjelent az alkalmazás új verziója.",
+    "apply": "Frissítés"
   },
   "instruments": {
     "title": "A csillagászok műszerei",

@@ -27,6 +27,7 @@ import { createFactsDialog } from './facts-dialog.ts';
 import { dict, fmt, num, pickLang, type Dict } from './i18n.ts';
 import { createInstrumentsDialog } from './instruments-dialog.ts';
 import { createMenuDialog } from './menu-dialog.ts';
+import { onUpdateReady, type ApplyUpdate } from './offline.ts';
 import { createPickCard } from './pick-card.ts';
 import { createPlaceDialog } from './place-dialog.ts';
 import { createSatelliteDialog } from './satellite-dialog.ts';
@@ -179,6 +180,12 @@ export function startApp(root: HTMLElement): void {
   const note = h('p', { class: 'note__text', role: 'status' });
   const noteClose = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-close', 'aria-hidden': 'true' }));
   const noteBox = h('div', { class: 'note', hidden: true }, note, noteClose);
+  /** A new version of the app has been fetched and waits: said in a note of its own, with the button that switches to it. */
+  const updateText = h('p', { class: 'update__words', role: 'status' });
+  const updateBtn = h('button', { class: 'btn', type: 'button' });
+  const updateClose = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-close', 'aria-hidden': 'true' }));
+  const updateBox = h('div', { class: 'update', hidden: true }, h('div', { class: 'update__text' }, updateText, updateBtn), updateClose);
+  let applyUpdate: ApplyUpdate | null = null;
   /** The card of what a touch on the sky map has named; it takes the note's place. */
   const pickCard = createPickCard();
   /** Says the card once to a screen reader: the card itself is rewritten silently while the clock runs. */
@@ -230,6 +237,7 @@ export function startApp(root: HTMLElement): void {
     { class: 'app' },
     stage,
     header,
+    updateBox,
     noteBox,
     pickCard.el,
     pickSaid,
@@ -284,6 +292,9 @@ export function startApp(root: HTMLElement): void {
     moreBtn.textContent = d.time.moreShort;
     moreBtn.setAttribute('aria-label', d.time.more);
     noteClose.setAttribute('aria-label', d.actions.close);
+    updateClose.setAttribute('aria-label', d.actions.close);
+    updateBtn.textContent = d.update.apply;
+    if (applyUpdate) updateText.textContent = d.update.ready;
     flyBox.setAttribute('aria-label', d.free.title);
     backBtn.textContent = d.free.back;
     skyCanvas.setAttribute('aria-label', d.sky.scene);
@@ -444,6 +455,27 @@ export function startApp(root: HTMLElement): void {
   }
   noteClose.addEventListener('click', () => {
     say('');
+    (screen === 'sky' ? skyCanvas : screen === 'far' ? farCanvas : canvas).focus();
+  });
+
+  // A new version waits: the person is told once and decides — "Update" loads it at once, the cross leaves
+  // it for the next opening of the app.
+  /** The usual note stands under the note of the update: how much room that one takes. */
+  const roomForUpdate = () => main.style.setProperty('--update-room', updateBox.hidden ? '0px' : `${updateBox.offsetHeight + 8}px`);
+  new ResizeObserver(roomForUpdate).observe(updateBox);
+  onUpdateReady((apply) => {
+    applyUpdate = apply;
+    updateText.textContent = d.update.ready;
+    updateBox.hidden = false;
+    roomForUpdate();
+  });
+  updateBtn.addEventListener('click', () => {
+    updateBtn.disabled = true;
+    applyUpdate?.();
+  });
+  updateClose.addEventListener('click', () => {
+    updateBox.hidden = true;
+    roomForUpdate();
     (screen === 'sky' ? skyCanvas : screen === 'far' ? farCanvas : canvas).focus();
   });
 

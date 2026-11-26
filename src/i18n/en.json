@@ -366,7 +366,7 @@
   },
   "sky": {
     "open": "The sky from here",
-    "toFlight": "Flight",
+    "toFlight": "Solar System",
     "title": "The sky: {place}",
     "scene": "The sky over the chosen place: stars, constellations, the Sun, the Moon and the planets. Drag to look around. Touch a star, a planet or the name of a constellation to learn what it is; on a keyboard Enter names what is in the middle.",
     "placeButton": "Place: {place}",
@@ -794,6 +794,10 @@
     "text": "The program can be installed like an app: it gets its own icon and opens without internet.",
     "button": "Install the program",
     "ios": "On iPhone and iPad: tap “Share”, then “Add to Home Screen”. The program gets its own icon and opens without internet."
+  },
+  "update": {
+    "ready": "A new version of the app is out.",
+    "apply": "Update"
   },
   "instruments": {
     "title": "Instruments of astronomers",

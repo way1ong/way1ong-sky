@@ -16,7 +16,8 @@
     "preview": "vite preview",
     "build:claude": "node scripts/claude-page.mjs",
     "audit": "node scripts/audit.mjs",
-    "check:live": "node scripts/check-live.mjs"
+    "check:live": "node scripts/check-live.mjs",
+    "check:update": "node scripts/check-update.mjs"
   },
   "dependencies": {
     "astronomy-engine": "2.1.19",
