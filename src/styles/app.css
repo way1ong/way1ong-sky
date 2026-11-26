@@ -167,9 +167,12 @@ button {
   padding: 0 max(1rem, env(safe-area-inset-right, 0px)) max(0.75rem, env(safe-area-inset-bottom, 0px)) max(1rem, env(safe-area-inset-left, 0px));
 }
 
-.note {
+.note,
+.update {
   position: relative;
   z-index: 2;
+  /* One column for all: two notes shown together would otherwise be set side by side and halve the screen. */
+  grid-column: 1;
   grid-row: 2;
   align-self: start;
   justify-self: start;
@@ -183,15 +186,37 @@ button {
   background: var(--panel);
 }
 
-.note__text {
+.note__text,
+.update__words {
   margin: 0;
   padding: 0.25rem 0;
   font-size: 0.9375rem;
 }
 
-.note .icon-btn {
+.note .icon-btn,
+.update .icon-btn {
   border-color: transparent;
   background: none;
+}
+
+/*
+ * A new version waits: its note with the button stands first under the heading, and the usual note moves
+ * down by its height (the app measures it into --update-room).
+ */
+.update {
+  z-index: 3;
+  border: 2px solid var(--accent);
+}
+
+.note:not(.pick) {
+  margin-top: calc(0.5rem + var(--update-room, 0px));
+}
+
+.update__text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
 }
 
 /*
@@ -346,6 +371,7 @@ button {
 /* The panels hidden: the picture has the screen. The button stays in its corner; free flight keeps its two buttons. */
 .app--wide .top > :not(.icon-btn--wide),
 .app--wide .note,
+.app--wide .update,
 .app--wide .bottom > :not(.fly) {
   display: none;
 }
@@ -966,7 +992,8 @@ button {
     width: min(22rem, 100%);
     padding: 0 0.5rem;
   }
-  .note {
+  .note,
+  .update {
     grid-column: 1;
     justify-self: center;
     /* never down to the two buttons of free flight under it */

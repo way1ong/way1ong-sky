@@ -795,6 +795,10 @@
     "button": "A program telepítése",
     "ios": "iPhone-on és iPaden: koppintson a „Megosztás”, majd a „Főképernyőhöz adás” lehetőségre. A program saját ikont kap, és internet nélkül is megnyílik."
   },
+  "update": {
+    "ready": "Megjelent az alkalmazás új verziója.",
+    "apply": "Frissítés"
+  },
   "instruments": {
     "title": "A csillagászok műszerei",
     "lead": "Az árnyékot vető pálcától az űrtávcsövekig: mivel mérték az emberek az eget, és hogyan működnek ezek a műszerek.",

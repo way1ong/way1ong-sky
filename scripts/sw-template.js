@@ -24,11 +24,17 @@ self.addEventListener('install', (event) => {
           await cache.put(url, plain);
         }),
       );
-      // No skipWaiting: a page that is open keeps the worker and the files of its own version — it fetches
-      // photos only when a card is opened, and a new worker would have thrown the old ones away. The new
-      // version takes over once every page of the app is closed, and serves from the next opening on.
+      // No skipWaiting here: a page that is open keeps the worker and the files of its own version — it
+      // fetches photos only when a card is opened, and a new worker would have thrown the old ones away. The
+      // new version takes over once every page of the app is closed — or at once when the person, told that
+      // a new version waits, presses "Update" (the message below): the page then loads anew.
     })(),
   );
+});
+
+// The page says the person has agreed to the new version: this worker stops waiting for the old pages to close.
+self.addEventListener('message', (event) => {
+  if (event.data === 'take-over') self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {

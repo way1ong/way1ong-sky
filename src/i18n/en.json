@@ -795,6 +795,10 @@
     "button": "Install the program",
     "ios": "On iPhone and iPad: tap “Share”, then “Add to Home Screen”. The program gets its own icon and opens without internet."
   },
+  "update": {
+    "ready": "A new version of the app is out.",
+    "apply": "Update"
+  },
   "instruments": {
     "title": "Instruments of astronomers",
     "lead": "From a rod that casts a shadow to telescopes in space: what people measured the sky with, and how these instruments work.",
