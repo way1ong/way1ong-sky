@@ -264,6 +264,7 @@
     "art": "A csillagképek rajzai az „Urania’s Mirror” csillagatlasz (metszette: Sidney Hall, 1825) lapjai a Wikimedia Commonsból, közkincsek; a szkennelt képeket Adam Cuerden restaurálta. A több csillagképet ábrázoló lapokból a szükséges alakot vágtuk ki. Minden rajz alatt megtalálható a fájl oldalának hivatkozása.",
     "deep": "Galaxisok, ködök és csillaghalmazok az égtérképen: hogy mik ezek, milyen messze vannak és milyen fényesek — a NASA oldalai alapján (a Hubble Messier-katalógusa); hogy hol vannak — Wikidata (CC0); a felvételek — NASA, ESA és az Űrtávcső Tudományos Intézet, a szerző minden felvétel alatt szerepel.",
     "instruments": "„A csillagászok műszerei” rész: a szövegek sajátok, a Wikipédia három nyelvű szócikkei, valamint a NASA és az ESA oldalai alapján készültek; minden kártya alatt ott vannak a forrásaira mutató hivatkozások. A rajzok a programhoz készültek, nem méretarányosak. A Wikipédia alapján írt kártyák szövege a következő feltételekkel használható fel:",
+    "far": "A Naprendszeren túl: a Tejútrendszer kívülről művészi ábrázolás (NASA/JPL-Caltech), nem fénykép; a Nap helye és a lépték ugyanennek a képnek a rácsáról származik. A halmazok, ködök és galaxisok a Wikidata szerinti irányban, a NASA oldalain megadott távolságban állnak. A galaxisokat a Hubble felvételei mutatják, a néző felé fordítva és a léptéknél nagyobbra rajzolva.",
     "links": {
       "photoLibrary": "a NASA kép- és videótára",
       "photoRules": "a NASA szabályai a képeiről",
@@ -271,7 +272,8 @@
       "moonRules": "az U.S. Geological Survey szabályai",
       "moonCatalogue": "térképkatalógus",
       "deepCatalogue": "a Hubble Messier-katalógusa",
-      "deepPhotos": "a Hubble-felvételek felhasználási feltételei"
+      "deepPhotos": "a Hubble-felvételek felhasználási feltételei",
+      "milkyWay": "a kép adatlapja"
     }
   },
   "actions": {
@@ -623,7 +625,8 @@
       "rows": {
         "brightest": "Legfényesebb csillag",
         "brightestMany": "Legfényesebb csillagok",
-        "evening": "Este a legjobb"
+        "evening": "Este a legjobb",
+        "north": "Merre van észak"
       },
       "star": "{name} · {mag} magnitúdó",
       "unnamed": "saját név nélküli csillag",
@@ -632,6 +635,10 @@
       "always": "ezen a helyen nem nyugszik le — bármely derült éjszakán látható",
       "low": "itt alacsonyan marad: legfeljebb {altitude}° a horizont felett",
       "never": "erről a helyről nem látható — nem kel a horizont fölé",
+      "north": {
+        "seen": "Észak arra van, amerre a {name} áll: innen {altitude}°-kal a horizont felett",
+        "never": "Észak arra van, amerre a {name} áll, de erről a helyről nem látható"
+      },
       "computed": "A csillagot, a hónapot és a magasságot maga a program számítja a kiválasztott helyre. „Este a legjobb” az a hónap, amikor a csillagkép közepe {hour} óra körül áll a legmagasabban.",
       "source": "A történet a Wikipédia szócikkei alapján készült:",
       "sourceListed": "Hogy ki vette fel a csillagképet a listára — a Wikipédia táblázata alapján:",
@@ -989,6 +996,41 @@
           "hot": "a Nap ezen az oldalon van"
         }
       }
+    }
+  },
+  "far": {
+    "open": "A galaxisokhoz",
+    "label": "A Naprendszeren túl",
+    "scene": "Modell: a Tejútrendszer, benne a Nap helye, csillaghalmazok, ködök és a szomszédos galaxisok. Hogy mi hol van, azt a lenti gombsor mondja meg; a nyílbillentyűk forgatják a modellt, a plusz és a mínusz a léptéket változtatja, az Enter megnevezi, ami középen van.",
+    "toFlight": "Naprendszer",
+    "toSky": "Az égbolt innen",
+    "rungs": {
+      "near": "A Nap környéke",
+      "galaxy": "A mi Galaxisunk",
+      "group": "Szomszédos galaxisok",
+      "far": "Távoli galaxisok"
+    },
+    "width": "A képernyő körülbelül {distance} széles",
+    "away": "{distance} tőlünk",
+    "years": {
+      "millions": "{n} millió év",
+      "plain": {
+        "one": "{n} év",
+        "other": "{n} év"
+      }
+    },
+    "milkyWayAndNear": "A Tejútrendszer és szomszédai",
+    "sun": "Nap",
+    "middle": "a Galaxis közepe",
+    "milkyWay": "Tejútrendszer",
+    "notes": {
+      "near": "Az égtérkép halmazai és ködei a helyükön, a Nap körül. A jeltől induló vonal azt mutatja, mennyivel van a Galaxis síkja fölött vagy alatt. Húzással forgathatja; érintsen meg egy jelet, és megnyílik a kártyája.",
+      "galaxy": "A Tejútrendszer kívülről a NASA művészi ábrázolása: onnan még senki sem fényképezte le. A Nap és a halmazok a NASA távolságadatai szerint állnak. Húzással forgathatja; érintsen meg egy jelet, és megnyílik a kártyája.",
+      "group": "A galaxisokat a Hubble felvételei mutatják — úgy, ahogy a Földről látszanak; más oldalról még senki sem látta őket. A méretük nagyított: ebben a léptékben mindegyik csak egy pont volna. Érintsen meg egy galaxist, hogy odarepüljön.",
+      "far": "A galaxisokat a Hubble felvételei mutatják — úgy, ahogy a Földről látszanak; más oldalról még senki sem látta őket. A méretük nagyított: ebben a léptékben mindegyik csak egy pont volna. Érintsen meg egy galaxist, hogy odarepüljön.",
+      "sun": "Itt vagyunk. A NASA szavaival: a Föld az egyik spirálkarban van, nagyjából félúton a Galaxis közepétől; a Naprendszer körülbelül 240 millió év alatt kerüli meg egyszer a középpontot.",
+      "arrived": "{name}: a Hubble felvétele, nagyítva. A felvételen látható fény {years} alatt ért el hozzánk. Érintse meg a felvételt vagy az „i” gombot, és megnyílik a kártyája.",
+      "nothing": "Középen nincs egyetlen jel sem. Forgassa el a modellt, vagy változtasson a léptéken."
     }
   }
 }

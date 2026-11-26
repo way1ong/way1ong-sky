@@ -6,6 +6,7 @@ import { DEEP_SOURCE, deepBestEvening, deepNow, deepOverPlace, type DeepObject }
 import type { Place, SkyTurn } from '../core/sky.ts';
 import { deepPhotoUrl } from './deep-photo.ts';
 import { deepDistance, deepName } from './deep-text.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import { fmt, num, type Dict } from './i18n.ts';
 
@@ -66,7 +67,7 @@ export function createDeepSkyDialog(): {
       body.append(list, h('p', { class: 'fact__source' }, fmt(t.computed, { hour: SKY.story.eveningHour })));
       body.append(h('p', { class: 'fact__source' }, t.source, ' ', link(o.page, t.links.page), ' · ', link(DEEP_SOURCE.positions.url, DEEP_SOURCE.positions.title)));
       body.append(h('div', { class: 'dialog__actions' }, toConstellation, close));
-      el.replaceChildren(body);
+      el.replaceChildren(dialogCross(el, d.actions.close), body);
       if (!el.open) el.showModal();
       el.scrollTop = 0;
       close.focus({ preventScroll: true });

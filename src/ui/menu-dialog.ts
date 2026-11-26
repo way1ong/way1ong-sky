@@ -5,8 +5,10 @@ import { SATELLITE_MAPS, SATELLITE_PAGES } from '../core/satellites.ts';
 import { SKY } from '../config.ts';
 import { SOURCES } from '../core/bodies.ts';
 import { DEEP_SOURCE } from '../core/deep-sky.ts';
+import { MILKY_WAY } from '../core/far.ts';
 import { CITY_SOURCE } from '../core/places.ts';
 import { PHOTO_LIBRARY, PHOTO_RULES } from '../core/photos.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import { flagOf } from './flags.ts';
 import { install, installWay } from './install.ts';
@@ -73,6 +75,7 @@ export function createMenuDialog(): {
       close.addEventListener('click', () => el.close());
       const made = SKY.links.site ? link(SKY.links.site, d.about.madeBy) : d.about.madeBy;
       el.replaceChildren(
+        dialogCross(el, d.actions.close),
         h(
           'div',
           { class: 'dialog__body' },
@@ -97,6 +100,7 @@ export function createMenuDialog(): {
             h('li', {}, d.about.art, ' ', link(ART_SET.category, 'Wikimedia Commons')),
             h('li', {}, d.about.deep, ' ', link(DEEP_SOURCE.facts.url, d.about.links.deepCatalogue), ' · ', link(DEEP_SOURCE.positions.url, DEEP_SOURCE.positions.title), ' · ', link(DEEP_SOURCE.photos.url, d.about.links.deepPhotos)),
             h('li', {}, d.about.instruments, ' ', link(BY_SA_URL, 'CC BY-SA 4.0')),
+            h('li', {}, d.about.far, ' ', link(MILKY_WAY.source.page, d.about.links.milkyWay), ' · ', link(MILKY_WAY.source.rules, d.about.links.photoRules)),
             h('li', {}, d.about.shadows),
             h('li', {}, d.about.aim),
             h('li', {}, d.about.engine),

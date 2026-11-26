@@ -174,6 +174,44 @@ export const SKY = {
    */
   deep: { markPx: 6, reachPx: 22, named: { wide: 4.5, narrow: 13 } },
   /**
+   * Beyond the Solar System (C; the owner's decisions of 25.11 and 26.11): the Galaxy and its neighbours as a
+   * model one turns with a finger, drawn without perspective. The ladder has four rungs: `near` fits the
+   * objects up to `nearLightYears` from the Sun, `galaxy` the whole picture of the Milky Way, `group` the
+   * galaxies up to `neighbourLightYears`, `far` the rest; a rung leaves `margin` of what it must fit free at
+   * the edges. `pitchDeg` — how steeply the Galaxy's plane is looked at: at first, and the least and the most
+   * (the picture is flat: from the edge it would be a line); `yawDeg` — the first turn, the Galaxy's middle
+   * away from the viewer. `thumbPx` — a galaxy's photograph is drawn this wide however far it is, and the
+   * Milky Way never smaller; `arrivedShare` — the photograph of the galaxy flown to takes this share of the
+   * shorter side, and the view stands `arriveZoom` times closer than the rung. The marks of clusters and
+   * nebulae are shown while the Milky Way's picture is at least `marksFromPx` wide — smaller, they would lie
+   * in one heap. `stemFromPx` — a line to the Galaxy's plane is drawn for an object at least this far from
+   * it on the screen. `zoom` — how far past the nearest and the farthest rung the view may go.
+   * `pictureLight` — how bright the picture of the Milky Way is drawn; wider than `pictureDimFrom` shorter
+   * sides of the screen it grows dimmer (down to `pictureLeastLight`), or the marks would drown in it.
+   * `mergedWithinPx` — a galaxy this close to the Milky Way on the screen is not drawn apart from it.
+   */
+  far: {
+    nearLightYears: 7500,
+    neighbourLightYears: 5_000_000,
+    margin: 1.3,
+    pitchDeg: { first: 50, least: 20, most: 90 },
+    yawDeg: 180,
+    thumbPx: 52,
+    arrivedShare: 0.62,
+    arriveZoom: 3,
+    marksFromPx: 240,
+    markPx: 6,
+    sunPx: 4,
+    reachPx: 24,
+    stemFromPx: 5,
+    pictureLight: 0.9,
+    pictureDimFrom: 1.6,
+    pictureLeastLight: 0.35,
+    mergedWithinPx: 44,
+    flyMs: 1500,
+    zoom: { closer: 0.4, farther: 1.3 },
+  },
+  /**
    * Jupiter through binoculars in its card (C): the drawing's size, CSS px of its own grid; how many px a
    * radius of Jupiter takes at the most (less when the moons would not fit in height); the moons' dots.
    */

@@ -1,6 +1,7 @@
 // A landing place: a photo taken there, when the flight was, who went, what NASA's tables say of the stay —
 // and where all of that comes from.
 import { SITE_SOURCES, SITES, type SiteId } from '../core/sites.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import { fmt, type Dict } from './i18n.ts';
 import { sitePhotoUrl } from './site-photos.ts';
@@ -34,6 +35,7 @@ export function createSiteDialog(): { el: HTMLDialogElement; open(d: Dict, lang:
         showMoment(id);
       });
       el.replaceChildren(
+        dialogCross(el, d.actions.close),
         h(
           'div',
           { class: 'dialog__body' },

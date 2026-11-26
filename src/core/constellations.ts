@@ -99,3 +99,16 @@ export function figureNow(figure: string, turn: SkyTurn): { altitude: number; co
   const seen = altAz(toSky(turn, figureMiddle(figure)));
   return { altitude: seen.altitude, compass: compassPoint(seen.azimuth) };
 }
+
+/**
+ * The pole star — the brightest star of the Little Bear — in the sky of the place: it marks north, and stands
+ * about as many degrees over the horizon as the place's latitude; from the southern half of the Earth it is
+ * never seen. `index` — its place in the file of stars.
+ */
+export function poleStarNow(turn: SkyTurn): { index: number; altitude: number; azimuth: number } | null {
+  const index = brightestStars('UMi')[0];
+  if (index === undefined) return null;
+  const seen = altAz(toSky(turn, (STARS[index] as (typeof STARS)[number]).at));
+  return { index, altitude: seen.altitude, azimuth: seen.azimuth };
+}
+

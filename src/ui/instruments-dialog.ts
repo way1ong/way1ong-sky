@@ -5,6 +5,7 @@ import { INSTRUMENTS, INSTRUMENT_SOURCE, agencyOf, instrumentCredit, neighbours,
 import { drawDiagram } from './diagrams/draw.ts';
 import { instrumentPictureUrl } from './instrument-picture.ts';
 import { DIAGRAMS } from './diagrams/index.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import { fmt, type Dict } from './i18n.ts';
 
@@ -15,8 +16,8 @@ type Card = Dict['instruments']['items'][InstrumentId] & { inApp?: string };
 export function createInstrumentsDialog(): { el: HTMLDialogElement; open(d: Dict, lang: string): void } {
   const el = h('dialog', { class: 'dialog', 'aria-labelledby': 'instruments-title' });
 
-  function show(body: HTMLElement, focus: HTMLElement): void {
-    el.replaceChildren(body);
+  function show(d: Dict, body: HTMLElement, focus: HTMLElement): void {
+    el.replaceChildren(dialogCross(el, d.actions.close), body);
     if (!el.open) el.showModal();
     el.scrollTop = 0;
     focus.focus({ preventScroll: true });
@@ -37,7 +38,7 @@ export function createInstrumentsDialog(): { el: HTMLDialogElement; open(d: Dict
     }
     const close = h('button', { class: 'btn', type: 'button' }, d.card.close);
     close.addEventListener('click', () => el.close());
-    show(h('div', { class: 'dialog__body' }, h('h2', { id: 'instruments-title' }, t.title), h('p', {}, t.lead), items, h('div', { class: 'dialog__actions' }, close)), returned ?? first ?? close);
+    show(d, h('div', { class: 'dialog__body' }, h('h2', { id: 'instruments-title' }, t.title), h('p', {}, t.lead), items, h('div', { class: 'dialog__actions' }, close)), returned ?? first ?? close);
   }
 
   function card(d: Dict, lang: string, one: Instrument): void {
@@ -97,7 +98,7 @@ export function createInstrumentsDialog(): { el: HTMLDialogElement; open(d: Dict
       steps,
       h('div', { class: 'dialog__actions' }, toList, close),
     );
-    show(body, close);
+    show(d, body, close);
   }
 
   return {

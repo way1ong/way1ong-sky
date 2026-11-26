@@ -3,13 +3,14 @@
 // best evenings, whether it sets at the place and where it stands at the moment shown.
 import { SKY } from '../config.ts';
 import { ART_SET, PLATES } from '../core/art.ts';
-import { bestEvening, brightestStars, constellationOf, figureNow, overPlace } from '../core/constellations.ts';
+import { bestEvening, brightestStars, constellationOf, figureNow, overPlace, poleStarNow } from '../core/constellations.ts';
 import { deepIn } from '../core/deep-sky.ts';
 import type { Place, SkyTurn } from '../core/sky.ts';
 import { STARS, starName } from '../core/stars.ts';
 import { ORIGINS, ORIGINS_SOURCE, STORIES, STORY_SOURCE, creditPages } from '../core/stories.ts';
 import { artUrl } from './art.ts';
 import { deepName } from './deep-text.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import { fmt, num, type Dict } from './i18n.ts';
 
@@ -45,6 +46,13 @@ export function createConstellationDialog(): {
         list.append(row(t.rows.evening, month, more));
         const now = figureNow(id, turn);
         list.append(row(d.sky.pick.now, now.altitude >= 0 ? fmt(d.sky.pick.up, { altitude: num(lang, now.altitude), direction: d.sky.tonight.directions[now.compass] }) : d.sky.pick.under));
+      }
+
+      // The Little Bear holds the pole star: its card says where north is from the place.
+      const pole = id === 'UMi' ? poleStarNow(turn) : null;
+      if (pole) {
+        const star = starName(pole.index, lang) ?? t.unnamed;
+        list.append(row(t.rows.north, pole.altitude > 0 ? fmt(t.north.seen, { name: star, altitude: num(lang, pole.altitude) }) : fmt(t.north.never, { name: star })));
       }
 
       const close = h('button', { class: 'btn', type: 'button' }, d.card.close);
@@ -92,7 +100,7 @@ export function createConstellationDialog(): {
       credit.append(link(ORIGINS_SOURCE.url, t.pages.list), ' ', t.licence, ' ', link(STORY_SOURCE.licenceUrl, STORY_SOURCE.licence));
       body.append(credit);
       body.append(h('div', { class: 'dialog__actions' }, close));
-      el.replaceChildren(body);
+      el.replaceChildren(dialogCross(el, d.actions.close), body);
       if (!el.open) el.showModal();
       el.scrollTop = 0;
       close.focus({ preventScroll: true });

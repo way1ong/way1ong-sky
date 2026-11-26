@@ -11,6 +11,7 @@ import { arrivalDistance, clampDistance, clampPitch, distanceToFit, eye, facing,
 import { advance, freeFrom, keepOutside, lookPoint, nearest, radiusOnScreenPx, turnFree, type FreeView } from '../core/free.ts';
 import { moonsBesideJupiter } from '../core/jupiter-moons.ts';
 import { deepAt, deepById, deepNearerThanBody, type DeepObject } from '../core/deep-sky.ts';
+import { GALAXIES, RUNGS, arrivedAt, farAt, farById, farFlightAt, firstFarView, rungLook, rungOf, turnFar, zoomFar, type FarFlight, type FarView, type Rung } from '../core/far.ts';
 import { pickAt, pickedInSky, skyInfo, type Picked } from '../core/pick.ts';
 import { cityById, cityName, firstCity, type City } from '../core/places.ts';
 import type { PlanetTonight } from '../core/tonight.ts';
@@ -35,6 +36,9 @@ import { dayUT, missionName } from './site-text.ts';
 import { createAim } from './aim.ts';
 import { createConstellationDialog } from './constellation-dialog.ts';
 import { createDeepSkyDialog } from './deep-sky-dialog.ts';
+import { deepDistance, deepName } from './deep-text.ts';
+import { farName, farYears } from './far-text.ts';
+import { createFarView } from './far-view.ts';
 import { createSkyView, type SkyLayers } from './sky-view.ts';
 import { createTimeDialog } from './time-dialog.ts';
 import { createTonightDialog } from './tonight-dialog.ts';
@@ -88,8 +92,12 @@ export function startApp(root: HTMLElement): void {
   /** The moment the lines of the orbits were drawn for. */
   let orbitsDate = date;
   let focus: WorldId = 'sun';
-  /** Which of the two modes is on the screen: the flight through the Solar System or the sky from a place. */
-  let screen: 'flight' | 'sky' = 'flight';
+  /** Which mode is on the screen: the flight through the Solar System, the sky from a place, or the Galaxy and its neighbours. */
+  let screen: 'flight' | 'sky' | 'far' = 'flight';
+  /** Beyond the Solar System: how the model is turned and what it shows; the flight under way; the galaxy flown to. */
+  let farLook: FarView = firstFarView('galaxy');
+  let farFlight: (FarFlight & { say: string }) | null = null;
+  let farGalaxy: string | null = null;
   let look: Look = firstLook();
   /** The place the sky is shown for: the saved one, else the city of the device's time zone, else a capital by language. */
   let place: City = cityById(saved.place) ?? firstCity(new Intl.DateTimeFormat().resolvedOptions().timeZone, lang);
@@ -153,6 +161,7 @@ export function startApp(root: HTMLElement): void {
   // ---------- elements ----------
   const canvas = h('canvas', { tabindex: 0, role: 'img' });
   const skyCanvas = h('canvas', { class: 'sky', tabindex: 0, role: 'img', hidden: true });
+  const farCanvas = h('canvas', { class: 'far', tabindex: 0, role: 'img', hidden: true });
   const labels = h('div', { class: 'labels', 'aria-hidden': 'true' });
   /** Marks of the landing places on the Moon: shown while the camera looks at the Moon from near enough. */
   const siteMarks = h('div', { class: 'labels' });
@@ -187,7 +196,12 @@ export function startApp(root: HTMLElement): void {
   const tonightBtn = h('button', { class: 'chip', type: 'button' });
   /** A trial: the sky map turns to where the phone is pointed. Offered only on devices held in the hand. */
   const aimBtn = h('button', { class: 'chip', type: 'button', 'aria-pressed': 'false', hidden: true });
-  const skyBox = h('div', { class: 'bar sky-bar', role: 'group', hidden: true }, toFlightBtn, placeBtn, tonightBtn, aimBtn);
+  /** From the sky to the galaxies: offered there only where the flight, which has the same button, cannot run. */
+  const skyToFarBtn = h('button', { class: 'chip', type: 'button', hidden: true });
+  const skyBox = h('div', { class: 'bar sky-bar', role: 'group', hidden: true }, toFlightBtn, placeBtn, tonightBtn, aimBtn, skyToFarBtn);
+  /** Beyond the Solar System: the way back, the four rungs of the ladder and the galaxies to fly to. */
+  const farDock = h('ul', { class: 'dock dock--far', hidden: true });
+  const farChipOf = new Map<string, HTMLButtonElement>();
   const scaleBar = h('div', { class: 'bar bar--scale' });
   const slowerBtn = h('button', { class: 'icon-btn', type: 'button' }, h('span', { class: 'icon-skip icon-skip--back', 'aria-hidden': 'true' }));
   const pauseBtn = h('button', { class: 'icon-btn', type: 'button' });
@@ -206,11 +220,11 @@ export function startApp(root: HTMLElement): void {
   const constellationDialog = createConstellationDialog();
   const deepDialog = createDeepSkyDialog();
   const instrumentsDialog = createInstrumentsDialog();
-  const stage = h('div', { class: 'stage' }, canvas, skyCanvas, labels, siteMarks);
+  const stage = h('div', { class: 'stage' }, canvas, skyCanvas, farCanvas, labels, siteMarks);
   const header = h('header', { class: 'top' }, h('div', { class: 'top__text' }, title, line, speedLine, nearLine), factsBtn, menuBtn, wideBtn);
   scaleBar.append(scaleBox);
   const timeBar = h('div', { class: 'bar bar--time' }, timeBox);
-  const bottom = h('div', { class: 'bottom' }, flyBox, timeBar, scaleBar, dock, skyBox);
+  const bottom = h('div', { class: 'bottom' }, flyBox, timeBar, scaleBar, dock, skyBox, farDock);
   const main = h(
     'main',
     { class: 'app' },
@@ -276,6 +290,10 @@ export function startApp(root: HTMLElement): void {
     skyBox.setAttribute('aria-label', d.sky.open);
     toFlightBtn.textContent = d.sky.toFlight;
     toFlightBtn.hidden = !graphics;
+    skyToFarBtn.textContent = d.far.open;
+    skyToFarBtn.hidden = graphics;
+    farCanvas.setAttribute('aria-label', d.far.scene);
+    farDock.setAttribute('aria-label', d.far.label);
     tonightBtn.textContent = d.sky.tonight.button;
     aimBtn.textContent = d.sky.aim.button;
     forwardBtn.textContent = d.free.forward;
@@ -287,6 +305,9 @@ export function startApp(root: HTMLElement): void {
     const toSky = h('button', { class: 'chip chip--mode', type: 'button' }, d.sky.open);
     toSky.addEventListener('click', () => setScreen('sky'));
     dock.append(h('li', {}, toSky));
+    const toFar = h('button', { class: 'chip chip--mode', type: 'button' }, d.far.open);
+    toFar.addEventListener('click', () => setScreen('far'));
+    dock.append(h('li', {}, toFar));
     const whole = h('button', { class: 'chip', type: 'button' }, d.dock.whole);
     whole.addEventListener('click', showWhole);
     chipOf.set('whole', whole);
@@ -313,6 +334,19 @@ export function startApp(root: HTMLElement): void {
       labelOf.set(id, label);
       labels.append(label);
     }
+
+    farDock.replaceChildren();
+    farChipOf.clear();
+    const farChip = (key: string | null, text: string, act: () => void, way = false): void => {
+      const chip = h('button', { class: way ? 'chip chip--mode' : 'chip', type: 'button' }, text);
+      chip.addEventListener('click', act);
+      if (key) farChipOf.set(key, chip);
+      farDock.append(h('li', {}, chip));
+    };
+    if (graphics) farChip(null, d.far.toFlight, () => setScreen('flight'), true);
+    farChip(null, d.far.toSky, () => setScreen('sky'), true);
+    for (const rung of RUNGS) farChip(rung, d.far.rungs[rung], () => farToRung(rung));
+    for (const o of GALAXIES) farChip(o.object.id, farName(d, o.object), () => farToGalaxy(o.object.id));
 
     siteMarks.replaceChildren();
     markOf.clear();
@@ -342,6 +376,9 @@ export function startApp(root: HTMLElement): void {
   function describe(): void {
     const whole = !free && focus === 'sun' && !flight && view.distance > arrivalDistance('sun', radius.sun) * 1.5;
     const sky = screen === 'sky';
+    const far = screen === 'far';
+    if (far) return describeFar();
+    title.classList.remove('top__name--long');
     title.textContent = sky ? fmt(d.sky.title, { place: cityName(place, lang) }) : flight ? fmt(d.status.flying, { name: nameOf(flight.to) }) : free ? d.free.title : whole ? d.dock.whole : fmt(d.status.at, { name: nameOf(focus) });
     placeBtn.textContent = fmt(d.sky.placeButton, { place: cityName(place, lang) });
     document.documentElement.toggleAttribute('data-night', sky && night);
@@ -370,6 +407,29 @@ export function startApp(root: HTMLElement): void {
     }
   }
 
+  /** The same for the Galaxy and its neighbours: the rung or the galaxy flown to, and how much the screen shows. */
+  function describeFar(): void {
+    const galaxy = farGalaxy ? farById(farGalaxy) : undefined;
+    const rung = rungOf((farFlight?.to ?? farLook).span);
+    const frame = farView.frame();
+    const across = Number(((farLook.span * farCanvas.clientWidth) / (2 * frame.half)).toPrecision(2));
+    title.textContent = galaxy ? (farFlight ? fmt(d.status.flying, { name: farName(d, galaxy.object) }) : farName(d, galaxy.object)) : d.far.rungs[rung];
+    title.classList.toggle('top__name--long', galaxy !== undefined);
+    line.textContent = galaxy && !farFlight ? fmt(d.far.away, { distance: deepDistance(d, lang, galaxy.object.lightYears) }) : fmt(d.far.width, { distance: deepDistance(d, lang, across) });
+    document.documentElement.removeAttribute('data-night');
+    nearNow = null;
+    nearLine.hidden = true;
+    speedLine.hidden = true;
+    flyBox.hidden = true;
+    // The card is of the galaxy flown to.
+    factsBtn.hidden = !galaxy || farFlight !== null;
+    if (galaxy) factsBtn.setAttribute('aria-label', fmt(d.card.open, { name: deepName(d, galaxy.object) }));
+    for (const [key, chip] of farChipOf) {
+      if (key === (farGalaxy ?? rung)) chip.setAttribute('aria-current', 'true');
+      else chip.removeAttribute('aria-current');
+    }
+  }
+
   /** Says something over the picture, or takes the words away. */
   function say(text: string): void {
     note.textContent = text;
@@ -384,7 +444,7 @@ export function startApp(root: HTMLElement): void {
   }
   noteClose.addEventListener('click', () => {
     say('');
-    canvas.focus();
+    (screen === 'sky' ? skyCanvas : screen === 'far' ? farCanvas : canvas).focus();
   });
 
   /** The bars cover the top and the bottom of the picture: the view centres on what is left free. */
@@ -398,7 +458,8 @@ export function startApp(root: HTMLElement): void {
     const low = (wide || side) && flyBox.hidden ? 0 : stage.clientHeight - (side ? flyBox : bottom).getBoundingClientRect().top;
     scene.setCovered(top, low);
     skyView.setCovered(top, low);
-    const right = screen === 'sky' ? skyBox : dock;
+    farView.setCovered(top, low);
+    const right = screen === 'sky' ? skyBox : screen === 'far' ? farDock : dock;
     const between = side && !wide ? right.getBoundingClientRect().left - timeBar.getBoundingClientRect().right : stage.clientWidth;
     const free = Math.max(1, Math.min(between, stage.clientHeight - top - low));
     squeeze = Math.min(stage.clientWidth, stage.clientHeight) / free;
@@ -636,6 +697,67 @@ export function startApp(root: HTMLElement): void {
     },
   });
 
+  // ---------- beyond the Solar System: the Galaxy and its neighbours ----------
+  const farView = createFarView(farCanvas);
+  farView.onLoad = () => {
+    dirty = true;
+  };
+  /** What is said by a galaxy flown to: whose photograph it is, that it is enlarged, how old its light is. */
+  const farArrived = (o: DeepObject): string => fmt(d.far.notes.arrived, { name: deepName(d, o), years: farYears(d, lang, o.lightYears) });
+  /** What is said on a rung of the ladder: what is shown there and what of it is not as in life. */
+  const farNote = (): string => (farGalaxy ? farArrived((farById(farGalaxy) as { object: DeepObject }).object) : d.far.notes[rungOf(farLook.span)]);
+  /** The words of the rungs already said since the app was opened: a rung come back to says nothing again. */
+  const farSaid = new Set<string>();
+  /** A flight of the model to another view; the turn is kept. `words` are said on arrival. */
+  function farFly(to: FarView, galaxy: string | null, words: string): void {
+    farGalaxy = galaxy;
+    farFlight = { from: farLook, to, startedAt: performance.now(), ms: reducedMotion() ? 0 : SKY.far.flyMs, say: words };
+    say('');
+    describe();
+    dirty = true;
+  }
+  function farToRung(rung: Rung): void {
+    const words = d.far.notes[rung];
+    farFly({ ...farLook, ...rungLook(rung) }, null, farSaid.has(words) ? '' : words);
+  }
+  function farToGalaxy(id: string): void {
+    const o = farById(id);
+    if (!o) return;
+    farFly(arrivedAt(o, farLook), id, farArrived(o.object));
+  }
+  /** What a touch, or Enter for the middle of the view, means in the model. */
+  function farTouch(x: number, y: number, aloud: boolean): void {
+    if (farFlight) return;
+    const touch = farAt(x, y, farLook, farView.frame(), farGalaxy);
+    if (!touch) {
+      if (aloud) say(d.far.notes.nothing);
+    } else if (touch.kind === 'sun') say(d.far.notes.sun);
+    else if (touch.kind === 'milkyWay') farToRung('galaxy');
+    // A galaxy is first flown to; the one arrived at, like a cluster or a nebula, opens its card.
+    else if (farById(touch.id)?.galaxy && touch.id !== farGalaxy) farToGalaxy(touch.id);
+    else showDeep(touch.id);
+  }
+  attachControls(farCanvas, {
+    turn(yaw, pitch) {
+      if (farFlight) return;
+      farLook = turnFar(farLook, -yaw, pitch);
+      dirty = true;
+    },
+    zoom(factor) {
+      if (farFlight) return;
+      farLook = zoomFar(farLook, factor);
+      // Looked at from much farther, the galaxy flown to is one of several again.
+      if (farGalaxy && farLook.span > arrivedAt(farById(farGalaxy) as NonNullable<ReturnType<typeof farById>>, farLook).span * SKY.far.arriveZoom) farGalaxy = null;
+      describe();
+      dirty = true;
+    },
+    tap: (x, y) => farTouch(x, y, false),
+    pick() {
+      const middle = farView.frame();
+      farTouch(middle.cx, middle.cy, true);
+    },
+  });
+
   // ---------- the sky follows the phone (a trial) ----------
   const aim = createAim({
     look(azimuth, altitude) {
@@ -738,31 +860,41 @@ export function startApp(root: HTMLElement): void {
     return `${graphics ? '' : `${d.status.noGraphics} `}${fmt(d.sky.note, { place: cityName(place, lang) })}${sunUp ? ` ${d.sky.dayNote}` : ''}`;
   }
 
-  function setScreen(next: 'flight' | 'sky'): void {
+  function setScreen(next: 'flight' | 'sky' | 'far'): void {
     if (next === screen || (next === 'flight' && !graphics)) return;
     screen = next;
     const sky = screen === 'sky';
+    const far = screen === 'far';
     thrust = 0;
     closePicked();
     endAim();
     // A clock that ran a week a second in the flight slows to the sky's fastest.
     if (sky) clock = slowedTo(clock, Date.now(), SKY.time.skyUpToRate);
-    canvas.hidden = sky;
-    labels.hidden = sky;
-    siteMarks.hidden = sky;
+    canvas.hidden = sky || far;
+    labels.hidden = sky || far;
+    siteMarks.hidden = sky || far;
     skyCanvas.hidden = !sky;
-    dock.hidden = sky;
-    scaleBar.hidden = sky;
+    farCanvas.hidden = !far;
+    dock.hidden = sky || far;
+    scaleBar.hidden = sky || far;
+    // The Galaxy does not change in a day or in a century: its model has no clock.
+    timeBar.hidden = far;
     skyBox.hidden = !sky;
-    say(sky ? skyNote() : '');
+    farDock.hidden = !far;
+    say(sky ? skyNote() : far ? farNote() : '');
+    if (far) farSaid.add(farNote());
     describe();
     measure();
     // The hidden canvas had no size: the window may have changed while the other mode was on.
     if (sky) skyView.resize();
+    else if (far) farView.resize();
     else scene.resize();
-    (sky ? skyCanvas : canvas).focus({ preventScroll: true });
+    // The bars have changed: what the model was laid out for is measured again.
+    if (far) describe();
+    (sky ? skyCanvas : far ? farCanvas : canvas).focus({ preventScroll: true });
   }
   toFlightBtn.addEventListener('click', () => setScreen('flight'));
+  skyToFarBtn.addEventListener('click', () => setScreen('far'));
   placeBtn.addEventListener('click', () =>
     placeDialog.open(d, lang, place, (city) => {
       place = city;
@@ -814,8 +946,13 @@ export function startApp(root: HTMLElement): void {
     fly('moon', arrivalDistance('moon', radius.moon), text);
   }
 
-  // The card is of the body looked at: a moon of Jupiter has its own, shorter one.
-  factsBtn.addEventListener('click', () => (isSatellite(focus) ? satelliteDialog.open(d, lang, focus) : factsDialog.open(d, lang, focus, date, showSite, flyTo)));
+  // The card is of the body looked at: a moon of Jupiter has its own, shorter one; among the galaxies — of the galaxy flown to.
+  factsBtn.addEventListener('click', () => {
+    if (screen === 'far') {
+      if (farGalaxy) showDeep(farGalaxy);
+    } else if (isSatellite(focus)) satelliteDialog.open(d, lang, focus);
+    else factsDialog.open(d, lang, focus, date, showSite, flyTo);
+  });
 
   menuBtn.addEventListener('click', () =>
     menu.open(
@@ -827,7 +964,7 @@ export function startApp(root: HTMLElement): void {
         keep();
         menu.el.close();
         // A note written in the old language is not left on the screen: the sky's is said again, others go.
-        if (!noteBox.hidden) say(screen === 'sky' ? skyNote() : '');
+        if (!noteBox.hidden) say(screen === 'sky' ? skyNote() : screen === 'far' ? farNote() : '');
         build();
       },
       {
@@ -946,6 +1083,28 @@ export function startApp(root: HTMLElement): void {
       window.requestAnimationFrame(frame);
       return;
     }
+    if (screen === 'far') {
+      let grown = 1;
+      if (farFlight) {
+        const at = farFlightAt(farFlight, now);
+        farLook = at.view;
+        grown = at.share;
+        if (at.done) {
+          const words = farFlight.say;
+          farFlight = null;
+          farSaid.add(words);
+          say(words);
+        }
+        describe();
+        dirty = true;
+      }
+      if (dirty) {
+        dirty = false;
+        farView.draw({ view: farLook, lang, d, arrived: farGalaxy ? { id: farGalaxy, share: grown } : null });
+      }
+      window.requestAnimationFrame(frame);
+      return;
+    }
     if (free && thrust !== 0) {
       moveFree(thrust * SKY.free.holdSharePerSecond * elapsed);
     }
@@ -982,7 +1141,9 @@ export function startApp(root: HTMLElement): void {
   window.addEventListener('resize', () => {
     scene.resize();
     skyView.resize();
+    farView.resize();
     measure();
+    if (screen === 'far') describe();
   });
   // The bars change their height with the language and the width of the screen.
   const bars = new ResizeObserver(measure);

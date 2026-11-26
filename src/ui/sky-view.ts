@@ -3,7 +3,7 @@
 // Moon and the planets, and their names. It only
 // paints what it is told: where the view looks, how the sky is turned, which layers are on.
 import { SKY } from '../config.ts';
-import { DEEP, deepNamed, messierName, type DeepKind } from '../core/deep-sky.ts';
+import { DEEP, deepNamed, messierName } from '../core/deep-sky.ts';
 import { horizonOnScreen, project, skyDirection, type Frame, type Look } from '../core/dome.ts';
 import { moonLitFraction } from '../core/ephemeris.ts';
 import { markBox, nameBox, placeAround, placeBeside, placeFree, shared, type Box, type NameAlign } from '../core/labels.ts';
@@ -11,6 +11,7 @@ import { faintestShown, markRadius, pickedInSky, tooFaintForTheEye, type Picked 
 import { SKY_BODY_IDS, altAz, bodyInSky, bodyMagnitude, toSky, type SkyBodyId, type SkyTurn } from '../core/sky.ts';
 import { FIGURES, NAMED_STARS, STARS, STARS_LIMIT, starName } from '../core/stars.ts';
 import type { Vec3 } from '../core/vec.ts';
+import { deepSign } from './deep-signs.ts';
 import type { Dict } from './i18n.ts';
 
 export interface SkyLayers {
@@ -58,37 +59,6 @@ const blend = (a: Rgb, b: Rgb, t: number): Rgb => [a[0] + (b[0] - a[0]) * t, a[1
 const written = (colour: Rgb): string => `rgb(${colour.map(Math.round).join(' ')})`;
 const mix = (a: string, b: string, t: number): string => written(blend(rgb(a), rgb(b), t));
 const between = (t: number) => Math.max(0, Math.min(1, t));
-
-/**
- * The signs star charts use: a galaxy is an oval, a nebula a square, an open cluster a dotted circle, a
- * globular cluster a circle with a cross.
- */
-const deepSign: Record<DeepKind, (ctx: CanvasRenderingContext2D, x: number, y: number, r: number) => void> = {
-  galaxy(ctx, x, y, r) {
-    ctx.beginPath();
-    ctx.ellipse(x, y, r * 1.25, r * 0.6, -Math.PI / 6, 0, Math.PI * 2);
-    ctx.stroke();
-  },
-  nebula(ctx, x, y, r) {
-    ctx.strokeRect(x - r * 0.85, y - r * 0.85, r * 1.7, r * 1.7);
-  },
-  open(ctx, x, y, r) {
-    ctx.setLineDash([2.5, 2.5]);
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.setLineDash([]);
-  },
-  globular(ctx, x, y, r) {
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.moveTo(x - r, y);
-    ctx.lineTo(x + r, y);
-    ctx.moveTo(x, y - r);
-    ctx.lineTo(x, y + r);
-    ctx.stroke();
-  },
-};
 
 export function createSkyView(canvas: HTMLCanvasElement): SkyView {
   const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;

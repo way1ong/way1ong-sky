@@ -78,6 +78,13 @@ async function look(page, where, name) {
     if (sideways > 0) out.push(`the page scrolls sideways by ${sideways}px`);
     const dialog = document.querySelector('dialog[open]');
     if (dialog && dialog.scrollWidth > dialog.clientWidth) out.push(`the window scrolls sideways by ${dialog.scrollWidth - dialog.clientWidth}px`);
+    // Every window has a cross in its top corner, in sight wherever the window is scrolled to.
+    if (dialog) {
+      const cross = dialog.querySelector('.dialog__cross')?.getBoundingClientRect();
+      const box = dialog.getBoundingClientRect();
+      if (!cross) out.push('the window has no cross to close it at the top');
+      else if (cross.top < box.top || cross.bottom > box.top + 80 || cross.right > box.right) out.push('the cross of the window is not in its top corner');
+    }
     const scope = dialog ?? document;
     for (const el of scope.querySelectorAll('button, a[href], input, [role="switch"]')) {
       if (!el.offsetParent || el.closest('[hidden]')) continue;
@@ -115,7 +122,12 @@ const closeDialog = async (page) => {
   await page.keyboard.press('Escape');
   await page.waitForFunction(() => !document.querySelector('dialog[open]'));
 };
-const chip = (page, i) => page.locator('.dock .chip').nth(i);
+const chip = (page, i) => page.locator('.dock:not(.dock--far) .chip').nth(i);
+/** The buttons of the model of the Galaxy: the ways back first, then the four rungs, then the five galaxies. */
+const farChip = (page, fromEnd) => page.locator(`.dock--far li:nth-last-child(${fromEnd}) .chip`);
+const FAR = { near: 9, galaxy: 8, group: 7, far: 6, firstGalaxy: 5 };
+/** A flight between two views of the model takes a second and a half (config.ts). */
+const FAR_FLIGHT_MS = 1900;
 /**
  * The button that hides the panels: with them hidden only it and what `kept` names can be pressed, the
  * button has not moved from under the finger, and both the button and Escape bring the panels back.
@@ -144,10 +156,12 @@ const panels = async (page, where, what, shot, kept) => {
   await page.waitForTimeout(150);
   if ((await controls()) !== before) note(where, `${what}: the panels did not come back by Escape`);
 };
-/** The dock: 0 the sky, 1 the whole system, 2 free flight, then the bodies from the Sun (3) on. */
-const BODY = { sun: 3, earth: 6, moon: 7, jupiter: 9, saturn: 10 };
+/** The dock: 0 the sky, 1 the galaxies, 2 the whole system, 3 free flight, then the bodies from the Sun (4) on. */
+const BODY = { sun: 4, earth: 7, moon: 8, jupiter: 10, saturn: 11 };
 
-for (const [width, height] of SIZES) {
+// `--size 390` walks one width only (the extras after the walk still run): for a quick look while working.
+const onlyWidth = Number(option('--size')) || null;
+for (const [width, height] of SIZES.filter(([w]) => !onlyWidth || w === onlyWidth)) {
   for (const [lang, locale, timezoneId] of LANGS) {
     const where = `${width}×${height} ${lang}`;
     const context = await browser.newContext({ viewport: { width, height }, locale, timezoneId, deviceScaleFactor: 1, isMobile: width < 768, hasTouch: width < 768 });
@@ -214,7 +228,7 @@ for (const [width, height] of SIZES) {
       let named = await namedNow();
       if (!named.some((text) => moonNames.includes(text))) {
         await closeDialog(page);
-        await page.locator('canvas:not(.sky)').focus();
+        await page.locator('canvas:not(.sky):not(.far)').focus();
         for (let step = 0; step < 8 && !named.some((text) => moonNames.includes(text)); step++) {
           await page.keyboard.press('-');
           await page.waitForTimeout(300);
@@ -263,7 +277,7 @@ for (const [width, height] of SIZES) {
       await page.waitForTimeout(300);
       await look(page, where, 'moon');
 
-      await chip(page, 2).click();
+      await chip(page, 3).click();
       await page.waitForTimeout(300);
       if (!(await page.locator('.fly').isVisible())) note(where, 'free flight shows no forward and back buttons');
       await look(page, where, 'free');
@@ -285,6 +299,88 @@ for (const [width, height] of SIZES) {
       await look(page, where, 'true-scale');
       await page.locator('.scale .chip').nth(0).click();
       await page.locator('.note .icon-btn').click().catch(() => undefined);
+
+      // ---------- beyond the Solar System: the Galaxy and its neighbours ----------
+      await chip(page, 1).click();
+      await page.waitForTimeout(600);
+      if (!(await page.locator('canvas.far').isVisible())) note(where, 'the model of the Galaxy is not shown');
+      // What is drawn there is partly an artist's picture: coming in says so.
+      if (!(await page.locator('.note:not(.pick)').isVisible())) note(where, 'coming to the Galaxy says nothing of what is shown');
+      await look(page, where, 'far');
+      await page.locator('.note .icon-btn').click();
+      await panels(page, where, 'the Galaxy', 'far', []);
+      if (await page.locator('.bar--time').isVisible()) note(where, 'the clock is shown by the Galaxy, which it does not move');
+      // The four rungs of the ladder: each has its own heading, says how much the screen shows, and marks its button.
+      const headings = [];
+      for (const rung of ['far', 'group', 'galaxy', 'near']) {
+        await farChip(page, FAR[rung]).click();
+        await page.waitForTimeout(FAR_FLIGHT_MS);
+        headings.push(((await page.locator('.top__name').textContent()) ?? '').trim());
+        if (!/\d/.test((await page.locator('.top__line').first().textContent()) ?? '')) note(where, `the rung "${rung}" does not say how much the screen shows`);
+        if ((await farChip(page, FAR[rung]).getAttribute('aria-current')) !== 'true') note(where, `the button of the rung "${rung}" is not marked`);
+        await look(page, where, `far-${rung}`);
+        if (await page.locator('.note:not(.pick)').isVisible()) await page.locator('.note .icon-btn').click();
+      }
+      if (new Set(headings).size !== 4) note(where, `the four rungs have the headings ${headings.join(', ')}`);
+      // Round the Sun the marks stand apart: a touch on one opens its card. A few touches across the free picture find one.
+      const model = await page.evaluate(() => {
+        const side = getComputedStyle(document.querySelector('.app')).getPropertyValue('--side').trim() === '1';
+        const top = document.querySelector('.top').getBoundingClientRect().bottom;
+        const low = side ? innerHeight : document.querySelector('.bottom').getBoundingClientRect().top;
+        const half = Math.min(innerWidth, low - top) / 2;
+        return { x: innerWidth / 2, y: (top + low) / 2, half };
+      });
+      const farCard = page.locator('dialog[open] #deep-title');
+      search: for (let ring = 1; ring <= 4; ring++) {
+        for (let turn = 0; turn < 12; turn++) {
+          const angle = (turn * Math.PI) / 6;
+          await page.mouse.click(model.x + Math.cos(angle) * ring * 0.2 * model.half, model.y + Math.sin(angle) * ring * 0.2 * model.half);
+          if (await farCard.count()) break search;
+          if (await page.locator('.note:not(.pick)').isVisible()) await page.locator('.note .icon-btn').click();
+        }
+      }
+      if (!(await farCard.count())) note(where, 'no touch round the Sun found a cluster or a nebula');
+      else {
+        if (!(await page.locator('dialog[open] a[href*="science.nasa.gov"]').count())) note(where, 'the card opened from the model has no link to its source');
+        await closeDialog(page);
+      }
+      // The keyboard: Enter in the middle of this rung names the Sun; the arrows and the minus key turn and widen the view.
+      await page.locator('canvas.far').focus();
+      await page.keyboard.press('Enter');
+      if (!(await page.locator('.note:not(.pick)').isVisible()) && !(await page.locator('dialog[open]').count())) note(where, 'Enter in the middle of the model says nothing');
+      if (await page.locator('dialog[open]').count()) await closeDialog(page);
+      else await page.locator('.note .icon-btn').click();
+      const before = await page.locator('.top__line').first().textContent();
+      await page.locator('canvas.far').focus();
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowUp');
+      for (let i = 0; i < 6; i++) await page.keyboard.press('-');
+      if ((await page.locator('.top__line').first().textContent()) === before) note(where, 'the minus key does not widen the view of the model');
+      // A galaxy is flown to: the heading names it and says how far it is, its card opens by the "i" button and by Enter.
+      await farChip(page, FAR.firstGalaxy).click();
+      await page.waitForTimeout(FAR_FLIGHT_MS);
+      const galaxy = ((await farChip(page, FAR.firstGalaxy).textContent()) ?? '').trim();
+      if (((await page.locator('.top__name').textContent()) ?? '').trim() !== galaxy) note(where, `the flight to ${galaxy} ends with the heading ${await page.locator('.top__name').textContent()}`);
+      if (!(await page.locator('.note:not(.pick)').isVisible())) note(where, 'by a galaxy nothing says that its photograph is enlarged');
+      await look(page, where, 'far-galaxy');
+      await page.locator('.note .icon-btn').click();
+      await page.locator('.top .icon-btn').first().click();
+      await page.waitForSelector('dialog[open] #deep-title', { timeout: 3000 }).catch(() => undefined);
+      if (!(await farCard.count())) note(where, 'the "i" button by a galaxy does not open its card');
+      else {
+        if (!((await page.locator('dialog[open] figcaption').textContent()) ?? '').trim()) note(where, 'the photograph of the galaxy flown to stands without its credit');
+        await closeDialog(page);
+      }
+      await page.locator('canvas.far').focus();
+      await page.keyboard.press('Enter');
+      await page.waitForSelector('dialog[open] #deep-title', { timeout: 3000 }).catch(() => undefined);
+      if (!(await farCard.count())) note(where, 'Enter by a galaxy does not open its card');
+      else await closeDialog(page);
+      // Back to the flight: the first button of the list.
+      await page.locator('.dock--far .chip').first().click();
+      await page.waitForTimeout(400);
+      if (await page.locator('canvas.far').isVisible()) note(where, 'the model of the Galaxy stays after the way back');
+      if (!(await page.locator('.bar--time').isVisible())) note(where, 'the clock did not come back with the flight');
 
       // ---------- the sky ----------
       await chip(page, 0).click();
@@ -502,6 +598,14 @@ for (const [width, height] of SIZES) {
       await page.locator('.top .icon-btn:not(.icon-btn--wide)').last().click();
       await page.waitForSelector('dialog[open] [role="switch"]');
       await look(page, where, 'menu');
+      // The menu is long: scrolled to its end, its cross is still in the top corner and closes it.
+      await page.locator('dialog[open]').evaluate((dialog) => dialog.scrollTo(0, dialog.scrollHeight));
+      await look(page, where, 'menu-end');
+      await page.locator('dialog[open] .dialog__cross').click();
+      await page.waitForTimeout(150);
+      if (await page.locator('dialog[open]').count()) note(where, 'the cross does not close the menu');
+      await page.locator('.top .icon-btn:not(.icon-btn--wide)').last().click();
+      await page.waitForSelector('dialog[open] [role="switch"]');
       if ((await page.locator('dialog[open] [role="switch"]').count()) !== 4) note(where, 'the menu must have four switches of the sky: lines, names, galaxies and nebulae, night mode');
       await page.locator('dialog[open] [role="switch"]').last().click();
       await closeDialog(page);
@@ -638,6 +742,15 @@ for (const [width, height] of [SIZES[2], SIZES[4]]) {
     if (await page.locator('.sky-bar .chip').first().isVisible()) note(where, 'the button back to the flight is shown though there is no flight');
     if (!/3D/.test((await page.locator('.note__text').textContent()) ?? '')) note(where, 'nothing says why there is no flight');
     await look(page, where, 'sky');
+    // The model of the Galaxy is painted without 3D graphics: it is reached from the sky, and leads back to it.
+    await page.locator('.sky-bar .chip').last().click();
+    await page.waitForTimeout(700);
+    if (!(await page.locator('canvas.far').isVisible())) note(where, 'without 3D the model of the Galaxy is not reached from the sky');
+    if ((await page.locator('.dock--far .chip').count()) !== 10) note(where, `without 3D the model has ${await page.locator('.dock--far .chip').count()} buttons, not ten: the way to the flight must not be offered`);
+    await look(page, where, 'far');
+    await page.locator('.dock--far .chip').first().click();
+    await page.waitForTimeout(400);
+    if (!(await page.locator('canvas.sky').isVisible())) note(where, 'without 3D the way back from the Galaxy does not lead to the sky');
   } catch (error) {
     note(where, `the walk stopped: ${String(error.message).split('\n')[0]}`);
   }

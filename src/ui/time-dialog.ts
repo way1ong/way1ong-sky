@@ -1,5 +1,6 @@
 // "Date and eclipses": go to a day, or to the next eclipse of the Moon or of the Sun.
 import { LIMITS } from '../core/clock.ts';
+import { dialogCross } from './dialog-cross.ts';
 import { h } from './dom.ts';
 import type { Dict } from './i18n.ts';
 
@@ -42,6 +43,7 @@ export function createTimeDialog(): { el: HTMLDialogElement; open(d: Dict, shown
       const close = h('button', { class: 'chip', type: 'button' }, d.actions.close);
       close.addEventListener('click', () => el.close());
       el.replaceChildren(
+        dialogCross(el, d.actions.close),
         h(
           'div',
           { class: 'dialog__body' },
