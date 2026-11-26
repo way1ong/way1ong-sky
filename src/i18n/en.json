@@ -366,7 +366,7 @@
   },
   "sky": {
     "open": "The sky from here",
-    "toFlight": "Flight",
+    "toFlight": "Solar System",
     "title": "The sky: {place}",
     "scene": "The sky over the chosen place: stars, constellations, the Sun, the Moon and the planets. Drag to look around. Touch a star, a planet or the name of a constellation to learn what it is; on a keyboard Enter names what is in the middle.",
     "placeButton": "Place: {place}",
